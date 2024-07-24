@@ -59,7 +59,7 @@ struct MenuView: View {
             Spacer()
             
             HStack(spacing: 0) {
-                Button(action: {authViewModel.send(action: .logOut)}, label: {
+                Button(action: {authViewModel.send(action: .logOut); coordinator.popToRoot()}, label: {
                     CustomText(font: .pretendard, title: "로그아웃", textColor: .customGray300, textWeight: .regular, textSize: 16)
                         .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                 })
