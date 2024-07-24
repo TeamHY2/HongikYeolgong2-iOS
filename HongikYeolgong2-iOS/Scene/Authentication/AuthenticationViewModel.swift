@@ -15,6 +15,7 @@ class AuthenticationViewModel: ObservableObject {
         case checkAuthenticationState
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
+        case logOut
     }
     
     @Published var authenticationState: AuthenticationState = .unauthenticated
@@ -55,6 +56,15 @@ class AuthenticationViewModel: ObservableObject {
             } else if case let .failure(error) = result {
                 print(error.localizedDescription)
             }
+        case .logOut:
+            authService.logOut()
+                .sink { completion in
+                    
+                } receiveValue: { [weak self] _ in
+                    self?.authenticationState = .unauthenticated
+                    self?.userID = nil
+                }.store(in: &subscriptions)
+
         }
     }
 }
