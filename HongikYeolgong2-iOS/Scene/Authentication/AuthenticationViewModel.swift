@@ -16,6 +16,7 @@ class AuthenticationViewModel: ObservableObject {
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
         case logOut
+//        case deleteAppleAccount
     }
     
     @Published var authenticationState: AuthenticationState = .unauthenticated
@@ -43,7 +44,6 @@ class AuthenticationViewModel: ObservableObject {
         case .appleLoginCompletion(let result):
             if case let .success(authentication) = result {
                 guard let nonce = currentNonce else {return}
-                
                 authService.handleSignInWithAppleCompletion(authentication, none: nonce)
                     .sink { completon in
                         if case .failure(_) = result {
@@ -64,7 +64,6 @@ class AuthenticationViewModel: ObservableObject {
                     self?.authenticationState = .unauthenticated
                     self?.userID = nil
                 }.store(in: &subscriptions)
-
         }
     }
 }

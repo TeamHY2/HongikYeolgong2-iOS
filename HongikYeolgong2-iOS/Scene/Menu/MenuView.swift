@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-
+import AuthenticationServices
 
 struct MenuView: View {
     @EnvironmentObject private var coordinator: SceneCoordinator
     @EnvironmentObject var authViewModel: AuthenticationViewModel
     @State var isOn: Bool = false
+    @State private var deletionStatus: String = ""
     
     var body: some View {
         VStack(spacing: 0) {
@@ -67,7 +68,16 @@ struct MenuView: View {
                 CustomText(font: .pretendard, title: "|", textColor: .customGray300, textWeight: .regular, textSize: 16)
                     .padding(.horizontal, UIScreen.UIWidth(24))
                 
-                Button(action: {}, label: {
+                Button(action:  {Task {
+                    let authService = AuthenticationService()
+                    let deletionSuccessful = await authService.deleteAccount()
+
+                    if deletionSuccessful {
+                        deletionStatus = "계정이 성공적으로 삭제되었습니다."
+                    } else {
+                        deletionStatus = "계정 삭제에 실패했습니다."
+                    }
+                }}, label: {
                     CustomText(font: .pretendard, title: "회원탈퇴", textColor: .customGray300, textWeight: .regular, textSize: 16)
                         .frame(width: UIScreen.UIWidth(56), height: UIScreen.UIHeight(26))
                 })
@@ -115,6 +125,6 @@ struct ColoredToggleStyle: ToggleStyle {
     }
 }
 
-#Preview {
-    MenuView()
-}
+//#Preview {
+//    MenuView()
+//}
