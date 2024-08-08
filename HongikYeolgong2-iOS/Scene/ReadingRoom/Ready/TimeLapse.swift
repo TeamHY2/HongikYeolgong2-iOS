@@ -12,7 +12,8 @@ struct TimeLapse: View {
     let startTime: Date
     let endTime: Date
     let timeRemaining: Double
-    let totalTime: Double
+    let usageCount: Int
+//    let totalTime: Double
     
     var body: some View {
         VStack(spacing: 0) {
@@ -73,9 +74,12 @@ struct TimeLapse: View {
                 Spacer()
                 
                 HStack {
-                    Image(totalTime >= Constants.starRatingCount00 ? .shineCount01 : .shineCount00)
-                    Image(totalTime >= Constants.starRatingCount01 ? .shineCount02 : .shineCount00)
-                    Image(totalTime >= Constants.starRatingCount02 ? .shineCount03 : .shineCount00)
+//                    Image(totalTime >= Constants.StudyRoomService.starRatingCount00 ? .shineCount01 : .shineCount00)
+//                    Image(totalTime >= Constants.StudyRoomService.starRatingCount01 ? .shineCount02 : .shineCount00)
+//                    Image(totalTime >= Constants.StudyRoomService.starRatingCount02 ? .shineCount03 : .shineCount00)
+                    Image(.shineCount01)
+                    Image(usageCount >= 1 ? .shineCount02 : .shineCount00)
+                    Image(usageCount >= 2 ? .shineCount03 : .shineCount00)
                 }
             }
         }
@@ -95,5 +99,5 @@ extension Double {
 }
 
 #Preview {
-    TimeLapse(startTime: Date(), endTime: Date(), timeRemaining: 0, totalTime: 0)
+    TimeLapse(startTime: Date(), endTime: Date(), timeRemaining: 0, usageCount: 0)
 }

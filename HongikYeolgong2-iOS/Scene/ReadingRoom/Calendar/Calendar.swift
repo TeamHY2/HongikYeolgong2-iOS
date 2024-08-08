@@ -88,9 +88,6 @@ struct CalendarView: View {
                     CalendarCell(dayInfo: $0)
                 }
             }
-            .onAppear {
-                viewModel.send(action: .viewOnAppear)
-            }           
         }
     }
 }

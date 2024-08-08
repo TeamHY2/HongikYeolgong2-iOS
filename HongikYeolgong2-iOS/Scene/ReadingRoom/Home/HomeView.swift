@@ -13,9 +13,10 @@ struct HomeView: View {
     @State private var showTimeExtensionAlert = false
     @State private var showingDialog = false
     
-    @EnvironmentObject private var coordinator: SceneCoordinator
+    @EnvironmentObject private var coordinator: AppCoordinator
     @EnvironmentObject private var timerViewModel: TimerViewModel
     @EnvironmentObject private var calendarViewModel: CalendarViewModel
+    @EnvironmentObject private var authViewModel: AuthenticationViewModel
     
     @Environment(\.scenePhase) var scenePhase
     
@@ -27,8 +28,8 @@ struct HomeView: View {
             if timerViewModel.isStart {
                 TimeLapse(startTime: timerViewModel.startTime,
                           endTime: timerViewModel.endTime,
-                          timeRemaining: timerViewModel.timeRemaining,
-                          totalTime: calendarViewModel.dailyReadingRoomUsageTime)
+                          timeRemaining: timerViewModel.remainingTime,
+                          usageCount: calendarViewModel.todayStudyRoomUsageCount)
             } else {
                 Quote()
             }
@@ -37,7 +38,7 @@ struct HomeView: View {
                 .frame(height: timerViewModel.isStart ? UIScreen.UIHeight(28) : UIScreen.UIHeight(120))
             
             if timerViewModel.isStart {
-                if TimeInterval(timerViewModel.timeRemaining) <= Constants.firstNotificationTime {
+                if TimeInterval(timerViewModel.remainingTime) <= Constants.StudyRoomService.firstNotificationTime {
                     CustomButton(action: {
                         showTimeExtensionAlert = true
                     }, font: .suite, title: "열람실 이용 연장", titleColor: .white, backgroundColor: .customBlue100, leading: 0, trailing: 0)
@@ -84,19 +85,19 @@ struct HomeView: View {
                 currentDate: $timerViewModel.startTime) {
             timerViewModel.send(action: .startButtonTap)
         }
-                .alert(title: "열람실을 다 이용하셨나요?", 
+                .alert(title: "열람실을 다 이용하셨나요?",
                        confirmButtonText: "네",
                        cancleButtonText: "더 이용하기",
                        isPresented: $showCompleteAlert) {
                     saveData()
                 }
-                       .alert(title: "열람실 이용 시간을 연장할까요?", 
+                       .alert(title: "열람실 이용 시간을 연장할까요?",
                               confirmButtonText: "연장하기",
                               cancleButtonText: "아니오",
                               isPresented: $showTimeExtensionAlert) {
                            timerViewModel.send(action: .addTimeButtonTap)
                        }
-                              .onReceive(timerViewModel.$timeRemaining.filter { $0 <= 0 }) { _ in
+                              .onReceive(timerViewModel.$remainingTime.filter { $0 <= 0 }) { _ in
                                   saveData()
                               }.onChange(of: scenePhase, perform: { value in
                                   guard timerViewModel.isStart == true else { return }
@@ -107,6 +108,12 @@ struct HomeView: View {
                                       timerViewModel.send(action: .enterBackground)
                                   }
                               })
+                              .onAppear {
+                                  LocalNotificationService.shared.requestPermission()
+                                  
+                                  guard let email = authViewModel.user?.email else { return }
+                                  calendarViewModel.send(action: .getCalendar(email))
+                              }
     }
     
     func saveData() {
@@ -115,10 +122,10 @@ struct HomeView: View {
         
         // 총시간
         let totalTime = timerViewModel.totalTime
-        let data = ReadingRoomUsage(date: Date(), duration: totalTime)
+        let data = StudyRoomUsage(date: Date(), duration: totalTime)
         
         // 캘린더 업데이트
-        calendarViewModel.send(action: .saveButtonTap(data))
+        calendarViewModel.send(action: .saveButtonTap(data, authViewModel.user?.email ?? ""))
     }
 }
 

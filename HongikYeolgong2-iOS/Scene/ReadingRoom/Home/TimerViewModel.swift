@@ -13,7 +13,7 @@ final class TimerViewModel: ViewModelType {
     @Published var isStart = false
     @Published var startTime = Date()
     @Published var endTime: Date!
-    @Published var timeRemaining = 123456.0
+    @Published var remainingTime = 123456.0
     @Published var totalTime = 0.0
     
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
@@ -48,36 +48,36 @@ final class TimerViewModel: ViewModelType {
     
     func startStudy() {
         isStart = true
-        endTime = startTime + Constants.additionalTime
-        timeRemaining = endTime.timeIntervalSince(startTime)
+        endTime = startTime + Constants.StudyRoomService.additionalTime
+        remainingTime = endTime.timeIntervalSince(startTime)
         
         // Notification에 추가
-        LocalNotificationService.shared.addNotification(interval: TimeInterval(timeRemaining))
+        LocalNotificationService.shared.addNotification(interval: TimeInterval(remainingTime))
         startTimer()
     }
     
     func startTimer() {
         subscription = timer.sink { [weak self] _ in
             guard let self = self else { return }
-            timeRemaining -= 1
+            remainingTime -= 1
         }
     }
     
     func saveTime() {
         subscription?.cancel()
         isStart = false
-        totalTime = endTime.timeIntervalSince(startTime) - timeRemaining
+        totalTime = endTime.timeIntervalSince(startTime) - remainingTime
         LocalNotificationService.shared.removeNotification()
     }
     
     func addTime() {
-        totalTime = endTime.timeIntervalSince(startTime) - timeRemaining
-        endTime = endTime + Constants.additionalTime
-        timeRemaining = endTime.timeIntervalSince(startTime) - totalTime
+        totalTime = endTime.timeIntervalSince(startTime) - remainingTime
+        endTime = endTime + Constants.StudyRoomService.additionalTime
+        remainingTime = endTime.timeIntervalSince(startTime) - totalTime
         
         // Notification 제거하고 다시 등록
         LocalNotificationService.shared.removeNotification()
-        LocalNotificationService.shared.addNotification(interval: TimeInterval(timeRemaining))
+        LocalNotificationService.shared.addNotification(interval: TimeInterval(remainingTime))
     }
     
     
@@ -94,7 +94,7 @@ final class TimerViewModel: ViewModelType {
         }
         
         let timeDifferent = Date().timeIntervalSince(checkTime)
-        timeRemaining -= timeDifferent
+        remainingTime -= timeDifferent
         startTimer()
     }
 }

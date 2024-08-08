@@ -10,42 +10,55 @@ import Combine
 
 final class CalendarViewModel: ViewModelType {
     
+    // MARK: - Input
+    enum Action {
+        case saveButtonTap(StudyRoomUsage, String)
+        case moveButtonTap(MoveType)
+        case getCalendar(String)
+    }
+    
+    // MARK: - Action
     enum MoveType {
         case current
         case next
         case prev
     }
     
+    // MARK: - Output
     @Published var seletedDate = Date() // 선택된 날짜
     @Published var currentMonth = [Day]() // 캘린더에 표시할 날짜정보
-    @Published var dailyReadingRoomUsageTime: Double = 0 // 오늘 열람실 이용시간
+    @Published var todayStudyRoomUsageCount = 0 // 열람실 이용횟수
+    @Published var studyRoomUsageList = [StudyRoomUsage]() // 서버에서 받아온 캘린더데이터
     
-    @Inject private var readingRoomRepository: ReadingRoomRepositoryType
+    // MARK: - Properties
+    @Inject private var studyRoomRepository: StudyRoomRepositoryType
     
     private let calendar = Calendar.current
     
     private var subscriptions = Set<AnyCancellable>()
     
-    enum Action {
-        case saveButtonTap(ReadingRoomUsage)
-        case moveButtonTap(MoveType)
-        case viewOnAppear
-    }
-    
-    func send(action: Action) {
-        switch action {
-        case .viewOnAppear:
-            fetchReadingRoomRecords(for: seletedDate)
-        case .moveButtonTap(let moveType):
-            changeMonth(moveType)
-        case .saveButtonTap(let data):
-            updateReadingRoomRecord(data)
-        }
-    }
 }
 
+// MARK: - Binding
 extension CalendarViewModel {
-    // 선택한 달이 변경되는 경우
+    /*
+     Action을 받아서 Action의 타입에 따라서 메서드를 호출한다
+     */
+    func send(action: Action) {
+        switch action {
+        case .getCalendar(let email):
+            fetchStudyRoomRecords(for: seletedDate, email: email)
+        case .moveButtonTap(let moveType):
+            changeMonth(moveType)
+        case .saveButtonTap(let data, let email):
+            updateStudyRoomRecord(data, email: email)
+        }
+    }
+    
+    /*
+     캘린더달력 변경시 액션을 받아서 선택한달로 업데이트해준다
+     캘린더데이터 리스트(studyRoomUsageList)에 저장된 데이터로 새로운 날짜데이터를 생성한다.
+     */
     func changeMonth(_ moveType: MoveType) {
         var currentDate: Date!
         
@@ -74,103 +87,82 @@ extension CalendarViewModel {
         
         seletedDate = currentDate
         
-        fetchReadingRoomRecords(for: seletedDate)
+        currentMonth = makeMonth(date: seletedDate, roomUsageInfo: studyRoomUsageList)
     }
     
-    // 캘린더에 데이터 가져오기
-    func fetchReadingRoomRecords(for date: Date) {
-        let fetchDataPublisher = readingRoomRepository.fetchReadingRoomUsageRecords()
-            .share()
-        
-        fetchDataPublisher
+    /*
+     캘린더에 표시될 데이터를 새롭게 요청한다
+     새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
+     */
+    func fetchStudyRoomRecords(for date: Date, email: String) {
+       studyRoomRepository.fetchStudyRoomUsageRecords(with: email)
+            .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
                 owner.currentMonth = owner.makeMonth(date: date, roomUsageInfo: roomUsageInfo)
+                owner.studyRoomUsageList = roomUsageInfo
             })
-            .store(in: &subscriptions)
-        
-       fetchDataPublisher
-            .flatMap ({ [weak self] in
-                guard let self = self else {
-                    return Just(0.0).eraseToAnyPublisher()
-                }
-                return getTotalTime($0)
-            })
-            .sink { [weak self] totalTime in
-                guard let self = self else { return }
-                dailyReadingRoomUsageTime = totalTime
-            }
             .store(in: &subscriptions)
     }
-    
-    // 캘린더 데이터 저장
-    func updateReadingRoomRecord(_ data: ReadingRoomUsage) {
-        let updateDataPublisher = readingRoomRepository.updateReadingRoomUsageRecord(data).share()
-        
-        updateDataPublisher
+
+    /*
+     새로운 캘린더데이터를(studyRoomUsage)를 서버에 업로드한다
+     새롭게 받아온 데이터를 studyRoomUsageList에 저장한다
+     */
+    func updateStudyRoomRecord(_ studyRoomInfo: StudyRoomUsage, email: String) {
+        studyRoomRepository.updateStudyRoomUsageRecord(studyRoomInfo, with: email)
+            .receive(on: DispatchQueue.main)
             .withUnretained(self)
             .sink(receiveValue: { (owner, roomUsageInfo) in
+                let studyRoomUsageCount = roomUsageInfo.filter { owner.calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}.count                
                 owner.currentMonth = owner.makeMonth(date: owner.seletedDate, roomUsageInfo: roomUsageInfo)
+                owner.studyRoomUsageList = roomUsageInfo
+                owner.todayStudyRoomUsageCount = studyRoomUsageCount
             })
-            .store(in: &subscriptions)
-        
-        updateDataPublisher
-            .withUnretained(self)
-            .flatMap ({ (owner, roomUsageInfo) in
-                return owner.getTotalTime(roomUsageInfo)
-            })
-            .sink { [weak self] totalTime in
-                guard let self = self else { return }
-                dailyReadingRoomUsageTime = totalTime
-            }
-            .store(in: &subscriptions)
+            .store(in: &subscriptions)    
     }
 }
 
+// MARK: - Helper
 extension CalendarViewModel {
-    func getTotalTime(_ array: [ReadingRoomUsage]) -> AnyPublisher<Double, Never> {
-       let filterdArray = array.filter { calendar.isDate($0.date, equalTo: Date(), toGranularity: .day)}
-        let totalTime = filterdArray.map { $0.duration }.reduce(0, +)
-        return Just(totalTime).eraseToAnyPublisher()
-    }
     
+    // 현재보다 1달뒤에 날짜정보를 반환한다.
     func plusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }
     
+    // 현재보다 1달전에 날짜정보를 반환한다.
     func minusMonth(date: Date) -> Date {
         return calendar.date(byAdding: .month, value: -1, to: date)!
     }
     
+    // 현재달에 몇일있는지를 반환한다.
     func daysInMonth(date: Date) -> Int {
         let range = calendar.range(of: .day, in: .month, for: date)!
         return range.count
     }
     
-    func daysOfMonth(date: Date) -> Int {
-        let componets = calendar.dateComponents([.day], from: date)
-        return componets.day!
-    }
-    
+    // 현재달의 첫번째 달을 반환
     func firstOfMonth(date: Date) -> Date {
-        
         let components = calendar.dateComponents([.year, .month], from: date)
         return calendar.date(from: components)!
     }
     
+    // 무슨 요일인지 반환
     func weekDay(date: Date) -> Int {
         let components = calendar.dateComponents([.weekday], from: date)
         return components.weekday! - 1
     }
     
-    func makeMonth(date: Date, roomUsageInfo: [ReadingRoomUsage]) -> [Day] {
+    // 캘린더뷰에 사용될 날짜배열을 생성하고 서버에서 받아온 캘린더데이터와 결합
+    func makeMonth(date: Date, roomUsageInfo: [StudyRoomUsage]) -> [Day] {
         var days: [Day] = []
         var count: Int = 1
         
         let daysInMonth = daysInMonth(date: date)
         let firstDayOfMonth = firstOfMonth(date: date)
         let startingSpace = weekDay(date: firstDayOfMonth)
-                
+        
         while(count <= 42) {
             // 이번달이 아닌경우 공백 처리
             if (count <= startingSpace || count - startingSpace > daysInMonth) {

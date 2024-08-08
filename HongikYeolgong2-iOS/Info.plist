@@ -18,5 +18,7 @@
 		<string>Pretendard-Medium.otf</string>
 		<string>Pretendard-Light.otf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict/>
 </dict>
 </plist>

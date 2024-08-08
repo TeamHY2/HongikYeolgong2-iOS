@@ -16,26 +16,18 @@ enum CellStyle: CaseIterable {
 }
 
 struct CalendarCell: View {
+    
     let dayInfo: Day
     
-    private var totalTime: Double {
-        if let stduyRecords = dayInfo.usageRecord {
-            return stduyRecords.map { $0.duration }.reduce(0, +)
-        } else {
-            return 0
-        }
-    }
-    
-    // 열람실 이용시간에 따라서 Cell을 다르게 보여짐
     private var cellStyle: CellStyle {
-        if totalTime < Constants.starRatingCount00 {
-            return .dayCount00
-        } else if totalTime < Constants.starRatingCount01 {
-            return .dayCount01
-        } else if totalTime < Constants.starRatingCount02 {
-            return .dayCount02
-        } else {
+        if dayInfo.todayUsageCount >= 3 {
             return .dayCount03
+        } else if dayInfo.todayUsageCount >= 2 {
+            return .dayCount02
+        } else if dayInfo.todayUsageCount >= 1 {
+            return .dayCount01
+        } else {
+            return .dayCount00
         }
     }
     

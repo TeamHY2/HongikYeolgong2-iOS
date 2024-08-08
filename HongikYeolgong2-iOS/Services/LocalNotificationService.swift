@@ -36,8 +36,8 @@ class LocalNotificationService {
         noti2.body = "열람실 시간 종료 10분 전이에요. 열람실 연장이 필요하다면 서둘러주세요!"
         noti2.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval - Constants.firstNotificationTime, repeats: false)
-        let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: interval - Constants.secondNotificationTime, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval - Constants.StudyRoomService.firstNotificationTime, repeats: false)
+        let trigger2 = UNTimeIntervalNotificationTrigger(timeInterval: interval - Constants.StudyRoomService.secondNotificationTime, repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: noti1, trigger: trigger)
         let request2 = UNNotificationRequest(identifier: UUID().uuidString, content: noti2, trigger: trigger2)

@@ -10,19 +10,13 @@ struct HongikYeolgong2_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthenticationView()
-                .environmentObject(SceneCoordinator())
+            InitialView()
+                .environmentObject(AppCoordinator())
+                .environmentObject(AuthCoordinator())
                 .environmentObject(AuthenticationViewModel())
                 .environmentObject(TimerViewModel())
                 .environmentObject(CalendarViewModel())
-                .onAppear {
-                    checkPermission()
-                }
         }
-    }
-    
-    func checkPermission() {
-        LocalNotificationService.shared.requestPermission()
     }
 }
 
@@ -38,7 +32,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     func setupDependency() {
         DIContainer.shared.register(type: AuthenticationServiceType.self, service: AuthenticationService())
-        DIContainer.shared.register(type: ReadingRoomRepositoryType.self, service: MockReadingRoomRepository())
+        DIContainer.shared.register(type: StudyRoomRepositoryType.self, service: StudyRoomRepository())
+        DIContainer.shared.register(type: UserRepositoryType.self, service: UserRepository())
     }
 }
 
