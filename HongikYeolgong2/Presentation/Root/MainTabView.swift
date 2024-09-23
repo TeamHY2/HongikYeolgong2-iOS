@@ -73,7 +73,7 @@ struct MainTabView: View {
                 }
                 
                 Spacer()
-            }            
+            }
             
             TabBarView(selectedTab: $selectedTab)
         }
@@ -86,7 +86,7 @@ struct TabBarView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            HStack(spacing: 0) {
                 Spacer()
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
@@ -105,6 +105,9 @@ struct TabBarView: View {
                     Spacer()
                 }
             }
+            .padding(.top, 12)
+            
+            Spacer()
         }
         .frame(height: 88)
         .background(Image(.tabview))
