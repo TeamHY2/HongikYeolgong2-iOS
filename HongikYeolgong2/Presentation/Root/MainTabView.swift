@@ -98,6 +98,8 @@ struct TabBarView: View {
                             .foregroundStyle(tab == selectedTab ? .gray100 : .gray300)
                             .frame(height: 18)
                     }
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         selectedTab = tab
                     }
@@ -106,7 +108,7 @@ struct TabBarView: View {
                 }
             }
             .padding(.top, 12)
-            
+            .padding(.horizontal, 20)
             Spacer()
         }
         .frame(height: 88)
