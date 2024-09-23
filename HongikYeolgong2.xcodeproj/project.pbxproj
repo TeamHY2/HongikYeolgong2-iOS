@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47A147332CA136CC00A91F66 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 47A147322CA136CC00A91F66 /* .gitkeep */; };
+		47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */; };
+		47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */; };
+		47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */; };
+		47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */; };
+		47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147472CA13F7A00A91F66 /* StudyRoomUsageRepository.swift */; };
+		47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */; };
 		47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */; };
 		47B1D4AE2C9CB1740071B62B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4AD2C9CB1740071B62B /* ContentView.swift */; };
 		47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B1D4AF2C9CB1760071B62B /* Assets.xcassets */; };
@@ -34,6 +41,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageRequestDTO+Mapping.swift"; sourceTree = "<group>"; };
+		47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUsage.swift; sourceTree = "<group>"; };
+		47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUsageInteractor.swift; sourceTree = "<group>"; };
+		47A147472CA13F7A00A91F66 /* StudyRoomUsageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUsageRepository.swift; sourceTree = "<group>"; };
+		47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStudyRoomUsage.swift; sourceTree = "<group>"; };
 		47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2App.swift; sourceTree = "<group>"; };
 		47B1D4AD2C9CB1740071B62B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +85,112 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47A1472E2CA1367700A91F66 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				47A1473A2CA13DD000A91F66 /* DataMapping */,
+				47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		47A1472F2CA1367C00A91F66 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				47A147462CA13F5400A91F66 /* Interfaces */,
+				47A147412CA13F0000A91F66 /* Interactors */,
+				47A147382CA1380900A91F66 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		47A147302CA1368400A91F66 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				47A147372CA1379A00A91F66 /* Setting */,
+				47A147362CA1379100A91F66 /* Ranking */,
+				47A147352CA1378B00A91F66 /* Calendar */,
+				47A147342CA1370200A91F66 /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		47A147312CA1369800A91F66 /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+				47A147322CA136CC00A91F66 /* .gitkeep */,
+			);
+			path = Injected;
+			sourceTree = "<group>";
+		};
+		47A147342CA1370200A91F66 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		47A147352CA1378B00A91F66 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		47A147362CA1379100A91F66 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		47A147372CA1379A00A91F66 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		47A147382CA1380900A91F66 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		47A147392CA138CB00A91F66 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		47A1473A2CA13DD000A91F66 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */,
+				47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		47A147412CA13F0000A91F66 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		47A147462CA13F5400A91F66 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				47A147472CA13F7A00A91F66 /* StudyRoomUsageRepository.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
 		47B1D49F2C9CB1740071B62B = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +214,11 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				47A147392CA138CB00A91F66 /* Core */,
+				47A147312CA1369800A91F66 /* Injected */,
+				47A147302CA1368400A91F66 /* Presentation */,
+				47A1472F2CA1367C00A91F66 /* Domain */,
+				47A1472E2CA1367700A91F66 /* Repositories */,
 				47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */,
 				47B1D4AD2C9CB1740071B62B /* ContentView.swift */,
 				47B1D4AF2C9CB1760071B62B /* Assets.xcassets */,
@@ -231,6 +356,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A147332CA136CC00A91F66 /* .gitkeep in Resources */,
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
 				47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */,
 			);
@@ -257,8 +383,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */,
+				47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */,
+				47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */,
 				47B1D4AE2C9CB1740071B62B /* ContentView.swift in Sources */,
+				47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
+				47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */,
+				47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
