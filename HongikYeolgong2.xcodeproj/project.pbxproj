@@ -15,6 +15,7 @@
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
 		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
+		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
 		47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */; };
 		47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */; };
 		47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */; };
@@ -76,6 +77,7 @@
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
 		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageRequestDTO+Mapping.swift"; sourceTree = "<group>"; };
 		47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -141,6 +143,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		479821D52CA27BBC002357EB /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				479821D62CA27BE1002357EB /* Launch Screen.storyboard */,
+				47A1477D2CA159E300A91F66 /* SplashView.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		47A1472E2CA1367700A91F66 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +174,7 @@
 		47A147302CA1368400A91F66 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				479821D52CA27BBC002357EB /* Other */,
 				47A1477A2CA1594D00A91F66 /* Auth */,
 				47A1474B2CA1449F00A91F66 /* Root */,
 				47A147372CA1379A00A91F66 /* Setting */,
@@ -307,7 +319,6 @@
 		47A1477A2CA1594D00A91F66 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				47A1477D2CA159E300A91F66 /* SplashView.swift */,
 				47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */,
 			);
 			path = Auth;
@@ -508,6 +519,7 @@
 				47A1476B2CA147A600A91F66 /* Pretendard-Thin.otf in Resources */,
 				47A147632CA147A600A91F66 /* Pretendard-Black.otf in Resources */,
 				47A147672CA147A600A91F66 /* Pretendard-Light.otf in Resources */,
+				479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */,
 				47A1476C2CA147A600A91F66 /* SUITE-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -743,6 +755,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -779,6 +792,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
