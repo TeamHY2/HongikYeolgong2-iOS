@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct HongikYeolgong2App: App {
+    @State private var selectedTab: Tab = .home
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }
