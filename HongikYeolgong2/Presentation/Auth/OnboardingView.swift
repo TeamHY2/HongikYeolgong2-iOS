@@ -8,11 +8,46 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @State private var seletedIndex = 0
+    
     var body: some View {
-        Text("OnboardingView")
+        VStack {
+            Spacer()
+            
+            TabView(selection: $seletedIndex) {
+                Image(.onboarding01)
+                    .tag(0)
+                Image(.onboarding02)
+                    .tag(1)
+                Image(.onboarding03)
+                    .tag(2)
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            
+            HStack(spacing: 16) {
+                ForEach(0..<3, id: \.self) { index in
+                    Group {
+                        if index == seletedIndex {
+                            Image(.shineCount02)
+                                .frame(width: 9, height: 9)
+                        } else {
+                            Circle()
+                                .frame(width: 9, height: 9)
+                                .foregroundColor(.gray600)
+                        }
+                    }
+                }
+            }
+            
+            HY2Button(title: "",
+                      style: .imageButton(image: .snsLogin)) {
+                
+            }
+                      .padding(EdgeInsets(top: 32,
+                                          leading: 32,
+                                          bottom: 20,
+                                          trailing: 32))
+        }
     }
 }
 
-#Preview {
-    OnboardingView()
-}
