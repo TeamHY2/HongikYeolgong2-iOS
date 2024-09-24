@@ -14,8 +14,8 @@ struct AlertModifier: ViewModifier {
     var cancleButtonText: String = "아니오"
     
     let title: String
-    let confirmAction: (() -> ())?
-    let cancleAction: (() -> ())?
+    let confirmAction: (() -> Void)?
+    let cancleAction: (() -> Void)?
     
     @State private var scale: CGFloat = 1
     
@@ -118,7 +118,8 @@ extension View {
     }
     
     func alert(title: String, confirmButtonText: String, cancleButtonText: String, isPresented: Binding<Bool>, confirmAction: (() -> Void)?, cancelAction: (() -> Void)?) -> some View {
-        modifier(AlertModifier(title: title, confirmButtonText: confirmButtonText, cancleButtonText: cancleButtonText, confirmAction: confirmAction, cancleAction: cancelAction, isPresented: isPresented))
+        modifier(AlertModifier(title: title, 
+                               confirmButtonText: confirmButtonText, cancleButtonText: cancleButtonText, confirmAction: confirmAction, cancleAction: cancelAction, isPresented: isPresented))
     }
     
     func alert(title: String, confirmButtonText: String, cancleButtonText: String, isPresented: Binding<Bool>, confirmAction: (() -> Void)?) -> some View {

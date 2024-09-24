@@ -39,7 +39,6 @@ extension Font {
     }
 }
 
-
 extension Font {
     static func suite(size fontsize: CGFloat, weight: Font.Weight) -> Font {
         let familyName = "SUITE"

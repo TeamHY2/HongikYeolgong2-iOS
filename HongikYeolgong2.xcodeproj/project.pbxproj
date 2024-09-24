@@ -14,6 +14,7 @@
 		475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E42CA1CA61000534B2 /* HY2Button.swift */; };
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
 		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
+		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */; };
 		47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */; };
 		47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */; };
@@ -74,6 +75,7 @@
 		475B86E42CA1CA61000534B2 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
 		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageRequestDTO+Mapping.swift"; sourceTree = "<group>"; };
 		47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		47B1D49F2C9CB1740071B62B = {
 			isa = PBXGroup;
 			children = (
+				479821D32CA24CFF002357EB /* .swiftlint.yml */,
 				47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */,
 				47B1D4BB2C9CB1760071B62B /* HongikYeolgong2Tests */,
 				47B1D4C52C9CB1760071B62B /* HongikYeolgong2UITests */,
@@ -392,6 +395,7 @@
 				47B1D4A42C9CB1740071B62B /* Sources */,
 				47B1D4A52C9CB1740071B62B /* Frameworks */,
 				47B1D4A62C9CB1740071B62B /* Resources */,
+				479821D22CA24CBF002357EB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -487,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47A147682CA147A600A91F66 /* Pretendard-Medium.otf in Resources */,
+				479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */,
 				47A147642CA147A600A91F66 /* Pretendard-Bold.otf in Resources */,
 				47A147702CA147A600A91F66 /* SUITE-Medium.otf in Resources */,
 				47A1476A2CA147A600A91F66 /* Pretendard-SemiBold.otf in Resources */,
@@ -522,6 +527,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		479821D22CA24CBF002357EB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		47B1D4A42C9CB1740071B62B /* Sources */ = {
@@ -712,6 +737,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = P4D4ZQC4YF;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -747,6 +773,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = P4D4ZQC4YF;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
