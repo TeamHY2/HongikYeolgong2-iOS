@@ -33,7 +33,7 @@ struct HY2TextField: View {
                 .padding(.trailing, 8)
                 
                 if !text.isEmpty {
-                    Image(.closeButton)
+                    Image(.close)
                         .padding(.trailing, 14)
                         .onTapGesture {
                             text = ""
