@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */; };
 		475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DC2CA1AEF7000534B2 /* HomeView.swift */; };
 		475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DE2CA1AF1E000534B2 /* RecordView.swift */; };
 		475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E02CA1AF31000534B2 /* RankingView.swift */; };
@@ -14,6 +15,8 @@
 		475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E42CA1CA61000534B2 /* HY2Button.swift */; };
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
 		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
+		478933792CADBDA500E1D89E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignInView.swift */; };
+		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
 		47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */; };
@@ -69,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
 		475B86DC2CA1AEF7000534B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		475B86DE2CA1AF1E000534B2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		475B86E02CA1AF31000534B2 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 		475B86E42CA1CA61000534B2 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
 		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		478933782CADBDA500E1D89E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -143,6 +149,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		471940C62CAFCA6200426D30 /* Modifier */ = {
+			isa = PBXGroup;
+			children = (
+				471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */,
+			);
+			path = Modifier;
+			sourceTree = "<group>";
+		};
 		479821D52CA27BBC002357EB /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */,
+				478933782CADBDA500E1D89E /* SignInView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -388,10 +403,12 @@
 		47BACCF52CA164B200295DAC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				471940C62CAFCA6200426D30 /* Modifier */,
 				47BACCF62CA164BA00295DAC /* Font+.swift */,
 				475B86E42CA1CA61000534B2 /* HY2Button.swift */,
 				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
 				475B86E82CA1CD10000534B2 /* Alert.swift */,
+				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -567,6 +584,7 @@
 			files = (
 				47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
+				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */,
 				47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */,
@@ -576,9 +594,11 @@
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
+				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */,
 				47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */,
+				478933792CADBDA500E1D89E /* SignInView.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
 				47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */,
