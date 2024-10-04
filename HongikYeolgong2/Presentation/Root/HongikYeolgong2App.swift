@@ -13,8 +13,7 @@ struct HongikYeolgong2App: App {
     
     var body: some Scene {
         WindowGroup {
-            SplashView()
-                .edgesIgnoringSafeArea(.all)
+            SignInView()
         }
     }
 }
