@@ -91,13 +91,13 @@ struct TabBarView: View {
                 Spacer()
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
-                    VStack(spacing: 5) {
+                    VStack(spacing: 5.adjustToScreenHeight) {
                         Image(tab == selectedTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
                         
                         Text(tab.title)
                             .font(.pretendard(size: 12, weight: .regular))
                             .foregroundStyle(tab == selectedTab ? .gray100 : .gray300)
-                            .frame(height: 18)
+                            .frame(height: 18.adjustToScreenHeight)
                     }
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
@@ -108,8 +108,8 @@ struct TabBarView: View {
                     Spacer()
                 }
             }
-            .padding(.top, 12)
-            .padding(.horizontal, 20)
+            .padding(.top, 12.adjustToScreenHeight)
+            .padding(.horizontal, 20.adjustToScreenWidth)
             Spacer()
         }
         .frame(height: SafeAreaHelper.getBarBarHeight())
