@@ -75,7 +75,7 @@ struct MainTabView: View {
                 }
                 
                 Spacer()
-            }
+            }            
             
             TabBarView(selectedTab: $selectedTab)
         }
@@ -114,6 +114,8 @@ struct TabBarView: View {
             Spacer()
         }
         .frame(height: 88)
-        .background(Image(.tabview))
+        .background(Image(.tabview)
+            .resizable()
+            .frame(maxWidth: .infinity))
     }
 }
