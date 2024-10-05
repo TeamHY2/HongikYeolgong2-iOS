@@ -19,7 +19,7 @@ struct RankingCell: View {
                         .foregroundStyle(setFontColor)
                     
                     Text("건축학부")
-                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26)
+                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .foregroundStyle(setFontColor)
                 }
                 
