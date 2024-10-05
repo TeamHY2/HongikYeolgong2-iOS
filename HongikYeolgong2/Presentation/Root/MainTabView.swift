@@ -58,6 +58,8 @@ struct MainTabView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
+            Color.dark.ignoresSafeArea(.all)
+            
             VStack {
                 Spacer()
                 
@@ -115,7 +117,3 @@ struct TabBarView: View {
         .background(Image(.tabview))
     }
 }
-
-//#Preview {
-//    MainTabView()
-//}

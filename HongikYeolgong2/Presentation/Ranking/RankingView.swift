@@ -43,7 +43,6 @@ struct RankingView: View {
                 .padding(.horizontal, 32)
             }
         }
-  
-        .background(.dark)
+        .background(.dark)        
     }
 }
