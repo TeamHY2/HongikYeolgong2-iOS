@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */; };
+		471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CA2CAFD9B700426D30 /* RankingCell.swift */; };
+		471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */; };
+		471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940D02CAFE61A00426D30 /* LineHeight.swift */; };
+		471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940D22CAFEE5B00426D30 /* Font+Uikit.swift */; };
 		475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DC2CA1AEF7000534B2 /* HomeView.swift */; };
 		475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DE2CA1AF1E000534B2 /* RecordView.swift */; };
 		475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E02CA1AF31000534B2 /* RankingView.swift */; };
@@ -73,6 +77,11 @@
 
 /* Begin PBXFileReference section */
 		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
+		471940CA2CAFD9B700426D30 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
+		471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeeklyRanking+Mock.swift"; sourceTree = "<group>"; };
+		471940D02CAFE61A00426D30 /* LineHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineHeight.swift; sourceTree = "<group>"; };
+		471940D22CAFEE5B00426D30 /* Font+Uikit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Uikit.swift"; sourceTree = "<group>"; };
+		4736719C2CB10D7B00527896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		475B86DC2CA1AEF7000534B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		475B86DE2CA1AF1E000534B2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		475B86E02CA1AF31000534B2 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
@@ -157,6 +166,35 @@
 			path = Modifier;
 			sourceTree = "<group>";
 		};
+		471940C92CAFD9A300426D30 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				471940CA2CAFD9B700426D30 /* RankingCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		471940D42CAFEE7800426D30 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				475B86E42CA1CA61000534B2 /* HY2Button.swift */,
+				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
+				475B86E82CA1CD10000534B2 /* Alert.swift */,
+				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		471940D52CAFEE8C00426D30 /* Basic */ = {
+			isa = PBXGroup;
+			children = (
+				47BACCF62CA164BA00295DAC /* Font+.swift */,
+				471940D22CAFEE5B00426D30 /* Font+Uikit.swift */,
+				471940D02CAFE61A00426D30 /* LineHeight.swift */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
 		479821D52CA27BBC002357EB /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,13 +204,13 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
-		47A1472E2CA1367700A91F66 /* Repositories */ = {
+		47A1472E2CA1367700A91F66 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				47A1473A2CA13DD000A91F66 /* DataMapping */,
 				47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */,
 			);
-			path = Repositories;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		47A1472F2CA1367C00A91F66 /* Domain */ = {
@@ -226,6 +264,7 @@
 		47A147362CA1379100A91F66 /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
+				471940C92CAFD9A300426D30 /* Component */,
 				475B86E02CA1AF31000534B2 /* RankingView.swift */,
 			);
 			path = Ranking;
@@ -292,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				47A1474D2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift */,
+				471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -363,6 +403,7 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				4736719C2CB10D7B00527896 /* Info.plist */,
 				47BACCF52CA164B200295DAC /* UI */,
 				47A1474F2CA1476D00A91F66 /* Resources */,
 				47A1474C2CA144CD00A91F66 /* MockData */,
@@ -370,7 +411,7 @@
 				47A147312CA1369800A91F66 /* Injected */,
 				47A147302CA1368400A91F66 /* Presentation */,
 				47A1472F2CA1367C00A91F66 /* Domain */,
-				47A1472E2CA1367700A91F66 /* Repositories */,
+				47A1472E2CA1367700A91F66 /* Data */,
 			);
 			path = HongikYeolgong2;
 			sourceTree = "<group>";
@@ -403,12 +444,9 @@
 		47BACCF52CA164B200295DAC /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				471940D52CAFEE8C00426D30 /* Basic */,
+				471940D42CAFEE7800426D30 /* Component */,
 				471940C62CAFCA6200426D30 /* Modifier */,
-				47BACCF62CA164BA00295DAC /* Font+.swift */,
-				475B86E42CA1CA61000534B2 /* HY2Button.swift */,
-				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
-				475B86E82CA1CD10000534B2 /* Alert.swift */,
-				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -588,8 +626,11 @@
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */,
 				47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */,
+				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,
 				475B86E92CA1CD10000534B2 /* Alert.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
+				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
+				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
 				47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
@@ -600,6 +641,7 @@
 				47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */,
 				478933792CADBDA500E1D89E /* SignInView.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
+				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
 				47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
@@ -771,6 +813,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -808,6 +851,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
