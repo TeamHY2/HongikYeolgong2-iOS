@@ -113,7 +113,7 @@ struct TabBarView: View {
             .padding(.horizontal, 20)
             Spacer()
         }
-        .frame(height: 88)
+        .frame(height: 56 + SafeAreaHelper.safeAreaBottomInset())
         .background(Image(.tabview)
             .resizable()
             .frame(maxWidth: .infinity))
