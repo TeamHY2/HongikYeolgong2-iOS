@@ -34,15 +34,16 @@ struct RankingView: View {
                                 bottom: 17,
                                 trailing: 32))
             
-            ScrollView {                
+            ScrollView {
                 LazyVStack(spacing: 16) {
-                    ForEach(1...20, id: \.self) { _ in
-                        RankingCell()
+                    ForEach(1...20, id: \.self) { number in
+                        RankingCell(currentRanking: number)
                     }
                 }
                 .padding(.horizontal, 32)
+                .padding(.bottom, 100)
             }
         }
-        .background(.dark)        
+        .background(.dark)
     }
 }
