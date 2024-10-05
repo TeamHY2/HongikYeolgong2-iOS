@@ -81,6 +81,7 @@
 		471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeeklyRanking+Mock.swift"; sourceTree = "<group>"; };
 		471940D02CAFE61A00426D30 /* LineHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineHeight.swift; sourceTree = "<group>"; };
 		471940D22CAFEE5B00426D30 /* Font+Uikit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Uikit.swift"; sourceTree = "<group>"; };
+		4736719C2CB10D7B00527896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		475B86DC2CA1AEF7000534B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		475B86DE2CA1AF1E000534B2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		475B86E02CA1AF31000534B2 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
@@ -402,6 +403,7 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				4736719C2CB10D7B00527896 /* Info.plist */,
 				47BACCF52CA164B200295DAC /* UI */,
 				47A1474F2CA1476D00A91F66 /* Resources */,
 				47A1474C2CA144CD00A91F66 /* MockData */,
@@ -811,6 +813,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -848,6 +851,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
