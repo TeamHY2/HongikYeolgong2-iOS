@@ -14,7 +14,7 @@ extension View {
     
     // UIFont로 높이를 구하고 다시 Font로 변경
     // UIFont -> Font는 가능 그 반대는 불가능
-    func fontWithLineHeight(_ font: UIFont, lineHeight: CGFloat) -> some View {
+    func font(_ font: UIFont, lineHeight: CGFloat = 0) -> some View {
         let fontHeight = font.lineHeight
         
         return self

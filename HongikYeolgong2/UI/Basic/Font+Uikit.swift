@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIFont {
     static func pretendard(size: CGFloat, weight: UIFont.Weight) -> UIFont {
