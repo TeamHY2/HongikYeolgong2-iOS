@@ -14,6 +14,8 @@
 		471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940D22CAFEE5B00426D30 /* Font+Uikit.swift */; };
 		4736719F2CB120A600527896 /* WeeklyStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4736719E2CB120A600527896 /* WeeklyStudy.swift */; };
 		473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473671A02CB1234800527896 /* TodayWiseSaying.swift */; };
+		473671A52CB13D8100527896 /* SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473671A42CB13D8100527896 /* SafeArea.swift */; };
+		473671A72CB1404E00527896 /* Ratio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473671A62CB1404E00527896 /* Ratio.swift */; };
 		475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DC2CA1AEF7000534B2 /* HomeView.swift */; };
 		475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DE2CA1AF1E000534B2 /* RecordView.swift */; };
 		475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E02CA1AF31000534B2 /* RankingView.swift */; };
@@ -86,6 +88,8 @@
 		4736719C2CB10D7B00527896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4736719E2CB120A600527896 /* WeeklyStudy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudy.swift; sourceTree = "<group>"; };
 		473671A02CB1234800527896 /* TodayWiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWiseSaying.swift; sourceTree = "<group>"; };
+		473671A42CB13D8100527896 /* SafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeArea.swift; sourceTree = "<group>"; };
+		473671A62CB1404E00527896 /* Ratio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ratio.swift; sourceTree = "<group>"; };
 		475B86DC2CA1AEF7000534B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		475B86DE2CA1AF1E000534B2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		475B86E02CA1AF31000534B2 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				47BACCF62CA164BA00295DAC /* Font+.swift */,
 				471940D22CAFEE5B00426D30 /* Font+Uikit.swift */,
 				471940D02CAFE61A00426D30 /* LineHeight.swift */,
+				473671A42CB13D8100527896 /* SafeArea.swift */,
+				473671A62CB1404E00527896 /* Ratio.swift */,
 			);
 			path = Basic;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 				47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */,
 				47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */,
 				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,
+				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
 				475B86E92CA1CD10000534B2 /* Alert.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
@@ -651,6 +658,7 @@
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
+				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */,

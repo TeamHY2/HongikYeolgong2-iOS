@@ -55,14 +55,13 @@ enum Tab: CaseIterable {
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .home
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.dark.ignoresSafeArea(.all)
             
             VStack {
                 Spacer()
-                
                 switch selectedTab {
                 case .home:
                     HomeView()
@@ -73,9 +72,9 @@ struct MainTabView: View {
                 case .setting:
                     SettingView()
                 }
-                
                 Spacer()
-            }            
+            }
+            .padding(.bottom, SafeAreaHelper.getBarBarHeight())
             
             TabBarView(selectedTab: $selectedTab)
         }
@@ -92,13 +91,13 @@ struct TabBarView: View {
                 Spacer()
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
-                    VStack(spacing: 5) {
+                    VStack(spacing: 5.adjustToScreenHeight) {
                         Image(tab == selectedTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
                         
                         Text(tab.title)
                             .font(.pretendard(size: 12, weight: .regular))
                             .foregroundStyle(tab == selectedTab ? .gray100 : .gray300)
-                            .frame(height: 18)
+                            .frame(height: 18.adjustToScreenHeight)
                     }
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
@@ -109,11 +108,11 @@ struct TabBarView: View {
                     Spacer()
                 }
             }
-            .padding(.top, 12)
-            .padding(.horizontal, 20)
+            .padding(.top, 12.adjustToScreenHeight)
+            .padding(.horizontal, 20.adjustToScreenWidth)
             Spacer()
         }
-        .frame(height: 88)
+        .frame(height: SafeAreaHelper.getBarBarHeight())
         .background(Image(.tabview)
             .resizable()
             .frame(maxWidth: .infinity))
