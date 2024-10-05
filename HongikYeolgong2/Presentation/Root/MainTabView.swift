@@ -55,14 +55,13 @@ enum Tab: CaseIterable {
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .home
-    
+
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.dark.ignoresSafeArea(.all)
             
             VStack {
                 Spacer()
-                
                 switch selectedTab {
                 case .home:
                     HomeView()
@@ -73,9 +72,9 @@ struct MainTabView: View {
                 case .setting:
                     SettingView()
                 }
-                
                 Spacer()
-            }            
+            }
+            .padding(.bottom, SafeAreaHelper.getBarBarHeight())
             
             TabBarView(selectedTab: $selectedTab)
         }
@@ -113,7 +112,7 @@ struct TabBarView: View {
             .padding(.horizontal, 20)
             Spacer()
         }
-        .frame(height: 56 + SafeAreaHelper.safeAreaBottomInset())
+        .frame(height: SafeAreaHelper.getBarBarHeight())
         .background(Image(.tabview)
             .resizable()
             .frame(maxWidth: .infinity))
