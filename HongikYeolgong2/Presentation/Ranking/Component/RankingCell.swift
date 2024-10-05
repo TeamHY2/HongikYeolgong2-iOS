@@ -47,12 +47,20 @@ struct RankingCell: View {
         switch currentRanking {
         case 1:
             return Image(.rankingBox1)
+                .resizable()
+                .frame(maxWidth: .infinity)
         case 2:
             return Image(.rankingBox2)
+                .resizable()
+                .frame(maxWidth: .infinity)
         case 3:
             return Image(.rankingBox3)
+                .resizable()
+                .frame(maxWidth: .infinity)
         default:
             return Image(.rankingBoxDefault)
+                .resizable()
+                .frame(maxWidth: .infinity)
         }
     }
     
