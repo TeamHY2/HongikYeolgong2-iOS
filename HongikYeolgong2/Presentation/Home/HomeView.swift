@@ -16,7 +16,7 @@ struct HomeView: View {
                 .padding(.top, 120.adjustToScreenHeight)
             
             Spacer()
-            Spacer()
+            
             HStack(spacing: 12.adjustToScreenWidth) {
                 Button(action: {}) {
                     Text("좌석")
@@ -40,9 +40,9 @@ struct HomeView: View {
                     .resizable()
                     .frame(maxWidth: .infinity,
                            minHeight: 52.adjustToScreenHeight))
-            }
+            }   
+            .padding(.bottom, 36.adjustToScreenHeight)
             
-            Spacer()
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .background(
