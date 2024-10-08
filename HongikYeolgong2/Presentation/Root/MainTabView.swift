@@ -118,3 +118,7 @@ struct TabBarView: View {
             .frame(maxWidth: .infinity))
     }
 }
+
+#Preview {
+    MainTabView()
+}
