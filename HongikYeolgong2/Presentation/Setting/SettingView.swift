@@ -2,6 +2,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @State private var isOnAlarm = false
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
             HStack(spacing: 0) {
@@ -40,7 +41,7 @@ struct SettingView: View {
             
             Button(action: {}
                    , label: {
-                Text("공지사항")
+                Text("문의사항")
                     .font(.pretendard(size: 16, weight: .regular))
                     .foregroundStyle(Color.gray200)
                     .minimumScaleFactor(0.2)
@@ -57,7 +58,7 @@ struct SettingView: View {
             
             Button(action: {}
                    , label: {
-                Text("공지사항")
+                Text("열람실 종료 시간 알림")
                     .font(.pretendard(size: 16, weight: .regular))
                     .foregroundStyle(Color.gray200)
                     .minimumScaleFactor(0.2)
@@ -65,8 +66,13 @@ struct SettingView: View {
                            minHeight: 52.adjustToScreenHeight, alignment: .leading)
                     .padding(.leading, 16.adjustToScreenWidth)
                 
-                Image(.arrowRight)
-                    .padding(.trailing, 11.adjustToScreenWidth)
+                Toggle("", isOn: Binding(
+                    get: { isOnAlarm },
+                    set: {
+                        isOnAlarm = $0
+                    }
+                ))
+                .toggleStyle(ColoredToggleStyle(onColor:Color.blue100))
             })
             .background(Color.gray800)
             .cornerRadius(8)
@@ -110,6 +116,38 @@ struct SettingView: View {
         .padding(.top, 16.5.adjustToScreenHeight)
         .padding(.horizontal, 16.adjustToScreenWidth)
         .background(.dark)
+    }
+}
+
+struct ColoredToggleStyle: ToggleStyle {
+    var label = ""
+    var onColor = Color.green
+    var offColor = Color.gray200
+    var thumbColor = Color.white
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+        HStack {
+            Text(label)
+            Spacer()
+            Button(action: { configuration.isOn.toggle() } )
+            {
+                RoundedRectangle(cornerRadius: 16, style: .circular)
+                    .fill(configuration.isOn ? onColor : offColor)
+                    .frame(width: 50, height: 29)
+                    .overlay(
+                        Circle()
+                            .fill(thumbColor)
+                            .shadow(radius: 1, x: 0, y: 1)
+                            .padding(1.5)
+                            .offset(x: configuration.isOn ? 10 : -10))
+                    .onChange(of: configuration.isOn) { _ in
+                        withAnimation(.easeInOut(duration: 0.25)) {
+                        }
+                    }
+            }
+        }
+        .font(.title)
+        .padding(.horizontal)
     }
 }
 
