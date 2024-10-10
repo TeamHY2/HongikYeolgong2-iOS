@@ -15,10 +15,11 @@ struct TimePickerDialog: View {
     private let hourData = Array(repeating: Array(0...23), count: 100).flatMap { $0 }
     private let minutesData = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
     
-    @StateObject private var timePickerModel = TimePickerModel()
+    @ObservedObject private var timePickerViewModel: TimePickerViewModel
     
     init(selectedDate: Binding<Date>) {
         self._selectedDate = selectedDate
+        self.timePickerViewModel = TimePickerViewModel()
     }
     
     var body: some View {
@@ -30,11 +31,11 @@ struct TimePickerDialog: View {
                 .padding(.top, 40.adjustToScreenHeight)
             
             HStack {
-                TimePicker(selected: $timePickerModel.hour, data: hourData)
+                TimePicker(selected: $timePickerViewModel.hour, data: hourData)
                 Text(":")
                     .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundStyle(.white)
-                TimePicker(selected: $timePickerModel.mimute, data: minutesData)
+                TimePicker(selected: $timePickerViewModel.mimute, data: minutesData)
                 
             }
             .frame(maxWidth: 94.adjustToScreenWidth)
@@ -91,69 +92,6 @@ struct TimePickerDialog: View {
                                 trailing: 32.adjustToScreenWidth))
         }
         .background(.gray800)
-        .cornerRadius(8)
-        .onAppear(perform: {
-            let calendar = Calendar.current
-            let currentHour = calendar.component(.hour, from: .now)
-            let currentMinutes = calendar.component(.minute, from: .now)
-            timePickerModel.hour = currentHour
-            timePickerModel.mimute = currentMinutes
-            timePickerModel.beforeHour = currentHour
-            timePickerModel.beforeMinute = currentMinutes
-            selectedDate = .now
-        })
-        .onReceive(Publishers.CombineLatest(timePickerModel.$hour.eraseToAnyPublisher(), timePickerModel.$mimute.eraseToAnyPublisher()), perform: { (newHour, newMinutes) in
-          
-            let calendar = Calendar.current
-            let minimumDate = calendar.date(byAdding: .hour, value: -3, to: .now)
-            let currentDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
-            var newDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
-            
-            newDateComponents.hour = newHour
-            newDateComponents.minute = newMinutes
-            
-            guard let currentHour = currentDateComponents.hour,
-                  let currentMinute = currentDateComponents.minute,
-                  let newDate = calendar.date(from: newDateComponents),
-                  let minimumDate = minimumDate else { return }
-            
-            let isDescending = calendar.compare(newDate, to: minimumDate, toGranularity: .second) == .orderedDescending
-            let isAscending = calendar.compare(newDate, to: .now, toGranularity: .second) == .orderedAscending
-            
-            if !isDescending || !isAscending {
-                if timePickerModel.beforeHour != newHour || newHour > currentHour {
-                    timePickerModel.hour = currentHour
-                    timePickerModel.beforeHour = currentHour
-                    newDateComponents.hour = currentHour
-                }
-                if timePickerModel.beforeMinute != newMinutes || newMinutes > currentMinute {
-                    timePickerModel.mimute = currentMinute
-                    timePickerModel.beforeMinute = currentMinute
-                    newDateComponents.minute = currentMinute
-                }
-            } else {
-                if timePickerModel.beforeHour != newHour {
-                    timePickerModel.beforeHour = newHour
-                    newDateComponents.hour = newHour
-                }
-                if timePickerModel.beforeMinute != newMinutes {
-                    timePickerModel.beforeMinute = newMinutes
-                    newDateComponents.minute = newMinutes
-                }
-            }
-            
-            selectedDate = calendar.date(from: newDateComponents) ?? .now
-        })
+        .cornerRadius(8)        
     }
-}
-
-final class TimePickerModel: ObservableObject {
-    @Published var hour = 0
-    @Published var mimute = 0
-    @Published var beforeHour = 0
-    @Published var beforeMinute = 0
-}
-
-#Preview {
-    TimePickerDialog(selectedDate: .constant(.now))
 }

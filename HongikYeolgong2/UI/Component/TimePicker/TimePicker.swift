@@ -31,7 +31,7 @@ struct TimePicker: UIViewRepresentable {
         var closetsIndex = currentIndex
         var smallestDistance = Int.max
         
-        for (index, item) in data.enumerated() where item == selected {            
+        for (index, item) in data.enumerated() where item == selected {
                 // 현재 인덱스와의 거리
                 let distance = abs(index - currentIndex)
                 
