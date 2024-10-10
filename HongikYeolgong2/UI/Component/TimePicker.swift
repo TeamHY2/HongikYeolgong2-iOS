@@ -17,11 +17,31 @@ struct TimePicker: UIViewRepresentable {
         picker.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         picker.dataSource = context.coordinator
         picker.delegate = context.coordinator
+        
+        if let midIndex = data.enumerated().map({ $0 }).firstIndex(where: ({$0.element == selected && $0.offset >= data.count / 2})) {
+            picker.selectRow(midIndex, inComponent: 0, animated: false)
+        }
+        
         return picker
     }
     
-    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {        
-        uiView.selectRow(selected, inComponent: 0, animated: true)
+    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {
+        let currentIndex = uiView.selectedRow(inComponent: 0)
+        
+        var closetsIndex = currentIndex
+        var smallestDistance = Int.max
+        
+        for (index, item) in data.enumerated() where item == selected {            
+                // 현재 인덱스와의 거리
+                let distance = abs(index - currentIndex)
+                
+                if distance < smallestDistance {
+                    smallestDistance = distance
+                    closetsIndex = index
+                }
+        }
+        
+        uiView.selectRow(closetsIndex, inComponent: 0, animated: true)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -29,7 +49,7 @@ struct TimePicker: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-        var parent: TimePicker        
+        var parent: TimePicker
         
         init(parent: TimePicker) {
             self.parent = parent
@@ -50,9 +70,9 @@ struct TimePicker: UIViewRepresentable {
             pickerView.subviews[1].alpha = 0
             
             // label을 감싸는 view
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 42.adjustToScreenWidth, height: 35.adjustToScreenHeight))            
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 42.adjustToScreenWidth, height: 35.adjustToScreenHeight))
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-         
+            
             label.text = String(format: "%02d", parent.data[row])
             
             label.textColor = UIColor(.white)
