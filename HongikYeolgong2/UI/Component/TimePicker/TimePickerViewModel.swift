@@ -20,11 +20,14 @@ final class TimePickerViewModel: ObservableObject {
     @Published var beforeHour = 0
     
     /// 이전에 선택된 Picker 시간체크(분)
-    @Published var beforeMinute = 0
+    @Published var beforeMinute = 0        
     
     private var cancleBag = Set<AnyCancellable>()
     
     private let calendar = Calendar.current
+    
+    let hourData = Array(repeating: Array(0...23), count: 100).flatMap { $0 }
+    let minutesData = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
     
     init() {
         setInitialTime()
@@ -92,7 +95,7 @@ final class TimePickerViewModel: ObservableObject {
             updateComponentIfChanged(&beforeHour, newHour, &newDateComponents.hour)
             updateComponentIfChanged(&beforeMinute, newMinute, &newDateComponents.minute)
         }
-    }    
+    }
     
     /// DateComponentes의 업데이트 여부에 따라서 값을 업데이트 합니다.
     private func updateComponentIfNeeded(_ component: inout Int, _ beforeComponent: inout Int, _ currentValue: Int, _ newValue: Int, _ componentToUpdate: inout Int?) {
