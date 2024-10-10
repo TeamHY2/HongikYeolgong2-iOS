@@ -16,10 +16,11 @@ extension View {
     // UIFont -> Font는 가능 그 반대는 불가능
     func font(_ font: UIFont, lineHeight: CGFloat = 0) -> some View {
         let fontHeight = font.lineHeight
+        let adjustHeight = lineHeight - fontHeight
         
         return self
             .font(Font(font))
             .lineSpacing(lineHeight - font.lineHeight)
-            .padding(.vertical, (lineHeight - fontHeight) / 2)
+            .padding(.vertical, (adjustHeight > 0 ? adjustHeight : 0) / 2)
     }
 }
