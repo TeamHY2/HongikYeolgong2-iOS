@@ -77,6 +77,7 @@ struct MainTabView: View {
             .padding(.bottom, SafeAreaHelper.getBarBarHeight())
             
             TabBarView(selectedTab: $selectedTab)
+            
         }
         .edgesIgnoringSafeArea(.bottom)
     }

@@ -40,6 +40,10 @@ final class SafeAreaHelper {
         return UIScreen.main.bounds.height + safeAreaBottomInset() + safeAreaTopInset()
     }
     
+    static func getFullScreenWidth() -> CGFloat {
+        return UIScreen.main.bounds.width
+    }
+    
     /// 현재 기기에 적용된  탭바의 높이를 가져옵니다.
     /// - Returns: CGFloat
     static func getBarBarHeight() -> CGFloat {

@@ -13,7 +13,7 @@ struct HongikYeolgong2App: App {
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            TimePickerDialog(selectedDate: .constant(.now))
         }
     }
 }
