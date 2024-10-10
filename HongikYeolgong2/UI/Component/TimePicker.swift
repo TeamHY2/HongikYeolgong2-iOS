@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
-struct TimePicker<T: Equatable>: UIViewRepresentable {
-    @Binding var selected: T
-    let data: [T]
+struct TimePicker: UIViewRepresentable {
+    @Binding var selected: Int
+    let data: [Int]
+    
     func makeUIView(context: Context) -> UIPickerView {
         let picker = UIPickerView()
         picker.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -18,8 +20,8 @@ struct TimePicker<T: Equatable>: UIViewRepresentable {
         return picker
     }
     
-    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {
-        
+    func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {        
+        uiView.selectRow(selected, inComponent: 0, animated: true)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -27,7 +29,7 @@ struct TimePicker<T: Equatable>: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
-        var parent: TimePicker
+        var parent: TimePicker        
         
         init(parent: TimePicker) {
             self.parent = parent
@@ -48,13 +50,10 @@ struct TimePicker<T: Equatable>: UIViewRepresentable {
             pickerView.subviews[1].alpha = 0
             
             // label을 감싸는 view
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 42.adjustToScreenWidth, height: 35.adjustToScreenHeight))
-            
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 42.adjustToScreenWidth, height: 35.adjustToScreenHeight))            
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height))
-            
-            if let number = parent.data[row] as? Int {
-                label.text = String(format: "%02d", number)
-            }
+         
+            label.text = String(format: "%02d", parent.data[row])
             
             label.textColor = UIColor(.white)
             label.textAlignment = .center
