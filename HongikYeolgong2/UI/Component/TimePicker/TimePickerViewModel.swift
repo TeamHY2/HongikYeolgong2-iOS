@@ -10,7 +10,7 @@ import Combine
 
 final class TimePickerViewModel: ObservableObject {
     @Published var hour = 0
-    @Published var mimute = 0
+    @Published var minute = 0
     @Published var beforeHour = 0
     @Published var beforeMinute = 0
     
@@ -27,56 +27,70 @@ final class TimePickerViewModel: ObservableObject {
         let currentHour = calendar.component(.hour, from: .now)
         let currentMinutes = calendar.component(.minute, from: .now)
         hour = currentHour
-        mimute = currentMinutes
+        minute = currentMinutes
         beforeHour = currentHour
         beforeMinute = currentMinutes
     }
     
     func observeTimeAndMinutes() {
-        Publishers.CombineLatest($hour, $mimute)
+        Publishers.CombineLatest($hour, $minute)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] (newHour, newMinute) in
-                guard let self = self else { return }
-                
-                let minimumDate = calendar.date(byAdding: .hour, value: -3, to: .now)
-                let currentDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
-                var newDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
-                
-                newDateComponents.hour = newHour
-                newDateComponents.minute = newMinute
-                
-                guard let currentHour = currentDateComponents.hour,
-                      let currentMinute = currentDateComponents.minute,
-                      let newDate = calendar.date(from: newDateComponents),
-                      let minimumDate = minimumDate else { return }
-                
-                let isDescending = calendar.compare(newDate, to: minimumDate, toGranularity: .second) == .orderedDescending
-                let isAscending = calendar.compare(newDate, to: .now, toGranularity: .second) == .orderedAscending
-                
-                if !isDescending || !isAscending {
-                    if beforeHour != newHour || newHour > currentHour {
-                        hour = currentHour
-                        beforeHour = currentHour
-                        newDateComponents.hour = currentHour
-                    }
-                    if beforeMinute != newMinute || newMinute > currentMinute {
-                        mimute = currentMinute
-                        beforeMinute = currentMinute
-                        newDateComponents.minute = currentMinute
-                    }
-                } else {
-                    if beforeHour != newHour {
-                        beforeHour = newHour
-                        newDateComponents.hour = newHour
-                    }
-                    if beforeMinute != newMinute {
-                        beforeMinute = newMinute
-                        newDateComponents.minute = newMinute
-                    }
-                }
-                
-                objectWillChange.send()
+                self?.updateTime(newHour: newHour, newMinute: newMinute)
             }
             .store(in: &cancleBag)
+    }
+    
+    private func updateTime(newHour: Int, newMinute: Int) {
+        let minimumDate = calendar.date(byAdding: .hour, value: -3, to: .now)
+        let currentDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+        var newDateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: .now)
+        
+        guard let currentHour = currentDateComponents.hour,
+              let currentMinute = currentDateComponents.minute else {
+            return
+        }
+        
+        newDateComponents.hour = newHour
+        newDateComponents.minute = newMinute
+        
+        let adjustHour = newHour % 24
+        
+        if let currentHour = currentDateComponents.hour,
+           let currentDay = newDateComponents.day,
+           currentHour <= 3,
+           adjustHour > 21 {
+            newDateComponents.hour = adjustHour
+            newDateComponents.day = currentDay - 1
+        }
+        
+        guard let newDate = calendar.date(from: newDateComponents),
+              let minimumDate = minimumDate else { return }
+        
+        let isDescending = newDate > minimumDate
+        let isAscending = newDate < .now
+        
+        if !isDescending || !isAscending {
+            updateComponentIfNeeded(&hour, &beforeHour, currentHour, newHour, &newDateComponents.hour)
+            updateComponentIfNeeded(&minute, &beforeMinute, currentMinute, newMinute, &newDateComponents.minute)
+        } else {
+            updateComponentIfChanged(&beforeHour, newHour, &newDateComponents.hour)
+            updateComponentIfChanged(&beforeMinute, newMinute, &newDateComponents.minute)
+        }
+    }
+    
+    private func updateComponentIfNeeded(_ component: inout Int, _ beforeComponent: inout Int, _ currentValue: Int, _ newValue: Int, _ componentToUpdate: inout Int?) {
+        if beforeComponent != newValue || newValue > currentValue {
+            component = currentValue
+            beforeComponent = currentValue
+            componentToUpdate = currentValue
+        }
+    }
+    
+    private func updateComponentIfChanged(_ beforeComponent: inout Int, _ newValue: Int, _ componentToUpdate: inout Int?) {
+        if beforeComponent != newValue {
+            beforeComponent = newValue
+            componentToUpdate = newValue
+        }
     }
 }
