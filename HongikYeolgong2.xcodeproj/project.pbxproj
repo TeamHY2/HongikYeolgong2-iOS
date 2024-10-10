@@ -23,6 +23,7 @@
 		475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E42CA1CA61000534B2 /* HY2Button.swift */; };
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
 		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
+		47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */; };
 		478933792CADBDA500E1D89E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignInView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */; };
@@ -99,6 +100,7 @@
 		475B86E42CA1CA61000534B2 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
 		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewModel.swift; sourceTree = "<group>"; };
 		478933782CADBDA500E1D89E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerDialog.swift; sourceTree = "<group>"; };
@@ -189,12 +191,11 @@
 		471940D42CAFEE7800426D30 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				47860E072CB82BDD005701C0 /* TimePicker */,
 				475B86E42CA1CA61000534B2 /* HY2Button.swift */,
 				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
 				475B86E82CA1CD10000534B2 /* Alert.swift */,
 				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
-				4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */,
-				47D6662B2CB4499300813ECA /* TimePicker.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -218,6 +219,16 @@
 				473671A02CB1234800527896 /* TodayWiseSaying.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		47860E072CB82BDD005701C0 /* TimePicker */ = {
+			isa = PBXGroup;
+			children = (
+				4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */,
+				47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */,
+				47D6662B2CB4499300813ECA /* TimePicker.swift */,
+			);
+			path = TimePicker;
 			sourceTree = "<group>";
 		};
 		479821D52CA27BBC002357EB /* Other */ = {
@@ -665,6 +676,7 @@
 				4736719F2CB120A600527896 /* WeeklyStudy.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
+				47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */,
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
