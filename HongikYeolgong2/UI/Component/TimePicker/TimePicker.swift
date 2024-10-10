@@ -28,20 +28,25 @@ struct TimePicker: UIViewRepresentable {
     func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {
         let currentIndex = uiView.selectedRow(inComponent: 0)
         
+        var closetsIndex = getClosetsIndex(currentIndex, data)
+        
+        uiView.selectRow(closetsIndex, inComponent: 0, animated: true)
+    }
+    
+    private func getClosetsIndex(_ currentIndex: Int, _ data: [Int]) -> Int {
         var closetsIndex = currentIndex
         var smallestDistance = Int.max
         
         for (index, item) in data.enumerated() where item == selected {
-                // 현재 인덱스와의 거리
-                let distance = abs(index - currentIndex)
-                
-                if distance < smallestDistance {
-                    smallestDistance = distance
-                    closetsIndex = index
-                }
+            // 현재 인덱스와의 거리
+            let distance = abs(index - currentIndex)
+            
+            if distance < smallestDistance {
+                smallestDistance = distance
+                closetsIndex = index
+            }
         }
-        
-        uiView.selectRow(closetsIndex, inComponent: 0, animated: true)
+        return closetsIndex
     }
     
     func makeCoordinator() -> Coordinator {
