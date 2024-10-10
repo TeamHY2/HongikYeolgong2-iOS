@@ -35,7 +35,7 @@ struct TimePickerDialog: View {
                 Text(":")
                     .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundStyle(.white)
-                TimePicker(selected: $timePickerViewModel.mimute, data: minutesData)
+                TimePicker(selected: $timePickerViewModel.minute, data: minutesData)
                 
             }
             .frame(maxWidth: 94.adjustToScreenWidth)
