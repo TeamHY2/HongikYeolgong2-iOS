@@ -12,9 +12,6 @@ struct TimePickerDialog: View {
     
     @Binding private var selectedDate: Date
     
-    private let hourData = Array(repeating: Array(0...23), count: 100).flatMap { $0 }
-    private let minutesData = Array(repeating: Array(0...59), count: 100).flatMap { $0 }
-    
     @ObservedObject private var timePickerViewModel: TimePickerViewModel
     
     init(selectedDate: Binding<Date>) {
@@ -31,11 +28,11 @@ struct TimePickerDialog: View {
                 .padding(.top, 40.adjustToScreenHeight)
             
             HStack {
-                TimePicker(selected: $timePickerViewModel.hour, data: hourData)
+                TimePicker(selected: $timePickerViewModel.hour, data: timePickerViewModel.hourData)
                 Text(":")
                     .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundStyle(.white)
-                TimePicker(selected: $timePickerViewModel.minute, data: minutesData)
+                TimePicker(selected: $timePickerViewModel.minute, data: timePickerViewModel.minutesData)
                 
             }
             .frame(maxWidth: 94.adjustToScreenWidth)
