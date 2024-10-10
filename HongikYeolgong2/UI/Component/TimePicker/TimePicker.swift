@@ -28,7 +28,7 @@ struct TimePicker: UIViewRepresentable {
     func updateUIView(_ uiView: UIPickerView, context: UIViewRepresentableContext<TimePicker>) {
         let currentIndex = uiView.selectedRow(inComponent: 0)
         
-        var closetsIndex = getClosetsIndex(currentIndex, data)
+        let closetsIndex = getClosetsIndex(currentIndex, data)
         
         uiView.selectRow(closetsIndex, inComponent: 0, animated: true)
     }
