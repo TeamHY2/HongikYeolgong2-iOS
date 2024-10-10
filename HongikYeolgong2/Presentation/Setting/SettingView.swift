@@ -11,6 +11,7 @@ struct SettingView: View {
                 Text("유림")
                     .font(.pretendard(size: 16, weight: .regular))
                     .padding(.trailing, 8)
+ 
                     .foregroundStyle(.gray200)
                 Text("|")
                     .font(.pretendard(size: 16, weight: .regular))
