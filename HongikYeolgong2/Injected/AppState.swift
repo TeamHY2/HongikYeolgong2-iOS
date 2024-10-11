@@ -29,6 +29,6 @@ extension AppState {
 
 extension AppState {
     struct ViewRouting: Equatable {
-        
+        var signUp = OnboardingView.Routing()
     }
 }
