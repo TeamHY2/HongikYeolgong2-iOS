@@ -8,12 +8,21 @@
 import SwiftUI
 
 final class AppState: ObservableObject {
+    @Published var appLaunchState: AppLaunchState = .checkAuthentication
     @Published var userData = UserData()
     @Published var viewRouting = ViewRouting()
 }
 
 extension AppState {
-    struct UserData: Equatable {        
+    enum AppLaunchState {
+        case notAuthenticated
+        case authenticated
+        case checkAuthentication
+    }
+}
+
+extension AppState {
+    struct UserData: Equatable {
         var isLoggedIn = false
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @Environment(\.injected) var injected: DIContainer
+    
     @State private var seletedIndex = 0
     
     var body: some View {
@@ -41,7 +43,7 @@ struct OnboardingView: View {
             
             HY2Button(title: "",
                       style: .imageButton(image: .snsLogin)) {
-                
+                injected.interactors.userDataInteractor.login()
             }
                       .padding(EdgeInsets(top: 32,
                                           leading: 32,

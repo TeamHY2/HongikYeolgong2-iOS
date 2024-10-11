@@ -6,19 +6,26 @@
 //
 
 import Foundation
+import Combine
 
 protocol UserDataInteractor: AnyObject {
-    func checkLoginStatus()
+    func login()
+    func logout()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
     let appState: Store<AppState>
+    let cancleBag = CancelBag()
     
     init(appState: Store<AppState>) {
         self.appState = appState
     }
     
-    func checkLoginStatus() {        
-        appState.value.userData.isLoggedIn = true
+    func login() {
+        appState[\.appLaunchState] = .authenticated
+    }
+    
+    func logout() {
+        appState[\.appLaunchState] = .notAuthenticated
     }
 }
