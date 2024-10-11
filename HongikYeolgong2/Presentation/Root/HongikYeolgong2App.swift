@@ -9,11 +9,15 @@ import SwiftUI
 
 @main
 struct HongikYeolgong2App: App {
-    @State private var selectedTab: Tab = .home
+    
+    let enviroment = AppEnviroment.bootstrap()
     
     var body: some Scene {
         WindowGroup {
-            TimePickerDialog(selectedDate: .constant(.now))
+            let container: DIContainer = enviroment.container
+            
+            InitialView()
+                .inject(container)
         }
     }
 }

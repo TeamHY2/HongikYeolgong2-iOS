@@ -23,6 +23,13 @@
 		475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E42CA1CA61000534B2 /* HY2Button.swift */; };
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
 		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
+		4763FFAF2CB90AE000990336 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFAE2CB90AE000990336 /* AppState.swift */; };
+		4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB02CB90C1500990336 /* DependencyInjector.swift */; };
+		4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB22CB90E3800990336 /* InteractorsContainer.swift */; };
+		4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB42CB90EBD00990336 /* InitialView.swift */; };
+		4763FFB82CB9134D00990336 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB72CB9134D00990336 /* Store.swift */; };
+		4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB92CB913FF00990336 /* UserDataInteractor.swift */; };
+		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
 		47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */; };
 		478933792CADBDA500E1D89E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignInView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
@@ -100,6 +107,13 @@
 		475B86E42CA1CA61000534B2 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
 		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		4763FFAE2CB90AE000990336 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		4763FFB02CB90C1500990336 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		4763FFB22CB90E3800990336 /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
+		4763FFB42CB90EBD00990336 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		4763FFB72CB9134D00990336 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		4763FFB92CB913FF00990336 /* UserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInteractor.swift; sourceTree = "<group>"; };
+		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 		47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewModel.swift; sourceTree = "<group>"; };
 		478933782CADBDA500E1D89E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
@@ -221,6 +235,14 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		4763FFB62CB9133600990336 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4763FFB72CB9134D00990336 /* Store.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		47860E072CB82BDD005701C0 /* TimePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +299,9 @@
 			isa = PBXGroup;
 			children = (
 				47A147322CA136CC00A91F66 /* .gitkeep */,
+				4763FFAE2CB90AE000990336 /* AppState.swift */,
+				4763FFB02CB90C1500990336 /* DependencyInjector.swift */,
+				4763FFB22CB90E3800990336 /* InteractorsContainer.swift */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -326,6 +351,7 @@
 		47A147392CA138CB00A91F66 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				4763FFBB2CB9228B00990336 /* AppEnviroment.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -343,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */,
+				4763FFB92CB913FF00990336 /* UserDataInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -360,6 +387,7 @@
 			children = (
 				47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */,
 				47A147782CA158E800A91F66 /* MainTabView.swift */,
+				4763FFB42CB90EBD00990336 /* InitialView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -441,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				4736719C2CB10D7B00527896 /* Info.plist */,
+				4763FFB62CB9133600990336 /* Util */,
 				47BACCF52CA164B200295DAC /* UI */,
 				47A1474F2CA1476D00A91F66 /* Resources */,
 				47A1474C2CA144CD00A91F66 /* MockData */,
@@ -658,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */,
+				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
@@ -670,6 +700,7 @@
 				47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
+				4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */,
 				47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */,
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
 				4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */,
@@ -680,12 +711,17 @@
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
+				4763FFAF2CB90AE000990336 /* AppState.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
+				4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */,
 				475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */,
 				47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */,
 				478933792CADBDA500E1D89E /* SignInView.swift in Sources */,
+				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
+				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
 				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
+				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
 				47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
