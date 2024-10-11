@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
+    @Environment(\.injected) var injected: DIContainer
     @State private var isDisabled = true
     @State private var selectedDepartment = ""
     @State private var inputDepartment = ""
@@ -73,13 +74,14 @@ struct SignInView: View {
                 
                 HY2Button(title: "",
                           style: .imageButton(image: isDisabled ? .submitButtonDisable : .submitButtonEnable)) {
-                    
+                    injected.interactors.userDataInteractor.login()
                 }
                           .padding(.bottom, 20)
             }
             .padding(.horizontal, 32)
             
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
     
     private var titleView: some View {

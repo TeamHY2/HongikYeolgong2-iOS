@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingView: View {
     @State private var isOnAlarm = false
     @Environment(\.injected) var injected: DIContainer
+        
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
             HStack(spacing: 0) {
