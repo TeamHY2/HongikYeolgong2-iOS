@@ -32,11 +32,11 @@ extension EnvironmentValues {
 }
 
 extension View {
-    func inject(_ appState: AppState) -> some View {
-        let container = DIContainer(appState: .init(appState), 
-                                    interactors: .init(userDataInteractor: UserDataInteractorImpl(appState: .init(AppState()))))
-        return inject(container)
-    }
+//    func inject(_ appState: AppState) -> some View {
+//        let container = DIContainer(appState: .init(appState), 
+//                                    interactors: .init(userDataInteractor: UserDataInteractorImpl(appState: .init(AppState()))))
+//        return inject(container)
+//    }
     
     func inject(_ container: DIContainer) -> some View {
         return self
