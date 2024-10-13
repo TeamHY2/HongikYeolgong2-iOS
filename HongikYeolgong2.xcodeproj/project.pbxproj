@@ -12,6 +12,12 @@
 		470723012CBC16680046469F /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723002CBC16680046469F /* AuthEndpoint.swift */; };
 		470723032CBC17E40046469F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723022CBC17E40046469F /* NetworkService.swift */; };
 		470723052CBC180D0046469F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723042CBC180D0046469F /* NetworkError.swift */; };
+		470723092CBC198E0046469F /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723082CBC198E0046469F /* AuthRepository.swift */; };
+		4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4707230A2CBC19C10046469F /* AuthRepositoryImpl.swift */; };
+		4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */; };
+		470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723102CBC1B0A0046469F /* LoginResponseDTO.swift */; };
+		470723132CBC1BF10046469F /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723122CBC1BF10046469F /* BaseResponse.swift */; };
+		470723182CBC29510046469F /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723172CBC29510046469F /* AuthenticationService.swift */; };
 		471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */; };
 		471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CA2CAFD9B700426D30 /* RankingCell.swift */; };
 		471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */; };
@@ -42,12 +48,7 @@
 		4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
-		47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */; };
-		47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */; };
 		47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */; };
-		47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */; };
-		47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147472CA13F7A00A91F66 /* StudyRoomUsageRepository.swift */; };
-		47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */; };
 		47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1474D2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift */; };
 		47A147632CA147A600A91F66 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47A147512CA147A600A91F66 /* Pretendard-Black.otf */; };
 		47A147642CA147A600A91F66 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47A147522CA147A600A91F66 /* Pretendard-Bold.otf */; };
@@ -102,6 +103,13 @@
 		470723002CBC16680046469F /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
 		470723022CBC17E40046469F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		470723042CBC180D0046469F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		470723082CBC198E0046469F /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		4707230A2CBC19C10046469F /* AuthRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryImpl.swift; sourceTree = "<group>"; };
+		4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
+		470723102CBC1B0A0046469F /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
+		470723122CBC1BF10046469F /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		470723142CBC222E0046469F /* HongikYeolgong2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2.entitlements; sourceTree = "<group>"; };
+		470723172CBC29510046469F /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
 		471940CA2CAFD9B700426D30 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
 		471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeeklyRanking+Mock.swift"; sourceTree = "<group>"; };
@@ -134,12 +142,7 @@
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageRequestDTO+Mapping.swift"; sourceTree = "<group>"; };
-		47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsageResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		47A1473F2CA13EDD00A91F66 /* StudyRoomUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUsage.swift; sourceTree = "<group>"; };
-		47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUsageInteractor.swift; sourceTree = "<group>"; };
-		47A147472CA13F7A00A91F66 /* StudyRoomUsageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUsageRepository.swift; sourceTree = "<group>"; };
-		47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStudyRoomUsage.swift; sourceTree = "<group>"; };
 		47A1474D2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsage+Mock.swift"; sourceTree = "<group>"; };
 		47A147502CA147A600A91F66 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		47A147512CA147A600A91F66 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -206,6 +209,7 @@
 				470722FD2CBC15DA0046469F /* NetworkProtocol.swift */,
 				470723022CBC17E40046469F /* NetworkService.swift */,
 				470723042CBC180D0046469F /* NetworkError.swift */,
+				470723122CBC1BF10046469F /* BaseResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -216,6 +220,22 @@
 				470723002CBC16680046469F /* AuthEndpoint.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		470723062CBC19770046469F /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				470723072CBC197F0046469F /* Auth */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		470723072CBC197F0046469F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4707230A2CBC19C10046469F /* AuthRepositoryImpl.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		471940C62CAFCA6200426D30 /* Modifier */ = {
@@ -274,6 +294,7 @@
 				4763FFB72CB9134D00990336 /* Store.swift */,
 				4752A27C2CB96EB00073B784 /* CancleBag.swift */,
 				470722F92CBC0A870046469F /* Constants.swift */,
+				470723172CBC29510046469F /* AuthenticationService.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -300,8 +321,8 @@
 		47A1472E2CA1367700A91F66 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				470723062CBC19770046469F /* Repository */,
 				47A1473A2CA13DD000A91F66 /* DataMapping */,
-				47A147492CA13FD700A91F66 /* DefaultStudyRoomUsage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -394,8 +415,8 @@
 		47A1473A2CA13DD000A91F66 /* DataMapping */ = {
 			isa = PBXGroup;
 			children = (
-				47A1473B2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift */,
-				47A1473D2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift */,
+				4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */,
+				470723102CBC1B0A0046469F /* LoginResponseDTO.swift */,
 			);
 			path = DataMapping;
 			sourceTree = "<group>";
@@ -403,7 +424,6 @@
 		47A147412CA13F0000A91F66 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
-				47A147442CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift */,
 				4763FFB92CB913FF00990336 /* UserDataInteractor.swift */,
 			);
 			path = Interactors;
@@ -412,7 +432,7 @@
 		47A147462CA13F5400A91F66 /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				47A147472CA13F7A00A91F66 /* StudyRoomUsageRepository.swift */,
+				470723082CBC198E0046469F /* AuthRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -504,6 +524,7 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				470723142CBC222E0046469F /* HongikYeolgong2.entitlements */,
 				4736719C2CB10D7B00527896 /* Info.plist */,
 				4763FFB62CB9133600990336 /* Util */,
 				47BACCF52CA164B200295DAC /* UI */,
@@ -722,13 +743,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47A1473C2CA13E8D00A91F66 /* StudyRoomUsageRequestDTO+Mapping.swift in Sources */,
+				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
 				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
-				47A147482CA13F7A00A91F66 /* StudyRoomUsageRepository.swift in Sources */,
 				47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */,
+				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
+				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
 				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,
 				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
 				475B86E92CA1CD10000534B2 /* Alert.swift in Sources */,
@@ -738,7 +760,6 @@
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
 				4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */,
-				47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */,
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
 				4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */,
@@ -755,17 +776,18 @@
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */,
 				475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */,
-				47A1474A2CA13FD700A91F66 /* DefaultStudyRoomUsage.swift in Sources */,
 				478933792CADBDA500E1D89E /* SignInView.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
+				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
+				470723182CBC29510046469F /* AuthenticationService.swift in Sources */,
+				470723132CBC1BF10046469F /* BaseResponse.swift in Sources */,
 				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
-				47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
 			);
@@ -929,6 +951,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
@@ -968,6 +991,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
