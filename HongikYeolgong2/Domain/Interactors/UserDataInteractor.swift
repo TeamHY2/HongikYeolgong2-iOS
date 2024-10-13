@@ -9,20 +9,23 @@ import Foundation
 import Combine
 
 protocol UserDataInteractor: AnyObject {
-    func login()
+    func login(idToken: String)
     func logout()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
-    let appState: Store<AppState>
-    let cancleBag = CancelBag()
+    private let appState: Store<AppState>
+    private let authRepository: AuthRepository
     
-    init(appState: Store<AppState>) {
+    init(appState: Store<AppState>, authRepository: AuthRepository) {
         self.appState = appState
+        self.authRepository = authRepository
     }
     
-    func login() {
-        appState[\.appLaunchState] = .authenticated
+    func login(idToken: String) {
+        Task {
+            try await authRepository.signIn(loginReqDto: .init(socialPlatform: SocialLoginType.apple.rawValue, idToken: idToken))
+        }
     }
     
     func logout() {
