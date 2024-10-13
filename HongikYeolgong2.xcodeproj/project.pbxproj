@@ -222,12 +222,12 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
-		470723062CBC19770046469F /* Repository */ = {
+		470723062CBC19770046469F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				470723072CBC197F0046469F /* Auth */,
 			);
-			path = Repository;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		470723072CBC197F0046469F /* Auth */ = {
@@ -321,7 +321,7 @@
 		47A1472E2CA1367700A91F66 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				470723062CBC19770046469F /* Repository */,
+				470723062CBC19770046469F /* Repositories */,
 				47A1473A2CA13DD000A91F66 /* DataMapping */,
 			);
 			path = Data;
