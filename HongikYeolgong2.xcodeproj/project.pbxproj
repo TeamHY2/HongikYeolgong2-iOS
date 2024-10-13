@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		470722FA2CBC0A870046469F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470722F92CBC0A870046469F /* Constants.swift */; };
+		470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470722FD2CBC15DA0046469F /* NetworkProtocol.swift */; };
+		470723012CBC16680046469F /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723002CBC16680046469F /* AuthEndpoint.swift */; };
+		470723032CBC17E40046469F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723022CBC17E40046469F /* NetworkService.swift */; };
+		470723052CBC180D0046469F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723042CBC180D0046469F /* NetworkError.swift */; };
 		471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */; };
 		471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CA2CAFD9B700426D30 /* RankingCell.swift */; };
 		471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */; };
@@ -94,6 +98,10 @@
 /* Begin PBXFileReference section */
 		470722F62CBC09810046469F /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		470722F92CBC0A870046469F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		470722FD2CBC15DA0046469F /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		470723002CBC16680046469F /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		470723022CBC17E40046469F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		470723042CBC180D0046469F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
 		471940CA2CAFD9B700426D30 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
 		471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeeklyRanking+Mock.swift"; sourceTree = "<group>"; };
@@ -191,6 +199,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		470722FB2CBC15790046469F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				470722FF2CBC164E0046469F /* Endpoints */,
+				470722FD2CBC15DA0046469F /* NetworkProtocol.swift */,
+				470723022CBC17E40046469F /* NetworkService.swift */,
+				470723042CBC180D0046469F /* NetworkError.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		470722FF2CBC164E0046469F /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				470723002CBC16680046469F /* AuthEndpoint.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
 		471940C62CAFCA6200426D30 /* Modifier */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +270,7 @@
 		4763FFB62CB9133600990336 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				470722FB2CBC15790046469F /* API */,
 				4763FFB72CB9134D00990336 /* Store.swift */,
 				4752A27C2CB96EB00073B784 /* CancleBag.swift */,
 				470722F92CBC0A870046469F /* Constants.swift */,
@@ -712,12 +740,14 @@
 				4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */,
 				47A1473E2CA13EB700A91F66 /* StudyRoomUsageResponseDTO+Mapping.swift in Sources */,
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
+				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
 				4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudy.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */,
+				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
@@ -733,6 +763,8 @@
 				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
+				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
+				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				47A147452CA13F2F00A91F66 /* StudyRoomUsageInteractor.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
