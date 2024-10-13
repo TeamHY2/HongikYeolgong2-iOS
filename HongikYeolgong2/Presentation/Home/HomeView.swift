@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var isPresented: Bool = false
+    
     var body: some View {
         VStack {
             WeeklyStudy()
@@ -29,7 +31,9 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity,
                            minHeight: 52.adjustToScreenHeight))
                 
-                Button(action: {}) {
+                Button(action: {
+                    isPresented = true
+                }) {
                     Text("열람실 이용 시작")
                         .frame(maxWidth: .infinity,
                                minHeight: 52.adjustToScreenHeight)
@@ -40,10 +44,10 @@ struct HomeView: View {
                     .resizable()
                     .frame(maxWidth: .infinity,
                            minHeight: 52.adjustToScreenHeight))
-            }   
+            }
             .padding(.bottom, 36.adjustToScreenHeight)
             
-        }
+        }        
         .padding(.horizontal, 32.adjustToScreenWidth)
         .background(
             Image(.iOSBackground)
