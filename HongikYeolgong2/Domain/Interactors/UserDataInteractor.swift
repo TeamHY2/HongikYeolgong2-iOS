@@ -14,6 +14,8 @@ protocol UserDataInteractor: AnyObject {
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
+    
+    private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
     
@@ -23,9 +25,20 @@ final class UserDataInteractorImpl: UserDataInteractor {
     }
     
     func login(idToken: String) {
-        Task {
-            try await authRepository.signIn(loginReqDto: .init(socialPlatform: SocialLoginType.apple.rawValue, idToken: idToken))
-        }
+        
+        let loginReqDto: LoginRequestDTO = .init(socialPlatform: SocialLoginType.apple.rawValue, idToken: idToken)
+        
+        authRepository
+            .signIn(loginReqDto: loginReqDto)
+            .sink(receiveCompletion: { result in
+                switch result {
+                case .finished:
+                    print("요청 성공")
+                case let .failure(error):
+                    print("요청 실패 \(error.localizedDescription)")
+                }
+            }, receiveValue: {})
+            .store(in: cancleBag)
     }
     
     func logout() {
