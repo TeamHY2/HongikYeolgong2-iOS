@@ -14,7 +14,8 @@ struct AppEnviroment {
 extension AppEnviroment {
     static func bootstrap() -> AppEnviroment {
         let appState = Store<AppState>(AppState())
-        let interactors: DIContainer.Interactors = .init(userDataInteractor: UserDataInteractorImpl(appState: appState))
+        let authRepository = AuthRepositoryImpl()
+        let interactors: DIContainer.Interactors = .init(userDataInteractor: UserDataInteractorImpl(appState: appState, authRepository: authRepository))
         let diContainer = DIContainer(appState: appState, interactors: interactors)
         return .init(container: diContainer)
     }

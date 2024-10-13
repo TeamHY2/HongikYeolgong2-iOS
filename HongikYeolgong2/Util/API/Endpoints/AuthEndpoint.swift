@@ -7,13 +7,17 @@
 
 import Foundation
 
+/// 소셜로그인 관련 엔드포인트 정의
 enum AuthEndpoint: EndpointProtocol {
-    case login
     
+    /// 애플 소셜 로그인
+    case login(LoginRequestDTO)
+}
+
+extension AuthEndpoint {
     var baseURL: URL? {
-        URL(string: baseUrl)
+        URL(string: "\(baseUrl)/auth")
     }
-    
     var path: String {
         switch self {
         case .login:
@@ -37,15 +41,15 @@ enum AuthEndpoint: EndpointProtocol {
     
     var headers: [String: String]? {
         switch self {
-        case .login:
-            nil
+        default:
+            ["Content-Type": "application/json"]
         }
     }
     
     var body: Data? {
         switch self {
-        case .login:
-            nil
+        case let .login(loginReqDto):
+            return loginReqDto.toData()
         }
     }
 }

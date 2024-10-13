@@ -1,0 +1,21 @@
+//
+//  AuthenticationService.swift
+//  HongikYeolgong2
+//
+//  Created by 권석기 on 10/14/24.
+//
+
+import Foundation
+import AuthenticationServices
+
+class AuthenticationService: NSObject, ASAuthorizationControllerDelegate {
+    func requestAppleLogin(_ authorization: ASAuthorization) -> String? {
+        guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
+              let idTokenData = appleIDCredential.identityToken,
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
+            return nil
+        }
+        print("토큰", idToken)
+        return idToken
+    }
+}
