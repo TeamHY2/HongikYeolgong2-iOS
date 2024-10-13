@@ -9,11 +9,15 @@ import SwiftUI
 
 @main
 struct HongikYeolgong2App: App {
-    @State private var selectedTab: Tab = .home
+    
+    let enviroment = AppEnviroment.bootstrap()
     
     var body: some Scene {
         WindowGroup {
-            MainTabView()
+            let container: DIContainer = enviroment.container
+            
+            InitialView()
+                .inject(container)
         }
     }
 }
