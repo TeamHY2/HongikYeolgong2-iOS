@@ -3,6 +3,8 @@ import SwiftUI
 
 struct SettingView: View {
     @State private var isOnAlarm = false
+    @Environment(\.injected) var injected: DIContainer
+        
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
             HStack(spacing: 0) {
@@ -11,6 +13,7 @@ struct SettingView: View {
                 Text("유림")
                     .font(.pretendard(size: 16, weight: .regular))
                     .padding(.trailing, 8)
+ 
                     .foregroundStyle(.gray200)
                 Text("|")
                     .font(.pretendard(size: 16, weight: .regular))
@@ -90,7 +93,7 @@ struct SettingView: View {
             HStack(alignment: .center, spacing: 0) {
                 Spacer()
                 Button(action: {
-                    
+                    injected.interactors.userDataInteractor.logout()
                 }, label: {
                     Text("로그아웃")
                         .font(.pretendard(size: 16, weight: .regular))
