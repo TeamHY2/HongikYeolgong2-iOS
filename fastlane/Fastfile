@@ -25,7 +25,7 @@ desc "Push a new beta build to TestFlight"
   lane :beta do
     match(type:"appstore")
   increment_build_number(
-        build_number: latest_testflight_build_number.to_i + 1
+        build_number: '1.1.72'
     )
     
     gym(
@@ -33,11 +33,18 @@ desc "Push a new beta build to TestFlight"
       export_method: "app-store"
     )
 
-discord_webhook_url = "https://discord.com/api/webhooks/1295354068981776474"
-message = "App has been successfully deployed to AppStoreConnect!"
-
-sh "curl -X POST -H 'Content-Type: application/json' -d '{\"content\": \"#{message}\"}' #{discord_webhook_url}"
-
+discord_notifier(
+      webhook_url: "https://discord.com/api/webhooks/1295354068981776474/KcvWD1Z20p2qTQdP-5mUTyug4Knw7iJDwhkyqlNCaSrREBgBFYJtDL_DcpN7XmoSG-yz",
+      title: "New TestFlight Build Available!",
+      description: "Version 1.0.5(1.1.72) has been uploaded to TestFlight.",
+      success: true,
+      fields: [  
+        {
+          name: "TestFlight Link",
+          value: ""
+        }
+      ]
+    )
     build_app(
       scheme: "HongikYeolgong2",
       export_method: "app-store"
