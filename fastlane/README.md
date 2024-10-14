@@ -29,7 +29,7 @@ Description of what the lane does
 [bundle exec] fastlane ios beta
 ```
 
-build app and upload to testflight
+Push a new beta build to TestFlight
 
 ----
 

@@ -21,16 +21,28 @@ platform :ios do
     # add actions here: https://docs.fastlane.tools/actions
   end
 
-desc "build app and upload to testflight"
+desc "Push a new beta build to TestFlight"
   lane :beta do
-    get_certificates
-    get_provisioning_profile
-    increment_build_number(
-        build_number: latest_testflight_build_number + 1.to_s
+    match(type:"appstore")
+  increment_build_number(
+        build_number: latest_testflight_build_number.to_i + 1
     )
+    
+    gym(
+      clean: true,
+      export_method: "app-store"
+    )
+
+discord_webhook_url = "https://discord.com/api/webhooks/1295354068981776474"
+message = "App has been successfully deployed to AppStoreConnect!"
+
+sh "curl -X POST -H 'Content-Type: application/json' -d '{\"content\": \"#{message}\"}' #{discord_webhook_url}"
+
     build_app(
-      configuration: "Debug"
+      scheme: "HongikYeolgong2",
+      export_method: "app-store"
     )
+
     upload_to_testflight
-end
+  end
 end
