@@ -74,7 +74,7 @@ struct SignInView: View {
                 
                 HY2Button(title: "",
                           style: .imageButton(image: isDisabled ? .submitButtonDisable : .submitButtonEnable)) {
-                    injected.interactors.userDataInteractor.login()
+                    
                 }
                           .padding(.bottom, 20)
             }
