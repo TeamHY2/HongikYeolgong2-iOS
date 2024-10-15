@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct OnboardingView: View {
     @Environment(\.injected) var injected: DIContainer
+    
+    private let authService = AuthenticationService()
     
     @State private var seletedIndex = 0
     @State private var isActive = false
@@ -45,7 +48,7 @@ struct OnboardingView: View {
                 }
                 
                 Button(action: {
-                    isActive = true
+                    
                 }, label: {
                     Image(.snsLogin)
                         .resizable()
@@ -54,6 +57,10 @@ struct OnboardingView: View {
                 .padding(.horizontal, 32.adjustToScreenWidth)
                 .padding(.top, 32.adjustToScreenHeight)
                 .padding(.bottom, 20.adjustToScreenHeight)
+                .overlay (
+                    SignInWithAppleButton(onRequest: onRequestAppleLogin, onCompletion: onCompleteAppleLogin)
+                        .blendMode(.destinationOver)
+                )
                 
                 NavigationLink("SignIn", destination: SignInView(), isActive: $isActive)
                     .opacity(0)
@@ -63,7 +70,25 @@ struct OnboardingView: View {
     }
 }
 
-extension OnboardingView {
+private extension OnboardingView {
+    func onRequestAppleLogin(_ request: ASAuthorizationAppleIDRequest) {
+        request.requestedScopes = [.email]
+    }
+    
+    func onCompleteAppleLogin(_ result: Result<ASAuthorization, Error>) {
+        switch result {
+        case let .success(authorization):
+            guard let idToken = authService.requestAppleLogin(authorization) else {
+                return
+            }
+            injected.interactors.userDataInteractor.login(idToken: idToken)
+        case let .failure(error):
+            break
+        }
+    }
+}
+
+private extension OnboardingView {
     struct Routing: Equatable {
         var signUp: String?
     }

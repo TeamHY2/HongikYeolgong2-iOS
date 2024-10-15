@@ -21,7 +21,7 @@ struct DIContainer: EnvironmentKey {
     static var defaultValue: Self { Self.default }
     
     private static let `default` = Self(appState: .init(AppState()), 
-                                        interactors: .init(userDataInteractor: UserDataInteractorImpl(appState: .init(AppState()))))
+                                        interactors: .default)
 }
 
 extension EnvironmentValues {

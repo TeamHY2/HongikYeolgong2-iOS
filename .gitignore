@@ -12,7 +12,7 @@ xcuserdata/
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
 *.xccheckout
-
+*.mobileprovision
 ## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 build/
 DerivedData/
@@ -25,6 +25,26 @@ DerivedData/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+*.env
+*.xcconfig
+# Certificates
+*.cer
+*.certSigningRequest
+*.p12
+*.mobileprovision
+*.provisionprofile
+
+# fastlane specific
+fastlane/report.xml
+
+# deliver temporary files
+fastlane/Preview.html
+
+# snapshot generated screenshots
+fastlane/screenshots
+
+# scan temporary files
+fastlane/test_output
 
 ## Obj-C/Swift specific
 *.hmap
