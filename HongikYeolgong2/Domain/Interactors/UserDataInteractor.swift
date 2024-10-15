@@ -30,14 +30,8 @@ final class UserDataInteractorImpl: UserDataInteractor {
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
-            .sink(receiveCompletion: { result in
-                switch result {
-                case .finished:
-                    print("요청 성공")
-                case let .failure(error):
-                    print("요청 실패 \(error.localizedDescription)")
-                }
-            }, receiveValue: {})
+            .sink(receiveCompletion: { _ in },
+                  receiveValue: { _ in })
             .store(in: cancleBag)
     }
     

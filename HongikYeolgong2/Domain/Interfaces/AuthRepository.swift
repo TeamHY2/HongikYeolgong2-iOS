@@ -8,5 +8,5 @@
 import Combine
 
 protocol AuthRepository {
-    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<Void, Error>
+    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<Bool, Error>
 }
