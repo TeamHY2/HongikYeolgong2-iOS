@@ -58,7 +58,7 @@ extension NetworkService {
         }
         
         if let body = endpoint.body {
-            request.httpBody = try? JSONEncoder().encode(body)
+            request.httpBody = body
         }
         
         return request
