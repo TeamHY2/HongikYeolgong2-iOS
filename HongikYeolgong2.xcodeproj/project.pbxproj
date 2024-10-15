@@ -77,6 +77,7 @@
 		47B1D4C92C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */; };
 		47BACCF72CA164BA00295DAC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BACCF62CA164BA00295DAC /* Font+.swift */; };
 		47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6662B2CB4499300813ECA /* TimePicker.swift */; };
+		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		47BACCF62CA164BA00295DAC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		47D6662B2CB4499300813ECA /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,11 +207,8 @@
 		470722FB2CBC15790046469F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				47DF04202CBE7A3B007E58A7 /* Base */,
 				470722FF2CBC164E0046469F /* Endpoints */,
-				470722FD2CBC15DA0046469F /* NetworkProtocol.swift */,
-				470723022CBC17E40046469F /* NetworkService.swift */,
-				470723042CBC180D0046469F /* NetworkError.swift */,
-				470723122CBC1BF10046469F /* BaseResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -290,6 +289,7 @@
 		4763FFB62CB9133600990336 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				47DF041D2CBE7A16007E58A7 /* Extensions */,
 				470722FB2CBC15790046469F /* API */,
 				4763FFB72CB9134D00990336 /* Store.swift */,
 				4752A27C2CB96EB00073B784 /* CancleBag.swift */,
@@ -322,7 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				470723062CBC19770046469F /* Repositories */,
-				47A1473A2CA13DD000A91F66 /* DataMapping */,
+				47A1473A2CA13DD000A91F66 /* DTO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -412,13 +412,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		47A1473A2CA13DD000A91F66 /* DataMapping */ = {
+		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				470723122CBC1BF10046469F /* BaseResponse.swift */,
 				4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */,
 				470723102CBC1B0A0046469F /* LoginResponseDTO.swift */,
 			);
-			path = DataMapping;
+			path = DTO;
 			sourceTree = "<group>";
 		};
 		47A147412CA13F0000A91F66 /* Interactors */ = {
@@ -572,6 +573,24 @@
 				471940C62CAFCA6200426D30 /* Modifier */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		47DF041D2CBE7A16007E58A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				47DF041E2CBE7A29007E58A7 /* Encodable+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		47DF04202CBE7A3B007E58A7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				470722FD2CBC15DA0046469F /* NetworkProtocol.swift */,
+				470723022CBC17E40046469F /* NetworkService.swift */,
+				470723042CBC180D0046469F /* NetworkError.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -746,6 +765,7 @@
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
 				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
+				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				47A147402CA13EDD00A91F66 /* StudyRoomUsage.swift in Sources */,

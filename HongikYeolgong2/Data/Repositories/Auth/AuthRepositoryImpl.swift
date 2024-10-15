@@ -11,12 +11,12 @@ import Combine
 final class AuthRepositoryImpl: AuthRepository {
     
     /// 소셜로그인
-    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<Void, Error> {
-        return Future<Void, Error> { promise in
+    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<Bool, Error> {
+        return Future<Bool, Error> { promise in
             Task {
                 do {
-                    let _: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto))
-                    promise(.success(()))
+                    let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto))
+                    promise(.success(response.code == 200))
                 } catch {
                     promise(.failure(error))
                 }

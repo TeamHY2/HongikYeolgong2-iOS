@@ -15,7 +15,7 @@ class AuthenticationService: NSObject, ASAuthorizationControllerDelegate {
               let idToken = String(data: idTokenData, encoding: .utf8) else {
             return nil
         }
-        print("토큰", idToken)
+      
         return idToken
     }
 }
