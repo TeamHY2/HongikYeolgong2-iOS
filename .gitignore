@@ -31,6 +31,7 @@ DerivedData/
 *.cer
 *.certSigningRequest
 *.p12
+*.p8
 *.mobileprovision
 *.provisionprofile
 
