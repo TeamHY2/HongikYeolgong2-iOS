@@ -1,0 +1,55 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :custom_lane do
+    # add actions here: https://docs.fastlane.tools/actions
+  end
+
+desc "Push a new beta build to TestFlight"
+  lane :beta do
+    match(type:"appstore")
+  increment_build_number(
+        build_number: '1.1.72'
+    )
+    
+    gym(
+      clean: true,
+      export_method: "app-store"
+    )
+
+discord_notifier(
+      webhook_url: "https://discord.com/api/webhooks/1295354068981776474/KcvWD1Z20p2qTQdP-5mUTyug4Knw7iJDwhkyqlNCaSrREBgBFYJtDL_DcpN7XmoSG-yz",
+      title: "New TestFlight Build Available!",
+      description: "Version 1.0.5(1.1.72) has been uploaded to TestFlight.",
+      success: true,
+      fields: [  
+        {
+          name: "TestFlight Link",
+          value: ""
+        }
+      ]
+    )
+    build_app(
+      scheme: "HongikYeolgong2",
+      export_method: "app-store"
+    )
+
+    upload_to_testflight
+  end
+end
