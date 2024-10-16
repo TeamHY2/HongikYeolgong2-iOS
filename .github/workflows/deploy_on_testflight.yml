@@ -24,6 +24,7 @@ jobs:
       - name: Run Fastlane
         run: fastlane beta
         env:
+          APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
           APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
