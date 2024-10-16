@@ -116,8 +116,8 @@ struct SettingView: View {
             }
             .padding(.bottom, 36.adjustToScreenHeight)
         }
-        .padding(.top, 16.5.adjustToScreenHeight)
-        .padding(.horizontal, 16.adjustToScreenWidth)
+        .padding(.top, 33.adjustToScreenHeight)
+        .padding(.horizontal, 32.adjustToScreenWidth)
         .background(.dark)
     }
 }
