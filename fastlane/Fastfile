@@ -16,16 +16,19 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
-  lane :custom_lane do
-    # add actions here: https://docs.fastlane.tools/actions
-  end
 
 desc "Push a new beta build to TestFlight"
   lane :beta do
-    match(type:"appstore")
+   new_build_number = latest_testflight_build_number
+   version = get_version_number(xcodeproj: "HongikYeolgong2.xcodeproj")
+
+# match 방식 사용
+  match(git_url: ENV['GIT_URL'],
+        storage_mode: "git",
+        type: "appstore",
+        readonly: true)
   increment_build_number(
-        build_number: '1.1.72'
+        build_number: new_build_number.to_i
     )
     
     gym(
@@ -36,12 +39,16 @@ desc "Push a new beta build to TestFlight"
 discord_notifier(
       webhook_url: "https://discord.com/api/webhooks/1295354068981776474/KcvWD1Z20p2qTQdP-5mUTyug4Knw7iJDwhkyqlNCaSrREBgBFYJtDL_DcpN7XmoSG-yz",
       title: "New TestFlight Build Available!",
-      description: "Version 1.0.5(1.1.72) has been uploaded to TestFlight.",
+      description: "새로운 버전 #{version}(#{new_build_number}) 이 TestFlight에 업로드 되었습니다. 🙌",
       success: true,
       fields: [  
         {
-          name: "TestFlight Link",
-          value: ""
+          name: "Version",
+          value: "#{version}"
+        },
+        {
+          name: "Build",
+          value: "#{new_build_number}"
         }
       ]
     )
