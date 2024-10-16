@@ -21,7 +21,7 @@ desc "Push a new beta build to TestFlight"
   lane :beta do
    new_build_number = latest_testflight_build_number
    version = get_version_number(xcodeproj: "HongikYeolgong2.xcodeproj")
-
+app_store_connect_api_key(is_key_content_base64: true, in_house: false)
 # match 방식 사용
   match(git_url: ENV['GIT_URL'],
         storage_mode: "git",
