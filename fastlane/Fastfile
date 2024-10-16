@@ -19,7 +19,12 @@ platform :ios do
 
 desc "Push a new beta build to TestFlight"
   lane :beta do
-app_store_connect_api_key(is_key_content_base64: true, in_house: false)
+# 앱스토어 토큰 로드
+app_store_connect_api_key(
+  key_id: ENV['APP_STORE_CONNECT_API_KEY_KEY_ID'],
+  issuer_id: ENV['APP_STORE_CONNECT_API_KEY_ISSUER_ID'],
+  key_content: "-----BEGIN EC PRIVATE KEY-----\ENV['APP_STORE_CONNECT_API_KEY_KEY']\n-----END EC PRIVATE KEY-----"
+)
    new_build_number = latest_testflight_build_number
    version = get_version_number(xcodeproj: "HongikYeolgong2.xcodeproj")
 
@@ -28,6 +33,8 @@ app_store_connect_api_key(is_key_content_base64: true, in_house: false)
         storage_mode: "git",
         type: "appstore",
         readonly: true)
+
+# 빌드 버전설정 이전버전 + 1
   increment_build_number(
         build_number: new_build_number.to_i
     )
@@ -37,6 +44,16 @@ app_store_connect_api_key(is_key_content_base64: true, in_house: false)
       export_method: "app-store"
     )
 
+# 앱빌드
+    build_app(
+      scheme: "HongikYeolgong2",
+      export_method: "app-store"
+    )
+
+# 테플에 업로드
+    upload_to_testflight
+
+# 디스코드 노티
 discord_notifier(
       webhook_url: "https://discord.com/api/webhooks/1295354068981776474/KcvWD1Z20p2qTQdP-5mUTyug4Knw7iJDwhkyqlNCaSrREBgBFYJtDL_DcpN7XmoSG-yz",
       title: "New TestFlight Build Available!",
@@ -53,11 +70,5 @@ discord_notifier(
         }
       ]
     )
-    build_app(
-      scheme: "HongikYeolgong2",
-      export_method: "app-store"
-    )
-
-    upload_to_testflight
   end
 end
