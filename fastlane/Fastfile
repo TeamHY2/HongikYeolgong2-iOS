@@ -38,7 +38,8 @@ lane :beta do
     type: 'appstore',
     readonly: true,
     app_identifier: ENV["APP_IDENTIFIER"],
- clone_branch_directly: true
+ clone_branch_directly: true,
+ git_branch: "master"
   )
   sync_code_signing(
       type: "appstore",
