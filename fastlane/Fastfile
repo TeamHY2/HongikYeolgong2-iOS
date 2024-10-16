@@ -36,7 +36,9 @@ lane :beta do
     git_url: ENV['GIT_URL'],
     storage_mode: 'git',
     type: 'appstore',
-    readonly: true
+    readonly: true,
+    app_identifier: ENV["APP_IDENTIFIER"],
+ clone_branch_directly: true
   )
   sync_code_signing(
       type: "appstore",
