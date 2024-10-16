@@ -37,9 +37,8 @@ lane :beta do
     storage_mode: 'git',
     type: 'appstore',
     readonly: true,
-    app_identifier: ENV["APP_IDENTIFIER"],
-    clone_branch_directly: true,
-    git_branch: "master"
+   keychain_name: ENV['SSH_KEY'],
+      keychain_password: ENV['SSH_PASSWORD']
   )
 
  # sync_code_signing(
