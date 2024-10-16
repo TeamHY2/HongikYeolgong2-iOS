@@ -38,6 +38,11 @@ lane :beta do
     type: 'appstore',
     readonly: true
   )
+  sync_code_signing(
+      type: "appstore",
+      app_identifier: ENV['APP_IDENTIFIER'],
+      readonly: true
+    )
 
   # 빌드 버전설정 이전버전 + 1
   increment_build_number(
@@ -56,7 +61,7 @@ lane :beta do
   )
 
   # 테플에 업로드
-  upload_to_testflight
+  upload_to_testflight(skip_waiting_for_build_processing: true)
 
   # 디스코드 노티
   discord_notifier(
