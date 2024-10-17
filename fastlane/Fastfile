@@ -33,13 +33,13 @@ lane :beta do
 
   # 인증서사용전 키체인생성
   create_keychain(
-    name: ENV["MATCH_KEYCHAIN_NAME"],
-    password: ENV["MATCH_KEYCHAIN_PASSWORD"],
-    default_keychain: true,
-    unlock: true,
-    timeout: 3600,
-    lock_when_sleeps: false
-  )
+        name: "keychain",
+        password: "123456",
+        default_keychain: true,
+        unlock: true,
+        timeout: 3600,
+        lock_when_sleeps: false
+    )
 
   # match 방식 사용
   match(
@@ -47,15 +47,15 @@ lane :beta do
     storage_mode: 'git',
     type: 'appstore',
     readonly: true,
-    app_identifier: ENV["APP_IDENTIFIER"],
- clone_branch_directly: true,
- git_branch: "master"
+ keychain_name: "keychain",
+      keychain_password: "123456"
   )
-  sync_code_signing(
-      type: "appstore",
-      app_identifier: ENV['APP_IDENTIFIER'],
+
+ # sync_code_signing(
+ #     type: "appstore",
+  #    app_identifier: ENV['APP_IDENTIFIER'],
       readonly: true
-    )
+  #  )
 
   # 빌드 버전설정 이전버전 + 1
   increment_build_number(
