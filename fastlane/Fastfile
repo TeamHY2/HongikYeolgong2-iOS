@@ -44,7 +44,6 @@ platform :ios do
     match(
       git_url: ENV['GIT_URL'],
       storage_mode: "git",
-      type: "appstore",
       app_identifier: ["com.teamHY2.HongikYeolgong2"],
       readonly: true,
       keychain_name: "keychain",
@@ -53,7 +52,7 @@ platform :ios do
      end
      
     # 코드사인
-    sync_code_signing(type: "appstore", readonly: true)
+    sync_code_signing(readonly: true)
 
     # 앱스토어 커넥트 연결
     app_store_connect_api_key(
@@ -67,7 +66,7 @@ platform :ios do
 
     # 앱빌드
   build_app(
-    scheme: "HongikYeolgong2",
+    scheme: "Debug",
     export_method: "app-store",
     export_team_id: "P4D4ZQC4YF"
   )
