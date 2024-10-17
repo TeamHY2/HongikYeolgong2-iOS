@@ -16,73 +16,56 @@
 default_platform(:ios)
 
 platform :ios do
-
-desc "Push a new beta build to TestFlight"
-lane :beta do
-
-  app_store_connect_api_key(
-   key_id: ENV['APP_STORE_CONNECT_API_KEY_KEY_ID'],
-   issuer_id: ENV['APP_STORE_CONNECT_API_KEY_ISSUER_ID'],
-   key_content: ENV['APP_STORE_CONNECT_API_KEY_KEY'],
-   is_key_content_base64: false
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    
+     # 인증서 연동
+     if is_ci
+      create_keychain(
+      name: ENV['MATCH_KEYCHAIN_NAME'],
+      password: ENV['MATCH_KEYCHAIN_PASSWORD'],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: true
   )
 
-  # 인증서사용전 키체인생성
-  create_keychain(
-        name: ENV['MATCH_KEYCHAIN_NAME'],
-        password: ENV['MATCH_KEYCHAIN_PASSWORD'],
-        default_keychain: true,
-        unlock: true,
-        timeout: 3600,
-        lock_when_sleeps: false
-    )
-
-  # match 방식 사용
-  match(
-    git_url: ENV['GIT_URL'],
-    storage_mode: 'git',
-    type: 'appstore',
-    readonly: true,
-    keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
-    keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
-  )
-
-  sync_code_signing(
+    match(
+      git_url: ENV['GIT_URL'],
+      storage_mode: "git",
       type: "appstore",
-      app_identifier: ENV['APP_IDENTIFIER'],
-      readonly: true
+      app_identifier: ["com.teamHY2.HongikYeolgong2"],
+      readonly: true,
+      keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
+      keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
     )
+     else
+    # 인증서 연동
+    match(
+      git_url: ENV['GIT_URL'],
+      storage_mode: "git",
+      type: "appstore",
+      app_identifier: ["com.teamHY2.HongikYeolgong2"],
+      readonly: true,
+      keychain_name: "keychain",
+      keychain_password: "123456"
+    )
+     end
 
-  new_build_number = latest_testflight_build_number(app_identifier: ENV['APP_IDENTIFIER'])
-  version = get_version_number(xcodeproj: 'HongikYeolgong2.xcodeproj')
+    # 앱스토어 커넥트 연결
+    app_store_connect_api_key(
+     key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
+     issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+     key_content: ENV['APP_STORE_CONNECT_KEY']
+   )
 
-  # 빌드 버전설정 이전버전 + 1
-  increment_build_number(
-    build_number: new_build_number + 1
-  )
+    # 빌드버전 증가
+    increment_build_number(xcodeproj: "HongikYeolgong2.xcodeproj")
 
-  # 앱빌드
-  build_app(scheme: 'HongikYeolgong2')
-
-  # 테플에 업로드
-  upload_to_testflight(skip_waiting_for_build_processing: true)
-
-  # 디스코드 노티
-  discord_notifier(
-    webhook_url: 'https://discord.com/api/webhooks/1295354068981776474/KcvWD1Z20p2qTQdP-5mUTyug4Knw7iJDwhkyqlNCaSrREBgBFYJtDL_DcpN7XmoSG-yz',
-    title: 'New TestFlight Build Available!',
-    description: "새로운 버전 #{version}(#{new_build_number + 1}) 이 TestFlight에 업로드 되었습니다. 🙌",
-    success: true,
-    fields: [  
-      {
-        name: 'Version',
-        value: version
-      },
-      {
-        name: 'Build',
-        value: (new_build_number + 1).to_s
-      }
-    ]
-  )
-end
+    # 앱빌드
+    build_app(scheme: "HongikYeolgong2")
+    
+    # 테플에 업로드
+    upload_to_testflight(skip_waiting_for_build_processing: true)
+  end
 end
