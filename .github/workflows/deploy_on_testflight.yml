@@ -30,6 +30,8 @@ jobs:
       - name: Run Fastlane
         run: fastlane beta
         env:
+          MATCH_KEYCHAIN_NAME: ${{ secrets.MATCH_KEYCHAIN_NAME }}
+          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
           GIT_URL: ${{ secrets.GIT_URL }}
           APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
