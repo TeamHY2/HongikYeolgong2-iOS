@@ -53,7 +53,7 @@ platform :ios do
      end
      
     # 코드사인
-    sync_code_signing(type: "development", readonly: true)
+    sync_code_signing(type: "appstore", readonly: true)
 
     # 앱스토어 커넥트 연결
     app_store_connect_api_key(
