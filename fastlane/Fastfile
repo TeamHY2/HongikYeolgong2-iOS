@@ -31,6 +31,16 @@ lane :beta do
   new_build_number = latest_testflight_build_number(app_identifier: ENV['APP_IDENTIFIER'])
   version = get_version_number(xcodeproj: 'HongikYeolgong2.xcodeproj')
 
+  # 인증서사용전 키체인생성
+  create_keychain(
+    name: ENV["MATCH_KEYCHAIN_NAME"],
+    password: ENV["MATCH_KEYCHAIN_PASSWORD"],
+    default_keychain: true,
+    unlock: true,
+    timeout: 3600,
+    lock_when_sleeps: false
+  )
+
   # match 방식 사용
   match(
     git_url: ENV['GIT_URL'],
