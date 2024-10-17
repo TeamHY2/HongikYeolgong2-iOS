@@ -22,7 +22,9 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
            
       - name: Install Fastlane
-        run: brew install fastlane
+        run:  |
+            brew install fastlane
+            fastlane match development --readonly
       
       - name: Install CocoaPods
         run: sudo gem install cocoapods
