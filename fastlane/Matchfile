@@ -3,7 +3,7 @@ git_url("git@github.com:TeamHY2/fastlane-match-certificate.git")
 storage_mode("git")
 
 team_id("P4D4ZQC4YF")
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
+type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
 
 app_identifier("com.teamHY2.HongikYeolgong2")
 username("seokki0706@gmail.com") # Your Apple Developer Portal username
