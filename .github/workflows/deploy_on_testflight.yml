@@ -10,13 +10,12 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
+      - uses: actions/checkout@v2
+            
+      - uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: ${{ secrets.KNOWN_HOSTS }}
-       
-      - uses: actions/checkout@v2
       
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
