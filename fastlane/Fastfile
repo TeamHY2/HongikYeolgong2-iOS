@@ -51,20 +51,15 @@ lane :beta do
       keychain_password: "123456"
   )
 
- # sync_code_signing(
- #     type: "appstore",
-  #    app_identifier: ENV['APP_IDENTIFIER'],
-   #   readonly: true
-  #  )
+  sync_code_signing(
+      type: "appstore",
+      app_identifier: ENV['APP_IDENTIFIER'],
+      readonly: true
+    )
 
   # 빌드 버전설정 이전버전 + 1
   increment_build_number(
     build_number: new_build_number + 1
-  )
-    
-  gym(
-    clean: true,
-    export_method: 'app-store'
   )
 
   # 앱빌드
