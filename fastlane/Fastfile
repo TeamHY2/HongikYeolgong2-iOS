@@ -51,6 +51,9 @@ platform :ios do
       keychain_password: "123456"
     )
      end
+     
+    # 코드사인
+    sync_code_signing(type: "development", readonly: true)
 
     # 앱스토어 커넥트 연결
     app_store_connect_api_key(
