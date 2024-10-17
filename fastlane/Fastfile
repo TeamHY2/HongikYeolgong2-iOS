@@ -30,7 +30,7 @@ platform :ios do
       )
 
      match(
-      type: "appstore",
+      type: "development",
       app_identifier: ["com.teamHY2.HongikYeolgong2"],
       readonly: true,
       keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
@@ -53,10 +53,10 @@ platform :ios do
     # 앱빌드
   build_app(
   scheme: "HongikYeolgong2",
-  export_method: "app-store",
+  export_method: "development",
   export_options: {
     provisioningProfiles: { 
-      "com.teamHY2.HongikYeolgong2" => "match AppStore com.teamHY2.HongikYeolgong2"
+      "com.teamHY2.HongikYeolgong2" => "match Development com.teamHY2.HongikYeolgong2"
     }
   }
 )

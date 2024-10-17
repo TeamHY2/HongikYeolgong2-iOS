@@ -1,12 +1,9 @@
 git_url("git@github.com:TeamHY2/fastlane-match-certificate.git")
-
 storage_mode("git")
-
 team_id("P4D4ZQC4YF")
-type("appstore") # The default type, can be: appstore, adhoc, enterprise or development
-
+type("development")
 app_identifier("com.teamHY2.HongikYeolgong2")
-username("seokki0706@gmail.com") # Your Apple Developer Portal username
+username("seokki0706@gmail.com")
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
