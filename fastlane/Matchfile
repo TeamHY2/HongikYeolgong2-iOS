@@ -1,4 +1,4 @@
-git_url("https://github.com/TeamHY2/fastlane-match-certificate.git")
+git_url("git@github.com:TeamHY2/fastlane-match-certificate.git")
 
 storage_mode("git")
 
