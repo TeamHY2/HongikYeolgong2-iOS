@@ -67,7 +67,7 @@ platform :ios do
     # 앱빌드
   build_app(
     scheme: "Debug",
-    export_method: "app-store",
+    export_method: "development",
     export_team_id: "P4D4ZQC4YF"
   )
     
