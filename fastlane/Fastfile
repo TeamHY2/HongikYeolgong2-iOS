@@ -25,7 +25,7 @@ lane :beta do
    key_id: ENV['APP_STORE_CONNECT_API_KEY_KEY_ID'],
    issuer_id: ENV['APP_STORE_CONNECT_API_KEY_ISSUER_ID'],
     key_content: ENV['APP_STORE_CONNECT_API_KEY_KEY'],
-    is_key_content_base64: false
+   is_key_content_base64: false
   )
 
   new_build_number = latest_testflight_build_number(app_identifier: ENV['APP_IDENTIFIER'])
@@ -37,15 +37,15 @@ lane :beta do
     storage_mode: 'git',
     type: 'appstore',
     readonly: true,
-   keychain_name: ENV['SSH_KEY'],
-      keychain_password: ENV['SSH_PASSWORD']
+    app_identifier: ENV["APP_IDENTIFIER"],
+ clone_branch_directly: true,
+ git_branch: "master"
   )
-
- # sync_code_signing(
- #     type: "appstore",
- #     app_identifier: ENV['APP_IDENTIFIER'],
- #     readonly: true
- #   )
+  sync_code_signing(
+      type: "appstore",
+      app_identifier: ENV['APP_IDENTIFIER'],
+      readonly: true
+    )
 
   # 빌드 버전설정 이전버전 + 1
   increment_build_number(
