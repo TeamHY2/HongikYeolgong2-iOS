@@ -27,7 +27,7 @@ jobs:
         run: sudo gem install cocoapods
         
       - name: Match Development
-        run: fastlane match development
+        run: fastlane match development --readonly
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       
