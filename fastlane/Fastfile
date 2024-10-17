@@ -28,7 +28,7 @@ platform :ios do
       unlock: true,
       timeout: 3600,
       lock_when_sleeps: true
-  )
+      )
 
     match(
       type: "appstore",
@@ -52,6 +52,8 @@ platform :ios do
       keychain_password: "123456"
     )
      end    
+
+    sync_code_signing(type: "appstore", readonly: true)
 
     # 앱스토어 커넥트 연결
     app_store_connect_api_key(
