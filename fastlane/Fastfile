@@ -31,6 +31,7 @@ platform :ios do
   )
 
     match(
+      type: "appstore",
       git_url: ENV['GIT_URL'],
       storage_mode: "git",
       type: "appstore",
@@ -42,6 +43,7 @@ platform :ios do
      else
     # 인증서 연동
     match(
+      type: "appstore",
       git_url: ENV['GIT_URL'],
       storage_mode: "git",
       app_identifier: ["com.teamHY2.HongikYeolgong2"],
@@ -49,10 +51,7 @@ platform :ios do
       keychain_name: "keychain",
       keychain_password: "123456"
     )
-     end
-     
-    # 코드사인
-    sync_code_signing(readonly: true)
+     end    
 
     # 앱스토어 커넥트 연결
     app_store_connect_api_key(
@@ -66,9 +65,8 @@ platform :ios do
 
     # 앱빌드
   build_app(
-    scheme: "Debug",
-    export_method: "development",
-    export_team_id: "P4D4ZQC4YF"
+    scheme: "HongikYeolgong2",
+    export_method: "app-store"
   )
     
     # 테플에 업로드
