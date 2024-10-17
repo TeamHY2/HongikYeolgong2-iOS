@@ -66,10 +66,15 @@ platform :ios do
     increment_build_number(xcodeproj: "HongikYeolgong2.xcodeproj")
 
     # 앱빌드
-  build_app(
-    scheme: "HongikYeolgong2",
-    export_method: "app-store"
-  )
+build_app(
+  scheme: "HongikYeolgong2",
+  export_method: "app-store",
+  export_options: {
+    provisioningProfiles: { 
+      "com.teamHY2.HongikYeolgong2" => "match AppStore com.teamHY2.HongikYeolgong2"
+    }
+  }
+)
     
     # 테플에 업로드
     upload_to_testflight(skip_waiting_for_build_processing: true)
