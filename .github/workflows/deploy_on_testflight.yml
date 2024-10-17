@@ -30,8 +30,6 @@ jobs:
       - name: Run Fastlane
         run: fastlane beta
         env:
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
           GIT_URL: ${{ secrets.GIT_URL }}
           APP_IDENTIFIER: ${{ secrets.APP_IDENTIFIER }}
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
