@@ -44,9 +44,9 @@ match(
       keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
     )
 
-    #sync_code_signing(type: "appstore", 
-#		      app_identifier: "com.teamHY2.HongikYeolgong2", 
- #		      readonly: true)
+    sync_code_signing(type: "appstore", 
+		      app_identifier: "com.teamHY2.HongikYeolgong2", 
+ 		      readonly: true)
 
     increment_build_number(xcodeproj: "HongikYeolgong2.xcodeproj")
 
