@@ -51,7 +51,7 @@ platform :ios do
 		      app_identifier: "com.teamHY2.HongikYeolgong2", 
  		      readonly: true)
 
-   new_build_number = latest_testflight_build_number
+   new_build_number = latest_testflight_build_number + 1
    version = get_version_number(xcodeproj: "HongikYeolgong2.xcodeproj")
 # 빌드버전 증가
     increment_build_number(
