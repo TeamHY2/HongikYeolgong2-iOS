@@ -33,6 +33,8 @@ platform :ios do
           keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
           )
 
+sync_code_signing(type: "appstore")
+
     app_store_connect_api_key(
      key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
