@@ -33,8 +33,10 @@ platform :ios do
       type: "appstore",
       app_identifier: ["com.teamHY2.HongikYeolgong2"],
 #      readonly: true,
-      keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
-      keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
+       username: "seokki0706@gmail.com",
+       team_id: "P4D4ZQC4YF",
+       keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
+       keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
     )
   
 
