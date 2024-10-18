@@ -17,10 +17,9 @@ default_platform(:ios)
 
 platform :ios do
   desc "Push a new beta build to TestFlight"
-  lane :beta do
-    
-     # 인증서 연동
-      create_keychain(
+  lane :beta do    
+
+ create_keychain(
       name: ENV['MATCH_KEYCHAIN_NAME'],
       password: ENV['MATCH_KEYCHAIN_PASSWORD'],
       default_keychain: true,
@@ -29,41 +28,21 @@ platform :ios do
       lock_when_sleeps: true
       )
 
-     match(
-      type: "appstore",
-      app_identifier: ["com.teamHY2.HongikYeolgong2"],
-#      readonly: true,
-       username: "seokki0706@gmail.com",
-       team_id: "P4D4ZQC4YF",
-       keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
-       keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
-    )
-  
+    match(type: "appstore",
+	  keychain_name: ENV['MATCH_KEYCHAIN_NAME'],
+          keychain_password: ENV['MATCH_KEYCHAIN_PASSWORD']
+          )
 
-    sync_code_signing(type: "appstore", readonly: false)
-
-    # 앱스토어 커넥트 연결
     app_store_connect_api_key(
      key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
      key_content: ENV['APP_STORE_CONNECT_KEY']
-   )
+    )
 
-    # 빌드버전 증가
     increment_build_number(xcodeproj: "HongikYeolgong2.xcodeproj")
 
-    # 앱빌드
-  build_app(
-  scheme: "HongikYeolgong2",
-  export_method: "app-store",
-  export_options: {
-    provisioningProfiles: { 
-      "com.teamHY2.HongikYeolgong2" => "match AppStore com.teamHY2.HongikYeolgong2"
-    }
-  }
-)
-    
-    # 테플에 업로드
-    upload_to_testflight(skip_waiting_for_build_processing: true)
+    build_app(scheme: "HongikYeolgong2", export_method: "app-store")
+
+    upload_to_testflight
   end
 end
