@@ -25,12 +25,12 @@ final class AuthRepositoryImpl: AuthRepository {
         }.eraseToAnyPublisher()
     }
     
-    func checkUserNickname(nickname: String) -> AnyPublisher<Bool, any Error> {
+    func checkUserNickname(nickname: String) -> AnyPublisher<Bool, Error> {
         return Future<Bool, Error> { promise in
             Task {
                 do {
-                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
-                    promise(.success(response.data?.duplicate ?? true))
+                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))                    
+                    promise(.success(response.data?.duplicate ?? false))
                 } catch {
                     promise(.failure(error))
                 }

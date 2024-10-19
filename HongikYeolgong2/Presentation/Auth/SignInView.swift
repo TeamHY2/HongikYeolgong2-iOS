@@ -6,102 +6,133 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SignInView: View {
     @Environment(\.injected) var injected: DIContainer
-    @State private var isDisabled = true
-    @State private var selectedDepartment: Department = .appliedArts
-    @State private var inputDepartment = ""
-    @State private var nickname = ""
+    @State private var signupData = SignupData()
+    @State private var isSubmitButtonAvailable = false
     
     var body: some View {
+        content
+            .onChange(of: signupData.nickname) { _ in isSubmitButtonAvailable = false }
+            .onChange(of: signupData.isNicknameAvailable) { isSubmitButtonAvailable = $0 }
+            .toolbar(.hidden, for: .navigationBar)
+    }
+}
+
+// MARK: - Main Content
+
+private extension SignInView {
+    var content: some View {
         ZStack {
             Color.dark.edgesIgnoringSafeArea(.all)
             VStack(spacing: 0) {
                 titleView
-                
-                // 가입폼
-                VStack(spacing: 0) {
-                    // 닉네임
-                    nicknameField
-                    
-                    selecteDepartment
-                }
-                .padding(.top, 23)
-                
+                signupForm
                 Spacer()
-                
-                HY2Button(title: "",
-                          style: .imageButton(image: isDisabled ? .submitButtonDisable : .submitButtonEnable)) {
-                    
-                }
-                          .padding(.bottom, 20)
+                submitButton
             }
-            .padding(.horizontal, 32)
-            
+            .padding(.horizontal, 32.adjustToScreenWidth)
         }
-        .toolbar(.hidden, for: .navigationBar)
     }
-    
-    private var titleView: some View {
+}
+
+// MARK: - Subviews
+
+private extension SignInView {
+    var titleView: some View {
         Text("회원가입")
             .font(.suite(size: 18, weight: .bold))
             .foregroundStyle(.gray100)
-            .frame(maxWidth: .infinity, minHeight: 52, alignment: .leading)
+            .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight, alignment: .leading)
     }
     
-    private var nicknameField: some View {
-        VStack {
-            HStack {
-                Text("닉네임")
-                    .font(.pretendard(size: 16, weight: .bold))
-                    .foregroundStyle(.gray200)
-                
-                Spacer()
-            }
+    var signupForm: some View {
+        VStack(spacing: 0) {
+            nicknameField
+            selecteDepartment
+        }
+        .padding(.top, 23.adjustToScreenHeight)
+    }
+    
+    var nicknameField: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("닉네임")
+                .font(.pretendard(size: 16, weight: .bold))
+                .foregroundStyle(.gray200)
             
             HStack {
-                HY2TextField(text: $nickname,
+                HY2TextField(text: $signupData.nickname,
                              placeholder: "닉네임을 입력해주세요",
                              isError: false)
                 
-                HY2Button(title: "중복확인", style: .mediumButton, backgroundColor: .blue100) {
-                    isDisabled = false
-                }
-                .frame(width: 88)
+                duplicateCheckButton
             }
-            .padding(.top, 8)
             
-            HStack {
-                Text("* 한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요.")
-                    .font(.pretendard(size: 12, weight: .regular))
-                    .foregroundStyle(.gray400)
-                    .padding(.top, 4)
-                Spacer()
-            }
+            Text("* 한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요.")
+                .font(.pretendard(size: 12, weight: .regular))
+                .foregroundStyle(.gray400)
+                .padding(.top, 4.adjustToScreenHeight)
         }
     }
     
-    private var selecteDepartment: some View {
-        VStack(spacing: 0) {
-            HStack {
-                Text("학과")
-                    .font(.pretendard(size: 16, weight: .bold))
-                    .foregroundStyle(.gray200)
-                
-                Spacer()
-            }
+    var duplicateCheckButton: some View {
+        Button(action: checkUserNickname) {
+            Text("중복확인")
+                .font(.pretendard(size: 16, weight: .regular))
+                .frame(maxWidth: .infinity, maxHeight: 48.adjustToScreenHeight)
+                .foregroundColor(.white)
+        }
+        .frame(width: 88.adjustToScreenWidth)
+        .background(.blue100)
+        .cornerRadius(8)
+    }
+    
+    var selecteDepartment: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("학과")
+                .font(.pretendard(size: 16, weight: .bold))
+                .foregroundStyle(.gray200)
             
-            DropDownPicker(text: $inputDepartment,
-                           seletedItem: Binding(get: {
-                selectedDepartment.rawValue
-            }, set: {
-                selectedDepartment = .init(rawValue: $0) ?? .appliedArts
-            }),
+            DropDownPicker(text: $signupData.inputDepartment,
+                           seletedItem: Binding(
+                            get: { signupData.department.rawValue },
+                            set: { signupData.department = .init(rawValue: $0) ?? .appliedArts }
+                           ),
                            placeholder: "학과를 입력해주세요",
                            items: Department.allCases.map { $0.rawValue })
-            .padding(.top, 8)
         }
-        .padding(.top, 12)
+        .padding(.top, 12.adjustToScreenHeight)
+    }
+    
+    var submitButton: some View {
+        HY2Button(title: "",
+                  style: .imageButton(image: isSubmitButtonAvailable ? .submitButtonEnable : .submitButtonDisable)) {
+            // Submit action
+        }
+        .padding(.bottom, 20.adjustToScreenHeight)
+    }
+}
+
+// MARK: - Helper Methods
+
+private extension SignInView {
+    func checkUserNickname() {
+        injected.interactors.userDataInteractor.checkUserNickname(
+            nickname: signupData.nickname,
+            isValidate: $signupData.isNicknameAvailable
+        )
+    }
+}
+
+// MARK: - SignupData
+
+private extension SignInView {
+    struct SignupData {
+        var nickname = ""
+        var inputDepartment = ""
+        var department: Department = .appliedArts
+        var isNicknameAvailable = false
     }
 }

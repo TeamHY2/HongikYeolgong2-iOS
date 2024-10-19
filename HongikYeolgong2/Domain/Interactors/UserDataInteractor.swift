@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
 import Combine
 
 protocol UserDataInteractor: AnyObject {
     func login(email: String, idToken: String)
     func logout()
-    func checkUserNickname(nickname: String)
+    func checkUserNickname(nickname: String, isValidate: Binding<Bool>)
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -31,8 +32,8 @@ final class UserDataInteractorImpl: UserDataInteractor {
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
-            .sink(receiveCompletion: { _ in },
-                  receiveValue: { _ in })
+            .replaceError(with: false)
+            .sink  { _ in }
             .store(in: cancleBag)
     }
     
@@ -40,8 +41,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
         appState[\.appLaunchState] = .notAuthenticated
     }
     
-    func checkUserNickname(nickname: String) {
+    func checkUserNickname(nickname: String, isValidate: Binding<Bool>) {
         authRepository
-            .checkUserNickname(nickname: nickname)            
+            .checkUserNickname(nickname: nickname)
+            .replaceError(with: false)
+            .sink { isValidate.wrappedValue = $0 }
+            .store(in: cancleBag)
     }
 }

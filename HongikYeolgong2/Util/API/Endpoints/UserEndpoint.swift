@@ -21,7 +21,7 @@ extension UserEndpoint {
     var path: String {
         switch self {
         case .checkUserNickname:
-            "/login"
+            "/duplicate-nickname"
         }
     }
     
@@ -35,7 +35,7 @@ extension UserEndpoint {
     var parameters: [URLQueryItem]? {
         switch self {
         case let .checkUserNickname(nickname):
-            nil
+            [.init(name: "nickname", value: nickname)]
         }
     }
     
