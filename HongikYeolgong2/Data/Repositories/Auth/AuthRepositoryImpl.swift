@@ -15,13 +15,26 @@ final class AuthRepositoryImpl: AuthRepository {
         return Future<Bool, Error> { promise in
             Task {
                 do {
-                    let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto))
+                    let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.code == 200))
                 } catch {
                     promise(.failure(error))
                 }
             }
             
+        }.eraseToAnyPublisher()
+    }
+    
+    func checkUserNickname(nickname: String) -> AnyPublisher<Bool, any Error> {
+        return Future<Bool, Error> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
+                    promise(.success(response.data?.duplicate ?? true))
+                } catch {
+                    promise(.failure(error))
+                }
+            }
         }.eraseToAnyPublisher()
     }
 }
