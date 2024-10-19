@@ -5,7 +5,7 @@ name: build-ios-app
 on:
   push:
     branches:
-      - 'Infra/#33-fastlane'
+      - 'develop'
 jobs:
   build:
     runs-on: macos-latest
