@@ -78,10 +78,10 @@ private extension OnboardingView {
     func onCompleteAppleLogin(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
-            guard let idToken = authService.requestAppleLogin(authorization) else {
+            guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
                 return
             }
-            injected.interactors.userDataInteractor.login(idToken: idToken)
+            injected.interactors.userDataInteractor.login(email: email, idToken: idToken)
         case let .failure(error):
             break
         }

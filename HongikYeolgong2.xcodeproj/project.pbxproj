@@ -78,6 +78,8 @@
 		47BACCF72CA164BA00295DAC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BACCF62CA164BA00295DAC /* Font+.swift */; };
 		47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6662B2CB4499300813ECA /* TimePicker.swift */; };
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
+		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
+		47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +179,8 @@
 		47BACCF62CA164BA00295DAC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		47D6662B2CB4499300813ECA /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
+		47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				470723002CBC16680046469F /* AuthEndpoint.swift */,
+				47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -415,9 +420,9 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				47F635002CC3E9700034EAA9 /* User */,
+				47F634FC2CC3E8500034EAA9 /* Auth */,
 				470723122CBC1BF10046469F /* BaseResponse.swift */,
-				4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */,
-				470723102CBC1B0A0046469F /* LoginResponseDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -591,6 +596,23 @@
 				470723042CBC180D0046469F /* NetworkError.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		47F634FC2CC3E8500034EAA9 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */,
+				470723102CBC1B0A0046469F /* LoginResponseDTO.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		47F635002CC3E9700034EAA9 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -792,10 +814,12 @@
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
+				47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */,
 				4763FFAF2CB90AE000990336 /* AppState.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */,
 				475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */,
+				47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */,
 				478933792CADBDA500E1D89E /* SignInView.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
@@ -990,6 +1014,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1034,6 +1059,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

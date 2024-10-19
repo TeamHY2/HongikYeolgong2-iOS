@@ -1,40 +1,40 @@
 //
-//  authEndpoint.swift
+//  UserEndpoint.swift
 //  HongikYeolgong2
 //
-//  Created by 권석기 on 10/13/24.
+//  Created by 권석기 on 10/19/24.
 //
 
 import Foundation
 
-/// 소셜로그인 관련 엔드포인트 정의
-enum AuthEndpoint: EndpointProtocol {
+/// 유저  관련 엔드포인트 정의
+enum UserEndpoint: EndpointProtocol {
     
     /// 애플 소셜 로그인
-    case login(loginReqDto: LoginRequestDTO)
+    case checkUserNickname(nickname: String)
 }
 
-extension AuthEndpoint {
+extension UserEndpoint {
     var baseURL: URL? {
-        URL(string: "\(baseUrl)/auth")
+        URL(string: "\(baseUrl)/user")
     }
     var path: String {
         switch self {
-        case .login:
+        case .checkUserNickname:
             "/login"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .login:
-                .post
+        case .checkUserNickname:
+                .get
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .login:
+        case let .checkUserNickname(nickname):
             nil
         }
     }
@@ -48,8 +48,8 @@ extension AuthEndpoint {
     
     var body: Data? {
         switch self {
-        case let .login(loginReqDto):
-            return loginReqDto.toData()
+        case .checkUserNickname:
+            return nil
         }
     }
 }

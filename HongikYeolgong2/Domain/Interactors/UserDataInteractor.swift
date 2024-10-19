@@ -9,8 +9,9 @@ import Foundation
 import Combine
 
 protocol UserDataInteractor: AnyObject {
-    func login(idToken: String)
+    func login(email: String, idToken: String)
     func logout()
+    func checkUserNickname(nickname: String)
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -24,9 +25,9 @@ final class UserDataInteractorImpl: UserDataInteractor {
         self.authRepository = authRepository
     }
     
-    func login(idToken: String) {
+    func login(email: String, idToken: String) {
         
-        let loginReqDto: LoginRequestDTO = .init(socialPlatform: SocialLoginType.apple.rawValue, idToken: idToken)
+        let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
@@ -37,5 +38,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
     
     func logout() {
         appState[\.appLaunchState] = .notAuthenticated
+    }
+    
+    func checkUserNickname(nickname: String) {
+        authRepository
+            .checkUserNickname(nickname: nickname)            
     }
 }
