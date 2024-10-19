@@ -12,12 +12,16 @@ struct SignInView: View {
     @Environment(\.injected) var injected: DIContainer
     @State private var signupData = SignupData()
     @State private var isSubmitButtonAvailable = false
+    @State private var isCheckButtonAvailable = false
     
     var body: some View {
         content
-            .onChange(of: signupData.nickname) { _ in isSubmitButtonAvailable = false }
-            .onChange(of: signupData.isNicknameAvailable) { isSubmitButtonAvailable = $0 }
+            .onChange(of: signupData.nickname, perform: { validateUserNickname(nickname: $0)})
+            .onChange(of: signupData.nicknameStatus, perform: { isCheckButtonAvailable = $0 == .available })
             .toolbar(.hidden, for: .navigationBar)
+            .onChange(of: signupData.nicknameStatus) { newValue in
+                print(newValue, "중복체크 버튼 활성화!!")
+            }
     }
 }
 
@@ -65,14 +69,14 @@ private extension SignInView {
             HStack {
                 HY2TextField(text: $signupData.nickname,
                              placeholder: "닉네임을 입력해주세요",
-                             isError: false)
+                             isError: signupData.nicknameStatus.isError)
                 
                 duplicateCheckButton
             }
             
-            Text("* 한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요.")
+            Text(signupData.nicknameStatus.message)
                 .font(.pretendard(size: 12, weight: .regular))
-                .foregroundStyle(.gray400)
+                .foregroundStyle(signupData.nicknameStatus.textColor)
                 .padding(.top, 4.adjustToScreenHeight)
         }
     }
@@ -85,7 +89,8 @@ private extension SignInView {
                 .foregroundColor(.white)
         }
         .frame(width: 88.adjustToScreenWidth)
-        .background(.blue100)
+        .background(isCheckButtonAvailable ? .blue100 : .blue400)
+        .disabled(!isCheckButtonAvailable)
         .cornerRadius(8)
     }
     
@@ -111,7 +116,7 @@ private extension SignInView {
                   style: .imageButton(image: isSubmitButtonAvailable ? .submitButtonEnable : .submitButtonDisable)) {
             // Submit action
         }
-        .padding(.bottom, 20.adjustToScreenHeight)
+                  .padding(.bottom, 20.adjustToScreenHeight)
     }
 }
 
@@ -124,6 +129,40 @@ private extension SignInView {
             isValidate: $signupData.isNicknameAvailable
         )
     }
+    
+    func validateUserNickname(nickname: String) {
+        if (!nickname.isEmpty && nickname.count < 2) || (!nickname.isEmpty && nickname.count > 8) {
+            signupData.nicknameStatus = .notAllowedLength
+        } else if nickname.contains(" ") {
+            signupData.nicknameStatus = .specialCharactersAndSpaces
+        } else if checkSpecialCharacter(nickname) {
+            signupData.nicknameStatus = .specialCharactersAndSpaces
+        } else if checkKoreanLang(nickname) {
+            signupData.nicknameStatus = .none
+        } else {
+            signupData.nicknameStatus = .unknown
+        }
+    }
+    
+    func checkSpecialCharacter(_ input: String) -> Bool {
+        let pattern: String = "[!\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~€£¥₩¢₹©®™§¶°•※≡∞≠≈‽✓✔✕✖←→↑↓↔↕↩↪↖↗↘↙ñ¡¿éèêëçäöüßàìòùåøæ]"
+        
+        if let _ = input.range(of: pattern, options: .regularExpression)  {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func checkKoreanLang(_ input: String) -> Bool {
+        let pattern = "^[가-힣a-zA-Z\\s]*$"
+        
+        if let _ = input.range(of: pattern, options: .regularExpression)  {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 // MARK: - SignupData
@@ -133,6 +172,59 @@ private extension SignInView {
         var nickname = ""
         var inputDepartment = ""
         var department: Department = .appliedArts
+        var nicknameStatus: NicknameStatus = .none
         var isNicknameAvailable = false
+    }
+}
+
+// MARK: - Nickname Status
+
+private extension SignInView {
+    enum NicknameStatus {
+        case none // 기본상태
+        case specialCharactersAndSpaces // 특수문자, 공백
+        case notAllowedLength // 글자수 오류
+        case available // 사용가능
+        case alreadyUse // 사용중인 닉네임
+        case unknown // 그외
+        
+        var message: String {
+            switch self {
+            case .none:
+                "*한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+            case .specialCharactersAndSpaces:
+                "*특수문자와 띄어쓰기를 사용할 수 없어요."
+            case .notAllowedLength:
+                "*한글, 영어, 숫자를 포함하여 2~8자를 입력해 주세요."
+            case .available:
+                "*닉네임을 사용할 수 있어요."
+            case .alreadyUse:
+                "*이미 사용중인 닉네임 입니다."
+            case .unknown:
+                "*올바른 형식의 닉네임이 아닙니다."
+            }
+        }
+        
+        var textColor: Color {
+            switch self {
+            case .none:
+                    .gray400
+            case .available:
+                    .blue100
+            default:
+                    .yellow300
+            }
+        }
+        
+        var isError: Bool {
+            switch self {
+            case .none:
+                false
+            case .available:
+                false
+            default:
+                true
+            }
+        }
     }
 }
