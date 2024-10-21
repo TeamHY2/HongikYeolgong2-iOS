@@ -83,8 +83,84 @@ struct RecordView: View {
                     CalendarCell(dayInfo: $0)
                 }
             }
+            
+            Spacer()
+            
+            HStack(spacing: 14.adjustToScreenWidth){
+                ZStack(alignment: .leading){
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.gray800)
+                        .frame(width: 150.adjustToScreenWidth, height: 88.adjustToScreenHeight)
+                    
+                    VStack(alignment: .leading,spacing: 0){
+                        Text("연간")
+                            .font(.pretendard(size: 16, weight: .regular), lineHeight: 26)
+                            .foregroundStyle(Color.gray200)
+                        
+                        Text("200H 4M")
+                            .font(.pretendard(size: 16, weight: .bold), lineHeight: 26)
+                            .foregroundStyle(Color.gray100)
+                    }
+                    .padding(.leading, 28.adjustToScreenWidth)
+                }
+                
+                ZStack(alignment: .leading){
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.gray800)
+                        .frame(width: 150.adjustToScreenWidth, height: 88.adjustToScreenHeight)
+                    
+                    VStack(alignment: .leading,spacing: 0){
+                        Text("연간")
+                            .font(.pretendard(size: 16, weight: .regular), lineHeight: 26)
+                            .foregroundStyle(Color.gray200)
+                        
+                        Text("200H 4M")
+                            .font(.pretendard(size: 16, weight: .bold), lineHeight: 26)
+                            .foregroundStyle(Color.gray100)
+                    }
+                    .padding(.leading, 28.adjustToScreenWidth)
+                }
+            }
+            .padding(.bottom, 14.adjustToScreenHeight)
+            
+            HStack(spacing: 14.adjustToScreenWidth){
+                ZStack(alignment: .leading){
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.gray800)
+                        .frame(width: 150.adjustToScreenWidth, height: 88.adjustToScreenHeight)
+                    
+                    VStack(alignment: .leading,spacing: 0){
+                        Text("연간")
+                            .font(.pretendard(size: 16, weight: .regular), lineHeight: 26)
+                            .foregroundStyle(Color.gray200)
+                        
+                        Text("200H 4M")
+                            .font(.pretendard(size: 16, weight: .bold), lineHeight: 26)
+                            .foregroundStyle(Color.gray100)
+                    }
+                    .padding(.leading, 28.adjustToScreenWidth)
+                }
+                
+                ZStack(alignment: .leading){
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(Color.gray800)
+                        .frame(width: 150.adjustToScreenWidth, height: 88.adjustToScreenHeight)
+                    
+                    VStack(alignment: .leading,spacing: 0){
+                        Text("연간")
+                            .font(.pretendard(size: 16, weight: .regular), lineHeight: 26)
+                            .foregroundStyle(Color.gray200)
+                        
+                        Text("200H 4M")
+                            .font(.pretendard(size: 16, weight: .bold), lineHeight: 26)
+                            .foregroundStyle(Color.gray100)
+                    }
+                    .padding(.leading, 28.adjustToScreenWidth)
+                }
+            }
         }
         .padding(.horizontal, 33.adjustToScreenWidth)
+        .padding(.vertical, 33.adjustToScreenHeight)
         .onAppear {
             currentMonth = makeMonth(date: seletedDate, roomUsageInfo: studyRoomUsageList)
         }
