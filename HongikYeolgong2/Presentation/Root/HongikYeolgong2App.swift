@@ -16,8 +16,9 @@ struct HongikYeolgong2App: App {
         WindowGroup {
             let container: DIContainer = enviroment.container
             
-            InitialView()
-                .inject(container)
+//            InitialView()
+//                .inject(container)
+            MainTabView()
         }
     }
 }

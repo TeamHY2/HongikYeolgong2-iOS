@@ -20,6 +20,7 @@ struct RecordView: View {
     
     @State var currentMonth = [Day]()
     @State var seletedDate = Date()
+    @State var studyRoomUsageList = [StudyRoomUsage]()
     
     private let columns = [GridItem(.flexible()),
                            GridItem(.flexible()),
@@ -47,7 +48,7 @@ struct RecordView: View {
                 Spacer()
                 HStack {
                     Button(action: {
-                       
+                        changeMonth(.prev)
                     }) {
                         Image(.icCalendarLeft)
                     }
@@ -55,7 +56,7 @@ struct RecordView: View {
                     Spacer().frame(width: 7.adjustToScreenWidth)
                     
                     Button(action: {
-                       
+                        changeMonth(.next)
                     }) {
                         Image(.icCalendarRight)
                     }
@@ -82,6 +83,10 @@ struct RecordView: View {
                     CalendarCell(dayInfo: $0)
                 }
             }
+        }
+        .padding(.horizontal, 33.adjustToScreenWidth)
+        .onAppear {
+            currentMonth = makeMonth(date: seletedDate, roomUsageInfo: studyRoomUsageList)
         }
     }
 }
@@ -128,6 +133,37 @@ extension RecordView {
             newDay.usageRecord.append(.init(date: .now, duration: 0))
             return newDay
         }
+    }
+    
+    func changeMonth(_ moveType: MoveType) {
+        var currentDate: Date!
+        
+        switch moveType {
+        case .current:
+            currentDate = Date()
+        case .next:
+            currentDate = plusMonth(date: seletedDate)
+        case .prev:
+            currentDate = minusMonth(date: seletedDate)
+        }
+        
+        // 현재보다 더 미래의 월이 선택된 경우
+        let maximumDateValidate = calendar.compare(currentDate, to: Date(), toGranularity: .month)
+        
+        // 날짜이동 최소값 날짜생성
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM"
+        let minimumDate = formatter.date(from: "2021/01")!
+        let mimumDateValidate = calendar.compare(currentDate, to: minimumDate, toGranularity: .month)
+        
+        guard maximumDateValidate != .orderedDescending,
+              mimumDateValidate != .orderedAscending else {
+            return
+        }
+        
+        seletedDate = currentDate
+        
+        currentMonth = makeMonth(date: seletedDate, roomUsageInfo: studyRoomUsageList)
     }
     
     func makeMonth(date: Date, roomUsageInfo: [StudyRoomUsage]) -> [Day] {
