@@ -86,7 +86,7 @@ struct OnboardingView: View {
     private var hiddenNavigationLink: some View {
         NavigationLink(
             "SignIn",
-            destination: SignInView(),
+            destination: SignUpView(),
             isActive: $isNavigation
         )
         .opacity(0)

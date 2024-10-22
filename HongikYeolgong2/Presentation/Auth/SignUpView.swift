@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct SignInView: View {
+struct SignUpView: View {
     @Environment(\.injected) var injected: DIContainer
     @State private var signupData = SignupData()
     @State private var isSubmitButtonAvailable = false
@@ -16,18 +16,15 @@ struct SignInView: View {
     
     var body: some View {
         content
-            .onChange(of: signupData.nickname, perform: { validateUserNickname(nickname: $0)})
-            .onChange(of: signupData.nicknameStatus, perform: { isCheckButtonAvailable = $0 == .available })
+            .onChange(of: signupData.nickname, perform: { validateUserNickname(nickname: $0)} )
+            .onChange(of: signupData.nicknameStatus, perform: { isCheckButtonAvailable = $0 == .none })
             .toolbar(.hidden, for: .navigationBar)
-            .onChange(of: signupData.nicknameStatus) { newValue in
-                print(newValue, "중복체크 버튼 활성화!!")
-            }
     }
 }
 
 // MARK: - Main Content
 
-private extension SignInView {
+private extension SignUpView {
     var content: some View {
         ZStack {
             Color.dark.edgesIgnoringSafeArea(.all)
@@ -44,7 +41,7 @@ private extension SignInView {
 
 // MARK: - Subviews
 
-private extension SignInView {
+private extension SignUpView {
     var titleView: some View {
         Text("회원가입")
             .font(.suite(size: 18, weight: .bold))
@@ -82,7 +79,7 @@ private extension SignInView {
     }
     
     var duplicateCheckButton: some View {
-        Button(action: checkUserNickname) {
+        Button(action: requestCheckNickname) {
             Text("중복확인")
                 .font(.pretendard(size: 16, weight: .regular))
                 .frame(maxWidth: .infinity, maxHeight: 48.adjustToScreenHeight)
@@ -122,8 +119,8 @@ private extension SignInView {
 
 // MARK: - Helper Methods
 
-private extension SignInView {
-    func checkUserNickname() {
+private extension SignUpView {
+    func requestCheckNickname() {
         injected.interactors.userDataInteractor.checkUserNickname(
             nickname: signupData.nickname,
             isValidate: $signupData.isNicknameAvailable
@@ -167,7 +164,7 @@ private extension SignInView {
 
 // MARK: - SignupData
 
-private extension SignInView {
+private extension SignUpView {
     struct SignupData {
         var nickname = ""
         var inputDepartment = ""
@@ -179,7 +176,7 @@ private extension SignInView {
 
 // MARK: - Nickname Status
 
-private extension SignInView {
+private extension SignUpView {
     enum NicknameStatus {
         case none // 기본상태
         case specialCharactersAndSpaces // 특수문자, 공백

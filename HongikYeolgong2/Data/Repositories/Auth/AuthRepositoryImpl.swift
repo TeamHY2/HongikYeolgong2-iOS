@@ -11,12 +11,12 @@ import Combine
 final class AuthRepositoryImpl: AuthRepository {
     
     /// 소셜로그인
-    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { promise in
+    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, Error> {
+        return Future<LoginResponseDTO, Error> { promise in
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
-                    promise(.success(response.data?.alreadyExist ?? false))
+                    promise(.success(response.data!))
                 } catch {
                     promise(.failure(error))
                 }
@@ -28,9 +28,11 @@ final class AuthRepositoryImpl: AuthRepository {
         return Future<Bool, Error> { promise in
             Task {
                 do {
-                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))                    
+                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
+                    print(response.data?.duplicate, "중복여부")
                     promise(.success(response.data?.duplicate ?? false))
-                } catch {
+                } catch let error as NetworkError {
+                    print(error.message)
                     promise(.failure(error))
                 }
             }

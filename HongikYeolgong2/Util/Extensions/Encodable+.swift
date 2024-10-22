@@ -19,3 +19,14 @@ extension Encodable {
         }
     }
 }
+
+extension Dictionary {
+    func toData() -> Data? {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: self)            
+            return data
+        } catch {
+            return nil
+        }
+    }
+}
