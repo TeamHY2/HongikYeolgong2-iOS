@@ -32,13 +32,14 @@ final class UserDataInteractorImpl: UserDataInteractor {
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
-            .replaceError(with: false)
-            .receive(on: DispatchQueue.main)            
-            .sink { [weak self] in
+            .replaceError(with: .init(accessToken: "", alreadyExist: false))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] loginResDto in
                 guard let self = self else { return }
-                appState[\.userData.isLoggedIn] = $0
-                appState[\.appLaunchState] = $0 ? .authenticated : .notAuthenticated
-                $0 ? (isNavigation.wrappedValue = false) : (isNavigation.wrappedValue = true)
+                appState[\.userData.isLoggedIn] = loginResDto.alreadyExist
+                appState[\.appLaunchState] = loginResDto.alreadyExist ? .authenticated : .notAuthenticated
+                loginResDto.alreadyExist ? (isNavigation.wrappedValue = false) : (isNavigation.wrappedValue = true)
+                KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
             }
             .store(in: cancleBag)
     }

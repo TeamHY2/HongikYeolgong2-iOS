@@ -16,7 +16,7 @@ enum UserEndpoint: EndpointProtocol {
 
 extension UserEndpoint {
     var baseURL: URL? {
-        URL(string: "\(baseUrl)/user")
+        URL(string: "\(SecretKeys.baseUrl)/user")
     }
     var path: String {
         switch self {
@@ -28,14 +28,14 @@ extension UserEndpoint {
     var method: NetworkMethod {
         switch self {
         case .checkUserNickname:
-                .get
+                .post
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case let .checkUserNickname(nickname):
-            [.init(name: "nickname", value: nickname)]
+        case .checkUserNickname:
+            nil
         }
     }
     
@@ -48,8 +48,9 @@ extension UserEndpoint {
     
     var body: Data? {
         switch self {
-        case .checkUserNickname:
-            return nil
+        case let .checkUserNickname(nickname):
+            let parameter: [String: Any] = ["nickname": nickname]            
+            return parameter.toData()
         }
     }
 }
