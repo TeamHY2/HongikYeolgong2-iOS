@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 protocol UserDataInteractor: AnyObject {
-    func login(email: String, idToken: String)
+    func login(email: String, idToken: String, isNavigation: Binding<Bool>)
     func logout()
     func checkUserNickname(nickname: String, isValidate: Binding<Bool>)
 }
@@ -26,17 +26,21 @@ final class UserDataInteractorImpl: UserDataInteractor {
         self.authRepository = authRepository
     }
     
-    func login(email: String, idToken: String) {
+    func login(email: String, idToken: String, isNavigation: Binding<Bool>) {
         
         let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .replaceError(with: false)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in self?.appState[\.userData.isLoggedIn] = $0 }
+            .receive(on: DispatchQueue.main)            
+            .sink { [weak self] in
+                guard let self = self else { return }
+                appState[\.userData.isLoggedIn] = $0
+                appState[\.appLaunchState] = $0 ? .authenticated : .notAuthenticated
+                $0 ? (isNavigation.wrappedValue = false) : (isNavigation.wrappedValue = true)
+            }
             .store(in: cancleBag)
-                
     }
     
     func logout() {
