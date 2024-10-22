@@ -15,6 +15,7 @@ class AuthenticationService: NSObject, ASAuthorizationControllerDelegate {
               let idToken = String(data: idTokenData, encoding: .utf8) else {
             return nil
         }
+        
         let email = appleIDCredential.email ?? ""
       
         return (email, idToken)

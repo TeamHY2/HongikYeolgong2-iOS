@@ -15,9 +15,8 @@ struct InitialView: View {
     
     var body: some View {
         Group {
-//            content
-//                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
-            SignInView()
+            content
+                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }            
         }
     }
     
