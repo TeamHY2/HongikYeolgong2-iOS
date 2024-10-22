@@ -10,14 +10,13 @@ struct OnboardingView: View {
     
     // MARK: - States
     @State private var tabIndex = 0
-    @State private var shouldShowMainView = false
     @State private var shouldShowSignUpView = false
+    @State private var isNavigation = false
     
     // MARK: - Body
     var body: some View {
         NavigationView {
             content
-                .onReceive(updateIsLoggedIn) { handleNavigation(isLoggedIn: $0) }
         }
     }
     
@@ -88,7 +87,7 @@ struct OnboardingView: View {
         NavigationLink(
             "SignIn",
             destination: SignInView(),
-            isActive: $shouldShowSignUpView
+            isActive: $isNavigation
         )
         .opacity(0)
         .frame(width: 0, height: 0)
@@ -97,12 +96,9 @@ struct OnboardingView: View {
 
 // MARK: - Helper Methods
 private extension OnboardingView {
-    func handleNavigation(isLoggedIn: Bool) {
-        if isLoggedIn {
-            
-        } else {
-            shouldShowSignUpView = true
-        }
+    func performLogin(email: String, idToken: String) {
+        injected.interactors.userDataInteractor
+            .login(email: email, idToken: idToken, isNavigation: $isNavigation)
     }
 }
 
@@ -118,18 +114,10 @@ private extension OnboardingView {
             guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
                 return
             }
-            injected.interactors.userDataInteractor.login(email: email, idToken: idToken)
+            
+            performLogin(email: email, idToken: idToken)
         case .failure:
             break
         }
-    }
-}
-
-// MARK: - Publishers
-private extension OnboardingView {
-    var updateIsLoggedIn: AnyPublisher<Bool, Never> {
-        injected.appState.updates(for: \.userData.isLoggedIn)     
-            .dropFirst(1)
-            .eraseToAnyPublisher()
     }
 }
