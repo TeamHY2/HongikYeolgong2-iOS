@@ -16,12 +16,11 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
-                    promise(.success(response.code == 200))
+                    promise(.success(response.data?.alreadyExist ?? false))
                 } catch {
                     promise(.failure(error))
                 }
-            }
-            
+            }            
         }.eraseToAnyPublisher()
     }
     

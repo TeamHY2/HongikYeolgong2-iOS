@@ -33,8 +33,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .replaceError(with: false)
-            .sink  { _ in }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in self?.appState[\.userData.isLoggedIn] = $0 }
             .store(in: cancleBag)
+                
     }
     
     func logout() {
@@ -45,6 +47,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
         authRepository
             .checkUserNickname(nickname: nickname)
             .replaceError(with: false)
+            .receive(on: DispatchQueue.main)
             .sink { isValidate.wrappedValue = $0 }
             .store(in: cancleBag)
     }
