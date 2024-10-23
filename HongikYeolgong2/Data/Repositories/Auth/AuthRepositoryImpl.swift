@@ -10,37 +10,43 @@ import Combine
 
 final class AuthRepositoryImpl: AuthRepository {
     
-    /// 소셜로그인
-    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, Error> {
-        return Future<LoginResponseDTO, Error> { promise in
+    ///  소셜로그인
+    /// - Parameter loginReqDto: 로그인 요청 DTO(이메일, identityToken)
+    /// - Returns: 로그인 응답 DTO(accessToken, 가입여부)
+    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, NetworkError> {
+        return Future<LoginResponseDTO, NetworkError> { promise in
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.data!))
                 } catch let error as NetworkError {
-                    print(error.message)
                     promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
     }
     
-    func checkUserNickname(nickname: String) -> AnyPublisher<Bool, Error> {
-        return Future<Bool, Error> { promise in
+    /// 닉네임 중복체크
+    /// - Parameter nickname: 닉네임
+    /// - Returns: 중복체크 여부
+    func checkUserNickname(nickname: String) -> AnyPublisher<Bool, NetworkError> {
+        return Future<Bool, NetworkError> { promise in
             Task {
                 do {
                     let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
                     promise(.success(response.data?.duplicate ?? false))
                 } catch let error as NetworkError {
-                    print(error.message)
                     promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
     }
     
-    func signUp(signUpReqDto: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error> {
-        return Future<SignUpResponseDTO, Error> { promise in
+    /// 회원가입을 요청합니다.
+    /// - Parameter signUpReqDto: 회원가입 요청 DTO(닉네임, 학과)
+    /// - Returns: 회원가입 응답 DTO(유저정보)
+    func signUp(signUpReqDto: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, NetworkError> {
+        return Future<SignUpResponseDTO, NetworkError> { promise in
             Task {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))
@@ -53,14 +59,16 @@ final class AuthRepositoryImpl: AuthRepository {
         .eraseToAnyPublisher()
     }
     
-    func getUser() -> AnyPublisher<SignUpResponseDTO, any Error> {
-        return Future<SignUpResponseDTO, Error> { promise in
+    /// - Returns: 내정보 조회
+    func getUser() -> AnyPublisher<SignUpResponseDTO,  NetworkError> {
+        return Future<SignUpResponseDTO, NetworkError> { promise in
             Task {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUser)
                     promise(.success(response.data!))
                 } catch let error as NetworkError {
                     promise(.failure(error))
+                    
                 }
             }
         }
