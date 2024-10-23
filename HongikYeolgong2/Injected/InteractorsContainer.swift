@@ -16,7 +16,8 @@ extension DIContainer {
         }
         
         static let `default` = Self(userDataInteractor: UserDataInteractorImpl(appState: Store<AppState>(AppState()),
-                                                                               authRepository: AuthRepositoryImpl()
+                                                                               authRepository: AuthRepositoryImpl(),
+                                                                               authenticationService: AuthenticationServiceImpl()
                                                                               ))
     }
 }

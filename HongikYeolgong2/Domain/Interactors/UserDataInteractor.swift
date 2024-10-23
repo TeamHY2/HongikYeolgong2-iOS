@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 import Combine
+import AuthenticationServices
 
 protocol UserDataInteractor: AnyObject {
-    func login(email: String, idToken: String)
+    func requestAppleLogin(_ authorization: ASAuthorization)
     func signUp(nickname: String, department: Department)
     func logout()
     func getUser()
@@ -22,13 +23,23 @@ final class UserDataInteractorImpl: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
+    private let authenticationService: AuthenticationService
     
-    init(appState: Store<AppState>, authRepository: AuthRepository) {
+    init(appState: Store<AppState>, 
+         authRepository: AuthRepository,
+         authenticationService: AuthenticationService) {
         self.appState = appState
         self.authRepository = authRepository
+        self.authenticationService = authenticationService
     }
     
-    func login(email: String, idToken: String) {
+    
+    ///  애플로그인을 요청합니다.
+    /// - Parameter authorization: ASAuthorization
+    func requestAppleLogin(_ authorization: ASAuthorization) {
+        guard let (email, idToken) = authenticationService.requestAppleLogin(authorization) else {
+            return
+        }
         
         let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
         
@@ -47,6 +58,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .store(in: cancleBag)
     }
     
+    /// 회원가입을 요청합니다.
+    /// - Parameters:
+    ///   - nickname: 닉네임
+    ///   - department: 학과
     func signUp(nickname: String, department: Department) {
         authRepository
             .signUp(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
@@ -63,6 +78,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
         appState[\.appLaunchState] = .notAuthenticated
     }
     
+    
+    /// 닉네임 중복체크
+    /// - Parameters:
+    ///   - nickname: 닉네임
+    ///   - isValidate: 중복여부
     func checkUserNickname(nickname: String, isValidate: Binding<Bool>) {
         authRepository
             .checkUserNickname(nickname: nickname)
@@ -71,7 +91,8 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .sink { isValidate.wrappedValue = $0 }
             .store(in: cancleBag)
     }
-    
+        
+    /// 로그인된 유저정보를 가져옵니다.
     func getUser() {
         authRepository
             .getUser()
@@ -88,4 +109,6 @@ final class UserDataInteractorImpl: UserDataInteractor {
     receiveValue: { _ in }
             .store(in: cancleBag)
     }
+    
+    
 }

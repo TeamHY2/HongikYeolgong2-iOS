@@ -93,14 +93,6 @@ struct OnboardingView: View {
     }
 }
 
-// MARK: - Helper Methods
-private extension OnboardingView {
-    func performLogin(email: String, idToken: String) {
-        injected.interactors.userDataInteractor
-            .login(email: email, idToken: idToken)
-    }
-}
-
 // MARK: - Apple Login Methods
 private extension OnboardingView {
     func onRequestAppleLogin(_ request: ASAuthorizationAppleIDRequest) {
@@ -110,11 +102,8 @@ private extension OnboardingView {
     func onCompleteAppleLogin(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
-            guard let (email, idToken) =  injected.services.authenticationService.requestAppleLogin(authorization) else {
-                return
-            }
-            
-            performLogin(email: email, idToken: idToken)
+            injected.interactors.userDataInteractor
+                .requestAppleLogin(authorization)
         case .failure:
             break
         }
