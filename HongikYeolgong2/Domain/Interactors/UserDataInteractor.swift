@@ -13,6 +13,7 @@ protocol UserDataInteractor: AnyObject {
     func login(email: String, idToken: String, isNavigation: Binding<Bool>)
     func signUp(nickname: String, department: Department)
     func logout()
+    func getUser()
     func checkUserNickname(nickname: String, isValidate: Binding<Bool>)
 }
 
@@ -68,6 +69,23 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .replaceError(with: false)
             .receive(on: DispatchQueue.main)
             .sink { isValidate.wrappedValue = $0 }
+            .store(in: cancleBag)
+    }
+    
+    func getUser() {
+        authRepository
+            .getUser()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    appState[\.appLaunchState] = .authenticated                    
+                case let .failure(error):
+                    appState[\.appLaunchState] = .notAuthenticated
+                }
+            }
+    receiveValue: { _ in }
             .store(in: cancleBag)
     }
 }
