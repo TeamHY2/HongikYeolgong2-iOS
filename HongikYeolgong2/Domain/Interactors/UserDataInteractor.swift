@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 protocol UserDataInteractor: AnyObject {
-    func login(email: String, idToken: String, isNavigation: Binding<Bool>)
+    func login(email: String, idToken: String)
     func signUp(nickname: String, department: Department)
     func logout()
     func getUser()
@@ -28,7 +28,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
         self.authRepository = authRepository
     }
     
-    func login(email: String, idToken: String, isNavigation: Binding<Bool>) {
+    func login(email: String, idToken: String) {
         
         let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
         
@@ -41,7 +41,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 
                 appState[\.userData.isLoggedIn] = loginResDto.alreadyExist
                 appState[\.appLaunchState] = loginResDto.alreadyExist ? .authenticated : .notAuthenticated
-                loginResDto.alreadyExist ? (isNavigation.wrappedValue = false) : (isNavigation.wrappedValue = true)
+                appState[\.routing.onboarding.signUp] = true
                 KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
             })
             .store(in: cancleBag)
@@ -80,7 +80,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 guard let self = self else { return }
                 switch completion {
                 case .finished:
-                    appState[\.appLaunchState] = .authenticated                    
+                    appState[\.appLaunchState] = .authenticated
                 case let .failure(error):
                     appState[\.appLaunchState] = .notAuthenticated
                 }
