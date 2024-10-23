@@ -29,8 +29,7 @@ struct WeeklyStudy: View {
                     Spacer()
                 }
             }
-        }
-        .padding(.top, 33)
+        }        
     }
 }
 

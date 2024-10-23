@@ -17,11 +17,11 @@ struct StudyTimerView: View {
             Text("03:52:00")
                 .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
                 .foregroundColor(.gray100)
-                .padding(.top, 11)
+                .padding(.top, 11.adjustToScreenHeight)
             
             LinearProgressView(shape: Rectangle(), value: 0.3)
-                .frame(height: 8)
-                .padding(.top, 16)
+                .frame(height: 8.adjustToScreenHeight)
+                .padding(.top, 16.adjustToScreenHeight)
         }
     }
 }
