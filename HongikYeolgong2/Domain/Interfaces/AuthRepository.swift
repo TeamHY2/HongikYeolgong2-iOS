@@ -11,4 +11,5 @@ protocol AuthRepository {
     func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, Error>
     func signUp(signUpReqDto: SignUpRequestDTO) -> AnyPublisher<SignUpResponseDTO, Error>
     func checkUserNickname(nickname: String) -> AnyPublisher<Bool, Error>
+    func getUser() -> AnyPublisher<SignUpResponseDTO, Error>
 }

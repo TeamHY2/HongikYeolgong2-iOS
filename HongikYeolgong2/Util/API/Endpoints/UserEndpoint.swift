@@ -15,6 +15,9 @@ enum UserEndpoint: EndpointProtocol {
     
     /// 회원가입
     case signUp(signUpReqDto: SignUpRequestDTO)
+    
+    /// 유저정보
+    case getUser
 }
 
 extension UserEndpoint {
@@ -27,6 +30,8 @@ extension UserEndpoint {
             "/duplicate-nickname"
         case .signUp:
             "/join"
+        case .getUser:
+            "/me"
         }
     }
     
@@ -34,12 +39,14 @@ extension UserEndpoint {
         switch self {
         case .checkUserNickname, .signUp:
                 .post
+        case .getUser:
+                .get
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .checkUserNickname, .signUp:
+        case .checkUserNickname, .signUp, .getUser:
             nil
         }
     }
@@ -58,6 +65,8 @@ extension UserEndpoint {
             return parameter.toData()
         case let .signUp(signUpReqDto):
             return signUpReqDto.toData()
+        case .getUser:
+            return nil
         }
     }
 }

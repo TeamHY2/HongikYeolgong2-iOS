@@ -43,7 +43,21 @@ final class AuthRepositoryImpl: AuthRepository {
         return Future<SignUpResponseDTO, Error> { promise in
             Task {
                 do {
-                    let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))                    
+                    let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))
+                    promise(.success(response.data!))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getUser() -> AnyPublisher<SignUpResponseDTO, any Error> {
+        return Future<SignUpResponseDTO, Error> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUser)
                     promise(.success(response.data!))
                 } catch let error as NetworkError {
                     promise(.failure(error))

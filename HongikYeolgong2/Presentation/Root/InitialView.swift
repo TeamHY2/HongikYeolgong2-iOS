@@ -42,9 +42,7 @@ private extension InitialView {
 
 private extension InitialView {
     func appLaunchCompleted() {        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            injected.interactors.userDataInteractor.logout()
-        }
+        injected.interactors.userDataInteractor.getUser()
     }
 }
 
