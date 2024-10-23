@@ -16,7 +16,8 @@ extension AppEnviroment {
         let appState = Store<AppState>(AppState())
         let authRepository = AuthRepositoryImpl()
         let interactors: DIContainer.Interactors = .init(userDataInteractor: UserDataInteractorImpl(appState: appState, authRepository: authRepository))
-        let diContainer = DIContainer(appState: appState, interactors: interactors)
+        let services: DIContainer.Services = .init(authenticationService: AuthenticationServiceImpl())
+        let diContainer = DIContainer(appState: appState, interactors: interactors, services: services)
         return .init(container: diContainer)
     }
 }
