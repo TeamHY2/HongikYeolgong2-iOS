@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Department: String, CaseIterable {
+enum Department: String, CaseIterable {    
     case constructionUrban = "건설도시공학부"
     case civilEnvironmental = "건설환경공학과"
     case architecture = "건축학부"

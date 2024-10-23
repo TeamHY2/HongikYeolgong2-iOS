@@ -23,38 +23,44 @@ final class UserDataInteractorImpl: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authenticationService: AuthenticationService
+    private let authService: AuthenticationService
     
-    init(appState: Store<AppState>, 
+    init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authenticationService: AuthenticationService) {
+         authService: AuthenticationService) {
         self.appState = appState
         self.authRepository = authRepository
-        self.authenticationService = authenticationService
+        self.authService = authService
     }
-    
     
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
-        guard let (email, idToken) = authenticationService.requestAppleLogin(authorization) else {
+        guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
             return
         }
         
         let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
-        
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in}
-                  , receiveValue: { [weak self] loginResDto in
-                guard let self = self else { return }
-                
-                appState[\.userData.isLoggedIn] = loginResDto.alreadyExist
-                appState[\.appLaunchState] = loginResDto.alreadyExist ? .authenticated : .notAuthenticated
-                appState[\.routing.onboarding.signUp] = true
-                KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
-            })
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] loginResDto in
+                    guard let self = self else { return }
+                    
+                    let isAlreadyExists = loginResDto.alreadyExist
+                    
+                    // 회원가입 여부에 따라서 화면분기
+                    if isAlreadyExists {
+                        appState[\.appLaunchState] = .authenticated
+                    } else {
+                        appState[\.routing.onboarding.signUp] = true
+                    }
+                    
+                    KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
+                }
+            )
             .store(in: cancleBag)
     }
     
@@ -66,18 +72,21 @@ final class UserDataInteractorImpl: UserDataInteractor {
         authRepository
             .signUp(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in},
-                  receiveValue: { [weak self] signUpResDto in
-                guard let self = self else { return }
-                appState[\.appLaunchState] = .authenticated
-            })
+            .sink(
+                receiveCompletion: { _ in },
+                receiveValue: { [weak self] _ in
+                    guard let self = self else { return }
+                    appState[\.appLaunchState] = .authenticated
+                }
+            )
             .store(in: cancleBag)
     }
     
+    /// 로그아웃
     func logout() {
         appState[\.appLaunchState] = .notAuthenticated
+        KeyChainManager.deleteItem(key: .accessToken)
     }
-    
     
     /// 닉네임 중복체크
     /// - Parameters:
@@ -91,24 +100,24 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .sink { isValidate.wrappedValue = $0 }
             .store(in: cancleBag)
     }
-        
+    
     /// 로그인된 유저정보를 가져옵니다.
     func getUser() {
         authRepository
             .getUser()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                guard let self = self else { return }
-                switch completion {
-                case .finished:
-                    appState[\.appLaunchState] = .authenticated
-                case let .failure(error):
-                    appState[\.appLaunchState] = .notAuthenticated
-                }
-            }
-    receiveValue: { _ in }
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    guard let self = self else { return }
+                    switch completion {
+                    case .finished:
+                        appState[\.appLaunchState] = .authenticated
+                    case let .failure(error):
+                        appState[\.appLaunchState] = .notAuthenticated
+                    }
+                },
+                receiveValue: { _ in }
+            )
             .store(in: cancleBag)
     }
-    
-    
 }

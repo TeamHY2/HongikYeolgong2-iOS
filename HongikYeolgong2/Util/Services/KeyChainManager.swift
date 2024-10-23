@@ -9,12 +9,17 @@ import Foundation
 
 struct KeyChainManager {
     
+    /// KeyChainName을 enum으로 정의
     enum KeyChainName: String {
         case accessToken = "accessToken"
     }
     
     static let service = Bundle.main.bundleIdentifier ?? "com.teamHY2.HongikYeolgong2"
     
+    /// 키체인에 값을 추가합니다.
+    /// - Parameters:
+    ///   - key: KeyChainName
+    ///   - value: String
     static func addItem(key: KeyChainName, value: String) {
         
         let valueData = value.data(using: .utf8)!
@@ -35,6 +40,9 @@ struct KeyChainManager {
         }
     }
     
+    /// key에 해당하는 키체인 값을 가져옵니다.
+    /// - Parameters:
+    ///   - key: KeyChainName
     static func readItem(key: KeyChainName) -> String? {
         
         let query: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
@@ -58,6 +66,10 @@ struct KeyChainManager {
         return returnValue
     }
     
+    /// key에 해당하는 키값을 업데이트 합니다.
+    /// - Parameters:
+    ///   - key: KeyChainName
+    ///   - value: String
     static func updateItem(key: KeyChainName, value: String) {
         
         let valueData = value.data(using: .utf8)!
@@ -77,11 +89,14 @@ struct KeyChainManager {
         }
     }
     
-    static func deleteItem(key: String) {
+    
+    /// Key에 해당하는 키체인값을 삭제합니다.
+    /// - Parameter key: KeyChainName
+    static func deleteItem(key: KeyChainName) {
         
         let deleteQuery: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
                                       kSecAttrService: service,
-                                      kSecAttrAccount: key]
+                                      kSecAttrAccount: key.rawValue]
         
         let status = SecItemDelete(deleteQuery as CFDictionary)
         if status == errSecSuccess {

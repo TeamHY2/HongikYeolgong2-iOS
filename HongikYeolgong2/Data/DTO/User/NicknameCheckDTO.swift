@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 닉네임체크 응답 DTO
 struct NicknameCheckDTO: Decodable {
     let nickname: String
     let duplicate: Bool
