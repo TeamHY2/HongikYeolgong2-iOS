@@ -16,8 +16,8 @@ class AuthenticationService: NSObject, ASAuthorizationControllerDelegate {
             return nil
         }
         
-        let email = appleIDCredential.email ?? ""
-      
+        let email = appleIDCredential.email ?? "testtt"
+        
         return (email, idToken)
     }
 }

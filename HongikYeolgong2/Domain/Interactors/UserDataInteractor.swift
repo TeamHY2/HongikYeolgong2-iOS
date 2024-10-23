@@ -11,6 +11,7 @@ import Combine
 
 protocol UserDataInteractor: AnyObject {
     func login(email: String, idToken: String, isNavigation: Binding<Bool>)
+    func signUp(nickname: String, department: Department)
     func logout()
     func checkUserNickname(nickname: String, isValidate: Binding<Bool>)
 }
@@ -32,14 +33,27 @@ final class UserDataInteractorImpl: UserDataInteractor {
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
-            .replaceError(with: .init(accessToken: "", alreadyExist: false))
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] loginResDto in
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { [weak self] loginResDto in
                 guard let self = self else { return }
+                
                 appState[\.userData.isLoggedIn] = loginResDto.alreadyExist
                 appState[\.appLaunchState] = loginResDto.alreadyExist ? .authenticated : .notAuthenticated
                 loginResDto.alreadyExist ? (isNavigation.wrappedValue = false) : (isNavigation.wrappedValue = true)
                 KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
+            })
+            .store(in: cancleBag)
+    }
+    
+    func signUp(nickname: String, department: Department) {
+        authRepository
+            .signUp(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { _ in
+                
             }
             .store(in: cancleBag)
     }

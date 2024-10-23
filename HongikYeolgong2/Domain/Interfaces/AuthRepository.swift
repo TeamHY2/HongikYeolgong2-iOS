@@ -9,5 +9,6 @@ import Combine
 
 protocol AuthRepository {
     func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, Error>
+    func signUp(signUpReqDto: SignUpRequestDTO) -> AnyPublisher<Void, Error>
     func checkUserNickname(nickname: String) -> AnyPublisher<Bool, Error>
 }

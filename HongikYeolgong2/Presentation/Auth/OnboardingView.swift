@@ -16,7 +16,7 @@ struct OnboardingView: View {
     // MARK: - Body
     var body: some View {
         NavigationView {
-            content
+            content                
         }
     }
     

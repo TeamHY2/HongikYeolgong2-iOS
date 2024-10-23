@@ -21,7 +21,7 @@ extension AuthEndpoint {
     var path: String {
         switch self {
         case .login:
-            "/login"
+            "/login-apple"
         }
     }
     
