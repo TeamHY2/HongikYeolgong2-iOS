@@ -6,8 +6,6 @@ struct OnboardingView: View {
     // MARK: - Properties
     @Environment(\.injected) private var injected: DIContainer
     
-    private let authService = AuthenticationService()
-    
     // MARK: - States
     @State private var tabIndex = 0
     @State private var routingState: Routing = .init()
@@ -112,7 +110,7 @@ private extension OnboardingView {
     func onCompleteAppleLogin(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
-            guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
+            guard let (email, idToken) =  injected.services.authenticationService.requestAppleLogin(authorization) else {
                 return
             }
             
@@ -122,7 +120,6 @@ private extension OnboardingView {
         }
     }
 }
-
 
 // MARK: - Routing
 private extension OnboardingView {

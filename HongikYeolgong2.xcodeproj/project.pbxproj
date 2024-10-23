@@ -82,6 +82,7 @@
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
 		47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */; };
 		47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */; };
+		47F4F69B2CC8E24300543D24 /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F69A2CC8E24300543D24 /* ServicesContainer.swift */; };
 		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
 		47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */; };
 		47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635042CC3EC1A0034EAA9 /* Department.swift */; };
@@ -188,6 +189,7 @@
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
 		47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
+		47F4F69A2CC8E24300543D24 /* ServicesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
 		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
 		47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
 		47F635042CC3EC1A0034EAA9 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -304,13 +306,12 @@
 		4763FFB62CB9133600990336 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				47F4F69E2CC8E45A00543D24 /* Services */,
 				47DF041D2CBE7A16007E58A7 /* Extensions */,
 				470722FB2CBC15790046469F /* API */,
 				4763FFB72CB9134D00990336 /* Store.swift */,
 				4752A27C2CB96EB00073B784 /* CancleBag.swift */,
 				470722F92CBC0A870046469F /* Constants.swift */,
-				470723172CBC29510046469F /* AuthenticationService.swift */,
-				47BE30E22CC813BB0015D973 /* KeyChainManager.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -374,6 +375,7 @@
 				4763FFAE2CB90AE000990336 /* AppState.swift */,
 				4763FFB02CB90C1500990336 /* DependencyInjector.swift */,
 				4763FFB22CB90E3800990336 /* InteractorsContainer.swift */,
+				47F4F69A2CC8E24300543D24 /* ServicesContainer.swift */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -609,6 +611,15 @@
 				470723042CBC180D0046469F /* NetworkError.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		47F4F69E2CC8E45A00543D24 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				470723172CBC29510046469F /* AuthenticationService.swift */,
+				47BE30E22CC813BB0015D973 /* KeyChainManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		47F634FC2CC3E8500034EAA9 /* Auth */ = {
@@ -856,6 +867,7 @@
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				470723132CBC1BF10046469F /* BaseResponse.swift in Sources */,
 				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
+				47F4F69B2CC8E24300543D24 /* ServicesContainer.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
