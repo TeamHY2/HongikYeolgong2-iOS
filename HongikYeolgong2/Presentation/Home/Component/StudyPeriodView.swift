@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StudyPeriodView: View {
     var body: some View {
-        HStack(spacing: 18.adjustToScreenWidth) {
+        HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 11.adjustToScreenHeight) {
                 HStack(spacing: 13.adjustToScreenWidth) {
                     Text("Start")
@@ -41,10 +41,13 @@ struct StudyPeriodView: View {
                         .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
                         .foregroundColor(.gray100)
                     Text("AM")
-                        .font(.suite(size: 14, weight: .medium), lineHeight: 32)
+                        .font(.suite(size: 14, weight: .medium), lineHeight: 32.adjustToScreenHeight)
                         .foregroundStyle(.gray100)
                 }
             }
+            .padding(.leading, 18.adjustToScreenWidth)
+            
+            Spacer()
         }
     }
 }
