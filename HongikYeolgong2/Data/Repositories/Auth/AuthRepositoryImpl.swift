@@ -17,10 +17,11 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.data!))
-                } catch {
+                } catch let error as NetworkError {
+                    print(error.message)
                     promise(.failure(error))
                 }
-            }            
+            }
         }.eraseToAnyPublisher()
     }
     
@@ -29,7 +30,6 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
-                    print(response.data?.duplicate, "중복여부")
                     promise(.success(response.data?.duplicate ?? false))
                 } catch let error as NetworkError {
                     print(error.message)
@@ -37,5 +37,19 @@ final class AuthRepositoryImpl: AuthRepository {
                 }
             }
         }.eraseToAnyPublisher()
+    }
+    
+    func signUp(signUpReqDto: SignUpRequestDTO) -> AnyPublisher<Void, Error> {
+        return Future<Void, Error> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))
+                    print(response.data)
+                } catch let error as NetworkError {
+                    print(error.message)
+                }
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }

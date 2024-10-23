@@ -12,6 +12,9 @@ enum UserEndpoint: EndpointProtocol {
     
     /// 애플 소셜 로그인
     case checkUserNickname(nickname: String)
+    
+    /// 회원가입
+    case signUp(signUpReqDto: SignUpRequestDTO)
 }
 
 extension UserEndpoint {
@@ -22,19 +25,21 @@ extension UserEndpoint {
         switch self {
         case .checkUserNickname:
             "/duplicate-nickname"
+        case .signUp:
+            "/join"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .checkUserNickname:
+        case .checkUserNickname, .signUp:
                 .post
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .checkUserNickname:
+        case .checkUserNickname, .signUp:
             nil
         }
     }
@@ -51,6 +56,8 @@ extension UserEndpoint {
         case let .checkUserNickname(nickname):
             let parameter: [String: Any] = ["nickname": nickname]            
             return parameter.toData()
+        case let .signUp(signUpReqDto):
+            return signUpReqDto.toData()
         }
     }
 }

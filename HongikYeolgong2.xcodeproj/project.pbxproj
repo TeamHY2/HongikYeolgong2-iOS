@@ -77,8 +77,11 @@
 		47B1D4C92C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */; };
 		47BACCF72CA164BA00295DAC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BACCF62CA164BA00295DAC /* Font+.swift */; };
 		47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E22CC813BB0015D973 /* KeyChainManager.swift */; };
+		47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E42CC81A9E0015D973 /* URLRequest+.swift */; };
 		47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6662B2CB4499300813ECA /* TimePicker.swift */; };
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
+		47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */; };
+		47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */; };
 		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
 		47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */; };
 		47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635042CC3EC1A0034EAA9 /* Department.swift */; };
@@ -180,8 +183,11 @@
 		47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		47BACCF62CA164BA00295DAC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		47BE30E22CC813BB0015D973 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		47BE30E42CC81A9E0015D973 /* URLRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+.swift"; sourceTree = "<group>"; };
 		47D6662B2CB4499300813ECA /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
+		47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
 		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
 		47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
 		47F635042CC3EC1A0034EAA9 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
@@ -590,6 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				47DF041E2CBE7A29007E58A7 /* Encodable+.swift */,
+				47BE30E42CC81A9E0015D973 /* URLRequest+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +616,8 @@
 			children = (
 				4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */,
 				470723102CBC1B0A0046469F /* LoginResponseDTO.swift */,
+				47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */,
+				47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -817,6 +826,7 @@
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
 				4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */,
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
+				47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */,
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
 				47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */,
 				4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */,
@@ -827,6 +837,7 @@
 				47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
 				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
+				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */,
@@ -838,6 +849,7 @@
 				478933792CADBDA500E1D89E /* SignUpView.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
+				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
 				470723182CBC29510046469F /* AuthenticationService.swift in Sources */,

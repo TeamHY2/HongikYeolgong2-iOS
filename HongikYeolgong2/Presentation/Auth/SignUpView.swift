@@ -109,11 +109,12 @@ private extension SignUpView {
     }
     
     var submitButton: some View {
-        HY2Button(title: "",
-                  style: .imageButton(image: isSubmitButtonAvailable ? .submitButtonEnable : .submitButtonDisable)) {
-            // Submit action
-        }
-                  .padding(.bottom, 20.adjustToScreenHeight)
+        Button(action: performSignUp, label: {
+            Image(isSubmitButtonAvailable ? .submitButtonEnable : .submitButtonDisable)
+                .resizable()
+                .frame(height: 50.adjustToScreenHeight)
+        })
+        .padding(.bottom, 20.adjustToScreenHeight)
     }
 }
 
@@ -121,10 +122,15 @@ private extension SignUpView {
 
 private extension SignUpView {
     func requestCheckNickname() {
-        injected.interactors.userDataInteractor.checkUserNickname(
-            nickname: signupData.nickname,
-            isValidate: $signupData.isNicknameAvailable
-        )
+        injected.interactors.userDataInteractor
+            .checkUserNickname(nickname: signupData.nickname, 
+                               isValidate: $signupData.isNicknameAvailable)
+    }
+    
+    func performSignUp() {
+        injected.interactors.userDataInteractor
+            .signUp(nickname: signupData.nickname, 
+                    department: signupData.department)
     }
     
     func validateUserNickname(nickname: String) {
