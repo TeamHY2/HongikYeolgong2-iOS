@@ -15,8 +15,9 @@ struct InitialView: View {
     
     var body: some View {
         Group {
-            content
-                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
+//            content
+//                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
+            MainTabView()
         }
     }
     
