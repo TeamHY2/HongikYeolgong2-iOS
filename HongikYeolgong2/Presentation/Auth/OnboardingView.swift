@@ -10,13 +10,16 @@ struct OnboardingView: View {
     
     // MARK: - States
     @State private var tabIndex = 0
-    @State private var shouldShowSignUpView = false
-    @State private var isNavigation = false
+    @State private var routingState: Routing = .init()
+    private var routingBinding: Binding<Routing> {
+        $routingState.dispatched(to: injected.appState, \.routing.onboarding)
+    }
     
     // MARK: - Body
     var body: some View {
         NavigationView {
-            content                
+            content
+                .onReceive(routingUpdate) { self.routingState = $0 }
         }
     }
     
@@ -84,11 +87,9 @@ struct OnboardingView: View {
     }
     
     private var hiddenNavigationLink: some View {
-        NavigationLink(
-            "SignIn",
-            destination: SignUpView(),
-            isActive: $isNavigation
-        )
+        NavigationLink("", 
+                       destination: SignUpView(),
+                       isActive: routingBinding.signUp)
         .opacity(0)
         .frame(width: 0, height: 0)
     }
@@ -98,7 +99,7 @@ struct OnboardingView: View {
 private extension OnboardingView {
     func performLogin(email: String, idToken: String) {
         injected.interactors.userDataInteractor
-            .login(email: email, idToken: idToken, isNavigation: $isNavigation)
+            .login(email: email, idToken: idToken)
     }
 }
 
@@ -119,5 +120,19 @@ private extension OnboardingView {
         case .failure:
             break
         }
+    }
+}
+
+
+// MARK: - Routing
+private extension OnboardingView {
+    private var routingUpdate: AnyPublisher<Routing, Never> {
+        injected.appState.updates(for: \.routing.onboarding)
+    }
+}
+
+extension OnboardingView {
+    struct Routing: Equatable {
+        var signUp: Bool = false
     }
 }
