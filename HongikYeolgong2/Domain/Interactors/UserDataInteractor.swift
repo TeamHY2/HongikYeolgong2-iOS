@@ -34,8 +34,8 @@ final class UserDataInteractorImpl: UserDataInteractor {
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in
-            }, receiveValue: { [weak self] loginResDto in
+            .sink(receiveCompletion: { _ in}
+                  , receiveValue: { [weak self] loginResDto in
                 guard let self = self else { return }
                 
                 appState[\.userData.isLoggedIn] = loginResDto.alreadyExist
@@ -50,11 +50,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
         authRepository
             .signUp(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { _ in
-                
-            }
+            .sink(receiveCompletion: { _ in},
+                  receiveValue: { [weak self] signUpResDto in
+                guard let self = self else { return }
+                appState[\.appLaunchState] = .authenticated
+            })
             .store(in: cancleBag)
     }
     
