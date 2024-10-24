@@ -18,7 +18,7 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
-                    promise(.success(response.data!))
+                    promise(.success(response.data))
                 } catch let error as NetworkError {
                     promise(.failure(error))
                 }
@@ -34,7 +34,7 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
-                    promise(.success(response.data?.duplicate ?? false))
+                    promise(.success(response.data.duplicate))
                 } catch let error as NetworkError {
                     promise(.failure(error))
                 }
@@ -50,7 +50,7 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))
-                    promise(.success(response.data!))
+                    promise(.success(response.data))
                 } catch let error as NetworkError {
                     promise(.failure(error))
                 }
@@ -65,7 +65,7 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {                
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUser)
-                    promise(.success(response.data!))
+                    promise(.success(response.data))
                 } catch let error as NetworkError {                    
                     promise(.failure(error))
                     
