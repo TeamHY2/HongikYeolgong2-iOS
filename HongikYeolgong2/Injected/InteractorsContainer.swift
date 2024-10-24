@@ -10,12 +10,12 @@ import Foundation
 extension DIContainer {
     struct Interactors {
         let userDataInteractor: UserDataInteractor
-        let weeklStudyInteractor: WeeklyStudyInteractor
+        let studySessionInteractor: StudySessionInteractor
         
         init(userDataInteractor: UserDataInteractor, 
-             weeklStudyInteractor: WeeklyStudyInteractor) {
+             studySessionInteractor: StudySessionInteractor) {
             self.userDataInteractor = userDataInteractor
-            self.weeklStudyInteractor = weeklStudyInteractor
+            self.studySessionInteractor = studySessionInteractor
         }
         
         static let `default` = Self(
@@ -24,7 +24,7 @@ extension DIContainer {
                 authRepository: AuthRepositoryImpl(),
                 authService: AuthenticationServiceImpl()
             ),
-            weeklStudyInteractor: WeeklyStudyInteractorImpl()
+            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl())
         )
     }
 }

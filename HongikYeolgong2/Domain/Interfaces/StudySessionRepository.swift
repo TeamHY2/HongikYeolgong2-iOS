@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol WeeklyStudyRepository {
+protocol StudySessionRepository {
     func getWeelyStudy()
 }

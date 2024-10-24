@@ -7,11 +7,11 @@
 
 import Foundation
 
-final class WeeklyStudyRepositoryImpl: WeeklyStudyRepository {
+final class StudySessionRepositoryImpl: StudySessionRepository {
     func getWeelyStudy() {
         Task {
             do {
-                let response: BaseResponse<[WeeklyStudyResonseDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyStudy)
+                let response: BaseResponse<[WeeklyStudySessionDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyStudy)
                 print(response.data)
             } catch let error as NetworkError {
                 print(error.message)

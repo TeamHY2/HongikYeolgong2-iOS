@@ -43,11 +43,11 @@
 		4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB92CB913FF00990336 /* UserDataInteractor.swift */; };
 		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
 		47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */; };
-		4786A1052CCA3352008635A4 /* WeeklyStudyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1042CCA3352008635A4 /* WeeklyStudyInteractor.swift */; };
+		4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */; };
 		4786A1072CCA33DF008635A4 /* WeeklyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */; };
-		4786A1092CCA346F008635A4 /* WeeklyStudyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1082CCA346F008635A4 /* WeeklyStudyRepository.swift */; };
-		4786A10C2CCA34A7008635A4 /* WeeklyStudyRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10B2CCA34A7008635A4 /* WeeklyStudyRepositoryImpl.swift */; };
-		4786A1102CCA351A008635A4 /* WeeklyStudyResonseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10F2CCA351A008635A4 /* WeeklyStudyResonseDTO.swift */; };
+		4786A1092CCA346F008635A4 /* StudySessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1082CCA346F008635A4 /* StudySessionRepository.swift */; };
+		4786A10C2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10B2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift */; };
+		4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */; };
 		478933792CADBDA500E1D89E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignUpView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */; };
@@ -152,11 +152,11 @@
 		4763FFB92CB913FF00990336 /* UserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInteractor.swift; sourceTree = "<group>"; };
 		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 		47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewModel.swift; sourceTree = "<group>"; };
-		4786A1042CCA3352008635A4 /* WeeklyStudyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyInteractor.swift; sourceTree = "<group>"; };
+		4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionInteractor.swift; sourceTree = "<group>"; };
 		4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyEndpoint.swift; sourceTree = "<group>"; };
-		4786A1082CCA346F008635A4 /* WeeklyStudyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyRepository.swift; sourceTree = "<group>"; };
-		4786A10B2CCA34A7008635A4 /* WeeklyStudyRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyRepositoryImpl.swift; sourceTree = "<group>"; };
-		4786A10F2CCA351A008635A4 /* WeeklyStudyResonseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyResonseDTO.swift; sourceTree = "<group>"; };
+		4786A1082CCA346F008635A4 /* StudySessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionRepository.swift; sourceTree = "<group>"; };
+		4786A10B2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionRepositoryImpl.swift; sourceTree = "<group>"; };
+		4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudySessionDTO.swift; sourceTree = "<group>"; };
 		478933782CADBDA500E1D89E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerDialog.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 		470723062CBC19770046469F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				4786A10A2CCA3496008635A4 /* WeeklyStudy */,
+				4786A10A2CCA3496008635A4 /* StudySession */,
 				470723072CBC197F0046469F /* Auth */,
 			);
 			path = Repositories;
@@ -344,20 +344,20 @@
 			path = TimePicker;
 			sourceTree = "<group>";
 		};
-		4786A10A2CCA3496008635A4 /* WeeklyStudy */ = {
+		4786A10A2CCA3496008635A4 /* StudySession */ = {
 			isa = PBXGroup;
 			children = (
-				4786A10B2CCA34A7008635A4 /* WeeklyStudyRepositoryImpl.swift */,
+				4786A10B2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift */,
 			);
-			path = WeeklyStudy;
+			path = StudySession;
 			sourceTree = "<group>";
 		};
-		4786A10D2CCA3506008635A4 /* WeeklyStudy */ = {
+		4786A10D2CCA3506008635A4 /* StudySession */ = {
 			isa = PBXGroup;
 			children = (
-				4786A10F2CCA351A008635A4 /* WeeklyStudyResonseDTO.swift */,
+				4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */,
 			);
-			path = WeeklyStudy;
+			path = StudySession;
 			sourceTree = "<group>";
 		};
 		479821D52CA27BBC002357EB /* Other */ = {
@@ -468,7 +468,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				4786A10D2CCA3506008635A4 /* WeeklyStudy */,
+				4786A10D2CCA3506008635A4 /* StudySession */,
 				47F635002CC3E9700034EAA9 /* User */,
 				47F634FC2CC3E8500034EAA9 /* Auth */,
 				470723122CBC1BF10046469F /* BaseResponse.swift */,
@@ -480,7 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				4763FFB92CB913FF00990336 /* UserDataInteractor.swift */,
-				4786A1042CCA3352008635A4 /* WeeklyStudyInteractor.swift */,
+				4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -489,7 +489,7 @@
 			isa = PBXGroup;
 			children = (
 				470723082CBC198E0046469F /* AuthRepository.swift */,
-				4786A1082CCA346F008635A4 /* WeeklyStudyRepository.swift */,
+				4786A1082CCA346F008635A4 /* StudySessionRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -869,7 +869,7 @@
 				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
 				475B86E92CA1CD10000534B2 /* Alert.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
-				4786A1102CCA351A008635A4 /* WeeklyStudyResonseDTO.swift in Sources */,
+				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
@@ -892,7 +892,7 @@
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */,
 				4763FFAF2CB90AE000990336 /* AppState.swift in Sources */,
-				4786A1092CCA346F008635A4 /* WeeklyStudyRepository.swift in Sources */,
+				4786A1092CCA346F008635A4 /* StudySessionRepository.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				4786A1072CCA33DF008635A4 /* WeeklyEndpoint.swift in Sources */,
 				4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */,
@@ -906,7 +906,7 @@
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
 				470723182CBC29510046469F /* AuthenticationService.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
-				4786A10C2CCA34A7008635A4 /* WeeklyStudyRepositoryImpl.swift in Sources */,
+				4786A10C2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift in Sources */,
 				470723132CBC1BF10046469F /* BaseResponse.swift in Sources */,
 				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
 				47F4F69B2CC8E24300543D24 /* ServicesContainer.swift in Sources */,
@@ -915,7 +915,7 @@
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
-				4786A1052CCA3352008635A4 /* WeeklyStudyInteractor.swift in Sources */,
+				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
 			);

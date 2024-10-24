@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WeeklyStudyResonseDTO: Decodable {
+struct WeeklyStudySessionDTO: Decodable {
     let id: Int
     let year: Int
     let weekName: String

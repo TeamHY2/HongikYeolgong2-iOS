@@ -26,7 +26,7 @@ extension AppEnviroment {
                 authRepository: authRepository,
                 authService: services.authenticationService
             ),
-            weeklStudyInteractor: WeeklyStudyInteractorImpl()
+            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl())
         )
         
         let diContainer = DIContainer(

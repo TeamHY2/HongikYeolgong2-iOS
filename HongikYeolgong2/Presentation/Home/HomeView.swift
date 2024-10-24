@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - Properties
     @State private var isStudyStart: Bool = false
+    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteracotr
     
     // MARK: - Body
     var body: some View {
@@ -17,6 +18,9 @@ struct HomeView: View {
             // 주간 열람실이용
             WeeklyStudy()
                 .padding(.top, 33.adjustToScreenHeight)
+                .onAppear {
+                    studySessionInteracotr.getWeekyStudy()
+                }
             
             // 오늘의 명언
             if isStudyStart {
