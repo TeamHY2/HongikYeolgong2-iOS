@@ -7,4 +7,8 @@
 
 import Foundation
 
-let baseUrl = Bundle.main.infoDictionary?["BaseURL"] as? String ?? ""
+struct SecretKeys {
+    static let baseUrl = Bundle.main.infoDictionary?["BaseURL"] as? String ?? ""    
+}
+
+

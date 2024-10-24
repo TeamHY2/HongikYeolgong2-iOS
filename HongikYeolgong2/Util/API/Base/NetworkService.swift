@@ -48,7 +48,7 @@ extension NetworkService {
     }
     
     private func configRequest(url: URL, endpoint: EndpointProtocol) -> URLRequest {
-        var request = URLRequest(url: url)
+        var request = URLRequest(url)
         request.httpMethod = endpoint.method.rawValue
         
         if let headers = endpoint.headers {
