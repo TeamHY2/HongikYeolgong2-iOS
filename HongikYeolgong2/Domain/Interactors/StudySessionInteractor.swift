@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol StudySessionInteractor {
-    func getWeekyStudy(weeklyStudy: Binding<[StudyRoomUsage]>)
+    func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
@@ -19,12 +19,12 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getWeekyStudy(weeklyStudy: Binding<[StudyRoomUsage]>) {
+    func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>) {
         studySessionRepository
             .getWeelyStudy()
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) {
-                weeklyStudy.wrappedValue = $0.map { $0.toEntity() }
+                studyRecords.wrappedValue = $0.map { $0.toEntity() }
             }
             .store(in: cancleBag)
     }

@@ -11,7 +11,7 @@ struct HomeView: View {
     // MARK: - Properties
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteracotr
-    @State private(set) var weeklyStudy = [StudyRoomUsage]()
+    @State private(set) var studyRecords = [WeeklyStudyRecord]()
     @State private var isStudyStart: Bool = false
     
     // MARK: - Body
@@ -25,7 +25,7 @@ struct HomeView: View {
 private extension HomeView {
     var content: some View {
         VStack {
-            WeeklyStudyView(weeklyStudy: weeklyStudy)
+            WeeklyStudyView(studyRecords: studyRecords)
                 .padding(.top, 33.adjustToScreenHeight)
                 .onAppear(perform: getWeeklyStudy)
             
@@ -129,7 +129,7 @@ private extension HomeView {
 extension HomeView {
     func getWeeklyStudy() {
         studySessionInteracotr
-            .getWeekyStudy(weeklyStudy: $weeklyStudy)
+            .getWeekyStudy(studyRecords: $studyRecords)
     }
 }
 

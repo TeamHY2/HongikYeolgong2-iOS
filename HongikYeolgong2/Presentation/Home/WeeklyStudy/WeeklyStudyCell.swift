@@ -8,25 +8,25 @@
 import SwiftUI
 
 struct WeeklyStudyCell: View {
-    let studyRoomUsage: StudyRoomUsage
+    let studyRecord: WeeklyStudyRecord
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(studyRoomUsage.dayOfWeek)
+            Text(studyRecord.dayOfWeek)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundStyle(textColor)
             
-            Image(studyRoomUsage.imageName)
+            Image(studyRecord.imageName)
                 .padding(.top, 8)
                 .padding(.bottom, 2)
             
-            Text(studyRoomUsage.monthOfDay)
+            Text(studyRecord.monthOfDay)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundStyle(textColor)
         }
     }
     
     private var textColor: Color {
-        studyRoomUsage.isUpcomming ? .white : .gray400
+        studyRecord.isUpcomming ? .white : .gray400
     }
 }
