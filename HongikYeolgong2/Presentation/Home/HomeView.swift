@@ -19,6 +19,9 @@ struct HomeView: View {
     var body: some View {
         content
             .onAppear { permissions.request(permission: .localNotifications) }
+            .onAppear {
+                studySessionInteracotr.getWeekyStudy()
+            }
     }
 }
 
@@ -26,11 +29,8 @@ struct HomeView: View {
 private extension HomeView {
     var content: some View {
         VStack {
-            WeeklyStudy()
+            WeeklyStudyView()
                 .padding(.top, 33.adjustToScreenHeight)
-                .onAppear {
-                    studySessionInteracotr.getWeekyStudy()
-                }
             
             studyContent
             
