@@ -21,14 +21,14 @@ extension WeeklyEndpoint {
     var path: String {
         switch self {
         case .getWeeklyStudy:
-            "/week-field"
+            "/week"
         }
     }
     
     var method: NetworkMethod {
         switch self {
         case .getWeeklyStudy:
-                .post
+                .get
         }
     }
     
