@@ -11,4 +11,20 @@ struct StudyRoomUsage {
     let monthOfDay: String
     let dayOfWeek: String
     let studyCount: Int
+    let isUpcomming: Bool
+    
+    var imageName: String {
+        switch studyCount {
+        case 0:
+            "shineCount00"
+        case 1:
+            "shineCount01"
+        case 2:
+            "shineCount02"
+        case 3:
+            "shineCount03"
+        default:
+            "shineCount00"
+        }
+    }
 }
