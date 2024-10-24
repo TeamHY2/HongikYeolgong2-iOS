@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct WeeklyStudyView: View {
+    let weeklyStudy: [StudyRoomUsage]
     
     var body: some View {
         HStack {
-            ForEach(1...7, id: \.self) { number in
-               WeeklyStudyCell()
-                if number != 7 {
+            ForEach(Array(weeklyStudy.enumerated()), id: \.self.offset) { (index, studyRoomUsage) in
+               WeeklyStudyCell(studyRoomUsage: studyRoomUsage)
+                if index != 7 {
                     Spacer()
                 }
             }

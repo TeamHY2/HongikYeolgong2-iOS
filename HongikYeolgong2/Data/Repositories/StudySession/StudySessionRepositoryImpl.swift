@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import Combine
 
 final class StudySessionRepositoryImpl: StudySessionRepository {
-    func getWeelyStudy() {
-        Task {
-            do {
-                let response: BaseResponse<[WeeklyStudySessionDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyStudy)
-                print(response.data)
-            } catch let error as NetworkError {
-                print(error.message)
+    func getWeelyStudy() -> AnyPublisher<[WeeklyStudySessionDTO], NetworkError> {
+        return Future<[WeeklyStudySessionDTO], NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<[WeeklyStudySessionDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyStudy)
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
             }
-        }
+        }.eraseToAnyPublisher()
     }
 }
