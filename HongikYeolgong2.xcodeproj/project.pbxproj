@@ -43,6 +43,7 @@
 		4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB92CB913FF00990336 /* UserDataInteractor.swift */; };
 		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
 		47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */; };
+		4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */; };
 		478933792CADBDA500E1D89E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignUpView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		4795DC902CB43B2700EC3AB1 /* TimePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */; };
@@ -147,6 +148,7 @@
 		4763FFB92CB913FF00990336 /* UserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInteractor.swift; sourceTree = "<group>"; };
 		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 		47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewModel.swift; sourceTree = "<group>"; };
+		4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissionsInteractor.swift; sourceTree = "<group>"; };
 		478933782CADBDA500E1D89E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerDialog.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				4763FFB92CB913FF00990336 /* UserDataInteractor.swift */,
+				4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -839,6 +842,7 @@
 				475B86E92CA1CD10000534B2 /* Alert.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
+				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
 				47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
