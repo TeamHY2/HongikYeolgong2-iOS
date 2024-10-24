@@ -13,7 +13,8 @@ struct WeeklyStudyView: View {
     var body: some View {
         HStack {
             ForEach(Array(weeklyStudy.enumerated()), id: \.self.offset) { (offset, studyRoomUsage) in
-                WeeklyStudyCell(studyRoomUsage: studyRoomUsage)
+                
+                WeeklyStudyCell(studyRoomUsage: studyRoomUsage)                    
                 if offset != 7 {
                     Spacer()
                 }

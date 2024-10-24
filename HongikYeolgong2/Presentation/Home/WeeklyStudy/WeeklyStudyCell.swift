@@ -14,16 +14,19 @@ struct WeeklyStudyCell: View {
         VStack(spacing: 0) {
             Text(studyRoomUsage.dayOfWeek)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
-                .foregroundStyle(.gray400)
+                .foregroundStyle(textColor)
             
-            Image(.star)
+            Image(studyRoomUsage.imageName)
                 .padding(.top, 8)
                 .padding(.bottom, 2)
             
             Text(studyRoomUsage.monthOfDay)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
-                .foregroundStyle(.gray400)
+                .foregroundStyle(textColor)
         }
     }
+    
+    private var textColor: Color {
+        studyRoomUsage.isUpcomming ? .white : .gray400
+    }
 }
-

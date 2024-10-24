@@ -11,6 +11,7 @@ extension WeeklyStudySessionDTO {
     func toEntity() -> StudyRoomUsage {
         .init(monthOfDay: date.toMonthOfDay(),
               dayOfWeek: date.toDayOfWeek(),
-              studyCount: studyCount)
+              studyCount: studyCount,
+              isUpcomming: date.toDate() ?? .now <= .now)
     }
 }

@@ -27,4 +27,17 @@ enum WeekDay: Int {
         case .sunday: return "일"
         }
     }
+    
+    static func from(koreanString: String) -> WeekDay? {
+        switch koreanString {
+        case "월": return .monday
+        case "화": return .tuesday
+        case "수": return .wednesday
+        case "목": return .thursday
+        case "금": return .friday
+        case "토": return .saturday
+        case "일": return .sunday
+        default: return nil
+        }
+    }
 }
