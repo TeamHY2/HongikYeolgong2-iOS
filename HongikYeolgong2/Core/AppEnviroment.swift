@@ -27,7 +27,7 @@ extension AppEnviroment {
                 authRepository: authRepository,
                 authService: services.authenticationService
             ),
-            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl())
+            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: appState, openAppSetting: {
                 if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
                     UIApplication.shared.open(url)

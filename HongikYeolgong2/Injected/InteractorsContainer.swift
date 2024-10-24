@@ -13,9 +13,10 @@ extension DIContainer {
         let studySessionInteractor: StudySessionInteractor
         let userPermissionsInteractor: UserPermissionsInteractor
         
-        init(userDataInteractor: UserDataInteractor, 
-             studySessionInteractor: StudySessionInteractor) {
-        init(userDataInteractor: UserDataInteractor, userPermissionsInteractor: UserPermissionsInteractor) {
+        init(userDataInteractor: UserDataInteractor,
+             studySessionInteractor: StudySessionInteractor, 
+             userPermissionsInteractor: UserPermissionsInteractor) {
+            
             self.userDataInteractor = userDataInteractor
             self.studySessionInteractor = studySessionInteractor
             self.userPermissionsInteractor = userPermissionsInteractor
@@ -27,8 +28,9 @@ extension DIContainer {
                 authRepository: AuthRepositoryImpl(),
                 authService: AuthenticationServiceImpl()
             ),
-            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl())
+            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {})
         )
     }
 }
+
