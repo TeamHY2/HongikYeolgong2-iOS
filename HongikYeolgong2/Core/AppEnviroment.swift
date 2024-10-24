@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct AppEnviroment {
     var container: DIContainer
@@ -25,7 +26,12 @@ extension AppEnviroment {
                 appState: appState,
                 authRepository: authRepository,
                 authService: services.authenticationService
-            )
+            ),
+            userPermissionsInteractor: RealUserPermissionsInteractor(appState: appState, openAppSetting: {
+                if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            })
         )
         
         let diContainer = DIContainer(
