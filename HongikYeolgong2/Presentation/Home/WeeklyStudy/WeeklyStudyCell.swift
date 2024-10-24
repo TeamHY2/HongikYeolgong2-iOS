@@ -12,7 +12,7 @@ struct WeeklyStudyCell: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text("월")
+            Text(studyRoomUsage.dayOfWeek)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundStyle(.gray400)
             
