@@ -10,6 +10,7 @@ import SwiftUI
 final class AppState: ObservableObject {
     @Published var appLaunchState: AppLaunchState = .checkAuthentication
     @Published var userData = UserData()
+    @Published var routing = ViewRouting()
 }
 
 extension AppState {
@@ -23,5 +24,11 @@ extension AppState {
 extension AppState {
     struct UserData: Equatable {
         var isLoggedIn = false
+    }
+}
+
+extension AppState {
+    struct ViewRouting: Equatable {
+        var onboarding = OnboardingView.Routing()
     }
 }

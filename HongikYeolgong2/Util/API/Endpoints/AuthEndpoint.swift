@@ -11,17 +11,17 @@ import Foundation
 enum AuthEndpoint: EndpointProtocol {
     
     /// 애플 소셜 로그인
-    case login(LoginRequestDTO)
+    case login(loginReqDto: LoginRequestDTO)
 }
 
 extension AuthEndpoint {
     var baseURL: URL? {
-        URL(string: "\(baseUrl)/auth")
+        URL(string: "\(SecretKeys.baseUrl)/auth")
     }
     var path: String {
         switch self {
         case .login:
-            "/login"
+            "/login-apple"
         }
     }
     

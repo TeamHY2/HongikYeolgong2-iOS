@@ -13,9 +13,6 @@ enum SocialLoginType: String, Encodable {
 }
 
 struct LoginRequestDTO: Encodable {
-    let socialPlatform: String
+    let email: String
     let idToken: String
 }
-
-
-

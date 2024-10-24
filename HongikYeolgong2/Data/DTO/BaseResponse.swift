@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// 네트워크 기본응답 형식을 정의하는 제네릭 구조체 입니다.
+/// 제네릭 타입은 Decodable 프로토콜을 준수 ->  BaseResponse<T:Decodable> = try await NetworkManager.request()
 struct BaseResponse<T: Decodable>: Decodable {
     let code: Int
     let status: String
