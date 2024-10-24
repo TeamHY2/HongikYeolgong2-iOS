@@ -7,6 +7,7 @@
 
 import Foundation
 
+// StudySession에 대한 Mapper
 extension WeeklyStudySessionDTO {
     func toEntity() -> WeeklyStudyRecord {
         .init(monthOfDay: date.toMonthOfDay(),

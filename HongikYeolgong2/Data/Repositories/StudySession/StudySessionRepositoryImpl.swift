@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class StudySessionRepositoryImpl: StudySessionRepository {
-    func getWeelyStudy() -> AnyPublisher<[WeeklyStudySessionDTO], NetworkError> {
+    func getWeeklyStudyRecords() -> AnyPublisher<[WeeklyStudySessionDTO], NetworkError> {
         return Future<[WeeklyStudySessionDTO], NetworkError> { promise in
             Task {
                 do {
