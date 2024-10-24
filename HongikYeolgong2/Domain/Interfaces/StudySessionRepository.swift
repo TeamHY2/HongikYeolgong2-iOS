@@ -6,7 +6,8 @@
 //
 
 import Foundation
+import Combine
 
 protocol StudySessionRepository {
-    func getWeelyStudy()
+    func getWeelyStudy() -> AnyPublisher<[WeeklyStudySessionDTO], NetworkError>
 }

@@ -7,21 +7,17 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct HomeView: View {
     // MARK: - Properties
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
-    @State private var isStudyStart: Bool = false
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteracotr
+    @State private(set) var weeklyStudy = [StudyRoomUsage]()
+    @State private var isStudyStart: Bool = false
     
     // MARK: - Body
     var body: some View {
         content
             .onAppear { permissions.request(permission: .localNotifications) }
-            .onAppear {
-                studySessionInteracotr.getWeekyStudy()
-            }
     }
 }
 
@@ -29,8 +25,9 @@ struct HomeView: View {
 private extension HomeView {
     var content: some View {
         VStack {
-            WeeklyStudyView()
+            WeeklyStudyView(weeklyStudy: weeklyStudy)
                 .padding(.top, 33.adjustToScreenHeight)
+                .onAppear(perform: getWeeklyStudy)
             
             studyContent
             
@@ -126,6 +123,13 @@ private extension HomeView {
             .ignoresSafeArea(.all)
             .frame(maxWidth: .infinity, minHeight: SafeAreaHelper.getFullScreenHeight())
             .allowsHitTesting(false)
+    }
+}
+
+extension HomeView {
+    func getWeeklyStudy() {
+        studySessionInteracotr
+            .getWeekyStudy(weeklyStudy: $weeklyStudy)
     }
 }
 

@@ -5,10 +5,10 @@
 //  Created by 권석기 on 10/24/24.
 //
 
-import Foundation
+import SwiftUI
 
 protocol StudySessionInteractor {
-    func getWeekyStudy()
+    func getWeekyStudy(weeklyStudy: Binding<[StudyRoomUsage]>)
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
@@ -19,7 +19,13 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getWeekyStudy() {
-        studySessionRepository.getWeelyStudy()
+    func getWeekyStudy(weeklyStudy: Binding<[StudyRoomUsage]>) {
+        studySessionRepository
+            .getWeelyStudy()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) {
+                weeklyStudy.wrappedValue = $0.map { $0.toEntity() }
+            }
+            .store(in: cancleBag)
     }
 }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WeeklyStudyCell: View {
+    let studyRoomUsage: StudyRoomUsage
+    
     var body: some View {
         VStack(spacing: 0) {
             Text("월")
@@ -18,7 +20,7 @@ struct WeeklyStudyCell: View {
                 .padding(.top, 8)
                 .padding(.bottom, 2)
             
-            Text("9/23")
+            Text(studyRoomUsage.monthOfDay)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundStyle(.gray400)
         }
