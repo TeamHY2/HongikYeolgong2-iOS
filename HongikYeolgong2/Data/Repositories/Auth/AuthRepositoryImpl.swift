@@ -62,11 +62,11 @@ final class AuthRepositoryImpl: AuthRepository {
     /// - Returns: 내정보 조회
     func getUser() -> AnyPublisher<SignUpResponseDTO,  NetworkError> {
         return Future<SignUpResponseDTO, NetworkError> { promise in
-            Task {
+            Task {                
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUser)
                     promise(.success(response.data!))
-                } catch let error as NetworkError {
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                     
                 }
