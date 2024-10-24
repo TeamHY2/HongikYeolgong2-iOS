@@ -8,10 +8,9 @@
 import Foundation
 
 extension WeeklyStudySessionDTO {
-    
     func toEntity() -> StudyRoomUsage {
         .init(monthOfDay: date.toMonthOfDay(),
-              dayOfWeek: "",
+              dayOfWeek: date.toDayOfWeek(),
               studyCount: studyCount)
     }
 }
