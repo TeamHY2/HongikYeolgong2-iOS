@@ -8,8 +8,6 @@
 import Foundation
 
 struct WeeklyStudySessionDTO: Decodable {
-    let id: Int
-    let year: Int
-    let weekName: String
-    let weekNumber: Int
+    let date: String
+    let studyCount: Int
 }
