@@ -25,7 +25,8 @@ extension AppEnviroment {
                 appState: appState,
                 authRepository: authRepository,
                 authService: services.authenticationService
-            )
+            ),
+            weeklStudyInteractor: WeeklyStudyInteractorImpl()
         )
         
         let diContainer = DIContainer(
