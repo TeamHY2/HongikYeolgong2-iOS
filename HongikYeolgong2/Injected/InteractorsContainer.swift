@@ -10,10 +10,15 @@ import Foundation
 extension DIContainer {
     struct Interactors {
         let userDataInteractor: UserDataInteractor
+        let studySessionInteractor: StudySessionInteractor
         let userPermissionsInteractor: UserPermissionsInteractor
         
-        init(userDataInteractor: UserDataInteractor, userPermissionsInteractor: UserPermissionsInteractor) {
+        init(userDataInteractor: UserDataInteractor,
+             studySessionInteractor: StudySessionInteractor, 
+             userPermissionsInteractor: UserPermissionsInteractor) {
+            
             self.userDataInteractor = userDataInteractor
+            self.studySessionInteractor = studySessionInteractor
             self.userPermissionsInteractor = userPermissionsInteractor
         }
         
@@ -23,7 +28,9 @@ extension DIContainer {
                 authRepository: AuthRepositoryImpl(),
                 authService: AuthenticationServiceImpl()
             ),
+            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {})
         )
     }
 }
+

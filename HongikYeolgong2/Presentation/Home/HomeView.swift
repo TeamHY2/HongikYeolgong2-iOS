@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct HomeView: View {
     // MARK: - Properties
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
+    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteracotr
+    @State private(set) var studyRecords = [WeeklyStudyRecord]()
     @State private var isStudyStart: Bool = false
     
     // MARK: - Body
@@ -25,8 +25,9 @@ struct HomeView: View {
 private extension HomeView {
     var content: some View {
         VStack {
-            WeeklyStudy()
+            WeeklyStudyView(studyRecords: studyRecords)
                 .padding(.top, 33.adjustToScreenHeight)
+                .onAppear(perform: getWeeklyStudy)
             
             studyContent
             
@@ -122,6 +123,14 @@ private extension HomeView {
             .ignoresSafeArea(.all)
             .frame(maxWidth: .infinity, minHeight: SafeAreaHelper.getFullScreenHeight())
             .allowsHitTesting(false)
+    }
+}
+
+// MARK: - Interactions
+extension HomeView {
+    func getWeeklyStudy() {
+        studySessionInteracotr
+            .getWeekyStudy(studyRecords: $studyRecords)
     }
 }
 
