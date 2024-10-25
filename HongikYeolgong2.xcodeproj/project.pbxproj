@@ -304,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				47860E072CB82BDD005701C0 /* TimePicker */,
+				47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */,
 				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
 				475B86E82CA1CD10000534B2 /* Alert.swift */,
 				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
@@ -375,7 +376,6 @@
 				4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */,
 				47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */,
 				47D6662B2CB4499300813ECA /* TimePicker.swift */,
-				47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */,
 			);
 			path = TimePicker;
 			sourceTree = "<group>";

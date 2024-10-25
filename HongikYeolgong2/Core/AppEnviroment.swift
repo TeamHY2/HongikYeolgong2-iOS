@@ -60,6 +60,7 @@ extension AppEnviroment {
                 authService: services.appleAuthService
             ),
             studySessionInteractor: StudySessionInteractorImpl(
+                appState: appState,
                 studySessionRepository: remoteRepository.studySessionRepository
             ),
             userPermissionsInteractor: RealUserPermissionsInteractor(
