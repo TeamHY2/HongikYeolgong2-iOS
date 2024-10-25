@@ -14,7 +14,9 @@ struct DIContainer: EnvironmentKey {
     let interactors: Interactors
     let services: Services
     
-    init(appState: Store<AppState>, interactors: Interactors, services: Services) {
+    init(appState: Store<AppState>, 
+         interactors: Interactors, 
+         services: Services) {
         self.appState = appState
         self.interactors = interactors
         self.services = services
@@ -24,7 +26,7 @@ struct DIContainer: EnvironmentKey {
     
     private static let `default` = Self(appState: .init(AppState()),
                                         interactors: .default,
-                                        services: .default)
+                                        services: .init(appleAuthService: AuthenticationServiceImpl()))
 }
 
 extension EnvironmentValues {
