@@ -10,38 +10,51 @@ import SwiftUI
 struct HomeView: View {
     // MARK: - Properties
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
-    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteracotr
-    @State private(set) var studyRecords = [WeeklyStudyRecord]()
-    @State private var isStudyStart: Bool = false
+    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     
-    // MARK: - Body
+    @State private(set) var studyRecords = [WeeklyStudyRecord]()
+    @State private var studyRoomStatus = StudyRoomStatus()
+    
     var body: some View {
-        content
-            .onAppear { permissions.request(permission: .localNotifications) }
-    }
-}
-
-// MARK: - Main Content Components
-private extension HomeView {
-    var content: some View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
-                .padding(.top, 33.adjustToScreenHeight)
-                .onAppear(perform: getWeeklyStudy)
             
-            studyContent
+            StudyContentControllerView(studyRoomStatus: studyRoomStatus)
             
             Spacer()
             
-            actionButtons
+            ActionButtonControllerView(
+                studyRoomStatus: studyRoomStatus,
+                actions: .init(
+                    endButtonTapped: {},
+                    startButtonTapped: {},
+                    seatButtonTapped: {},
+                    extensionButtonTapped: {}
+                )
+            )
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
-        .background(backgroundImage)
+        .modifier(GradientBackground())
+        .onAppear {
+            permissions.request(permission: .localNotifications)
+            studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
+        }
     }
+}
+
+extension HomeView {
+    struct StudyRoomStatus {
+        var isRoomInUse = false
+    }
+}
+
+// MARK: - StudyContentControllerView
+struct StudyContentControllerView: View {
+    @State var studyRoomStatus: HomeView.StudyRoomStatus
     
-    var studyContent: some View {
+    var body: some View {
         Group {
-            if isStudyStart {
+            if studyRoomStatus.isRoomInUse {
                 VStack(spacing: 32.adjustToScreenHeight) {
                     StudyPeriodView()
                     StudyTimerView()
@@ -53,88 +66,46 @@ private extension HomeView {
             }
         }
     }
+}
+
+// MARK: - ActionButtonControllerView
+struct ActionButtonControllerView: View {
+    @State var studyRoomStatus: HomeView.StudyRoomStatus
+    let actions: ActionHandlers
     
-    var actionButtons: some View {
+    struct ActionHandlers {
+        let endButtonTapped: () -> Void
+        let startButtonTapped: () -> Void
+        let seatButtonTapped: () -> Void
+        let extensionButtonTapped: () -> Void
+    }
+    
+    var body: some View {
         Group {
-            if isStudyStart {
-                endButton
+            if studyRoomStatus.isRoomInUse {
+                ActionButton(
+                    title: "열람실 이용 종료",
+                    backgroundColor: .gray600,
+                    radius: 4,
+                    action: {}
+                )
             } else {
-                bottomButtons
+                HStack(spacing: 12.adjustToScreenWidth) {
+                    ActionButton(
+                        width: 69.adjustToScreenWidth,
+                        backgroundColor: .clear,
+                        action: {}
+                    )
+                    .modifier(ImageBackground(imageName: .seatButton))
+                    
+                    ActionButton(
+                        backgroundColor: .clear,
+                        action: {}
+                    )
+                    .modifier(ImageBackground(imageName: .startButton))
+                }
             }
         }
         .padding(.bottom, 36.adjustToScreenHeight)
     }
-}
-
-// MARK: - Button Components
-private extension HomeView {
-    var bottomButtons: some View {
-        HStack(spacing: 12.adjustToScreenWidth) {
-            seatButton
-            startButton
-        }
-    }
-    
-    var seatButton: some View {
-        Button(action: {}) {
-            Text("좌석")
-                .frame(width: 69.adjustToScreenWidth, height: 52.adjustToScreenHeight)
-                .font(.suite(size: 16, weight: .semibold))
-                .foregroundStyle(.white)
-        }
-        .background(
-            Image(.seatButton)
-                .resizable()
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-        )
-    }
-    
-    var startButton: some View {
-        Button(action: { isStudyStart = true }) {
-            Text("열람실 이용 시작")
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-                .font(.suite(size: 16, weight: .semibold))
-                .foregroundStyle(.white)
-        }
-        .background(
-            Image(.startButton)
-                .resizable()
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-        )
-    }
-    
-    var endButton: some View {
-        Button(action: {}) {
-            Text("열람실 이용 종료")
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-                .font(.suite(size: 16, weight: .semibold))
-                .foregroundStyle(.gray100)
-        }
-        .background(.gray600)
-        .cornerRadius(4)
-    }
-}
-
-// MARK: - Background Components
-private extension HomeView {
-    var backgroundImage: some View {
-        Image(.iOSBackground)
-            .resizable()
-            .ignoresSafeArea(.all)
-            .frame(maxWidth: .infinity, minHeight: SafeAreaHelper.getFullScreenHeight())
-            .allowsHitTesting(false)
-    }
-}
-
-// MARK: - Interactions
-extension HomeView {
-    func getWeeklyStudy() {
-        studySessionInteracotr
-            .getWeekyStudy(studyRecords: $studyRecords)
-    }
-}
-
-// MARK: - Preview
-#Preview {
-    HomeView()
 }

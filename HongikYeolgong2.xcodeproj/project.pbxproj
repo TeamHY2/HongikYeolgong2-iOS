@@ -32,7 +32,6 @@
 		475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DE2CA1AF1E000534B2 /* RecordView.swift */; };
 		475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E02CA1AF31000534B2 /* RankingView.swift */; };
 		475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E22CA1AF40000534B2 /* SettingView.swift */; };
-		475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E42CA1CA61000534B2 /* HY2Button.swift */; };
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
 		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
 		4763FFAF2CB90AE000990336 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFAE2CB90AE000990336 /* AppState.swift */; };
@@ -90,6 +89,9 @@
 		47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E42CC81A9E0015D973 /* URLRequest+.swift */; };
 		47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17242CC9336100CBB251 /* StudyPeriodView.swift */; };
 		47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17262CC9340800CBB251 /* StudyTimerView.swift */; };
+		47D5EDCB2CCBB5CA00ACA469 /* GradientBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCA2CCBB5CA00ACA469 /* GradientBackground.swift */; };
+		47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */; };
+		47D5EDCF2CCBD10300ACA469 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */; };
 		47D6662C2CB4499300813ECA /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D6662B2CB4499300813ECA /* TimePicker.swift */; };
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
 		47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */; };
@@ -145,7 +147,6 @@
 		475B86DE2CA1AF1E000534B2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		475B86E02CA1AF31000534B2 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		475B86E22CA1AF40000534B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		475B86E42CA1CA61000534B2 /* HY2Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2Button.swift; sourceTree = "<group>"; };
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
 		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4763FFAE2CB90AE000990336 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -208,6 +209,9 @@
 		47BE30E42CC81A9E0015D973 /* URLRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+.swift"; sourceTree = "<group>"; };
 		47CA17242CC9336100CBB251 /* StudyPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPeriodView.swift; sourceTree = "<group>"; };
 		47CA17262CC9340800CBB251 /* StudyTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimerView.swift; sourceTree = "<group>"; };
+		47D5EDCA2CCBB5CA00ACA469 /* GradientBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientBackground.swift; sourceTree = "<group>"; };
+		47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
+		47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		47D6662B2CB4499300813ECA /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */,
+				47D5EDCA2CCBB5CA00ACA469 /* GradientBackground.swift */,
+				47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -298,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				47860E072CB82BDD005701C0 /* TimePicker */,
-				475B86E42CA1CA61000534B2 /* HY2Button.swift */,
 				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
 				475B86E82CA1CD10000534B2 /* Alert.swift */,
 				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
@@ -370,6 +375,7 @@
 				4795DC8F2CB43B2700EC3AB1 /* TimePickerDialog.swift */,
 				47860E082CB82BEF005701C0 /* TimePickerViewModel.swift */,
 				47D6662B2CB4499300813ECA /* TimePicker.swift */,
+				47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */,
 			);
 			path = TimePicker;
 			sourceTree = "<group>";
@@ -933,7 +939,6 @@
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				47860E092CB82BEF005701C0 /* TimePickerViewModel.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
-				475B86E52CA1CA61000534B2 /* HY2Button.swift in Sources */,
 				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
@@ -952,6 +957,7 @@
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
 				478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
+				47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
 				470723182CBC29510046469F /* AuthenticationService.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
@@ -966,6 +972,8 @@
 				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
+				47D5EDCB2CCBB5CA00ACA469 /* GradientBackground.swift in Sources */,
+				47D5EDCF2CCBD10300ACA469 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
