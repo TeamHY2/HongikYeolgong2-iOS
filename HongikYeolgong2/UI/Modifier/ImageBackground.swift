@@ -12,12 +12,11 @@ struct ImageBackground: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .overlay(
+            .background(
                 Image(imageName)
                     .resizable()
                     .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
             )
-            .clipped()
     }
 }
 

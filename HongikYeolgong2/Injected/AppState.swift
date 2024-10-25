@@ -10,6 +10,7 @@ import SwiftUI
 final class AppState: ObservableObject {
     @Published var appLaunchState: AppLaunchState = .checkAuthentication
     @Published var userData = UserData()
+    @Published var studySession = StudySession()
     @Published var routing = ViewRouting()
     @Published var permissions = Permissions()
 }
@@ -25,6 +26,15 @@ extension AppState {
 extension AppState {
     struct UserData: Equatable {
         var isLoggedIn = false
+    }
+}
+
+extension AppState {
+    struct StudySession: Equatable {
+        var isStudying = false
+        var startTime: Date = .now
+        var endTime: Date = .now
+        var remainingTime = 0
     }
 }
 

@@ -6,28 +6,30 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     // MARK: - Properties
+    @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     
-    @State private(set) var studyRecords = [WeeklyStudyRecord]()
-    @State private var studyRoomStatus = StudyRoomStatus()
+    @State private var studyRecords = [WeeklyStudyRecord]()
+    @State private var studySession = AppState.StudySession()
     
     var body: some View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
             
-            StudyContentControllerView(studyRoomStatus: studyRoomStatus)
+            StudyContentControllerView(studySession: $studySession)
             
             Spacer()
             
             ActionButtonControllerView(
-                studyRoomStatus: studyRoomStatus,
+                studySession: $studySession,
                 actions: .init(
-                    endButtonTapped: {},
-                    startButtonTapped: {},
+                    endButtonTapped: { studySessionInteractor.endStudy() },
+                    startButtonTapped: { studySessionInteractor.startStudy() },
                     seatButtonTapped: {},
                     extensionButtonTapped: {}
                 )
@@ -35,26 +37,26 @@ struct HomeView: View {
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
-        .onAppear {
-            permissions.request(permission: .localNotifications)
-            studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
-        }
+        .onAppear { permissions.request(permission: .localNotifications) }
+        .onAppear { studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords) }
+        .onReceive( studySessionUpdated) { studySession = $0 }
     }
 }
 
+// MARK: - Publishers
 extension HomeView {
-    struct StudyRoomStatus {
-        var isRoomInUse = false
+    var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
+        appState.updates(for: \.studySession)
     }
 }
 
 // MARK: - StudyContentControllerView
 struct StudyContentControllerView: View {
-    @State var studyRoomStatus: HomeView.StudyRoomStatus
+    @Binding var studySession: AppState.StudySession
     
     var body: some View {
         Group {
-            if studyRoomStatus.isRoomInUse {
+            if studySession.isStudying {
                 VStack(spacing: 32.adjustToScreenHeight) {
                     StudyPeriodView()
                     StudyTimerView()
@@ -70,7 +72,7 @@ struct StudyContentControllerView: View {
 
 // MARK: - ActionButtonControllerView
 struct ActionButtonControllerView: View {
-    @State var studyRoomStatus: HomeView.StudyRoomStatus
+    @Binding var studySession: AppState.StudySession
     let actions: ActionHandlers
     
     struct ActionHandlers {
@@ -82,12 +84,12 @@ struct ActionButtonControllerView: View {
     
     var body: some View {
         Group {
-            if studyRoomStatus.isRoomInUse {
+            if studySession.isStudying {
                 ActionButton(
                     title: "열람실 이용 종료",
                     backgroundColor: .gray600,
                     radius: 4,
-                    action: {}
+                    action: { actions.endButtonTapped() }
                 )
             } else {
                 HStack(spacing: 12.adjustToScreenWidth) {
@@ -100,7 +102,7 @@ struct ActionButtonControllerView: View {
                     
                     ActionButton(
                         backgroundColor: .clear,
-                        action: {}
+                        action: { actions.startButtonTapped() }
                     )
                     .modifier(ImageBackground(imageName: .startButton))
                 }

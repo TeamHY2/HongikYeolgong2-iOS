@@ -9,16 +9,21 @@ import SwiftUI
 
 protocol StudySessionInteractor {
     func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
+    func startStudy()
+    func endStudy()
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
+    private let appState: Store<AppState>
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     
-    init(studySessionRepository: StudySessionRepository) {
+    init(appState: Store<AppState>,
+         studySessionRepository: StudySessionRepository) {
+        self.appState = appState
         self.studySessionRepository = studySessionRepository
     }
-        
+    
     /// 한 주에 대한 공부 횟수를 가져옵니다.
     /// - Parameter studyRecords: 공부 기록(월 - 일)
     func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>) {
@@ -29,5 +34,13 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
                 studyRecords.wrappedValue = $0.map { $0.toEntity() }
             }
             .store(in: cancleBag)
+    }
+    
+    func startStudy() {
+        appState[\.studySession.isStudying] = true
+    }
+    
+    func endStudy() {
+        appState[\.studySession.isStudying] = false
     }
 }

@@ -28,7 +28,7 @@ extension DIContainer {
                 authRepository: AuthRepositoryImpl(),
                 authService: AuthenticationServiceImpl()
             ),
-            studySessionInteractor: StudySessionInteractorImpl(studySessionRepository: StudySessionRepositoryImpl()),
+            studySessionInteractor: StudySessionInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {})
         )
     }
