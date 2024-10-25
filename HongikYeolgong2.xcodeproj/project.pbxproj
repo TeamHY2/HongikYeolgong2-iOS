@@ -318,14 +318,12 @@
 			path = Basic;
 			sourceTree = "<group>";
 		};
-		4736719D2CB1208D00527896 /* Component */ = {
+		4736719D2CB1208D00527896 /* WiseSaying */ = {
 			isa = PBXGroup;
 			children = (
 				473671A02CB1234800527896 /* TodayWiseSaying.swift */,
-				47CA17242CC9336100CBB251 /* StudyPeriodView.swift */,
-				47CA17262CC9340800CBB251 /* StudyTimerView.swift */,
 			);
-			path = Component;
+			path = WiseSaying;
 			sourceTree = "<group>";
 		};
 		4763FFB62CB9133600990336 /* Util */ = {
@@ -449,8 +447,9 @@
 		47A147342CA1370200A91F66 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				47D5EDC52CCB66BD00ACA469 /* StudyTimer */,
 				4780043A2CCA8E0200FFAF00 /* WeeklyStudy */,
-				4736719D2CB1208D00527896 /* Component */,
+				4736719D2CB1208D00527896 /* WiseSaying */,
 				475B86DC2CA1AEF7000534B2 /* HomeView.swift */,
 			);
 			path = Home;
@@ -662,6 +661,15 @@
 				471940C62CAFCA6200426D30 /* Modifier */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		47D5EDC52CCB66BD00ACA469 /* StudyTimer */ = {
+			isa = PBXGroup;
+			children = (
+				47CA17242CC9336100CBB251 /* StudyPeriodView.swift */,
+				47CA17262CC9340800CBB251 /* StudyTimerView.swift */,
+			);
+			path = StudyTimer;
 			sourceTree = "<group>";
 		};
 		47DF041D2CBE7A16007E58A7 /* Extensions */ = {

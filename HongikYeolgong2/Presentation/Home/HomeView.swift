@@ -126,6 +126,7 @@ private extension HomeView {
     }
 }
 
+// MARK: - Interactions
 extension HomeView {
     func getWeeklyStudy() {
         studySessionInteracotr
