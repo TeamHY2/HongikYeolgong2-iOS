@@ -9,7 +9,8 @@ import SwiftUI
 import Combine
 
 struct SignUpView: View {
-    @Environment(\.injected) var injected: DIContainer
+    @Environment(\.injected.interactors.userDataInteractor) var userDataInetractor
+    
     @State private var signupData = SignupData()
     @State private var isSubmitButtonAvailable = false
     @State private var isCheckButtonAvailable = false
@@ -122,14 +123,14 @@ private extension SignUpView {
 
 private extension SignUpView {
     func requestCheckNickname() {
-        injected.interactors.userDataInteractor
-            .checkUserNickname(nickname: signupData.nickname, 
+        userDataInetractor
+            .checkUserNickname(nickname: signupData.nickname,
                                isValidate: $signupData.isNicknameAvailable)
     }
     
     func performSignUp() {
-        injected.interactors.userDataInteractor
-            .signUp(nickname: signupData.nickname, 
+        userDataInetractor
+            .signUp(nickname: signupData.nickname,
                     department: signupData.department)
     }
     
