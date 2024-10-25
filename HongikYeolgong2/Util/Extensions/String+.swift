@@ -16,6 +16,8 @@ extension String {
         return formatter
     }()
     
+    /// 문자열 형식의 날짜를 Date 객체로 변환합니다.
+    /// - Returns: Date
     func toDate() -> Date? {
         let dateFormatter = Self.dateFormatter
         guard let date = dateFormatter.date(from: self) else {
@@ -24,6 +26,8 @@ extension String {
         return date
     }
     
+    /// 날짜 형식을 변환합니다. "2024-10-24" -> "10/24"
+    /// - Returns: 월/일
     func toMonthOfDay() -> String {
         guard let date = self.toDate() else {
             return "날짜오류"
@@ -35,6 +39,8 @@ extension String {
         return "\(month)/\(day)"
     }
     
+    /// 받은 날짜의 요일을 반환합니다
+    /// - Returns:요일
     func toDayOfWeek() -> String {
         guard let date = self.toDate() else {
             return "날짜오류"
