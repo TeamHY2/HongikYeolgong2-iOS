@@ -1,23 +1,19 @@
 //
-//  TimePicker.swift
+//  TimePickerView.swift
 //  HongikYeolgong2
 //
-//  Created by 권석기 on 10/8/24.
+//  Created by 권석기 on 10/26/24.
 //
 
 import SwiftUI
 import Combine
 
-struct TimePickerDialog: View {
-    
-    @Binding private var selectedDate: Date
-    
-    @ObservedObject private var timePickerViewModel: TimePickerViewModel
-    
-    init(selectedDate: Binding<Date>) {
-        self._selectedDate = selectedDate
-        self.timePickerViewModel = TimePickerViewModel()
-    }
+struct TimePickerView: View {
+    @Environment(\.injected.interactors.timePickerInteractor) var timePickerInteractor
+    @State private var hour = 0
+    @State private var minute = 0
+    @State private var beforeHour = 0
+    @State private var beforeMinute = 0
     
     var body: some View {
         VStack(spacing: 0) {
@@ -28,12 +24,11 @@ struct TimePickerDialog: View {
                 .padding(.top, 40.adjustToScreenHeight)
             
             HStack {
-                TimePicker(selected: $timePickerViewModel.hour, data: timePickerViewModel.hourData)
+                TimePicker(selected: $hour, data: makeHourData())
                 Text(":")
                     .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundStyle(.white)
-                TimePicker(selected: $timePickerViewModel.minute, data: timePickerViewModel.minutesData)
-                
+                TimePicker(selected: $minute, data: makeMinuteData())
             }
             .frame(maxWidth: 94.adjustToScreenWidth)
             .frame(height: 126.adjustToScreenHeight)
@@ -72,7 +67,9 @@ struct TimePickerDialog: View {
                 .background(.gray600)
                 .cornerRadius(8)
                 
-                Button(action: {}, label: {
+                Button(action: {
+                    
+                }, label: {
                     Text("확인")
                         .font(.pretendard(size: 16, weight: .bold),
                               lineHeight: 26.adjustToScreenHeight)
@@ -89,6 +86,28 @@ struct TimePickerDialog: View {
                                 trailing: 32.adjustToScreenWidth))
         }
         .background(.gray800)
-        .cornerRadius(8)        
+        .cornerRadius(8)
+        .onAppear {
+            timePickerInteractor.updateTime(hour: $hour,
+                                            minute: $minute)
+        }
+        .onChange(of: [hour, minute], perform: {
+            timePickerInteractor.changedTime(hour: $hour,
+                                             minute: $minute,
+                                             newHour: $0[0],
+                                             newMinute: $0[1],
+                                             beforeHour: beforeHour,
+                                             beforeMinute: beforeMinute)
+        })
+    }
+}
+
+extension TimePickerView {
+    func makeHourData() -> [Int] {
+        Array(repeating: Array(0...23), count: 100).flatMap { $0 }
+    }
+    
+    func makeMinuteData() -> [Int] {
+        Array(repeating: Array(0...59), count: 100).flatMap { $0 }
     }
 }

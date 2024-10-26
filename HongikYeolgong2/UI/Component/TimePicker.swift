@@ -1,12 +1,12 @@
 //
-//  Picker.swift
+//  TimePicker.swift
 //  HongikYeolgong2
 //
-//  Created by 권석기 on 10/8/24.
+//  Created by 권석기 on 10/26/24.
 //
 
 import SwiftUI
-import Combine
+import UIKit
 
 struct TimePicker: UIViewRepresentable {
     @Binding var selected: Int
@@ -98,3 +98,4 @@ struct TimePicker: UIViewRepresentable {
         }
     }
 }
+
