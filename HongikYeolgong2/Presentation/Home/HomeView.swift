@@ -15,25 +15,26 @@ struct HomeView: View {
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     
     @State private var studyRecords = [WeeklyStudyRecord]()
-    @State private var studySession = AppState.StudySession()
+    @State private var studySession = AppState.StudySession()    
     
     var body: some View {
         VStack {
-            WeeklyStudyView(studyRecords: studyRecords)
-            
-            StudyContentControllerView(studySession: $studySession)
-            
-            Spacer()
-            
-            ActionButtonControllerView(
-                studySession: $studySession,
-                actions: .init(
-                    endButtonTapped: { studySessionInteractor.endStudy() },
-                    startButtonTapped: { studySessionInteractor.startStudy() },
-                    seatButtonTapped: {},
-                    extensionButtonTapped: {}
-                )
-            )
+//            WeeklyStudyView(studyRecords: studyRecords)
+//            
+//            StudyContentControllerView(studySession: $studySession)
+//            
+//            Spacer()
+//            
+//            ActionButtonControllerView(
+//                studySession: $studySession,
+//                actions: .init(
+//                    endButtonTapped: { studySessionInteractor.endStudy() },
+//                    startButtonTapped: { studySessionInteractor.startStudy() },
+//                    seatButtonTapped: {},
+//                    extensionButtonTapped: {}
+//                )
+//            )
+            TimePickerView()
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())

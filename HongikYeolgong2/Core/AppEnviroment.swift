@@ -70,7 +70,8 @@ extension AppEnviroment {
                         UIApplication.shared.open(url)
                     }
                 }
-            )
+            ),
+            timePickerInteractor: TimePickerInteractorImpl()
         )
     }
     

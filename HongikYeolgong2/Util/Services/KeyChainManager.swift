@@ -89,7 +89,6 @@ struct KeyChainManager {
         }
     }
     
-    
     /// Key에 해당하는 키체인값을 삭제합니다.
     /// - Parameter key: KeyChainName
     static func deleteItem(key: KeyChainName) {
