@@ -32,13 +32,13 @@
 		473E8EB62CCE6A02000F102C /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E8EB52CCE6A02000F102C /* Date+.swift */; };
 		473E8EB82CCEA5FB000F102C /* StudySessionRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E8EB72CCEA5FB000F102C /* StudySessionRequestDTO.swift */; };
 		473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E8EB92CCEA702000F102C /* StudySessionResponseDTO.swift */; };
+		473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E8EBB2CCEBEF3000F102C /* ModalView.swift */; };
 		4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752A27C2CB96EB00073B784 /* CancleBag.swift */; };
 		475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DC2CA1AEF7000534B2 /* HomeView.swift */; };
 		475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DE2CA1AF1E000534B2 /* RecordView.swift */; };
 		475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E02CA1AF31000534B2 /* RankingView.swift */; };
 		475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E22CA1AF40000534B2 /* SettingView.swift */; };
 		475B86E72CA1CC20000534B2 /* HY2TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E62CA1CC20000534B2 /* HY2TextField.swift */; };
-		475B86E92CA1CD10000534B2 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E82CA1CD10000534B2 /* Alert.swift */; };
 		4763FFAF2CB90AE000990336 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFAE2CB90AE000990336 /* AppState.swift */; };
 		4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB02CB90C1500990336 /* DependencyInjector.swift */; };
 		4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB22CB90E3800990336 /* InteractorsContainer.swift */; };
@@ -151,13 +151,13 @@
 		473E8EB52CCE6A02000F102C /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		473E8EB72CCEA5FB000F102C /* StudySessionRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionRequestDTO.swift; sourceTree = "<group>"; };
 		473E8EB92CCEA702000F102C /* StudySessionResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionResponseDTO.swift; sourceTree = "<group>"; };
+		473E8EBB2CCEBEF3000F102C /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		4752A27C2CB96EB00073B784 /* CancleBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancleBag.swift; sourceTree = "<group>"; };
 		475B86DC2CA1AEF7000534B2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		475B86DE2CA1AF1E000534B2 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		475B86E02CA1AF31000534B2 /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		475B86E22CA1AF40000534B2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		475B86E62CA1CC20000534B2 /* HY2TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HY2TextField.swift; sourceTree = "<group>"; };
-		475B86E82CA1CD10000534B2 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4763FFAE2CB90AE000990336 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4763FFB02CB90C1500990336 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		4763FFB22CB90E3800990336 /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
@@ -314,9 +314,9 @@
 			children = (
 				47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */,
 				475B86E62CA1CC20000534B2 /* HY2TextField.swift */,
-				475B86E82CA1CD10000534B2 /* Alert.swift */,
 				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
 				47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */,
+				473E8EBB2CCEBEF3000F102C /* ModalView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -919,10 +919,10 @@
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
+				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
 				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,
 				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
-				475B86E92CA1CD10000534B2 /* Alert.swift in Sources */,
 				478004502CCABEFF00FFAF00 /* WeeklyStudyRecord.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
