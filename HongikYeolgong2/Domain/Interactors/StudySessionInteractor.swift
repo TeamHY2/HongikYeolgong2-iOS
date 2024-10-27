@@ -12,6 +12,7 @@ protocol StudySessionInteractor {
     func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
     func startStudy()
     func endStudy()
+    func addTime()
     func setStartTime(_ startTime: Date)
 }
 
@@ -71,6 +72,13 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             } receiveValue: { _ in
             }
             .store(in: cancleBag)
+    }
+    
+    func addTime() {
+        appState.bulkUpdate { appState in
+            appState.studySession.endTime += TimeInterval.hours(6)
+            appState.studySession.remainingTime += TimeInterval.hours(6)
+        }
     }
     
     func setStartTime(_ startTime: Date) {
