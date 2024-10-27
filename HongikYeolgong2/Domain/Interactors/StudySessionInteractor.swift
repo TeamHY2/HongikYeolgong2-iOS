@@ -35,8 +35,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         studySessionRepository
             .getWeeklyStudyRecords()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }) {
-                studyRecords.wrappedValue = $0.map { $0.toEntity() }
+            .sink(receiveCompletion: { _ in }) {                
+                studyRecords.wrappedValue = $0
             }
             .store(in: cancleBag)
     }
@@ -53,15 +53,24 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             appState.studySession.remainingTime = remainingTime
         }
         
-        subscription = timer.sink { [weak self] _ in
-            guard let self = self else { return }
-            appState[\.studySession.remainingTime] -= 1
+        subscription = timer.sink { [weak appState] _ in
+            appState?[\.studySession.remainingTime] -= 1
         }
     }
     
     func endStudy() {
         appState[\.studySession.isStudying] = false
-        subscription?.cancel()
+        subscription?.cancel()          
+        
+        let startTime = appState.value.studySession.startTime
+        let endTime = Date()
+        
+        studySessionRepository
+            .uploadStudyRecord(startTime: startTime, endTime: endTime)
+            .sink { _ in
+            } receiveValue: { _ in
+            }
+            .store(in: cancleBag)
     }
     
     func setStartTime(_ startTime: Date) {
