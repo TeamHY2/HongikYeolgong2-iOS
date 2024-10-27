@@ -16,7 +16,7 @@ struct HomeView: View {
     
     @State private var studyRecords = [WeeklyStudyRecord]()
     @State private var studySession = AppState.StudySession()
-    @State private var isPickerPresented = false
+    @State private var isPresented = false
     
     var body: some View {
         VStack {
@@ -30,21 +30,21 @@ struct HomeView: View {
                 studySession: $studySession,
                 actions: .init(
                     endButtonTapped: { studySessionInteractor.endStudy() },
-                    startButtonTapped: { isPickerPresented = true },
+                    startButtonTapped: { isPresented = true },
                     seatButtonTapped: {},
                     extensionButtonTapped: {}
                 )
             )
         }
-        .overlay {
+        .systemOverlay(isPresented: $isPresented) {
             TimePickerView(
-                isPresented: $isPickerPresented,
                 selectedTime: Binding(
                     get: { appState.value.studySession.startTime },
                     set: { studySessionInteractor.setStartTime($0) }
                 ),
                 onTimeSelected: {
                     studySessionInteractor.startStudy()
+                    isPresented = false
                 }
             )
         }
@@ -124,3 +124,5 @@ struct ActionButtonControllerView: View {
         .padding(.bottom, 36.adjustToScreenHeight)
     }
 }
+
+
