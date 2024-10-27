@@ -10,6 +10,7 @@ import SwiftUI
 struct StudyTimerView: View {
     let totalTime: TimeInterval
     let remainingTime: TimeInterval
+    let color: Color
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -19,7 +20,7 @@ struct StudyTimerView: View {
             
             Text(remainingTime.getFullTime())
                 .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
-                .foregroundColor(.gray100)
+                .foregroundColor(color)
                 .padding(.top, 11.adjustToScreenHeight)
             
             LinearProgressView(shape: Rectangle(), value: remainingTime / totalTime)
@@ -43,6 +44,7 @@ struct LinearProgressView<Shape: SwiftUI.Shape>: View {
                     }
                 }
         }
+        .animation(.easeInOut, value: value)
     }
 }
 

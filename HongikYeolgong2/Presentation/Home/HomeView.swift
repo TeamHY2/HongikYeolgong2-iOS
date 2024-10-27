@@ -32,7 +32,7 @@ struct HomeView: View {
                     endButtonTapped: { studySessionInteractor.endStudy() },
                     startButtonTapped: { isPresented = true },
                     seatButtonTapped: {},
-                    extensionButtonTapped: {}
+                    addButtonTapped: { studySessionInteractor.addTime() }
                 )
             )
         }
@@ -77,8 +77,9 @@ struct StudyContentControllerView: View {
                         endTime: studySession.endTime
                     )
                     StudyTimerView(
-                        totalTime: TimeInterval.hours(6),
-                        remainingTime: studySession.remainingTime
+                        totalTime: studySession.endTime.timeIntervalSince(studySession.startTime),
+                        remainingTime: studySession.remainingTime,
+                        color: studySession.isAddTime ? .yellow100 : .white
                     )
                 }
                 .padding(.top, 36.adjustToScreenHeight)
@@ -99,18 +100,28 @@ struct ActionButtonControllerView: View {
         let endButtonTapped: () -> Void
         let startButtonTapped: () -> Void
         let seatButtonTapped: () -> Void
-        let extensionButtonTapped: () -> Void
+        let addButtonTapped: () -> Void
     }
     
     var body: some View {
         Group {
             if studySession.isStudying {
-                ActionButton(
-                    title: "열람실 이용 종료",
-                    backgroundColor: .gray600,
-                    radius: 4,
-                    action: { actions.endButtonTapped() }
-                )
+                VStack(spacing: 12.adjustToScreenWidth) {
+                    if studySession.isAddTime {
+                        ActionButton(
+                            title: "열람실 이용 연장",
+                            backgroundColor: .blue100,
+                            radius: 4,
+                            action: { actions.addButtonTapped() }
+                        )
+                    }
+                    ActionButton(
+                        title: "열람실 이용 종료",
+                        backgroundColor: .gray600,
+                        radius: 4,
+                        action: { actions.endButtonTapped() }
+                    )
+                }
             } else {
                 HStack(spacing: 12.adjustToScreenWidth) {
                     ActionButton(

@@ -44,7 +44,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     func startStudy() {
         let startTime = appState.value.studySession.startTime
-        let addedTime: TimeInterval = .init(hours: 6)
+        let addedTime: TimeInterval = .init(minutes: 1)
         let endTime = startTime + addedTime
         let remainingTime = endTime.timeIntervalSince(startTime)
           
@@ -76,8 +76,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     func addTime() {
         appState.bulkUpdate { appState in
-            appState.studySession.endTime += TimeInterval.hours(6)
-            appState.studySession.remainingTime += TimeInterval.hours(6)
+            appState.studySession.endTime += .init(minutes: 1)
+            appState.studySession.remainingTime += .init(minutes: 1)
         }
     }
     

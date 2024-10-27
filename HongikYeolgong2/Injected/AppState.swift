@@ -35,6 +35,11 @@ extension AppState {
         var startTime: Date = .now
         var endTime: Date = .now
         var remainingTime: TimeInterval = 0
+        var minimumTime: TimeInterval = .init(seconds: 30)
+        
+        var isAddTime: Bool {
+            remainingTime <= minimumTime
+        }
     }
 }
 
