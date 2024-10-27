@@ -38,7 +38,10 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     }
     
     func startStudy() {
+        let startTime = appState.value.studySession.startTime
+        let addedTime: TimeInterval = .init(hours: 6)
         appState[\.studySession.isStudying] = true
+        appState[\.studySession.endTime] = startTime + addedTime
     }
     
     func endStudy() {
