@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 protocol StudySessionInteractor {
     func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
@@ -18,6 +19,9 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     private let appState: Store<AppState>
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
+    private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+    
+    private var subscription: AnyCancellable?
     
     init(appState: Store<AppState>,
          studySessionRepository: StudySessionRepository) {
@@ -40,12 +44,24 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     func startStudy() {
         let startTime = appState.value.studySession.startTime
         let addedTime: TimeInterval = .init(hours: 6)
-        appState[\.studySession.isStudying] = true
-        appState[\.studySession.endTime] = startTime + addedTime
+        let endTime = startTime + addedTime
+        let remainingTime = endTime.timeIntervalSince(startTime)
+          
+        appState.bulkUpdate { appState in
+            appState.studySession.isStudying = true
+            appState.studySession.endTime = endTime
+            appState.studySession.remainingTime = remainingTime
+        }
+        
+        subscription = timer.sink { [weak self] _ in
+            guard let self = self else { return }
+            appState[\.studySession.remainingTime] -= 1
+        }
     }
     
     func endStudy() {
         appState[\.studySession.isStudying] = false
+        subscription?.cancel()
     }
     
     func setStartTime(_ startTime: Date) {

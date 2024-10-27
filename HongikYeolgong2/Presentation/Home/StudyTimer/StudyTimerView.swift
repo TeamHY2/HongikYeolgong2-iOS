@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct StudyTimerView: View {
+    let remainingTime: TimeInterval
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Time Left")
                 .font(.suite(size: 12, weight: .medium), lineHeight: 15.adjustToScreenHeight)
                 .foregroundStyle(.gray300)
             
-            Text("03:52:00")
+            Text(remainingTime.getFullTime())
                 .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
                 .foregroundColor(.gray100)
                 .padding(.top, 11.adjustToScreenHeight)
@@ -43,6 +45,3 @@ struct LinearProgressView<Shape: SwiftUI.Shape>: View {
     }
 }
 
-#Preview {
-    StudyTimerView()
-}

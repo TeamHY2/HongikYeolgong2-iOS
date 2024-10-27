@@ -76,7 +76,9 @@ struct StudyContentControllerView: View {
                         startTime: studySession.startTime,
                         endTime: studySession.endTime
                     )
-                    StudyTimerView()
+                    StudyTimerView(
+                        remainingTime: studySession.remainingTime
+                    )
                 }
                 .padding(.top, 36.adjustToScreenHeight)
             } else {

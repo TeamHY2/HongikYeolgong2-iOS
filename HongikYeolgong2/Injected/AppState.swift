@@ -34,7 +34,7 @@ extension AppState {
         var isStudying = false
         var startTime: Date = .now
         var endTime: Date = .now
-        var remainingTime = 0
+        var remainingTime: TimeInterval = 0
     }
 }
 
