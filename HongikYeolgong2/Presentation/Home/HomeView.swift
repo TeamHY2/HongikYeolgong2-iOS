@@ -47,6 +47,7 @@ struct HomeView: View {
                     isPresented = false
                 }
             )
+            .padding(.horizontal, 30.adjustToScreenWidth)
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
@@ -71,7 +72,10 @@ struct StudyContentControllerView: View {
         Group {
             if studySession.isStudying {
                 VStack(spacing: 32.adjustToScreenHeight) {
-                    StudyPeriodView()
+                    StudyPeriodView(
+                        startTime: studySession.startTime,
+                        endTime: studySession.endTime
+                    )
                     StudyTimerView()
                 }
                 .padding(.top, 36.adjustToScreenHeight)
