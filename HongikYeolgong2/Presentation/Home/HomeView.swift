@@ -16,8 +16,9 @@ struct HomeView: View {
     
     @State private var studyRecords = [WeeklyStudyRecord]()
     @State private var studySession = AppState.StudySession()
-    @State private var isPresented = false
-    @State private var isModalPresented = false
+    @State private var shouldShowTimePicker = false
+    @State private var shouldShowAddTimeModal = false
+    @State private var shouldShowEndUseModal = false
     
     var body: some View {
         VStack {
@@ -30,14 +31,14 @@ struct HomeView: View {
             ActionButtonControllerView(
                 studySession: $studySession,
                 actions: .init(
-                    endButtonTapped: { studySessionInteractor.endStudy() },
-                    startButtonTapped: { isPresented = true },
+                    endButtonTapped: { shouldShowEndUseModal = true },
+                    startButtonTapped: { shouldShowTimePicker = true },
                     seatButtonTapped: {},
-                    addButtonTapped: { isModalPresented = true }
+                    addButtonTapped: { shouldShowAddTimeModal = true }
                 )
             )
         }
-        .systemOverlay(isPresented: $isPresented) {
+        .systemOverlay(isPresented: $shouldShowTimePicker) {
             TimePickerView(
                 selectedTime: Binding(
                     get: { appState.value.studySession.startTime },
@@ -45,20 +46,30 @@ struct HomeView: View {
                 ),
                 onTimeSelected: {
                     studySessionInteractor.startStudy()
-                    isPresented = false
+                    shouldShowTimePicker = false
                 }
             )
             .padding(.horizontal, 30.adjustToScreenWidth)
         }
-        .systemOverlay(isPresented: $isModalPresented) {
+        .systemOverlay(isPresented: $shouldShowAddTimeModal) {
             ModalView(title: "열람실 이용 시간을 연장할까요?",
                       confirmButtonText: "연장하기",
                       cancleButtonText: "아니오",
                       confirmAction: {
                 studySessionInteractor.addTime()
-                isModalPresented = false
+                shouldShowAddTimeModal = false
             },
-                      cancleAction: { isModalPresented = false })
+            cancleAction: { shouldShowAddTimeModal = false })
+        }
+        .systemOverlay(isPresented: $shouldShowEndUseModal) {
+            ModalView(title: "열람실을 다 이용하셨나요??",
+                      confirmButtonText: "네",
+                      cancleButtonText: "더 이용하기",
+                      confirmAction: {
+                studySessionInteractor.endStudy()
+                shouldShowEndUseModal = false
+            },
+            cancleAction: { shouldShowEndUseModal = false })
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
