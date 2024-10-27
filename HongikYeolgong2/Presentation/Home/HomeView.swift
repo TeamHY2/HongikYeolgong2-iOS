@@ -17,6 +17,7 @@ struct HomeView: View {
     @State private var studyRecords = [WeeklyStudyRecord]()
     @State private var studySession = AppState.StudySession()
     @State private var isPresented = false
+    @State private var isModalPresented = false
     
     var body: some View {
         VStack {
@@ -32,7 +33,7 @@ struct HomeView: View {
                     endButtonTapped: { studySessionInteractor.endStudy() },
                     startButtonTapped: { isPresented = true },
                     seatButtonTapped: {},
-                    addButtonTapped: { studySessionInteractor.addTime() }
+                    addButtonTapped: { isModalPresented = true }
                 )
             )
         }
@@ -48,6 +49,16 @@ struct HomeView: View {
                 }
             )
             .padding(.horizontal, 30.adjustToScreenWidth)
+        }
+        .systemOverlay(isPresented: $isModalPresented) {
+            ModalView(title: "열람실 이용 시간을 연장할까요?",
+                      confirmButtonText: "연장하기",
+                      cancleButtonText: "아니오",
+                      confirmAction: {
+                studySessionInteractor.addTime()
+                isModalPresented = false
+            },
+                      cancleAction: { isModalPresented = false })
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
