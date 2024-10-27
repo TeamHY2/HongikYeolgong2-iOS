@@ -62,12 +62,15 @@ struct HomeView: View {
             cancleAction: { shouldShowAddTimeModal = false })
         }
         .systemOverlay(isPresented: $shouldShowEndUseModal) {
-            ModalView(title: "열람실을 다 이용하셨나요??",
+            ModalView(title: "열람실을 다 이용하셨나요?",
                       confirmButtonText: "네",
                       cancleButtonText: "더 이용하기",
                       confirmAction: {
                 studySessionInteractor.endStudy()
                 shouldShowEndUseModal = false
+                DispatchQueue.main.async {
+                    studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                }
             },
             cancleAction: { shouldShowEndUseModal = false })
         }
@@ -75,7 +78,7 @@ struct HomeView: View {
         .modifier(GradientBackground())
         .onAppear { permissions.request(permission: .localNotifications) }
         .onAppear { studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords) }
-        .onReceive( studySessionUpdated) { studySession = $0 }
+        .onReceive(studySessionUpdated) { studySession = $0 }
     }
 }
 
