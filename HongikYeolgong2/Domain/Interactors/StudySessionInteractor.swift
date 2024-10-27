@@ -71,7 +71,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             .sink { _ in
             } receiveValue: { _ in
             }
-            .store(in: cancleBag)
+            .store(in: cancleBag)                
     }
     
     func addTime() {
