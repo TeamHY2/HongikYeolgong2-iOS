@@ -96,7 +96,6 @@
 		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
 		47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */; };
 		47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635042CC3EC1A0034EAA9 /* Department.swift */; };
-		47F79B2C2CCCB6F700DD0899 /* TimePickerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2B2CCCB6F700DD0899 /* TimePickerInteractor.swift */; };
 		47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2D2CCCB7AA00DD0899 /* TimePickerView.swift */; };
 		47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */; };
 /* End PBXBuildFile section */
@@ -216,7 +215,6 @@
 		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
 		47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
 		47F635042CC3EC1A0034EAA9 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		47F79B2B2CCCB6F700DD0899 /* TimePickerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerInteractor.swift; sourceTree = "<group>"; };
 		47F79B2D2CCCB7AA00DD0899 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -509,7 +507,6 @@
 				4763FFB92CB913FF00990336 /* UserDataInteractor.swift */,
 				4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */,
 				4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */,
-				47F79B2B2CCCB6F700DD0899 /* TimePickerInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -936,7 +933,6 @@
 				4763FFAF2CB90AE000990336 /* AppState.swift in Sources */,
 				4786A1092CCA346F008635A4 /* StudySessionRepository.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
-				47F79B2C2CCCB6F700DD0899 /* TimePickerInteractor.swift in Sources */,
 				4780044E2CCAAE3200FFAF00 /* String+.swift in Sources */,
 				4786A1072CCA33DF008635A4 /* WeeklyEndpoint.swift in Sources */,
 				4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */,

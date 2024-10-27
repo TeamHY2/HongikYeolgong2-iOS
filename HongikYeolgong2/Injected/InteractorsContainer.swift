@@ -11,18 +11,15 @@ extension DIContainer {
     struct Interactors {
         let userDataInteractor: UserDataInteractor
         let studySessionInteractor: StudySessionInteractor
-        let userPermissionsInteractor: UserPermissionsInteractor
-        let timePickerInteractor: TimePickerInteractor
+        let userPermissionsInteractor: UserPermissionsInteractor        
         
         init(userDataInteractor: UserDataInteractor,
              studySessionInteractor: StudySessionInteractor, 
-             userPermissionsInteractor: UserPermissionsInteractor,
-             timePickerInteractor: TimePickerInteractor) {
+             userPermissionsInteractor: UserPermissionsInteractor) {
             
             self.userDataInteractor = userDataInteractor
             self.studySessionInteractor = studySessionInteractor
             self.userPermissionsInteractor = userPermissionsInteractor
-            self.timePickerInteractor = timePickerInteractor
         }
         
         static let `default` = Self(
@@ -32,8 +29,7 @@ extension DIContainer {
                 authService: AuthenticationServiceImpl()
             ),
             studySessionInteractor: StudySessionInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
-            userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {}),
-            timePickerInteractor: TimePickerInteractorImpl()
+            userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {})
         )
     }
 }
