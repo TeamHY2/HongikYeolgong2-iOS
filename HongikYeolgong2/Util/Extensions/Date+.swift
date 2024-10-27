@@ -22,5 +22,14 @@ extension Date {
         let hour = calendar.component(.hour, from: self)
         let daypart = hour < 12 ? "AM" : "PM"
         return daypart
-    }            
+    }
+    
+    func dateToISO8601() -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        let ISO8601String = formatter.string(from: self)
+        
+        return ISO8601String
+    }
 }

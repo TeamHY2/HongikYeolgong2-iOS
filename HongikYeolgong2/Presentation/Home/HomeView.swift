@@ -77,6 +77,7 @@ struct StudyContentControllerView: View {
                         endTime: studySession.endTime
                     )
                     StudyTimerView(
+                        totalTime: TimeInterval.hours(6),
                         remainingTime: studySession.remainingTime
                     )
                 }

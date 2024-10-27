@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StudyTimerView: View {
+    let totalTime: TimeInterval
     let remainingTime: TimeInterval
     
     var body: some View {
@@ -21,10 +22,10 @@ struct StudyTimerView: View {
                 .foregroundColor(.gray100)
                 .padding(.top, 11.adjustToScreenHeight)
             
-            LinearProgressView(shape: Rectangle(), value: 0.3)
+            LinearProgressView(shape: Rectangle(), value: remainingTime / totalTime)
                 .frame(height: 8.adjustToScreenHeight)
                 .padding(.top, 16.adjustToScreenHeight)
-        }
+        }        
     }
 }
 
