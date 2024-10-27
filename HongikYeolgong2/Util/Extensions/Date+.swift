@@ -22,5 +22,5 @@ extension Date {
         let hour = calendar.component(.hour, from: self)
         let daypart = hour < 12 ? "AM" : "PM"
         return daypart
-    }
+    }            
 }
