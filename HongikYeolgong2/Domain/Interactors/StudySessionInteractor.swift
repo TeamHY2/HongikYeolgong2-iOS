@@ -11,6 +11,7 @@ protocol StudySessionInteractor {
     func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
     func startStudy()
     func endStudy()
+    func setStartTime(_ startTime: Date)
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
@@ -42,5 +43,9 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     func endStudy() {
         appState[\.studySession.isStudying] = false
+    }
+    
+    func setStartTime(_ startTime: Date) {
+        appState[\.studySession.startTime] = startTime
     }
 }

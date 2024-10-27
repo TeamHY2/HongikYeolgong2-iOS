@@ -46,7 +46,7 @@ final class SafeAreaHelper {
     
     /// 현재 기기에 적용된  탭바의 높이를 가져옵니다.
     /// - Returns: CGFloat
-    static func getBarBarHeight() -> CGFloat {
+    static func getTabBarHeight() -> CGFloat {
         let defaultTabBarHeight: CGFloat = 56
         return defaultTabBarHeight + safeAreaBottomInset()
     }

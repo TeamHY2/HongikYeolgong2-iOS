@@ -15,26 +15,38 @@ struct HomeView: View {
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     
     @State private var studyRecords = [WeeklyStudyRecord]()
-    @State private var studySession = AppState.StudySession()    
+    @State private var studySession = AppState.StudySession()
+    @State private var isPickerPresented = false
     
     var body: some View {
         VStack {
-//            WeeklyStudyView(studyRecords: studyRecords)
-//            
-//            StudyContentControllerView(studySession: $studySession)
-//            
-//            Spacer()
-//            
-//            ActionButtonControllerView(
-//                studySession: $studySession,
-//                actions: .init(
-//                    endButtonTapped: { studySessionInteractor.endStudy() },
-//                    startButtonTapped: { studySessionInteractor.startStudy() },
-//                    seatButtonTapped: {},
-//                    extensionButtonTapped: {}
-//                )
-//            )
-            TimePickerView()
+            WeeklyStudyView(studyRecords: studyRecords)
+            
+            StudyContentControllerView(studySession: $studySession)
+            
+            Spacer()
+            
+            ActionButtonControllerView(
+                studySession: $studySession,
+                actions: .init(
+                    endButtonTapped: { studySessionInteractor.endStudy() },
+                    startButtonTapped: { isPickerPresented = true },
+                    seatButtonTapped: {},
+                    extensionButtonTapped: {}
+                )
+            )
+        }
+        .overlay {
+            TimePickerView(
+                isPresented: $isPickerPresented,
+                selectedTime: Binding(
+                    get: { appState.value.studySession.startTime },
+                    set: { studySessionInteractor.setStartTime($0) }
+                ),
+                onTimeSelected: {
+                    studySessionInteractor.startStudy()
+                }
+            )
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
