@@ -48,8 +48,7 @@ struct HomeView: View {
                     studySessionInteractor.startStudy()
                     shouldShowTimePicker = false
                 }
-            )
-            .padding(.horizontal, 30.adjustToScreenWidth)
+            )        
         }
         .systemOverlay(isPresented: $shouldShowAddTimeModal) {
             ModalView(title: "열람실 이용 시간을 연장할까요?",
@@ -102,7 +101,7 @@ struct StudyContentControllerView: View {
                         endTime: studySession.endTime
                     )
                     StudyTimerView(
-                        totalTime: studySession.endTime.timeIntervalSince(studySession.startTime),
+                        totalTime: studySession.totalTime,
                         remainingTime: studySession.remainingTime,
                         color: studySession.isAddTime ? .yellow100 : .white
                     )
@@ -167,5 +166,3 @@ struct ActionButtonControllerView: View {
         .padding(.bottom, 36.adjustToScreenHeight)
     }
 }
-
-

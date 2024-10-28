@@ -14,7 +14,7 @@ struct ModalView: View {
     
     let title: String
     let confirmAction: (() -> Void)?
-    let cancleAction: (() -> Void)?        
+    let cancleAction: (() -> Void)?
     
     init(title: String,
          confirmButtonText: String,
@@ -39,55 +39,50 @@ struct ModalView: View {
     
     
     var body: some View {
-        ZStack {
-            Color.black
-                .opacity(0.5)
-                .ignoresSafeArea()
+        VStack(spacing: 0) {
+            Spacer().frame(height: 40.adjustToScreenHeight)
             
-            VStack(spacing: 0) {
-                Spacer().frame(height: 40)
-                
-                // title
-                Text(title)
-                    .font(.pretendard(size: 18, weight: .semibold))
-                    .foregroundStyle(.gray100)
-                
-                Spacer().frame(height: 30)
-                
-                HStack {
-                    Button(action: {
-                        cancleAction?()
-                    }) {
-                        Text(cancleButtonText)
-                            .font(.pretendard(size: 16, weight: .semibold))
-                            .foregroundStyle(.gray200)
-                            .frame(maxWidth: .infinity, minHeight: 46)
-                    }
-                    .background(.gray600)
-                    .cornerRadius(8)
-                    
-                    Spacer().frame(width: 12)
-                    
-                    Button(action: {
-                        confirmAction?()
-                    }) {
-                        Text(confirmButtonText)
-                            .font(.pretendard(size: 16, weight: .semibold))
-                            .foregroundStyle(.white)
-                            .frame(maxWidth: .infinity, minHeight: 46)
-                    }
-                    .background(.blue100)
-                    .cornerRadius(8)
-                    
+            // title
+            Text(title)
+                .font(.pretendard(size: 18, weight: .semibold))
+                .foregroundStyle(.gray100)
+            
+            Spacer().frame(height: 30.adjustToScreenHeight)
+            
+            HStack {
+                Button(action: {
+                    cancleAction?()
+                }) {
+                    Text(cancleButtonText)
+                        .font(.pretendard(size: 16, weight: .semibold))
+                        .foregroundStyle(.gray200)
+                        .frame(maxWidth: .infinity, minHeight: 46.adjustToScreenHeight)
                 }
-                .padding(.horizontal, 24)
+                .background(.gray600)
+                .cornerRadius(8)
                 
-                Spacer().frame(height: 30)
+                Spacer().frame(width: 12.adjustToScreenWidth)
+                
+                Button(action: {
+                    confirmAction?()
+                }) {
+                    Text(confirmButtonText)
+                        .font(.pretendard(size: 16, weight: .semibold))
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, minHeight: 46.adjustToScreenHeight)
+                }
+                .background(.blue100)
+                .cornerRadius(8)
+                
             }
-            .frame(maxWidth: 316)
-            .background(.gray800)
-            .cornerRadius(8)
+            .padding(.horizontal, 24.adjustToScreenWidth)
+            
+            Spacer().frame(height: 30.adjustToScreenHeight)
         }
+        .frame(maxWidth: 316.adjustToScreenWidth)
+        .background(.gray800)
+        .cornerRadius(8)
+        
     }
 }
 
