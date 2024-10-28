@@ -96,6 +96,8 @@
 		47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */; };
 		47D5EDCF2CCBD10300ACA469 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */; };
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
+		47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */; };
+		47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E250722CCF2BED00267897 /* WiseSaying.swift */; };
 		47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */; };
 		47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */; };
 		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
@@ -220,6 +222,8 @@
 		47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
 		47D5EDCE2CCBD10300ACA469 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyInteractor.swift; sourceTree = "<group>"; };
+		47E250722CCF2BED00267897 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
 		47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
 		47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
 		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
@@ -367,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				4780044F2CCABEFF00FFAF00 /* WeeklyStudyRecord.swift */,
+				47E250722CCF2BED00267897 /* WiseSaying.swift */,
 			);
 			path = WeeklyStudy;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				4763FFB92CB913FF00990336 /* UserDataInteractor.swift */,
 				4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */,
 				4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */,
+				47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -940,6 +946,7 @@
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
+				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
@@ -958,6 +965,7 @@
 				47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */,
 				478933792CADBDA500E1D89E /* SignUpView.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
+				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
 				478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */,
