@@ -67,7 +67,7 @@ struct HomeView: View {
                       confirmAction: {
                 studySessionInteractor.endStudy()
                 shouldShowEndUseModal = false
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
                 }
             },
