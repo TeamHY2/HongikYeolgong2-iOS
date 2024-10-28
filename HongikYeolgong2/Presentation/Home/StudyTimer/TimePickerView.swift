@@ -9,7 +9,8 @@ import SwiftUI
 import Combine
 
 struct TimePickerView: View {
-    private let calendar = Calendar.current    
+    @Environment(\.presentationMode) var presentationMode
+    private let calendar = Calendar.current
     @Binding var selectedTime: Date
     @State private var hour = 0
     @State private var minute = 0
@@ -59,7 +60,7 @@ struct TimePickerView: View {
             
             HStack(spacing: 12.adjustToScreenWidth) {
                 Button(action: {
-                    
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("취소")
                         .font(.pretendard(size: 16, weight: .bold),
