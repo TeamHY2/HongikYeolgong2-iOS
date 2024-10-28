@@ -70,7 +70,11 @@ extension AppEnviroment {
                         UIApplication.shared.open(url)
                     }
                 }
-            )            
+            ),
+            weeklyStudyInteractor: WeeklyStudyInteractorImpl(
+                appState: appState,
+                studySessionRepository: remoteRepository.studySessionRepository
+            )
         )
     }
     
