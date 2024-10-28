@@ -13,6 +13,7 @@ struct HomeView: View {
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
+    @Environment(\.injected.interactors.weeklyStudyInteractor) var weeklyStudyInteractor
     
     @State private var studyRecords = [WeeklyStudyRecord]()
     @State private var studySession = AppState.StudySession()
@@ -68,7 +69,7 @@ struct HomeView: View {
                 studySessionInteractor.endStudy()
                 shouldShowEndUseModal = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                    weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
                 }
             },
             cancleAction: { shouldShowEndUseModal = false })
@@ -76,7 +77,7 @@ struct HomeView: View {
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
         .onAppear { permissions.request(permission: .localNotifications) }
-        .onAppear { studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords) }
+        .onAppear { weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords) }
         .onReceive(studySessionUpdated) { studySession = $0 }
     }
 }
