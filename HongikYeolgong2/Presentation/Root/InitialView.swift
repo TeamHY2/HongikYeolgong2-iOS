@@ -16,7 +16,7 @@ struct InitialView: View {
     var body: some View {
         Group {
             content
-                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }            
+                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
         }
     }
     
@@ -41,7 +41,7 @@ private extension InitialView {
 }
 
 private extension InitialView {
-    func appLaunchCompleted() {        
+    func appLaunchCompleted() {
         injected.interactors.userDataInteractor.getUser()
     }
 }

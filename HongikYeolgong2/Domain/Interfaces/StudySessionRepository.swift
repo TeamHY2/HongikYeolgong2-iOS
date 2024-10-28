@@ -9,5 +9,6 @@ import Foundation
 import Combine
 
 protocol StudySessionRepository {
-    func getWeeklyStudyRecords() -> AnyPublisher<[WeeklyStudySessionDTO], NetworkError>
+    func getWeeklyStudyRecords() -> AnyPublisher<[WeeklyStudyRecord], NetworkError>
+    func uploadStudyRecord(startTime: Date, endTime: Date) -> AnyPublisher<StudySessionResponseDTO, NetworkError>
 }

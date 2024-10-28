@@ -6,45 +6,105 @@
 //
 
 import SwiftUI
+import Combine
 
 struct HomeView: View {
     // MARK: - Properties
+    @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
-    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteracotr
-    @State private(set) var studyRecords = [WeeklyStudyRecord]()
-    @State private var isStudyStart: Bool = false
+    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     
-    // MARK: - Body
+    @State private var studyRecords = [WeeklyStudyRecord]()
+    @State private var studySession = AppState.StudySession()
+    @State private var shouldShowTimePicker = false
+    @State private var shouldShowAddTimeModal = false
+    @State private var shouldShowEndUseModal = false
+    
     var body: some View {
-        content
-            .onAppear { permissions.request(permission: .localNotifications) }
-    }
-}
-
-// MARK: - Main Content Components
-private extension HomeView {
-    var content: some View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
-                .padding(.top, 33.adjustToScreenHeight)
-                .onAppear(perform: getWeeklyStudy)
             
-            studyContent
+            StudyContentControllerView(studySession: $studySession)
             
             Spacer()
             
-            actionButtons
+            ActionButtonControllerView(
+                studySession: $studySession,
+                actions: .init(
+                    endButtonTapped: { shouldShowEndUseModal = true },
+                    startButtonTapped: { shouldShowTimePicker = true },
+                    seatButtonTapped: {},
+                    addButtonTapped: { shouldShowAddTimeModal = true }
+                )
+            )
+        }
+        .systemOverlay(isPresented: $shouldShowTimePicker) {
+            TimePickerView(
+                selectedTime: Binding(
+                    get: { appState.value.studySession.startTime },
+                    set: { studySessionInteractor.setStartTime($0) }
+                ),
+                onTimeSelected: {
+                    studySessionInteractor.startStudy()
+                    shouldShowTimePicker = false
+                }
+            )        
+        }
+        .systemOverlay(isPresented: $shouldShowAddTimeModal) {
+            ModalView(title: "열람실 이용 시간을 연장할까요?",
+                      confirmButtonText: "연장하기",
+                      cancleButtonText: "아니오",
+                      confirmAction: {
+                studySessionInteractor.addTime()
+                shouldShowAddTimeModal = false
+            },
+            cancleAction: { shouldShowAddTimeModal = false })
+        }
+        .systemOverlay(isPresented: $shouldShowEndUseModal) {
+            ModalView(title: "열람실을 다 이용하셨나요?",
+                      confirmButtonText: "네",
+                      cancleButtonText: "더 이용하기",
+                      confirmAction: {
+                studySessionInteractor.endStudy()
+                shouldShowEndUseModal = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                }
+            },
+            cancleAction: { shouldShowEndUseModal = false })
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
-        .background(backgroundImage)
+        .modifier(GradientBackground())
+        .onAppear { permissions.request(permission: .localNotifications) }
+        .onAppear { studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords) }
+        .onReceive(studySessionUpdated) { studySession = $0 }
     }
+}
+
+// MARK: - Publishers
+extension HomeView {
+    var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
+        appState.updates(for: \.studySession)
+    }
+}
+
+// MARK: - StudyContentControllerView
+struct StudyContentControllerView: View {
+    @Binding var studySession: AppState.StudySession
     
-    var studyContent: some View {
+    var body: some View {
         Group {
-            if isStudyStart {
+            if studySession.isStudying {
                 VStack(spacing: 32.adjustToScreenHeight) {
-                    StudyPeriodView()
-                    StudyTimerView()
+                    StudyPeriodView(
+                        startTime: studySession.startTime,
+                        endTime: studySession.endTime
+                    )
+                    StudyTimerView(
+                        totalTime: studySession.totalTime,
+                        remainingTime: studySession.remainingTime,
+                        color: studySession.isAddTime ? .yellow100 : .white
+                    )
                 }
                 .padding(.top, 36.adjustToScreenHeight)
             } else {
@@ -53,88 +113,56 @@ private extension HomeView {
             }
         }
     }
+}
+
+// MARK: - ActionButtonControllerView
+struct ActionButtonControllerView: View {
+    @Binding var studySession: AppState.StudySession
+    let actions: ActionHandlers
     
-    var actionButtons: some View {
+    struct ActionHandlers {
+        let endButtonTapped: () -> Void
+        let startButtonTapped: () -> Void
+        let seatButtonTapped: () -> Void
+        let addButtonTapped: () -> Void
+    }
+    
+    var body: some View {
         Group {
-            if isStudyStart {
-                endButton
+            if studySession.isStudying {
+                VStack(spacing: 12.adjustToScreenWidth) {
+                    if studySession.isAddTime {
+                        ActionButton(
+                            title: "열람실 이용 연장",
+                            backgroundColor: .blue100,
+                            radius: 4,
+                            action: { actions.addButtonTapped() }
+                        )
+                    }
+                    ActionButton(
+                        title: "열람실 이용 종료",
+                        backgroundColor: .gray600,
+                        radius: 4,
+                        action: { actions.endButtonTapped() }
+                    )
+                }
             } else {
-                bottomButtons
+                HStack(spacing: 12.adjustToScreenWidth) {
+                    ActionButton(
+                        width: 69.adjustToScreenWidth,
+                        backgroundColor: .clear,
+                        action: {}
+                    )
+                    .modifier(ImageBackground(imageName: .seatButton))
+                    
+                    ActionButton(
+                        backgroundColor: .clear,
+                        action: { actions.startButtonTapped() }
+                    )
+                    .modifier(ImageBackground(imageName: .startButton))
+                }
             }
         }
         .padding(.bottom, 36.adjustToScreenHeight)
     }
-}
-
-// MARK: - Button Components
-private extension HomeView {
-    var bottomButtons: some View {
-        HStack(spacing: 12.adjustToScreenWidth) {
-            seatButton
-            startButton
-        }
-    }
-    
-    var seatButton: some View {
-        Button(action: {}) {
-            Text("좌석")
-                .frame(width: 69.adjustToScreenWidth, height: 52.adjustToScreenHeight)
-                .font(.suite(size: 16, weight: .semibold))
-                .foregroundStyle(.white)
-        }
-        .background(
-            Image(.seatButton)
-                .resizable()
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-        )
-    }
-    
-    var startButton: some View {
-        Button(action: { isStudyStart = true }) {
-            Text("열람실 이용 시작")
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-                .font(.suite(size: 16, weight: .semibold))
-                .foregroundStyle(.white)
-        }
-        .background(
-            Image(.startButton)
-                .resizable()
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-        )
-    }
-    
-    var endButton: some View {
-        Button(action: {}) {
-            Text("열람실 이용 종료")
-                .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight)
-                .font(.suite(size: 16, weight: .semibold))
-                .foregroundStyle(.gray100)
-        }
-        .background(.gray600)
-        .cornerRadius(4)
-    }
-}
-
-// MARK: - Background Components
-private extension HomeView {
-    var backgroundImage: some View {
-        Image(.iOSBackground)
-            .resizable()
-            .ignoresSafeArea(.all)
-            .frame(maxWidth: .infinity, minHeight: SafeAreaHelper.getFullScreenHeight())
-            .allowsHitTesting(false)
-    }
-}
-
-// MARK: - Interactions
-extension HomeView {
-    func getWeeklyStudy() {
-        studySessionInteracotr
-            .getWeekyStudy(studyRecords: $studyRecords)
-    }
-}
-
-// MARK: - Preview
-#Preview {
-    HomeView()
 }

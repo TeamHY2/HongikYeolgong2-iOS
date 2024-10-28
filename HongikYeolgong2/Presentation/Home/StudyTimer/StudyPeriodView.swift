@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct StudyPeriodView: View {
+    let startTime: Date
+    let endTime: Date
+    
     var body: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 11.adjustToScreenHeight) {
@@ -20,10 +23,10 @@ struct StudyPeriodView: View {
                 }
                 
                 HStack(alignment: .firstTextBaseline, spacing: 6.adjustToScreenWidth) {
-                    Text("11: 30")
+                    Text(startTime.getHourMinutes())
                         .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
                         .foregroundColor(.gray100)
-                    Text("AM")
+                    Text(startTime.getDaypart())
                         .font(.suite(size: 14, weight: .medium), lineHeight: 32)
                         .foregroundStyle(.gray100)
                 }
@@ -37,10 +40,10 @@ struct StudyPeriodView: View {
                 }
                 
                 HStack(alignment: .firstTextBaseline, spacing: 6.adjustToScreenWidth) {
-                    Text("11: 30")
+                    Text(endTime.getHourMinutes())
                         .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
                         .foregroundColor(.gray100)
-                    Text("AM")
+                    Text(endTime.getDaypart())
                         .font(.suite(size: 14, weight: .medium), lineHeight: 32.adjustToScreenHeight)
                         .foregroundStyle(.gray100)
                 }
@@ -50,8 +53,4 @@ struct StudyPeriodView: View {
             Spacer()
         }
     }
-}
-
-#Preview {
-    StudyPeriodView()
 }

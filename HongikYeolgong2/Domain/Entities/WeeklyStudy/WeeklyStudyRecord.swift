@@ -21,10 +21,8 @@ struct WeeklyStudyRecord {
             "shineCount01"
         case 2:
             "shineCount02"
-        case 3:
-            "shineCount03"
         default:
-            "shineCount00"
+            "shineCount03"
         }
     }
 }

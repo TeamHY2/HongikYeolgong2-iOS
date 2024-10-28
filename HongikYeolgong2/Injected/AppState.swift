@@ -10,11 +10,13 @@ import SwiftUI
 final class AppState: ObservableObject {
     @Published var appLaunchState: AppLaunchState = .checkAuthentication
     @Published var userData = UserData()
+    @Published var studySession = StudySession()
     @Published var routing = ViewRouting()
     @Published var permissions = Permissions()
 }
 
 extension AppState {
+    /// 앱의 실행 상태를 나타냅니다.
     enum AppLaunchState {
         case notAuthenticated
         case authenticated
@@ -23,8 +25,28 @@ extension AppState {
 }
 
 extension AppState {
+    /// 앱 전역에서 사용하는 유저데이터 입니다.
     struct UserData: Equatable {
         var isLoggedIn = false
+    }
+}
+
+extension AppState {
+    /// 열람실 이용상태를 관리하는 구조체 입니다.
+    struct StudySession: Equatable {
+        var isStudying = false
+        var startTime: Date = .now
+        var endTime: Date = .now
+        var remainingTime: TimeInterval = 0
+        var minimumTime: TimeInterval = .init(seconds: 30)
+        
+        var isAddTime: Bool {
+            remainingTime <= minimumTime
+        }
+        
+        var totalTime: TimeInterval {
+            endTime.timeIntervalSince(startTime)
+        }
     }
 }
 
@@ -35,6 +57,8 @@ extension AppState {
 }
 
 extension AppState {
+    
+    /// 접근권한 상태를 관리하는 구조체 입니다.
     struct Permissions {
         var push: Permission.Status = .unknown
     }
