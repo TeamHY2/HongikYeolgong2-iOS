@@ -16,6 +16,7 @@ final class AppState: ObservableObject {
 }
 
 extension AppState {
+    /// 앱의 실행 상태를 나타냅니다.
     enum AppLaunchState {
         case notAuthenticated
         case authenticated
@@ -24,12 +25,14 @@ extension AppState {
 }
 
 extension AppState {
+    /// 앱 전역에서 사용하는 유저데이터 입니다.
     struct UserData: Equatable {
         var isLoggedIn = false
     }
 }
 
 extension AppState {
+    /// 열람실 이용상태를 관리하는 구조체 입니다.
     struct StudySession: Equatable {
         var isStudying = false
         var startTime: Date = .now
@@ -39,6 +42,10 @@ extension AppState {
         
         var isAddTime: Bool {
             remainingTime <= minimumTime
+        }
+        
+        var totalTime: TimeInterval {
+            endTime.timeIntervalSince(startTime)
         }
     }
 }
@@ -50,6 +57,8 @@ extension AppState {
 }
 
 extension AppState {
+    
+    /// 접근권한 상태를 관리하는 구조체 입니다.
     struct Permissions {
         var push: Permission.Status = .unknown
     }

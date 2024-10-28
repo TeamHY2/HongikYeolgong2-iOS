@@ -89,6 +89,7 @@ struct TimePickerView: View {
                                 bottom: 30.adjustToScreenHeight,
                                 trailing: 32.adjustToScreenWidth))
         }
+        .frame(maxWidth: 316.adjustToScreenWidth)
         .background(.gray800)
         .cornerRadius(8)
         .onAppear { setInitialTime() }

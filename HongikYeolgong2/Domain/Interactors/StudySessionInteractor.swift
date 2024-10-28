@@ -41,7 +41,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             }
             .store(in: cancleBag)
     }
-    
+        
+    /// 스터디세션을 시작합니다.
     func startStudy() {
         let startTime = appState.value.studySession.startTime
         let addedTime: TimeInterval = .init(minutes: 1)
@@ -58,7 +59,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             appState?[\.studySession.remainingTime] -= 1
         }
     }
-    
+        
+    /// 스터디세션을 종료하고 열람실 이용정보를 서버에 업로드합니다.
     func endStudy() {
         appState[\.studySession.isStudying] = false
         subscription?.cancel()          
@@ -73,14 +75,17 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             }
             .store(in: cancleBag)                
     }
-    
+        
+    /// 열람실 이용시간을 연장합니다.
     func addTime() {
         appState.bulkUpdate { appState in
             appState.studySession.endTime += .init(minutes: 1)
             appState.studySession.remainingTime += .init(minutes: 1)
         }
     }
-    
+        
+    /// 열람실 이용 시작시간을 설정합니다.
+    /// - Parameter startTime: 시작시간
     func setStartTime(_ startTime: Date) {
         appState[\.studySession.startTime] = startTime
     }
