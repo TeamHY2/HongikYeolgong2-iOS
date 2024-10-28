@@ -9,6 +9,7 @@ import SwiftUI
 
 protocol WeeklyStudyInteractor {
     func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
+    func getWiseSaying(wiseSaying: Binding<WiseSaying>)
 }
 
 final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
@@ -28,6 +29,16 @@ final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { _ in }) {
                 studyRecords.wrappedValue = $0
+            }
+            .store(in: cancleBag)
+    }
+    
+    func getWiseSaying(wiseSaying: Binding<WiseSaying>) {
+        studySessionRepository
+            .getWiseSaying()
+            .sink { _ in
+            } receiveValue: { 
+                wiseSaying.wrappedValue = $0
             }
             .store(in: cancleBag)
     }
