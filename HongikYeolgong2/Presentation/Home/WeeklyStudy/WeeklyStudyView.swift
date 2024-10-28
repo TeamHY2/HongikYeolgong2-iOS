@@ -20,5 +20,6 @@ struct WeeklyStudyView: View {
                 }
             }
         }
+        .padding(.top, 33.adjustToScreenHeight)
     }
 }

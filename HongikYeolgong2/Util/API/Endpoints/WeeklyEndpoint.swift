@@ -10,18 +10,21 @@ import Foundation
 /// 소셜로그인 관련 엔드포인트 정의
 enum WeeklyEndpoint: EndpointProtocol {
     
-    /// 애플 소셜 로그인
+    /// 이번주 열람실 이용횟수
     case getWeeklyStudy
+    case uploadStudySession(StudySessionRequestDTO)
 }
 
 extension WeeklyEndpoint {
     var baseURL: URL? {
-        URL(string: "\(SecretKeys.baseUrl)/study")
+        URL(string: "\(SecretKeys.baseUrl)")
     }
     var path: String {
         switch self {
         case .getWeeklyStudy:
-            "/week"
+            "/study/week"
+        default:
+            "/study"
         }
     }
     
@@ -29,12 +32,14 @@ extension WeeklyEndpoint {
         switch self {
         case .getWeeklyStudy:
                 .get
+        case .uploadStudySession:
+                .post
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .getWeeklyStudy:
+        default:
             nil
         }
     }
@@ -50,6 +55,8 @@ extension WeeklyEndpoint {
         switch self {
         case .getWeeklyStudy:
             return nil
+        case let .uploadStudySession(studySessionReqDto):
+            return studySessionReqDto.toData()
         }
     }
 }

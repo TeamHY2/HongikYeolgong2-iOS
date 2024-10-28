@@ -24,7 +24,7 @@ final class AuthenticationServiceImpl: AuthenticationService {
             return nil
         }
         
-        let email = appleIDCredential.email ?? "testtt"
+        let email = appleIDCredential.email ?? "kwons4163@naver.com"
         
         return (email: email, idToken: idToken)
     }

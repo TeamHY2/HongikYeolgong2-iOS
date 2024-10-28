@@ -60,7 +60,7 @@ struct MainTabView: View {
         ZStack(alignment: .bottom) {
             Color.dark.ignoresSafeArea(.all)
             
-            VStack {
+            VStack(spacing: 0) {
                 Spacer()
                 switch selectedTab {
                 case .home:
@@ -74,12 +74,11 @@ struct MainTabView: View {
                 }
                 Spacer()
             }
-            .padding(.bottom, SafeAreaHelper.getBarBarHeight())
+            .padding(.bottom, SafeAreaHelper.getTabBarHeight())
             
             TabBarView(selectedTab: $selectedTab)
-            
         }
-        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.bottom)        
     }
 }
 
@@ -113,7 +112,7 @@ struct TabBarView: View {
             .padding(.horizontal, 20.adjustToScreenWidth)
             Spacer()
         }
-        .frame(height: SafeAreaHelper.getBarBarHeight())
+        .frame(height: SafeAreaHelper.getTabBarHeight())
         .background(Image(.tabview)
             .resizable()
             .frame(maxWidth: .infinity))
