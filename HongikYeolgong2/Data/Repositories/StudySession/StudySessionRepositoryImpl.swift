@@ -35,4 +35,18 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func getWiseSaying() -> AnyPublisher<WiseSaying, NetworkError> {
+        return Future<WiseSaying, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<WiseSaying> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWiseSaying)
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    print(error.message)
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
