@@ -19,6 +19,7 @@ struct OnboardingView: View {
             content
                 .onReceive(routingUpdate) { self.routingState = $0 }
         }
+        .navigationViewStyle(.stack)
     }
     
     // MARK: - Main Contents

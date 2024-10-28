@@ -14,23 +14,20 @@ struct InitialView: View {
     @State private var appLaunchState: AppState.AppLaunchState = .checkAuthentication
     
     var body: some View {
-        Group {
-            content
-                .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
+        NavigationView {
+            switch appLaunchState {
+            case .notAuthenticated:
+                OnboardingView()                    
+            case .authenticated:
+                MainTabView()
+            case .checkAuthentication:
+                SplashView()
+                    .ignoresSafeArea(.all)
+                    .onAppear(perform: appLaunchCompleted)
+            }
         }
-    }
-    
-    @ViewBuilder private var content: some View {
-        switch appLaunchState {
-        case .notAuthenticated:
-            OnboardingView()
-        case .authenticated:
-            MainTabView()
-        case .checkAuthentication:
-            SplashView()
-                .ignoresSafeArea(.all)
-                .onAppear(perform: appLaunchCompleted)
-        }
+        .navigationViewStyle(.stack)
+        .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
     }
 }
 

@@ -55,7 +55,7 @@ enum Tab: CaseIterable {
 
 struct MainTabView: View {
     @State private var selectedTab: Tab = .home
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             Color.dark.ignoresSafeArea(.all)
@@ -64,7 +64,7 @@ struct MainTabView: View {
                 Spacer()
                 switch selectedTab {
                 case .home:
-                    HomeView()
+                    HomeView()                    
                 case .record:
                     RecordView()
                 case .ranking:
