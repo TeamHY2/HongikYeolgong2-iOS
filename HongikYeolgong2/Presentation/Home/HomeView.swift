@@ -13,9 +13,11 @@ struct HomeView: View {
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
+    @Environment(\.injected.interactors.weeklyStudyInteractor) var weeklyStudyInteractor
     
     @State private var studyRecords = [WeeklyStudyRecord]()
     @State private var studySession = AppState.StudySession()
+    @State private var wiseSaying = WiseSaying()
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
@@ -24,7 +26,10 @@ struct HomeView: View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
             
-            StudyContentControllerView(studySession: $studySession)
+            StudyContentControllerView(
+                studySession: $studySession,
+                wiseSaying: wiseSaying
+            )
             
             Spacer()
             
@@ -48,7 +53,7 @@ struct HomeView: View {
                     studySessionInteractor.startStudy()
                     shouldShowTimePicker = false
                 }
-            )        
+            )
         }
         .systemOverlay(isPresented: $shouldShowAddTimeModal) {
             ModalView(title: "열람실 이용 시간을 연장할까요?",
@@ -58,7 +63,7 @@ struct HomeView: View {
                 studySessionInteractor.addTime()
                 shouldShowAddTimeModal = false
             },
-            cancleAction: { shouldShowAddTimeModal = false })
+                      cancleAction: { shouldShowAddTimeModal = false })
         }
         .systemOverlay(isPresented: $shouldShowEndUseModal) {
             ModalView(title: "열람실을 다 이용하셨나요?",
@@ -68,15 +73,16 @@ struct HomeView: View {
                 studySessionInteractor.endStudy()
                 shouldShowEndUseModal = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                    weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
                 }
             },
-            cancleAction: { shouldShowEndUseModal = false })
+                      cancleAction: { shouldShowEndUseModal = false })
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
         .onAppear { permissions.request(permission: .localNotifications) }
-        .onAppear { studySessionInteractor.getWeekyStudy(studyRecords: $studyRecords) }
+        .onAppear { weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords) }
+        .onAppear { weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying) }
         .onReceive(studySessionUpdated) { studySession = $0 }
     }
 }
@@ -91,6 +97,7 @@ extension HomeView {
 // MARK: - StudyContentControllerView
 struct StudyContentControllerView: View {
     @Binding var studySession: AppState.StudySession
+    let wiseSaying: WiseSaying
     
     var body: some View {
         Group {
@@ -108,7 +115,7 @@ struct StudyContentControllerView: View {
                 }
                 .padding(.top, 36.adjustToScreenHeight)
             } else {
-                TodayWiseSaying()
+                TodayWiseSaying(wiseSaying: wiseSaying)
                     .padding(.top, 120.adjustToScreenHeight)
             }
         }

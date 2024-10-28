@@ -13,6 +13,7 @@ enum WeeklyEndpoint: EndpointProtocol {
     /// 이번주 열람실 이용횟수
     case getWeeklyStudy
     case uploadStudySession(StudySessionRequestDTO)
+    case getWiseSaying
 }
 
 extension WeeklyEndpoint {
@@ -23,6 +24,8 @@ extension WeeklyEndpoint {
         switch self {
         case .getWeeklyStudy:
             "/study/week"
+        case .getWiseSaying:
+            "/wise-saying"
         default:
             "/study"
         }
@@ -30,7 +33,7 @@ extension WeeklyEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .getWeeklyStudy:
+        case .getWeeklyStudy, .getWiseSaying:
                 .get
         case .uploadStudySession:
                 .post
@@ -53,10 +56,10 @@ extension WeeklyEndpoint {
     
     var body: Data? {
         switch self {
-        case .getWeeklyStudy:
-            return nil
         case let .uploadStudySession(studySessionReqDto):
             return studySessionReqDto.toData()
+        default:
+            return nil
         }
     }
 }

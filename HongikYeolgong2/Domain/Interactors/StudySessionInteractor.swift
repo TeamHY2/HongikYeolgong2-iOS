@@ -8,8 +8,7 @@
 import SwiftUI
 import Combine
 
-protocol StudySessionInteractor {
-    func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>)
+protocol StudySessionInteractor {    
     func startStudy()
     func endStudy()
     func addTime()
@@ -28,18 +27,6 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
          studySessionRepository: StudySessionRepository) {
         self.appState = appState
         self.studySessionRepository = studySessionRepository
-    }
-    
-    /// 한 주에 대한 공부 횟수를 가져옵니다.
-    /// - Parameter studyRecords: 공부 기록(월 - 일)
-    func getWeekyStudy(studyRecords: Binding<[WeeklyStudyRecord]>) {
-        studySessionRepository
-            .getWeeklyStudyRecords()
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }) {                
-                studyRecords.wrappedValue = $0
-            }
-            .store(in: cancleBag)
     }
         
     /// 스터디세션을 시작합니다.
