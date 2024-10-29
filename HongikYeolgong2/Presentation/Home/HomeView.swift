@@ -80,9 +80,11 @@ struct HomeView: View {
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(GradientBackground())
-        .onAppear { permissions.request(permission: .localNotifications) }
-        .onAppear { weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords) }
-        .onAppear { weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying) }
+        .onAppear {
+            permissions.request(permission: .localNotifications)
+            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+            weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+        }
         .onReceive(studySessionUpdated) { studySession = $0 }
     }
 }

@@ -12,7 +12,7 @@ struct InitialView: View {
     @Environment(\.injected) var injected: DIContainer
     
     @State private var appLaunchState: AppState.AppLaunchState = .checkAuthentication
-    
+    @State private var curentTab: Tab = .home
     var body: some View {
         NavigationView {
             switch appLaunchState {
