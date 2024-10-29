@@ -12,6 +12,7 @@ struct SignUpView: View {
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInetractor
     @Environment(\.presentationMode) var presentationMode
+    
     @State private var signupData = SignupData()
     @State private var isSubmitButtonAvailable = false
     @State private var isCheckButtonAvailable = false
@@ -21,106 +22,121 @@ struct SignUpView: View {
     }
     
     var body: some View {
-        content
-            .onChange(of: signupData.nickname, perform: { validateUserNickname(nickname: $0)} )
-            .onChange(of: signupData.nicknameStatus, perform: { isCheckButtonAvailable = $0 == .none })
-            .toolbar(.hidden, for: .navigationBar)
-    }
-}
-
-// MARK: - Main Content
-
-private extension SignUpView {
-    var content: some View {
         ZStack {
             Color.dark.edgesIgnoringSafeArea(.all)
-            VStack(spacing: 0) {
-                titleView
-                signupForm
+            
+            VStack {
+                HeaderView(title: "회원가입")
+                
+                SignUpForm(signupData: $signupData)
+                
                 Spacer()
-                submitButton
+                
+                SubmitButton(
+                    isSubmitButtonAvailable: true,
+                    action: {}
+                )
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
         }
+        .toolbar(.hidden, for: .navigationBar)
     }
 }
 
-// MARK: - Subviews
-
-private extension SignUpView {
-    var titleView: some View {
-        Text("회원가입")
+// MARK: - Labels
+private struct HeaderView: View {
+    let title: String
+    
+    var body: some View {
+        Text(title)
             .font(.suite(size: 18, weight: .bold))
             .foregroundStyle(.gray100)
             .frame(maxWidth: .infinity, minHeight: 52.adjustToScreenHeight, alignment: .leading)
     }
+}
+
+private struct TitleView: View {
+    let title: String
     
-    var signupForm: some View {
-        VStack(spacing: 0) {
-            nicknameField
-            selecteDepartment
+    var body: some View {
+        Text("닉네임")
+            .font(.pretendard(size: 16, weight: .bold))
+            .foregroundStyle(.gray200)
+    }
+}
+
+private struct DescriptionView: View {
+    let message: String
+    let color: Color
+    
+    var body: some View {
+        Text(message)
+            .font(.pretendard(size: 12, weight: .regular))
+            .foregroundStyle(color)
+            .padding(.top, 4.adjustToScreenHeight)
+    }
+}
+
+// MARK: - Form
+private struct SignUpForm: View {
+    @Binding var signupData: SignUpView.SignupData
+    
+    var body: some View {
+        Group {
+            VStack(alignment: .leading, spacing: 8) {
+                TitleView(title: "닉네임")
+                
+                HStack {
+                    HY2TextField(text: $signupData.nickname,
+                                 placeholder: "닉네임을 입력해주세요",
+                                 isError: signupData.nicknameStatus.isError)
+                    
+                    ActionButton(
+                        title: "중복확인",
+                        font: .pretendard(size: 16, weight: .regular),
+                        height: 48.adjustToScreenHeight,
+                        width: 88.adjustToScreenWidth,
+                        backgroundColor: .blue100,
+                        foregroundColor: .white,
+                        action: {})
+                    .cornerRadius(8)
+                }
+                
+                DescriptionView(
+                    message: signupData.nicknameStatus.message,
+                    color: signupData.nicknameStatus.textColor
+                )
+            }
+            
+            VStack(alignment: .leading, spacing: 8) {
+                TitleView(title: "학과")
+                
+                DropDownPicker(text: $signupData.inputDepartment,
+                               seletedItem: Binding(
+                                get: { signupData.department.rawValue },
+                                set: { signupData.department = .init(rawValue: $0) ?? .appliedArts }
+                               ),
+                               placeholder: "학과를 입력해주세요",
+                               items: Department.allCases.map { $0.rawValue })
+            }
+            .padding(.top, 12.adjustToScreenHeight)
         }
         .padding(.top, 23.adjustToScreenHeight)
     }
+}
+
+// MARK: - Buttons
+private struct SubmitButton: View {
+    let isSubmitButtonAvailable: Bool
+    let action: () -> Void
     
-    var nicknameField: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("닉네임")
-                .font(.pretendard(size: 16, weight: .bold))
-                .foregroundStyle(.gray200)
-            
-            HStack {
-                HY2TextField(text: $signupData.nickname,
-                             placeholder: "닉네임을 입력해주세요",
-                             isError: signupData.nicknameStatus.isError)
-                
-                duplicateCheckButton
-            }
-            
-            Text(signupData.nicknameStatus.message)
-                .font(.pretendard(size: 12, weight: .regular))
-                .foregroundStyle(signupData.nicknameStatus.textColor)
-                .padding(.top, 4.adjustToScreenHeight)
-        }
-    }
-    
-    var duplicateCheckButton: some View {
-        Button(action: requestCheckNickname) {
-            Text("중복확인")
-                .font(.pretendard(size: 16, weight: .regular))
-                .frame(maxWidth: .infinity, maxHeight: 48.adjustToScreenHeight)
-                .foregroundColor(.white)
-        }
-        .frame(width: 88.adjustToScreenWidth)
-        .background(isCheckButtonAvailable ? .blue100 : .blue400)
-        .disabled(!isCheckButtonAvailable)
-        .cornerRadius(8)
-    }
-    
-    var selecteDepartment: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("학과")
-                .font(.pretendard(size: 16, weight: .bold))
-                .foregroundStyle(.gray200)
-            
-            DropDownPicker(text: $signupData.inputDepartment,
-                           seletedItem: Binding(
-                            get: { signupData.department.rawValue },
-                            set: { signupData.department = .init(rawValue: $0) ?? .appliedArts }
-                           ),
-                           placeholder: "학과를 입력해주세요",
-                           items: Department.allCases.map { $0.rawValue })
-        }
-        .padding(.top, 12.adjustToScreenHeight)
-    }
-    
-    var submitButton: some View {
-        Button(action: performSignUp, label: {
-            Image(isSubmitButtonAvailable ? .submitButtonEnable : .submitButtonDisable)
-                .resizable()
-                .frame(height: 50.adjustToScreenHeight)
-        })
-        .padding(.bottom, 20.adjustToScreenHeight)
+    var body: some View {
+        Button(action: action, label: {
+                   Image(isSubmitButtonAvailable ? .submitButtonEnable : .submitButtonDisable)
+                       .resizable()
+                       .frame(height: 50.adjustToScreenHeight)
+               })
+               .padding(.bottom, 20.adjustToScreenHeight)
     }
 }
 
@@ -176,7 +192,7 @@ private extension SignUpView {
 
 // MARK: - SignupData
 
-private extension SignUpView {
+extension SignUpView {
     struct SignupData {
         var nickname = ""
         var inputDepartment = ""
@@ -188,7 +204,7 @@ private extension SignUpView {
 
 // MARK: - Nickname Status
 
-private extension SignUpView {
+extension SignUpView {
     enum NicknameStatus {
         case none // 기본상태
         case specialCharactersAndSpaces // 특수문자, 공백
