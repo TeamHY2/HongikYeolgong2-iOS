@@ -9,7 +9,7 @@ import Foundation
 
 struct UserInfo {
     var nickname = ""
+    var department: Department = .appliedArts
     var nicknameStatus: NicknameStatus = .none
     var inputDepartment = ""
-    var department: Department = .appliedArts
 }
