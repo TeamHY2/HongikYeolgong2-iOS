@@ -18,8 +18,7 @@ struct SignUpView: View {
     // MARK: - State
     @State private var userInfo = UserInfo()
     @State private var isSubmitButtonEnable = false
-    @State private var isCheckButtonEnable = false
-    @State private var isValidNickname = false
+    @State private var isCheckButtonEnable = false    
     let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)
     
     // MARK: - Initialization
