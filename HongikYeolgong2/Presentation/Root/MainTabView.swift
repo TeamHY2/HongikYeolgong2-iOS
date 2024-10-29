@@ -15,75 +15,59 @@ enum Tab: CaseIterable {
     
     var title: String {
         switch self {
-        case .home:
-            "홈"
-        case .record:
-            "기록"
-        case .ranking:
-            "랭킹"
-        case .setting:
-            "설정"
+        case .home: "홈"
+        case .record: "기록"
+        case .ranking: "랭킹"
+        case .setting: "설정"
         }
     }
     
     var iconName: String {
         switch self {
-        case .home:
-            "home"
-        case .record:
-            "calendar"
-        case .ranking:
-            "ranking"
-        case .setting:
-            "setting"
+        case .home: "home"
+        case .record: "calendar"
+        case .ranking: "ranking"
+        case .setting: "setting"
         }
     }
     
     var iconNameSelected: String {
         switch self {
-        case .home:
-            "homeSelected"
-        case .record:
-            "calendarSelected"
-        case .ranking:
-            "rankingSelected"
-        case .setting:
-            "settingSelected"
+        case .home: "homeSelected"
+        case .record: "calendarSelected"
+        case .ranking: "rankingSelected"
+        case .setting: "settingSelected"
         }
     }
 }
 
 struct MainTabView: View {
-    @State private var selectedTab: Tab = .home
-
+    @State private var currentTab: Tab = .home
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
-            Color.dark.ignoresSafeArea(.all)
+        TabView(selection: $currentTab,
+                content:  {
+            HomeView()
+                .tag(Tab.home)
             
-            VStack(spacing: 0) {
-                Spacer()
-                switch selectedTab {
-                case .home:
-                    HomeView()
-                case .record:
-                    RecordView()
-                case .ranking:
-                    RankingView()
-                case .setting:
-                    SettingView()
-                }
-                Spacer()
-            }
-            .padding(.bottom, SafeAreaHelper.getTabBarHeight())
+            RecordView()
+                .tag(Tab.record)
             
-            TabBarView(selectedTab: $selectedTab)
+            RankingView()
+                .tag(Tab.ranking)
+            
+            SettingView()
+                .tag(Tab.setting)
+        })
+        .overlay(alignment: .bottom) {
+            TabBarView(currentTab: $currentTab)
         }
-        .edgesIgnoringSafeArea(.bottom)        
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
 struct TabBarView: View {
-    @Binding var selectedTab: Tab
+    @Binding var currentTab: Tab
     
     var body: some View {
         VStack(spacing: 0) {
@@ -92,17 +76,17 @@ struct TabBarView: View {
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
                     VStack(spacing: 5.adjustToScreenHeight) {
-                        Image(tab == selectedTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
+                        Image(tab == currentTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
                         
                         Text(tab.title)
                             .font(.pretendard(size: 12, weight: .regular))
-                            .foregroundStyle(tab == selectedTab ? .gray100 : .gray300)
+                            .foregroundStyle(tab == currentTab ? .gray100 : .gray300)
                             .frame(height: 18.adjustToScreenHeight)
                     }
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        selectedTab = tab
+                        currentTab = tab
                     }
                     
                     Spacer()
@@ -122,3 +106,4 @@ struct TabBarView: View {
 #Preview {
     MainTabView()
 }
+

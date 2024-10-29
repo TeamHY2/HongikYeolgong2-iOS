@@ -9,11 +9,16 @@ import SwiftUI
 import Combine
 
 struct SignUpView: View {
+    @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInetractor
-    
+    @Environment(\.presentationMode) var presentationMode
     @State private var signupData = SignupData()
     @State private var isSubmitButtonAvailable = false
     @State private var isCheckButtonAvailable = false
+    
+    init() {
+        UINavigationBar.setAnimationsEnabled(false)
+    }
     
     var body: some View {
         content
