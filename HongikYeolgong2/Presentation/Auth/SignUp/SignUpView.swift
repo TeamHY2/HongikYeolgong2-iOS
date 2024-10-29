@@ -38,7 +38,7 @@ struct SignUpView: View {
                     NicknameFieldView(
                         nickname: $userInfo.nickname,
                         nicknameStatus: $userInfo.nicknameStatus,
-                        checkButtonTapped: checkNicknameAvailability
+                        checkButtonTapped: checkUserNickname
                     )
                     
                     DepartmentFieldView(signUpInfo: $userInfo)
@@ -56,6 +56,9 @@ struct SignUpView: View {
         .toolbar(.hidden, for: .navigationBar)
         .onChange(of: userInfo.nickname) {
             userInfo.nicknameStatus.validateUserNickname(nickname: $0)
+        }
+        .onChange(of: isNicknameAvailable) {            
+            userInfo.nicknameStatus = $0 ? .available : .none
         }
     }
 }
@@ -119,7 +122,7 @@ private extension SignUpView {
                     )
                     
                     DuplicateCheckButton(
-                        checkButtonEnabled: nicknameStatus == .checkAvailable,
+                        nicknameStatus: nicknameStatus,
                         action: checkButtonTapped
                     )
                 }
@@ -170,27 +173,28 @@ private extension SignUpView {
     }
     
     struct DuplicateCheckButton: View {
-        let checkButtonEnabled: Bool
+        let nicknameStatus: NicknameStatus
         let action: () -> ()
+        
         var body: some View {
             ActionButton(
                 title: "중복확인",
                 font: .pretendard(size: 16, weight: .regular),
                 height: 48.adjustToScreenHeight,
                 width: 88.adjustToScreenWidth,
-                backgroundColor: .blue100,
+                backgroundColor: nicknameStatus == .available ? .blue400 : .blue100,
                 foregroundColor: .white,
                 action: action
             )
             .cornerRadius(8)
-            .disabled(!checkButtonEnabled)
+            .disabled(!(nicknameStatus == .checkAvailable))
         }
     }
 }
 
 // MARK: - Helper Methods
 private extension SignUpView {
-    func checkNicknameAvailability() {
+    func checkUserNickname() {
         userDataInteractor.checkUserNickname(
             nickname: userInfo.nickname,
             isValidate: $isNicknameAvailable

@@ -35,7 +35,7 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
                     promise(.success(response.data.duplicate))
-                } catch let error as NetworkError {
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }
