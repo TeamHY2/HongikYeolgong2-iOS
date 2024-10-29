@@ -110,7 +110,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:
+                    case .finished:                        
                         appState[\.appLaunchState] = .authenticated
                     case let .failure(error):
                         appState[\.appLaunchState] = .notAuthenticated
