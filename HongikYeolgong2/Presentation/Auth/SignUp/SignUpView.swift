@@ -19,7 +19,8 @@ struct SignUpView: View {
     @State private var userInfo = UserInfo()
     @State private var isSubmitButtonEnable = false
     @State private var isCheckButtonEnable = false
-    @State private var isNicknameAvailable = false
+    @State private var isValidNickname = false
+    let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)
     
     // MARK: - Initialization
     init() {
@@ -30,7 +31,6 @@ struct SignUpView: View {
     var body: some View {
         ZStack {
             Color.dark.edgesIgnoringSafeArea(.all)
-            
             VStack {
                 HeaderView(title: "회원가입")
                 
@@ -38,7 +38,7 @@ struct SignUpView: View {
                     NicknameFieldView(
                         nickname: $userInfo.nickname,
                         nicknameStatus: $userInfo.nicknameStatus,
-                        checkButtonTapped: checkUserNickname
+                        checkButtonTapped: { checkUserNickname() }
                     )
                     
                     DepartmentFieldView(signUpInfo: $userInfo)
@@ -57,8 +57,8 @@ struct SignUpView: View {
         .onChange(of: userInfo.nickname) {
             userInfo.nicknameStatus.validateUserNickname(nickname: $0)
         }
-        .onChange(of: isNicknameAvailable) {            
-            userInfo.nicknameStatus = $0 ? .available : .none
+        .onReceive(nicknameCheckSubject.dropFirst()) {
+            userInfo.nicknameStatus = $0 ? .alreadyUse : .available
         }
     }
 }
@@ -197,7 +197,7 @@ private extension SignUpView {
     func checkUserNickname() {
         userDataInteractor.checkUserNickname(
             nickname: userInfo.nickname,
-            isValidate: $isNicknameAvailable
+            nicknameCheckSubject: nicknameCheckSubject
         )
     }
     
@@ -208,4 +208,3 @@ private extension SignUpView {
         )
     }
 }
-
