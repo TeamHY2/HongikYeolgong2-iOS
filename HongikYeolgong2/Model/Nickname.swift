@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum NicknameStatus {
+enum Nickname {
     case none, specialCharactersAndSpaces, notAllowedLength
     case available, alreadyUse, unknown, checkAvailable
     
@@ -45,8 +45,8 @@ enum NicknameStatus {
         }
     }
     
-    static func validate(_ nickname: String) -> NicknameStatus {
-        var status: NicknameStatus = .none
+    static func validate(_ nickname: String) -> Nickname {
+        var status: Nickname = .none
         status.validateUserNickname(nickname: nickname)
         return status
     }
