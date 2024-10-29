@@ -16,7 +16,7 @@ struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode
     
     // MARK: - State
-    @State private var signUpInfo = SignUpInfo()
+    @State private var userInfo = UserInfo()
     @State private var isSubmitButtonEnable = false
     @State private var isCheckButtonEnable = false
     @State private var isNicknameAvailable = false
@@ -35,9 +35,13 @@ struct SignUpView: View {
                 HeaderView(title: "회원가입")
                 
                 VStack(spacing: 12) {
-                    NicknameFieldView(signUpInfo: $signUpInfo, checkButtonTapped: {})
+                    NicknameFieldView(
+                        nickname: $userInfo.nickname,
+                        nicknameStatus: $userInfo.nicknameStatus,
+                        checkButtonTapped: checkNicknameAvailability
+                    )
                     
-                    DepartmentFieldView(signUpInfo: $signUpInfo)
+                    DepartmentFieldView(signUpInfo: $userInfo)
                 }
                 
                 Spacer()
@@ -50,8 +54,8 @@ struct SignUpView: View {
             .padding(.horizontal, 32.adjustToScreenWidth)
         }
         .toolbar(.hidden, for: .navigationBar)
-        .onChange(of: signUpInfo.nickname) {
-            signUpInfo.nicknameStatus.validateUserNickname(nickname: $0)
+        .onChange(of: userInfo.nickname) {
+            userInfo.nicknameStatus.validateUserNickname(nickname: $0)
         }
     }
 }
@@ -99,7 +103,8 @@ private extension SignUpView {
     
     // MARK: - Nickname Field
     struct NicknameFieldView: View {
-        @Binding var signUpInfo: SignUpInfo
+        @Binding var nickname: String
+        @Binding var nicknameStatus: NicknameStatus
         let checkButtonTapped: () -> Void
         
         var body: some View {
@@ -108,20 +113,20 @@ private extension SignUpView {
                 
                 HStack {
                     HY2TextField(
-                        text: $signUpInfo.nickname,
+                        text: $nickname,
                         placeholder: "닉네임을 입력해주세요",
-                        isError: signUpInfo.nicknameStatus.isError
+                        isError: nicknameStatus.isError
                     )
-                
+                    
                     DuplicateCheckButton(
-                        checkButtonEnabled: signUpInfo.nicknameStatus == .checkAvailable,
+                        checkButtonEnabled: nicknameStatus == .checkAvailable,
                         action: checkButtonTapped
                     )
                 }
                 
                 DescriptionView(
-                    message: signUpInfo.nicknameStatus.message,
-                    color: signUpInfo.nicknameStatus.textColor
+                    message: nicknameStatus.message,
+                    color: nicknameStatus.textColor
                 )
             }
         }
@@ -129,7 +134,7 @@ private extension SignUpView {
     
     // MARK: - Selecte Departments
     struct DepartmentFieldView: View {
-        @Binding var signUpInfo: SignUpInfo
+        @Binding var signUpInfo: UserInfo
         
         var body: some View {
             VStack(alignment: .leading, spacing: 8) {
@@ -187,26 +192,16 @@ private extension SignUpView {
 private extension SignUpView {
     func checkNicknameAvailability() {
         userDataInteractor.checkUserNickname(
-            nickname: signUpInfo.nickname,
+            nickname: userInfo.nickname,
             isValidate: $isNicknameAvailable
         )
     }
     
     func performSignUp() {
         userDataInteractor.signUp(
-            nickname: signUpInfo.nickname,
-            department: signUpInfo.department
+            nickname: userInfo.nickname,
+            department: userInfo.department
         )
-    }
-}
-
-// MARK: - Models
-extension SignUpView {
-    struct SignUpInfo {
-        var nickname = ""
-        var nicknameStatus: NicknameStatus = .none
-        var inputDepartment = ""
-        var department: Department = .appliedArts
     }
 }
 

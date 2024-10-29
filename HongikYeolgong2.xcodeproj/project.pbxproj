@@ -59,6 +59,7 @@
 		4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */; };
 		478933792CADBDA500E1D89E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignUpView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
+		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
 		47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1474D2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift */; };
@@ -181,6 +182,7 @@
 		4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudySessionDTO.swift; sourceTree = "<group>"; };
 		478933782CADBDA500E1D89E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
+		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -404,6 +406,14 @@
 			path = StudySession;
 			sourceTree = "<group>";
 		};
+		478FBCA12CD1397600256012 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				478FBCA22CD13A1E00256012 /* UserInfo.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		479821D52CA27BBC002357EB /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +507,7 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				478FBCA12CD1397600256012 /* User */,
 				4780043D2CCA8FF800FFAF00 /* WeeklyStudy */,
 			);
 			path = Entities;
@@ -1009,6 +1020,7 @@
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
 				47D5EDCB2CCBB5CA00ACA469 /* GradientBackground.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
+				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
