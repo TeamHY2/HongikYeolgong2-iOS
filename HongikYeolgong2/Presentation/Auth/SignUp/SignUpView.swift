@@ -18,7 +18,7 @@ struct SignUpView: View {
     // MARK: - State
     @State private var userInfo = UserInfo()
     @State private var isSubmitButtonEnable = false
-    @State private var isCheckButtonEnable = false    
+    @State private var isCheckButtonEnable = false
     let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)
     
     // MARK: - Initialization
@@ -30,17 +30,18 @@ struct SignUpView: View {
     var body: some View {
         ZStack {
             Color.dark.edgesIgnoringSafeArea(.all)
+            
             VStack {
                 HeaderView(title: "회원가입")
                 
                 VStack(spacing: 12) {
                     NicknameFieldView(
-                        nickname: $userInfo.nickname,
-                        nicknameStatus: $userInfo.nicknameStatus,
-                        checkButtonTapped: { checkUserNickname() }
+                        nickname: $userInfo.inputNickname,
+                        nicknameStatus: $userInfo.nickname,
+                        checkButtonTapped: checkUserNickname
                     )
                     
-                    DepartmentFieldView(signUpInfo: $userInfo)
+                    DepartmentFieldView(userInfo: $userInfo)
                 }
                 
                 Spacer()
@@ -53,11 +54,15 @@ struct SignUpView: View {
             .padding(.horizontal, 32.adjustToScreenWidth)
         }
         .toolbar(.hidden, for: .navigationBar)
-        .onChange(of: userInfo.nickname) {
-            userInfo.nicknameStatus.validateUserNickname(nickname: $0)
+        .onChange(of: userInfo.inputNickname) {
+            userInfo.nickname.validateUserNickname(nickname: $0)
         }
         .onReceive(nicknameCheckSubject.dropFirst()) {
-            userInfo.nicknameStatus = $0 ? .alreadyUse : .available
+            userInfo.nickname = $0 ? .alreadyUse : .available
+        }
+        .onChange(of: userInfo) {
+            isSubmitButtonEnable = $0.nickname == .available &&
+                                  userInfo.department != .none
         }
     }
 }
@@ -72,9 +77,11 @@ private extension SignUpView {
             Text(title)
                 .font(.suite(size: 18, weight: .bold))
                 .foregroundStyle(.gray100)
-                .frame(maxWidth: .infinity,
-                       minHeight: 52.adjustToScreenHeight,
-                       alignment: .leading)
+                .frame(
+                    maxWidth: .infinity,
+                    minHeight: 52.adjustToScreenHeight,
+                    alignment: .leading
+                )
         }
     }
     
@@ -102,11 +109,10 @@ private extension SignUpView {
         }
     }
     
-    
     // MARK: - Nickname Field
     struct NicknameFieldView: View {
         @Binding var nickname: String
-        @Binding var nicknameStatus: NicknameStatus
+        @Binding var nicknameStatus: Nickname
         let checkButtonTapped: () -> Void
         
         var body: some View {
@@ -134,22 +140,23 @@ private extension SignUpView {
         }
     }
     
-    // MARK: - Selecte Departments
+    // MARK: - Select Departments
     struct DepartmentFieldView: View {
-        @Binding var signUpInfo: UserInfo
+        @Binding var userInfo: UserInfo
         
         var body: some View {
             VStack(alignment: .leading, spacing: 8) {
                 TitleView(title: "학과")
                 
                 DropDownPicker(
-                    text: $signUpInfo.inputDepartment,
+                    text: $userInfo.inputDepartment,
                     seletedItem: Binding(
-                        get: { signUpInfo.department.rawValue },
-                        set: { signUpInfo.department = .init(rawValue: $0) ?? .appliedArts }
+                        get: { userInfo.department.rawValue },
+                        set: { userInfo.department = .init(rawValue: $0) ?? .none }
                     ),
                     placeholder: "학과를 입력해주세요",
-                    items: Department.allCases.map { $0.rawValue }
+                    items: Department.allCases.filter { $0 != .none }
+                                                   .map { $0.rawValue }
                 )
             }
         }
@@ -172,8 +179,8 @@ private extension SignUpView {
     }
     
     struct DuplicateCheckButton: View {
-        let nicknameStatus: NicknameStatus
-        let action: () -> ()
+        let nicknameStatus: Nickname
+        let action: () -> Void
         
         var body: some View {
             ActionButton(
@@ -195,14 +202,14 @@ private extension SignUpView {
 private extension SignUpView {
     func checkUserNickname() {
         userDataInteractor.checkUserNickname(
-            nickname: userInfo.nickname,
+            nickname: userInfo.inputNickname,
             nicknameCheckSubject: nicknameCheckSubject
         )
     }
     
     func performSignUp() {
         userDataInteractor.signUp(
-            nickname: userInfo.nickname,
+            nickname: userInfo.inputNickname,
             department: userInfo.department
         )
     }

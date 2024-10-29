@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct UserInfo {
-    var nickname = ""
-    var department: Department = .appliedArts
-    var nicknameStatus: NicknameStatus = .none
+struct UserInfo: Equatable {
+    var inputNickname = ""
     var inputDepartment = ""
+    var nickname: Nickname = .none
+    var department: Department = .none
 }
+
