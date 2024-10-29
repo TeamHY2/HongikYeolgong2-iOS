@@ -595,10 +595,26 @@
 		47A1477A2CA1594D00A91F66 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */,
-				478933782CADBDA500E1D89E /* SignUpView.swift */,
+				47A5406F2CD0B8B500DC40D0 /* SignUp */,
+				47A5406E2CD0B8AB00DC40D0 /* Onboarding */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		47A5406E2CD0B8AB00DC40D0 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		47A5406F2CD0B8B500DC40D0 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				478933782CADBDA500E1D89E /* SignUpView.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		47B1D49F2C9CB1740071B62B = {
