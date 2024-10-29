@@ -120,7 +120,5 @@ final class UserDataInteractorImpl: UserDataInteractor {
             )
             .store(in: cancleBag)
     }
-    
-   
 }
 
