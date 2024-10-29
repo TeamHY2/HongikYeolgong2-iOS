@@ -15,7 +15,7 @@ protocol UserDataInteractor: AnyObject {
     func signUp(nickname: String, department: Department)
     func logout()
     func getUser()
-    func checkUserNickname(nickname: String, isValidate: Binding<Bool>)
+    func checkUserNickname(nickname: String, isValidate: Binding<Bool>)    
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -110,7 +110,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:                        
+                    case .finished:
                         appState[\.appLaunchState] = .authenticated
                     case let .failure(error):
                         appState[\.appLaunchState] = .notAuthenticated
@@ -120,4 +120,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
             )
             .store(in: cancleBag)
     }
+    
+   
 }
+
