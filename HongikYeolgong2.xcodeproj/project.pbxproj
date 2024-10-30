@@ -660,7 +660,7 @@
 				4763FFB62CB9133600990336 /* Util */,
 				47BACCF52CA164B200295DAC /* UI */,
 				47A1474F2CA1476D00A91F66 /* Resources */,
-				47F635032CC3EBF10034EAA9 /* Model */,
+				47F635032CC3EBF10034EAA9 /* Models */,
 				47A147392CA138CB00A91F66 /* Core */,
 				47A147312CA1369800A91F66 /* Injected */,
 				47A147302CA1368400A91F66 /* Presentation */,
@@ -765,7 +765,7 @@
 			path = User;
 			sourceTree = "<group>";
 		};
-		47F635032CC3EBF10034EAA9 /* Model */ = {
+		47F635032CC3EBF10034EAA9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				47A1474C2CA144CD00A91F66 /* MockData */,
@@ -773,7 +773,7 @@
 				4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */,
 				47A540722CD0D90F00DC40D0 /* Nickname.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
