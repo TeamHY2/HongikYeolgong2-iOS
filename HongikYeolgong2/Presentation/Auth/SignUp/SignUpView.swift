@@ -19,6 +19,7 @@ struct SignUpView: View {
     @State private var userInfo = UserInfo()
     @State private var isSubmitButtonEnable = false
     @State private var isCheckButtonEnable = false
+    @State private var keyboardOffset: CGFloat = 23
     let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)
     
     // MARK: - Initialization
@@ -32,7 +33,7 @@ struct SignUpView: View {
             Color.dark.edgesIgnoringSafeArea(.all)
             
             VStack {
-                HeaderView(title: "회원가입")
+                NavigationHeaderView(title: "회원가입")
                 
                 VStack(spacing: 12.adjustToScreenWidth) {
                     VStack(alignment: .leading, spacing: 8.adjustToScreenHeight) {
@@ -71,7 +72,8 @@ struct SignUpView: View {
                         )
                     }
                 }
-                .padding(.top, 23.adjustToScreenHeight)
+                .offset(y: keyboardOffset)
+                .animation(.easeIn(duration: 0.2), value: keyboardOffset)
                 
                 Spacer()
                 
@@ -96,13 +98,20 @@ struct SignUpView: View {
         .onReceive(nicknameCheckSubject.dropFirst()) { isAlreadyInUse in
             userInfo.nickname = isAlreadyInUse ? .alreadyUse : .available
         }
+        .onReceive(keyboardVisibilityUpdated) { isKeyboardVisibility in
+            if isKeyboardVisibility {
+                keyboardOffset = 0
+            } else {
+                keyboardOffset = 23
+            }
+        }
     }
 }
 
 // MARK: - Components
 private extension SignUpView {
     // MARK: - Header
-    struct HeaderView: View {
+    struct NavigationHeaderView: View {
         let title: String
         
         var body: some View {
