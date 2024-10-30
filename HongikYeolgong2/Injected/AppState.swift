@@ -12,6 +12,7 @@ final class AppState: ObservableObject {
     @Published var userData = UserData()
     @Published var studySession = StudySession()
     @Published var routing = ViewRouting()
+    @Published var system = System()
     @Published var permissions = Permissions()
 }
 
@@ -53,6 +54,12 @@ extension AppState {
 extension AppState {
     struct ViewRouting: Equatable {
         var onboarding = OnboardingView.Routing()
+    }
+}
+
+extension AppState {
+    struct System: Equatable {
+        var isKeyboardActive = false
     }
 }
 
