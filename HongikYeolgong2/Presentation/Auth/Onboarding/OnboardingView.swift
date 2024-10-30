@@ -11,7 +11,7 @@ struct OnboardingView: View {
     @State private var routingState: Routing = .init()
     private var routingBinding: Binding<Routing> {
         $routingState.dispatched(to: injected.appState, \.routing.onboarding)
-    }
+    }    
     
     // MARK: - Body
     var body: some View {
@@ -86,9 +86,10 @@ struct OnboardingView: View {
     }
     
     private var hiddenNavigationLink: some View {
-        NavigationLink("", 
-                       destination: SignUpView(),
-                       isActive: routingBinding.signUp)
+        NavigationLink(destination: SignUpView(),
+                       isActive: routingBinding.signUp) {
+            EmptyView()
+        }
         .opacity(0)
         .frame(width: 0, height: 0)
     }
