@@ -45,7 +45,7 @@ struct RankingView: View {
             RankingListView(departmentRankings: weeklyRanking.departmentRankings)
         }
         .onAppear {
-            rankingDataInteractor.getCurrentWeekField(weekNumber: $yearWeek)
+            rankingDataInteractor.getCurrentWeekField(yearWeek: $yearWeek)
         }.onChange(of: yearWeek) {
             rankingDataInteractor.getWeeklyRanking(yearWeek: $0, weeklyRanking: $weeklyRanking)
         }
