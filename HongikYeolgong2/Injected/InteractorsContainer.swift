@@ -37,7 +37,7 @@ extension DIContainer {
             studySessionInteractor: StudySessionInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {}),
             weeklyStudyInteractor: WeeklyStudyInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
-            rankingDataInteractor: RankingDataInteractorImpl()
+            rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: StudySessionRepositoryImpl(), weeklyRepository: WeeklyRepositoryImpl())
         )
     }
 }

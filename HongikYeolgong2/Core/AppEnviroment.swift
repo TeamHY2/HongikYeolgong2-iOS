@@ -41,7 +41,8 @@ extension AppEnviroment {
     static func configuredRemoteRepositories() -> DIContainer.RemoteRepositories {
         .init(
             authRepository: AuthRepositoryImpl(),
-            studySessionRepository: StudySessionRepositoryImpl()
+            studySessionRepository: StudySessionRepositoryImpl(),
+            weeklyRepository: WeeklyRepositoryImpl()
         )
     }
     
@@ -78,7 +79,7 @@ extension AppEnviroment {
                 appState: appState,
                 studySessionRepository: remoteRepository.studySessionRepository
             ),
-            rankingDataInteractor: RankingDataInteractorImpl()
+            rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: remoteRepository.studySessionRepository, weeklyRepository: remoteRepository.weeklyRepository)
         )
     }
     
@@ -93,6 +94,7 @@ extension DIContainer {
     struct RemoteRepositories {
         let authRepository: AuthRepository
         let studySessionRepository: StudySessionRepository
+        let weeklyRepository: WeeklyRepository
     }
     
     struct Services {
