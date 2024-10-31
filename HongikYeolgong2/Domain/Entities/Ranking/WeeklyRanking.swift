@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 랭킹뷰에서 사용하는 랭킹리스트
 struct WeeklyRanking {
     let weekName: String
     let departmentRankings: [RankingDepartment]
@@ -22,6 +23,7 @@ struct WeeklyRanking {
     }
 }
 
+/// 개별학과 랭킹정보
 struct RankingDepartment: Hashable {
     let department: String
     let studyDurationOfWeek: Int
