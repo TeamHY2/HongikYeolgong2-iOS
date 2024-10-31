@@ -38,7 +38,11 @@ struct RankingCell: View {
                     }
                 }
             }
-            .padding(EdgeInsets(top: 13, leading: 24, bottom: 13, trailing: 24))
+            .padding(EdgeInsets(
+                top: 13.adjustToScreenHeight,
+                leading: 24.adjustToScreenWidth,
+                bottom: 13.adjustToScreenHeight,
+                trailing: 24.adjustToScreenWidth))
         }
         .background(setBackground)
     }

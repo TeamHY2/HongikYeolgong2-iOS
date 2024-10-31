@@ -17,8 +17,8 @@ struct RankingListView: View {
                     RankingCell(departmentRankInfo: rankingInfo)
                 }
             }
-            .padding(.horizontal, 32)
-            .padding(.bottom, 100)
+            .padding(.horizontal, 32.adjustToScreenWidth)
+            .padding(.bottom, 60.adjustToScreenHeight)
         }
     }
 }
