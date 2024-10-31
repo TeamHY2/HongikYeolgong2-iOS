@@ -11,15 +11,15 @@ struct OnboardingView: View {
     @State private var routingState: Routing = .init()
     private var routingBinding: Binding<Routing> {
         $routingState.dispatched(to: injected.appState, \.routing.onboarding)
-    }    
+    }
     
     // MARK: - Body
     var body: some View {
         NavigationView {
             content
-                .onReceive(routingUpdate) { self.routingState = $0 }
+                .onReceive(routingUpdate) { routingState = $0 }
         }
-        .navigationViewStyle(.stack)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     // MARK: - Main Contents
@@ -86,8 +86,7 @@ struct OnboardingView: View {
     }
     
     private var hiddenNavigationLink: some View {
-        NavigationLink(destination: SignUpView(),
-                       isActive: routingBinding.signUp) {
+        NavigationLink(destination: SignUpView(), isActive: routingBinding.signUp) {
             EmptyView()
         }
         .opacity(0)

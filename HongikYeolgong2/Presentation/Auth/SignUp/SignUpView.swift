@@ -24,7 +24,7 @@ struct SignUpView: View {
     
     // MARK: - Initialization
     init() {
-        UINavigationBar.setAnimationsEnabled(false)
+//        UINavigationBar.setAnimationsEnabled(false)
     }
     
     // MARK: - Body
@@ -82,12 +82,13 @@ struct SignUpView: View {
                     submitButtonTapped: performSignUp
                 )
             }
-            .padding(.horizontal, 32.adjustToScreenWidth)
             .onTapGesture {
                 UIApplication.shared.hideKeyboard()
             }
+            .padding(.horizontal, 32.adjustToScreenWidth)
         }
         .toolbar(.hidden, for: .navigationBar)
+       
         .onChange(of: userInfo.inputNickname) { inputNickname in
             userInfo.nickname.validateUserNickname(nickname: inputNickname)
         }

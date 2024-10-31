@@ -79,7 +79,7 @@ struct HomeView: View {
                       cancleAction: { shouldShowEndUseModal = false })
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
-        .modifier(GradientBackground())
+        .modifier(IOSBackground())
         .onAppear {
             permissions.request(permission: .localNotifications)
             weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
