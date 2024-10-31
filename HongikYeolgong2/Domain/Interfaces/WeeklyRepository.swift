@@ -5,8 +5,8 @@
 //  Created by 권석기 on 10/31/24.
 //
 
-import Foundation
+import Combine
 
 protocol WeeklyRepository {
-    func getWeekField()
+    func getWeekField(date: String) -> AnyPublisher<Void, NetworkError>
 }

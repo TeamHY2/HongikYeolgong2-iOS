@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct RankingView: View {
+    @Environment(\.injected.interactors.rankingDataInteractor) var rankingDataInteractor
+    
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
@@ -43,6 +46,9 @@ struct RankingView: View {
                 .padding(.horizontal, 32)
                 .padding(.bottom, 100)
             }
+        }
+        .onAppear {
+            rankingDataInteractor.getCurrentWeekField()
         }
         .background(.dark)
     }
