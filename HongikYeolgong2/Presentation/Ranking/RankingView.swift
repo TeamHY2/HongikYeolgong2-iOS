@@ -42,15 +42,7 @@ struct RankingView: View {
                                 bottom: 17,
                                 trailing: 32))
             
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(1...20, id: \.self) { number in
-                        RankingCell(currentRanking: number)
-                    }
-                }
-                .padding(.horizontal, 32)
-                .padding(.bottom, 100)
-            }
+            RankingListView(departmentRankings: weeklyRanking.departmentRankings)
         }
         .onAppear {
             rankingDataInteractor.getCurrentWeekField(weekNumber: $yearWeek)
