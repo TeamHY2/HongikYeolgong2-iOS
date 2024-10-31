@@ -9,24 +9,29 @@ import SwiftUI
 
 struct RankingView: View {
     @Environment(\.injected.interactors.rankingDataInteractor) var rankingDataInteractor
-    @State private var weekNumber = 0
+    @State private var yearWeek = 0
+    @State private var weeklyRanking: WeeklyRanking = WeeklyRanking()
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("\(weekNumber)")
+                Text(weeklyRanking.weekName)
                     .font(.pretendard(size: 24, weight: .bold), lineHeight: 30)
                     .foregroundColor(.gray100)
                 
                 Spacer()
                 
                 HStack(spacing: 7) {
-                    Button(action: {}, label: {
+                    Button(action: {
+                        yearWeek -= 1
+                    }, label: {
                         Image(.leftArrow)
                     })
                     .frame(width: 36, height: 36)
                     
-                    Button(action: {}, label: {
+                    Button(action: {
+                        yearWeek += 1
+                    }, label: {
                         Image(.rightArrow)
                     })
                     .frame(width: 36, height: 36)
@@ -48,7 +53,9 @@ struct RankingView: View {
             }
         }
         .onAppear {
-            rankingDataInteractor.getCurrentWeekField(weekNumber: $weekNumber)
+            rankingDataInteractor.getCurrentWeekField(weekNumber: $yearWeek)
+        }.onChange(of: yearWeek) {
+            rankingDataInteractor.getWeeklyRanking(yearWeek: $0, weeklyRanking: $weeklyRanking)
         }
         .background(.dark)
     }
