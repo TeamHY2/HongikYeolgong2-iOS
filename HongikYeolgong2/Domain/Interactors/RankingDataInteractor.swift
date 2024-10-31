@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol RankingDataInteractor {
     func getCurrentWeekField(weekNumber: Binding<Int>)
-    func getWeeklyRanking(yearWeek: Int)
+    func getWeeklyRanking(yearWeek: Int, weeklyRanking: Binding<WeeklyRanking>)
 }
 
 final class RankingDataInteractorImpl: RankingDataInteractor {
@@ -31,7 +31,14 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
             .store(in: cancleBag)
     }
     
-    func getWeeklyRanking(yearWeek: Int) {
-        
+    func getWeeklyRanking(yearWeek: Int, weeklyRanking: Binding<WeeklyRanking>) {
+        studySessionRepository
+            .getWeeklyRanking(yearWeek: yearWeek)
+            .sink { _ in
+                
+            } receiveValue: {                
+                weeklyRanking.wrappedValue = $0
+            }
+            .store(in: cancleBag)
     }
 }

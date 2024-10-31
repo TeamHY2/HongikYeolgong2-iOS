@@ -67,6 +67,8 @@
 		478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */; };
 		478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */; };
 		478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */; };
+		478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84482CD359260097CAA1 /* WeeklyRanking.swift */; };
+		478F844B2CD35AF40097CAA1 /* RankingMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F844A2CD35AF40097CAA1 /* RankingMapper.swift */; };
 		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
@@ -197,6 +199,8 @@
 		478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepository.swift; sourceTree = "<group>"; };
 		478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekFieldResponseDTO.swift; sourceTree = "<group>"; };
 		478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRankingResponseDTO.swift; sourceTree = "<group>"; };
+		478F84482CD359260097CAA1 /* WeeklyRanking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRanking.swift; sourceTree = "<group>"; };
+		478F844A2CD35AF40097CAA1 /* RankingMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingMapper.swift; sourceTree = "<group>"; };
 		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				478004412CCA924200FFAF00 /* StudySessionMapper.swift */,
+				478F844A2CD35AF40097CAA1 /* RankingMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -441,6 +446,14 @@
 			isa = PBXGroup;
 			children = (
 				478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		478F84452CD358F50097CAA1 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				478F84482CD359260097CAA1 /* WeeklyRanking.swift */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -546,6 +559,7 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				478F84452CD358F50097CAA1 /* Ranking */,
 				478FBCA12CD1397600256012 /* User */,
 				4780043D2CCA8FF800FFAF00 /* WeeklyStudy */,
 			);
@@ -1013,6 +1027,7 @@
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
+				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
 				4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */,
 				472319F02CD20057009BA019 /* SystemEventHandler.swift in Sources */,
@@ -1074,6 +1089,7 @@
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* ActionButton.swift in Sources */,
+				478F844B2CD35AF40097CAA1 /* RankingMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
