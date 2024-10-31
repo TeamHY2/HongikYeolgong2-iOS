@@ -66,6 +66,7 @@
 		478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */; };
 		478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */; };
 		478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */; };
+		478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */; };
 		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
@@ -195,6 +196,7 @@
 		478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepositoryImpl.swift; sourceTree = "<group>"; };
 		478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepository.swift; sourceTree = "<group>"; };
 		478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekFieldResponseDTO.swift; sourceTree = "<group>"; };
+		478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRankingResponseDTO.swift; sourceTree = "<group>"; };
 		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -435,6 +437,14 @@
 			path = Weekly;
 			sourceTree = "<group>";
 		};
+		478F84422CD3506D0097CAA1 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
 		478FBCA12CD1397600256012 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +564,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				478F84422CD3506D0097CAA1 /* Ranking */,
 				478F843F2CD33F4D0097CAA1 /* Weekly */,
 				4786A10D2CCA3506008635A4 /* StudySession */,
 				47F635002CC3E9700034EAA9 /* User */,
@@ -993,6 +1004,7 @@
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
 				478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
+				478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
 				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,

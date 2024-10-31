@@ -8,5 +8,5 @@
 import Combine
 
 protocol WeeklyRepository {
-    func getWeekField(date: String) -> AnyPublisher<Void, NetworkError>
+    func getWeekField(date: String) -> AnyPublisher<Int, NetworkError>
 }

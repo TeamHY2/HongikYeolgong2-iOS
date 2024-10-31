@@ -9,12 +9,12 @@ import SwiftUI
 
 struct RankingView: View {
     @Environment(\.injected.interactors.rankingDataInteractor) var rankingDataInteractor
-    
+    @State private var weekNumber = 0
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text("9월 2주차")
+                Text("\(weekNumber)")
                     .font(.pretendard(size: 24, weight: .bold), lineHeight: 30)
                     .foregroundColor(.gray100)
                 
@@ -48,7 +48,7 @@ struct RankingView: View {
             }
         }
         .onAppear {
-            rankingDataInteractor.getCurrentWeekField()
+            rankingDataInteractor.getCurrentWeekField(weekNumber: $weekNumber)
         }
         .background(.dark)
     }

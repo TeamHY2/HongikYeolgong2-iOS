@@ -5,10 +5,11 @@
 //  Created by 권석기 on 10/31/24.
 //
 
-import Foundation
+import SwiftUI
 
 protocol RankingDataInteractor {
-    func getCurrentWeekField()
+    func getCurrentWeekField(weekNumber: Binding<Int>)
+    func getWeeklyRanking(yearWeek: Int)
 }
 
 final class RankingDataInteractorImpl: RankingDataInteractor {
@@ -21,14 +22,16 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
         self.weeklyRepository = weeklyRepository
     }
     
-    func getCurrentWeekField() {
+    func getCurrentWeekField(weekNumber: Binding<Int>) {
         weeklyRepository
             .getWeekField(date: Date().toDateString())
-            .sink { _ in
-                
-            } receiveValue: { _ in
-                
-            }
+            .sink(receiveCompletion: {_ in}, receiveValue: {
+                weekNumber.wrappedValue = $0
+            })
             .store(in: cancleBag)
+    }
+    
+    func getWeeklyRanking(yearWeek: Int) {
+        
     }
 }
