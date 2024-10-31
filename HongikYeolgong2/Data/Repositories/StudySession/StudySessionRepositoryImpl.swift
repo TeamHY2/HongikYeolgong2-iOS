@@ -49,4 +49,16 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func getWeeklyRanking(yearWeek: Int) -> AnyPublisher<Void, NetworkError> {
+        return Future<Void, NetworkError> { promise in
+            Task {
+                do {
+                    
+                } catch {
+                    
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
