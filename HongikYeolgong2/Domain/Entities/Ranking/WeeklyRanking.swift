@@ -5,7 +5,7 @@
 //  Created by 권석기 on 10/31/24.
 //
 
-import Foundation
+import SwiftUI
 
 struct WeeklyRanking {
     let weekName: String
@@ -22,7 +22,7 @@ struct WeeklyRanking {
     }
 }
 
-struct RankingDepartment {
+struct RankingDepartment: Hashable {
     let department: String
     let studyDurationOfWeek: Int
     let currentRank: Int

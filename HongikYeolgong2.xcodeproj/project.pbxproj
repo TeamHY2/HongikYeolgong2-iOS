@@ -69,6 +69,7 @@
 		478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */; };
 		478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84482CD359260097CAA1 /* WeeklyRanking.swift */; };
 		478F844B2CD35AF40097CAA1 /* RankingMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F844A2CD35AF40097CAA1 /* RankingMapper.swift */; };
+		478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F844C2CD3629A0097CAA1 /* RankingListView.swift */; };
 		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
@@ -201,6 +202,7 @@
 		478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRankingResponseDTO.swift; sourceTree = "<group>"; };
 		478F84482CD359260097CAA1 /* WeeklyRanking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRanking.swift; sourceTree = "<group>"; };
 		478F844A2CD35AF40097CAA1 /* RankingMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingMapper.swift; sourceTree = "<group>"; };
+		478F844C2CD3629A0097CAA1 /* RankingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListView.swift; sourceTree = "<group>"; };
 		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				471940CA2CAFD9B700426D30 /* RankingCell.swift */,
+				478F844C2CD3629A0097CAA1 /* RankingListView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1080,6 +1083,7 @@
 				47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
+				478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,

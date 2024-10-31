@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct RankingCell: View {
-    let currentRanking: Int
+    let departmentRankInfo: RankingDepartment
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 HStack(spacing: 14) {
-                    Text("1")
+                    Text("\(departmentRankInfo.currentRank)")
                         .font(.pretendard(size: 16, weight: .regular))
                         .foregroundStyle(setFontColor)
                     
-                    Text("건축학부")
+                    Text(departmentRankInfo.department)
                         .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .foregroundStyle(setFontColor)
                 }
@@ -26,25 +26,27 @@ struct RankingCell: View {
                 Spacer()
                 
                 HStack(spacing: 22) {
-                    Text("120H")
+                    Text("\(departmentRankInfo.studyDurationOfWeek)H")
                         .font(.pretendard(size: 12, weight: .regular))
                         .foregroundStyle(setFontColor)
                     HStack(spacing: 7) {
-                        Text("+1")
-                            .font(.pretendard(size: 16, weight: .regular))
+                        Text("\(departmentRankInfo.rankChange)")
+                            .font(.pretendard(size: 12, weight: .regular))
                             .foregroundStyle(setFontColor)
-                        Image(.polygonGray)
+                        
+                        rankImage
                     }
                 }
             }
             .padding(EdgeInsets(top: 13, leading: 24, bottom: 13, trailing: 24))
         }
         .background(setBackground)
-        
     }
-    
+}
+
+extension RankingCell {
     private var setBackground: some View {
-        switch currentRanking {
+        switch departmentRankInfo.currentRank {
         case 1:
             return Image(.rankingBox1)
                 .resizable()
@@ -65,7 +67,7 @@ struct RankingCell: View {
     }
     
     private var setFontColor: Color {
-        switch currentRanking {
+        switch departmentRankInfo.currentRank {
         case 1:
                 .gray600
         case 2:
@@ -74,6 +76,19 @@ struct RankingCell: View {
                 .gray100
         default:
                 .gray100
+        }
+    }
+    
+    private var rankImage: some View {
+        switch (departmentRankInfo.rankChange, departmentRankInfo.currentRank) {
+        case let (rankChange, currentRank) where rankChange > 0 && currentRank == 1:
+            Image(.rankUpGray)
+        case let (rankChange, _) where rankChange > 0:
+            Image(.rankUp)
+        case let (rankChange, _) where rankChange < 0:
+            Image(.rankDown)
+        default:
+            Image(.rankNoChange)
         }
     }
 }
