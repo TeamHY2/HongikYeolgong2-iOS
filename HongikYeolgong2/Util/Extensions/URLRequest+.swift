@@ -11,7 +11,8 @@ import Foundation
 extension URLRequest {
     init(_ url: URL) {
         self.init(url: url)
-        let accessToken = KeyChainManager.readItem(key: .accessToken) ?? ""          
+        let accessToken = KeyChainManager.readItem(key: .accessToken) ?? ""    
+        print(accessToken)
         self.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
     }
 }

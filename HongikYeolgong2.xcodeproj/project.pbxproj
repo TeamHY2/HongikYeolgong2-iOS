@@ -63,6 +63,8 @@
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84362CD30A8F0097CAA1 /* IOSBackground.swift */; };
 		478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */; };
+		478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */; };
+		478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */; };
 		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
@@ -189,6 +191,8 @@
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		478F84362CD30A8F0097CAA1 /* IOSBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSBackground.swift; sourceTree = "<group>"; };
 		478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDataInteractor.swift; sourceTree = "<group>"; };
+		478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepositoryImpl.swift; sourceTree = "<group>"; };
+		478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepository.swift; sourceTree = "<group>"; };
 		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 		470723062CBC19770046469F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				478F843A2CD326C30097CAA1 /* Weekly */,
 				4786A10A2CCA3496008635A4 /* StudySession */,
 				470723072CBC197F0046469F /* Auth */,
 			);
@@ -410,6 +415,14 @@
 				4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */,
 			);
 			path = StudySession;
+			sourceTree = "<group>";
+		};
+		478F843A2CD326C30097CAA1 /* Weekly */ = {
+			isa = PBXGroup;
+			children = (
+				478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */,
+			);
+			path = Weekly;
 			sourceTree = "<group>";
 		};
 		478FBCA12CD1397600256012 /* User */ = {
@@ -556,6 +569,7 @@
 			children = (
 				470723082CBC198E0046469F /* AuthRepository.swift */,
 				4786A1082CCA346F008635A4 /* StudySessionRepository.swift */,
+				478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -956,6 +970,7 @@
 			files = (
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
+				478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */,
 				472319ED2CD1FC32009BA019 /* UIApplication+.swift in Sources */,
 				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */,
@@ -965,6 +980,7 @@
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
+				478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,

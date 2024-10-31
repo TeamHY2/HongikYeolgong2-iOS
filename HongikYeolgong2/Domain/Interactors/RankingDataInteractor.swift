@@ -9,4 +9,12 @@ import Foundation
 
 protocol RankingDataInteractor {}
 
-final class RankingDataInteractorImpl: RankingDataInteractor {}
+final class RankingDataInteractorImpl: RankingDataInteractor {
+    let studySessionRepository: StudySessionRepository
+    let weeklyRepository: WeeklyRepository
+    
+    init(studySessionRepository: StudySessionRepository, weeklyRepository: WeeklyRepository) {
+        self.studySessionRepository = studySessionRepository
+        self.weeklyRepository = weeklyRepository
+    }
+}
