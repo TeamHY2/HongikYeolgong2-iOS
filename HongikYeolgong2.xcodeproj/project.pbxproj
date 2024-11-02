@@ -62,6 +62,14 @@
 		478933792CADBDA500E1D89E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignUpView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84362CD30A8F0097CAA1 /* IOSBackground.swift */; };
+		478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */; };
+		478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */; };
+		478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */; };
+		478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */; };
+		478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */; };
+		478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F84482CD359260097CAA1 /* WeeklyRanking.swift */; };
+		478F844B2CD35AF40097CAA1 /* RankingMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F844A2CD35AF40097CAA1 /* RankingMapper.swift */; };
+		478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478F844C2CD3629A0097CAA1 /* RankingListView.swift */; };
 		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
@@ -187,6 +195,14 @@
 		478933782CADBDA500E1D89E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		478F84362CD30A8F0097CAA1 /* IOSBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSBackground.swift; sourceTree = "<group>"; };
+		478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingDataInteractor.swift; sourceTree = "<group>"; };
+		478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepositoryImpl.swift; sourceTree = "<group>"; };
+		478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRepository.swift; sourceTree = "<group>"; };
+		478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekFieldResponseDTO.swift; sourceTree = "<group>"; };
+		478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRankingResponseDTO.swift; sourceTree = "<group>"; };
+		478F84482CD359260097CAA1 /* WeeklyRanking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyRanking.swift; sourceTree = "<group>"; };
+		478F844A2CD35AF40097CAA1 /* RankingMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingMapper.swift; sourceTree = "<group>"; };
+		478F844C2CD3629A0097CAA1 /* RankingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingListView.swift; sourceTree = "<group>"; };
 		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -288,6 +304,7 @@
 		470723062CBC19770046469F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				478F843A2CD326C30097CAA1 /* Weekly */,
 				4786A10A2CCA3496008635A4 /* StudySession */,
 				470723072CBC197F0046469F /* Auth */,
 			);
@@ -317,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				471940CA2CAFD9B700426D30 /* RankingCell.swift */,
+				478F844C2CD3629A0097CAA1 /* RankingListView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -388,6 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				478004412CCA924200FFAF00 /* StudySessionMapper.swift */,
+				478F844A2CD35AF40097CAA1 /* RankingMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -408,6 +427,38 @@
 				4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */,
 			);
 			path = StudySession;
+			sourceTree = "<group>";
+		};
+		478F843A2CD326C30097CAA1 /* Weekly */ = {
+			isa = PBXGroup;
+			children = (
+				478F843B2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift */,
+			);
+			path = Weekly;
+			sourceTree = "<group>";
+		};
+		478F843F2CD33F4D0097CAA1 /* Weekly */ = {
+			isa = PBXGroup;
+			children = (
+				478F84402CD33F620097CAA1 /* WeekFieldResponseDTO.swift */,
+			);
+			path = Weekly;
+			sourceTree = "<group>";
+		};
+		478F84422CD3506D0097CAA1 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				478F84432CD350850097CAA1 /* WeeklyRankingResponseDTO.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		478F84452CD358F50097CAA1 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				478F84482CD359260097CAA1 /* WeeklyRanking.swift */,
+			);
+			path = Ranking;
 			sourceTree = "<group>";
 		};
 		478FBCA12CD1397600256012 /* User */ = {
@@ -511,6 +562,7 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				478F84452CD358F50097CAA1 /* Ranking */,
 				478FBCA12CD1397600256012 /* User */,
 				4780043D2CCA8FF800FFAF00 /* WeeklyStudy */,
 			);
@@ -529,6 +581,8 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				478F84422CD3506D0097CAA1 /* Ranking */,
+				478F843F2CD33F4D0097CAA1 /* Weekly */,
 				4786A10D2CCA3506008635A4 /* StudySession */,
 				47F635002CC3E9700034EAA9 /* User */,
 				47F634FC2CC3E8500034EAA9 /* Auth */,
@@ -544,6 +598,7 @@
 				4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */,
 				4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */,
 				47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */,
+				478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -553,6 +608,7 @@
 			children = (
 				470723082CBC198E0046469F /* AuthRepository.swift */,
 				4786A1082CCA346F008635A4 /* StudySessionRepository.swift */,
+				478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -953,15 +1009,19 @@
 			files = (
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
+				478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */,
 				472319ED2CD1FC32009BA019 /* UIApplication+.swift in Sources */,
 				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */,
+				478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
+				478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
+				478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
 				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,
@@ -970,6 +1030,7 @@
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
+				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
 				4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */,
 				472319F02CD20057009BA019 /* SystemEventHandler.swift in Sources */,
@@ -980,6 +1041,7 @@
 				47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */,
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
 				47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */,
+				478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */,
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
@@ -1021,6 +1083,7 @@
 				47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
+				478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,
@@ -1030,6 +1093,7 @@
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* ActionButton.swift in Sources */,
+				478F844B2CD35AF40097CAA1 /* RankingMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
