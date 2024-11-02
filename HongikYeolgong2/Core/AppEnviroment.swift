@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 struct AppEnviroment {
-    var container: DIContainer
+    let container: DIContainer
+    let systemEventsHandler: SystemEventHandler
 }
 
 extension AppEnviroment {
@@ -30,7 +31,9 @@ extension AppEnviroment {
             services: services
         )
         
-        return .init(container: diContainer)
+        let systemEventsHandler = RealSystemEventHandler(container: diContainer)
+        
+        return .init(container: diContainer, systemEventsHandler: systemEventsHandler)
     }
     
     /// 외부 데이터소스에 접근하는 레포지토리 의존성을 설정하고 관련 인스턴스를 반환합니다.

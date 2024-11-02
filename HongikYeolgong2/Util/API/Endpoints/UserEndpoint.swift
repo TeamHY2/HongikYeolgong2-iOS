@@ -37,17 +37,19 @@ extension UserEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .checkUserNickname, .signUp:
+        case  .signUp:
                 .post
-        case .getUser:
+        case .getUser, .checkUserNickname:
                 .get
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .checkUserNickname, .signUp, .getUser:
-            nil
+        case let .checkUserNickname(nickname):
+            return [URLQueryItem(name: "nickname", value: nickname)]
+        case .signUp, .getUser:
+            return nil
         }
     }
     
@@ -60,9 +62,8 @@ extension UserEndpoint {
     
     var body: Data? {
         switch self {
-        case let .checkUserNickname(nickname):
-            let parameter: [String: Any] = ["nickname": nickname]            
-            return parameter.toData()
+        case .checkUserNickname:
+            return nil
         case let .signUp(signUpReqDto):
             return signUpReqDto.toData()
         case .getUser:

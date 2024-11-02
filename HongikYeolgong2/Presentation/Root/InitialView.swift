@@ -14,10 +14,10 @@ struct InitialView: View {
     @State private var appLaunchState: AppState.AppLaunchState = .checkAuthentication
     
     var body: some View {
-        NavigationView {
+        Group {
             switch appLaunchState {
             case .notAuthenticated:
-                OnboardingView()                    
+                OnboardingView()
             case .authenticated:
                 MainTabView()
             case .checkAuthentication:
@@ -26,7 +26,6 @@ struct InitialView: View {
                     .onAppear(perform: appLaunchCompleted)
             }
         }
-        .navigationViewStyle(.stack)
         .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
     }
 }
