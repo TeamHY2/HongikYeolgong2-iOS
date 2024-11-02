@@ -8,6 +8,7 @@
 import Foundation
 
 enum Department: String, CaseIterable {    
+    case none = ""
     case constructionUrban = "건설도시공학부"
     case civilEnvironmental = "건설환경공학과"
     case architecture = "건축학부"
@@ -44,4 +45,8 @@ enum Department: String, CaseIterable {
     case computerScience = "컴퓨터공학과"
     case frenchStudies = "프랑스어문학과"
     case painting = "회화과"
+    
+    static func allDepartments() -> [String] {
+        Self.allCases.filter { $0 != .none }.map { $0.rawValue }
+    }
 }

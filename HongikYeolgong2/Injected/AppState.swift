@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-final class AppState: ObservableObject {
+final class AppState: ObservableObject, Equatable {
     @Published var appLaunchState: AppLaunchState = .checkAuthentication
     @Published var userData = UserData()
     @Published var studySession = StudySession()
     @Published var routing = ViewRouting()
+    @Published var system = System()
     @Published var permissions = Permissions()
+}
+
+extension AppState {
+    static func == (lhs: AppState, rhs: AppState) -> Bool {
+        return lhs.userData == rhs.userData &&
+            lhs.routing == rhs.routing &&
+            lhs.system == rhs.system &&
+            lhs.permissions == rhs.permissions
+    }
 }
 
 extension AppState {
@@ -57,9 +67,15 @@ extension AppState {
 }
 
 extension AppState {
+    struct System: Equatable {
+        var isKeyboardActive = false
+    }
+}
+
+extension AppState {
     
     /// 접근권한 상태를 관리하는 구조체 입니다.
-    struct Permissions {
+    struct Permissions: Equatable {
         var push: Permission.Status = .unknown
     }
     
