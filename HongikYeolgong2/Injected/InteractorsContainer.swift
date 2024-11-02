@@ -13,16 +13,19 @@ extension DIContainer {
         let studySessionInteractor: StudySessionInteractor
         let userPermissionsInteractor: UserPermissionsInteractor    
         let weeklyStudyInteractor: WeeklyStudyInteractor
+        let rankingDataInteractor: RankingDataInteractor
         
         init(userDataInteractor: UserDataInteractor,
              studySessionInteractor: StudySessionInteractor, 
              userPermissionsInteractor: UserPermissionsInteractor, 
-             weeklyStudyInteractor: WeeklyStudyInteractor) {
+             weeklyStudyInteractor: WeeklyStudyInteractor, 
+             rankingDataInteractor: RankingDataInteractor) {
             
             self.userDataInteractor = userDataInteractor
             self.studySessionInteractor = studySessionInteractor
             self.userPermissionsInteractor = userPermissionsInteractor
             self.weeklyStudyInteractor = weeklyStudyInteractor
+            self.rankingDataInteractor = rankingDataInteractor
         }
         
         static let `default` = Self(
@@ -33,7 +36,8 @@ extension DIContainer {
             ),
             studySessionInteractor: StudySessionInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {}),
-            weeklyStudyInteractor: WeeklyStudyInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl())
+            weeklyStudyInteractor: WeeklyStudyInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
+            rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: StudySessionRepositoryImpl(), weeklyRepository: WeeklyRepositoryImpl())
         )
     }
 }

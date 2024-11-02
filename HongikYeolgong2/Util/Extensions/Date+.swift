@@ -32,4 +32,12 @@ extension Date {
         
         return ISO8601String
     }
+    
+    func toDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        formatter.dateFormat = "yyyy-MM-dd"
+        let dateString = formatter.string(from: self)
+        return dateString
+    }
 }
