@@ -12,7 +12,7 @@ extension URLRequest {
     init(_ url: URL) {
         self.init(url: url)
         let accessToken = KeyChainManager.readItem(key: .accessToken) ?? ""    
-        print(accessToken)
+        print("accessToken: ",accessToken)
         self.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
     }
 }

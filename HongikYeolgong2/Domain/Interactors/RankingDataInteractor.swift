@@ -28,7 +28,7 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
     func getCurrentWeekField(yearWeek: Binding<Int>) {
         weeklyRepository
             .getWeekField(date: Date().toDateString())
-            .sink(receiveCompletion: {_ in}, receiveValue: {
+            .sink(receiveCompletion: {_ in}, receiveValue: {                
                 yearWeek.wrappedValue = $0
             })
             .store(in: cancleBag)

@@ -9,8 +9,6 @@ import Foundation
 
 /// 날짜기준 주차 정보를 받아옵니다
 /// weekNumber를 제외한 필드는 삭제예정
-struct WeekFieldResponseDTO: Decodable {
-    let year: Int
-    let weekName: String
+struct WeekFieldResponseDTO: Decodable {    
     let weekNumber: Int
 }

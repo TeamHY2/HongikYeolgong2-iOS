@@ -12,4 +12,5 @@ struct SignUpResponseDTO: Decodable {
     let username: String
     let nickname: String
     let department: String
+    let accessToken: String
 }

@@ -57,7 +57,7 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
                     let response: BaseResponse<WeeklyRankingResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyRanking(yearWeek: yearWeek))
                     promise(.success(response.data.toEntity()))
                 } catch let error as NetworkError {
-                    print(error.message)
+                    throw error
                 }
             }
         }.eraseToAnyPublisher()
