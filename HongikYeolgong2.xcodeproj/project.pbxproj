@@ -117,6 +117,13 @@
 		47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635042CC3EC1A0034EAA9 /* Department.swift */; };
 		47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2D2CCCB7AA00DD0899 /* TimePickerView.swift */; };
 		47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */; };
+		5E847A6A2CDBD4140034C2A7 /* CalendarEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A692CDBD4140034C2A7 /* CalendarEndpoint.swift */; };
+		5E847A6C2CDBD49A0034C2A7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6B2CDBD49A0034C2A7 /* CalendarCell.swift */; };
+		5E847A6E2CDBD4B60034C2A7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6D2CDBD4B60034C2A7 /* CalendarView.swift */; };
+		5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */; };
+		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
+		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
+		5E847A7D2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A7C2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift */; };
 		98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */; };
 		98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */; };
 /* End PBXBuildFile section */
@@ -256,6 +263,13 @@
 		47F635042CC3EC1A0034EAA9 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		47F79B2D2CCCB7AA00DD0899 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		5E847A692CDBD4140034C2A7 /* CalendarEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoint.swift; sourceTree = "<group>"; };
+		5E847A6B2CDBD49A0034C2A7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		5E847A6D2CDBD4B60034C2A7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMapper.swift; sourceTree = "<group>"; };
+		5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataInteractor.swift; sourceTree = "<group>"; };
+		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
+		5E847A7C2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCountAllResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,6 +314,7 @@
 				470723002CBC16680046469F /* AuthEndpoint.swift */,
 				47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */,
 				4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */,
+				5E847A692CDBD4140034C2A7 /* CalendarEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -410,6 +425,7 @@
 			children = (
 				478004412CCA924200FFAF00 /* StudySessionMapper.swift */,
 				478F844A2CD35AF40097CAA1 /* RankingMapper.swift */,
+				5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -566,6 +582,7 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				5E847A752CDBD5490034C2A7 /* Calendar */,
 				478F84452CD358F50097CAA1 /* Ranking */,
 				478FBCA12CD1397600256012 /* User */,
 				4780043D2CCA8FF800FFAF00 /* WeeklyStudy */,
@@ -585,6 +602,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				5E847A7B2CDBD7040034C2A7 /* Calendar */,
 				478F84422CD3506D0097CAA1 /* Ranking */,
 				478F843F2CD33F4D0097CAA1 /* Weekly */,
 				4786A10D2CCA3506008635A4 /* StudySession */,
@@ -603,6 +621,7 @@
 				4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */,
 				47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */,
 				478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */,
+				5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -842,10 +861,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5E847A752CDBD5490034C2A7 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		5E847A7B2CDBD7040034C2A7 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				5E847A7C2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		98F9D8422CDA2DE100DE12BB /* Component */ = {
 			isa = PBXGroup;
 			children = (
 				98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */,
+				5E847A6B2CDBD49A0034C2A7 /* CalendarCell.swift */,
+				5E847A6D2CDBD4B60034C2A7 /* CalendarView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1020,6 +1057,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E847A6A2CDBD4140034C2A7 /* CalendarEndpoint.swift in Sources */,
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
 				478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */,
@@ -1042,6 +1080,7 @@
 				478004502CCABEFF00FFAF00 /* WeeklyStudyRecord.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
+				5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
@@ -1058,9 +1097,11 @@
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
+				5E847A7D2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
 				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
+				5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
 				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
@@ -1068,6 +1109,7 @@
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				473E8EB82CCEA5FB000F102C /* StudySessionRequestDTO.swift in Sources */,
 				47A540732CD0D90F00DC40D0 /* Nickname.swift in Sources */,
+				5E847A6C2CDBD49A0034C2A7 /* CalendarCell.swift in Sources */,
 				47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */,
 				4763FFAF2CB90AE000990336 /* AppState.swift in Sources */,
 				4786A1092CCA346F008635A4 /* StudySessionRepository.swift in Sources */,
@@ -1089,6 +1131,7 @@
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
 				470723182CBC29510046469F /* AuthenticationService.swift in Sources */,
+				5E847A6E2CDBD4B60034C2A7 /* CalendarView.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				4786A10C2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift in Sources */,
 				470723132CBC1BF10046469F /* BaseResponse.swift in Sources */,
@@ -1096,6 +1139,7 @@
 				47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
+				5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */,
 				478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
@@ -1146,6 +1190,7 @@
 /* Begin XCBuildConfiguration section */
 		47B1D4CA2C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1265,6 +1310,7 @@
 		};
 		47B1D4CD2C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1298,7 +1344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1730730522";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HY2_Development;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1344,7 +1390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1730730522";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HY2_Development;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1357,6 +1403,7 @@
 		};
 		47B1D4D02C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1397,6 +1444,7 @@
 		};
 		47B1D4D32C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
