@@ -42,12 +42,13 @@ final class UserDataInteractorImpl: UserDataInteractor {
         }
         
         let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
+        
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [weak self] loginResDto in
+                receiveCompletion: { _ in},
+                receiveValue: { [weak self] loginResDto in                    
                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist

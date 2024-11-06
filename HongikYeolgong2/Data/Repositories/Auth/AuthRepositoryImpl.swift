@@ -14,12 +14,12 @@ final class AuthRepositoryImpl: AuthRepository {
     /// - Parameter loginReqDto: 로그인 요청 DTO(이메일, identityToken)
     /// - Returns: 로그인 응답 DTO(accessToken, 가입여부)
     func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, NetworkError> {
-        return Future<LoginResponseDTO, NetworkError> { promise in
+        return Future<LoginResponseDTO, NetworkError> { promise in            
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.data))
-                } catch let error as NetworkError {
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }

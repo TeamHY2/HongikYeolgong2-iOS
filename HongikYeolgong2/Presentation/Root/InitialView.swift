@@ -38,6 +38,7 @@ private extension InitialView {
 
 private extension InitialView {
     func appLaunchCompleted() {
+        print(SecretKeys.baseUrl)
         injected.interactors.userDataInteractor.checkAuthentication()
     }
 }
