@@ -6,6 +6,7 @@ type("appstore") # The default type, can be: appstore, adhoc, enterprise or deve
 
 app_identifier(["com.teamHY2.HongikYeolgong2"])
 username("seokki0706@gmail.com") # Your Apple Developer Portal username
+clone_branch_directly(true)
 
 # For all available options run `fastlane match --help`
 # Remove the # in the beginning of the line to enable the other options
