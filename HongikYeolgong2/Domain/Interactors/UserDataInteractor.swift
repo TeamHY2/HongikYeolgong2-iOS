@@ -138,7 +138,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 }
             }, receiveValue: { [weak self] tokenValidRes in
                 guard let self = self else { return }
-                if tokenValidRes.validToken {
+                if tokenValidRes.role == "USER" {
                     appState[\.userSession] = .authenticated
                 } else {
                     appState[\.userSession] = .unauthenticated
