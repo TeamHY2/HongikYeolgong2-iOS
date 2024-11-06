@@ -50,11 +50,11 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
         }.eraseToAnyPublisher()
     }
     
-    func getWeeklyRanking(yearWeek: Int) -> AnyPublisher<WeeklyRanking, NetworkError> {
+    func getWeeklyRanking(weekNumber: Int) -> AnyPublisher<WeeklyRanking, NetworkError> {
         return Future<WeeklyRanking, NetworkError> { promise in
             Task {
                 do {
-                    let response: BaseResponse<WeeklyRankingResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyRanking(yearWeek: yearWeek))
+                    let response: BaseResponse<WeeklyRankingResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyRanking(yearWeek: weekNumber))
                     promise(.success(response.data.toEntity()))
                 } catch let error as NetworkError {
                     throw error
