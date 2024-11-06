@@ -21,8 +21,8 @@ struct RecordView: View {
                 RecordCell(title: "투데이", hours: 3, minutes: 24)
             }
         }
-        .padding(.horizontal, 32)
-        .padding(.bottom, 36)
+        .padding(.horizontal, 32.adjustToScreenWidth)
+        .padding(.bottom, 36.adjustToScreenHeight)
     }
 }
 
