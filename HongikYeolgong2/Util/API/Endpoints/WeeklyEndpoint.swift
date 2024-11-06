@@ -16,6 +16,7 @@ enum WeeklyEndpoint: EndpointProtocol {
     case getWiseSaying
     case getWeekField(date: String)
     case getWeeklyRanking(yearWeek: Int)
+    case getAllStudyRecords
 }
 
 extension WeeklyEndpoint {
@@ -32,6 +33,8 @@ extension WeeklyEndpoint {
             "/week-field"
         case .getWeeklyRanking:
             "/study/ranking"
+        case .getAllStudyRecords:
+            "/study/count-all"
         default:
             "/study"
         }
@@ -39,7 +42,7 @@ extension WeeklyEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking:
+        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords:
                 .get
         case .uploadStudySession:
                 .post

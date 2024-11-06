@@ -117,7 +117,6 @@
 		47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635042CC3EC1A0034EAA9 /* Department.swift */; };
 		47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2D2CCCB7AA00DD0899 /* TimePickerView.swift */; };
 		47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */; };
-		5E847A6A2CDBD4140034C2A7 /* CalendarEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A692CDBD4140034C2A7 /* CalendarEndpoint.swift */; };
 		5E847A6C2CDBD49A0034C2A7 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6B2CDBD49A0034C2A7 /* CalendarCell.swift */; };
 		5E847A6E2CDBD4B60034C2A7 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6D2CDBD4B60034C2A7 /* CalendarView.swift */; };
 		5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */; };
@@ -263,7 +262,6 @@
 		47F635042CC3EC1A0034EAA9 /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
 		47F79B2D2CCCB7AA00DD0899 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
-		5E847A692CDBD4140034C2A7 /* CalendarEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEndpoint.swift; sourceTree = "<group>"; };
 		5E847A6B2CDBD49A0034C2A7 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		5E847A6D2CDBD4B60034C2A7 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMapper.swift; sourceTree = "<group>"; };
@@ -314,7 +312,6 @@
 				470723002CBC16680046469F /* AuthEndpoint.swift */,
 				47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */,
 				4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */,
-				5E847A692CDBD4140034C2A7 /* CalendarEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -1057,7 +1054,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E847A6A2CDBD4140034C2A7 /* CalendarEndpoint.swift in Sources */,
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
 				478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */,
