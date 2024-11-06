@@ -15,6 +15,7 @@ protocol UserDataInteractor: AnyObject {
     func signUp(nickname: String, department: Department)
     func logout()
     func getUser()
+    func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
 }
 
@@ -110,14 +111,38 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:
+                    case .finished:                    
                         appState[\.appLaunchState] = .authenticated
-                    case let .failure(error):
+                    case .failure(_):
                         appState[\.appLaunchState] = .notAuthenticated
                     }
                 },
                 receiveValue: { _ in }
             )
+            .store(in: cancleBag)
+    }
+    
+    /// 유저인증 상태를 체크합니다.
+    func checkAuthentication() {
+        authRepository
+            .validToken()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    break
+                case let .failure(error):
+                    appState[\.appLaunchState] = .notAuthenticated
+                }
+            }, receiveValue: { [weak self] tokenValidRes in
+                guard let self = self else { return }
+                if tokenValidRes.validToken {
+                    appState[\.appLaunchState] = .authenticated
+                } else {
+                    appState[\.appLaunchState] = .notAuthenticated
+                }
+            })
             .store(in: cancleBag)
     }
 }

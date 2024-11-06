@@ -35,7 +35,7 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
                     promise(.success(response.data.duplicate))
-                } catch let error as NetworkError {                    
+                } catch let error as NetworkError {
                     promise(.failure(error))
                 }
             }
@@ -62,16 +62,30 @@ final class AuthRepositoryImpl: AuthRepository {
     /// - Returns: 내정보 조회
     func getUser() -> AnyPublisher<SignUpResponseDTO,  NetworkError> {
         return Future<SignUpResponseDTO, NetworkError> { promise in
-            Task {                
+            Task {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUser)
                     promise(.success(response.data))
-                } catch let error as NetworkError {                    
+                } catch let error as NetworkError {
                     promise(.failure(error))
-                    
                 }
             }
         }
         .eraseToAnyPublisher()
+    }
+        
+    /// 토큰유효성 검사를 진행합니다.
+    /// - Returns: USERROLE, 유효성 여부
+    func validToken() -> AnyPublisher<TokenValidResponseDTO, NetworkError> {
+        return Future<TokenValidResponseDTO, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<TokenValidResponseDTO> = try await NetworkService.shared.request(endpoint: TokenEndpoint.validToken)
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
