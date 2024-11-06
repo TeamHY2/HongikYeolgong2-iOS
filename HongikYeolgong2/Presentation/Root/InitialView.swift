@@ -11,28 +11,28 @@ import Combine
 struct InitialView: View {
     @Environment(\.injected) var injected: DIContainer
     
-    @State private var appLaunchState: AppState.AppLaunchState = .checkAuthentication
+    @State private var userSession: AppState.UserSession = .pending
     
     var body: some View {
         Group {
-            switch appLaunchState {
-            case .notAuthenticated:
+            switch userSession {
+            case .unauthenticated:
                 OnboardingView()
             case .authenticated:
                 MainTabView()
-            case .checkAuthentication:
+            case .pending:
                 SplashView()
                     .ignoresSafeArea(.all)
                     .onAppear(perform: appLaunchCompleted)
             }
         }
-        .onReceive(isAppLaunchStateUpdated) { appLaunchState = $0 }
+        .onReceive(isAppLaunchStateUpdated) { userSession = $0 }
     }
 }
 
 private extension InitialView {
-    var isAppLaunchStateUpdated: AnyPublisher<AppState.AppLaunchState, Never> {
-        injected.appState.updates(for: \.appLaunchState)
+    var isAppLaunchStateUpdated: AnyPublisher<AppState.UserSession, Never> {
+        injected.appState.updates(for: \.userSession)
     }
 }
 

@@ -8,8 +8,8 @@
 import SwiftUI
 
 final class AppState: ObservableObject, Equatable {
-    @Published var appLaunchState: AppLaunchState = .checkAuthentication
     @Published var userData = UserData()
+    @Published var userSession: UserSession = .pending
     @Published var studySession = StudySession()
     @Published var routing = ViewRouting()
     @Published var system = System()
@@ -19,18 +19,18 @@ final class AppState: ObservableObject, Equatable {
 extension AppState {
     static func == (lhs: AppState, rhs: AppState) -> Bool {
         return lhs.userData == rhs.userData &&
-            lhs.routing == rhs.routing &&
-            lhs.system == rhs.system &&
-            lhs.permissions == rhs.permissions
+        lhs.routing == rhs.routing &&
+        lhs.system == rhs.system &&
+        lhs.permissions == rhs.permissions
     }
 }
 
 extension AppState {
     /// 앱의 실행 상태를 나타냅니다.
-    enum AppLaunchState {
-        case notAuthenticated
+    enum UserSession {
+        case unauthenticated
         case authenticated
-        case checkAuthentication
+        case pending
     }
 }
 
