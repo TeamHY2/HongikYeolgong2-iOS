@@ -59,7 +59,6 @@ final class UserDataInteractorImpl: UserDataInteractor {
                     } else {
                         appState[\.routing.onboarding.signUp] = true
                     }
-                    
                     KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
                 }
             )
@@ -76,9 +75,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in },
-                receiveValue: { [weak self] _ in
+                receiveValue: { [weak self] signUpResDto in
                     guard let self = self else { return }
                     appState[\.userSession] = .authenticated
+                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
                 }
             )
             .store(in: cancleBag)
