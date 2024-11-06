@@ -62,4 +62,18 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func getAllStudyRecords() -> AnyPublisher<[AllStudyRecord], NetworkError> {
+        return Future<[AllStudyRecord], NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<[CalendarCountAllResponseDTO]> = try await NetworkService.shared.request(endpoint: CalendarEndpoint.getAllStudy)
+                    promise(.success(response.data.map { $0.toEntity() }))
+                    
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
