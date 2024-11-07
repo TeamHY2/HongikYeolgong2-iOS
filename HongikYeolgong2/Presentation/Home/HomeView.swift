@@ -86,6 +86,9 @@ struct HomeView: View {
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
         .onReceive(studySessionUpdated) { studySession = $0 }
+        .onReceive(studySessionEnded) { _ in            
+            studySessionInteractor.endStudy()
+        }
     }
 }
 
@@ -93,6 +96,13 @@ struct HomeView: View {
 extension HomeView {
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
         appState.updates(for: \.studySession)
+    }
+    
+    var studySessionEnded: AnyPublisher<TimeInterval, Never> {
+        appState.updates(for: \.studySession.remainingTime)
+            .dropFirst()
+            .filter { $0.isZero }
+            .eraseToAnyPublisher()
     }
 }
 
