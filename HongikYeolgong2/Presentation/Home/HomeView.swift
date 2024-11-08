@@ -82,9 +82,9 @@ struct HomeView: View {
         }
         .onReceive(scenePhaseUpdated) {
             $0 == .active
-                ? studySessionInteractor.resumeStudy()
-                : studySessionInteractor.pauseStudy()
-        }        
+            ? studySessionInteractor.resumeStudy()
+            : studySessionInteractor.pauseStudy()
+        }
     }
 }
 
@@ -106,6 +106,7 @@ extension HomeView {
         appState.updates(for: \.system.scenePhase)
             .dropFirst()
             .filter { $0 != .inactive && studySession.isStudying }
+            .removeDuplicates()
             .eraseToAnyPublisher()
     }
     
