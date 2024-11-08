@@ -91,8 +91,6 @@ struct CaledarView: View {
             
             Spacer()
         }
-        .padding(.horizontal, 33.adjustToScreenWidth)
-        .padding(.vertical, 33.adjustToScreenHeight)
         .onAppear {
             calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)
         }
