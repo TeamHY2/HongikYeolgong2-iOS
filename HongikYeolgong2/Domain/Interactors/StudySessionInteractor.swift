@@ -89,7 +89,6 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         appState[\.studySession.startTime] = startTime
     }
     
-    
     /// 열람실 이용종료 Notification을 등록합니다.
     func registerNotification(for type: StudyNotificationType, endTimeInMinute: TimeInterval) {
         let content = configuredNotificationContent(for: type)
