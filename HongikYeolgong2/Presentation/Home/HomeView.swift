@@ -56,27 +56,18 @@ struct HomeView: View {
             )
         }
         .systemOverlay(isPresented: $shouldShowAddTimeModal) {
-            ModalView(title: "열람실 이용 시간을 연장할까요?",
+            ModalView(isPresented: $shouldShowAddTimeModal,
+                      title: "열람실 이용 시간을 연장할까요?",
                       confirmButtonText: "연장하기",
                       cancleButtonText: "아니오",
-                      confirmAction: {
-                studySessionInteractor.addTime()
-                shouldShowAddTimeModal = false
-            },
-                      cancleAction: { shouldShowAddTimeModal = false })
+                      confirmAction: { studySessionInteractor.addTime() })
         }
         .systemOverlay(isPresented: $shouldShowEndUseModal) {
-            ModalView(title: "열람실을 다 이용하셨나요?",
+            ModalView(isPresented: $shouldShowEndUseModal,
+                      title: "열람실을 다 이용하셨나요?",
                       confirmButtonText: "네",
                       cancleButtonText: "더 이용하기",
-                      confirmAction: {
-                studySessionInteractor.endStudy()
-                shouldShowEndUseModal = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-                }
-            },
-                      cancleAction: { shouldShowEndUseModal = false })
+                      confirmAction: { studySessionInteractor.endStudy()})
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
@@ -87,11 +78,13 @@ struct HomeView: View {
         }
         .onReceive(studySessionUpdated) { studySession = $0 }
         .onReceive(studySessionEnded) { _ in studySessionInteractor.endStudy() }
+        .onReceive(studySessionUploaded) { _ in weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords) }
         .onReceive(scenePhaseUpdated) {
             $0 == .active
             ? studySessionInteractor.resumeStudy()
             : studySessionInteractor.pauseStudy()
         }
+        
     }
 }
 
@@ -112,7 +105,16 @@ extension HomeView {
     var scenePhaseUpdated: AnyPublisher<ScenePhase, Never> {
         appState.updates(for: \.system.scenePhase)
             .dropFirst()
-            .filter { $0 != .inactive }
+            .filter { $0 != .inactive && studySession.isStudying }
+            .eraseToAnyPublisher()
+    }
+    
+    var studySessionUploaded: AnyPublisher<Void, Never> {
+        appState.updates(for: \.studySession.isStudying)
+            .dropFirst()
+            .filter { !$0 }
+            .delay(for: 1, scheduler: RunLoop.main)
+            .map { _ in }
             .eraseToAnyPublisher()
     }
 }
