@@ -10,18 +10,21 @@ import Foundation
 extension DIContainer {
     struct Interactors {
         let userDataInteractor: UserDataInteractor
+        let studyTimeInteractor: StudyTimeInteractor
         let studySessionInteractor: StudySessionInteractor
         let userPermissionsInteractor: UserPermissionsInteractor    
         let weeklyStudyInteractor: WeeklyStudyInteractor
         let rankingDataInteractor: RankingDataInteractor
         
         init(userDataInteractor: UserDataInteractor,
-             studySessionInteractor: StudySessionInteractor, 
-             userPermissionsInteractor: UserPermissionsInteractor, 
+             studyTimeInteractor: StudyTimeInteractor,
+             studySessionInteractor: StudySessionInteractor,
+             userPermissionsInteractor: UserPermissionsInteractor,
              weeklyStudyInteractor: WeeklyStudyInteractor, 
              rankingDataInteractor: RankingDataInteractor) {
             
             self.userDataInteractor = userDataInteractor
+            self.studyTimeInteractor = studyTimeInteractor
             self.studySessionInteractor = studySessionInteractor
             self.userPermissionsInteractor = userPermissionsInteractor
             self.weeklyStudyInteractor = weeklyStudyInteractor
@@ -34,6 +37,7 @@ extension DIContainer {
                 authRepository: AuthRepositoryImpl(),
                 authService: AuthenticationServiceImpl()
             ),
+            studyTimeInteractor: StudyTimeInteractorImpl(studySessionRepository: StudySessionRepositoryImpl()),
             studySessionInteractor: StudySessionInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
             userPermissionsInteractor: RealUserPermissionsInteractor(appState: Store<AppState>(AppState()), openAppSetting: {}),
             weeklyStudyInteractor: WeeklyStudyInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
