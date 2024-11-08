@@ -1,9 +1,3 @@
-//
-//  String+.swift
-//  HongikYeolgong2
-//
-//  Created by 권석기 on 10/25/24.
-//
 
 import Foundation
 
@@ -17,12 +11,45 @@ extension String {
     }()
     
     /// 문자열 형식의 날짜를 Date 객체로 변환합니다.
-    /// - Returns: Date
-    func toDate() -> Date? {
-        let dateFormatter = Self.dateFormatter
-        guard let date = dateFormatter.date(from: self) else {
-            return nil
+       /// - Returns: Date
+       func toDate() -> Date? {
+           let dateFormatter = Self.dateFormatter
+           guard let date = dateFormatter.date(from: self) else {
+               return nil
+           }
+           return date
+       }
+    
+    func toDayofDate() -> String {
+        guard let date = self.toDate() else {
+            return "날짜오류"
         }
-        return date
-    }      
+        
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: date)
+        
+        return "\(day)"
+    }
+    
+    func toMonthofDate() -> String {
+        guard let date = self.toDate() else {
+            return "날짜오류"
+        }
+        
+        let calendar = Calendar.current
+        let month = calendar.component(.month, from: date)
+        
+        return "\(month)"
+    }
+    
+    func toYearofDate() -> String {
+        guard let date = self.toDate() else {
+            return "날짜오류"
+        }
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        
+        return "\(year)"
+    }
 }
