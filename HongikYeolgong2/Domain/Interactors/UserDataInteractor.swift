@@ -15,6 +15,7 @@ protocol UserDataInteractor: AnyObject {
     func signUp(nickname: String, department: Department)
     func logout()
     func getUser()
+    func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
 }
 
@@ -41,23 +42,23 @@ final class UserDataInteractorImpl: UserDataInteractor {
         }
         
         let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
+        
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [weak self] loginResDto in
+                receiveCompletion: { _ in},
+                receiveValue: { [weak self] loginResDto in                    
                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
                     
                     // 회원가입 여부에 따라서 화면분기
                     if isAlreadyExists {
-                        appState[\.appLaunchState] = .authenticated
+                        appState[\.userSession] = .authenticated
                     } else {
                         appState[\.routing.onboarding.signUp] = true
                     }
-                    
                     KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
                 }
             )
@@ -74,9 +75,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in },
-                receiveValue: { [weak self] _ in
+                receiveValue: { [weak self] signUpResDto in
                     guard let self = self else { return }
-                    appState[\.appLaunchState] = .authenticated
+                    appState[\.userSession] = .authenticated
+                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
                 }
             )
             .store(in: cancleBag)
@@ -84,7 +86,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
     
     /// 로그아웃
     func logout() {
-        appState[\.appLaunchState] = .notAuthenticated
+        appState[\.userSession] = .unauthenticated
         KeyChainManager.deleteItem(key: .accessToken)
     }
     
@@ -110,15 +112,38 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:
-                        appState[\.appLaunchState] = .authenticated
-                    case let .failure(error):
-                        appState[\.appLaunchState] = .notAuthenticated
+                    case .finished:                    
+                        appState[\.userSession] = .authenticated
+                    case .failure(_):
+                        appState[\.userSession] = .unauthenticated
                     }
                 },
                 receiveValue: { _ in }
             )
             .store(in: cancleBag)
     }
+    
+    /// 유저인증 상태를 체크합니다.
+    func checkAuthentication() {
+        authRepository
+            .validToken()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    break
+                case let .failure(error):
+                    appState[\.userSession] = .unauthenticated
+                }
+            }, receiveValue: { [weak self] tokenValidRes in
+                guard let self = self else { return }
+                if tokenValidRes.role == "USER" {
+                    appState[\.userSession] = .authenticated
+                } else {
+                    appState[\.userSession] = .unauthenticated
+                }
+            })
+            .store(in: cancleBag)
+    }
 }
-

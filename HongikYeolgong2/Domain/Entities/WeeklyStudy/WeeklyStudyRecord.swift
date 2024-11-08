@@ -8,8 +8,7 @@
 import Foundation
 
 struct WeeklyStudyRecord {
-    let monthOfDay: String
-    let dayOfWeek: String
+    let monthOfDay: String    
     let studyCount: Int
     let isUpcomming: Bool
     

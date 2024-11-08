@@ -8,13 +8,13 @@
 import Foundation
 
 enum WeekDay: Int {
-    case sunday = 0
-    case monday = 1
-    case tuesday = 2
-    case wednesday = 3
-    case thursday = 4
-    case friday = 5
-    case saturday = 6
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
     
     var koreanString: String {
         switch self {

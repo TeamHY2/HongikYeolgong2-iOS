@@ -10,8 +10,7 @@ import Foundation
 // StudySession에 대한 Mapper
 extension WeeklyStudySessionDTO {
     func toEntity() -> WeeklyStudyRecord {
-        .init(monthOfDay: date.toMonthOfDay(),
-              dayOfWeek: date.toDayOfWeek(),
+        .init(monthOfDay: date,              
               studyCount: studyCount,
               isUpcomming: date.toDate() ?? .now <= .now)
     }
