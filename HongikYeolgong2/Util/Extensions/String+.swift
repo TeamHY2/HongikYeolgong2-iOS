@@ -11,18 +11,14 @@ extension String {
     }()
     
     /// 문자열 형식의 날짜를 Date 객체로 변환합니다.
-    /// - Returns: Date
-    func toDate() -> Date? {
-        let dateFormatter = Self.dateFormatter
-        guard let date = dateFormatter.date(from: self) else {
-            return nil
-        }
-        
-        let calendar = Calendar.current
-        let weekDay = calendar.component(.weekday, from: date)
-        
-        return WeekDay(rawValue:  weekDay - 1)?.koreanString ?? ""
-    }
+       /// - Returns: Date
+       func toDate() -> Date? {
+           let dateFormatter = Self.dateFormatter
+           guard let date = dateFormatter.date(from: self) else {
+               return nil
+           }
+           return date
+       }
     
     func toDayofDate() -> String {
         guard let date = self.toDate() else {

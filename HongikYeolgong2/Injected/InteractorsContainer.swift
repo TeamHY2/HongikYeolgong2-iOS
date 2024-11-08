@@ -18,7 +18,13 @@ extension DIContainer {
         let calendarDataInteractor: CalendarDataInteractor
         
 
-        init(userDataInteractor: UserDataInteractor, studySessionInteractor: StudySessionInteractor, userPermissionsInteractor: UserPermissionsInteractor, weeklyStudyInteractor: WeeklyStudyInteractor, rankingDataInteractor: RankingDataInteractor, calendarDataInteractor: CalendarDataInteractor) {
+        init(userDataInteractor: UserDataInteractor, 
+             studyTimeInteractor: StudyTimeInteractor,
+             studySessionInteractor: StudySessionInteractor,
+             userPermissionsInteractor: UserPermissionsInteractor,
+             weeklyStudyInteractor: WeeklyStudyInteractor,
+             rankingDataInteractor: RankingDataInteractor, 
+             calendarDataInteractor: CalendarDataInteractor) {
 
             self.userDataInteractor = userDataInteractor
             self.studyTimeInteractor = studyTimeInteractor

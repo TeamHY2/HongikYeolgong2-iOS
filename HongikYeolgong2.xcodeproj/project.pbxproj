@@ -50,6 +50,7 @@
 		4763FFB82CB9134D00990336 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB72CB9134D00990336 /* Store.swift */; };
 		4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB92CB913FF00990336 /* UserDataInteractor.swift */; };
 		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
+		476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */; };
 		4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780043B2CCA8E2900FFAF00 /* WeeklyStudyCell.swift */; };
 		478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478004412CCA924200FFAF00 /* StudySessionMapper.swift */; };
 		4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */; };
@@ -124,7 +125,6 @@
 		5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */; };
 		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
-		5E847A7D2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A7C2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift */; };
 		98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
@@ -196,6 +196,7 @@
 		4763FFB72CB9134D00990336 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4763FFB92CB913FF00990336 /* UserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInteractor.swift; sourceTree = "<group>"; };
 		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
+		476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCountAllResponseDTO.swift; sourceTree = "<group>"; };
 		4780043B2CCA8E2900FFAF00 /* WeeklyStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyCell.swift; sourceTree = "<group>"; };
 		478004412CCA924200FFAF00 /* StudySessionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionMapper.swift; sourceTree = "<group>"; };
 		4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
@@ -275,7 +276,6 @@
 		5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMapper.swift; sourceTree = "<group>"; };
 		5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataInteractor.swift; sourceTree = "<group>"; };
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
-		5E847A7C2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCountAllResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
@@ -410,6 +410,14 @@
 				470722F92CBC0A870046469F /* Constants.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		476D26082CDDF2B6002FEF5C /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		4780043A2CCA8E0200FFAF00 /* WeeklyStudy */ = {
@@ -594,11 +602,8 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-
 				5E847A752CDBD5490034C2A7 /* Calendar */,
-
 				98B5F00D2CDB64D4007CF5FA /* Record */,
-
 				478F84452CD358F50097CAA1 /* Ranking */,
 				478FBCA12CD1397600256012 /* User */,
 				4780043D2CCA8FF800FFAF00 /* WeeklyStudy */,
@@ -618,7 +623,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
-				5E847A7B2CDBD7040034C2A7 /* Calendar */,
+				476D26082CDDF2B6002FEF5C /* Calendar */,
 				478F84422CD3506D0097CAA1 /* Ranking */,
 				478F843F2CD33F4D0097CAA1 /* Weekly */,
 				4786A10D2CCA3506008635A4 /* StudySession */,
@@ -879,7 +884,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-
 		5E847A752CDBD5490034C2A7 /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,20 +892,12 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
-		5E847A7B2CDBD7040034C2A7 /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				5E847A7C2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift */,
-			);
-			path = Calendar;
-
 		98B5F00D2CDB64D4007CF5FA /* Record */ = {
 			isa = PBXGroup;
 			children = (
 				98B5F00E2CDB652A007CF5FA /* StudyTime.swift */,
 			);
 			path = Record;
-
 			sourceTree = "<group>";
 		};
 		98F9D8422CDA2DE100DE12BB /* Component */ = {
@@ -1090,6 +1086,7 @@
 				472319ED2CD1FC32009BA019 /* UIApplication+.swift in Sources */,
 				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */,
+				476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */,
 				478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
@@ -1125,7 +1122,6 @@
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
-				5E847A7D2CDBD7120034C2A7 /* CalendarCountAllResponseDTO.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
 				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
@@ -1376,7 +1372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HY2_Development;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1730730522";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1423,7 +1419,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HY2_Development;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1730730522";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
