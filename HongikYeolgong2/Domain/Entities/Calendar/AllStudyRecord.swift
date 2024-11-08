@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct AllStudyRecord {
+struct AllStudyRecord: Equatable {
     let day: String
     let month: String
     let year: String
