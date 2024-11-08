@@ -1,30 +1,25 @@
 //
-//  UserDataInteractor.swift
+//  UserDataInteractor+Migration.swift
 //  HongikYeolgong2
 //
-//  Created by 권석기 on 10/11/24.
+//  Created by 권석기 on 11/7/24.
 //
 
-import Foundation
-import SwiftUI
-import Combine
 import AuthenticationServices
+import Combine
+import CryptoKit
 
-protocol UserDataInteractor: AnyObject {
-    func requestAppleLogin(_ authorization: ASAuthorization)
-    func signUp(nickname: String, department: Department)
-    func logout()
-    func getUser()
-    func checkAuthentication()
-    func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
-}
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
-final class UserDataInteractorImpl: UserDataInteractor {
+final class UserDataMigrationInteractor: UserDataInteractor {
     
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
     private let authService: AuthenticationService
+    private let db = Firestore.firestore()
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
@@ -41,24 +36,53 @@ final class UserDataInteractorImpl: UserDataInteractor {
             return
         }
         
-        let loginReqDto: LoginRequestDTO = .init(email: email, idToken: idToken)
+        // nonce 생성
+        let nonce = randomNonceString()
+        // credential 생성
+        let credential = OAuthProvider.credential(
+            withProviderID: "apple.com",
+            idToken: idToken,
+            rawNonce: nonce
+        )
+        
+        var uid: String = ""
+        
+        // credential로 로그인 요청
+        Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+            guard let self = self,
+            let userId = result?.user.uid else { return }
+            
+            let docRef = db.collection("User").document(userId)
+            
+            docRef.getDocument { (document, error) in
+                guard error == nil else { return }
+                
+                guard let isDocExists = document?.exists else { return }
+                
+                if isDocExists {
+                    uid = userId
+                }
+            }
+        }
+        
+        let loginReqDto: LoginRequestDTO = .init(email: uid, idToken: idToken)
         
         authRepository
             .signIn(loginReqDto: loginReqDto)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},
-                receiveValue: { [weak self] loginResDto in                    
+                receiveValue: { [weak self] loginResDto in
                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
                     
-                    // 회원가입 여부에 따라서 화면분기
                     if isAlreadyExists {
                         appState[\.userSession] = .authenticated
                     } else {
                         appState[\.routing.onboarding.signUp] = true
                     }
+                    
                     KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
                 }
             )
@@ -112,7 +136,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:                    
+                    case .finished:
                         appState[\.userSession] = .authenticated
                     case .failure(_):
                         appState[\.userSession] = .unauthenticated
@@ -146,4 +170,39 @@ final class UserDataInteractorImpl: UserDataInteractor {
             })
             .store(in: cancleBag)
     }
+}
+
+extension UserDataMigrationInteractor {
+    private func randomNonceString(length: Int = 32) -> String {
+        precondition(length > 0)
+        var randomBytes = [UInt8](repeating: 0, count: length)
+        let errorCode = SecRandomCopyBytes(kSecRandomDefault, randomBytes.count, &randomBytes)
+        if errorCode != errSecSuccess {
+            fatalError(
+                "Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)"
+            )
+        }
+        
+        let charset: [Character] =
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        
+        let nonce = randomBytes.map { byte in
+            // Pick a random character from the set, wrapping around if needed.
+            charset[Int(byte) % charset.count]
+        }
+        
+        return String(nonce)
+    }
+    
+    @available(iOS 13, *)
+    private func sha256(_ input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
+    }
+    
 }
