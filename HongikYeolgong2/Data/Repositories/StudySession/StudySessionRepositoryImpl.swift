@@ -63,6 +63,7 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
         }.eraseToAnyPublisher()
     }
     
+
     func getAllStudyRecords() -> AnyPublisher<[AllStudyRecord], NetworkError> {
         return Future<[AllStudyRecord], NetworkError> { promise in
             Task {
@@ -72,6 +73,17 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
                     
                 } catch let error as NetworkError {
                     promise(.failure(error))
+
+    // 연간, 월간, 투데이, 학기 공부 시간 조회
+    func getStudyTime() -> AnyPublisher<StudyTime, NetworkError> {
+        return Future<StudyTime, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<StudyTimeResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getStudyTime)
+                    promise(.success(response.data.toEntity()))
+                } catch let error as NetworkError {
+                    print(error.message)
+
                 }
             }
         }.eraseToAnyPublisher()
