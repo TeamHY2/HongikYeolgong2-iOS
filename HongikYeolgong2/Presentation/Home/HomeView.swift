@@ -25,7 +25,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
-          
+            
             StudyContentControllerView(
                 studySession: $studySession,
                 wiseSaying: wiseSaying
@@ -86,7 +86,12 @@ struct HomeView: View {
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
         .onReceive(studySessionUpdated) { studySession = $0 }
-        .onReceive(studySessionEnded) { _ in studySessionInteractor.endStudy() }        
+        .onReceive(studySessionEnded) { _ in studySessionInteractor.endStudy() }
+        .onReceive(scenePhaseUpdated) {
+            $0 == .active
+            ? studySessionInteractor.resumeStudy()
+            : studySessionInteractor.pauseStudy()
+        }
     }
 }
 

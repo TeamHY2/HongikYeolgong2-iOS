@@ -11,17 +11,21 @@ import Combine
 protocol StudySessionInteractor {
     func startStudy()
     func endStudy()
+    func pauseStudy()
+    func resumeStudy()
     func addTime()
     func setStartTime(_ startTime: Date)
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
+    
     private let appState: Store<AppState>
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     private let addedTime: TimeInterval = .init(minutes: 1)
     
+    private var lastTime: Date?
     private var subscription: AnyCancellable?
     
     init(appState: Store<AppState>,
@@ -69,13 +73,34 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         cancleAllNotification()
     }
     
+    func pauseStudy() {
+        assert(appState.value.studySession.isStudying, "스터디세션 시작상태가 아님")
+        subscription?.cancel()
+        lastTime = .now
+    }
+    
+    func resumeStudy() {
+        assert(appState.value.studySession.isStudying, "스터디세션 시작상태가 아님")
+        
+        guard let lastTime = lastTime else { return }
+        let currentTime: Date = .now
+        let timeDifferent = currentTime.timeIntervalSince(lastTime)
+        
+        appState[\.studySession.isStudying] = true
+        appState[\.studySession.remainingTime] -= timeDifferent
+        
+        subscription = timer.sink { [weak appState] _ in
+            appState?[\.studySession.remainingTime] -= 1
+        }
+    }
+    
     /// 열람실 이용시간을 연장합니다.
     func addTime() {
         appState.bulkUpdate { appState in
             appState.studySession.endTime += addedTime
             appState.studySession.remainingTime += addedTime
         }
-                
+        
         let remainingTime = appState.value.studySession.remainingTime
         
         cancleAllNotification()
