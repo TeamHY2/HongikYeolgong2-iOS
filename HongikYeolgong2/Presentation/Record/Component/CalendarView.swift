@@ -95,7 +95,9 @@ struct CaledarView: View {
         .padding(.vertical, 33.adjustToScreenHeight)
         .onAppear {
             calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)
-            currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
+        }
+        .onChange(of: AllStudy) { newAllStudy in
+            currentMonth = makeMonth(date: seletedDate, roomUsageInfo: newAllStudy)
         }
     }
 }
