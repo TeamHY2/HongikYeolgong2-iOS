@@ -8,8 +8,7 @@
 import SwiftUI
 
 @main
-struct HongikYeolgong2App: App {
-    
+struct HongikYeolgong2App: App {    
     let enviroment = AppEnviroment.bootstrap()
     
     var body: some Scene {
