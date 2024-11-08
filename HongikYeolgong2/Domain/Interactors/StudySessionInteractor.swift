@@ -49,16 +49,26 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             appState.studySession.remainingTime = remainingTime
         }
         
+        startTimer()
+    }
+        
+    /// 타이머를 시작합니다.
+    func startTimer() {
         subscription = timer.sink { [weak appState] _ in
             appState?[\.studySession.remainingTime] -= 1
         }
+    }
         
+    /// 타이머를 중지합니다.
+    func stopTimer() {
+        appState[\.studySession.isStudying] = false
+        subscription?.cancel()
     }
     
     /// 스터디세션을 종료하고 열람실 이용정보를 서버에 업로드합니다.
     func endStudy() {
-        appState[\.studySession.isStudying] = false
-        subscription?.cancel()
+        stopTimer()
+        cancleAllNotification()
         
         let startTime: Date = appState.value.studySession.startTime
         let endTime: Date = .now
@@ -69,16 +79,16 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             } receiveValue: { _ in
             }
             .store(in: cancleBag)
-        
-        cancleAllNotification()
     }
-    
+        
+    /// 스터디 일시중지
     func pauseStudy() {
         assert(appState.value.studySession.isStudying, "스터디세션 시작상태가 아님")
         subscription?.cancel()
         lastTime = .now
     }
     
+    /// 스터디 다시시작
     func resumeStudy() {
         assert(appState.value.studySession.isStudying, "스터디세션 시작상태가 아님")
         
@@ -89,9 +99,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         appState[\.studySession.isStudying] = true
         appState[\.studySession.remainingTime] -= timeDifferent
         
-        subscription = timer.sink { [weak appState] _ in
-            appState?[\.studySession.remainingTime] -= 1
-        }
+        startTimer()
     }
     
     /// 열람실 이용시간을 연장합니다.

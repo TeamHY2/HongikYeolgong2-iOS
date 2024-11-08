@@ -49,10 +49,7 @@ struct HomeView: View {
                     get: { appState.value.studySession.startTime },
                     set: { studySessionInteractor.setStartTime($0) }
                 ),
-                onTimeSelected: {
-                    studySessionInteractor.startStudy()
-                    shouldShowTimePicker = false
-                }
+                onTimeSelected: { studySessionInteractor.startStudy() }
             )
         }
         .systemOverlay(isPresented: $shouldShowAddTimeModal) {
@@ -77,14 +74,17 @@ struct HomeView: View {
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
         .onReceive(studySessionUpdated) { studySession = $0 }
-        .onReceive(studySessionEnded) { _ in studySessionInteractor.endStudy() }
-        .onReceive(studySessionUploaded) { _ in weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords) }
+        .onReceive(studySessionEnded) { _ in
+            studySessionInteractor.endStudy()
+        }
+        .onReceive(studySessionUploaded) { _ in
+            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+        }
         .onReceive(scenePhaseUpdated) {
             $0 == .active
-            ? studySessionInteractor.resumeStudy()
-            : studySessionInteractor.pauseStudy()
-        }
-        
+                ? studySessionInteractor.resumeStudy()
+                : studySessionInteractor.pauseStudy()
+        }        
     }
 }
 
