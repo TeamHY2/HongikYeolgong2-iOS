@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Combine
 
 protocol RankingDataInteractor {
-    func getCurrentWeekField(yearWeek: Binding<Int>)
-    func getWeeklyRanking(yearWeek: Int, weeklyRanking: Binding<WeeklyRanking>)
+    func getCurrentWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
+    func getNextWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
+    func getPreviosWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
 }
 
 final class RankingDataInteractorImpl: RankingDataInteractor {
@@ -17,33 +19,67 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
     let weeklyRepository: WeeklyRepository
     let cancleBag = CancelBag()
     
+    var weekNumber = 0
+    var maxWeekNumber = 0
+    var minWeekNumber = 0
+    
     init(studySessionRepository: StudySessionRepository, weeklyRepository: WeeklyRepository) {
         self.studySessionRepository = studySessionRepository
         self.weeklyRepository = weeklyRepository
     }
     
-    
-    /// 현재 날짜기준 주차정보를 받아옵니다 -> 202443(2024년 43주차 정보)
-    /// - Parameter weekNumber: 주차정보
-    func getCurrentWeekField(yearWeek: Binding<Int>) {
+    /// 현재 주차의 주간 랭킹을 가져오는 메서드
+    /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
+    func getCurrentWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
         weeklyRepository
             .getWeekField(date: Date().toDateString())
-            .sink(receiveCompletion: {_ in}, receiveValue: {
-                yearWeek.wrappedValue = $0
+            .flatMap({ [weak self] in
+                guard let self = self else { return Empty<WeeklyRanking, NetworkError>().eraseToAnyPublisher() }
+                weekNumber = $0
+                maxWeekNumber = $0
+                minWeekNumber = $0 - ($0 % 100)
+                return studySessionRepository.getWeeklyRanking(weekNumber: weekNumber)
+            })
+            .first()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: {
+                weeklyRanking.wrappedValue = $0
             })
             .store(in: cancleBag)
     }
     
-    /// 주차정보에 해당하는 랭킹데이터를 받아옵니다.
-    /// - Parameters:
-    ///   - yearWeek: 주차정보
-    ///   - weeklyRanking: 랭킹데이터
-    func getWeeklyRanking(yearWeek: Int, weeklyRanking: Binding<WeeklyRanking>) {
+    /// 다음 주차의 주간 랭킹을 가져오는 메서드
+    /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
+    /// - Note: 현재 주차(weekNumber)보다 큰 주차의 데이터는 조회할 수 없습니다.
+    func getNextWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
+        guard weekNumber < maxWeekNumber else { return }
+        weekNumber += 1
+        
         studySessionRepository
-            .getWeeklyRanking(yearWeek: yearWeek)
+            .getWeeklyRanking(weekNumber: weekNumber)
+            .receive(on: DispatchQueue.main)
             .sink { _ in
                 
-            } receiveValue: {                
+            } receiveValue: {
+                weeklyRanking.wrappedValue = $0
+            }
+            .store(in: cancleBag)
+    }
+    
+    /// 이전 주차의 주간 랭킹을 가져오는 메서드
+    /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
+    /// - Note: 최소 주차(minWeekNumber)보다 작은 주차의 데이터는 조회할 수 없습니다.
+    func getPreviosWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
+        guard weekNumber > minWeekNumber else { return }
+        weekNumber -= 1
+        
+        studySessionRepository
+            .getWeeklyRanking(weekNumber: weekNumber)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: {
                 weeklyRanking.wrappedValue = $0
             }
             .store(in: cancleBag)

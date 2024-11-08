@@ -12,10 +12,7 @@ protocol StudySessionRepository {
     func getWeeklyStudyRecords() -> AnyPublisher<[WeeklyStudyRecord], NetworkError>
     func uploadStudyRecord(startTime: Date, endTime: Date) -> AnyPublisher<StudySessionResponseDTO, NetworkError>
     func getWiseSaying() -> AnyPublisher<WiseSaying, NetworkError>
-    func getWeeklyRanking(yearWeek: Int) -> AnyPublisher<WeeklyRanking, NetworkError>
-
+    func getWeeklyRanking(weekNumber: Int) -> AnyPublisher<WeeklyRanking, NetworkError>
     func getAllStudyRecords() -> AnyPublisher<[AllStudyRecord], NetworkError>
-
     func getStudyTime() -> AnyPublisher<StudyTime, NetworkError>
-
 }

@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct WeeklyStudyCell: View {
+    let dayOfWeek: WeekDay
     let studyRecord: WeeklyStudyRecord
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(studyRecord.dayOfWeek)
+            Text(dayOfWeek.koreanString)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundStyle(textColor)
             

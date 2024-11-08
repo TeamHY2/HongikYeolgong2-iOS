@@ -23,14 +23,14 @@ struct RankingView: View {
                 
                 HStack(spacing: 7.adjustToScreenWidth) {
                     Button(action: {
-                        yearWeek -= 1
+                        getPreviosWeeklyRanking()
                     }, label: {
                         Image(.leftArrow)
                     })
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                     
                     Button(action: {
-                        yearWeek += 1
+                        getNextWeeklyRanking()
                     }, label: {
                         Image(.rightArrow)
                     })
@@ -45,10 +45,20 @@ struct RankingView: View {
             RankingListView(departmentRankings: weeklyRanking.departmentRankings)
         }
         .onAppear {
-            rankingDataInteractor.getCurrentWeekField(yearWeek: $yearWeek)
-        }.onChange(of: yearWeek) {
-            rankingDataInteractor.getWeeklyRanking(yearWeek: $0, weeklyRanking: $weeklyRanking)
+            getCurrentWeeklyRanking()
         }
         .background(.dark)
+    }
+    
+    func getCurrentWeeklyRanking() {
+        rankingDataInteractor.getCurrentWeeklyRanking(weeklyRanking: $weeklyRanking)
+    }
+    
+    func getNextWeeklyRanking() {
+        rankingDataInteractor.getNextWeeklyRanking(weeklyRanking: $weeklyRanking)
+    }
+    
+    func getPreviosWeeklyRanking() {
+        rankingDataInteractor.getPreviosWeeklyRanking(weeklyRanking: $weeklyRanking)
     }
 }
