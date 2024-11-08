@@ -1,9 +1,3 @@
-//
-//  Date+.swift
-//  HongikYeolgong2
-//
-//  Created by 권석기 on 10/27/24.
-//
 
 import Foundation
 
@@ -39,5 +33,17 @@ extension Date {
         formatter.dateFormat = "yyyy-MM-dd"
         let dateString = formatter.string(from: self)
         return dateString
+    }
+    
+    func getMonthString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "LLL"
+        return dateFormatter.string(from: self)
+    }
+    
+    func getYearString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter.string(from: self)
     }
 }
