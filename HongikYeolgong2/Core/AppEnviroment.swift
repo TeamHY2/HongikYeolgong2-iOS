@@ -63,6 +63,9 @@ extension AppEnviroment {
                 authRepository: remoteRepository.authRepository,
                 authService: services.appleAuthService
             ),
+            studyTimeInteractor: StudyTimeInteractorImpl(
+                studySessionRepository: remoteRepository.studySessionRepository
+            ),
             studySessionInteractor: StudySessionInteractorImpl(
                 appState: appState,
                 studySessionRepository: remoteRepository.studySessionRepository
@@ -79,7 +82,8 @@ extension AppEnviroment {
                 appState: appState,
                 studySessionRepository: remoteRepository.studySessionRepository
             ),
-            rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: remoteRepository.studySessionRepository, weeklyRepository: remoteRepository.weeklyRepository)
+            rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: remoteRepository.studySessionRepository, weeklyRepository: remoteRepository.weeklyRepository),
+            calendarDataInteractor: CalendarDataInteractorImpl(appstate: appState, studySessionRepository: remoteRepository.studySessionRepository)
         )
     }
     

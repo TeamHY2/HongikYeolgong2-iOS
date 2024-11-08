@@ -1,9 +1,3 @@
-//
-//  String+.swift
-//  HongikYeolgong2
-//
-//  Created by 권석기 on 10/25/24.
-//
 
 import Foundation
 
@@ -23,6 +17,43 @@ extension String {
         guard let date = dateFormatter.date(from: self) else {
             return nil
         }
-        return date
-    }      
+        
+        let calendar = Calendar.current
+        let weekDay = calendar.component(.weekday, from: date)
+        
+        return WeekDay(rawValue:  weekDay - 1)?.koreanString ?? ""
+    }
+    
+    func toDayofDate() -> String {
+        guard let date = self.toDate() else {
+            return "날짜오류"
+        }
+        
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: date)
+        
+        return "\(day)"
+    }
+    
+    func toMonthofDate() -> String {
+        guard let date = self.toDate() else {
+            return "날짜오류"
+        }
+        
+        let calendar = Calendar.current
+        let month = calendar.component(.month, from: date)
+        
+        return "\(month)"
+    }
+    
+    func toYearofDate() -> String {
+        guard let date = self.toDate() else {
+            return "날짜오류"
+        }
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        
+        return "\(year)"
+    }
 }
