@@ -13,7 +13,9 @@ struct RecordView: View {
     @State var studyTime = StudyTime()
     
     var body: some View {
+        CaledarView()
         VStack(spacing: 13.adjustToScreenHeight) {
+            
             Spacer()
             // 기록 정보 출력부분
             HStack(spacing: 13.adjustToScreenWidth) {

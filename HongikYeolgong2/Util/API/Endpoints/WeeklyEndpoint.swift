@@ -51,11 +51,7 @@ extension WeeklyEndpoint {
     
     var method: NetworkMethod {
         switch self {
-
-        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords:
-
-        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getStudyTime:
-
+        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime:
                 .get
         case .uploadStudySession:
                 .post
