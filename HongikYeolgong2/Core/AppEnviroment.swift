@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+import FirebaseCore
+
 struct AppEnviroment {
     let container: DIContainer
     let systemEventsHandler: SystemEventHandler
@@ -16,6 +18,7 @@ struct AppEnviroment {
 extension AppEnviroment {
     
     static func bootstrap() -> AppEnviroment {
+        FirebaseApp.configure()
         let appState = Store<AppState>(AppState())
         let services = configuredServices()
         let remoteRepositories = configuredRemoteRepositories()
@@ -58,7 +61,7 @@ extension AppEnviroment {
         services: DIContainer.Services
     ) -> DIContainer.Interactors {
         .init(
-            userDataInteractor: UserDataInteractorImpl(
+            userDataInteractor: UserDataMigrationInteractor(
                 appState: appState,
                 authRepository: remoteRepository.authRepository,
                 authService: services.appleAuthService
