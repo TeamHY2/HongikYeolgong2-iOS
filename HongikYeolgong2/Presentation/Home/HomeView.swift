@@ -25,7 +25,7 @@ struct HomeView: View {
     var body: some View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
-            
+          
             StudyContentControllerView(
                 studySession: $studySession,
                 wiseSaying: wiseSaying
@@ -86,9 +86,7 @@ struct HomeView: View {
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
         .onReceive(studySessionUpdated) { studySession = $0 }
-        .onReceive(studySessionEnded) { _ in            
-            studySessionInteractor.endStudy()
-        }
+        .onReceive(studySessionEnded) { _ in studySessionInteractor.endStudy() }        
     }
 }
 
@@ -96,12 +94,20 @@ struct HomeView: View {
 extension HomeView {
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
         appState.updates(for: \.studySession)
+            .eraseToAnyPublisher()
     }
     
     var studySessionEnded: AnyPublisher<TimeInterval, Never> {
         appState.updates(for: \.studySession.remainingTime)
             .dropFirst()
             .filter { $0.isZero }
+            .eraseToAnyPublisher()
+    }
+    
+    var scenePhaseUpdated: AnyPublisher<ScenePhase, Never> {
+        appState.updates(for: \.system.scenePhase)
+            .dropFirst()
+            .filter { $0 != .inactive }
             .eraseToAnyPublisher()
     }
 }

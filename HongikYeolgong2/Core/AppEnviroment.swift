@@ -82,7 +82,10 @@ extension AppEnviroment {
                 appState: appState,
                 studySessionRepository: remoteRepository.studySessionRepository
             ),
-            rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: remoteRepository.studySessionRepository, weeklyRepository: remoteRepository.weeklyRepository)
+            rankingDataInteractor: RankingDataInteractorImpl(
+                studySessionRepository: remoteRepository.studySessionRepository,
+                weeklyRepository: remoteRepository.weeklyRepository
+            )
         )
     }
     
