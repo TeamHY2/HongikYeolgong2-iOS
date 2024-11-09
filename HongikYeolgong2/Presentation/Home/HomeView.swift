@@ -21,7 +21,7 @@ struct HomeView: View {
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
-    
+
     var body: some View {
         VStack {
             WeeklyStudyView(studyRecords: studyRecords)
@@ -74,7 +74,7 @@ struct HomeView: View {
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
         .onReceive(studySessionUpdated) { studySession = $0 }
-        .onReceive(studySessionEnded) { _ in
+        .onReceive(studySessionEnded) { _ in        
             studySessionInteractor.endStudy()
         }
         .onReceive(studySessionUploaded) { _ in
@@ -98,7 +98,7 @@ extension HomeView {
     var studySessionEnded: AnyPublisher<TimeInterval, Never> {
         appState.updates(for: \.studySession.remainingTime)
             .dropFirst()
-            .filter { $0.isZero }
+            .filter { $0 <= 0 }
             .eraseToAnyPublisher()
     }
     
