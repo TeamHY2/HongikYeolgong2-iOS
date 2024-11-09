@@ -18,6 +18,9 @@ enum UserEndpoint: EndpointProtocol {
     
     /// 유저정보
     case getUser
+    
+    /// 유저 프로필
+    case getUserProfile
 }
 
 extension UserEndpoint {
@@ -32,6 +35,8 @@ extension UserEndpoint {
             "/join"
         case .getUser:
             "/me"
+        case .getUserProfile:
+            "/me"
         }
     }
     
@@ -39,7 +44,7 @@ extension UserEndpoint {
         switch self {
         case  .signUp:
                 .post
-        case .getUser, .checkUserNickname:
+        case .getUser, .checkUserNickname, .getUserProfile:
                 .get
         }
     }
@@ -48,7 +53,7 @@ extension UserEndpoint {
         switch self {
         case let .checkUserNickname(nickname):
             return [URLQueryItem(name: "nickname", value: nickname)]
-        case .signUp, .getUser:
+        case .signUp, .getUser, .getUserProfile:
             return nil
         }
     }
@@ -67,6 +72,8 @@ extension UserEndpoint {
         case let .signUp(signUpReqDto):
             return signUpReqDto.toData()
         case .getUser:
+            return nil
+        case .getUserProfile:
             return nil
         }
     }

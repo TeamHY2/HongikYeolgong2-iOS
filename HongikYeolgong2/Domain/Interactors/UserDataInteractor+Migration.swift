@@ -8,6 +8,7 @@
 import AuthenticationServices
 import Combine
 import CryptoKit
+import SwiftUI
 
 import FirebaseAuth
 import FirebaseCore
@@ -168,6 +169,16 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     appState[\.userSession] = .unauthenticated
                 }
             })
+            .store(in: cancleBag)
+    }
+    
+    func getUserProfile(userProfile: Binding<UserProfile>) {
+        authRepository
+            .getUserProfile()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) {
+                userProfile.wrappedValue = $0
+            }
             .store(in: cancleBag)
     }
 }
