@@ -17,6 +17,7 @@ protocol UserDataInteractor: AnyObject {
     func getUser()
     func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
+    func withdraw()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -145,5 +146,9 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 }
             })
             .store(in: cancleBag)
+    }
+    
+    func withdraw() {
+        
     }
 }
