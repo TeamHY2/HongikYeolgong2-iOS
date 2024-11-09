@@ -172,7 +172,12 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     func withdraw() {
-                    
+        authRepository
+            .withdraw()
+            .sink(receiveCompletion: { _ in }) {
+                print("탈퇴 성공")
+            }
+            .store(in: cancleBag)
     }
 }
 
