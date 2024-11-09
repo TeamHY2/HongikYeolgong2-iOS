@@ -4,7 +4,9 @@ import SwiftUI
 struct SettingView: View {
     @State private var isOnAlarm = false
     @Environment(\.injected) var injected: DIContainer
-        
+    @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
+    
+    @State private var shouldShowWithdrawModal = false
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
             HStack(spacing: 0) {
@@ -13,7 +15,7 @@ struct SettingView: View {
                 Text("유림")
                     .font(.pretendard(size: 16, weight: .regular))
                     .padding(.trailing, 8)
- 
+                
                     .foregroundStyle(.gray200)
                 Text("|")
                     .font(.pretendard(size: 16, weight: .regular))
@@ -106,7 +108,7 @@ struct SettingView: View {
                     .padding(.horizontal, 24.adjustToScreenWidth)
                 
                 Button(action: {
-                    
+                    shouldShowWithdrawModal.toggle()
                 }, label: {
                     Text("회원탈퇴")
                         .font(.pretendard(size: 16, weight: .regular))
@@ -115,6 +117,15 @@ struct SettingView: View {
                 Spacer()
             }
             .padding(.bottom, 36.adjustToScreenHeight)
+        }
+        .systemOverlay(isPresented: $shouldShowWithdrawModal) {
+            ModalView(isPresented: $shouldShowWithdrawModal,
+                      title: "정말 탈퇴하실 건가요?",
+                      confirmButtonText: "돌아가기",
+                      cancleButtonText: "탈퇴하기",
+                      confirmAction: {},
+                      cancleAction: { }
+            )
         }
         .padding(.top, 16.5.adjustToScreenHeight)
         .padding(.horizontal, 16.adjustToScreenWidth)
