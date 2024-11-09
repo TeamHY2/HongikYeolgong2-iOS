@@ -18,12 +18,12 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AuthenticationService
+    private let authService: AppleLoginManager
     private let db = Firestore.firestore()
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AuthenticationService) {
+         authService: AppleLoginManager) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService
