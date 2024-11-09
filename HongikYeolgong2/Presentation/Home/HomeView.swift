@@ -36,10 +36,10 @@ struct HomeView: View {
             ActionButtonControllerView(
                 studySession: $studySession,
                 actions: .init(
-                    endButtonTapped: { shouldShowEndUseModal = true },
-                    startButtonTapped: { shouldShowTimePicker = true },
+                    endButtonTapped: { shouldShowEndUseModal.toggle() },
+                    startButtonTapped: { shouldShowTimePicker.toggle() },
                     seatButtonTapped: {},
-                    addButtonTapped: { shouldShowAddTimeModal = true }
+                    addButtonTapped: { shouldShowAddTimeModal.toggle() }
                 )
             )
         }
