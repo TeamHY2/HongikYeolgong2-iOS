@@ -170,6 +170,10 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             })
             .store(in: cancleBag)
     }
+    
+    func withdraw() {
+                    
+    }
 }
 
 extension UserDataMigrationInteractor {

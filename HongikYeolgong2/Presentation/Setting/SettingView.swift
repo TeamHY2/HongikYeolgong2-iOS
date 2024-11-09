@@ -124,7 +124,7 @@ struct SettingView: View {
                       confirmButtonText: "돌아가기",
                       cancleButtonText: "탈퇴하기",
                       confirmAction: {},
-                      cancleAction: { }
+                      cancleAction: { userDataInteractor.withdraw() }
             )
         }
         .padding(.top, 16.5.adjustToScreenHeight)
