@@ -13,4 +13,5 @@ protocol AuthRepository {
     func checkUserNickname(nickname: String) -> AnyPublisher<Bool, NetworkError>
     func getUser() -> AnyPublisher<SignUpResponseDTO, NetworkError>
     func validToken() -> AnyPublisher<TokenValidResponseDTO, NetworkError>
+    func withdraw() -> AnyPublisher<Void, NetworkError>
 }
