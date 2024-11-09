@@ -8,11 +8,11 @@
 import Foundation
 import AuthenticationServices
 
-protocol AuthenticationService {
+protocol AppleLoginManager {
     func requestAppleLogin(_ authrization: ASAuthorization) -> (email: String, idToken: String)?
 }
 
-final class AuthenticationServiceImpl: AuthenticationService {
+final class AuthenticationServiceImpl: AppleLoginManager {
     
     /// 애플로그인 요청을 위한 이메일과 토큰을 반환합니다.(이메일은 첫로그인시 반환)
     /// - Parameter authorization: authorization
