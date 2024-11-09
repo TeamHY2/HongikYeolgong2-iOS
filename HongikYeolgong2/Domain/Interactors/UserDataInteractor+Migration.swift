@@ -50,7 +50,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
         // credential로 로그인 요청
         Auth.auth().signIn(with: credential) { [weak self] (result, error) in
             guard let self = self,
-            let userId = result?.user.uid else { return }
+                  let userId = result?.user.uid else { return }
             
             let docRef = db.collection("User").document(userId)
             
@@ -171,11 +171,20 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
+    /// 회원탈퇴
     func withdraw() {
         authRepository
             .withdraw()
-            .sink(receiveCompletion: { _ in }) {
-                print("탈퇴 성공")
+            .sink(receiveCompletion: { _ in }) { [weak self] in
+                guard let self = self else { return }
+                appState.bulkUpdate { appState in
+                    appState.userSession = .unauthenticated
+                    appState.userData = .init()
+                    appState.permissions = .init()
+                    appState.studySession = .init()
+                    appState.system = .init()
+                }
+                KeyChainManager.deleteItem(key: .accessToken)
             }
             .store(in: cancleBag)
     }
