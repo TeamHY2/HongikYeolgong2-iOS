@@ -88,4 +88,19 @@ final class AuthRepositoryImpl: AuthRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    /// UserProfile을 받아옵니다.
+    /// - Returns: 학과, 닉네임 등의 유저정보
+    func getUserProfile() -> AnyPublisher<UserProfile, NetworkError> {
+        return Future<UserProfile, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<UserProfile> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUserProfile)
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
