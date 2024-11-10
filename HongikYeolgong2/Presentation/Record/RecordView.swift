@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct RecordView: View {
-    @Environment(\.injected.interactors.studyTimeInteractor) var studyTimeInteractor
-    
+    @Environment(\.injected.interactors.studyTimeInteractor) var studyTimeInteractor    
     @State var studyTime = StudyTime()
     
     var body: some View {
