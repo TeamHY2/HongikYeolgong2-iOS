@@ -50,7 +50,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},
-                receiveValue: { [weak self] loginResDto in                    
+                receiveValue: { [weak self] loginResDto in
                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
@@ -114,7 +114,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:                    
+                    case .finished:
                         appState[\.userSession] = .authenticated
                     case .failure(_):
                         appState[\.userSession] = .unauthenticated
@@ -157,6 +157,8 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 userProfile.wrappedValue = $0
             }
             .store(in: cancleBag)
+    }
+    
     func withdraw() {
         
     }

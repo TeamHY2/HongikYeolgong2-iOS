@@ -9,8 +9,20 @@ struct SettingView: View {
         
     
     @State private var shouldShowWithdrawModal = false
+    @State private var shouldShowNotice = false
+    @State private var shouldShowQna = false
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
+            NavigationLink("",
+                           destination: WebViewWithNavigation(url: SecretKeys.noticeUrl, title: "공지사항")
+                                        .edgesIgnoringSafeArea(.bottom),
+                           isActive: $shouldShowNotice)
+            
+            NavigationLink("",
+                           destination: WebViewWithNavigation(url: SecretKeys.qnaUrl, title: "문의사항")
+                                        .edgesIgnoringSafeArea(.bottom),
+                           isActive: $shouldShowQna)
+            
             HStack(spacing: 0) {
                 Image(.settingIcon)
                     .padding(.trailing, 19)
@@ -29,7 +41,9 @@ struct SettingView: View {
             }
             .padding(.bottom, 20.adjustToScreenHeight)
             
-            Button(action: {}
+            Button(action: {
+                shouldShowNotice.toggle()
+            }
                    , label: {
                 Text("공지사항")
                     .font(.pretendard(size: 16, weight: .regular))
@@ -46,7 +60,9 @@ struct SettingView: View {
             .cornerRadius(8)
             .padding(.bottom, 20.adjustToScreenHeight)
             
-            Button(action: {}
+            Button(action: {
+                shouldShowQna.toggle()
+            }
                    , label: {
                 Text("문의사항")
                     .font(.pretendard(size: 16, weight: .regular))
