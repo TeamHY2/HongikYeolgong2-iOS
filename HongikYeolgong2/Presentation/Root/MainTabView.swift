@@ -48,7 +48,7 @@ struct MainTabView: View {
         TabView(selection: $currentTab,
                 content:  {
             HomeView()
-                .tag(Tab.home)
+                .tag(Tab.home)                
             
             RecordView()
                 .tag(Tab.record)

@@ -28,7 +28,7 @@ struct NetworkService: NetworkProtocol {
 
 extension NetworkService {
     private func configUrl(endpoint: EndpointProtocol) -> URL? {
-        guard let url = endpoint.baseURL?.appendingPathComponent(endpoint.path) else {
+        guard let url = endpoint.path.isEmpty ? endpoint.baseURL : endpoint.baseURL?.appendingPathComponent(endpoint.path) else {
             return nil
         }
         
