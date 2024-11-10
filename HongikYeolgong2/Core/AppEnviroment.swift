@@ -105,6 +105,6 @@ extension DIContainer {
     }
     
     struct Services {
-        let appleAuthService: AuthenticationService
+        let appleAuthService: AppleLoginManager
     }
 }
