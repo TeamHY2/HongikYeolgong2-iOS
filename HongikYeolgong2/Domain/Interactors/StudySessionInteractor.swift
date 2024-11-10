@@ -154,7 +154,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         return UNTimeIntervalNotificationTrigger(timeInterval: triggerTime, repeats: false)
     }
     
-    private func cancleAllNotification() {
+    private func cancelAllNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 }
