@@ -16,7 +16,7 @@ struct RankingView: View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 Text(weeklyRanking.weekName)
-                    .font(.pretendard(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
+                    .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundColor(.gray100)
                 
                 Spacer()
@@ -47,7 +47,7 @@ struct RankingView: View {
         .onAppear {
             getCurrentWeeklyRanking()
         }
-        .background(.dark)
+        .modifier(IOSBackground())
     }
     
     func getCurrentWeeklyRanking() {
