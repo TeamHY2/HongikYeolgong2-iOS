@@ -5,6 +5,8 @@ struct SettingView: View {
     @State private var isOnAlarm = false
     @Environment(\.injected) var injected: DIContainer
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
+    @State private var userProfile = UserProfile()
+        
     
     @State private var shouldShowWithdrawModal = false
     var body: some View {
@@ -12,7 +14,7 @@ struct SettingView: View {
             HStack(spacing: 0) {
                 Image(.settingIcon)
                     .padding(.trailing, 19)
-                Text("유림")
+                Text(userProfile.nickname)
                     .font(.pretendard(size: 16, weight: .regular))
                     .padding(.trailing, 8)
                 
@@ -21,7 +23,7 @@ struct SettingView: View {
                     .font(.pretendard(size: 16, weight: .regular))
                     .padding(.trailing, 8)
                     .foregroundStyle(.gray300)
-                Text("디자인컨버전스학부")
+                Text(userProfile.department)
                     .font(.pretendard(size: 16, weight: .regular))
                     .foregroundStyle(.gray200)
             }
@@ -61,8 +63,7 @@ struct SettingView: View {
             .cornerRadius(8)
             .padding(.bottom, 20.adjustToScreenHeight)
             
-            Button(action: {}
-                   , label: {
+            HStack(spacing: 0) {
                 Text("열람실 종료 시간 알림")
                     .font(.pretendard(size: 16, weight: .regular))
                     .foregroundStyle(Color.gray200)
@@ -78,10 +79,10 @@ struct SettingView: View {
                     }
                 ))
                 .toggleStyle(ColoredToggleStyle(onColor:Color.blue100))
-            })
+            }
             .background(Color.gray800)
             .cornerRadius(8)
-            .padding(.bottom, 16.adjustToScreenHeight)
+            .padding(.bottom, 10.adjustToScreenHeight)
             
             HStack(spacing: 0) {
                 Image(.icInformation)
@@ -90,6 +91,7 @@ struct SettingView: View {
                     .font(.pretendard(size: 12, weight: .regular))
                     .foregroundStyle(.gray300)
             }
+            
             Spacer()
             
             HStack(alignment: .center, spacing: 0) {
@@ -127,9 +129,12 @@ struct SettingView: View {
                       cancleAction: { userDataInteractor.withdraw() }
             )
         }
-        .padding(.top, 16.5.adjustToScreenHeight)
-        .padding(.horizontal, 16.adjustToScreenWidth)
+        .padding(.top, 32.adjustToScreenHeight)
+        .padding(.horizontal, 32.adjustToScreenWidth)
         .background(.dark)
+        .onAppear {
+            userDataInteractor.getUserProfile(userProfile: $userProfile)
+        }
     }
 }
 
@@ -165,6 +170,6 @@ struct ColoredToggleStyle: ToggleStyle {
     }
 }
 
-#Preview {
-    SettingView()
-}
+//#Preview {
+//    SettingView()
+//}
