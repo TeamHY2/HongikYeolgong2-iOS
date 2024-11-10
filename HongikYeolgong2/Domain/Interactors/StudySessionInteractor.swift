@@ -68,7 +68,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     /// 스터디세션을 종료하고 열람실 이용정보를 서버에 업로드합니다.
     func endStudy() {
         stopTimer()
-        cancleAllNotification()
+        cancelAllNotification()
         
         let startTime: Date = appState.value.studySession.startTime
         let endTime: Date = .now
@@ -109,7 +109,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         
         let remainingTime = appState.value.studySession.remainingTime
         
-        cancleAllNotification()
+        cancelAllNotification()
         registerNotification(for: .extensionAvailable, endTimeInMinute: remainingTime)
         registerNotification(for: .urgent, endTimeInMinute: remainingTime)
     }
