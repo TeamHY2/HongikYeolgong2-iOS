@@ -45,6 +45,6 @@ struct RecordView: View {
     }
 }
 
-#Preview {
-    RecordView()
-}
+//#Preview {
+//    RecordView()
+//}
