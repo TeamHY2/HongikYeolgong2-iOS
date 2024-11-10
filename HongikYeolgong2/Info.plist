@@ -9,6 +9,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NoticeURL</key>
+	<string>$(NOTICE_URL)</string>
+	<key>QnaURL</key>
+	<string>$(QNA_URL)</string>
 	<key>RoomStatusURL</key>
 	<string>$(ROOM_STATUS_URL)</string>
 	<key>UIAppFonts</key>
