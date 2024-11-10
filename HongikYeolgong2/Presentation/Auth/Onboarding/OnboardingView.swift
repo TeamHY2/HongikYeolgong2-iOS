@@ -15,7 +15,7 @@ struct OnboardingView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
+        NavigationStack {
             content
                 .onReceive(routingUpdate) { routingState = $0 }
         }
