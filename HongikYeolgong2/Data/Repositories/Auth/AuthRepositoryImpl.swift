@@ -98,6 +98,22 @@ final class AuthRepositoryImpl: AuthRepository {
                     let response: BaseResponse<UserProfile> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUserProfile)
                     promise(.success(response.data))
                 } catch let error as NetworkError {
+                    
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func withdraw() -> AnyPublisher<Void, NetworkError> {
+        return Future<Void, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<WithdrawResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.withdraw)
+                    
+                    promise(.success(()))
+                } catch let error as NetworkError {
+                    
                     promise(.failure(error))
                 }
             }
