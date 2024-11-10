@@ -19,7 +19,7 @@
 		4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */; };
 		470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723102CBC1B0A0046469F /* LoginResponseDTO.swift */; };
 		470723132CBC1BF10046469F /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723122CBC1BF10046469F /* BaseResponse.swift */; };
-		470723182CBC29510046469F /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723172CBC29510046469F /* AuthenticationService.swift */; };
+		470723182CBC29510046469F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723172CBC29510046469F /* AppleLoginManager.swift */; };
 		471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */; };
 		471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CA2CAFD9B700426D30 /* RankingCell.swift */; };
 		471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */; };
@@ -51,6 +51,7 @@
 		4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB92CB913FF00990336 /* UserDataInteractor.swift */; };
 		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
 		476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */; };
+		4774C7BB2CDF632300CDD479 /* WithdrawResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */; };
 		4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780043B2CCA8E2900FFAF00 /* WeeklyStudyCell.swift */; };
 		478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478004412CCA924200FFAF00 /* StudySessionMapper.swift */; };
 		4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */; };
@@ -76,6 +77,7 @@
 		478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478FBCA22CD13A1E00256012 /* UserInfo.swift */; };
 		479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 479821D32CA24CFF002357EB /* .swiftlint.yml */; };
 		479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479821D62CA27BE1002357EB /* Launch Screen.storyboard */; };
+		479BF66C2CDD1A8D009D9E44 /* StudyNotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479BF66B2CDD1A8D009D9E44 /* StudyNotificationType.swift */; };
 		47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1474D2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift */; };
 		47A147632CA147A600A91F66 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47A147512CA147A600A91F66 /* Pretendard-Black.otf */; };
 		47A147642CA147A600A91F66 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 47A147522CA147A600A91F66 /* Pretendard-Bold.otf */; };
@@ -174,7 +176,7 @@
 		470723102CBC1B0A0046469F /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
 		470723122CBC1BF10046469F /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
 		470723142CBC222E0046469F /* HongikYeolgong2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2.entitlements; sourceTree = "<group>"; };
-		470723172CBC29510046469F /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		470723172CBC29510046469F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
 		471940CA2CAFD9B700426D30 /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
 		471940CC2CAFDAD700426D30 /* WeeklyRanking+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeeklyRanking+Mock.swift"; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 		4763FFB92CB913FF00990336 /* UserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInteractor.swift; sourceTree = "<group>"; };
 		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 		476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCountAllResponseDTO.swift; sourceTree = "<group>"; };
+		4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawResponseDTO.swift; sourceTree = "<group>"; };
 		4780043B2CCA8E2900FFAF00 /* WeeklyStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyCell.swift; sourceTree = "<group>"; };
 		478004412CCA924200FFAF00 /* StudySessionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionMapper.swift; sourceTree = "<group>"; };
 		4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
@@ -232,6 +235,7 @@
 		478FBCA22CD13A1E00256012 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		479821D32CA24CFF002357EB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		479821D62CA27BE1002357EB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		479BF66B2CDD1A8D009D9E44 /* StudyNotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyNotificationType.swift; sourceTree = "<group>"; };
 		47A147322CA136CC00A91F66 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		47A1474D2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StudyRoomUsage+Mock.swift"; sourceTree = "<group>"; };
 		47A147502CA147A600A91F66 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
@@ -869,7 +873,7 @@
 		47F4F69E2CC8E45A00543D24 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				470723172CBC29510046469F /* AuthenticationService.swift */,
+				470723172CBC29510046469F /* AppleLoginManager.swift */,
 				47BE30E22CC813BB0015D973 /* KeyChainManager.swift */,
 			);
 			path = Services;
@@ -883,6 +887,7 @@
 				47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */,
 				47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */,
 				470483A92CDB532A00C381ED /* TokenValidResponseDTO.swift */,
+				4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -902,6 +907,7 @@
 				47F635042CC3EC1A0034EAA9 /* Department.swift */,
 				4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */,
 				47A540722CD0D90F00DC40D0 /* Nickname.swift */,
+				479BF66B2CDD1A8D009D9E44 /* StudyNotificationType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1189,10 +1195,11 @@
 				478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */,
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
+				4774C7BB2CDF632300CDD479 /* WithdrawResponseDTO.swift in Sources */,
 				47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */,
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
-				470723182CBC29510046469F /* AuthenticationService.swift in Sources */,
+				470723182CBC29510046469F /* AppleLoginManager.swift in Sources */,
 				5E847A6E2CDBD4B60034C2A7 /* CalendarView.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				4786A10C2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift in Sources */,
@@ -1208,6 +1215,7 @@
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,
+				479BF66C2CDD1A8D009D9E44 /* StudyNotificationType.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
 				98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */,
@@ -1409,7 +1417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1730730522";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1731137565";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1456,7 +1464,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1730730522";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1731137565";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

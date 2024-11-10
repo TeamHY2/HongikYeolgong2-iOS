@@ -88,4 +88,20 @@ final class AuthRepositoryImpl: AuthRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    
+    func withdraw() -> AnyPublisher<Void, NetworkError> {
+        return Future<Void, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<WithdrawResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.withdraw)
+                    
+                    promise(.success(()))
+                } catch let error as NetworkError {
+                    
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
