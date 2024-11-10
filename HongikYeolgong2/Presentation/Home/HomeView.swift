@@ -21,9 +21,15 @@ struct HomeView: View {
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
+    @State private var shouldShowWebView = false
     
     var body: some View {
         VStack {
+            NavigationLink("",
+                           destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
+                                        .edgesIgnoringSafeArea(.bottom),
+                           isActive: $shouldShowWebView)
+            
             WeeklyStudyView(studyRecords: studyRecords)
             
             StudyContentControllerView(
@@ -38,7 +44,7 @@ struct HomeView: View {
                 actions: .init(
                     endButtonTapped: { shouldShowEndUseModal.toggle() },
                     startButtonTapped: { shouldShowTimePicker.toggle() },
-                    seatButtonTapped: {},
+                    seatButtonTapped: { shouldShowWebView.toggle() },
                     addButtonTapped: { shouldShowAddTimeModal.toggle() }
                 )
             )
@@ -184,7 +190,7 @@ struct ActionButtonControllerView: View {
                     ActionButton(
                         width: 69.adjustToScreenWidth,
                         backgroundColor: .clear,
-                        action: {}
+                        action: { actions.seatButtonTapped() }
                     )
                     .modifier(ImageBackground(imageName: .seatButton))
                     
