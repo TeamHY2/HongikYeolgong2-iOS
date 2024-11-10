@@ -23,21 +23,21 @@ struct InitialView: View {
             case .pending:
                 SplashView()
                     .ignoresSafeArea(.all)
-                    .onAppear(perform: appLaunchCompleted)
+                    .onAppear(perform: checkUserSession)
             }
         }
-        .onReceive(isAppLaunchStateUpdated) { userSession = $0 }
+        .onReceive(userSessionUpdated) { userSession = $0 }
     }
 }
 
 private extension InitialView {
-    var isAppLaunchStateUpdated: AnyPublisher<AppState.UserSession, Never> {
+    var userSessionUpdated: AnyPublisher<AppState.UserSession, Never> {
         injected.appState.updates(for: \.userSession)
     }
 }
 
 private extension InitialView {
-    func appLaunchCompleted() {        
+    func checkUserSession() {
         injected.interactors.userDataInteractor.checkAuthentication()
     }
 }

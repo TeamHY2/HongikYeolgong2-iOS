@@ -12,6 +12,9 @@ enum AuthEndpoint: EndpointProtocol {
     
     /// 애플 소셜 로그인
     case login(loginReqDto: LoginRequestDTO)
+    
+    /// 회원탈퇴
+    case withdraw
 }
 
 extension AuthEndpoint {
@@ -22,6 +25,8 @@ extension AuthEndpoint {
         switch self {
         case .login:
             "/login-apple"
+        case .withdraw:
+            ""
         }
     }
     
@@ -29,12 +34,16 @@ extension AuthEndpoint {
         switch self {
         case .login:
                 .post
+        case .withdraw:
+                .delete
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
         case .login:
+            nil
+        default:
             nil
         }
     }
@@ -50,6 +59,8 @@ extension AuthEndpoint {
         switch self {
         case let .login(loginReqDto):
             return loginReqDto.toData()
+        default:
+            return nil
         }
     }
 }

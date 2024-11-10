@@ -25,8 +25,8 @@ struct StudyTimerView: View {
             
             LinearProgressView(shape: Rectangle(), value: remainingTime / totalTime)
                 .frame(height: 8.adjustToScreenHeight)
-                .padding(.top, 16.adjustToScreenHeight)
-        }        
+                .padding(.top, 16.adjustToScreenHeight)                
+        }
     }
 }
 
@@ -40,7 +40,7 @@ struct LinearProgressView<Shape: SwiftUI.Shape>: View {
                 .overlay(alignment: .leading) {
                     GeometryReader { proxy in
                         shape.fill(.blue100)
-                            .frame(width: proxy.size.width * value)
+                            .frame(width: proxy.size.width * value)                            
                     }
                 }
         }

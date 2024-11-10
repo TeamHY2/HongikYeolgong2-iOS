@@ -18,6 +18,7 @@ protocol UserDataInteractor: AnyObject {
     func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
     func getUserProfile(userProfile: Binding<UserProfile>)
+    func withdraw()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -25,11 +26,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AuthenticationService
+    private let authService: AppleLoginManager
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AuthenticationService) {
+         authService: AppleLoginManager) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService
@@ -156,5 +157,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 userProfile.wrappedValue = $0
             }
             .store(in: cancleBag)
+    func withdraw() {
+        
     }
 }
