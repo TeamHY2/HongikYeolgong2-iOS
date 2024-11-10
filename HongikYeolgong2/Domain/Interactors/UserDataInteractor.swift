@@ -17,6 +17,7 @@ protocol UserDataInteractor: AnyObject {
     func getUser()
     func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
+    func getUserProfile(userProfile: Binding<UserProfile>)
     func withdraw()
 }
 
@@ -148,6 +149,14 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .store(in: cancleBag)
     }
     
+    func getUserProfile(userProfile: Binding<UserProfile>) {
+        authRepository
+            .getUserProfile()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) {
+                userProfile.wrappedValue = $0
+            }
+            .store(in: cancleBag)
     func withdraw() {
         
     }
