@@ -18,12 +18,12 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AuthenticationService
+    private let authService: AppleLoginManager
     private let db = Firestore.firestore()
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AuthenticationService) {
+         authService: AppleLoginManager) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService
@@ -50,7 +50,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
         // credential로 로그인 요청
         Auth.auth().signIn(with: credential) { [weak self] (result, error) in
             guard let self = self,
-            let userId = result?.user.uid else { return }
+                  let userId = result?.user.uid else { return }
             
             let docRef = db.collection("User").document(userId)
             
@@ -168,6 +168,24 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     appState[\.userSession] = .unauthenticated
                 }
             })
+            .store(in: cancleBag)
+    }
+    
+    /// 회원탈퇴
+    func withdraw() {
+        authRepository
+            .withdraw()
+            .sink(receiveCompletion: { _ in }) { [weak self] in
+                guard let self = self else { return }
+                appState.bulkUpdate { appState in
+                    appState.userSession = .unauthenticated
+                    appState.userData = .init()
+                    appState.permissions = .init()
+                    appState.studySession = .init()
+                    appState.system = .init()
+                }
+                KeyChainManager.deleteItem(key: .accessToken)
+            }
             .store(in: cancleBag)
     }
 }
