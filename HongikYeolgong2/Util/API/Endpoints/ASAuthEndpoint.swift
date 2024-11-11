@@ -8,12 +8,12 @@
 import Foundation
 
 enum ASAuthEndpoint: EndpointProtocol {
-    case requestToken
+    case requestToken(ASTokenRequestDTO)
     
     var baseURL: URL? {
         switch self {
         case .requestToken:
-            URL(string: "\(SecretKeys.appleAuthUrl)")
+            URL(string: "\(SecretKeys.appleIDApiUrl)")
         }
     }
     
@@ -27,28 +27,31 @@ enum ASAuthEndpoint: EndpointProtocol {
     var method: NetworkMethod {
         switch self {
         case .requestToken:
-            .post
+                .post
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case .requestToken:
-            nil
+        case let .requestToken(asTokenRequestDto):
+            [URLQueryItem(name: "client_id", value: asTokenRequestDto.client_id),
+             URLQueryItem(name: "client_secret", value: asTokenRequestDto.client_secret),
+             URLQueryItem(name: "code", value: asTokenRequestDto.code),
+             URLQueryItem(name: "grant_type", value: asTokenRequestDto.grant_type)]
         }
     }
     
     var headers: [String : String]? {
         switch self {
         default:
-            ["Content-Type": "application/json", "form-data": "application/x-www-form-urlencoded"]
+            ["Content-Type": "application/x-www-form-urlencoded"]
         }
     }
     
     var body: Data? {
         switch self {
         case .requestToken:
-            nil
+            return nil
         }
     }
 }
