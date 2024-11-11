@@ -12,6 +12,7 @@ struct SecretKeys {
     static let roomStatusUrl = Bundle.main.infoDictionary?["RoomStatusURL"] as? String ?? ""
     static let noticeUrl = Bundle.main.infoDictionary?["NoticeURL"] as? String ?? ""
     static let qnaUrl = Bundle.main.infoDictionary?["QnaURL"] as? String ?? ""
+    static let appleAuthUrl = Bundle.main.infoDictionary?["AppleAuthURL"] as? String ?? ""
 }
 
 

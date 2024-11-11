@@ -110,6 +110,9 @@
 		47BACCF72CA164BA00295DAC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BACCF62CA164BA00295DAC /* Font+.swift */; };
 		47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E22CC813BB0015D973 /* KeyChainManager.swift */; };
 		47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E42CC81A9E0015D973 /* URLRequest+.swift */; };
+		47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */; };
+		47C815412CE221060017EA24 /* SocialLoginRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815402CE221060017EA24 /* SocialLoginRepositoryImpl.swift */; };
+		47C815432CE2211D0017EA24 /* SocialLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815422CE2211D0017EA24 /* SocialLoginRepository.swift */; };
 		47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17242CC9336100CBB251 /* StudyPeriodView.swift */; };
 		47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17262CC9340800CBB251 /* StudyTimerView.swift */; };
 		47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */; };
@@ -275,6 +278,9 @@
 		47BACCF62CA164BA00295DAC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		47BE30E22CC813BB0015D973 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		47BE30E42CC81A9E0015D973 /* URLRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+.swift"; sourceTree = "<group>"; };
+		47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthEndpoint.swift; sourceTree = "<group>"; };
+		47C815402CE221060017EA24 /* SocialLoginRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRepositoryImpl.swift; sourceTree = "<group>"; };
+		47C815422CE2211D0017EA24 /* SocialLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRepository.swift; sourceTree = "<group>"; };
 		47CA17242CC9336100CBB251 /* StudyPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPeriodView.swift; sourceTree = "<group>"; };
 		47CA17262CC9340800CBB251 /* StudyTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimerView.swift; sourceTree = "<group>"; };
 		47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
@@ -353,6 +359,7 @@
 				47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */,
 				4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */,
 				470483A72CDB50FA00C381ED /* TokenEndpoint.swift */,
+				47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -371,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				4707230A2CBC19C10046469F /* AuthRepositoryImpl.swift */,
+				47C815402CE221060017EA24 /* SocialLoginRepositoryImpl.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -685,6 +693,7 @@
 				470723082CBC198E0046469F /* AuthRepository.swift */,
 				4786A1082CCA346F008635A4 /* StudySessionRepository.swift */,
 				478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */,
+				47C815422CE2211D0017EA24 /* SocialLoginRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -1134,6 +1143,7 @@
 				472319ED2CD1FC32009BA019 /* UIApplication+.swift in Sources */,
 				4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */,
 				47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */,
+				47C815432CE2211D0017EA24 /* SocialLoginRepository.swift in Sources */,
 				476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */,
 				478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
@@ -1147,6 +1157,7 @@
 				478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
+				47C815412CE221060017EA24 /* SocialLoginRepositoryImpl.swift in Sources */,
 				470483A82CDB50FA00C381ED /* TokenEndpoint.swift in Sources */,
 				471940CB2CAFD9B700426D30 /* RankingCell.swift in Sources */,
 				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
@@ -1170,6 +1181,7 @@
 				478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */,
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
+				47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */,
 				47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
