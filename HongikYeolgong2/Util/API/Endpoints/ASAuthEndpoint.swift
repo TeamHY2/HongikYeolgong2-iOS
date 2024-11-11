@@ -38,11 +38,13 @@ enum ASAuthEndpoint: EndpointProtocol {
         switch self {
         case let .requestToken(asTokenRequestDto):
             return [URLQueryItem(name: "client_id", value: asTokenRequestDto.client_id),
-             URLQueryItem(name: "client_secret", value: asTokenRequestDto.client_secret),
-             URLQueryItem(name: "code", value: asTokenRequestDto.code),
-             URLQueryItem(name: "grant_type", value: asTokenRequestDto.grant_type)]
+                    URLQueryItem(name: "client_secret", value: asTokenRequestDto.client_secret),
+                    URLQueryItem(name: "code", value: asTokenRequestDto.code),
+                    URLQueryItem(name: "grant_type", value: asTokenRequestDto.grant_type)]
         case let .requestRevoke(asRevokeTokenRequestDto):
-            return nil
+            return [URLQueryItem(name: "client_id", value: asRevokeTokenRequestDto.client_id),
+                    URLQueryItem(name: "client_secret", value: asRevokeTokenRequestDto.client_secret),
+                    URLQueryItem(name: "token", value: asRevokeTokenRequestDto.token)]
         }
     }
     

@@ -9,4 +9,5 @@ import Combine
 
 protocol SocialLoginRepository {
     func requestASToken(asTokenRequestDto: ASTokenRequestDTO) -> AnyPublisher<ASTokenResponseDTO, NetworkError>
+    func requestASTokenRevoke(asRevokeTokenRequestDto: ASRevokeTokenRequestDTO) -> AnyPublisher<Void, NetworkError>
 }

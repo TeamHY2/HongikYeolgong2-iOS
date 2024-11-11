@@ -189,6 +189,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     func withdraw() {
+        let clientSecret = makeJWT()
+        
         appleLoginService.performExistingAccountSetupFlows()
             .mapError({ error in
                 NetworkError.decodingError("")
@@ -201,37 +203,46 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     return Fail(error: NetworkError.decodingError("could not decoded appleIDCredential")).eraseToAnyPublisher()
                 }
                 
-                let clientSecret = makeJWT()
-                
-                let asTokenRequestDTO: ASTokenRequestDTO = .init(client_id: SecretKeys.bundleName,
+                let asTokenRequestDto: ASTokenRequestDTO = .init(client_id: SecretKeys.bundleName,
                                                                  client_secret: clientSecret,
                                                                  grant_type: "authorization_code",
                                                                  code: authorizationCode)
                 
-                return socialLoginRepository.requestASToken(asTokenRequestDto: asTokenRequestDTO)
-            })           
+                return socialLoginRepository.requestASToken(asTokenRequestDto: asTokenRequestDto)
+            })
+            .flatMap({ [weak self] asTokenResponseDto -> AnyPublisher<Void, NetworkError> in
+                guard let self = self else {
+                    return Fail(outputType: Void.self, failure: NetworkError.decodingError("")).eraseToAnyPublisher()
+                }
+                
+                let asRevokeTokenRequestDto: ASRevokeTokenRequestDTO = .init(
+                    client_id: SecretKeys.bundleName,
+                    client_secret: clientSecret,
+                    token: asTokenResponseDto.accessToken,
+                    token_type_hint: "")
+                
+                return self.socialLoginRepository.requestASTokenRevoke(asRevokeTokenRequestDto: asRevokeTokenRequestDto)
+            })
+            .flatMap({ [weak self] _ in
+                guard let self = self else {
+                    return Fail(outputType: Void.self, failure: NetworkError.decodingError("")).eraseToAnyPublisher()
+                }
+                return authRepository.withdraw()
+            })
             .sink(receiveCompletion: { _ in
                 
-            }, receiveValue: { _ in
-                
+            }, receiveValue: { [weak self] in
+                guard let self = self else { return }
+                appState.bulkUpdate { appState in
+                    appState.userSession = .unauthenticated
+                    appState.userData = .init()
+                    appState.permissions = .init()
+                    appState.studySession = .init()
+                    appState.system = .init()
+                }
+                KeyChainManager.deleteItem(key: .accessToken)
             })
             .store(in: cancleBag)
-        
-        
-        //        authRepository
-        //            .withdraw()
-        //            .sink(receiveCompletion: { _ in }) { [weak self] in
-        //                guard let self = self else { return }
-        //                appState.bulkUpdate { appState in
-        //                    appState.userSession = .unauthenticated
-        //                    appState.userData = .init()
-        //                    appState.permissions = .init()
-        //                    appState.studySession = .init()
-        //                    appState.system = .init()
-        //                }
-        //                KeyChainManager.deleteItem(key: .accessToken)
-        //            }
-        //            .store(in: cancleBag)
     }
 }
 
@@ -277,7 +288,7 @@ extension UserDataMigrationInteractor {
             let aud: String
             let sub: String
         }
-                        
+        
         let iat = Int(Date().timeIntervalSince1970)
         let exp = iat + 3600
         let myClaims = MyClaims(iss: SecretKeys.teamID,

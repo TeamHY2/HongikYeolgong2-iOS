@@ -24,6 +24,23 @@ struct NetworkService: NetworkProtocol {
         
         return try processResponse(data: data, response: response)
     }        
+    
+    func plainRequest(endpoint: EndpointProtocol) async throws {
+        guard let url = configUrl(endpoint: endpoint) else {
+            throw NetworkError.invalidUrl
+        }
+        
+        let request = configRequest(url: url, endpoint: endpoint)
+        let (data, response) = try await session.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.invalidResponse
+        }
+        
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw NetworkError.serverError(statusCode: httpResponse.statusCode)
+        }
+    }
 }
 
 extension NetworkService {
@@ -66,7 +83,7 @@ extension NetworkService {
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
-        
+                
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

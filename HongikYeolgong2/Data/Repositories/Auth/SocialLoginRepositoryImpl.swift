@@ -8,6 +8,20 @@
 import Combine
 
 final class SocialLoginRepositoryImpl: SocialLoginRepository {
+    func requestASTokenRevoke(asRevokeTokenRequestDto: ASRevokeTokenRequestDTO) -> AnyPublisher<Void, NetworkError> {
+        return Future<Void, NetworkError> { promise in
+            Task {
+                do {
+                    let _ = try await NetworkService.shared.plainRequest(endpoint: ASAuthEndpoint.requestRevoke(asRevokeTokenRequestDto))
+                    promise(.success(()))
+                }
+                catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     func requestASToken(asTokenRequestDto: ASTokenRequestDTO) -> AnyPublisher<ASTokenResponseDTO, NetworkError> {
         return Future<ASTokenResponseDTO, NetworkError> { promise in
             Task {
@@ -15,7 +29,7 @@ final class SocialLoginRepositoryImpl: SocialLoginRepository {
                     let response: ASTokenResponseDTO = try await NetworkService.shared.request(endpoint: ASAuthEndpoint.requestToken(asTokenRequestDto))
                     promise(.success(response))
                 }
-                catch let error as NetworkError {                    
+                catch let error as NetworkError {
                     promise(.failure(error))
                 }
             }
