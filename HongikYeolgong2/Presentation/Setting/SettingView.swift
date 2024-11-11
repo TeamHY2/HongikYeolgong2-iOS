@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isOnAlarm = false
+    @State private var isOnAlarm = true
     @Environment(\.injected) var injected: DIContainer
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @State private var userProfile = UserProfile()
@@ -22,90 +22,92 @@ struct SettingView: View {
                            destination: WebViewWithNavigation(url: SecretKeys.qnaUrl, title: "문의사항")
                                         .edgesIgnoringSafeArea(.bottom),
                            isActive: $shouldShowQna)
-            
-            HStack(spacing: 0) {
-                Image(.settingIcon)
-                    .padding(.trailing, 19)
-                Text(userProfile.nickname)
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .padding(.trailing, 8)
+            VStack(alignment: .leading, spacing: 0) {
+                HStack(spacing: 0) {
+                    Image(.settingIcon)
+                        .resizable()
+                        .frame(width: 55.adjustToScreenWidth, height: 55.adjustToScreenHeight)
+                        .padding(.trailing, 19)
+                    Text(userProfile.nickname)
+                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
+                        .padding(.trailing, 8)
+                        .foregroundStyle(.gray200)
+                    Text("|")
+                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
+                        .padding(.trailing, 8)
+                        .foregroundStyle(.gray300)
+                    Text(userProfile.department)
+                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
+                        .foregroundStyle(.gray200)
+                }
+                .padding(.bottom, 20.adjustToScreenHeight)
                 
-                    .foregroundStyle(.gray200)
-                Text("|")
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .padding(.trailing, 8)
-                    .foregroundStyle(.gray300)
-                Text(userProfile.department)
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .foregroundStyle(.gray200)
-            }
-            .padding(.bottom, 20.adjustToScreenHeight)
-            
-            Button(action: {
-                shouldShowNotice.toggle()
-            }
-                   , label: {
-                Text("공지사항")
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .foregroundStyle(Color.gray200)
-                    .minimumScaleFactor(0.2)
-                    .frame(maxWidth: .infinity,
-                           minHeight: 52.adjustToScreenHeight, alignment: .leading)
-                    .padding(.leading, 16.adjustToScreenWidth)
+                Button(action: {
+                    shouldShowNotice.toggle()
+                }
+                       , label: {
+                    Text("공지사항")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.gray200)
+                        .minimumScaleFactor(0.2)
+                        .frame(maxWidth: .infinity,
+                               minHeight: 52.adjustToScreenHeight, alignment: .leading)
+                        .padding(.leading, 16.adjustToScreenWidth)
+                    
+                    Image(.arrowRight)
+                        .padding(.trailing, 11)
+                })
+                .background(Color.gray800)
+                .cornerRadius(8)
+                .padding(.bottom, 20.adjustToScreenHeight)
                 
-                Image(.arrowRight)
-                    .padding(.trailing, 11)
-            })
-            .background(Color.gray800)
-            .cornerRadius(8)
-            .padding(.bottom, 20.adjustToScreenHeight)
-            
-            Button(action: {
-                shouldShowQna.toggle()
-            }
-                   , label: {
-                Text("문의사항")
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .foregroundStyle(Color.gray200)
-                    .minimumScaleFactor(0.2)
-                    .frame(maxWidth: .infinity,
-                           minHeight: 52.adjustToScreenHeight, alignment: .leading)
-                    .padding(.leading, 16.adjustToScreenWidth)
+                Button(action: {
+                    shouldShowQna.toggle()
+                }
+                       , label: {
+                    Text("문의사항")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.gray200)
+                        .minimumScaleFactor(0.2)
+                        .frame(maxWidth: .infinity,
+                               minHeight: 52.adjustToScreenHeight, alignment: .leading)
+                        .padding(.leading, 16.adjustToScreenWidth)
+                    
+                    Image(.arrowRight)
+                        .padding(.trailing, 11)
+                })
+                .background(Color.gray800)
+                .cornerRadius(8)
+                .padding(.bottom, 20.adjustToScreenHeight)
                 
-                Image(.arrowRight)
-                    .padding(.trailing, 11)
-            })
-            .background(Color.gray800)
-            .cornerRadius(8)
-            .padding(.bottom, 20.adjustToScreenHeight)
-            
-            HStack(spacing: 0) {
-                Text("열람실 종료 시간 알림")
-                    .font(.pretendard(size: 16, weight: .regular))
-                    .foregroundStyle(Color.gray200)
-                    .minimumScaleFactor(0.2)
-                    .frame(maxWidth: .infinity,
-                           minHeight: 52.adjustToScreenHeight, alignment: .leading)
-                    .padding(.leading, 16.adjustToScreenWidth)
+                HStack(spacing: 0) {
+                    Text("열람실 종료 시간 알림")
+                        .font(.pretendard(size: 16, weight: .regular))
+                        .foregroundStyle(Color.gray200)
+                        .minimumScaleFactor(0.2)
+                        .frame(maxWidth: .infinity,
+                               minHeight: 52.adjustToScreenHeight, alignment: .leading)
+                        .padding(.leading, 16.adjustToScreenWidth)
+                    
+                    Toggle("", isOn: Binding(
+                        get: { isOnAlarm },
+                        set: {
+                            isOnAlarm = $0
+                        }
+                    ))
+                    .toggleStyle(ColoredToggleStyle(onColor:Color.blue100))
+                }
+                .background(Color.gray800)
+                .cornerRadius(8)
+                .padding(.bottom, 10.adjustToScreenHeight)
                 
-                Toggle("", isOn: Binding(
-                    get: { isOnAlarm },
-                    set: {
-                        isOnAlarm = $0
-                    }
-                ))
-                .toggleStyle(ColoredToggleStyle(onColor:Color.blue100))
-            }
-            .background(Color.gray800)
-            .cornerRadius(8)
-            .padding(.bottom, 10.adjustToScreenHeight)
-            
-            HStack(spacing: 0) {
-                Image(.icInformation)
-                    .padding(.trailing, 6.adjustToScreenWidth)
-                Text("열람실 종료 10분, 30분 전에 알림을 보내 연장을 돕습니다.")
-                    .font(.pretendard(size: 12, weight: .regular))
-                    .foregroundStyle(.gray300)
+                HStack(spacing: 0) {
+                    Image(.icInformation)
+                        .padding(.trailing, 6.adjustToScreenWidth)
+                    Text("열람실 종료 10분, 30분 전에 알림을 보내 연장을 돕습니다.")
+                        .font(.pretendard(size: 12, weight: .regular))
+                        .foregroundStyle(.gray300)
+                }
             }
             
             Spacer()
@@ -116,12 +118,12 @@ struct SettingView: View {
                     injected.interactors.userDataInteractor.logout()
                 }, label: {
                     Text("로그아웃")
-                        .font(.pretendard(size: 16, weight: .regular))
+                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .foregroundStyle(Color.gray300)
                 })
                 
                 Text("|")
-                    .font(.pretendard(size: 16, weight: .regular))
+                    .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                     .foregroundStyle(Color.gray300)
                     .padding(.horizontal, 24.adjustToScreenWidth)
                 
@@ -129,12 +131,12 @@ struct SettingView: View {
                     shouldShowWithdrawModal.toggle()
                 }, label: {
                     Text("회원탈퇴")
-                        .font(.pretendard(size: 16, weight: .regular))
+                        .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .foregroundStyle(Color.gray300)
                 })
                 Spacer()
             }
-            .padding(.bottom, 36.adjustToScreenHeight)
+            .padding(.bottom, 32.adjustToScreenHeight)
         }
         .systemOverlay(isPresented: $shouldShowWithdrawModal) {
             ModalView(isPresented: $shouldShowWithdrawModal,
@@ -145,9 +147,8 @@ struct SettingView: View {
                       cancleAction: { userDataInteractor.withdraw() }
             )
         }
-        .padding(.top, 32.adjustToScreenHeight)
         .padding(.horizontal, 32.adjustToScreenWidth)
-        .background(.dark)
+        .modifier(IOSBackground())
         .onAppear {
             userDataInteractor.getUserProfile(userProfile: $userProfile)
         }
