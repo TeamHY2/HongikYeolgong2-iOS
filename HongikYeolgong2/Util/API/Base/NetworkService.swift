@@ -23,7 +23,7 @@ struct NetworkService: NetworkProtocol {
         let (data, response) = try await session.data(for: request)
         
         return try processResponse(data: data, response: response)
-    }
+    }        
 }
 
 extension NetworkService {
@@ -66,13 +66,16 @@ extension NetworkService {
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
-        
+        if let jsonString = String(data: data, encoding: .utf8) {
+                print(jsonString)
+            }
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             return try decoder.decode(T.self, from: data)
         } catch {
+            print(error)
             throw NetworkError.decodingError(error.localizedDescription)
         }
     }

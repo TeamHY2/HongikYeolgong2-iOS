@@ -12,12 +12,10 @@ final class SocialLoginRepositoryImpl: SocialLoginRepository {
         return Future<ASTokenResponseDTO, NetworkError> { promise in
             Task {
                 do {
-                    let response: BaseResponse<ASTokenResponseDTO> = try await NetworkService.shared.request(endpoint: ASAuthEndpoint.requestToken(asTokenRequestDto))
-                    print(response.data)
-                    promise(.success(response.data))
+                    let response: ASTokenResponseDTO = try await NetworkService.shared.request(endpoint: ASAuthEndpoint.requestToken(asTokenRequestDto))
+                    promise(.success(response))
                 }
-                catch let error as NetworkError {
-                    print(error.message)
+                catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }

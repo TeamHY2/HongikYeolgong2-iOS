@@ -8,10 +8,10 @@
 import Foundation
 
 struct ASTokenResponseDTO: Decodable {
-    let access_token: String
-    let expires_in: Int
-    let id_token: String
-    let refresh_token: String
-    let token_type: String        
+    let accessToken: String
+    let expiresIn: Int
+    let idToken: String
+    let refreshToken: String
+    let tokenType: String
 }
 
