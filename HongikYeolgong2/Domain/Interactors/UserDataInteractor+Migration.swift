@@ -33,7 +33,9 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
-        guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
+        guard let appleIDCredential = authService.requestAppleLogin(authorization),
+              let idTokenData = appleIDCredential.identityToken,
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
         
