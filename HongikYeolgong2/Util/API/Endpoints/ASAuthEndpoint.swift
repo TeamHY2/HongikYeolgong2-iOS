@@ -9,10 +9,11 @@ import Foundation
 
 enum ASAuthEndpoint: EndpointProtocol {
     case requestToken(ASTokenRequestDTO)
+    case requestRevoke(ASRevokeTokenRequestDTO)
     
     var baseURL: URL? {
         switch self {
-        case .requestToken:
+        default:
             URL(string: "\(SecretKeys.appleIDApiUrl)")
         }
     }
@@ -21,12 +22,14 @@ enum ASAuthEndpoint: EndpointProtocol {
         switch self {
         case .requestToken:
             "/token"
+        case .requestRevoke:
+            "/revoke"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .requestToken:
+        case .requestToken, .requestRevoke:
                 .post
         }
     }
@@ -34,10 +37,12 @@ enum ASAuthEndpoint: EndpointProtocol {
     var parameters: [URLQueryItem]? {
         switch self {
         case let .requestToken(asTokenRequestDto):
-            [URLQueryItem(name: "client_id", value: asTokenRequestDto.client_id),
+            return [URLQueryItem(name: "client_id", value: asTokenRequestDto.client_id),
              URLQueryItem(name: "client_secret", value: asTokenRequestDto.client_secret),
              URLQueryItem(name: "code", value: asTokenRequestDto.code),
              URLQueryItem(name: "grant_type", value: asTokenRequestDto.grant_type)]
+        case let .requestRevoke(asRevokeTokenRequestDto):
+            return nil
         }
     }
     
@@ -50,7 +55,7 @@ enum ASAuthEndpoint: EndpointProtocol {
     
     var body: Data? {
         switch self {
-        case .requestToken:
+        case .requestToken, .requestRevoke:
             return nil
         }
     }

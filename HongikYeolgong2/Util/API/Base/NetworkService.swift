@@ -66,9 +66,7 @@ extension NetworkService {
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
-        if let jsonString = String(data: data, encoding: .utf8) {
-                print(jsonString)
-            }
+        
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

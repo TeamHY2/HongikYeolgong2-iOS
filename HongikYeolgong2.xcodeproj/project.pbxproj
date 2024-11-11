@@ -117,6 +117,7 @@
 		47C815482CE227E50017EA24 /* ASTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */; };
 		47C8154B2CE231810017EA24 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 47C8154A2CE231810017EA24 /* SwiftJWT */; };
 		47C815532CE257950017EA24 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */; };
+		47C815552CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */; };
 		47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17242CC9336100CBB251 /* StudyPeriodView.swift */; };
 		47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17262CC9340800CBB251 /* StudyTimerView.swift */; };
 		47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */; };
@@ -288,6 +289,7 @@
 		47C815452CE223DA0017EA24 /* ASTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenResponseDTO.swift; sourceTree = "<group>"; };
 		47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenRequestDTO.swift; sourceTree = "<group>"; };
 		47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
+		47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASRevokeTokenRequestDTO.swift; sourceTree = "<group>"; };
 		47CA17242CC9336100CBB251 /* StudyPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPeriodView.swift; sourceTree = "<group>"; };
 		47CA17262CC9340800CBB251 /* StudyTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimerView.swift; sourceTree = "<group>"; };
 		47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
@@ -914,6 +916,7 @@
 				4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */,
 				47C815452CE223DA0017EA24 /* ASTokenResponseDTO.swift */,
 				47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */,
+				47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1255,6 +1258,7 @@
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
 				98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */,
+				47C815552CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
