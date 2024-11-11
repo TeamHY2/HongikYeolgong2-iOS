@@ -113,6 +113,10 @@
 		47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */; };
 		47C815412CE221060017EA24 /* SocialLoginRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815402CE221060017EA24 /* SocialLoginRepositoryImpl.swift */; };
 		47C815432CE2211D0017EA24 /* SocialLoginRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815422CE2211D0017EA24 /* SocialLoginRepository.swift */; };
+		47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815452CE223DA0017EA24 /* ASTokenResponseDTO.swift */; };
+		47C815482CE227E50017EA24 /* ASTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */; };
+		47C8154B2CE231810017EA24 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 47C8154A2CE231810017EA24 /* SwiftJWT */; };
+		47C815532CE257950017EA24 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */; };
 		47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17242CC9336100CBB251 /* StudyPeriodView.swift */; };
 		47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17262CC9340800CBB251 /* StudyTimerView.swift */; };
 		47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */; };
@@ -281,6 +285,9 @@
 		47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthEndpoint.swift; sourceTree = "<group>"; };
 		47C815402CE221060017EA24 /* SocialLoginRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRepositoryImpl.swift; sourceTree = "<group>"; };
 		47C815422CE2211D0017EA24 /* SocialLoginRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRepository.swift; sourceTree = "<group>"; };
+		47C815452CE223DA0017EA24 /* ASTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenResponseDTO.swift; sourceTree = "<group>"; };
+		47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenRequestDTO.swift; sourceTree = "<group>"; };
+		47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
 		47CA17242CC9336100CBB251 /* StudyPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPeriodView.swift; sourceTree = "<group>"; };
 		47CA17262CC9340800CBB251 /* StudyTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimerView.swift; sourceTree = "<group>"; };
 		47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
@@ -323,6 +330,7 @@
 				47F71B592CDC68BC0044DEC5 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				47F71B532CDC68BC0044DEC5 /* FirebaseAuthCombine-Community in Frameworks */,
 				47F71B632CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				47C8154B2CE231810017EA24 /* SwiftJWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -779,6 +787,7 @@
 		47B1D49F2C9CB1740071B62B = {
 			isa = PBXGroup;
 			children = (
+				47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */,
 				98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */,
 				479821D32CA24CFF002357EB /* .swiftlint.yml */,
 				47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */,
@@ -903,6 +912,8 @@
 				47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */,
 				470483A92CDB532A00C381ED /* TokenValidResponseDTO.swift */,
 				4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */,
+				47C815452CE223DA0017EA24 /* ASTokenResponseDTO.swift */,
+				47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -979,6 +990,7 @@
 				47F71B5E2CDC813A0044DEC5 /* FirebaseDatabase */,
 				47F71B602CDC813A0044DEC5 /* FirebaseFunctions */,
 				47F71B622CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community */,
+				47C8154A2CE231810017EA24 /* SwiftJWT */,
 			);
 			productName = HongikYeolgong2;
 			productReference = 47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */;
@@ -1054,6 +1066,7 @@
 			mainGroup = 47B1D49F2C9CB1740071B62B;
 			packageReferences = (
 				47F71B4F2CDC68BC0044DEC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				47C815492CE231810017EA24 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
 			);
 			productRefGroup = 47B1D4A92C9CB1740071B62B /* Products */;
 			projectDirPath = "";
@@ -1082,6 +1095,7 @@
 				47A147652CA147A600A91F66 /* Pretendard-ExtraBold.otf in Resources */,
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
 				47A1476D2CA147A600A91F66 /* SUITE-ExtraBold.otf in Resources */,
+				47C815532CE257950017EA24 /* AuthKey_843UNB7W58.p8 in Resources */,
 				47A1476F2CA147A600A91F66 /* SUITE-Light.otf in Resources */,
 				47A147722CA147A600A91F66 /* SUITE-SemiBold.otf in Resources */,
 				47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */,
@@ -1166,6 +1180,7 @@
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */,
+				47C815482CE227E50017EA24 /* ASTokenRequestDTO.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
@@ -1210,6 +1225,7 @@
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
 				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
+				47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
 				478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */,
@@ -1617,6 +1633,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		47C815492CE231810017EA24 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 		47F71B4F2CDC68BC0044DEC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1628,6 +1652,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		47C8154A2CE231810017EA24 /* SwiftJWT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47C815492CE231810017EA24 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
+			productName = SwiftJWT;
+		};
 		47F71B502CDC68BC0044DEC5 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 47F71B4F2CDC68BC0044DEC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

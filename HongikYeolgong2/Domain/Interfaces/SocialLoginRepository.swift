@@ -5,6 +5,8 @@
 //  Created by 권석기 on 11/11/24.
 //
 
-import Foundation
+import Combine
 
-protocol SocialLoginRepository {}
+protocol SocialLoginRepository {
+    func requestASToken(asTokenRequestDto: ASTokenRequestDTO) -> AnyPublisher<ASTokenResponseDTO, NetworkError>
+}

@@ -64,7 +64,8 @@ extension AppEnviroment {
             userDataInteractor: UserDataMigrationInteractor(
                 appState: appState,
                 authRepository: remoteRepository.authRepository,
-                authService: services.appleAuthService
+                socialLoginRepository: SocialLoginRepositoryImpl(),
+                appleLoginService: services.appleAuthService
             ),
             studyTimeInteractor: StudyTimeInteractorImpl(
                 studySessionRepository: remoteRepository.studySessionRepository
