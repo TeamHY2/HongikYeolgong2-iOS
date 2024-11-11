@@ -48,9 +48,10 @@ struct CalendarCell: View {
                     .font(.suite(size: 14, weight: .medium))
                     .foregroundStyle(Color.gray300)
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 33.adjustToScreenHeight)
-            .background(Color.gray800)
+            .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight)
+            .background(Image(.dayCount00)
+                .resizable()
+                .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight))
             .cornerRadius(8)
             .opacity(isVisible ? 0 : 1)
         case .dayCount01:
@@ -59,9 +60,10 @@ struct CalendarCell: View {
                     .font(.suite(size: 14, weight: .medium))
                     .foregroundStyle(Color.gray100)
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 33.adjustToScreenHeight)
-            .background(Image(.dayCount01))
+            .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight)
+            .background(Image(.dayCount01)
+                .resizable()
+                .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight))
             .cornerRadius(8)
             .opacity(isVisible ? 0 : 1)
         case .dayCount02:
@@ -70,9 +72,10 @@ struct CalendarCell: View {
                     .font(.suite(size: 14, weight: .medium))
                     .foregroundStyle(Color.white)
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 33.adjustToScreenHeight)
-            .background(Image(.dayCount02))
+            .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight)
+            .background(Image(.dayCount02)
+                .resizable()
+                .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight))
             .cornerRadius(8)
             .opacity(isVisible ? 0 : 1)
         case .dayCount03:
@@ -81,9 +84,10 @@ struct CalendarCell: View {
                     .font(.suite(size: 14, weight: .medium))
                     .foregroundStyle(Color.gray600)
             }
-            .frame(maxWidth: .infinity)
-            .frame(height: 33.adjustToScreenHeight)
-            .background(Image(.dayCount03))
+            .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight)
+            .background(Image(.dayCount03)
+                .resizable()
+                .frame(width: 40.adjustToScreenWidth,height: 33.adjustToScreenHeight))
             .cornerRadius(8)
             .opacity(isVisible ? 0 : 1)
         }
