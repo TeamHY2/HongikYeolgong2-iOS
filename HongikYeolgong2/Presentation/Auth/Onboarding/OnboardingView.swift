@@ -34,6 +34,7 @@ struct OnboardingView: View {
                 .opacity(0)
                 .frame(width: 0, height: 0)
             }
+            .onReceive(routingUpdate) { routingState = $0 }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
