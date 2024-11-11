@@ -99,7 +99,6 @@
 		47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477D2CA159E300A91F66 /* SplashView.swift */; };
 		47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */; };
 		47A540732CD0D90F00DC40D0 /* Nickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A540722CD0D90F00DC40D0 /* Nickname.swift */; };
-		47A9DCC12CE0CA0C001DE76D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A9DCC02CE0CA0C001DE76D /* GoogleService-Info.plist */; };
 		47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9DCC22CE0DB97001DE76D /* WebView.swift */; };
 		47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */; };
 		47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47B1D4AF2C9CB1760071B62B /* Assets.xcassets */; };
@@ -261,7 +260,6 @@
 		47A1477D2CA159E300A91F66 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		47A540722CD0D90F00DC40D0 /* Nickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
-		47A9DCC02CE0CA0C001DE76D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47A9DCC22CE0DB97001DE76D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2App.swift; sourceTree = "<group>"; };
@@ -792,7 +790,6 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
-				47A9DCC02CE0CA0C001DE76D /* GoogleService-Info.plist */,
 				470723142CBC222E0046469F /* HongikYeolgong2.entitlements */,
 				4736719C2CB10D7B00527896 /* Info.plist */,
 				4763FFB62CB9133600990336 /* Util */,
@@ -1081,7 +1078,6 @@
 				47A1476B2CA147A600A91F66 /* Pretendard-Thin.otf in Resources */,
 				47A147632CA147A600A91F66 /* Pretendard-Black.otf in Resources */,
 				47A147672CA147A600A91F66 /* Pretendard-Light.otf in Resources */,
-				47A9DCC12CE0CA0C001DE76D /* GoogleService-Info.plist in Resources */,
 				479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */,
 				47A1476C2CA147A600A91F66 /* SUITE-Bold.otf in Resources */,
 			);
