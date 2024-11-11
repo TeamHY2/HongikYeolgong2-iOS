@@ -14,7 +14,7 @@ enum AppleLoginError: Error {
 
 protocol AppleLoginService {
     func requestAppleLogin(_ authrization: ASAuthorization) -> ASAuthorizationAppleIDCredential?
-    func requestAppleLogin()
+    func requestAppleLogin() -> AnyPublisher<ASAuthorizationAppleIDCredential?, Error>
     func performExistingAccountSetupFlows() -> AnyPublisher<ASAuthorizationAppleIDCredential?, Error>
 }
 
@@ -32,17 +32,22 @@ final class AppleLoginManager: NSObject, AppleLoginService, ASAuthorizationContr
         return appleIDCredential
     }
     
-    func requestAppleLogin() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        
-        authorizationController.performRequests()
+    func requestAppleLogin()  -> AnyPublisher<ASAuthorizationAppleIDCredential?, Error> {
+        return Future<ASAuthorizationAppleIDCredential?, Error> { [weak self] promise in
+            guard let self = self else { return }
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            let request = appleIDProvider.createRequest()
+            request.requestedScopes = [.fullName, .email]
+            
+            let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+            
+            appleLoginCompletion = promise
+            
+            authorizationController.delegate = self
+            authorizationController.presentationContextProvider = self
+            
+            authorizationController.performRequests()
+        }.eraseToAnyPublisher()
     }
     
     func performExistingAccountSetupFlows() -> AnyPublisher<ASAuthorizationAppleIDCredential?, Error> {

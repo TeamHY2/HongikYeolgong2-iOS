@@ -118,6 +118,8 @@
 		47C8154B2CE231810017EA24 /* SwiftJWT in Frameworks */ = {isa = PBXBuildFile; productRef = 47C8154A2CE231810017EA24 /* SwiftJWT */; };
 		47C815532CE257950017EA24 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */; };
 		47C815552CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */; };
+		47C815582CE27E140017EA24 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815572CE27E140017EA24 /* OnboardingPageView.swift */; };
+		47C8155A2CE27EB00017EA24 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815592CE27EB00017EA24 /* AppleLoginButton.swift */; };
 		47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17242CC9336100CBB251 /* StudyPeriodView.swift */; };
 		47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CA17262CC9340800CBB251 /* StudyTimerView.swift */; };
 		47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */; };
@@ -290,6 +292,8 @@
 		47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTokenRequestDTO.swift; sourceTree = "<group>"; };
 		47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
 		47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASRevokeTokenRequestDTO.swift; sourceTree = "<group>"; };
+		47C815572CE27E140017EA24 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		47C815592CE27EB00017EA24 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		47CA17242CC9336100CBB251 /* StudyPeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPeriodView.swift; sourceTree = "<group>"; };
 		47CA17262CC9340800CBB251 /* StudyTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimerView.swift; sourceTree = "<group>"; };
 		47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBackground.swift; sourceTree = "<group>"; };
@@ -773,6 +777,7 @@
 		47A5406E2CD0B8AB00DC40D0 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				47C815562CE27E050017EA24 /* Component */,
 				47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
@@ -861,6 +866,15 @@
 				471940C62CAFCA6200426D30 /* Modifier */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		47C815562CE27E050017EA24 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				47C815572CE27E140017EA24 /* OnboardingPageView.swift */,
+				47C815592CE27EB00017EA24 /* AppleLoginButton.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		47D5EDC52CCB66BD00ACA469 /* StudyTimer */ = {
@@ -1183,6 +1197,7 @@
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */,
+				47C8155A2CE27EB00017EA24 /* AppleLoginButton.swift in Sources */,
 				47C815482CE227E50017EA24 /* ASTokenRequestDTO.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
@@ -1232,6 +1247,7 @@
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
 				478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */,
+				47C815582CE27E140017EA24 /* OnboardingPageView.swift in Sources */,
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
 				4774C7BB2CDF632300CDD479 /* WithdrawResponseDTO.swift in Sources */,

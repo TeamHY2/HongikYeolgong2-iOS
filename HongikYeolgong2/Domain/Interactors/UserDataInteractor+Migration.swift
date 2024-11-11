@@ -188,6 +188,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
+    /// 회원 탈퇴
     func withdraw() {
         let clientSecret = makeJWT()
         
