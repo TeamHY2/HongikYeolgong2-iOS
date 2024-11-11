@@ -26,11 +26,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AppleLoginManager
+    private let authService: AppleLoginService
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AppleLoginManager) {
+         authService: AppleLoginService) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService

@@ -39,7 +39,7 @@ extension DIContainer {
             userDataInteractor: UserDataInteractorImpl(
                 appState: Store<AppState>(AppState()),
                 authRepository: AuthRepositoryImpl(),
-                authService: AuthenticationServiceImpl()
+                authService: AppleLoginManager()
             ),
             studyTimeInteractor: StudyTimeInteractorImpl(studySessionRepository: StudySessionRepositoryImpl()),
             studySessionInteractor: StudySessionInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),

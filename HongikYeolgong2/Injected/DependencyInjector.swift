@@ -26,7 +26,7 @@ struct DIContainer: EnvironmentKey {
     
     private static let `default` = Self(appState: .init(AppState()),
                                         interactors: .default,
-                                        services: .init(appleAuthService: AuthenticationServiceImpl()))
+                                        services: .init(appleAuthService: AppleLoginManager()))
 }
 
 extension EnvironmentValues {
