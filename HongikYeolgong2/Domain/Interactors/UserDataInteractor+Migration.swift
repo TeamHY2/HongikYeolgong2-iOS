@@ -185,28 +185,29 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     func withdraw() {
-        authService.performExistingAccountSetupFlows()
+        authService.performExistingAccountSetupFlows()           
             .sink { _ in
                 
-            } receiveValue: { appleIDcredential in
-                guard let appleIDcredential = appleIDcredential else { return }                
+            } receiveValue: { _ in
+                
             }
             .store(in: cancleBag)
-
-//        authRepository
-//            .withdraw()
-//            .sink(receiveCompletion: { _ in }) { [weak self] in
-//                guard let self = self else { return }
-//                appState.bulkUpdate { appState in
-//                    appState.userSession = .unauthenticated
-//                    appState.userData = .init()
-//                    appState.permissions = .init()
-//                    appState.studySession = .init()
-//                    appState.system = .init()
-//                }
-//                KeyChainManager.deleteItem(key: .accessToken)
-//            }
-//            .store(in: cancleBag)
+        
+        
+        //        authRepository
+        //            .withdraw()
+        //            .sink(receiveCompletion: { _ in }) { [weak self] in
+        //                guard let self = self else { return }
+        //                appState.bulkUpdate { appState in
+        //                    appState.userSession = .unauthenticated
+        //                    appState.userData = .init()
+        //                    appState.permissions = .init()
+        //                    appState.studySession = .init()
+        //                    appState.system = .init()
+        //                }
+        //                KeyChainManager.deleteItem(key: .accessToken)
+        //            }
+        //            .store(in: cancleBag)
     }
 }
 
