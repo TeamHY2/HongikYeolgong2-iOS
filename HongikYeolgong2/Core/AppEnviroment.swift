@@ -93,7 +93,7 @@ extension AppEnviroment {
     /// 앱의 서비스를 구성하는 컨테이너를 반환합니다.
     /// - Returns: 앱의 서비스를 구성하는 컨테이너
     static func configuredServices() -> DIContainer.Services {
-        .init(appleAuthService: AuthenticationServiceImpl())
+        .init(appleAuthService: AppleLoginManager())
     }
 }
 
@@ -105,6 +105,6 @@ extension DIContainer {
     }
     
     struct Services {
-        let appleAuthService: AppleLoginManager
+        let appleAuthService: AppleLoginService
     }
 }

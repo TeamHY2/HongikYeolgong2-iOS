@@ -19,12 +19,12 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AppleLoginManager
+    private let authService: AppleLoginService
     private let db = Firestore.firestore()
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AppleLoginManager) {
+         authService: AppleLoginService) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService
@@ -185,20 +185,28 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     func withdraw() {
-        authRepository
-            .withdraw()
-            .sink(receiveCompletion: { _ in }) { [weak self] in
-                guard let self = self else { return }
-                appState.bulkUpdate { appState in
-                    appState.userSession = .unauthenticated
-                    appState.userData = .init()
-                    appState.permissions = .init()
-                    appState.studySession = .init()
-                    appState.system = .init()
-                }
-                KeyChainManager.deleteItem(key: .accessToken)
+        authService.performExistingAccountSetupFlows()
+            .sink { _ in
+                
+            } receiveValue: { appleIDcredential in
+                guard let appleIDcredential = appleIDcredential else { return }                
             }
             .store(in: cancleBag)
+
+//        authRepository
+//            .withdraw()
+//            .sink(receiveCompletion: { _ in }) { [weak self] in
+//                guard let self = self else { return }
+//                appState.bulkUpdate { appState in
+//                    appState.userSession = .unauthenticated
+//                    appState.userData = .init()
+//                    appState.permissions = .init()
+//                    appState.studySession = .init()
+//                    appState.system = .init()
+//                }
+//                KeyChainManager.deleteItem(key: .accessToken)
+//            }
+//            .store(in: cancleBag)
     }
 }
 
