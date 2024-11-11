@@ -188,7 +188,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    func withdraw() {        
+    func withdraw() {
         appleLoginService.performExistingAccountSetupFlows()
             .mapError({ error in
                 NetworkError.decodingError("")
@@ -209,7 +209,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                                                                  code: authorizationCode)
                 
                 return socialLoginRepository.requestASToken(asTokenRequestDto: asTokenRequestDTO)
-            })            
+            })           
             .sink(receiveCompletion: { _ in
                 
             }, receiveValue: { _ in
