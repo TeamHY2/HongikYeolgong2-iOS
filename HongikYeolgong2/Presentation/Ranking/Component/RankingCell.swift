@@ -13,7 +13,7 @@ struct RankingCell: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                HStack(spacing: 14) {
+                HStack(spacing: 14.adjustToScreenWidth) {
                     Text("\(departmentRankInfo.currentRank)")
                         .font(.pretendard(size: 16, weight: .regular))
                         .foregroundStyle(setFontColor)
@@ -21,34 +21,39 @@ struct RankingCell: View {
                     Text(departmentRankInfo.department)
                         .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .foregroundStyle(setFontColor)
+                        .lineLimit(1)
                 }
                 
                 Spacer()
                 
-                HStack(spacing: 22) {
+                HStack(spacing: 0) {
                     Text("\(departmentRankInfo.studyDurationOfWeek)H")
                         .font(.pretendard(size: 12, weight: .regular))
                         .foregroundStyle(setFontColor)
-                    HStack(spacing: 7) {
-                        Text("\(departmentRankInfo.rankChange)")
+                    
+                    
+                    HStack {
+                        Text(rankChangeText)
                             .font(.pretendard(size: 12, weight: .regular))
                             .foregroundStyle(setFontColor)
+                            .frame(maxWidth: 40, alignment: .trailing)
                         
                         rankImage
                     }
                 }
             }
-            .padding(EdgeInsets(
-                top: 13.adjustToScreenHeight,
-                leading: 24.adjustToScreenWidth,
-                bottom: 13.adjustToScreenHeight,
-                trailing: 24.adjustToScreenWidth))
+            .padding(.vertical, 13.adjustToScreenHeight)
+            .padding(.horizontal, 24.adjustToScreenWidth)
         }
         .background(setBackground)
     }
 }
 
 extension RankingCell {
+    private var rankChangeText: String {
+        departmentRankInfo.rankChange > 0 ? "+\(departmentRankInfo.rankChange)" : "\(departmentRankInfo.rankChange)"
+    }
+    
     private var setBackground: some View {
         switch departmentRankInfo.currentRank {
         case 1:

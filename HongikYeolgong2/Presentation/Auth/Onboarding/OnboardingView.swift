@@ -18,6 +18,7 @@ struct OnboardingView: View {
         NavigationStack {
             VStack {
                 Spacer()
+                
                 OnboardingPageView(tabIndex: $tabIndex)
                                 
                 AppleLoginButton(
