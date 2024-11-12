@@ -14,7 +14,7 @@ struct RecordCell: View {
     
     var body: some View {
         HStack{
-            VStack(alignment: .leading ,spacing: 8) {
+            VStack(alignment: .leading ,spacing: 8.adjustToScreenHeight) {
                 Text(title)
                     .font(.pretendard(size: 16, weight: .regular))
                     .foregroundStyle(.gray200)
@@ -24,8 +24,8 @@ struct RecordCell: View {
                     .foregroundStyle(.gray100)
                 
             }
-            .padding(.vertical, 18)
-            .padding(.leading, 28)
+            .padding(.vertical, 18.adjustToScreenHeight)
+            .padding(.leading, 28.adjustToScreenWidth)
             Spacer()
         }
         .frame(maxWidth: .infinity)
@@ -33,14 +33,7 @@ struct RecordCell: View {
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.gray400, .gray600]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
-                )
+                .stroke(.gray600, lineWidth: 1)
         )
     }
 }
