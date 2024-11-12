@@ -13,14 +13,13 @@ struct WeeklyStudyView: View {
     var body: some View {
         HStack {
             ForEach(Array(studyRecords.enumerated()), id: \.self.offset) { (offset, stduyRecord) in
-                
+                if offset != 0 && offset != 7 {
+                    Spacer()
+                }
                 WeeklyStudyCell(
                     dayOfWeek: .init(rawValue: offset) ?? .monday,
                     studyRecord: stduyRecord
                 )
-                if offset != 7 {
-                    Spacer()
-                }
             }
         }
         .padding(.top, 33.adjustToScreenHeight)
