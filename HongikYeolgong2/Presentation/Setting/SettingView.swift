@@ -9,6 +9,7 @@ struct SettingView: View {
         
     
     @State private var shouldShowWithdrawModal = false
+    @State private var shouldShowLogoutModal = false
     @State private var shouldShowNotice = false
     @State private var shouldShowQna = false
     var body: some View {
@@ -104,8 +105,9 @@ struct SettingView: View {
                 HStack(spacing: 0) {
                     Image(.icInformation)
                         .padding(.trailing, 6.adjustToScreenWidth)
+                        .foregroundStyle(.gray300)
                     Text("열람실 종료 10분, 30분 전에 알림을 보내 연장을 돕습니다.")
-                        .font(.pretendard(size: 12, weight: .regular))
+                        .font(.pretendard(size: 12, weight: .regular), lineHeight: 18.adjustToScreenHeight)
                         .foregroundStyle(.gray300)
                 }
             }
@@ -115,7 +117,8 @@ struct SettingView: View {
             HStack(alignment: .center, spacing: 0) {
                 Spacer()
                 Button(action: {
-                    injected.interactors.userDataInteractor.logout()
+//                    injected.interactors.userDataInteractor.logout()
+                    shouldShowLogoutModal.toggle()
                 }, label: {
                     Text("로그아웃")
                         .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
@@ -145,6 +148,15 @@ struct SettingView: View {
                       cancleButtonText: "탈퇴하기",
                       confirmAction: {},
                       cancleAction: { userDataInteractor.withdraw() }
+            )
+        }
+        .systemOverlay(isPresented: $shouldShowLogoutModal) {
+            ModalView(isPresented: $shouldShowLogoutModal,
+                      title: "로그아웃 하실 건가요",
+                      confirmButtonText: "돌아가기",
+                      cancleButtonText: "로그아웃하기",
+                      confirmAction: {},
+                      cancleAction: { injected.interactors.userDataInteractor.logout() }
             )
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
