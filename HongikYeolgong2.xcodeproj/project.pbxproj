@@ -98,6 +98,7 @@
 		47A147792CA158E800A91F66 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147782CA158E800A91F66 /* MainTabView.swift */; };
 		47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477D2CA159E300A91F66 /* SplashView.swift */; };
 		47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */; };
+		47A3DDC62CE3146700FEA779 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */; };
 		47A540732CD0D90F00DC40D0 /* Nickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A540722CD0D90F00DC40D0 /* Nickname.swift */; };
 		47A9DCC12CE0CA0C001DE76D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47A9DCC02CE0CA0C001DE76D /* GoogleService-Info.plist */; };
 		47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9DCC22CE0DB97001DE76D /* WebView.swift */; };
@@ -270,6 +271,7 @@
 		47A147782CA158E800A91F66 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		47A1477D2CA159E300A91F66 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		47A540722CD0D90F00DC40D0 /* Nickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
 		47A9DCC02CE0CA0C001DE76D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47A9DCC22CE0DB97001DE76D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -796,6 +798,7 @@
 			children = (
 				47C815522CE257950017EA24 /* AuthKey_843UNB7W58.p8 */,
 				98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */,
+				47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */,
 				479821D32CA24CFF002357EB /* .swiftlint.yml */,
 				47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */,
 				47B1D4BB2C9CB1760071B62B /* HongikYeolgong2Tests */,
@@ -1108,6 +1111,7 @@
 				98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */,
 				47A1476A2CA147A600A91F66 /* Pretendard-SemiBold.otf in Resources */,
 				47A147662CA147A600A91F66 /* Pretendard-ExtraLight.otf in Resources */,
+				47A3DDC62CE3146700FEA779 /* Secrets-prod.xcconfig in Resources */,
 				47A147712CA147A600A91F66 /* SUITE-Regular.otf in Resources */,
 				47A147652CA147A600A91F66 /* Pretendard-ExtraBold.otf in Resources */,
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
@@ -1486,7 +1490,7 @@
 		};
 		47B1D4CE2C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1554,7 +1558,7 @@
 		};
 		47B1D4D12C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1594,7 +1598,7 @@
 		};
 		47B1D4D42C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

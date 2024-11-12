@@ -27,7 +27,7 @@ struct HomeView: View {
         VStack {
             NavigationLink("",
                            destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
-                                        .edgesIgnoringSafeArea(.bottom),
+                .edgesIgnoringSafeArea(.bottom),
                            isActive: $shouldShowWebView)
             
             WeeklyStudyView(studyRecords: studyRecords)
@@ -75,11 +75,12 @@ struct HomeView: View {
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
         .onAppear {
-            permissions.request(permission: .localNotifications)
             weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
-        .onReceive(studySessionUpdated) { studySession = $0 }
+        .onReceive(studySessionUpdated) {
+            studySession = $0
+        }
         .onReceive(studySessionEnded) { _ in
             studySessionInteractor.endStudy()
         }
@@ -123,7 +124,7 @@ extension HomeView {
             .delay(for: 1, scheduler: RunLoop.main)
             .map { _ in }
             .eraseToAnyPublisher()
-    }
+    }        
 }
 
 // MARK: - StudyContentControllerView
