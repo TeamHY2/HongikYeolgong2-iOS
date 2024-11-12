@@ -25,14 +25,14 @@ struct RankingView: View {
                     Button(action: {
                         getPreviosWeeklyRanking()
                     }, label: {
-                        Image(.leftArrow)
+                        Image(.icCalendarLeft)
                     })
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                     
                     Button(action: {
                         getNextWeeklyRanking()
                     }, label: {
-                        Image(.rightArrow)
+                        Image(.icCalendarRight)
                     })
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                 }

@@ -13,27 +13,33 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseCore
 import FirebaseFirestore
+import SwiftJWT
 
 final class UserDataMigrationInteractor: UserDataInteractor {
     
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AppleLoginManager
+    private let socialLoginRepository: SocialLoginRepository
+    private let appleLoginService: AppleLoginService
     private let db = Firestore.firestore()
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AppleLoginManager) {
+         socialLoginRepository: SocialLoginRepository,
+         appleLoginService: AppleLoginService) {
         self.appState = appState
         self.authRepository = authRepository
-        self.authService = authService
+        self.appleLoginService = appleLoginService
+        self.socialLoginRepository = socialLoginRepository
     }
     
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
-        guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
+        guard let appleIDCredential = appleLoginService.requestAppleLogin(authorization),
+              let idTokenData = appleIDCredential.identityToken,
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
         
@@ -182,10 +188,51 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
+    /// 회원 탈퇴
     func withdraw() {
-        authRepository
-            .withdraw()
-            .sink(receiveCompletion: { _ in }) { [weak self] in
+        let clientSecret = makeJWT()
+        
+        appleLoginService.performExistingAccountSetupFlows()
+            .mapError({ error in
+                NetworkError.decodingError("")
+            })
+            .flatMap({ [weak self] appleIDCrendential -> AnyPublisher<ASTokenResponseDTO, NetworkError> in
+                guard let self = self,
+                      let appleIDCredential = appleIDCrendential,
+                      let authorizationCodeData = appleIDCredential.authorizationCode,
+                      let authorizationCode = String(data: authorizationCodeData, encoding: .utf8) else {
+                    return Fail(error: NetworkError.decodingError("could not decoded appleIDCredential")).eraseToAnyPublisher()
+                }
+                
+                let asTokenRequestDto: ASTokenRequestDTO = .init(client_id: SecretKeys.bundleName,
+                                                                 client_secret: clientSecret,
+                                                                 grant_type: "authorization_code",
+                                                                 code: authorizationCode)
+                
+                return socialLoginRepository.requestASToken(asTokenRequestDto: asTokenRequestDto)
+            })
+            .flatMap({ [weak self] asTokenResponseDto -> AnyPublisher<Void, NetworkError> in
+                guard let self = self else {
+                    return Fail(outputType: Void.self, failure: NetworkError.decodingError("")).eraseToAnyPublisher()
+                }
+                
+                let asRevokeTokenRequestDto: ASRevokeTokenRequestDTO = .init(
+                    client_id: SecretKeys.bundleName,
+                    client_secret: clientSecret,
+                    token: asTokenResponseDto.accessToken,
+                    token_type_hint: "")
+                
+                return self.socialLoginRepository.requestASTokenRevoke(asRevokeTokenRequestDto: asRevokeTokenRequestDto)
+            })
+            .flatMap({ [weak self] _ in
+                guard let self = self else {
+                    return Fail(outputType: Void.self, failure: NetworkError.decodingError("")).eraseToAnyPublisher()
+                }
+                return authRepository.withdraw()
+            })
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { [weak self] in
                 guard let self = self else { return }
                 appState.bulkUpdate { appState in
                     appState.userSession = .unauthenticated
@@ -195,7 +242,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     appState.system = .init()
                 }
                 KeyChainManager.deleteItem(key: .accessToken)
-            }
+            })
             .store(in: cancleBag)
     }
 }
@@ -231,6 +278,38 @@ extension UserDataMigrationInteractor {
         }.joined()
         
         return hashString
+    }
+    
+    func makeJWT() -> String {
+        let myHeader = Header(kid: SecretKeys.serviceID)
+        struct MyClaims: Claims {
+            let iss: String
+            let iat: Int
+            let exp: Int
+            let aud: String
+            let sub: String
+        }
+        
+        let iat = Int(Date().timeIntervalSince1970)
+        let exp = iat + 3600
+        let myClaims = MyClaims(iss: SecretKeys.teamID,
+                                iat: iat,
+                                exp: exp,
+                                aud: "https://appleid.apple.com",
+                                sub: SecretKeys.bundleName)
+        
+        var myJWT = JWT(header: myHeader, claims: myClaims)
+        
+        guard let url = Bundle.main.url(forResource: "AuthKey_\(SecretKeys.serviceID)", withExtension: "p8") else {
+            return ""
+        }
+        
+        let privateKey: Data = try! Data(contentsOf: url, options: .alwaysMapped)
+        
+        let jwtSigner = JWTSigner.es256(privateKey: privateKey)
+        let signedJWT = try! myJWT.sign(using: jwtSigner)
+        
+        return signedJWT
     }
     
 }
