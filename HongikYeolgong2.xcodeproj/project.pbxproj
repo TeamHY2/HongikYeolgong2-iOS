@@ -139,6 +139,8 @@
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
 		5ED93CD72CE2311D004A7931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5ED93CD62CE2311D004A7931 /* GoogleService-Info.plist */; };
+		5ED93CD92CE36905004A7931 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 5ED93CD82CE36905004A7931 /* AuthKey_843UNB7W58.p8 */; };
+		5ED93CDB2CE3690D004A7931 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */; };
 		98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
@@ -296,6 +298,8 @@
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
 		5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5ED93CD62CE2311D004A7931 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5ED93CD82CE36905004A7931 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
+		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
@@ -770,7 +774,9 @@
 		47B1D49F2C9CB1740071B62B = {
 			isa = PBXGroup;
 			children = (
+				5ED93CD82CE36905004A7931 /* AuthKey_843UNB7W58.p8 */,
 				98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */,
+				5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */,
 				479821D32CA24CFF002357EB /* .swiftlint.yml */,
 				47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */,
 				47B1D4BB2C9CB1760071B62B /* HongikYeolgong2Tests */,
@@ -1073,9 +1079,11 @@
 				47A147652CA147A600A91F66 /* Pretendard-ExtraBold.otf in Resources */,
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
 				47A1476D2CA147A600A91F66 /* SUITE-ExtraBold.otf in Resources */,
+				5ED93CD92CE36905004A7931 /* AuthKey_843UNB7W58.p8 in Resources */,
 				47A1476F2CA147A600A91F66 /* SUITE-Light.otf in Resources */,
 				47A147722CA147A600A91F66 /* SUITE-SemiBold.otf in Resources */,
 				47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */,
+				5ED93CDB2CE3690D004A7931 /* Secrets-prod.xcconfig in Resources */,
 				47A1476E2CA147A600A91F66 /* SUITE-Heavy.otf in Resources */,
 				47A147692CA147A600A91F66 /* Pretendard-Regular.otf in Resources */,
 				47A1476B2CA147A600A91F66 /* Pretendard-Thin.otf in Resources */,
@@ -1438,7 +1446,7 @@
 		};
 		47B1D4CE2C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1506,7 +1514,7 @@
 		};
 		47B1D4D12C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1546,7 +1554,7 @@
 		};
 		47B1D4D42C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
