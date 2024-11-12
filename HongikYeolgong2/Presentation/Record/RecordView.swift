@@ -35,10 +35,11 @@ struct RecordView: View {
                            minutes: studyTime.dayMinutes)
             }
         }
-        .modifier(IOSBackground())
+        
         .padding(.horizontal, 32.adjustToScreenWidth)
         .padding(.top, 32.adjustToScreenHeight)
         .padding(.bottom, 36.adjustToScreenHeight)
+        .modifier(IOSBackground())
         .onAppear {
             // 이용 시간 가져오기
             studyTimeInteractor.getStudyTime(StudyTime: $studyTime)
