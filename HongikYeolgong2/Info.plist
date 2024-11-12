@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AppleIdURL</key>
+	<string>$(APPLEID_API_URL)</string>
 	<key>BaseURL</key>
 	<string>$(BASE_URL)</string>
 	<key>NSAppTransportSecurity</key>
@@ -15,6 +17,10 @@
 	<string>$(QNA_URL)</string>
 	<key>RoomStatusURL</key>
 	<string>$(ROOM_STATUS_URL)</string>
+	<key>ServiceID</key>
+	<string>$(SERVICE_ID)</string>
+	<key>TeamID</key>
+	<string>$(TEAM_ID)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SUITE-SemiBold.otf</string>

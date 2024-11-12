@@ -26,11 +26,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AppleLoginManager
+    private let authService: AppleLoginService
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AppleLoginManager) {
+         authService: AppleLoginService) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService
@@ -39,7 +39,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
-        guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
+        guard let appleIDCredential = authService.requestAppleLogin(authorization),
+              let email = appleIDCredential.email,
+              let idTokenData = appleIDCredential.identityToken,
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
         
