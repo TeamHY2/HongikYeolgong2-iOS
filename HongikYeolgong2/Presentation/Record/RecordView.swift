@@ -35,6 +35,7 @@ struct RecordView: View {
                            minutes: studyTime.dayMinutes)
             }
         }
+        .modifier(IOSBackground())
         .padding(.horizontal, 32.adjustToScreenWidth)
         .padding(.top, 32.adjustToScreenHeight)
         .padding(.bottom, 36.adjustToScreenHeight)
