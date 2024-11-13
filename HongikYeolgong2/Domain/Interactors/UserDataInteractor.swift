@@ -14,10 +14,9 @@ protocol UserDataInteractor: AnyObject {
     func requestAppleLogin(_ authorization: ASAuthorization)
     func signUp(nickname: String, department: Department)
     func logout()
-    func getUser()
     func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
-    func getUserProfile(userProfile: Binding<UserProfile>)
+    func getUserProfile()
     func withdraw()
 }
 
@@ -108,26 +107,6 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    /// 로그인된 유저정보를 가져옵니다.
-    func getUser() {
-        authRepository
-            .getUser()
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] completion in
-                    guard let self = self else { return }
-                    switch completion {
-                    case .finished:
-                        appState[\.userSession] = .authenticated
-                    case .failure(_):
-                        appState[\.userSession] = .unauthenticated
-                    }
-                },
-                receiveValue: { _ in }
-            )
-            .store(in: cancleBag)
-    }
-    
     /// 유저인증 상태를 체크합니다.
     func checkAuthentication() {
         authRepository
@@ -152,12 +131,12 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    func getUserProfile(userProfile: Binding<UserProfile>) {
+    func getUserProfile() {
         authRepository
             .getUserProfile()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }) {
-                userProfile.wrappedValue = $0
+            .sink(receiveCompletion: { _ in }) { _ in
+                
             }
             .store(in: cancleBag)
     }

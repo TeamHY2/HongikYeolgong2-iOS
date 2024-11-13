@@ -47,6 +47,7 @@ struct WebViewWithNavigation: View {
             WebView(url: url)
         }
         .toolbar(.hidden, for: .navigationBar)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

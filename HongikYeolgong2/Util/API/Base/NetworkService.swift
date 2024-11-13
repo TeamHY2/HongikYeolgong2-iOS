@@ -90,7 +90,6 @@ extension NetworkService {
             
             return try decoder.decode(T.self, from: data)
         } catch {
-            print(error)
             throw NetworkError.decodingError(error.localizedDescription)
         }
     }
