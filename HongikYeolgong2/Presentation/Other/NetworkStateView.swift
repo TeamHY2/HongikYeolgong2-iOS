@@ -57,7 +57,7 @@ struct NetworkStateView<T, Content: View>: View {
         ZStack {
             content()
                 .disabled(isLoading || isError)
-                .blur(radius: isLoading || isError ? 2 : 0)
+                .blur(radius: isLoading || isError ? 3 : 0)
             if isLoading {
                 LoadingView()
             } else if isError {
