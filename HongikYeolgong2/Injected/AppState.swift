@@ -36,10 +36,11 @@ extension AppState {
     /// 열람실 이용상태를 관리하는 구조체 입니다.
     struct StudySession: Equatable {
         var isStudying = false
+        var firstStartTime: Date = .now
         var startTime: Date = .now
         var endTime: Date = .now
         var remainingTime: TimeInterval = 0
-        var minimumTime: TimeInterval = .init(seconds: 30)
+        var minimumTime: TimeInterval = .init(minutes: 30)
         
         var isAddTime: Bool {
             remainingTime <= minimumTime

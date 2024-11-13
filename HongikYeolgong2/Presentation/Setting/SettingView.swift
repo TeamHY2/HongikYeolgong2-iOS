@@ -6,29 +6,34 @@ struct SettingView: View {
     @Environment(\.injected) var injected: DIContainer
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @State private var userProfile = UserProfile()
-        
+    
     
     @State private var shouldShowWithdrawModal = false
     @State private var shouldShowLogoutModal = false
     @State private var shouldShowNotice = false
     @State private var shouldShowQna = false
+    
     var body: some View {
         VStack(alignment:.leading, spacing: 0){
             NavigationLink("",
                            destination: WebViewWithNavigation(url: SecretKeys.noticeUrl, title: "공지사항")
-                                        .edgesIgnoringSafeArea(.bottom),
+                .edgesIgnoringSafeArea(.bottom),
                            isActive: $shouldShowNotice)
+            .frame(width: 0, height: 0)
             
             NavigationLink("",
                            destination: WebViewWithNavigation(url: SecretKeys.qnaUrl, title: "문의사항")
-                                        .edgesIgnoringSafeArea(.bottom),
+                .edgesIgnoringSafeArea(.bottom),
                            isActive: $shouldShowQna)
+            .frame(width: 0, height: 0)
+            
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: 0) {
                     Image(.settingIcon)
                         .resizable()
                         .frame(width: 55.adjustToScreenWidth, height: 55.adjustToScreenHeight)
                         .padding(.trailing, 19)
+                        
                     Text(userProfile.nickname)
                         .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .padding(.trailing, 8)
@@ -41,6 +46,7 @@ struct SettingView: View {
                         .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .foregroundStyle(.gray200)
                 }
+                .padding(.top, 32.adjustToScreenHeight)
                 .padding(.bottom, 20.adjustToScreenHeight)
                 
                 Button(action: {
@@ -117,7 +123,6 @@ struct SettingView: View {
             HStack(alignment: .center, spacing: 0) {
                 Spacer()
                 Button(action: {
-//                    injected.interactors.userDataInteractor.logout()
                     shouldShowLogoutModal.toggle()
                 }, label: {
                     Text("로그아웃")

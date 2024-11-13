@@ -34,6 +34,46 @@ final class UserDataMigrationInteractor: UserDataInteractor {
         self.socialLoginRepository = socialLoginRepository
     }
     
+    
+    /// 기존 유저를 검색하고 ID를 반환합니다.
+    /// - Parameter idToken: identityToken
+    /// - Returns: 유저ID
+    /// NOTE: - 유저를 찾지 못하는 경우 실패없이 성공을 반환하고 가입을 진행합니다.
+    func findFirebaseUser(with idToken: String) -> AnyPublisher<String, Never> {
+        let nonce = randomNonceString()
+        return Future<String, Never> { promise in
+            
+            let credential = OAuthProvider.credential(
+                withProviderID: "apple.com",
+                idToken: idToken,
+                rawNonce: nonce
+            )
+            
+            Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+                guard let self = self,
+                      let userId = result?.user.uid else {
+                    promise(.success(""))
+                    return
+                }
+                
+                let docRef = db.collection("User").document(userId)
+                
+                docRef.getDocument { (document, error) in
+                    guard let isDocExists = document?.exists else {
+                        promise(.success(""))
+                        return
+                    }
+                    
+                    if isDocExists {
+                        promise(.success(userId))
+                    } else {
+                        promise(.success(""))
+                    }
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
@@ -43,39 +83,14 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             return
         }
         
-        // nonce 생성
-        let nonce = randomNonceString()
-        // credential 생성
-        let credential = OAuthProvider.credential(
-            withProviderID: "apple.com",
-            idToken: idToken,
-            rawNonce: nonce
-        )
-        
-        var uid: String = ""
-        
-        // credential로 로그인 요청
-        Auth.auth().signIn(with: credential) { [weak self] (result, error) in
-            guard let self = self,
-                  let userId = result?.user.uid else { return }
-            
-            let docRef = db.collection("User").document(userId)
-            
-            docRef.getDocument { (document, error) in
-                guard error == nil else { return }
-                
-                guard let isDocExists = document?.exists else { return }
-                
-                if isDocExists {
-                    uid = userId
+        findFirebaseUser(with: idToken)
+            .flatMap { [weak self] userID -> AnyPublisher<LoginResponseDTO, NetworkError> in
+                guard let self = self else {
+                    return Fail(error: NetworkError.decodingError("")).eraseToAnyPublisher()
                 }
+                let loginReqDto: LoginRequestDTO = .init(email: userID, idToken: idToken)
+                return authRepository.signIn(loginReqDto: loginReqDto)
             }
-        }
-        
-        let loginReqDto: LoginRequestDTO = .init(email: uid, idToken: idToken)
-        
-        authRepository
-            .signIn(loginReqDto: loginReqDto)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},

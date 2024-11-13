@@ -43,7 +43,6 @@ struct CaledarView: View {
                     .font(.suite(size: 24, weight: .bold))
                     .foregroundStyle(Color.gray100)
                 
-                
                 Spacer().frame(width: 8.adjustToScreenWidth)
                 
                 Text(seletedDate.getYearString())
@@ -67,6 +66,7 @@ struct CaledarView: View {
                     }
                 }
             }
+            
             
             Spacer().frame(height: 12.adjustToScreenHeight)
             
