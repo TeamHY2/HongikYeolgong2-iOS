@@ -24,19 +24,6 @@ final class StudyTimeInteractorImpl: StudyTimeInteractor {
         StudyTime.wrappedValue.setLoading()
         studySessionRepository
             .getStudyTime()
-            .sink { completion in
-                switch completion {
-                    case .failure(let error):
-                        // 에러 처리
-                        StudyTime.wrappedValue.setError(error: error)
-                    case .finished:
-                        break
-                }
-            } receiveValue: {
-                // 데이터 전달 및 상태 변경
-                StudyTime.wrappedValue.setSuccess(value: $0)
-            }
-            .store(in: cancleBag)
-
+            .sinkToLoadable(StudyTime, cancelBag: cancleBag)
     }
 }
