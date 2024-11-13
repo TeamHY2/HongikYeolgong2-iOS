@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol StudyTimeInteractor {
-    func getStudyTime(StudyTime: Binding<StudyTime>)
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>)
 }
 
 final class StudyTimeInteractorImpl: StudyTimeInteractor {
@@ -19,14 +19,9 @@ final class StudyTimeInteractorImpl: StudyTimeInteractor {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getStudyTime(StudyTime: Binding<StudyTime>) {
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>) {
         studySessionRepository
             .getStudyTime()
-            .sink { _ in
-            } receiveValue: {
-                StudyTime.wrappedValue = $0
-            }
-            .store(in: cancleBag)
-
+            .sinkToLoadable(StudyTime, cancelBag: cancleBag)
     }
 }
