@@ -28,10 +28,10 @@ struct InitialView: View {
                     .onAppear { checkUserSession() }
             }
         }
-        .onAppear {        
+        .onAppear {
             resolveUserPermissions()
         }
-        .onReceive(canRequestFirstPushPermissions) { _ in
+        .onReceive(canRequestFirstPushPermissions) { _ in            
             requestUserPushPermissions()
         }
         .onReceive(userSessionUpdated) {

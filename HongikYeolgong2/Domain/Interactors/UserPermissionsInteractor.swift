@@ -31,6 +31,7 @@ extension Permission {
 protocol UserPermissionsInteractor: AnyObject {
     func resolveStatus(for permission: Permission)
     func request(permission: Permission)
+    func handleNotificationPermissions()
 }
 
 final class RealUserPermissionsInteractor: UserPermissionsInteractor {
@@ -42,12 +43,19 @@ final class RealUserPermissionsInteractor: UserPermissionsInteractor {
         self.openAppSetting = openAppSetting
     }
     
+    func handleNotificationPermissions() {
+        if appState.value.permissions.push == .granted {
+            appState[\.userData.isOnAlarm].toggle()
+        } else {
+            request(permission: .localNotifications)
+        }
+    }
+    
     ///  특정 권한 상태를 확인하고 앱 상태를 업데이트 합니다.
     /// - Parameter permission: 확인할 권한 종류
     func resolveStatus(for permission: Permission) {
         let keyPath = AppState.permissionKeyPath(for: .localNotifications)
         let currentStatus = appState[keyPath]
-        guard currentStatus == .unknown else { return }
         let onResolve: (Permission.Status) -> Void = { [weak appState] status in
             appState?[keyPath] = status
         }
@@ -102,6 +110,7 @@ private extension RealUserPermissionsInteractor {
         center.requestAuthorization(options: [.alert, .sound]) { (isGranted, error) in
             DispatchQueue.main.async {
                 self.appState[\.permissions.push] = isGranted ? .granted : .denied
+                self.appState[\.userData.isOnAlarm] = isGranted ? true : false
             }
         }
     }
