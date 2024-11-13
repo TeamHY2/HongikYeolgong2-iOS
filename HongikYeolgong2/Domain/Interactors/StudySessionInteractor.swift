@@ -14,6 +14,7 @@ protocol StudySessionInteractor {
     func pauseStudy()
     func resumeStudy()
     func addTime()
+    func uploadStudySession(startTime: Date, endTime: Date)
     func setStartTime(_ startTime: Date)
 }
 
@@ -23,7 +24,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-    private let addedTime: TimeInterval = .init(minutes: 1)
+    private let addedTime: TimeInterval = .init(minutes: 31)
     
     private var lastTime: Date?
     private var subscription: AnyCancellable?
@@ -73,12 +74,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         let startTime: Date = appState.value.studySession.startTime
         let endTime: Date = .now
         
-        studySessionRepository
-            .uploadStudyRecord(startTime: startTime, endTime: endTime)
-            .sink { _ in
-            } receiveValue: { _ in
-            }
-            .store(in: cancleBag)
+        uploadStudySession(startTime: startTime, endTime: endTime)
     }
     
     /// 스터디 일시중지
@@ -102,7 +98,13 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     /// 열람실 이용시간을 연장합니다.
     func addTime() {
+        let startTime: Date = appState.value.studySession.startTime
+        let endTime: Date = .now
+        
+        uploadStudySession(startTime: startTime, endTime: endTime)
+        
         appState.bulkUpdate { appState in
+            appState.studySession.startTime = .now
             appState.studySession.endTime += addedTime
             appState.studySession.remainingTime += addedTime
         }
@@ -113,11 +115,27 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         registerNotification(for: .extensionAvailable, endTimeInMinute: remainingTime)
         registerNotification(for: .urgent, endTimeInMinute: remainingTime)
     }
+        
+    /// 서버에 스터디세션을 업로드 합니다.
+    /// - Parameters:
+    ///   - startTime: 시작시간
+    ///   - endTime: 종료시간
+    func uploadStudySession(startTime: Date, endTime: Date) {
+        studySessionRepository
+            .uploadStudyRecord(startTime: startTime, endTime: endTime)
+            .sink { _ in
+            } receiveValue: { _ in
+            }
+            .store(in: cancleBag)
+    }
     
     /// 열람실 이용 시작시간을 설정합니다.
     /// - Parameter startTime: 시작시간
     func setStartTime(_ startTime: Date) {
-        appState[\.studySession.startTime] = startTime
+        appState.bulkUpdate { appState in
+            appState.studySession.startTime = startTime
+            appState.studySession.firstStartTime = startTime
+        }
     }
     
     /// 열람실 이용종료 Notification을 등록합니다.
