@@ -14,9 +14,9 @@ enum StudyNotificationType {
     var timeOffset: TimeInterval {
         switch self {
         case .extensionAvailable:
-            return .init(seconds: 30)
+            return .init(minutes: 30)
         case .urgent:
-            return  .init(seconds: 10)
+            return  .init(minutes: 10)
         }
     }
     
