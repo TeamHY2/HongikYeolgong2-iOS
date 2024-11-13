@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isOnAlarm = false
-    @Environment(\.injected) var injected: DIContainer
+    
+    @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
+    @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
+    
     @State private var userProfile = UserProfile()
-    
-    
+    @State private var isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
     @State private var shouldShowWithdrawModal = false
     @State private var shouldShowLogoutModal = false
     @State private var shouldShowNotice = false
     @State private var shouldShowQna = false
+    @State private var isFirstAppear = true
     
     var body: some View {
         VStack(alignment:.leading, spacing: 0) {
@@ -39,7 +41,7 @@ struct SettingView: View {
                         .resizable()
                         .frame(width: 55.adjustToScreenWidth, height: 55.adjustToScreenHeight)
                         .padding(.trailing, 19)
-                        
+                    
                     Text(userProfile.nickname)
                         .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                         .padding(.trailing, 8)
@@ -69,20 +71,26 @@ struct SettingView: View {
                 })
                 .padding(.bottom, 20.adjustToScreenHeight)
                 
-                MenuItem(title: "열람실 종료 시간 알림", onTap: {
-                    shouldShowQna.toggle()
-                }, content: {
-                    Toggle("", isOn: $isOnAlarm)
-                        .toggleStyle(SwitchToggleStyle(tint: Color.blue100))
+                MenuItem(title: "열람실 종료 시간 알림",
+                         content: {
+                    Toggle("", isOn: Binding(get: {
+                        isOnAlarm
+                    }, set: { _ in
+                        userPermissionsInteractor.handleNotificationPermissions()
+                    }))
+                    .toggleStyle(SwitchToggleStyle(tint: Color.blue100))
+                    .fixedSize()
+                    .padding(.trailing, 3)
                 })
                 .padding(.bottom, 10.adjustToScreenHeight)
                 
-                HStack(spacing: 0) {
+                HStack(spacing: 6.adjustToScreenWidth) {
                     Image(.icInformation)
-                        .padding(.trailing, 6.adjustToScreenWidth)
                         .foregroundStyle(.gray300)
+                    
                     Text("열람실 종료 10분, 30분 전에 알림을 보내 연장을 돕습니다.")
-                        .font(.pretendard(size: 12, weight: .regular), lineHeight: 18.adjustToScreenHeight)
+                        .font(.pretendard(size: 12, weight: .regular),
+                              lineHeight: 18.adjustToScreenHeight)
                         .foregroundStyle(.gray300)
                 }
             }
@@ -130,13 +138,19 @@ struct SettingView: View {
                       confirmButtonText: "돌아가기",
                       cancleButtonText: "로그아웃하기",
                       confirmAction: {},
-                      cancleAction: { injected.interactors.userDataInteractor.logout() }
+                      cancleAction: { userDataInteractor.logout() }
             )
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
         .onAppear {
             userDataInteractor.getUserProfile(userProfile: $userProfile)
+        }
+        .onReceive(appState.updates(for: \.userData.isOnAlarm)) {
+            isOnAlarm = $0
+        }
+        .onReceive(appState.updates(for: \.system.scenePhase).filter { $0 == .active }) { _ in
+            userPermissionsInteractor.resolveStatus(for: .localNotifications)
         }
     }
 }
