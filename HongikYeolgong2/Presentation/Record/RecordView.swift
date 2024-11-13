@@ -14,7 +14,7 @@ struct RecordView: View {
     var body: some View {
         VStack(spacing: 13.adjustToScreenHeight) {
             
-            CaledarView()
+            CaledarView()                
             
             Spacer()
             // 기록 정보 출력부분
