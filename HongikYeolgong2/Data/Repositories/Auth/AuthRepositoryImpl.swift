@@ -18,7 +18,9 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
+                    promise(.success(response.data))
                 } catch let error as NetworkError {
+                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
@@ -96,7 +98,6 @@ final class AuthRepositoryImpl: AuthRepository {
                     let response: BaseResponse<UserProfile> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUserProfile)
                     promise(.success(response.data))
                 } catch let error as NetworkError {
-                    
                     promise(.failure(error))
                 }
             }
@@ -108,7 +109,6 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<WithdrawResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.withdraw)
-                    
                     promise(.success(()))
                 } catch let error as NetworkError {
                     
