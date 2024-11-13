@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol StudyTimeInteractor {
-    func getStudyTime(StudyTime: Binding<StudyTime>)
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>)
 }
 
 final class StudyTimeInteractorImpl: StudyTimeInteractor {
@@ -19,12 +19,22 @@ final class StudyTimeInteractorImpl: StudyTimeInteractor {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getStudyTime(StudyTime: Binding<StudyTime>) {
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>) {
+        // 로딩상태로 수정
+        StudyTime.wrappedValue.setLoading()
         studySessionRepository
             .getStudyTime()
-            .sink { _ in
+            .sink { completion in
+                switch completion {
+                    case .failure(let error):
+                        // 에러 처리
+                        StudyTime.wrappedValue.setError(error: error)
+                    case .finished:
+                        break
+                }
             } receiveValue: {
-                StudyTime.wrappedValue = $0
+                // 데이터 전달 및 상태 변경
+                StudyTime.wrappedValue.setSuccess(value: $0)
             }
             .store(in: cancleBag)
 

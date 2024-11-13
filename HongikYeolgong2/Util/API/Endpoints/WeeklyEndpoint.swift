@@ -42,7 +42,7 @@ extension WeeklyEndpoint {
             "/study/count-all"
 
         case .getStudyTime:
-            "/study/duration"
+            "/study/durationㅇ"
 
         default:
             "/study"
