@@ -1,8 +1,14 @@
+//
+//  SettingView.swift
+//  HongikYeolgong2
+//
+//  Created by 권석기 on 11/13/24.
+//
 
 import SwiftUI
 
 struct SettingView: View {
-    @State private var isOnAlarm = true
+    @State private var isOnAlarm = false
     @Environment(\.injected) var injected: DIContainer
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @State private var userProfile = UserProfile()
@@ -14,7 +20,7 @@ struct SettingView: View {
     @State private var shouldShowQna = false
     
     var body: some View {
-        VStack(alignment:.leading, spacing: 0){
+        VStack(alignment:.leading, spacing: 0) {
             NavigationLink("",
                            destination: WebViewWithNavigation(url: SecretKeys.noticeUrl, title: "공지사항")
                 .edgesIgnoringSafeArea(.bottom),
@@ -49,63 +55,26 @@ struct SettingView: View {
                 .padding(.top, 32.adjustToScreenHeight)
                 .padding(.bottom, 20.adjustToScreenHeight)
                 
-                Button(action: {
+                MenuItem(title: "공지사항", onTap: {
                     shouldShowNotice.toggle()
-                }
-                       , label: {
-                    Text("공지사항")
-                        .font(.pretendard(size: 16, weight: .regular))
-                        .foregroundStyle(Color.gray200)
-                        .minimumScaleFactor(0.2)
-                        .frame(maxWidth: .infinity,
-                               minHeight: 52.adjustToScreenHeight, alignment: .leading)
-                        .padding(.leading, 16.adjustToScreenWidth)
-                    
+                }, content: {
                     Image(.arrowRight)
-                        .padding(.trailing, 11)
                 })
-                .background(Color.gray800)
-                .cornerRadius(8)
                 .padding(.bottom, 20.adjustToScreenHeight)
                 
-                Button(action: {
+                MenuItem(title: "문의사항", onTap: {
                     shouldShowQna.toggle()
-                }
-                       , label: {
-                    Text("문의사항")
-                        .font(.pretendard(size: 16, weight: .regular))
-                        .foregroundStyle(Color.gray200)
-                        .minimumScaleFactor(0.2)
-                        .frame(maxWidth: .infinity,
-                               minHeight: 52.adjustToScreenHeight, alignment: .leading)
-                        .padding(.leading, 16.adjustToScreenWidth)
-                    
+                }, content: {
                     Image(.arrowRight)
-                        .padding(.trailing, 11)
                 })
-                .background(Color.gray800)
-                .cornerRadius(8)
                 .padding(.bottom, 20.adjustToScreenHeight)
                 
-                HStack(spacing: 0) {
-                    Text("열람실 종료 시간 알림")
-                        .font(.pretendard(size: 16, weight: .regular))
-                        .foregroundStyle(Color.gray200)
-                        .minimumScaleFactor(0.2)
-                        .frame(maxWidth: .infinity,
-                               minHeight: 52.adjustToScreenHeight, alignment: .leading)
-                        .padding(.leading, 16.adjustToScreenWidth)
-                    
-                    Toggle("", isOn: Binding(
-                        get: { isOnAlarm },
-                        set: {
-                            isOnAlarm = $0
-                        }
-                    ))
-                    .toggleStyle(ColoredToggleStyle(onColor:Color.blue100))
-                }
-                .background(Color.gray800)
-                .cornerRadius(8)
+                MenuItem(title: "열람실 종료 시간 알림", onTap: {
+                    shouldShowQna.toggle()
+                }, content: {
+                    Toggle("", isOn: $isOnAlarm)
+                        .toggleStyle(SwitchToggleStyle(tint: Color.blue100))
+                })
                 .padding(.bottom, 10.adjustToScreenHeight)
                 
                 HStack(spacing: 0) {
@@ -171,39 +140,3 @@ struct SettingView: View {
         }
     }
 }
-
-struct ColoredToggleStyle: ToggleStyle {
-    var label = ""
-    var onColor = Color.green
-    var offColor = Color.gray200
-    var thumbColor = Color.white
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-        HStack {
-            Text(label)
-            Spacer()
-            Button(action: { configuration.isOn.toggle() } )
-            {
-                RoundedRectangle(cornerRadius: 16, style: .circular)
-                    .fill(configuration.isOn ? onColor : offColor)
-                    .frame(width: 50, height: 29)
-                    .overlay(
-                        Circle()
-                            .fill(thumbColor)
-                            .shadow(radius: 1, x: 0, y: 1)
-                            .padding(1.5)
-                            .offset(x: configuration.isOn ? 10 : -10))
-                    .onChange(of: configuration.isOn) { _ in
-                        withAnimation(.easeInOut(duration: 0.25)) {
-                        }
-                    }
-            }
-        }
-        .font(.title)
-        .padding(.horizontal)
-    }
-}
-
-//#Preview {
-//    SettingView()
-//}
