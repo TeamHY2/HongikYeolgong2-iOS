@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecordView: View {
     @Environment(\.injected.interactors.studyTimeInteractor) var studyTimeInteractor
-    @State private var studyTime: Loadable<StudyTime> = .idle
+    @State private var studyTime: Loadable<StudyTime> = .notRequest
     
     var body: some View {
         NetworkStateView(

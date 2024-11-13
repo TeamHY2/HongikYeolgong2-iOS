@@ -11,8 +11,7 @@ import SwiftUI
 typealias LoadableSubject<Value> = Binding<Loadable<Value>>
 
 enum Loadable<T> {
-
-    case idle
+    case notRequest
     case loading
     case success(T)
     case error(NetworkError)
@@ -27,7 +26,6 @@ enum Loadable<T> {
     mutating func setLoading() {
         self = .loading
     }
-    
     
     mutating func setSuccess(value: T) {
         self = .success(value)
