@@ -73,7 +73,8 @@ struct TimePickerView: View {
                 .cornerRadius(8)
                 
                 Button(action: {
-                    onTimeSelected?()                    
+                    onTimeSelected?()      
+                    presentationMode.wrappedValue.dismiss()
                 }, label: {
                     Text("확인")
                         .font(.pretendard(size: 16, weight: .bold),

@@ -21,9 +21,15 @@ struct HomeView: View {
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
+    @State private var shouldShowWebView = false
     
     var body: some View {
         VStack {
+            NavigationLink("",
+                           destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
+                .edgesIgnoringSafeArea(.bottom),
+                           isActive: $shouldShowWebView)
+            
             WeeklyStudyView(studyRecords: studyRecords)
             
             StudyContentControllerView(
@@ -36,10 +42,10 @@ struct HomeView: View {
             ActionButtonControllerView(
                 studySession: $studySession,
                 actions: .init(
-                    endButtonTapped: { shouldShowEndUseModal = true },
-                    startButtonTapped: { shouldShowTimePicker = true },
-                    seatButtonTapped: {},
-                    addButtonTapped: { shouldShowAddTimeModal = true }
+                    endButtonTapped: { shouldShowEndUseModal.toggle() },
+                    startButtonTapped: { shouldShowTimePicker.toggle() },
+                    seatButtonTapped: { shouldShowWebView.toggle() },
+                    addButtonTapped: { shouldShowAddTimeModal.toggle() }
                 )
             )
         }
@@ -49,43 +55,43 @@ struct HomeView: View {
                     get: { appState.value.studySession.startTime },
                     set: { studySessionInteractor.setStartTime($0) }
                 ),
-                onTimeSelected: {
-                    studySessionInteractor.startStudy()
-                    shouldShowTimePicker = false
-                }
+                onTimeSelected: { studySessionInteractor.startStudy() }
             )
         }
         .systemOverlay(isPresented: $shouldShowAddTimeModal) {
-            ModalView(title: "열람실 이용 시간을 연장할까요?",
+            ModalView(isPresented: $shouldShowAddTimeModal,
+                      title: "열람실 이용 시간을 연장할까요?",
                       confirmButtonText: "연장하기",
                       cancleButtonText: "아니오",
-                      confirmAction: {
-                studySessionInteractor.addTime()
-                shouldShowAddTimeModal = false
-            },
-                      cancleAction: { shouldShowAddTimeModal = false })
+                      confirmAction: { studySessionInteractor.addTime() })
         }
         .systemOverlay(isPresented: $shouldShowEndUseModal) {
-            ModalView(title: "열람실을 다 이용하셨나요?",
+            ModalView(isPresented: $shouldShowEndUseModal,
+                      title: "열람실을 다 이용하셨나요?",
                       confirmButtonText: "네",
                       cancleButtonText: "더 이용하기",
-                      confirmAction: {
-                studySessionInteractor.endStudy()
-                shouldShowEndUseModal = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-                }
-            },
-                      cancleAction: { shouldShowEndUseModal = false })
+                      confirmAction: { studySessionInteractor.endStudy()})
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
         .onAppear {
-            permissions.request(permission: .localNotifications)
             weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
         }
-        .onReceive(studySessionUpdated) { studySession = $0 }
+        .onReceive(studySessionUpdated) {
+            studySession = $0
+        }
+        .onReceive(studySessionEnded) { _ in
+            studySessionInteractor.endStudy()
+        }
+        .onReceive(studySessionUploaded) { _ in
+            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+        }
+        .onReceive(scenePhaseUpdated) {
+            $0 == .active
+            ? studySessionInteractor.resumeStudy()
+            : studySessionInteractor.pauseStudy()
+        }
     }
 }
 
@@ -93,7 +99,32 @@ struct HomeView: View {
 extension HomeView {
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
         appState.updates(for: \.studySession)
+            .eraseToAnyPublisher()
     }
+    
+    var studySessionEnded: AnyPublisher<TimeInterval, Never> {
+        appState.updates(for: \.studySession.remainingTime)
+            .dropFirst()
+            .filter { $0 <= 0 }
+            .eraseToAnyPublisher()
+    }
+    
+    var scenePhaseUpdated: AnyPublisher<ScenePhase, Never> {
+        appState.updates(for: \.system.scenePhase)
+            .dropFirst()
+            .filter { $0 != .inactive && studySession.isStudying }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }
+    
+    var studySessionUploaded: AnyPublisher<Void, Never> {
+        appState.updates(for: \.studySession.isStudying)
+            .dropFirst()
+            .filter { !$0 }
+            .delay(for: 1, scheduler: RunLoop.main)
+            .map { _ in }
+            .eraseToAnyPublisher()
+    }        
 }
 
 // MARK: - StudyContentControllerView
@@ -160,7 +191,7 @@ struct ActionButtonControllerView: View {
                     ActionButton(
                         width: 69.adjustToScreenWidth,
                         backgroundColor: .clear,
-                        action: {}
+                        action: { actions.seatButtonTapped() }
                     )
                     .modifier(ImageBackground(imageName: .seatButton))
                     

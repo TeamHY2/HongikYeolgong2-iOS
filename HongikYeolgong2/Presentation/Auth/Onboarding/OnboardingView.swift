@@ -15,82 +15,28 @@ struct OnboardingView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationView {
-            content
-                .onReceive(routingUpdate) { routingState = $0 }
+        NavigationStack {
+            VStack {
+                Spacer()
+                OnboardingPageView(tabIndex: $tabIndex)
+                                
+                AppleLoginButton(
+                    onRequest: onRequestAppleLogin,
+                    onCompletion: onCompleteAppleLogin
+                )
+                
+                NavigationLink(
+                    destination: SignUpView(),
+                    isActive: routingBinding.signUp
+                ) {
+                    EmptyView()
+                }
+                .opacity(0)
+                .frame(width: 0, height: 0)
+            }
+            .onReceive(routingUpdate) { routingState = $0 }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    // MARK: - Main Contents
-    private var content: some View {
-        VStack {
-            Spacer()
-            onboardingPageView
-            pageIndicator
-            appleLoginButton
-            hiddenNavigationLink
-        }
-    }
-    
-    // MARK: - UI Components
-    private var onboardingPageView: some View {
-        TabView(selection: $tabIndex) {
-            Image(.onboarding01)
-                .tag(0)
-            Image(.onboarding02)
-                .tag(1)
-            Image(.onboarding03)
-                .tag(2)
-        }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-    }
-    
-    private var pageIndicator: some View {
-        HStack(spacing: 16.adjustToScreenWidth) {
-            ForEach(0..<3, id: \.self) { index in
-                indicatorDot(for: index)
-            }
-        }
-    }
-    
-    private func indicatorDot(for index: Int) -> some View {
-        Group {
-            if index == tabIndex {
-                Image(.shineCount02)
-                    .frame(width: 9, height: 9)
-            } else {
-                Circle()
-                    .frame(width: 9, height: 9)
-                    .foregroundColor(.gray600)
-            }
-        }
-    }
-    
-    private var appleLoginButton: some View {
-        Button(action: {}) {
-            Image(.snsLogin)
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: 52)
-        }
-        .padding(.horizontal, 32.adjustToScreenWidth)
-        .padding(.top, 32.adjustToScreenHeight)
-        .padding(.bottom, 20.adjustToScreenHeight)
-        .overlay(
-            SignInWithAppleButton(
-                onRequest: onRequestAppleLogin,
-                onCompletion: onCompleteAppleLogin
-            )
-            .blendMode(.destinationOver)
-        )
-    }
-    
-    private var hiddenNavigationLink: some View {
-        NavigationLink(destination: SignUpView(), isActive: routingBinding.signUp) {
-            EmptyView()
-        }
-        .opacity(0)
-        .frame(width: 0, height: 0)
     }
 }
 
@@ -123,3 +69,4 @@ extension OnboardingView {
         var signUp: Bool = false
     }
 }
+

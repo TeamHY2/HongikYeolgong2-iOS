@@ -9,7 +9,9 @@ import SwiftUI
 import Combine
 
 struct InitialView: View {
-    @Environment(\.injected) var injected: DIContainer
+    @Environment(\.injected.appState) var appState
+    @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
+    @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
     
     @State private var userSession: AppState.UserSession = .pending
     
@@ -23,22 +25,45 @@ struct InitialView: View {
             case .pending:
                 SplashView()
                     .ignoresSafeArea(.all)
-                    .onAppear(perform: appLaunchCompleted)
+                    .onAppear { checkUserSession() }
             }
         }
-        .onReceive(isAppLaunchStateUpdated) { userSession = $0 }
+        .onAppear {
+            resolveUserPermissions()
+        }
+        .onReceive(canRequestFirstPushPermissions) { _ in
+            requestUserPushPermissions()
+        }
+        .onReceive(userSessionUpdated) {
+            userSession = $0
+        }
     }
 }
 
 private extension InitialView {
-    var isAppLaunchStateUpdated: AnyPublisher<AppState.UserSession, Never> {
-        injected.appState.updates(for: \.userSession)
+    var userSessionUpdated: AnyPublisher<AppState.UserSession, Never> {
+        appState.updates(for: \.userSession)
+    }
+    
+    var canRequestFirstPushPermissions: AnyPublisher<Void, Never> {
+        appState.updates(for: \.permissions.push)
+            .filter { $0 == .notRequested }
+            .map { _ in }
+            .eraseToAnyPublisher()
     }
 }
 
 private extension InitialView {
-    func appLaunchCompleted() {        
-        injected.interactors.userDataInteractor.checkAuthentication()
+    func checkUserSession() {
+        userDataInteractor.checkAuthentication()
+    }
+    
+    func resolveUserPermissions() {
+        userPermissionsInteractor.resolveStatus(for: .localNotifications)
+    }
+    
+    func requestUserPushPermissions() {
+        userPermissionsInteractor.request(permission: .localNotifications)
     }
 }
 

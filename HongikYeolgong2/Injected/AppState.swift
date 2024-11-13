@@ -7,27 +7,18 @@
 
 import SwiftUI
 
-final class AppState: ObservableObject, Equatable {
-    @Published var userData = UserData()
-    @Published var userSession: UserSession = .pending
-    @Published var studySession = StudySession()
-    @Published var routing = ViewRouting()
-    @Published var system = System()
-    @Published var permissions = Permissions()
-}
-
-extension AppState {
-    static func == (lhs: AppState, rhs: AppState) -> Bool {
-        return lhs.userData == rhs.userData &&
-        lhs.routing == rhs.routing &&
-        lhs.system == rhs.system &&
-        lhs.permissions == rhs.permissions
-    }
+final class AppState {
+    var userData = UserData()
+    var userSession: UserSession = .pending
+    var studySession = StudySession()
+    var routing = ViewRouting()
+    var system = System()
+    var permissions = Permissions()
 }
 
 extension AppState {
     /// 앱의 실행 상태를 나타냅니다.
-    enum UserSession {
+    enum UserSession: Equatable {
         case unauthenticated
         case authenticated
         case pending
@@ -68,7 +59,8 @@ extension AppState {
 
 extension AppState {
     struct System: Equatable {
-        var isKeyboardActive = false
+        var isKeyboardActive = false      
+        var scenePhase: ScenePhase = .active
     }
 }
 
@@ -86,5 +78,17 @@ extension AppState {
         case .localNotifications:
             return pathToPermissions.appending(path: \.push)
         }
+    }
+}
+
+extension AppState: Equatable {
+    static func == (lhs: AppState, rhs: AppState) -> Bool {
+        return lhs.userData == rhs.userData &&
+        lhs.routing == rhs.routing &&
+        lhs.system == rhs.system &&
+        lhs.permissions == rhs.permissions &&
+        lhs.userData == rhs.userData &&
+        lhs.userSession == rhs.userSession &&
+        lhs.studySession == rhs.studySession
     }
 }

@@ -17,6 +17,8 @@ protocol UserDataInteractor: AnyObject {
     func getUser()
     func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
+    func getUserProfile(userProfile: Binding<UserProfile>)
+    func withdraw()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -24,11 +26,11 @@ final class UserDataInteractorImpl: UserDataInteractor {
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>
     private let authRepository: AuthRepository
-    private let authService: AuthenticationService
+    private let authService: AppleLoginService
     
     init(appState: Store<AppState>,
          authRepository: AuthRepository,
-         authService: AuthenticationService) {
+         authService: AppleLoginService) {
         self.appState = appState
         self.authRepository = authRepository
         self.authService = authService
@@ -37,7 +39,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
-        guard let (email, idToken) = authService.requestAppleLogin(authorization) else {
+        guard let appleIDCredential = authService.requestAppleLogin(authorization),
+              let email = appleIDCredential.email,
+              let idTokenData = appleIDCredential.identityToken,
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
         
@@ -48,7 +53,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},
-                receiveValue: { [weak self] loginResDto in                    
+                receiveValue: { [weak self] loginResDto in
                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
@@ -112,7 +117,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 receiveCompletion: { [weak self] completion in
                     guard let self = self else { return }
                     switch completion {
-                    case .finished:                    
+                    case .finished:
                         appState[\.userSession] = .authenticated
                     case .failure(_):
                         appState[\.userSession] = .unauthenticated
@@ -145,5 +150,19 @@ final class UserDataInteractorImpl: UserDataInteractor {
                 }
             })
             .store(in: cancleBag)
+    }
+    
+    func getUserProfile(userProfile: Binding<UserProfile>) {
+        authRepository
+            .getUserProfile()
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) {
+                userProfile.wrappedValue = $0
+            }
+            .store(in: cancleBag)
+    }
+    
+    func withdraw() {
+        
     }
 }
