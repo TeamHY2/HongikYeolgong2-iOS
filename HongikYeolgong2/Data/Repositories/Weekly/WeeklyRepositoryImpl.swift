@@ -15,7 +15,6 @@ final class WeeklyRepositoryImpl: WeeklyRepository {
                     let response: BaseResponse<WeekFieldResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeekField(date: date))
                     promise(.success(response.data.weekNumber))
                 } catch let error as NetworkError {
-                    print(error.message)
                     promise(.failure(error))
                 }
             }

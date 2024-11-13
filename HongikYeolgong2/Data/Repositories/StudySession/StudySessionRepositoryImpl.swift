@@ -43,7 +43,6 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
                     let response: BaseResponse<WiseSaying> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWiseSaying)
                     promise(.success(response.data))
                 } catch let error as NetworkError {
-                    print(error.message)
                     promise(.failure(error))
                 }
             }
@@ -57,7 +56,7 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
                     let response: BaseResponse<WeeklyRankingResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getWeeklyRanking(yearWeek: weekNumber))
                     promise(.success(response.data.toEntity()))
                 } catch let error as NetworkError {
-                    print(error.message)
+                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
@@ -71,7 +70,7 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
                     let response: BaseResponse<StudyTimeResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getStudyTime)
                     promise(.success(response.data.toEntity()))
                 } catch let error as NetworkError {
-                    print(error.message)
+                    promise(.failure(error))
                 }
             }
         }.eraseToAnyPublisher()
