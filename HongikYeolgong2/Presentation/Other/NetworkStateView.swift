@@ -40,8 +40,16 @@ struct NetworkStateView<T, Content: View>: View {
             if isLoading {
                 LoadingView()
             } else if isError {
-                NetworkingErrorView()
+                NetworkingErrorView(retryAction: setNotRequest)
             }
+        }
+    }
+    
+    // 기본 이용할 수 있는 상태로 변경
+    func setNotRequest() {
+        // loadables 배열을 순회하며 각 Binding의 wrappedValue를 .notRequest로 설정
+        for index in loadables.indices {
+            loadables[index].wrappedValue = .notRequest
         }
     }
 }

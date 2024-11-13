@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NetworkingErrorView: View {
-    //@Binding var showAlert: Bool
+    let retryAction: () -> Void
     
     var body: some View {
         VStack(spacing: 16.adjustToScreenHeight) {
@@ -26,7 +26,7 @@ struct NetworkingErrorView: View {
             
             HStack(spacing: 12.adjustToScreenWidth) {
                 Button(action: {
-                    //showAlert = false
+                    exit(0)
                 }) {
                     Text("종료하기")
                         .foregroundColor(.gray200)
@@ -37,7 +37,8 @@ struct NetworkingErrorView: View {
                 }
                 
                 Button(action: {
-                    //showAlert = false
+                    // 다시 시도 함수
+                    retryAction()
                 }) {
                     Text("다시시도")
                         .foregroundColor(.white)
@@ -56,8 +57,4 @@ struct NetworkingErrorView: View {
         .shadow(radius: 10)
         .padding(.horizontal, 40)
     }
-}
-
-#Preview {
-    NetworkingErrorView()
 }
