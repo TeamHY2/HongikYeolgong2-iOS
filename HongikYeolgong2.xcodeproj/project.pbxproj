@@ -57,6 +57,7 @@
 		4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */; };
 		4780044E2CCAAE3200FFAF00 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780044D2CCAAE3200FFAF00 /* String+.swift */; };
 		478004502CCABEFF00FFAF00 /* WeeklyStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780044F2CCABEFF00FFAF00 /* WeeklyStudyRecord.swift */; };
+		478589FE2CE4973B0027ED32 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478589FD2CE4973B0027ED32 /* MenuItem.swift */; };
 		4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */; };
 		4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */; };
 		4786A1072CCA33DF008635A4 /* WeeklyEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */; };
@@ -229,6 +230,7 @@
 		4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		4780044D2CCAAE3200FFAF00 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		4780044F2CCABEFF00FFAF00 /* WeeklyStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyRecord.swift; sourceTree = "<group>"; };
+		478589FD2CE4973B0027ED32 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		4786A0EB2CC9E2BC008635A4 /* UserPermissionsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissionsInteractor.swift; sourceTree = "<group>"; };
 		4786A1042CCA3352008635A4 /* StudySessionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionInteractor.swift; sourceTree = "<group>"; };
 		4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyEndpoint.swift; sourceTree = "<group>"; };
@@ -511,6 +513,14 @@
 			path = Mapper;
 			sourceTree = "<group>";
 		};
+		478589FC2CE497100027ED32 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				478589FD2CE4973B0027ED32 /* MenuItem.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		4786A10A2CCA3496008635A4 /* StudySession */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +668,7 @@
 		47A147372CA1379A00A91F66 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				478589FC2CE497100027ED32 /* Component */,
 				475B86E22CA1AF40000534B2 /* SettingView.swift */,
 			);
 			path = Setting;
@@ -1259,6 +1270,7 @@
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
 				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
+				478589FE2CE4973B0027ED32 /* MenuItem.swift in Sources */,
 				47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
@@ -1463,7 +1475,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -1510,7 +1522,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
