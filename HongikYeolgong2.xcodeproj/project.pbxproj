@@ -161,6 +161,7 @@
 		98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */; };
 		98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953E2CE4BA3100278DBD /* Loadable.swift */; };
 		98EC95412CE4BAB600278DBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95402CE4BAB600278DBD /* LoadingView.swift */; };
+		98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95422CE4F9C600278DBD /* Publisher.swift */; };
 		98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -334,6 +335,7 @@
 		98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
 		98EC953E2CE4BA3100278DBD /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		98EC95402CE4BAB600278DBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		98EC95422CE4F9C600278DBD /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -916,6 +918,7 @@
 				473E8EB32CCE6827000F102C /* TimeInterval+.swift */,
 				473E8EB52CCE6A02000F102C /* Date+.swift */,
 				472319EC2CD1FC32009BA019 /* UIApplication+.swift */,
+				98EC95422CE4F9C600278DBD /* Publisher.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1226,6 +1229,7 @@
 				478004502CCABEFF00FFAF00 /* WeeklyStudyRecord.swift in Sources */,
 				98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
+				98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */,
 				98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */,
