@@ -28,7 +28,7 @@ struct InitialView: View {
                     .onAppear { checkUserSession() }
             }
         }
-        .onAppear {
+        .onAppear {        
             resolveUserPermissions()
         }
         .onReceive(canRequestFirstPushPermissions) { _ in

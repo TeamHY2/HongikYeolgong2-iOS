@@ -26,7 +26,7 @@ struct OnboardingPageView: View {
                 ForEach(0..<3, id: \.self) { index in
                     Group {
                         if index == tabIndex {
-                            Image(.shineCount02)
+                            Image(.shineOnboarding)
                                 .frame(width: 9, height: 9)
                         } else {
                             Circle()
