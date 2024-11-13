@@ -24,12 +24,7 @@ struct HomeView: View {
     @State private var shouldShowWebView = false
     
     var body: some View {
-        VStack {
-            NavigationLink("",
-                           destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
-                .edgesIgnoringSafeArea(.bottom),
-                           isActive: $shouldShowWebView)
-            
+        VStack(spacing: 0) {
             WeeklyStudyView(studyRecords: studyRecords)
             
             StudyContentControllerView(
@@ -48,6 +43,12 @@ struct HomeView: View {
                     addButtonTapped: { shouldShowAddTimeModal.toggle() }
                 )
             )
+            
+            NavigationLink("",
+                           destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
+                .edgesIgnoringSafeArea(.bottom),
+                           isActive: $shouldShowWebView)
+            .frame(width: 0, height: 0)
         }
         .systemOverlay(isPresented: $shouldShowTimePicker) {
             TimePickerView(
