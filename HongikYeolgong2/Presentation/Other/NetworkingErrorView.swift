@@ -12,12 +12,13 @@ struct NetworkingErrorView: View {
     
     var body: some View {
         VStack(spacing: 16.adjustToScreenHeight) {
-            Image(systemName: "exclamationmark.octagon.fill")
-                .font(.system(size: 48))
-                .foregroundColor(.blue100)
+            Image(.exclamationMark)
+                .resizable()
+                .frame(width: 50.adjustToScreenWidth, height: 50.adjustToScreenHeight)
             
-            Text("네트워크가 통신이 원할하지 않습니다.\n확인 후 다시 시도해주시기 바랍니다")
+            Text("네트워크가 연결되어 있지 않아.\n오류가 발생할 수 있습니다.")
                 .multilineTextAlignment(.center)
+                .font(.pretendard(size: 18, weight: .semibold))
                 .foregroundColor(.gray100)
                 .font(.body)
             
@@ -30,7 +31,8 @@ struct NetworkingErrorView: View {
                 }) {
                     Text("종료하기")
                         .foregroundColor(.gray200)
-                        .padding(.vertical, 10)
+                        .font(.pretendard(size: 16, weight: .bold))
+                        .padding(.vertical, 10.adjustToScreenHeight)
                         .frame(maxWidth: .infinity)
                         .background(.gray600)
                         .cornerRadius(8)
@@ -40,21 +42,22 @@ struct NetworkingErrorView: View {
                     // 다시 시도 함수
                     retryAction()
                 }) {
-                    Text("다시시도")
+                    Text("계속 이용하기")
                         .foregroundColor(.white)
-                        .padding(.horizontal)
-                        .padding(.vertical, 10)
+                        .font(.pretendard(size: 16, weight: .bold))
+                        .padding(.vertical, 10.adjustToScreenHeight)
                         .frame(maxWidth: .infinity)
                         .background(.blue100)
                         .cornerRadius(8)
                 }
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 24.adjustToScreenWidth)
         }
-        .padding()
+        .padding(.top,40.adjustToScreenHeight)
+        .padding(.bottom,30.adjustToScreenHeight)
         .background(.gray800)
-        .cornerRadius(16)
+        .cornerRadius(8)
         .shadow(radius: 10)
-        .padding(.horizontal, 40)
+        .padding(.horizontal, 30.adjustToScreenWidth)
     }
 }
