@@ -12,9 +12,9 @@ struct RecordView: View {
     @State var studyTime = StudyTime()
     
     var body: some View {
-        VStack(spacing: 13.adjustToScreenHeight) {
+        VStack(spacing: 0.adjustToScreenHeight) {
             
-            CaledarView()
+            CaledarView()                
             
             Spacer()
             // 기록 정보 출력부분
