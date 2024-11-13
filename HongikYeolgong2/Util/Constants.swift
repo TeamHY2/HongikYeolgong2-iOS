@@ -9,6 +9,13 @@ import Foundation
 
 struct SecretKeys {
     static let baseUrl = Bundle.main.infoDictionary?["BaseURL"] as? String ?? ""    
+    static let roomStatusUrl = Bundle.main.infoDictionary?["RoomStatusURL"] as? String ?? ""
+    static let noticeUrl = Bundle.main.infoDictionary?["NoticeURL"] as? String ?? ""
+    static let qnaUrl = Bundle.main.infoDictionary?["QnaURL"] as? String ?? ""
+    static let appleIDApiUrl = Bundle.main.infoDictionary?["AppleIdURL"] as? String ?? ""
+    static let bundleName = Bundle.main.bundleIdentifier ?? ""
+    static let teamID = Bundle.main.infoDictionary?["TeamID"] as? String ?? ""
+    static let serviceID = Bundle.main.infoDictionary?["ServiceID"] as? String ?? ""
 }
 
 

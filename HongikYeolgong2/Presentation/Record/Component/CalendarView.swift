@@ -27,13 +27,13 @@ struct CaledarView: View {
     private let calendar = Calendar.current
     
     
-    private let columns = [GridItem(.flexible()),
-                           GridItem(.flexible()),
-                           GridItem(.flexible()),
-                           GridItem(.flexible()),
-                           GridItem(.flexible()),
-                           GridItem(.flexible()),
-                           GridItem(.flexible())]
+    private let columns = [GridItem(.flexible(), spacing: 5.adjustToScreenWidth),
+                           GridItem(.flexible(),spacing: 5.adjustToScreenWidth),
+                           GridItem(.flexible(),spacing: 5.adjustToScreenWidth),
+                           GridItem(.flexible(),spacing: 5.adjustToScreenWidth),
+                           GridItem(.flexible(),spacing: 5.adjustToScreenWidth),
+                           GridItem(.flexible(),spacing: 5.adjustToScreenWidth),
+                           GridItem(.flexible(),spacing: 5.adjustToScreenWidth)]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -83,7 +83,7 @@ struct CaledarView: View {
             Spacer().frame(height: 8.adjustToScreenHeight)
             
 //             seleteMonth가 변경될때마다 makeMonth의 값을 받아서 currentMonth에 업데이트
-            LazyVGrid(columns: columns, spacing: 5.adjustToScreenWidth) {
+            LazyVGrid(columns: columns, spacing: 5.adjustToScreenHeight) {
                 ForEach(currentMonth, id: \.id) {
                     CalendarCell(dayInfo: $0)
                 }
@@ -94,6 +94,9 @@ struct CaledarView: View {
         .onAppear {
             calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)
             currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
+        }
+        .onChange(of: AllStudy) { newAllStudy in
+            currentMonth = makeMonth(date: seletedDate, roomUsageInfo: newAllStudy)
         }
     }
 }

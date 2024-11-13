@@ -16,12 +16,16 @@ struct ModalView: View {
     let confirmAction: (() -> Void)?
     let cancleAction: (() -> Void)?
     
-    init(title: String,
-         confirmButtonText: String,
-         cancleButtonText: String,
-         confirmAction: (() -> Void)?,
-         cancleAction: (() -> Void)? = nil) {
+    @Binding var isPresented: Bool
+    
+     init(isPresented: Binding<Bool>,
+          title: String,
+          confirmButtonText: String,
+          cancleButtonText: String,
+          confirmAction: (() -> Void)?,
+          cancleAction: (() -> Void)? = nil) {
         self.confirmButtonText = confirmButtonText
+        self._isPresented = isPresented
         self.cancleButtonText = cancleButtonText
         self.title = title
         self.confirmAction = confirmAction
@@ -29,10 +33,12 @@ struct ModalView: View {
         
     }
     
-    init(title: String,
+    init(isPresented: Binding<Bool>,
+         title: String,
          confirmAction: (() -> Void)?,
          cancleAction: (() -> Void)? = nil) {
         self.title = title
+        self._isPresented = isPresented
         self.confirmAction = confirmAction
         self.cancleAction = cancleAction
     }
@@ -52,6 +58,7 @@ struct ModalView: View {
             HStack {
                 Button(action: {
                     cancleAction?()
+                    isPresented = false
                 }) {
                     Text(cancleButtonText)
                         .font(.pretendard(size: 16, weight: .semibold))
@@ -65,6 +72,7 @@ struct ModalView: View {
                 
                 Button(action: {
                     confirmAction?()
+                    isPresented = false
                 }) {
                     Text(confirmButtonText)
                         .font(.pretendard(size: 16, weight: .semibold))

@@ -14,15 +14,18 @@ struct WeeklyStudyCell: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(dayOfWeek.koreanString)
-                .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
+                .font(.pretendard(size: 12, weight: .regular), lineHeight: 18.adjustToScreenHeight)
                 .foregroundStyle(textColor)
             
-            Image(studyRecord.imageName)
-                .padding(.top, 8)
-                .padding(.bottom, 2)
+            VStack {
+                Image(studyRecord.imageName)                    
+            }
+            .frame(height: 28.adjustToScreenHeight)
+            .padding(.top, 8.adjustToScreenHeight)
+            .padding(.bottom, 2.adjustToScreenHeight)
             
             Text(studyRecord.monthOfDay)
-                .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
+                .font(.pretendard(size: 12, weight: .regular), lineHeight: 18.adjustToScreenHeight)
                 .foregroundStyle(textColor)
         }
     }

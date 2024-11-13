@@ -33,14 +33,7 @@ struct RecordCell: View {
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)
-                .stroke(
-                    LinearGradient(
-                        gradient: Gradient(colors: [.gray400, .gray600]),
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ),
-                    lineWidth: 1
-                )
+                .stroke(.gray600, lineWidth: 1)
         )
     }
 }

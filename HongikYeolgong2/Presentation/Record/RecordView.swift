@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct RecordView: View {
-    @Environment(\.injected.interactors.studyTimeInteractor) var studyTimeInteractor
-    
+    @Environment(\.injected.interactors.studyTimeInteractor) var studyTimeInteractor    
     @State var studyTime = StudyTime()
     
     var body: some View {
         VStack(spacing: 13.adjustToScreenHeight) {
+            
             CaledarView()
+            
             Spacer()
             // 기록 정보 출력부분
             HStack(spacing: 13.adjustToScreenWidth) {
@@ -34,8 +35,9 @@ struct RecordView: View {
                            minutes: studyTime.dayMinutes)
             }
         }
+        .modifier(IOSBackground())
         .padding(.horizontal, 32.adjustToScreenWidth)
-        .padding(.top, 33.adjustToScreenHeight)
+        .padding(.top, 32.adjustToScreenHeight)
         .padding(.bottom, 36.adjustToScreenHeight)
         .onAppear {
             // 이용 시간 가져오기
@@ -44,6 +46,6 @@ struct RecordView: View {
     }
 }
 
-#Preview {
-    RecordView()
-}
+//#Preview {
+//    RecordView()
+//}

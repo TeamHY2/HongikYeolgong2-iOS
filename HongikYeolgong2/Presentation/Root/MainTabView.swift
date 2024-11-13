@@ -45,24 +45,26 @@ struct MainTabView: View {
     @State private var currentTab: Tab = .home
     
     var body: some View {
-        TabView(selection: $currentTab,
-                content:  {
-            HomeView()
-                .tag(Tab.home)
-            
-            RecordView()
-                .tag(Tab.record)
-            
-            RankingView()
-                .tag(Tab.ranking)
-            
-            SettingView()
-                .tag(Tab.setting)
-        })
-        .overlay(alignment: .bottom) {
-            TabBarView(currentTab: $currentTab)
+        NavigationStack {
+            TabView(selection: $currentTab,
+                    content:  {
+                HomeView()
+                    .tag(Tab.home)
+                
+                RecordView()
+                    .tag(Tab.record)
+                
+                RankingView()
+                    .tag(Tab.ranking)
+                
+                SettingView()
+                    .tag(Tab.setting)
+            })
+            .overlay(alignment: .bottom) {
+                TabBarView(currentTab: $currentTab)
+            }
+            .edgesIgnoringSafeArea(.bottom)
         }
-        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
