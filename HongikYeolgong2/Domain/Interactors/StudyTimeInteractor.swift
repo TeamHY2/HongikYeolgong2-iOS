@@ -20,8 +20,6 @@ final class StudyTimeInteractorImpl: StudyTimeInteractor {
     }
     
     func getStudyTime(StudyTime: LoadableSubject<StudyTime>) {
-        // 로딩상태로 수정
-        StudyTime.wrappedValue.setLoading()
         studySessionRepository
             .getStudyTime()
             .sinkToLoadable(StudyTime, cancelBag: cancleBag)
