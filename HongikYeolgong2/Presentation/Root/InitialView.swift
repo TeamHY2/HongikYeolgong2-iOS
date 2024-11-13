@@ -29,9 +29,10 @@ struct InitialView: View {
             }
         }
         .onAppear {
+            KeyChainManager.deleteItem(key: .accessToken)
             resolveUserPermissions()
         }
-        .onReceive(canRequestFirstPushPermissions) { _ in            
+        .onReceive(canRequestFirstPushPermissions) { _ in
             requestUserPushPermissions()
         }
         .onReceive(userSessionUpdated) {
