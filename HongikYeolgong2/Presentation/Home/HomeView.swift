@@ -137,7 +137,7 @@ struct StudyContentControllerView: View {
             if studySession.isStudying {
                 VStack(spacing: 32.adjustToScreenHeight) {
                     StudyPeriodView(
-                        startTime: studySession.startTime,
+                        startTime: studySession.firstStartTime,
                         endTime: studySession.endTime
                     )
                     StudyTimerView(
