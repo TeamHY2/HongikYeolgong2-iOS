@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ActionButton: View {
+struct BaseButton: View {
    // MARK: - Properties
    let title: String
    let font: UIFont

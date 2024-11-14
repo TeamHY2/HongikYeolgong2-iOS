@@ -173,14 +173,14 @@ struct ActionButtonControllerView: View {
             if studySession.isStudying {
                 VStack(spacing: 12.adjustToScreenWidth) {
                     if studySession.isAddTime {
-                        ActionButton(
+                        BaseButton(
                             title: "열람실 이용 연장",
                             backgroundColor: .blue100,
                             radius: 4,
                             action: { actions.addButtonTapped() }
                         )
                     }
-                    ActionButton(
+                    BaseButton(
                         title: "열람실 이용 종료",
                         backgroundColor: .gray600,
                         radius: 4,
@@ -189,14 +189,14 @@ struct ActionButtonControllerView: View {
                 }
             } else {
                 HStack(spacing: 12.adjustToScreenWidth) {
-                    ActionButton(
+                    BaseButton(
                         width: 69.adjustToScreenWidth,
                         backgroundColor: .clear,
                         action: { actions.seatButtonTapped() }
                     )
                     .modifier(ImageBackground(imageName: .seatButton))
                     
-                    ActionButton(
+                    BaseButton(
                         backgroundColor: .clear,
                         action: { actions.startButtonTapped() }
                     )

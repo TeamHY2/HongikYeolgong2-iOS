@@ -16,32 +16,32 @@ struct InitialView: View {
     @State private var userSession: AppState.UserSession = .pending
     
     var body: some View {
-        Group {
-            switch userSession {
-            case .unauthenticated:
-                OnboardingView()
-            case .authenticated:
-                MainTabView()
-                    .onAppear {
-                        userDataInteractor.getUserProfile()
-                    }
-            case .pending:
-                SplashView()
-                    .ignoresSafeArea(.all)
-                    .onAppear {
-                        checkUserSession()
-                    }
-            }
-        }
-        .onAppear {                                  
-            resolveUserPermissions()
-        }
-        .onReceive(canRequestFirstPushPermissions) { _ in
-            requestUserPushPermissions()
-        }
-        .onReceive(userSessionUpdated) {
-            userSession = $0
-        }
+//        Group {
+//            switch userSession {
+//            case .unauthenticated:
+//                OnboardingView()
+//            case .authenticated:
+//                MainTabView()
+//                    .onAppear {
+//                        userDataInteractor.getUserProfile()
+//                    }
+//            case .pending:
+//                SplashView()                    
+//                    .onAppear {
+//                        checkUserSession()
+//                    }
+//            }
+//        }
+//        .onAppear {                                  
+//            resolveUserPermissions()
+//        }
+//        .onReceive(canRequestFirstPushPermissions) { _ in
+//            requestUserPushPermissions()
+//        }
+//        .onReceive(userSessionUpdated) {
+//            userSession = $0
+//        }
+        SignUpView()
     }
 }
 
