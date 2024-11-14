@@ -126,7 +126,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 receiveValue: { [weak self] signUpResDto in
                     guard let self = self else { return }
                     appState[\.userSession] = .authenticated
-                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
+                    appState[\.routing.onboarding.signUp] = false
+                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)                    
                 }
             )
             .store(in: cancleBag)
