@@ -15,7 +15,7 @@ final class SocialLoginRepositoryImpl: SocialLoginRepository {
                     let _ = try await NetworkService.shared.plainRequest(endpoint: ASAuthEndpoint.requestRevoke(asRevokeTokenRequestDto))
                     promise(.success(()))
                 }
-                catch let error as NetworkError {
+                catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }

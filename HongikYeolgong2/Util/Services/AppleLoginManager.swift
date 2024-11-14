@@ -28,7 +28,7 @@ final class AppleLoginManager: NSObject, AppleLoginService, ASAuthorizationContr
         guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential else {
             return nil
         }
-        
+                        
         return appleIDCredential
     }
     

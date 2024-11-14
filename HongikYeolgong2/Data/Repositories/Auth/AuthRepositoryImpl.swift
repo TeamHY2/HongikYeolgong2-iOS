@@ -13,13 +13,13 @@ final class AuthRepositoryImpl: AuthRepository {
     ///  소셜로그인
     /// - Parameter loginReqDto: 로그인 요청 DTO(이메일, identityToken)
     /// - Returns: 로그인 응답 DTO(accessToken, 가입여부)
-    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, NetworkError> {
-        return Future<LoginResponseDTO, NetworkError> { promise in            
+    func signIn(loginReqDto: LoginRequestDTO) -> AnyPublisher<LoginResponseDTO, NetworkError> {        
+        return Future<LoginResponseDTO, NetworkError> { promise in
             Task {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.data))
-                } catch let error as NetworkError {                    
+                } catch let error as NetworkError {
                     promise(.failure(error))
                 }
             }
@@ -50,8 +50,8 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))
-                    promise(.success(response.data))                    
-                } catch let error as NetworkError {
+                    promise(.success(response.data))
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }
@@ -66,7 +66,7 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUser)
                     promise(.success(response.data))
-                } catch let error as NetworkError {
+                } catch let error as NetworkError {         
                     promise(.failure(error))
                 }
             }
@@ -98,7 +98,6 @@ final class AuthRepositoryImpl: AuthRepository {
                     let response: BaseResponse<UserProfile> = try await NetworkService.shared.request(endpoint: UserEndpoint.getUserProfile)
                     promise(.success(response.data))
                 } catch let error as NetworkError {
-                    
                     promise(.failure(error))
                 }
             }
@@ -110,10 +109,8 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<WithdrawResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.withdraw)
-                    
                     promise(.success(()))
-                } catch let error as NetworkError {
-                    
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }

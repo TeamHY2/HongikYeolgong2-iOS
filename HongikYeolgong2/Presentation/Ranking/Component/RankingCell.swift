@@ -90,6 +90,8 @@ extension RankingCell {
     
     private var rankImage: some View {
         switch (departmentRankInfo.rankChange, departmentRankInfo.currentRank) {
+        case let (rankChange, currentRank) where rankChange < 0 && currentRank == 2:
+            Image(.rankDownSecond)
         case let (rankChange, currentRank) where rankChange > 0 && currentRank == 1:
             Image(.rankUpGray)
         case let (rankChange, _) where rankChange > 0:
