@@ -78,7 +78,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
         guard let appleIDCredential = appleLoginService.requestAppleLogin(authorization),
-              let idTokenData = appleIDCredential.identityToken,
+              let idTokenData = appleIDCredential.identityToken,              
               let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
@@ -167,6 +167,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 }
             }, receiveValue: { [weak self] tokenValidRes in
                 guard let self = self else { return }
+                
                 if tokenValidRes.role == "USER" {
                     appState[\.userSession] = .authenticated
                 } else {
