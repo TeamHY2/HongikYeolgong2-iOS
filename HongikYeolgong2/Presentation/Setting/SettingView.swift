@@ -111,7 +111,7 @@ struct SettingView: View {
             .onReceive(isOnAlarmUpdated) {
                 isOnAlarm = $0
             }
-            .onReceive(isSceneActive) {
+            .onReceive(isSceneActive) {                
                 userPermissionsInteractor.resolveStatus(for: .localNotifications)
             }
             .onReceive(userProfileUpdated) {
@@ -155,8 +155,7 @@ struct ProfileText: View {
     var body: some View {
         Text(text)
             .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
-            .foregroundStyle(textColor)
-            .padding(.trailing, 8)
+            .foregroundStyle(textColor)            
     }
 }
 

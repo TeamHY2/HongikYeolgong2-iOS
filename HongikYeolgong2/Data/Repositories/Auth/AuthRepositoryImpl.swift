@@ -50,8 +50,8 @@ final class AuthRepositoryImpl: AuthRepository {
             Task {
                 do {
                     let response: BaseResponse<SignUpResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.signUp(signUpReqDto: signUpReqDto))
-                    promise(.success(response.data))                    
-                } catch let error as NetworkError {
+                    promise(.success(response.data))
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }
