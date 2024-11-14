@@ -1,43 +1,51 @@
+//
+//  OnboardingView.swift
+//  HongikYeolgong2
+//
+//  Created by 권석기 on 11/14/24.
+//
+
 import SwiftUI
 import Combine
 import AuthenticationServices
 
 struct OnboardingView: View {
     // MARK: - Properties
-    @Environment(\.injected) private var injected: DIContainer
+    @Environment(\.injected.appState) private var appState
+    @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     
     // MARK: - States
-    @State private var tabIndex = 0
+    @State private var onboardingPath: [Page] = []
     @State private var routingState: Routing = .init()
     private var routingBinding: Binding<Routing> {
-        $routingState.dispatched(to: injected.appState, \.routing.onboarding)
+        $routingState.dispatched(to: appState, \.routing.onboarding)
     }
     
     // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $onboardingPath) {
             VStack {
                 Spacer()
                 
-                OnboardingPageView(tabIndex: $tabIndex)
+                OnboardingPageView()
                                 
                 AppleLoginButton(
                     onRequest: onRequestAppleLogin,
                     onCompletion: onCompleteAppleLogin
                 )
-                
-                NavigationLink(
-                    destination: SignUpView(),
-                    isActive: routingBinding.signUp
-                ) {
+            }
+            .onReceive(routingUpdate) {
+                onboardingPath.append(.signUp)
+            }
+            .navigationDestination(for: Page.self) { page in
+                switch page {
+                case .signUp:
+                    SignUpView()
+                default:
                     EmptyView()
                 }
-                .opacity(0)
-                .frame(width: 0, height: 0)
             }
-            .onReceive(routingUpdate) { routingState = $0 }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -50,8 +58,7 @@ private extension OnboardingView {
     func onCompleteAppleLogin(_ result: Result<ASAuthorization, Error>) {
         switch result {
         case let .success(authorization):
-            injected.interactors.userDataInteractor
-                .requestAppleLogin(authorization)
+           userDataInteractor.requestAppleLogin(authorization)
         case .failure:
             break
         }
@@ -60,8 +67,11 @@ private extension OnboardingView {
 
 // MARK: - Routing
 private extension OnboardingView {
-    private var routingUpdate: AnyPublisher<Routing, Never> {
-        injected.appState.updates(for: \.routing.onboarding)
+    private var routingUpdate: AnyPublisher<Void, Never> {
+        appState.updates(for: \.routing.onboarding.signUp)
+            .filter { $0 }
+            .map { _ in }
+            .eraseToAnyPublisher()
     }
 }
 

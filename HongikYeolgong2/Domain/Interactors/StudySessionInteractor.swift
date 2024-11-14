@@ -140,6 +140,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     /// 열람실 이용종료 Notification을 등록합니다.
     func registerNotification(for type: StudyNotificationType, endTimeInMinute: TimeInterval) {
+        guard appState.value.userData.isOnAlarm else { return }
         let content = configuredNotificationContent(for: type)
         let trigger = configuredNotificationTrigger(for: type, endTime: endTimeInMinute)
         let request = UNNotificationRequest(

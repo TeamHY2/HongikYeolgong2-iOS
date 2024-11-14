@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingPageView: View {
-    @Binding var tabIndex: Int
+    @State private var tabIndex = 0
     
     var body: some View {
         VStack {
@@ -42,5 +42,5 @@ struct OnboardingPageView: View {
 }
 
 #Preview {
-    OnboardingPageView(tabIndex: .constant(0))
+    OnboardingPageView()
 }

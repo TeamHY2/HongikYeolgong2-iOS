@@ -22,13 +22,18 @@ struct InitialView: View {
                 OnboardingView()
             case .authenticated:
                 MainTabView()
+                    .onAppear {
+                        userDataInteractor.getUserProfile()
+                    }
             case .pending:
                 SplashView()
                     .ignoresSafeArea(.all)
-                    .onAppear { checkUserSession() }
+                    .onAppear {
+                        checkUserSession()
+                    }
             }
         }
-        .onAppear {        
+        .onAppear {                                  
             resolveUserPermissions()
         }
         .onReceive(canRequestFirstPushPermissions) { _ in

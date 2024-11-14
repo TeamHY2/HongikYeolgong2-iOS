@@ -78,7 +78,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
         guard let appleIDCredential = appleLoginService.requestAppleLogin(authorization),
-              let idTokenData = appleIDCredential.identityToken,
+              let idTokenData = appleIDCredential.identityToken,              
               let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
@@ -89,12 +89,14 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     return Fail(error: NetworkError.decodingError("")).eraseToAnyPublisher()
                 }
                 let loginReqDto: LoginRequestDTO = .init(email: userID, idToken: idToken)
+                
                 return authRepository.signIn(loginReqDto: loginReqDto)
             }
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},
                 receiveValue: { [weak self] loginResDto in
+                    
                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
@@ -124,7 +126,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 receiveValue: { [weak self] signUpResDto in
                     guard let self = self else { return }
                     appState[\.userSession] = .authenticated
-                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
+                    appState[\.routing.onboarding.signUp] = false
+                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)                    
                 }
             )
             .store(in: cancleBag)
@@ -149,26 +152,6 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    /// 로그인된 유저정보를 가져옵니다.
-    func getUser() {
-        authRepository
-            .getUser()
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] completion in
-                    guard let self = self else { return }
-                    switch completion {
-                    case .finished:
-                        appState[\.userSession] = .authenticated
-                    case .failure(_):
-                        appState[\.userSession] = .unauthenticated
-                    }
-                },
-                receiveValue: { _ in }
-            )
-            .store(in: cancleBag)
-    }
-    
     /// 유저인증 상태를 체크합니다.
     func checkAuthentication() {
         authRepository
@@ -184,6 +167,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 }
             }, receiveValue: { [weak self] tokenValidRes in
                 guard let self = self else { return }
+                
                 if tokenValidRes.role == "USER" {
                     appState[\.userSession] = .authenticated
                 } else {
@@ -193,12 +177,16 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    func getUserProfile(userProfile: Binding<UserProfile>) {
+    func getUserProfile() {
         authRepository
             .getUserProfile()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in }) {
-                userProfile.wrappedValue = $0
+            .sink(receiveCompletion: { _ in }) { [weak self] userProfile in
+                guard let self = self else { return }
+                appState.bulkUpdate { appState in
+                    appState.userData.nickname = userProfile.nickname
+                    appState.userData.department = userProfile.department
+                }
             }
             .store(in: cancleBag)
     }

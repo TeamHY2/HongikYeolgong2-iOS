@@ -28,7 +28,12 @@ extension AppState {
 extension AppState {
     /// 앱 전역에서 사용하는 유저데이터 입니다.
     struct UserData: Equatable {
-        var isLoggedIn = false
+        var nickname = ""
+        var department = ""
+        var isOnAlarm: Bool {
+            get { UserDefaults.standard.bool(forKey: "isOnAlarm") }
+            set { UserDefaults.standard.set(newValue, forKey: "isOnAlarm") }
+        }
     }
 }
 

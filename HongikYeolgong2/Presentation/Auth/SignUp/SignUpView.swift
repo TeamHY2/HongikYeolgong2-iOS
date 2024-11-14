@@ -20,12 +20,7 @@ struct SignUpView: View {
     @State private var isSubmitButtonEnable = false
     @State private var isCheckButtonEnable = false
     @State private var keyboardOffset: CGFloat = 23
-    let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)
-    
-    // MARK: - Initialization
-    init() {
-//        UINavigationBar.setAnimationsEnabled(false)
-    }
+    let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)                 
     
     // MARK: - Body
     var body: some View {
@@ -88,13 +83,12 @@ struct SignUpView: View {
             .padding(.horizontal, 32.adjustToScreenWidth)
         }
         .toolbar(.hidden, for: .navigationBar)
-       
         .onChange(of: userInfo.inputNickname) { inputNickname in
             userInfo.nickname.validateUserNickname(nickname: inputNickname)
         }
         .onChange(of: userInfo) { userInfo in
             isSubmitButtonEnable = userInfo.nickname == .available &&
-            userInfo.department != .none
+                                  userInfo.department != .none
         }
         .onReceive(nicknameCheckSubject.dropFirst()) { isAlreadyInUse in
             userInfo.nickname = isAlreadyInUse ? .alreadyUse : .available
