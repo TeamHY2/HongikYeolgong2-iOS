@@ -90,6 +90,7 @@ struct DropDownPicker: View {
                 .frame(maxHeight: !filterdItem.isEmpty ? min(contentHeight, maxHeight) : maxHeight)
                 .background(.gray800)
                 .cornerRadius(8)
+                .layoutPriority(3)
             }
         }
     }
