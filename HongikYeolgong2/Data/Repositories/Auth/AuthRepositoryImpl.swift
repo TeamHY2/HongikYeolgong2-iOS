@@ -110,8 +110,7 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<WithdrawResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.withdraw)
                     promise(.success(()))
-                } catch let error as NetworkError {
-                    
+                } catch let error as NetworkError {                    
                     promise(.failure(error))
                 }
             }
