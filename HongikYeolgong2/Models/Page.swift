@@ -9,4 +9,5 @@ import Foundation
 
 enum Page: Hashable {
     case webView(title: String, url: String)
+    case signUp
 }
