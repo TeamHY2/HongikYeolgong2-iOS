@@ -78,8 +78,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
         guard let appleIDCredential = appleLoginService.requestAppleLogin(authorization),
-              let idTokenData = appleIDCredential.identityToken,              
-              let idToken = String(data: idTokenData, encoding: .utf8) else {
+              let idTokenData = appleIDCredential.identityToken,
+                let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
         
@@ -127,7 +127,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     guard let self = self else { return }
                     appState[\.userSession] = .authenticated
                     appState[\.routing.onboarding.signUp] = false
-                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)                    
+                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
                 }
             )
             .store(in: cancleBag)
@@ -189,6 +189,40 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 }
             }
             .store(in: cancleBag)
+    }
+    
+    func validateUserNickname(inputNickname: String, nickname: Binding<Nickname>) {
+        if inputNickname.isEmpty {
+            nickname.wrappedValue = .none
+        } else if inputNickname.count < 2 || inputNickname.count > 8 {
+            nickname.wrappedValue = .notAllowedLength
+        } else if inputNickname.contains(" ") || checkSpecialCharacter(inputNickname) {
+            nickname.wrappedValue = .specialCharactersAndSpaces
+        } else if checkKoreanLang(inputNickname) {
+            nickname.wrappedValue = .checkAvailable
+        } else {
+            nickname.wrappedValue = .unknown
+        }
+    }
+    
+    func checkSpecialCharacter(_ input: String) -> Bool {
+        let pattern: String = "[!\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~€£¥₩¢₹©®™§¶°•※≡∞≠≈‽✓✔✕✖←→↑↓↔↕↩↪↖↗↘↙ñ¡¿éèêëçäöüßàìòùåøæ]"
+        
+        if let _ = input.range(of: pattern, options: .regularExpression)  {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func checkKoreanLang(_ input: String) -> Bool {
+        let pattern = "^[가-힣a-zA-Z\\s]*$"
+        
+        if let _ = input.range(of: pattern, options: .regularExpression)  {
+            return true
+        } else {
+            return false
+        }
     }
     
     /// 회원 탈퇴

@@ -16,11 +16,16 @@ protocol UserDataInteractor: AnyObject {
     func logout()
     func checkAuthentication()
     func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>)
+    func validateUserNickname(inputNickname: String, nickname: Binding<Nickname>)
     func getUserProfile()
     func withdraw()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
+    func validateUserNickname(inputNickname: String, nickname: Binding<Nickname>) {
+        
+    }
+    
     
     private let cancleBag = CancelBag()
     private let appState: Store<AppState>

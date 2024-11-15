@@ -18,5 +18,6 @@ struct SubmitButton: View {
                 .frame(height: 50.adjustToScreenHeight)
         }        
         .disabled(disabled)
+        .overlay(disabled ? Color.dark.opacity(0.5) : nil)
     }
 }
