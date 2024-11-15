@@ -11,10 +11,9 @@ struct SplashView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let storyboard = UIStoryboard(name: "Launch Screen", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()!
-        viewController.view.frame = UIScreen.main.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         return viewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-}    
+}

@@ -19,7 +19,7 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.data))
-                } catch let error as NetworkError {
+                } catch let error as NetworkError {                 
                     promise(.failure(error))
                 }
             }
@@ -33,7 +33,7 @@ final class AuthRepositoryImpl: AuthRepository {
         return Future<Bool, NetworkError> { promise in
             Task {
                 do {
-                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))
+                    let response: BaseResponse<NicknameCheckDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.checkUserNickname(nickname: nickname))                    
                     promise(.success(response.data.duplicate))
                 } catch let error as NetworkError {
                     promise(.failure(error))

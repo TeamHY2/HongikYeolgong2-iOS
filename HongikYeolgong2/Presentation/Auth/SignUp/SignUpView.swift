@@ -30,18 +30,25 @@ struct SignUpView: View {
                         .frame(height: 8.adjustToScreenHeight)
                     
                     HStack(spacing: 10.adjustToScreenHeight) {
-                        BaseTextField(text: $inputNickname,
-                                      placeholder: "닉네임을 입력해주세요.",
-                                      isError: nickname.isError)
+                        BaseTextField(
+                            text: $inputNickname,
+                            placeholder: "닉네임을 입력해주세요.",
+                            isError: nickname.isError
+                        )
                         
-                        DuplicateCheckButton(action: {},
-                                             disabled: !nickname.isCheckable)
+                        DuplicateCheckButton(
+                            action: { userDataInteractor.checkUserNickname(inputNickname: inputNickname, nickname: $nickname) },
+                            disabled: !nickname.isCheckable
+                        )
                     }
                     
                     Spacer()
                         .frame(height: 4.adjustToScreenHeight)
                     
-                    FormDescription(message: nickname.message, color: Color.gray)
+                    FormDescription(
+                        message: nickname.message,
+                        color: nickname.textColor
+                    )
                 }
                 .layoutPriority(1)
                 
@@ -51,27 +58,28 @@ struct SignUpView: View {
                 VStack(alignment: .leading, spacing: 8.adjustToScreenHeight) {
                     FormLabel(title: "학과")
                     
-                    DropDownPicker(text: $inputDepartment,
-                                   seletedItem: Binding(get: {
-                        department.rawValue
-                    }, set: {
-                        department = .init(rawValue: $0) ?? .none
-                    }),
-                                   placeholder: "",
-                                   items: Department.allDepartments())
+                    DropDownPicker(
+                        text: $inputDepartment,
+                        seletedItem: Binding(
+                            get: { department.rawValue },
+                            set: { department = .init(rawValue: $0) ?? .none }
+                        ),
+                        placeholder: "",
+                        items: Department.allDepartments
+                    )                    
                 }
                 .layoutPriority(2)
             }
             
             Spacer()
-            
-            SubmitButton(action: {
-                
-            }, disabled: !(nickname == .checkAvailable &&
-                           (Department.allDepartments().contains(department.rawValue) ||
-                            Department.allDepartments().contains(inputDepartment))))
+            SubmitButton(
+                action: { userDataInteractor.signUp(nickname: inputNickname, department: department) },
+                disabled: !(nickname == .available &&
+                            (Department.allDepartments.contains(department.rawValue) ||
+                             Department.allDepartments.contains(inputDepartment)))
+            )
             .padding(.bottom, 20.adjustToScreenHeight)
-        }
+        }        
         .overlay(alignment: .topLeading, content: {
             FormTitle(title: "회원가입")
         })
