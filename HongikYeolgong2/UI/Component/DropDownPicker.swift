@@ -58,6 +58,7 @@ struct DropDownPicker: View {
                             .padding(.trailing, 14)
                             .onTapGesture {
                                 text = ""
+                                seletedItem = ""
                             }
                     }
                 }
@@ -69,27 +70,34 @@ struct DropDownPicker: View {
             )
             
             // scrollView
-            if (isFocused && isEmpty) || (isFocused && text.isEmpty) {
-                ScrollView {
-                    LazyVStack(alignment: .leading, spacing: 0) {
-                        ForEach(isFocused && text.isEmpty ? items : filterdItem, id: \.self) { item in
-                            Button(action: {
-                                seletedItem = item
-                                text = item
-                                isFocused = false
-                            }, label: {
-                                Text("\(item)")
-                                    .font(.pretendard(size: 16, weight: .regular))
-                                    .foregroundStyle(.gray200)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                .padding(12)})
-                            .checkSize(in: $contentSize)
+            if isFocused {
+                VStack(spacing: 0) {
+                    if (isFocused && isEmpty) || (isFocused && text.isEmpty) {
+                        ScrollView {
+                            LazyVStack(alignment: .leading, spacing: 0) {
+                                ForEach(isFocused && text.isEmpty ? items : filterdItem, id: \.self) { item in
+                                    Button(action: {
+                                        seletedItem = item
+                                        text = item
+                                        isFocused = false
+                                    }, label: {
+                                        Text("\(item)")
+                                            .font(.pretendard(size: 16, weight: .regular))
+                                            .foregroundStyle(.gray200)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        .padding(12)})
+                                    .checkSize(in: $contentSize)
+                                }
+                            }
                         }
+                        .frame(maxHeight: !filterdItem.isEmpty ? min(contentHeight, maxHeight) : maxHeight)
+                        .background(.gray800)
+                        .cornerRadius(8)
+                        .layoutPriority(3)
                     }
+                    
                 }
-                .frame(maxHeight: !filterdItem.isEmpty ? min(contentHeight, maxHeight) : maxHeight)
-                .background(.gray800)
-                .cornerRadius(8)
+                .frame(maxHeight: maxHeight, alignment: .top)
             }
         }
     }

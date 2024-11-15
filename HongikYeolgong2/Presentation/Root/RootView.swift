@@ -1,5 +1,5 @@
 //
-//  InitialView.swift
+//  RootView.swift
 //  HongikYeolgong2
 //
 //  Created by 권석기 on 10/11/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct InitialView: View {
+struct RootView: View {
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
@@ -33,7 +33,7 @@ struct InitialView: View {
                     }
             }
         }
-        .onAppear {                                  
+        .onAppear {
             resolveUserPermissions()
         }
         .onReceive(canRequestFirstPushPermissions) { _ in
@@ -45,7 +45,7 @@ struct InitialView: View {
     }
 }
 
-private extension InitialView {
+private extension RootView {
     var userSessionUpdated: AnyPublisher<AppState.UserSession, Never> {
         appState.updates(for: \.userSession)
     }
@@ -58,7 +58,7 @@ private extension InitialView {
     }
 }
 
-private extension InitialView {
+private extension RootView {
     func checkUserSession() {
         userDataInteractor.checkAuthentication()
     }
@@ -73,5 +73,5 @@ private extension InitialView {
 }
 
 #Preview {
-    InitialView()
+    RootView()
 }
