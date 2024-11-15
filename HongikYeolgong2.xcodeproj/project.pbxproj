@@ -45,7 +45,7 @@
 		4763FFAF2CB90AE000990336 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFAE2CB90AE000990336 /* AppState.swift */; };
 		4763FFB12CB90C1500990336 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB02CB90C1500990336 /* DependencyInjector.swift */; };
 		4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB22CB90E3800990336 /* InteractorsContainer.swift */; };
-		4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB42CB90EBD00990336 /* InitialView.swift */; };
+		4763FFB52CB90EBD00990336 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB42CB90EBD00990336 /* RootView.swift */; };
 		4763FFB82CB9134D00990336 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB72CB9134D00990336 /* Store.swift */; };
 		4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFB92CB913FF00990336 /* UserDataInteractor.swift */; };
 		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
@@ -228,7 +228,7 @@
 		4763FFAE2CB90AE000990336 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		4763FFB02CB90C1500990336 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		4763FFB22CB90E3800990336 /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
-		4763FFB42CB90EBD00990336 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		4763FFB42CB90EBD00990336 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		4763FFB72CB9134D00990336 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		4763FFB92CB913FF00990336 /* UserDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataInteractor.swift; sourceTree = "<group>"; };
 		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
@@ -774,7 +774,7 @@
 			children = (
 				47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */,
 				47A147782CA158E800A91F66 /* MainTabView.swift */,
-				4763FFB42CB90EBD00990336 /* InitialView.swift */,
+				4763FFB42CB90EBD00990336 /* RootView.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -1313,7 +1313,7 @@
 				47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */,
 				478933792CADBDA500E1D89E /* SignUpView.swift in Sources */,
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
-				4763FFB52CB90EBD00990336 /* InitialView.swift in Sources */,
+				4763FFB52CB90EBD00990336 /* RootView.swift in Sources */,
 				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
 				478589FE2CE4973B0027ED32 /* MenuItem.swift in Sources */,
 				47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */,
@@ -1523,7 +1523,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -1570,7 +1570,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;

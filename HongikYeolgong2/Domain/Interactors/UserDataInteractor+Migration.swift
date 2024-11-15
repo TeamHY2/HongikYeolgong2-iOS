@@ -89,15 +89,14 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     return Fail(error: NetworkError.decodingError("")).eraseToAnyPublisher()
                 }
                 let loginReqDto: LoginRequestDTO = .init(email: userID, idToken: idToken)
-                
+              
                 return authRepository.signIn(loginReqDto: loginReqDto)
             }
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},
                 receiveValue: { [weak self] loginResDto in
-                    
-                    guard let self = self else { return }
+                     guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
                     
@@ -143,12 +142,12 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     /// - Parameters:
     ///   - nickname: 닉네임
     ///   - isValidate: 중복여부
-    func checkUserNickname(nickname: String, nicknameCheckSubject: CurrentValueSubject<Bool, Never>) {
+    func checkUserNickname(inputNickname: String, nickname: Binding<Nickname>) {
         authRepository
-            .checkUserNickname(nickname: nickname)
+            .checkUserNickname(nickname: inputNickname)
             .replaceError(with: true)
             .receive(on: DispatchQueue.main)
-            .sink { nicknameCheckSubject.send($0) }
+            .sink { $0 ? (nickname.wrappedValue = .alreadyUse) : (nickname.wrappedValue = .available) }
             .store(in: cancleBag)
     }
     
