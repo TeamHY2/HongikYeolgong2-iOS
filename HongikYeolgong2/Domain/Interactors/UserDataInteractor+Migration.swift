@@ -215,7 +215,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     func checkKoreanLang(_ input: String) -> Bool {
-        let pattern = "^[가-힣a-zA-Z\\s]*$"
+        let pattern = "^[가-힣a-zA-Z0-9\\s]*$"
         
         if let _ = input.range(of: pattern, options: .regularExpression)  {
             return true
