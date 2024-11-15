@@ -139,7 +139,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     }
     
     /// 열람실 이용종료 Notification을 등록합니다.
-    func registerNotification(for type: StudyNotificationType, endTimeInMinute: TimeInterval) {
+    func registerNotification(for type: LocalNotification, endTimeInMinute: TimeInterval) {
         guard appState.value.userData.isOnAlarm else { return }
         let content = configuredNotificationContent(for: type)
         let trigger = configuredNotificationTrigger(for: type, endTime: endTimeInMinute)
@@ -153,7 +153,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     }
     
     /// Notification Content 설정
-    func configuredNotificationContent(for type: StudyNotificationType) -> UNMutableNotificationContent {
+    func configuredNotificationContent(for type: LocalNotification) -> UNMutableNotificationContent {
         let content = UNMutableNotificationContent()
         content.body = type.message
         content.sound = .default
@@ -161,7 +161,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     }
     
     /// Notification Trigger 설정
-    func configuredNotificationTrigger(for type: StudyNotificationType, endTime: TimeInterval) -> UNTimeIntervalNotificationTrigger? {
+    func configuredNotificationTrigger(for type: LocalNotification, endTime: TimeInterval) -> UNTimeIntervalNotificationTrigger? {
         let triggerTime = endTime - type.timeOffset
         
         assert(endTime - triggerTime == type.timeOffset, "잘못된 시간이 등록되었습니다.")

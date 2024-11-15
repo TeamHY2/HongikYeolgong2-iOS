@@ -58,6 +58,7 @@ struct DropDownPicker: View {
                             .padding(.trailing, 14)
                             .onTapGesture {
                                 text = ""
+                                seletedItem = ""
                             }
                     }
                 }

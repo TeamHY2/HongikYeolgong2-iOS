@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum StudyNotificationType {
+enum LocalNotification {
     case extensionAvailable
     case urgent
     
