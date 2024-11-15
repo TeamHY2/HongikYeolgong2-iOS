@@ -66,7 +66,7 @@ struct SignUpView: View {
                         ),
                         placeholder: "",
                         items: Department.allDepartments
-                    )                    
+                    )
                 }
                 .layoutPriority(2)
             }
@@ -79,12 +79,15 @@ struct SignUpView: View {
                              Department.allDepartments.contains(inputDepartment)))
             )
             .padding(.bottom, 20.adjustToScreenHeight)
-        }        
+        }
         .overlay(alignment: .topLeading, content: {
             FormTitle(title: "회원가입")
         })
         .toolbar(.hidden, for: .navigationBar)
         .padding(.horizontal, 32.adjustToScreenWidth)
+        .onTapGesture {
+            UIApplication.shared.hideKeyboard()
+        }
         .onChange(of: inputNickname) {
             userDataInteractor.validateUserNickname(inputNickname: $0, nickname: $nickname)
         }
