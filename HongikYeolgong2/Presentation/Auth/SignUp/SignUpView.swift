@@ -6,198 +6,90 @@
 //
 
 import SwiftUI
-import Combine
 
-// MARK: - SignUpView
 struct SignUpView: View {
-    // MARK: - Environment
-    @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
-    @Environment(\.presentationMode) var presentationMode
     
-    // MARK: - State
-    @State private var userInfo = UserInfo()
-    @State private var isSubmitButtonEnable = false
-    @State private var isCheckButtonEnable = false
-    @State private var keyboardOffset: CGFloat = 23
-    let nicknameCheckSubject = CurrentValueSubject<Bool, Never>(false)                 
+    @State private var nickname: Nickname = .none
+    @State private var department: Department = .none
+    @State private var inputNickname = ""
+    @State private var inputDepartment = ""
     
-    // MARK: - Body
+    @FocusState private var focused
+    
     var body: some View {
-        ZStack {
-            Color.dark.edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                NavigationHeaderView(title: "회원가입")
+        VStack(spacing: 0) {
+            VStack(spacing: 0) {
+                Spacer()
+                    .frame(maxHeight: 52 + 23.adjustToScreenHeight)
                 
-                VStack(spacing: 12.adjustToScreenWidth) {
-                    VStack(alignment: .leading, spacing: 8.adjustToScreenHeight) {
-                        TitleView(title: "닉네임")
+                VStack(alignment: .leading, spacing: 0) {
+                    FormLabel(title: "닉네임")
+                    
+                    Spacer()
+                        .frame(height: 8.adjustToScreenHeight)
+                    
+                    HStack(spacing: 10.adjustToScreenHeight) {
+                        BaseTextField(
+                            text: $inputNickname,
+                            placeholder: "닉네임을 입력해주세요.",
+                            isError: nickname.isError
+                        )
                         
-                        HStack {
-                            HY2TextField(
-                                text: $userInfo.inputNickname,
-                                placeholder: "닉네임을 입력해주세요",
-                                isError: userInfo.nickname.isError
-                            )
-                            
-                            DuplicateCheckButton(
-                                nicknameStatus: userInfo.nickname,
-                                action: checkUserNickname
-                            )
-                        }
-                        
-                        DescriptionView(
-                            message: userInfo.nickname.message,
-                            color: userInfo.nickname.textColor
+                        DuplicateCheckButton(
+                            action: { userDataInteractor.checkUserNickname(inputNickname: inputNickname, nickname: $nickname) },
+                            disabled: !nickname.isCheckable
                         )
                     }
                     
-                    VStack(alignment: .leading, spacing: 8.adjustToScreenHeight) {
-                        TitleView(title: "학과")
-                        
-                        DropDownPicker(
-                            text: $userInfo.inputDepartment,
-                            seletedItem: Binding(
-                                get: { userInfo.department.rawValue },
-                                set: { userInfo.department = .init(rawValue: $0) ?? .none }
-                            ),
-                            placeholder: "학과를 입력해주세요",
-                            items: Department.allDepartments()
-                        )
-                    }
+                    Spacer()
+                        .frame(height: 4.adjustToScreenHeight)
+                    
+                    FormDescription(
+                        message: nickname.message,
+                        color: nickname.textColor
+                    )
                 }
-                .offset(y: keyboardOffset)
-                .animation(.easeIn(duration: 0.2), value: keyboardOffset)
+                .layoutPriority(1)
                 
                 Spacer()
+                    .frame(height: 12.adjustToScreenHeight)
                 
-                SubmitButton(
-                    isSubmitButtonEnable: isSubmitButtonEnable,
-                    submitButtonTapped: performSignUp
-                )
+                VStack(alignment: .leading, spacing: 8.adjustToScreenHeight) {
+                    FormLabel(title: "학과")
+                    
+                    DropDownPicker(
+                        text: $inputDepartment,
+                        seletedItem: Binding(
+                            get: { department.rawValue },
+                            set: { department = .init(rawValue: $0) ?? .none }
+                        ),
+                        placeholder: "",
+                        items: Department.allDepartments
+                    )
+                }
+                .layoutPriority(2)
             }
-            .onTapGesture {
-                UIApplication.shared.hideKeyboard()
-            }
-            .padding(.horizontal, 32.adjustToScreenWidth)
-        }
-        .toolbar(.hidden, for: .navigationBar)
-        .onChange(of: userInfo.inputNickname) { inputNickname in
-            userInfo.nickname.validateUserNickname(nickname: inputNickname)
-        }
-        .onChange(of: userInfo) { userInfo in
-            isSubmitButtonEnable = userInfo.nickname == .available &&
-                                  userInfo.department != .none
-        }
-        .onReceive(nicknameCheckSubject.dropFirst()) { isAlreadyInUse in
-            userInfo.nickname = isAlreadyInUse ? .alreadyUse : .available
-        }
-        .onReceive(keyboardVisibilityUpdated) { isKeyboardVisibility in
-            if isKeyboardVisibility {
-                keyboardOffset = 0
-            } else {
-                keyboardOffset = 23
-            }
-        }
-    }
-}
-
-// MARK: - Components
-private extension SignUpView {
-    // MARK: - Header
-    struct NavigationHeaderView: View {
-        let title: String
-        
-        var body: some View {
-            Text(title)
-                .font(.suite(size: 18, weight: .bold))
-                .foregroundStyle(.gray100)
-                .frame(
-                    maxWidth: .infinity,
-                    minHeight: 52.adjustToScreenHeight,
-                    alignment: .leading
-                )
-        }
-    }
-    
-    // MARK: - Title
-    struct TitleView: View {
-        let title: String
-        
-        var body: some View {
-            Text(title)
-                .font(.pretendard(size: 16, weight: .bold), lineHeight: 26)
-                .foregroundStyle(.gray200)
-        }
-    }
-    
-    // MARK: - Description
-    struct DescriptionView: View {
-        let message: String
-        let color: Color
-        
-        var body: some View {
-            Text(message)
-                .font(.pretendard(size: 12, weight: .regular))
-                .foregroundStyle(color)
-                .padding(.top, 4.adjustToScreenHeight)
-        }
-    }
-    
-    // MARK: - Buttons
-    struct SubmitButton: View {
-        let isSubmitButtonEnable: Bool
-        let submitButtonTapped: () -> Void
-        
-        var body: some View {
-            Button(action: submitButtonTapped) {
-                Image(isSubmitButtonEnable ? .submitButtonEnable : .submitButtonDisable)
-                    .resizable()
-                    .frame(height: 50.adjustToScreenHeight)
-            }
-            .padding(.bottom, 20.adjustToScreenHeight)
-            .disabled(!isSubmitButtonEnable)
-        }
-    }
-    
-    struct DuplicateCheckButton: View {
-        let nicknameStatus: Nickname
-        let action: () -> Void
-        
-        var body: some View {
-            ActionButton(
-                title: "중복확인",
-                font: .pretendard(size: 16, weight: .regular),
-                height: 48.adjustToScreenHeight,
-                width: 88.adjustToScreenWidth,
-                backgroundColor: nicknameStatus == .available ? .blue400 : .blue100,
-                foregroundColor: .white,
-                action: action
+            
+            Spacer()
+            SubmitButton(
+                action: { userDataInteractor.signUp(nickname: inputNickname, department: department) },
+                disabled: !(nickname == .available &&
+                            (Department.allDepartments.contains(department.rawValue) ||
+                             Department.allDepartments.contains(inputDepartment)))
             )
-            .cornerRadius(8)
-            .disabled(!(nicknameStatus == .checkAvailable))
+            .padding(.bottom, 20.adjustToScreenHeight)
         }
-    }
-}
-
-// MARK: - Interactor
-private extension SignUpView {
-    func checkUserNickname() {
-        userDataInteractor.checkUserNickname(
-            nickname: userInfo.inputNickname,
-            nicknameCheckSubject: nicknameCheckSubject
-        )
-    }
-    
-    func performSignUp() {
-        userDataInteractor.signUp(
-            nickname: userInfo.inputNickname,
-            department: userInfo.department
-        )
-    }
-    
-    var keyboardVisibilityUpdated: AnyPublisher<Bool, Never> {
-        appState.updates(for: \.system.isKeyboardActive)
+        .overlay(alignment: .topLeading, content: {
+            FormTitle(title: "회원가입")
+        })
+        .toolbar(.hidden, for: .navigationBar)
+        .padding(.horizontal, 32.adjustToScreenWidth)
+        .onTapGesture {
+            UIApplication.shared.hideKeyboard()
+        }
+        .onChange(of: inputNickname) {
+            userDataInteractor.validateUserNickname(inputNickname: $0, nickname: $nickname)
+        }
     }
 }

@@ -21,9 +21,11 @@ struct NetworkService: NetworkProtocol {
         
         let request = configRequest(url: url, endpoint: endpoint)
         let (data, response) = try await session.data(for: request)
-        
+        if let responseString = String(data: data, encoding: .utf8) {
+            print("📍 Response body: \(responseString)")
+        }
         return try processResponse(data: data, response: response)
-    }        
+    }
     
     func plainRequest(endpoint: EndpointProtocol) async throws {
         guard let url = configUrl(endpoint: endpoint) else {
@@ -83,7 +85,7 @@ extension NetworkService {
         guard (200...299).contains(httpResponse.statusCode) else {
             throw NetworkError.serverError(statusCode: httpResponse.statusCode)
         }
-                
+        
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase

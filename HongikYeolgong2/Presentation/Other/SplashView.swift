@@ -11,8 +11,9 @@ struct SplashView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let storyboard = UIStoryboard(name: "Launch Screen", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController()!
+        
         return viewController
     }
-
+    
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }

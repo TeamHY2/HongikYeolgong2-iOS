@@ -1,13 +1,13 @@
 //
-//  HY2TextField.swift
+//  BaseTextField.swift
 //  HongikYeolgong2
 //
-//  Created by 권석기 on 9/24/24.
+//  Created by 권석기 on 11/15/24.
 //
 
 import SwiftUI
 
-struct HY2TextField: View {
+struct BaseTextField: View {
     @Binding var text: String
     @FocusState var isFocused: Bool
     
@@ -48,3 +48,5 @@ struct HY2TextField: View {
         )
     }
 }
+
+

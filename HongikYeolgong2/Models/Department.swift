@@ -46,7 +46,7 @@ enum Department: String, CaseIterable {
     case frenchStudies = "프랑스어문학과"
     case painting = "회화과"
     
-    static func allDepartments() -> [String] {
+    static var allDepartments: [String] {
         Self.allCases.filter { $0 != .none }.map { $0.rawValue }
     }
 }

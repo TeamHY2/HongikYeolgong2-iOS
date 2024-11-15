@@ -45,48 +45,7 @@ enum Nickname {
         }
     }
     
-    static func validate(_ nickname: String) -> Nickname {
-        var status: Nickname = .none
-        status.validateUserNickname(nickname: nickname)
-        return status
-    }
-    
-    private enum Constant {
-        static let minLength = 2
-        static let maxLength = 8
-    }
-    
-    mutating func validateUserNickname(nickname: String) {
-        if nickname.isEmpty {
-            self = .none
-        } else if nickname.count < Constant.minLength || nickname.count > Constant.maxLength {
-            self = .notAllowedLength
-        } else if nickname.contains(" ") || checkSpecialCharacter(nickname) {
-            self = .specialCharactersAndSpaces
-        } else if checkKoreanLang(nickname) {
-            self = .checkAvailable
-        } else {
-            self = .unknown
-        }
-    }
-    
-    func checkSpecialCharacter(_ input: String) -> Bool {
-        let pattern: String = "[!\"#$%&'()*+,-./:;<=>?@[\\\\]^_`{|}~€£¥₩¢₹©®™§¶°•※≡∞≠≈‽✓✔✕✖←→↑↓↔↕↩↪↖↗↘↙ñ¡¿éèêëçäöüßàìòùåøæ]"
-        
-        if let _ = input.range(of: pattern, options: .regularExpression)  {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func checkKoreanLang(_ input: String) -> Bool {
-        let pattern = "^[가-힣a-zA-Z\\s]*$"
-        
-        if let _ = input.range(of: pattern, options: .regularExpression)  {
-            return true
-        } else {
-            return false
-        }
+    var isCheckable: Bool {
+        self == .checkAvailable
     }
 }
