@@ -55,7 +55,10 @@
   - DTOs
 
 ## 👥 Team
-
+| Profile |  Role  |
+|:-----|:--------:|
+| 최주원   |  |
+| 권석기   |  |
 ## 📱 Screenshots
 
 <p align="center">
