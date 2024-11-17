@@ -73,6 +73,7 @@ struct SignUpView: View {
             }
             
             Spacer()
+            
             SubmitButton(
                 action: { userDataInteractor.signUp(nickname: inputNickname, department: department) },
                 disabled: !(nickname == .available &&
