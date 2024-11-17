@@ -38,8 +38,9 @@ struct SignUpView: View {
                         
                         DuplicateCheckButton(
                             action: { userDataInteractor.checkUserNickname(inputNickname: inputNickname, nickname: $nickname) },
-                            disabled: !nickname.isCheckable
+                            disabled: nickname.isCheckable
                         )
+                        .disabled(!(nickname == .checkAvailable))
                     }
                     
                     Spacer()
