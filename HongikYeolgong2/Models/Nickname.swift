@@ -46,6 +46,6 @@ enum Nickname {
     }
     
     var isCheckable: Bool {
-        self == .checkAvailable
+        self == .available
     }
 }
