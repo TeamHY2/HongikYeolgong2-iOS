@@ -13,13 +13,23 @@ struct SettingView: View {
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
     
+    @State private var isLoading: Loadable<Bool> = .success(true)
     @State private var userProfile: AppState.UserData = .init()
     @State private var isOnAlarm = UserDefaults.standard.bool(forKey: "isOnAlarm")
     @State private var settingPath: [Page] = []
     @State private var shouldShowWithdrawModal = false
     @State private var shouldShowLogoutModal = false
     
-    var body: some View {    
+    var body: some View {
+        NetworkStateView(
+            loadables: [AnyLoadable($isLoading)],
+            retryAction: withDraw
+        ) {
+            content
+        }
+    }
+    
+    var content: some View {
         NavigationStack(path: $settingPath) {
             VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 0) {
@@ -98,7 +108,7 @@ struct SettingView: View {
                           confirmButtonText: "돌아가기",
                           cancleButtonText: "탈퇴하기",
                           confirmAction: {},
-                          cancleAction: { userDataInteractor.withdraw() })
+                          cancleAction: { userDataInteractor.withdraw(isLoading: $isLoading) })
             }
             .systemOverlay(isPresented: $shouldShowLogoutModal) {
                 ModalView(isPresented: $shouldShowLogoutModal,
@@ -126,6 +136,10 @@ struct SettingView: View {
                 }
             }
         }
+    }
+    
+    func withDraw() {
+        userDataInteractor.withdraw(isLoading: $isLoading)
     }
 }
 
@@ -155,7 +169,7 @@ struct ProfileText: View {
     var body: some View {
         Text(text)
             .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
-            .foregroundStyle(textColor)            
+            .foregroundStyle(textColor)
     }
 }
 

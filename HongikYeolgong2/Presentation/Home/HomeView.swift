@@ -15,21 +15,33 @@ struct HomeView: View {
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     @Environment(\.injected.interactors.weeklyStudyInteractor) var weeklyStudyInteractor
     
-    @State private var studyRecords = [WeeklyStudyRecord]()
     @State private var studySession = AppState.StudySession()
-    @State private var wiseSaying = WiseSaying()
+    @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
+    @State private var wiseSaying: Loadable<WiseSaying> = .notRequest
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
     @State private var shouldShowWebView = false
     
     var body: some View {
+        NetworkStateView(
+            loadables: [
+                AnyLoadable($studyRecords),
+                AnyLoadable($wiseSaying)
+            ],
+            retryAction: retryAction
+        ) {
+            content
+        }
+    }
+    
+    var content: some View {
         VStack(spacing: 0) {
-            WeeklyStudyView(studyRecords: studyRecords)
+            WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
             
             StudyContentControllerView(
                 studySession: $studySession,
-                wiseSaying: wiseSaying
+                wiseSaying: wiseSaying.value ?? WiseSaying()
             )
             
             Spacer()
@@ -93,6 +105,11 @@ struct HomeView: View {
             ? studySessionInteractor.resumeStudy()
             : studySessionInteractor.pauseStudy()
         }
+    }
+    
+    func retryAction() {
+        weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+        weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
     }
 }
 
