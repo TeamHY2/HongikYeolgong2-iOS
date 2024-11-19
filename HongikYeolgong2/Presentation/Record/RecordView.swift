@@ -13,7 +13,7 @@ struct RecordView: View {
     
     var body: some View {
         NetworkStateView(
-            loadables: [$studyTime],
+            loadables: [AnyLoadable($studyTime)],
             retryAction: loadData
         ) {
             VStack(spacing: 13.adjustToScreenHeight) {

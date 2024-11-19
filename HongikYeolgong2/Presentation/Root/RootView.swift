@@ -33,7 +33,7 @@ struct RootView: View {
                     }
             }
         }
-        .onAppear {
+        .onAppear {                                  
             resolveUserPermissions()
         }
         .onReceive(canRequestFirstPushPermissions) { _ in

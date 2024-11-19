@@ -79,7 +79,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     func requestAppleLogin(_ authorization: ASAuthorization) {
         guard let appleIDCredential = appleLoginService.requestAppleLogin(authorization),
               let idTokenData = appleIDCredential.identityToken,
-                let idToken = String(data: idTokenData, encoding: .utf8) else {
+              let idToken = String(data: idTokenData, encoding: .utf8) else {
             return
         }
         
@@ -89,14 +89,13 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     return Fail(error: NetworkError.decodingError("")).eraseToAnyPublisher()
                 }
                 let loginReqDto: LoginRequestDTO = .init(email: userID, idToken: idToken)
-              
                 return authRepository.signIn(loginReqDto: loginReqDto)
             }
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { _ in},
                 receiveValue: { [weak self] loginResDto in
-                     guard let self = self else { return }
+                    guard let self = self else { return }
                     
                     let isAlreadyExists = loginResDto.alreadyExist
                     
@@ -116,19 +115,16 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     /// - Parameters:
     ///   - nickname: 닉네임
     ///   - department: 학과
-    func signUp(nickname: String, department: Department) {
+    func signUp(nickname: String, department: Department, loadbleSubject: LoadableSubject<Bool>) {
         authRepository
             .signUp(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
             .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [weak self] signUpResDto in
+            .sinkToLoadble(loadbleSubject) { [weak self] signUpResDto in
                     guard let self = self else { return }
                     appState[\.userSession] = .authenticated
                     appState[\.routing.onboarding.signUp] = false
                     KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
-                }
-            )
+            }
             .store(in: cancleBag)
     }
     
@@ -225,7 +221,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     /// 회원 탈퇴
-    func withdraw() {
+    func withdraw(isLoading: LoadableSubject<Bool>) {
         let clientSecret = makeJWT()
         
         appleLoginService.performExistingAccountSetupFlows()
@@ -266,9 +262,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 }
                 return authRepository.withdraw()
             })
-            .sink(receiveCompletion: { _ in
-                
-            }, receiveValue: { [weak self] in
+            .sinkToLoadble(isLoading,
+                           receiveValueHandler: { [weak self] in
                 guard let self = self else { return }
                 appState.bulkUpdate { appState in
                     appState.userSession = .unauthenticated

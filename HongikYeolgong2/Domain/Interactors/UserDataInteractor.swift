@@ -12,13 +12,13 @@ import AuthenticationServices
 
 protocol UserDataInteractor: AnyObject {
     func requestAppleLogin(_ authorization: ASAuthorization)
-    func signUp(nickname: String, department: Department)
+    func signUp(nickname: String, department: Department,  loadbleSubject: LoadableSubject<Bool>)
     func logout()
     func checkAuthentication()
     func checkUserNickname(inputNickname: String, nickname: Binding<Nickname>)
     func validateUserNickname(inputNickname: String, nickname: Binding<Nickname>)
     func getUserProfile()
-    func withdraw()
+    func withdraw(isLoading: LoadableSubject<Bool>)
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -78,18 +78,15 @@ final class UserDataInteractorImpl: UserDataInteractor {
     /// - Parameters:
     ///   - nickname: 닉네임
     ///   - department: 학과
-    func signUp(nickname: String, department: Department) {
+    func signUp(nickname: String, department: Department, loadbleSubject: LoadableSubject<Bool>) {
         authRepository
             .signUp(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
             .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { _ in },
-                receiveValue: { [weak self] signUpResDto in
-                    guard let self = self else { return }
-                    appState[\.userSession] = .authenticated
-                    KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
-                }
-            )
+            .sinkToLoadble(loadbleSubject) { [weak self] signUpResDto in
+                guard let self = self else { return }
+                appState[\.userSession] = .authenticated
+                KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
+            }
             .store(in: cancleBag)
     }
     
@@ -148,7 +145,7 @@ final class UserDataInteractorImpl: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    func withdraw() {
+    func withdraw(isLoading: LoadableSubject<Bool>) {
         
     }
 }
