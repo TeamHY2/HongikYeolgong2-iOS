@@ -32,22 +32,22 @@ import SwiftUI
 ///     // api 요청하는 코드 종합 관리 (다시시도 기능 추가용도)
 ///  }
 ///  ```
-struct NetworkStateView<T, Content: View>: View {
-    let loadables: [Binding<Loadable<T>>]
+struct NetworkStateView<Content: View>: View {
+    let loadables: [AnyLoadable]
     let retryAction: () -> Void
     let content: () -> Content
     
     // 로딩 상태 확인
     var isLoading: Bool {
-        loadables.contains { $0.wrappedValue.isLoading }
+        loadables.contains { $0.isLoading }
     }
     
     // 에러 상태 확인
     var isError: Bool {
-        loadables.contains { $0.wrappedValue.isError }
+        loadables.contains { $0.isError }
     }
     
-    init(loadables: [Binding<Loadable<T>>], retryAction: @escaping () -> Void, @ViewBuilder content: @escaping () -> Content) {
+    init(loadables: [AnyLoadable], retryAction: @escaping () -> Void, @ViewBuilder content: @escaping () -> Content) {
         self.loadables = loadables
         self.retryAction = retryAction
         self.content = content
@@ -68,9 +68,6 @@ struct NetworkStateView<T, Content: View>: View {
     
     // 기본 이용할 수 있는 상태로 변경
     func setNotRequest() {
-        // loadables 배열을 순회하며 각 Binding의 wrappedValue를 .notRequest로 설정
-        for index in loadables.indices {
-            loadables[index].wrappedValue = .notRequest
-        }
+        loadables.forEach { $0.setNotRequest() }
     }
 }
