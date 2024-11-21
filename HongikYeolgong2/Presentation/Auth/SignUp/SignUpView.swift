@@ -14,6 +14,7 @@ struct SignUpView: View {
     @State private var department: Department = .none
     @State private var inputNickname = ""
     @State private var inputDepartment = ""
+    @State private var loadState: Loadable<Bool> = .notRequest
     
     @FocusState private var focused
     
@@ -75,7 +76,7 @@ struct SignUpView: View {
             Spacer()
             
             SubmitButton(
-                action: { userDataInteractor.signUp(nickname: inputNickname, department: department) },
+                action: { userDataInteractor.signUp(nickname: inputNickname, department: department, loadbleSubject: $loadState) },
                 disabled: !(nickname == .available &&
                             (Department.allDepartments.contains(department.rawValue) ||
                              Department.allDepartments.contains(inputDepartment)))

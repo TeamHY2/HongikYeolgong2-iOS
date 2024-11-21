@@ -19,7 +19,7 @@ final class AuthRepositoryImpl: AuthRepository {
                 do {
                     let response: BaseResponse<LoginResponseDTO> = try await NetworkService.shared.request(endpoint: AuthEndpoint.login(loginReqDto: loginReqDto))
                     promise(.success(response.data))
-                } catch let error as NetworkError {                        
+                } catch let error as NetworkError {
                     promise(.failure(error))
                 }
             }
