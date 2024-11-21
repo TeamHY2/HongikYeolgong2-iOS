@@ -68,7 +68,7 @@ private extension OnboardingView {
 // MARK: - Routing
 private extension OnboardingView {
     private var routingUpdate: AnyPublisher<Void, Never> {
-        appState.updates(for: \.routing.onboarding.signUp)
+        appState.updates(for: \.routing.onboarding.signUp)            
             .filter { $0 }
             .map { _ in }
             .eraseToAnyPublisher()
