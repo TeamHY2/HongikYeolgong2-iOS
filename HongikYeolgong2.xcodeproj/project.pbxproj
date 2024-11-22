@@ -38,6 +38,7 @@
 		473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E8EB92CCEA702000F102C /* StudySessionResponseDTO.swift */; };
 		473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E8EBB2CCEBEF3000F102C /* ModalView.swift */; };
 		4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4752A27C2CB96EB00073B784 /* CancleBag.swift */; };
+		47581ED02CF01EB200A2EA31 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */; };
 		475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DC2CA1AEF7000534B2 /* HomeView.swift */; };
 		475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86DE2CA1AF1E000534B2 /* RecordView.swift */; };
 		475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475B86E02CA1AF31000534B2 /* RankingView.swift */; };
@@ -154,7 +155,6 @@
 		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
-		5ED93CD72CE2311D004A7931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5ED93CD62CE2311D004A7931 /* GoogleService-Info.plist */; };
 		5ED93CDB2CE3690D004A7931 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */; };
 		98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
@@ -334,7 +334,6 @@
 		5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataInteractor.swift; sourceTree = "<group>"; };
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
 		5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		5ED93CD62CE2311D004A7931 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
@@ -364,6 +363,7 @@
 				47F71B592CDC68BC0044DEC5 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				47F71B532CDC68BC0044DEC5 /* FirebaseAuthCombine-Community in Frameworks */,
 				47F71B632CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				47581ED02CF01EB200A2EA31 /* AmplitudeSwift in Frameworks */,
 				47C8154B2CE231810017EA24 /* SwiftJWT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1073,6 +1073,7 @@
 				47F71B602CDC813A0044DEC5 /* FirebaseFunctions */,
 				47F71B622CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community */,
 				47C8154A2CE231810017EA24 /* SwiftJWT */,
+				47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */,
 			);
 			productName = HongikYeolgong2;
 			productReference = 47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */;
@@ -1149,6 +1150,7 @@
 			packageReferences = (
 				47F71B4F2CDC68BC0044DEC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				47C815492CE231810017EA24 /* XCRemoteSwiftPackageReference "Swift-JWT" */,
+				47581ECE2CF01EB200A2EA31 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 			);
 			productRefGroup = 47B1D4A92C9CB1740071B62B /* Products */;
 			projectDirPath = "";
@@ -1731,6 +1733,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		47581ECE2CF01EB200A2EA31 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		47C815492CE231810017EA24 /* XCRemoteSwiftPackageReference "Swift-JWT" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Kitura/Swift-JWT.git";
@@ -1750,6 +1760,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47581ECE2CF01EB200A2EA31 /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
+			productName = AmplitudeSwift;
+		};
 		47C8154A2CE231810017EA24 /* SwiftJWT */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 47C815492CE231810017EA24 /* XCRemoteSwiftPackageReference "Swift-JWT" */;
