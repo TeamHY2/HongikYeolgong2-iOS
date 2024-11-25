@@ -33,8 +33,9 @@ struct SettingView: View {
     
     var content: some View {
         NavigationStack(path: $settingPath) {
-            Spacer().frame(height: 32.adjustToScreenHeight)
                 VStack(alignment: .leading, spacing: 0) {
+                    Spacer().frame(height: 32.adjustToScreenHeight)
+                    
                     HStack(spacing: 0) {
                         ProfileImage()
                         Spacer().frame(width: 20.adjustToScreenWidth)
