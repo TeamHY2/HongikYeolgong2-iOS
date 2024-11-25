@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AmplitudeSwift
 
 enum Tab: CaseIterable {
     case home
@@ -49,16 +50,28 @@ struct MainTabView: View {
             TabView(selection: $currentTab,
                     content:  {
                 HomeView()
-                    .tag(Tab.home)
+                    .tag(Tab.home) 
+                    .onAppear {
+                        Amplitude.instance.track(eventType: "Home")
+                    }
                 
                 RecordView()
                     .tag(Tab.record)
+                    .onAppear {
+                        Amplitude.instance.track(eventType: "Record")
+                    }
                 
                 RankingView()
                     .tag(Tab.ranking)
+                    .onAppear {
+                        Amplitude.instance.track(eventType: "Ranking")
+                    }
                 
                 SettingView()
                     .tag(Tab.setting)
+                    .onAppear {
+                        Amplitude.instance.track(eventType: "Setting")
+                    }
             })
             .overlay(alignment: .bottom) {
                 TabBarView(currentTab: $currentTab)
