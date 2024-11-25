@@ -24,6 +24,9 @@ struct HongikYeolgong2App: App {
 
 extension Amplitude {
     static var instance = Amplitude(
-        configuration: Configuration(apiKey: SecretKeys.ampliKey)
+        configuration: Configuration(
+            apiKey: SecretKeys.ampliKey,
+            autocapture: [.sessions, .appLifecycles, .screenViews]
+        )
     )
 }
