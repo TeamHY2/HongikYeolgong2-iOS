@@ -52,26 +52,25 @@ struct MainTabView: View {
                 HomeView()
                     .tag(Tab.home) 
                     .onAppear {
-                        print("\(SecretKeys.ampliKey)")
-                        Amplitude.instance.track(eventType: "Enter home screen")
+                        Amplitude.instance.track(eventType: "Home")
                     }
                 
                 RecordView()
                     .tag(Tab.record)
                     .onAppear {
-                        Amplitude.instance.track(eventType: "Enter record screen")
+                        Amplitude.instance.track(eventType: "Record")
                     }
                 
                 RankingView()
                     .tag(Tab.ranking)
                     .onAppear {
-                        Amplitude.instance.track(eventType: "Enter ranking screen")
+                        Amplitude.instance.track(eventType: "Ranking")
                     }
                 
                 SettingView()
                     .tag(Tab.setting)
                     .onAppear {
-                        Amplitude.instance.track(eventType: "Enter setting screen")
+                        Amplitude.instance.track(eventType: "Setting")
                     }
             })
             .overlay(alignment: .bottom) {
