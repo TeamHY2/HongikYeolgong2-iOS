@@ -33,51 +33,43 @@ struct SettingView: View {
     
     var content: some View {
         NavigationStack(path: $settingPath) {
-            VStack(alignment: .leading, spacing: 0) {
+            Spacer().frame(height: 32.adjustToScreenHeight)
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack(spacing: 19.adjustToScreenWidth) {
+                    HStack(spacing: 0) {
                         ProfileImage()
-                        
-                        HStack(spacing: 8.adjustToScreenWidth) {
+                        Spacer().frame(width: 20.adjustToScreenWidth)
+                        HStack(spacing: 0) {
                             ProfileText(text: userProfile.nickname)
-                                
+                            Spacer().frame(width: 8.adjustToScreenWidth)
                             ProfileText(text: "|", textColor: Color.gray400)
-                                
+                            Spacer().frame(width: 8.adjustToScreenWidth)
                             ProfileText(text: userProfile.department)
                         }
                     }
                     
-                    VStack(spacing: 20.adjustToScreenHeight) {
-                        MenuItem(title: "공지사항") {
-                            settingPath.append(.webView(title: "공지사항", url: SecretKeys.noticeUrl))
-                        } content: {
-                            Image(.arrowRight)
-                        }
-                        
-                        MenuItem(title: "문의사항") {
-                            settingPath.append(.webView(title: "문의사항", url: SecretKeys.qnaUrl))
-                        } content: {
-                            Image(.arrowRight)
-                        }
-                        
-                        MenuItem(title: "열람실 종료 시간 알림") {}
-                    content: {
-                        Toggle("", isOn: Binding(
-                            get: { isOnAlarm },
-                            set: { _ in userPermissionsInteractor.handleNotificationPermissions() }
-                        ))
-                        .toggleStyle(SwitchToggleStyle(tint: Color.blue100))
-                        .fixedSize()
-                        .padding(.trailing, 3)
-                    }
-                    }
-                    .padding(.top, 20.adjustToScreenHeight)
+                    Spacer().frame(height: 20.adjustToScreenHeight)
+                    MenuItem(title: "공지사항",
+                             onTap: navigateToNotice,
+                             content: { Image(.arrowRight) })
+                    
+                    Spacer().frame(height: 20.adjustToScreenHeight)
+                    MenuItem(title: "문의사항",
+                             onTap: navigateToInquiry,
+                             content: { Image(.arrowRight) })
+                    
+                    Spacer().frame(height: 20.adjustToScreenHeight)
+                    MenuItem(title: "열람실 종료 시간 알림",
+                             content: {  Toggle("", isOn: Binding(
+                                get: { isOnAlarm },
+                                set: { _ in userPermissionsInteractor.handleNotificationPermissions() }
+                            ))
+                            .toggleStyle(SwitchToggleStyle(tint: Color.blue100))
+                            .fixedSize()
+                            .padding(.trailing, 3) })
+                    Spacer().frame(height: 10.adjustToScreenHeight)
                     
                     InfomationView()
-                        .padding(.top, 10.adjustToScreenHeight)
-                }
-                .padding(.top, 32.adjustToScreenHeight)
-                
+                                
                 Spacer()
                 
                 HStack(spacing: 0) {
@@ -87,10 +79,9 @@ struct SettingView: View {
                     } label: {
                         ProfileText(text: "로그아웃", textColor: Color.gray300)
                     }
-                    
+                    Spacer().frame(width: 24.adjustToScreenWidth)
                     ProfileText(text: "|", textColor: Color.gray400)
-                        .padding(.horizontal, 24.adjustToScreenWidth)
-                    
+                    Spacer().frame(width: 24.adjustToScreenWidth)
                     Button {
                         shouldShowWithdrawModal.toggle()
                     } label: {
@@ -98,7 +89,8 @@ struct SettingView: View {
                     }
                     Spacer()
                 }
-                .padding(.bottom, 36.adjustToScreenHeight)
+              
+                Spacer().frame(height: 36.adjustToScreenHeight)
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .modifier(IOSBackground())
@@ -121,7 +113,7 @@ struct SettingView: View {
             .onReceive(isOnAlarmUpdated) {
                 isOnAlarm = $0
             }
-            .onReceive(isSceneActive) {                
+            .onReceive(isSceneActive) {
                 userPermissionsInteractor.resolveStatus(for: .localNotifications)
             }
             .onReceive(userProfileUpdated) {
@@ -153,6 +145,14 @@ extension SettingView {
     func logoutButtonTapped() {
         userDataInteractor.logout()
         Amplitude.instance.track(eventType: "LogoutButton")
+    }
+    
+    func navigateToNotice() {
+        settingPath.append(.webView(title: "공지사항", url: SecretKeys.noticeUrl))
+    }
+    
+    func navigateToInquiry() {
+        settingPath.append(.webView(title: "문의사항", url: SecretKeys.qnaUrl))
     }
 }
 
