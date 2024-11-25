@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import AmplitudeSwift
 
 @main
-struct HongikYeolgong2App: App {    
+struct HongikYeolgong2App: App {
     let enviroment = AppEnviroment.bootstrap()
     
     var body: some Scene {
@@ -19,4 +20,10 @@ struct HongikYeolgong2App: App {
                 .inject(container)
         }
     }
+}
+
+extension Amplitude {
+    static var instance = Amplitude(
+        configuration: Configuration(apiKey: SecretKeys.ampliKey)
+    )
 }

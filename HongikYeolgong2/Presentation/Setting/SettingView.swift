@@ -8,6 +8,8 @@
 import SwiftUI
 import Combine
 
+import AmplitudeSwift
+
 struct SettingView: View {
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
@@ -23,7 +25,7 @@ struct SettingView: View {
     var body: some View {
         NetworkStateView(
             loadables: [AnyLoadable($isLoading)],
-            retryAction: withDraw
+            retryAction: retryAction
         ) {
             content
         }
@@ -39,10 +41,8 @@ struct SettingView: View {
                         HStack(spacing: 8.adjustToScreenWidth) {
                             ProfileText(text: userProfile.nickname)
                                 
-                            
                             ProfileText(text: "|", textColor: Color.gray400)
                                 
-                            
                             ProfileText(text: userProfile.department)
                         }
                     }
@@ -108,7 +108,7 @@ struct SettingView: View {
                           confirmButtonText: "돌아가기",
                           cancleButtonText: "탈퇴하기",
                           confirmAction: {},
-                          cancleAction: { userDataInteractor.withdraw(isLoading: $isLoading) })
+                          cancleAction: withdrawButtonTapped)
             }
             .systemOverlay(isPresented: $shouldShowLogoutModal) {
                 ModalView(isPresented: $shouldShowLogoutModal,
@@ -116,7 +116,7 @@ struct SettingView: View {
                           confirmButtonText: "돌아가기",
                           cancleButtonText: "로그아웃하기",
                           confirmAction: {},
-                          cancleAction: { userDataInteractor.logout() })
+                          cancleAction: logoutButtonTapped)
             }
             .onReceive(isOnAlarmUpdated) {
                 isOnAlarm = $0
@@ -137,9 +137,22 @@ struct SettingView: View {
             }
         }
     }
-    
-    func withDraw() {
+}
+
+// MARK: - Helpers
+extension SettingView {
+    func retryAction() {
         userDataInteractor.withdraw(isLoading: $isLoading)
+    }
+    
+    func withdrawButtonTapped() {
+        userDataInteractor.withdraw(isLoading: $isLoading)
+        Amplitude.instance.track(eventType: "WithdrawButton")
+    }
+    
+    func logoutButtonTapped() {
+        userDataInteractor.logout()
+        Amplitude.instance.track(eventType: "LogoutButton")
     }
 }
 

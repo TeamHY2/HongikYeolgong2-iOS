@@ -5,8 +5,10 @@
 //  Created by 권석기 on 9/23/24.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
+
+import AmplitudeSwift
 
 struct HomeView: View {
     // MARK: - Properties
@@ -49,10 +51,10 @@ struct HomeView: View {
             ActionButtonControllerView(
                 studySession: $studySession,
                 actions: .init(
-                    endButtonTapped: { shouldShowEndUseModal.toggle() },
-                    startButtonTapped: { shouldShowTimePicker.toggle() },
-                    seatButtonTapped: { shouldShowWebView.toggle() },
-                    addButtonTapped: { shouldShowAddTimeModal.toggle() }
+                    endButtonTapped: endButtonTapped,
+                    startButtonTapped: startButtonTapped,
+                    seatButtonTapped: seatButtonTapped,
+                    addButtonTapped: addButtonTapped
                 )
             )
             
@@ -105,6 +107,28 @@ struct HomeView: View {
             ? studySessionInteractor.resumeStudy()
             : studySessionInteractor.pauseStudy()
         }
+    }
+}
+
+// MARK: - Helpers
+extension HomeView {
+    func endButtonTapped() {
+        shouldShowEndUseModal.toggle()
+        Amplitude.instance.track(eventType: "StudyEndButton")
+    }
+    
+    func startButtonTapped() {
+        shouldShowTimePicker.toggle()
+        Amplitude.instance.track(eventType: "StudyStartButton")
+    }
+    
+    func seatButtonTapped() {
+        shouldShowWebView.toggle()
+    }
+    
+    func addButtonTapped() {
+        shouldShowAddTimeModal.toggle()
+        Amplitude.instance.track(eventType: "StudyExtendButton")
     }
     
     func retryAction() {
