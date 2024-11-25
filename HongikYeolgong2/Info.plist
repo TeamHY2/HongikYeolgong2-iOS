@@ -4,6 +4,8 @@
 <dict>
 	<key>AmplitudeKey</key>
 	<string>$(AMPLITUDE_KEY)</string>
+	<key>AppleID</key>
+	<string>$(APPLE_ID)</string>
 	<key>AppleIdURL</key>
 	<string>$(APPLEID_API_URL)</string>
 	<key>BaseURL</key>
