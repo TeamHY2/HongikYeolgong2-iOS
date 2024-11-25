@@ -36,8 +36,9 @@ struct RootView: View {
         }
         .systemOverlay(isPresented: $showAppUpdateModal, content: {
             ModalView(isPresented: $showAppUpdateModal,
-                      title: "최신버전 업데이트 필요",                      
-                      confirmButtonText: "업데이트 하기",
+                      type: .warning,
+                      title: "원활한 서비스 이용을 위해 최신 버전으로\n업데이트가 필요합니다.",
+                      confirmButtonText: "업데이트하기",
                       cancleButtonText: "종료하기",
                       confirmAction: { openAppStore() },
                       cancleAction: { exit(0) })
