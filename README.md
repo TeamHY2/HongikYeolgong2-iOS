@@ -25,13 +25,12 @@
 
 ## 📚 Libraries
 
-### Firebase
 - **Firebase iOS SDK**
   - Authentication
   - Firestore
   - RemoteConfig
  
-### Amplitude
+- **Amplitude**
 
 ## 🌟 Key Features
 
