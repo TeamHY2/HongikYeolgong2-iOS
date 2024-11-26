@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.apple.com/app/com.teamHY2.HongikYeolgong2">
-    <img src="https://github.com/user-attachments/assets/25af0602-a0f2-4282-ae35-37896dab1f36" alt="Download App Store" width="120">
+  <a href="https://apps.apple.com/kr/app/%ED%99%8D%EC%9D%B5%EC%97%B4%EA%B3%B5%EC%9D%B4/id6505141926">
+    <img src="https://github.com/user-attachments/assets/2b0436ae-c4fd-4b33-bd50-464bf2c26ac1" alt="Download App Store" width="120">
   </a>
 </p>
 
@@ -29,6 +29,9 @@
 - **Firebase iOS SDK**
   - Authentication
   - Firestore
+  - RemoteConfig
+ 
+### Amplitude
 
 ## 🌟 Key Features
 
@@ -58,6 +61,7 @@
 | Profile |  Role  |
 |:-----|:--------:|
 | 최주원   |  |
+| 변정훈   |  |
 | 권석기   |  |
 ## 📱 Screenshots
 
