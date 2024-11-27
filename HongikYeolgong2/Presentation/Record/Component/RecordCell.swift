@@ -28,7 +28,7 @@ struct RecordCell: View {
             .padding(.leading, 28.adjustToScreenWidth)
             Spacer()
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: 88.adjustToScreenHeight)
         .background(.gray800)
         .cornerRadius(4)
         .overlay(

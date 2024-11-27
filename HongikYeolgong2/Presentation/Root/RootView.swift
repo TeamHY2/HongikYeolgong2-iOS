@@ -14,6 +14,7 @@ struct RootView: View {
     @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
     
     @State private var userSession: AppState.UserSession = .pending
+    @State private var showAppUpdateModal = false
     
     var body: some View {
         Group {
@@ -29,13 +30,19 @@ struct RootView: View {
                 SplashView()
                     .ignoresSafeArea(.all)
                     .onAppear {
-                        checkUserSession()
+                        appVersionCheck()
                     }
             }
         }
-        .onAppear {                                  
-            resolveUserPermissions()
-        }
+        .systemOverlay(isPresented: $showAppUpdateModal, content: {
+            ModalView(isPresented: $showAppUpdateModal,
+                      type: .warning,
+                      title: "원활한 서비스 이용을 위해 최신 버전으로\n업데이트가 필요합니다.",
+                      confirmButtonText: "업데이트하기",
+                      cancleButtonText: "종료하기",
+                      confirmAction: { openAppStore() },
+                      cancleAction: { exit(0) })
+        })
         .onReceive(canRequestFirstPushPermissions) { _ in
             requestUserPushPermissions()
         }
@@ -59,12 +66,30 @@ private extension RootView {
 }
 
 private extension RootView {
-    func checkUserSession() {
-        userDataInteractor.checkAuthentication()
+    func appVersionCheck() {
+        Task {
+            guard let currentVersionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
+                  let currentVersion = Int(currentVersionString.split(separator: ".").joined()),
+                  let minimumVersion = await RemoteConfigManager.shared.getMinimumAppVersion() else {
+                return
+            }
+            
+            guard currentVersion >= minimumVersion else {       
+                showAppUpdateModal.toggle()
+                return
+            }
+            
+            userDataInteractor.checkAuthentication()
+            userPermissionsInteractor.resolveStatus(for: .localNotifications)
+        }
     }
     
-    func resolveUserPermissions() {
-        userPermissionsInteractor.resolveStatus(for: .localNotifications)
+    func openAppStore() {
+        if let url = URL(string: "https://apps.apple.com/app/id/\(SecretKeys.appleID)") {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
     }
     
     func requestUserPushPermissions() {
