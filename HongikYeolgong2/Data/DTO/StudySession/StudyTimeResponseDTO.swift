@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyTimeResponseDTO: Decodable {
+struct StudyTimeResponseDTO: Codable {
     let yearHours: Int
     let yearMinutes: Int
     let monthHours: Int
