@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecordSkeletonView: View {
     @State var opacity: Double = 0.2
+    @State private var isAnimating: Bool = false
     var skeletonColor: Color = .gray600
     
     var body: some View {
@@ -65,8 +66,11 @@ struct RecordSkeletonView: View {
         .padding(.top, 32.adjustToScreenHeight)
         .padding(.bottom, 36.adjustToScreenHeight)
         .onAppear{
-            withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
-                opacity = opacity >= 0.4 ? 0.2 : 0.4
+            if !isAnimating { // 애니메이션이 실행 중이 아닐 때만 실행 -> 누적 방지
+                isAnimating = true
+                withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                    opacity = opacity >= 0.4 ? 0.2 : 0.4
+                }
             }
         }
     }
