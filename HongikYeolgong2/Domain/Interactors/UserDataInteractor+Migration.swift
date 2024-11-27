@@ -77,6 +77,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     ///  애플로그인을 요청합니다.
     /// - Parameter authorization: ASAuthorization
     func requestAppleLogin(_ authorization: ASAuthorization) {
+        KeyChainManager.deleteItem(key: .accessToken)
+        
         guard let appleIDCredential = appleLoginService.requestAppleLogin(authorization),
               let idTokenData = appleIDCredential.identityToken,
               let idToken = String(data: idTokenData, encoding: .utf8) else {
@@ -101,7 +103,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     
                     if isAlreadyExists {
                         appState[\.userSession] = .authenticated
-                    } else {
+                    } else {                    
                         appState[\.routing.onboarding.signUp] = true
                     }
                     
@@ -211,7 +213,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     }
     
     func checkKoreanLang(_ input: String) -> Bool {
-        let pattern = "^[가-힣a-zA-Z0-9\\s]*$"
+        let pattern = "^[가-힣a-zA-Z\\s]*$"
         
         if let _ = input.range(of: pattern, options: .regularExpression)  {
             return true

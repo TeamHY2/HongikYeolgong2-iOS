@@ -9,9 +9,15 @@ import SwiftUI
 
 struct ModalView: View {
     
+    enum ModalType {
+        case normal
+        case warning
+    }
+    
     var confirmButtonText: String = "네"
     var cancleButtonText: String = "아니오"
     
+    var type: ModalType = .normal
     let title: String
     let confirmAction: (() -> Void)?
     let cancleAction: (() -> Void)?
@@ -19,25 +25,28 @@ struct ModalView: View {
     @Binding var isPresented: Bool
     
      init(isPresented: Binding<Bool>,
+          type: ModalType = .normal,
           title: String,
           confirmButtonText: String,
           cancleButtonText: String,
           confirmAction: (() -> Void)?,
           cancleAction: (() -> Void)? = nil) {
+        self.type = type
         self.confirmButtonText = confirmButtonText
         self._isPresented = isPresented
         self.cancleButtonText = cancleButtonText
         self.title = title
         self.confirmAction = confirmAction
-        self.cancleAction = cancleAction
-        
+        self.cancleAction = cancleAction        
     }
     
     init(isPresented: Binding<Bool>,
+         type: ModalType = .normal,
          title: String,
          confirmAction: (() -> Void)?,
          cancleAction: (() -> Void)? = nil) {
         self.title = title
+        self.type = type
         self._isPresented = isPresented
         self.confirmAction = confirmAction
         self.cancleAction = cancleAction
@@ -47,11 +56,21 @@ struct ModalView: View {
     var body: some View {
         VStack(spacing: 0) {
             Spacer().frame(height: 40.adjustToScreenHeight)
+            Group {
+                switch type {
+                case .normal:
+                    EmptyView()
+                case .warning:
+                    Image(.warningMark)
+                    Spacer().frame(height: 16.adjustToScreenHeight)
+                }
+            }
             
-            // title
             Text(title)
-                .font(.pretendard(size: 18, weight: .semibold))
+                .font(.pretendard(size: 18, weight: .semibold), lineHeight: 26)
                 .foregroundStyle(.gray100)
+                .multilineTextAlignment(.center)
+            
             
             Spacer().frame(height: 30.adjustToScreenHeight)
             
@@ -81,7 +100,6 @@ struct ModalView: View {
                 }
                 .background(.blue100)
                 .cornerRadius(8)
-                
             }
             .padding(.horizontal, 24.adjustToScreenWidth)
             
@@ -93,8 +111,3 @@ struct ModalView: View {
         
     }
 }
-
-
-//#Preview {
-//    ModalView()
-//}

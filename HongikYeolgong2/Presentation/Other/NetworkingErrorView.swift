@@ -12,9 +12,7 @@ struct NetworkingErrorView: View {
     
     var body: some View {
         VStack(spacing: 16.adjustToScreenHeight) {
-            Image(.exclamationMark)
-                .resizable()
-                .frame(width: 50.adjustToScreenWidth, height: 50.adjustToScreenHeight)
+            Image(.warningMark)            
             
             Text("네트워크가 연결되어 있지 않아.\n오류가 발생할 수 있습니다.")
                 .multilineTextAlignment(.center)
