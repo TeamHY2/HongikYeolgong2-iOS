@@ -97,7 +97,7 @@ struct HomeView: View {
             studySession = $0
         }
         .onReceive(studySessionEnded) { _ in
-            studySessionInteractor.endStudy()
+            endStudy()
         }
         .onReceive(studySessionUploaded) { _ in
             weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
@@ -131,6 +131,7 @@ extension HomeView {
     
     func startStudy() {         
         studySessionInteractor.startStudy()
+        weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
         Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
