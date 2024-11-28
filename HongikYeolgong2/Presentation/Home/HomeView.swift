@@ -70,7 +70,7 @@ struct HomeView: View {
                     get: { appState.value.studySession.startTime },
                     set: { studySessionInteractor.setStartTime($0) }
                 ),
-                onTimeSelected: { studySessionInteractor.startStudy() }
+                onTimeSelected: startStudy
             )
         }
         .systemOverlay(isPresented: $shouldShowAddTimeModal) {
@@ -85,7 +85,7 @@ struct HomeView: View {
                       title: "열람실을 다 이용하셨나요?",
                       confirmButtonText: "네",
                       cancleButtonText: "더 이용하기",
-                      confirmAction: { studySessionInteractor.endStudy()})
+                      confirmAction: endStudy )
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
@@ -114,12 +114,10 @@ struct HomeView: View {
 extension HomeView {
     func endButtonTapped() {
         shouldShowEndUseModal.toggle()
-        Amplitude.instance.track(eventType: "StudyEndButton")
     }
     
     func startButtonTapped() {
         shouldShowTimePicker.toggle()
-        Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
     func seatButtonTapped() {
@@ -129,6 +127,16 @@ extension HomeView {
     func addButtonTapped() {
         shouldShowAddTimeModal.toggle()
         Amplitude.instance.track(eventType: "StudyExtendButton")
+    }
+    
+    func startStudy() {         
+        studySessionInteractor.startStudy()
+        Amplitude.instance.track(eventType: "StudyStartButton")
+    }
+    
+    func endStudy() {
+        studySessionInteractor.endStudy()
+        Amplitude.instance.track(eventType: "StudyEndButton")
     }
     
     func retryAction() {
