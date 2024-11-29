@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeeklyStudyView: View {
+struct WeeklyStudy: View {
     let studyRecords: [WeeklyStudyRecord]
     
     var body: some View {
@@ -19,7 +19,7 @@ struct WeeklyStudyView: View {
                 WeeklyStudyCell(
                     dayOfWeek: .init(rawValue: offset) ?? .monday,
                     studyRecord: stduyRecord
-                )
+                )                
             }
         }
         .frame(maxWidth: .infinity, minHeight: 74)

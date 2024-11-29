@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StudyPeriodView: View {
+struct StudyPeriod: View {
     let startTime: Date
     let endTime: Date
     

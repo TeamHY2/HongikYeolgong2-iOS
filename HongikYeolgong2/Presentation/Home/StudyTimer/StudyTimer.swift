@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StudyTimerView: View {
+struct StudyTimer: View {
     let totalTime: TimeInterval
     let remainingTime: TimeInterval
     let color: Color

@@ -18,34 +18,47 @@ struct HomeView: View {
     @Environment(\.injected.interactors.weeklyStudyInteractor) var weeklyStudyInteractor
     
     @State private var studySession = AppState.StudySession()
-    @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
-    @State private var wiseSaying: Loadable<WiseSaying> = .notRequest    
+    @State var studyRecords = CurrentValueSubject<Loadable<[WeeklyStudyRecord]>, Never>(.notRequest)
+    @State var wiseSaying = CurrentValueSubject<Loadable<WiseSaying>, Never>(.notRequest)
+    @State var loadable: Loadable<(studyRecords: [WeeklyStudyRecord], wiseSaying: WiseSaying)> = .notRequest
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
     @State private var shouldShowWebView = false
-        
+    
+    private let cancelBag = CancelBag()
+    
     var body: some View {
         VStack(spacing: 0) {
+            
             // MARK: - WeeklyStudyCount
-            WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
+            switch loadable {
+            case let .success(response):
+                WeeklyStudy(studyRecords: response.studyRecords)
+            default:
+                Text("로딩중")
+            }
             Spacer().frame(height: 36.adjustToScreenHeight)
             // MARK: - WiseSaying
             if studySession.isStudying {
-                StudyPeriodView(
+                StudyPeriod(
                     startTime: studySession.firstStartTime,
                     endTime: studySession.endTime
                 )
                 Spacer().frame(height: 32.adjustToScreenHeight)
-                StudyTimerView(
+                StudyTimer(
                     totalTime: studySession.totalTime,
                     remainingTime: studySession.remainingTime,
                     color: studySession.isAddTime ? .yellow100 : .white
                 )
             } else {
-                // TODO: 모든 로딩이 끝났을떄 동시에 컨텐츠 보여주기
                 Spacer().frame(height: 120.adjustToScreenHeight)
-                TodayWiseSaying(wiseSaying: wiseSaying.value ?? WiseSaying())
+                switch loadable {
+                case let .success(response):
+                    TodayWiseSaying(wiseSaying: response.wiseSaying)
+                default:
+                    Text("로딩중")
+                }
             }
             
             Spacer()
@@ -53,7 +66,6 @@ struct HomeView: View {
             // MARK: - Buttons
             Group {
                 if studySession.isStudying {
-                    
                     if studySession.isAddTime {
                         BaseButton(
                             title: "열람실 이용 연장",
@@ -115,8 +127,8 @@ struct HomeView: View {
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
         .onAppear {
-            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-            weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords.value)
+            weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying.value)
         }
         .onReceive(studySessionUpdated) {
             studySession = $0
@@ -125,12 +137,15 @@ struct HomeView: View {
             endStudy()
         }
         .onReceive(studySessionUploaded) { _ in
-            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords.value)
         }
         .onReceive(scenePhaseUpdated) {
             $0 == .active
             ? studySessionInteractor.resumeStudy()
             : studySessionInteractor.pauseStudy()
+        }
+        .onReceive(loadCompleted) { value in
+            loadable.setSuccess(value: value)            
         }
     }
 }
@@ -156,7 +171,7 @@ extension HomeView {
     
     func startStudy() {
         studySessionInteractor.startStudy()
-        weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
+        weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords.value)
         Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
@@ -166,13 +181,21 @@ extension HomeView {
     }
     
     func retryAction() {
-        weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-        weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+        weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords.value)
+        weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying.value)
     }
 }
 
 // MARK: - Publishers
-extension HomeView {
+extension HomeView {    
+    var loadCompleted: AnyPublisher<(studyRecords: [WeeklyStudyRecord], wiseSaying: WiseSaying), Never> {
+        studyRecords
+            .combineLatest(wiseSaying)
+            .filter { $0.0.isSuccess && $0.1.isSuccess }
+            .map { (studyRecords: $0.0.value!, wiseSaying: $0.1.value!)}
+            .delay(for: 2.0, scheduler: RunLoop.main)
+            .eraseToAnyPublisher()
+    }
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
         appState.updates(for: \.studySession)
     }
