@@ -123,7 +123,7 @@ struct SettingView: View {
             .navigationDestination(for: Page.self) { page in
                 switch page {
                 case let .webView(title, url):
-                    WebViewWithNavigation(url: url, title: title)
+                    BaseWebView(url: url, title: title)
                 default:
                     EmptyView()
                 }

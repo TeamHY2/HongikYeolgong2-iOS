@@ -27,8 +27,8 @@ final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
     func getWeekyStudy(studyRecords: LoadableSubject<[WeeklyStudyRecord]>) {
         studySessionRepository
             .getWeeklyStudyRecords()
-            .receive(on: DispatchQueue.main)
-            .sinkToLoadble(studyRecords)
+            .receive(on: DispatchQueue.main)        
+            .sinkToLoadble(studyRecords)            
             .store(in: cancleBag)
     }
     

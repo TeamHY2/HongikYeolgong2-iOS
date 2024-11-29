@@ -113,6 +113,7 @@
 		47B1D4BD2C9CB1760071B62B /* HongikYeolgong2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4BC2C9CB1760071B62B /* HongikYeolgong2Tests.swift */; };
 		47B1D4C72C9CB1760071B62B /* HongikYeolgong2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4C62C9CB1760071B62B /* HongikYeolgong2UITests.swift */; };
 		47B1D4C92C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */; };
+		47B2E93C2CF8C80B003601E5 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B2E93B2CF8C80B003601E5 /* Skeleton.swift */; };
 		47BACCF72CA164BA00295DAC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BACCF62CA164BA00295DAC /* Font+.swift */; };
 		47BB5BE32CE52858002BBEE1 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BB5BE22CE52858002BBEE1 /* Page.swift */; };
 		47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E22CC813BB0015D973 /* KeyChainManager.swift */; };
@@ -302,6 +303,7 @@
 		47B1D4C22C9CB1760071B62B /* HongikYeolgong2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HongikYeolgong2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		47B1D4C62C9CB1760071B62B /* HongikYeolgong2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITests.swift; sourceTree = "<group>"; };
 		47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		47B2E93B2CF8C80B003601E5 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
 		47BACCF62CA164BA00295DAC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		47BB5BE22CE52858002BBEE1 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		47BE30E22CC813BB0015D973 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
@@ -457,6 +459,7 @@
 				4789337A2CADC43D00E1D89E /* DropDownPicker.swift */,
 				47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */,
 				473E8EBB2CCEBEF3000F102C /* ModalView.swift */,
+				47B2E93B2CF8C80B003601E5 /* Skeleton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1363,6 +1366,7 @@
 				47C815552CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
+				47B2E93C2CF8C80B003601E5 /* Skeleton.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
 				98B5F0132CDBB905007CF5FA /* StudyTimeMapper.swift in Sources */,

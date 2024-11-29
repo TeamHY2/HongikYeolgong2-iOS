@@ -22,6 +22,7 @@ struct WeeklyStudyView: View {
                 )
             }
         }
+        .frame(maxWidth: .infinity, minHeight: 74)
         .padding(.top, 32.adjustToScreenHeight)
     }
 }

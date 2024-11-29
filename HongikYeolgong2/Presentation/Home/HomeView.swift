@@ -19,50 +19,75 @@ struct HomeView: View {
     
     @State private var studySession = AppState.StudySession()
     @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
-    @State private var wiseSaying: Loadable<WiseSaying> = .notRequest
+    @State private var wiseSaying: Loadable<WiseSaying> = .notRequest    
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
     @State private var shouldShowWebView = false
-    
+        
     var body: some View {
-        NetworkStateView(
-            loadables: [
-                AnyLoadable($studyRecords),
-                AnyLoadable($wiseSaying)
-            ],
-            retryAction: retryAction
-        ) {
-            content
-        }
-    }
-    
-    var content: some View {
         VStack(spacing: 0) {
+            // MARK: - WeeklyStudyCount
             WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
-            
-            StudyContentControllerView(
-                studySession: $studySession,
-                wiseSaying: wiseSaying.value ?? WiseSaying()
-            )
+            Spacer().frame(height: 36.adjustToScreenHeight)
+            // MARK: - WiseSaying
+            if studySession.isStudying {
+                StudyPeriodView(
+                    startTime: studySession.firstStartTime,
+                    endTime: studySession.endTime
+                )
+                Spacer().frame(height: 32.adjustToScreenHeight)
+                StudyTimerView(
+                    totalTime: studySession.totalTime,
+                    remainingTime: studySession.remainingTime,
+                    color: studySession.isAddTime ? .yellow100 : .white
+                )
+            } else {
+                // TODO: 모든 로딩이 끝났을떄 동시에 컨텐츠 보여주기
+                Spacer().frame(height: 120.adjustToScreenHeight)
+                TodayWiseSaying(wiseSaying: wiseSaying.value ?? WiseSaying())
+            }
             
             Spacer()
             
-            ActionButtonControllerView(
-                studySession: $studySession,
-                actions: .init(
-                    endButtonTapped: endButtonTapped,
-                    startButtonTapped: startButtonTapped,
-                    seatButtonTapped: seatButtonTapped,
-                    addButtonTapped: addButtonTapped
-                )
-            )
+            // MARK: - Buttons
+            Group {
+                if studySession.isStudying {
+                    
+                    if studySession.isAddTime {
+                        BaseButton(
+                            title: "열람실 이용 연장",
+                            backgroundColor: .blue100,
+                            radius: 4,
+                            action: addButtonTapped
+                        )
+                    }
+                    BaseButton(
+                        title: "열람실 이용 종료",
+                        backgroundColor: .gray600,
+                        radius: 4,
+                        action: endButtonTapped
+                    )
+                    Spacer().frame(height: 12.adjustToScreenHeight)
+                } else {
+                    HStack {
+                        BaseButton(
+                            width: 69.adjustToScreenWidth,
+                            backgroundColor: .clear,
+                            action: seatButtonTapped
+                        )
+                        .modifier(ImageBackground(imageName: .seatButton))
+                        Spacer().frame(width: 12.adjustToScreenWidth)
+                        BaseButton(
+                            backgroundColor: .clear,
+                            action: startButtonTapped
+                        )
+                        .modifier(ImageBackground(imageName: .startButton))
+                    }
+                }
+            }
             
-            NavigationLink("",
-                           destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
-                .edgesIgnoringSafeArea(.bottom),
-                           isActive: $shouldShowWebView)
-            .frame(width: 0, height: 0)
+            Spacer().frame(height: 36.adjustToScreenHeight)
         }
         .systemOverlay(isPresented: $shouldShowTimePicker) {
             TimePickerView(
@@ -121,7 +146,7 @@ extension HomeView {
     }
     
     func seatButtonTapped() {
-        shouldShowWebView.toggle()
+        
     }
     
     func addButtonTapped() {
@@ -129,7 +154,7 @@ extension HomeView {
         Amplitude.instance.track(eventType: "StudyExtendButton")
     }
     
-    func startStudy() {         
+    func startStudy() {
         studySessionInteractor.startStudy()
         weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
         Amplitude.instance.track(eventType: "StudyStartButton")
@@ -150,7 +175,6 @@ extension HomeView {
 extension HomeView {
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
         appState.updates(for: \.studySession)
-            .eraseToAnyPublisher()
     }
     
     var studySessionEnded: AnyPublisher<TimeInterval, Never> {
@@ -175,85 +199,5 @@ extension HomeView {
             .delay(for: 1, scheduler: RunLoop.main)
             .map { _ in }
             .eraseToAnyPublisher()
-    }        
-}
-
-// MARK: - StudyContentControllerView
-struct StudyContentControllerView: View {
-    @Binding var studySession: AppState.StudySession
-    let wiseSaying: WiseSaying
-    
-    var body: some View {
-        Group {
-            if studySession.isStudying {
-                VStack(spacing: 32.adjustToScreenHeight) {
-                    StudyPeriodView(
-                        startTime: studySession.firstStartTime,
-                        endTime: studySession.endTime
-                    )
-                    StudyTimerView(
-                        totalTime: studySession.totalTime,
-                        remainingTime: studySession.remainingTime,
-                        color: studySession.isAddTime ? .yellow100 : .white
-                    )
-                }
-                .padding(.top, 36.adjustToScreenHeight)
-            } else {
-                TodayWiseSaying(wiseSaying: wiseSaying)
-                    .padding(.top, 120.adjustToScreenHeight)
-            }
-        }
-    }
-}
-
-// MARK: - ActionButtonControllerView
-struct ActionButtonControllerView: View {
-    @Binding var studySession: AppState.StudySession
-    let actions: ActionHandlers
-    
-    struct ActionHandlers {
-        let endButtonTapped: () -> Void
-        let startButtonTapped: () -> Void
-        let seatButtonTapped: () -> Void
-        let addButtonTapped: () -> Void
-    }
-    
-    var body: some View {
-        Group {
-            if studySession.isStudying {
-                VStack(spacing: 12.adjustToScreenWidth) {
-                    if studySession.isAddTime {
-                        BaseButton(
-                            title: "열람실 이용 연장",
-                            backgroundColor: .blue100,
-                            radius: 4,
-                            action: { actions.addButtonTapped() }
-                        )
-                    }
-                    BaseButton(
-                        title: "열람실 이용 종료",
-                        backgroundColor: .gray600,
-                        radius: 4,
-                        action: { actions.endButtonTapped() }
-                    )
-                }
-            } else {
-                HStack(spacing: 12.adjustToScreenWidth) {
-                    BaseButton(
-                        width: 69.adjustToScreenWidth,
-                        backgroundColor: .clear,
-                        action: { actions.seatButtonTapped() }
-                    )
-                    .modifier(ImageBackground(imageName: .seatButton))
-                    
-                    BaseButton(
-                        backgroundColor: .clear,
-                        action: { actions.startButtonTapped() }
-                    )
-                    .modifier(ImageBackground(imageName: .startButton))
-                }
-            }
-        }
-        .padding(.bottom, 36.adjustToScreenHeight)
     }
 }

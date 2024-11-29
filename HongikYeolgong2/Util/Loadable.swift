@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 typealias LoadableSubject<Value> = Binding<Loadable<Value>>
 
@@ -46,6 +47,11 @@ extension Loadable {
     // 에러 상태 확인용
     var isError: Bool {
         if case .error = self { return true }
+        return false
+    }
+    
+    var isSuccess: Bool {
+        if case .success = self { return true }
         return false
     }
 }

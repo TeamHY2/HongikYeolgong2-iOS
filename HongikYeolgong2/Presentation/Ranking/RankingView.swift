@@ -36,7 +36,7 @@ struct RankingView: View {
                     })
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                 }
-            }            
+            }                        
             .padding(EdgeInsets(top: 32.adjustToScreenHeight,
                                 leading: 32.adjustToScreenWidth,
                                 bottom: 17.adjustToScreenHeight,

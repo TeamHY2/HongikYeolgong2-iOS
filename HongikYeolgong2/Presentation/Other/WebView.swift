@@ -8,7 +8,7 @@
 import SwiftUI
 import WebKit
 
-struct WebViewWithNavigation: View {
+struct BaseWebView: View {
     @Environment(\.presentationMode) var dismiss
     
     var url: String

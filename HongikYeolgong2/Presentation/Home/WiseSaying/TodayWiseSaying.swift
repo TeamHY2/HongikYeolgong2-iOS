@@ -20,7 +20,7 @@ struct TodayWiseSaying: View {
             Text("-\(wiseSaying.author)")
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundColor(.gray200)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.center)                
         }
     }
 }
