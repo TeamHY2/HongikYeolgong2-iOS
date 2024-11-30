@@ -25,3 +25,9 @@ struct WeeklyStudyRecord {
         }
     }
 }
+
+extension Array where Element == WeeklyStudyRecord {
+    static var initialValue: [WeeklyStudyRecord] {
+        .init(repeating: .init(monthOfDay: "11/11", studyCount: 1, isUpcomming: false), count: 7)
+    }
+}

@@ -11,7 +11,6 @@ import SwiftUI
 import AmplitudeSwift
 
 struct HomeView: View {
-    // MARK: - Properties
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
@@ -31,15 +30,15 @@ struct HomeView: View {
     var body: some View {
         VStack(spacing: 0) {
             
-            // MARK: - WeeklyStudyCount
             switch loadable {
             case let .success(response):
                 WeeklyStudy(studyRecords: response.studyRecords)
             default:
-                Text("로딩중")
+                WeeklyStudy(studyRecords: .initialValue)
+                    .redacted()
             }
             Spacer().frame(height: 36.adjustToScreenHeight)
-            // MARK: - WiseSaying
+            
             if studySession.isStudying {
                 StudyPeriod(
                     startTime: studySession.firstStartTime,
@@ -57,13 +56,13 @@ struct HomeView: View {
                 case let .success(response):
                     TodayWiseSaying(wiseSaying: response.wiseSaying)
                 default:
-                    Text("로딩중")
+                    TodayWiseSaying(wiseSaying: .initialValue)
+                        .redacted()
                 }
             }
             
             Spacer()
             
-            // MARK: - Buttons
             Group {
                 if studySession.isStudying {
                     if studySession.isAddTime {
@@ -89,13 +88,18 @@ struct HomeView: View {
                             action: seatButtonTapped
                         )
                         .modifier(ImageBackground(imageName: .seatButton))
+                        .redactedIfNeeded()
+                        
                         Spacer().frame(width: 12.adjustToScreenWidth)
+                        
                         BaseButton(
                             backgroundColor: .clear,
                             action: startButtonTapped
                         )
                         .modifier(ImageBackground(imageName: .startButton))
+                        .redactedIfNeeded()
                     }
+                    .redacted(isRedacted : !loadable.isSuccess)
                 }
             }
             
@@ -145,7 +149,9 @@ struct HomeView: View {
             : studySessionInteractor.pauseStudy()
         }
         .onReceive(loadCompleted) { value in
-            loadable.setSuccess(value: value)            
+            withAnimation {
+                loadable.setSuccess(value: value)
+            }
         }
     }
 }
@@ -187,7 +193,7 @@ extension HomeView {
 }
 
 // MARK: - Publishers
-extension HomeView {    
+extension HomeView {
     var loadCompleted: AnyPublisher<(studyRecords: [WeeklyStudyRecord], wiseSaying: WiseSaying), Never> {
         studyRecords
             .combineLatest(wiseSaying)
@@ -224,3 +230,4 @@ extension HomeView {
             .eraseToAnyPublisher()
     }
 }
+

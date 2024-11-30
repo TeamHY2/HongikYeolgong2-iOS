@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct TodayWiseSaying: View {
-    let wiseSaying: WiseSaying
+    let wiseSaying: WiseSaying        
     
     var body: some View {
         VStack(spacing: 12) {
             Text(wiseSaying.quote)
                 .font(.pretendard(size: 18, weight: .regular), lineHeight: 28)
                 .foregroundColor(.gray100)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.center)    
+                .redactedIfNeeded()
             
             Text("-\(wiseSaying.author)")
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundColor(.gray200)
-                .multilineTextAlignment(.center)                
+                .multilineTextAlignment(.center)
+                .redactedIfNeeded()
         }
     }
 }
-
-//#Preview {
-//    TodayWiseSaying()
-//}

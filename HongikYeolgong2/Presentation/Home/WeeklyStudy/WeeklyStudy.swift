@@ -19,7 +19,7 @@ struct WeeklyStudy: View {
                 WeeklyStudyCell(
                     dayOfWeek: .init(rawValue: offset) ?? .monday,
                     studyRecord: stduyRecord
-                )                
+                )                            
             }
         }
         .frame(maxWidth: .infinity, minHeight: 74)

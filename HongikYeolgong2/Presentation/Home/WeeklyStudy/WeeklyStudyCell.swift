@@ -16,17 +16,22 @@ struct WeeklyStudyCell: View {
             Text(dayOfWeek.koreanString)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18.adjustToScreenHeight)
                 .foregroundStyle(textColor)
+                .redactedIfNeeded()
+            
+            Spacer().frame(height: 8.adjustToScreenHeight)
             
             VStack {
-                Image(studyRecord.imageName)                    
+                Image(studyRecord.imageName)       
+                    .redactedIfNeeded()
             }
             .frame(height: 28.adjustToScreenHeight)
-            .padding(.top, 8.adjustToScreenHeight)
-            .padding(.bottom, 2.adjustToScreenHeight)
+            
+            Spacer().frame(height: 2.adjustToScreenHeight)
             
             Text(studyRecord.monthOfDay)
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18.adjustToScreenHeight)
                 .foregroundStyle(textColor)
+                .redactedIfNeeded()
         }
     }
     
