@@ -15,14 +15,13 @@ struct TodayWiseSaying: View {
             Text(wiseSaying.quote)
                 .font(.pretendard(size: 18, weight: .regular), lineHeight: 28)
                 .foregroundColor(.gray100)
-                .multilineTextAlignment(.center)    
-                .redactedIfNeeded()
+                .multilineTextAlignment(.center)
             
             Text("-\(wiseSaying.author)")
                 .font(.pretendard(size: 12, weight: .regular), lineHeight: 18)
                 .foregroundColor(.gray200)
                 .multilineTextAlignment(.center)
-                .redactedIfNeeded()
+                
         }
     }
 }

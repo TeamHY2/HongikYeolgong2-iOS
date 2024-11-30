@@ -8,12 +8,6 @@
 import Foundation
 
 struct WeeklyStudyRecord {
-    init() {
-        self.monthOfDay = "1/1"
-        self.studyCount = 0
-        self.isUpcomming = false
-    }
-    
     init(monthOfDay: String, studyCount: Int, isUpcomming: Bool) {
         self.monthOfDay = monthOfDay
         self.studyCount = studyCount
@@ -35,11 +29,5 @@ struct WeeklyStudyRecord {
         default:
             "shineCount03"
         }
-    }
-}
-
-extension Array where Element == WeeklyStudyRecord {
-    static var initialValue: [WeeklyStudyRecord] {
-        .init(repeating: .init(), count: 7)
     }
 }

@@ -13,7 +13,7 @@ struct IOSBackground: ViewModifier {
             .background(Image(.iOSBackground)
                 .resizable()
                 .ignoresSafeArea(.all)
-                .frame(maxWidth: .infinity)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .allowsHitTesting(false)
             )
     }

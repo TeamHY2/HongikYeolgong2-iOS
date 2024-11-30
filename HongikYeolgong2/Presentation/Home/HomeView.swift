@@ -11,15 +11,15 @@ import SwiftUI
 import AmplitudeSwift
 
 struct HomeView: View {
-    @Environment(\.injected.appState) var appState
-    @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
-    @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
-    @Environment(\.injected.interactors.weeklyStudyInteractor) var weeklyStudyInteractor
+    @Environment(\.injected.appState) private var appState
+    @Environment(\.injected.interactors.userPermissionsInteractor) private var permissions
+    @Environment(\.injected.interactors.studySessionInteractor) private var studySessionInteractor
+    @Environment(\.injected.interactors.weeklyStudyInteractor) private var weeklyStudyInteractor
     
     @State private var studySession = AppState.StudySession()
-    @State var studyRecords = CurrentValueSubject<Loadable<[WeeklyStudyRecord]>, Never>(.notRequest)
-    @State var wiseSaying = CurrentValueSubject<Loadable<WiseSaying>, Never>(.notRequest)
-    @State var loadable: Loadable<(studyRecords: [WeeklyStudyRecord], wiseSaying: WiseSaying)> = .notRequest
+    @State private var studyRecords = CurrentValueSubject<Loadable<[WeeklyStudyRecord]>, Never>(.notRequest)
+    @State private var wiseSaying = CurrentValueSubject<Loadable<WiseSaying>, Never>(.notRequest)
+    @State private var loadable: Loadable<(studyRecords: [WeeklyStudyRecord], wiseSaying: WiseSaying)> = .notRequest
     @State private var shouldShowTimePicker = false
     @State private var shouldShowAddTimeModal = false
     @State private var shouldShowEndUseModal = false
@@ -28,81 +28,74 @@ struct HomeView: View {
     private let cancelBag = CancelBag()
     
     var body: some View {
-        VStack(spacing: 0) {
+        Group {
             switch loadable {
             case let .success(response):
-                WeeklyStudy(studyRecords: response.studyRecords)
-            default:
-                WeeklyStudy(studyRecords: .initialValue)
-            }
-            
-            Spacer().frame(height: 36.adjustToScreenHeight)
-            
-            if studySession.isStudying {
-                StudyPeriod(
-                    startTime: studySession.firstStartTime,
-                    endTime: studySession.endTime
-                )
-                Spacer().frame(height: 32.adjustToScreenHeight)
-                StudyTimer(
-                    totalTime: studySession.totalTime,
-                    remainingTime: studySession.remainingTime,
-                    color: studySession.isAddTime ? .yellow100 : .white
-                )
-            } else {
-                Spacer().frame(height: 120.adjustToScreenHeight)
-                switch loadable {
-                case let .success(response):
-                    TodayWiseSaying(wiseSaying: response.wiseSaying)
-                default:
-                    TodayWiseSaying(wiseSaying: .init())
-                }
-            }
-            
-            Spacer()
-            
-            Group {
-                if studySession.isStudying {
-                    if studySession.isAddTime {
+                VStack {
+                    WeeklyStudy(studyRecords: response.studyRecords)
+                    Spacer().frame(height: 36.adjustToScreenHeight)
+                    
+                    if studySession.isStudying {
+                        StudyPeriod(
+                            startTime: studySession.firstStartTime,
+                            endTime: studySession.endTime
+                        )
+                        Spacer().frame(height: 32.adjustToScreenHeight)
+                        StudyTimer(
+                            totalTime: studySession.totalTime,
+                            remainingTime: studySession.remainingTime,
+                            color: studySession.isAddTime ? .yellow100 : .white
+                        )
+                    } else {
+                        Spacer().frame(height: 120.adjustToScreenHeight)
+                        TodayWiseSaying(wiseSaying: response.wiseSaying)
+                    }
+                    
+                    Spacer()
+                    
+                    if studySession.isStudying {
+                        if studySession.isAddTime {
+                            BaseButton(
+                                title: "열람실 이용 연장",
+                                backgroundColor: .blue100,
+                                radius: 4,
+                                action: addButtonTapped
+                            )
+                        }
                         BaseButton(
-                            title: "열람실 이용 연장",
-                            backgroundColor: .blue100,
+                            title: "열람실 이용 종료",
+                            backgroundColor: .gray600,
                             radius: 4,
-                            action: addButtonTapped
+                            action: endButtonTapped
                         )
+                        Spacer().frame(height: 12.adjustToScreenHeight)
+                    } else {
+                        HStack {
+                            BaseButton(
+                                width: 69.adjustToScreenWidth,
+                                backgroundColor: .clear,
+                                action: seatButtonTapped
+                            )
+                            .modifier(ImageBackground(imageName: .seatButton))
+                            
+                            Spacer().frame(width: 12.adjustToScreenWidth)
+                            
+                            BaseButton(
+                                backgroundColor: .clear,
+                                action: startButtonTapped
+                            )
+                            .modifier(ImageBackground(imageName: .startButton))
+                        }
                     }
-                    BaseButton(
-                        title: "열람실 이용 종료",
-                        backgroundColor: .gray600,
-                        radius: 4,
-                        action: endButtonTapped
-                    )
-                    Spacer().frame(height: 12.adjustToScreenHeight)
-                } else {
-                    HStack {
-                        BaseButton(
-                            width: 69.adjustToScreenWidth,
-                            backgroundColor: .clear,
-                            action: seatButtonTapped
-                        )
-                        .modifier(ImageBackground(imageName: .seatButton))
-                        .redactedIfNeeded()
-                        
-                        Spacer().frame(width: 12.adjustToScreenWidth)
-                        
-                        BaseButton(
-                            backgroundColor: .clear,
-                            action: startButtonTapped
-                        )
-                        .modifier(ImageBackground(imageName: .startButton))
-                        .redactedIfNeeded()
-                    }
-                }
+                    
+                    Spacer().frame(height: 36.adjustToScreenHeight)
+                }            
+            default:
+                LoadingView()
             }
-            
-            Spacer().frame(height: 36.adjustToScreenHeight)
         }
-        .redacted(isRedacted: !loadable.isSuccess)
+        .padding(.horizontal, 32.adjustToScreenWidth)
+        .modifier(IOSBackground())
         .systemOverlay(isPresented: $shouldShowTimePicker) {
             TimePickerView(
                 selectedTime: Binding(
@@ -126,8 +119,6 @@ struct HomeView: View {
                       cancleButtonText: "더 이용하기",
                       confirmAction: endStudy )
         }
-        .padding(.horizontal, 32.adjustToScreenWidth)
-        .modifier(IOSBackground())
         .onAppear {
             weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords.value)
             weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying.value)
@@ -192,9 +183,10 @@ extension HomeView {
             .combineLatest(wiseSaying)
             .filter { $0.0.isSuccess && $0.1.isSuccess }
             .map { (studyRecords: $0.0.value!, wiseSaying: $0.1.value!)}
-            .delay(for: 20.0, scheduler: RunLoop.main)
+            .delay(for: 0.5, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
-    }
+    }        
+    
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
         appState.updates(for: \.studySession)
     }
@@ -218,9 +210,8 @@ extension HomeView {
         appState.updates(for: \.studySession.isStudying)
             .dropFirst()
             .filter { !$0 }
-            .delay(for: 20.0, scheduler: RunLoop.main)
+            .delay(for: 1.0, scheduler: RunLoop.main)
             .map { _ in }
             .eraseToAnyPublisher()
     }
 }
-

@@ -9,33 +9,17 @@ import SwiftUI
 
 struct RankingListView: View {
     let departmentRankings: [RankingDepartment]
-    @Environment(\.isRedacted) var isRedacted
     
-    var body: some View {
-        if isRedacted {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: 16) {
-                    ForEach(departmentRankings, id: \.self) { rankingInfo in
-                        RankingCell(departmentRankInfo: rankingInfo)
-                            .redactedIfNeeded()
-                    }
-                }
-                .padding(.horizontal, 32.adjustToScreenWidth)
-                .padding(.bottom, 60.adjustToScreenHeight)
-            }
-            .scrollDisabled(true)
-        } else {
+    var body: some View {      
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 16) {
                     ForEach(departmentRankings, id: \.self) { rankingInfo in
                         RankingCell(departmentRankInfo: rankingInfo)
-                            .redactedIfNeeded()
                     }
                 }
                 .padding(.horizontal, 32.adjustToScreenWidth)
                 .padding(.bottom, 60.adjustToScreenHeight)
             }
-        }
     }
 }
 
