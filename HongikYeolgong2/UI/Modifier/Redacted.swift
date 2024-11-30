@@ -57,4 +57,3 @@ extension View {
         modifier(RedactedContent())
     }
 }
-

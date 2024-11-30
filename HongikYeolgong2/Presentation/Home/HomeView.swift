@@ -29,14 +29,13 @@ struct HomeView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            
             switch loadable {
             case let .success(response):
                 WeeklyStudy(studyRecords: response.studyRecords)
             default:
                 WeeklyStudy(studyRecords: .initialValue)
-                    .redacted()
             }
+            
             Spacer().frame(height: 36.adjustToScreenHeight)
             
             if studySession.isStudying {
@@ -56,8 +55,7 @@ struct HomeView: View {
                 case let .success(response):
                     TodayWiseSaying(wiseSaying: response.wiseSaying)
                 default:
-                    TodayWiseSaying(wiseSaying: .initialValue)
-                        .redacted()
+                    TodayWiseSaying(wiseSaying: .init())
                 }
             }
             
@@ -99,12 +97,12 @@ struct HomeView: View {
                         .modifier(ImageBackground(imageName: .startButton))
                         .redactedIfNeeded()
                     }
-                    .redacted(isRedacted : !loadable.isSuccess)
                 }
             }
             
             Spacer().frame(height: 36.adjustToScreenHeight)
         }
+        .redacted(isRedacted: !loadable.isSuccess)
         .systemOverlay(isPresented: $shouldShowTimePicker) {
             TimePickerView(
                 selectedTime: Binding(
@@ -185,11 +183,6 @@ extension HomeView {
         studySessionInteractor.endStudy()
         Amplitude.instance.track(eventType: "StudyEndButton")
     }
-    
-    func retryAction() {
-        weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords.value)
-        weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying.value)
-    }
 }
 
 // MARK: - Publishers
@@ -199,7 +192,7 @@ extension HomeView {
             .combineLatest(wiseSaying)
             .filter { $0.0.isSuccess && $0.1.isSuccess }
             .map { (studyRecords: $0.0.value!, wiseSaying: $0.1.value!)}
-            .delay(for: 2.0, scheduler: RunLoop.main)
+            .delay(for: 20.0, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
     var studySessionUpdated: AnyPublisher<AppState.StudySession, Never> {
@@ -225,7 +218,7 @@ extension HomeView {
         appState.updates(for: \.studySession.isStudying)
             .dropFirst()
             .filter { !$0 }
-            .delay(for: 1, scheduler: RunLoop.main)
+            .delay(for: 20.0, scheduler: RunLoop.main)
             .map { _ in }
             .eraseToAnyPublisher()
     }

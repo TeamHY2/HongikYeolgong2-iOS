@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 
 protocol RankingDataInteractor {
-    func getCurrentWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
-    func getNextWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
-    func getPreviosWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
+    func getCurrentWeeklyRanking(weeklyRanking: LoadableSubject<WeeklyRanking>)
+    func getNextWeeklyRanking(weeklyRanking: LoadableSubject<WeeklyRanking>)
+    func getPreviosWeeklyRanking(weeklyRanking: LoadableSubject<WeeklyRanking>)
 }
 
 final class RankingDataInteractorImpl: RankingDataInteractor {
@@ -30,7 +30,7 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
     
     /// 현재 주차의 주간 랭킹을 가져오는 메서드
     /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
-    func getCurrentWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
+    func getCurrentWeeklyRanking(weeklyRanking: LoadableSubject<WeeklyRanking>) {
         weeklyRepository
             .getWeekField(date: Date().toDateString())
             .flatMap({ [weak self] in
@@ -42,46 +42,35 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
             })
             .first()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in
-            }, receiveValue: {
-                weeklyRanking.wrappedValue = $0
-            })
+            .sinkToLoadble(weeklyRanking)
             .store(in: cancleBag)
     }
     
     /// 다음 주차의 주간 랭킹을 가져오는 메서드
     /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
     /// - Note: 현재 주차(weekNumber)보다 큰 주차의 데이터는 조회할 수 없습니다.
-    func getNextWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
+    func getNextWeeklyRanking(weeklyRanking: LoadableSubject<WeeklyRanking>) {
         guard weekNumber < maxWeekNumber else { return }
         weekNumber += 1
         
         studySessionRepository
             .getWeeklyRanking(weekNumber: weekNumber)
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: {
-                weeklyRanking.wrappedValue = $0
-            }
+            .sinkToLoadble(weeklyRanking)
             .store(in: cancleBag)
     }
     
     /// 이전 주차의 주간 랭킹을 가져오는 메서드
     /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
     /// - Note: 최소 주차(minWeekNumber)보다 작은 주차의 데이터는 조회할 수 없습니다.
-    func getPreviosWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
+    func getPreviosWeeklyRanking(weeklyRanking: LoadableSubject<WeeklyRanking>) {
         guard weekNumber > minWeekNumber else { return }
         weekNumber -= 1
         
         studySessionRepository
             .getWeeklyRanking(weekNumber: weekNumber)
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: {
-                weeklyRanking.wrappedValue = $0
-            }
+            .sinkToLoadble(weeklyRanking)
             .store(in: cancleBag)
     }
 }

@@ -30,8 +30,7 @@ struct RankingCell: View {
                     Text("\(departmentRankInfo.studyDurationOfWeek)H")
                         .font(.pretendard(size: 12, weight: .regular))
                         .foregroundStyle(setFontColor)
-                    
-                    
+                                        
                     HStack {
                         Text(rankChangeText)
                             .font(.pretendard(size: 12, weight: .regular))
@@ -43,7 +42,7 @@ struct RankingCell: View {
                 }
             }
             .padding(.vertical, 13.adjustToScreenHeight)
-            .padding(.horizontal, 24.adjustToScreenWidth)
+            .padding(.horizontal, 24.adjustToScreenWidth)            
         }
         .background(setBackground)
     }
