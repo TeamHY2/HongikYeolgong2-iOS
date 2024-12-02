@@ -11,22 +11,24 @@ import Combine
 
 final class NetworkServiceTests: XCTestCase {
     var sut: NetworkService!
-    // 기기 테스트 경우 기본 토큰값 저장 용도
-    let testToken = Bundle.main.infoDictionary?["TestToken"] as? String ?? ""
-
+    
     override func setUp() {
-        // KeyChainManager accessToken 세팅
-        
+        // KeyChainManager 세팅
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
-        sut = NetworkService(session: session)
+        
+        // NetworkService 테스트 토큰으로 적용
+        sut = NetworkService(session: session, testToken: {
+            Bundle.main.infoDictionary?["TestToken"] as? String
+        })
     }
-
+    
     override func tearDown() {
         sut = nil
         super.tearDown()
     }
-
+    
+    // RecordView 네트워킹 상태 테스트
     func testGetStudyTimeRealNetwork() async throws {
         // given
         // 1. 엔드포인트 설정
@@ -35,7 +37,7 @@ final class NetworkServiceTests: XCTestCase {
         // when
         // 2. 네트워크 요청 수행
         do {
-            let response: BaseResponse<StudyTimeResponseDTO> = try await sut.request(endpoint: endpoint)
+            var response: BaseResponse<StudyTimeResponseDTO> = try await sut.request(endpoint: endpoint)
             
             // then
             // 3. 연결 상태 확인
