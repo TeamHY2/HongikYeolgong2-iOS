@@ -156,6 +156,7 @@
 		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
+		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
 		987D6C552CF7965B0009345F /* RecordSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987D6C542CF7965B0009345F /* RecordSkeletonView.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
@@ -337,6 +338,7 @@
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
 		5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
+		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
 		987D6C542CF7965B0009345F /* RecordSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSkeletonView.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
@@ -628,6 +630,7 @@
 				47A9DCC22CE0DB97001DE76D /* WebView.swift */,
 				98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */,
 				98EC95402CE4BAB600278DBD /* LoadingView.swift */,
+				982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1304,6 +1307,7 @@
 				5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
+				982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */,
 				98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */,
 				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
@@ -1558,7 +1562,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1605,7 +1609,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
