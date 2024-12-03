@@ -11,16 +11,24 @@ extension String {
     }()
     
     /// 문자열 형식의 날짜를 Date 객체로 변환합니다.
-    /// - Returns: Date
-    func toDate() -> Date? {
-        let dateFormatter = Self.dateFormatter
+       /// - Returns: Date
+       func toDate() -> Date? {
+           let dateFormatter = Self.dateFormatter
+           guard let date = dateFormatter.date(from: self) else {
+               return nil
+           }
+           return date
+       }
+    
+    func toDateFromMonthDay() -> Date? {
+        let dateFormatter = DateFormatter()
         let currentYear = Calendar.current.component(.year, from: Date())
-                
+        
         dateFormatter.dateFormat = "M/dd"
         guard let date = dateFormatter.date(from: self) else {
             return nil
         }
-                
+        
         var components = Calendar.current.dateComponents([.year, .month, .day], from: date)
         components.year = currentYear
         
@@ -60,3 +68,5 @@ extension String {
         return "\(year)"
     }
 }
+
+
