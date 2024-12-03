@@ -74,7 +74,7 @@ private extension RootView {
                 return
             }
             
-            guard currentVersion >= minimumVersion else {       
+            guard currentVersion >= minimumVersion else {
                 showAppUpdateModal.toggle()
                 return
             }

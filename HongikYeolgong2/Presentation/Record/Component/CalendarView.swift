@@ -21,6 +21,7 @@ enum MoveType {
 
 struct CaledarView: View {
     @Environment(\.injected.interactors.calendarDataInteractor) var calendarDataInteractor
+    @Environment(\.injected.appState) var appState
     @State private var AllStudy = [AllStudyRecord]()
     @State var seletedDate = Date()
     @State var currentMonth = [Day]()
@@ -82,7 +83,7 @@ struct CaledarView: View {
             
             Spacer().frame(height: 8.adjustToScreenHeight)
             
-//             seleteMonth가 변경될때마다 makeMonth의 값을 받아서 currentMonth에 업데이트
+            // seleteMonth가 변경될때마다 makeMonth의 값을 받아서 currentMonth에 업데이트
             LazyVGrid(columns: columns, spacing: 5.adjustToScreenHeight) {
                 ForEach(currentMonth, id: \.id) {
                     CalendarCell(dayInfo: $0)
@@ -96,6 +97,7 @@ struct CaledarView: View {
             currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
         }
         .onChange(of: AllStudy) { newAllStudy in
+            upDateStar()
             currentMonth = makeMonth(date: seletedDate, roomUsageInfo: newAllStudy)
         }
     }
@@ -199,7 +201,15 @@ extension CaledarView {
         
         currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
     }
-
+    
+    func upDateStar() {
+        if appState.value.studySession.isStudying == true {
+            for index in AllStudy.indices where Calendar.current.isDateInToday(AllStudy[index].date) {
+                AllStudy[index].studyCount += 1
+            }
+        }
+    }
+    
 }
 
 

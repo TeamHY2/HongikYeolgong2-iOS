@@ -47,6 +47,12 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
+    func getDayString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd"
+        return dateFormatter.string(from: self)
+    }
+    
     func getDayOffset() -> Int {     
         let calendar = Calendar.current
         let components = calendar.dateComponents([.weekday], from: self)

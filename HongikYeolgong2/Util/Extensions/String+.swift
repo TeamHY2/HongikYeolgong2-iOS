@@ -14,17 +14,10 @@ extension String {
     /// - Returns: Date
     func toDate() -> Date? {
         let dateFormatter = Self.dateFormatter
-        let currentYear = Calendar.current.component(.year, from: Date())
-                
-        dateFormatter.dateFormat = "M/dd"
         guard let date = dateFormatter.date(from: self) else {
             return nil
         }
-                
-        var components = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        components.year = currentYear
-        
-        return Calendar.current.date(from: components)
+        return date
     }
     
     func toDayofDate() -> String {

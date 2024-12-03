@@ -6,7 +6,7 @@ struct AllStudyRecord: Equatable {
     let month: String
     let year: String
     let date: Date
-    let studyCount: Int
+    var studyCount: Int
 }
 
 
