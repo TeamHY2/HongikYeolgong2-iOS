@@ -15,6 +15,7 @@ struct RootView: View {
     
     @State private var userSession: AppState.UserSession = .pending
     @State private var showAppUpdateModal = false
+    @State private var isPromotionPresented = false
     
     var body: some View {
         Group {
@@ -25,6 +26,7 @@ struct RootView: View {
                 MainTabView()
                     .onAppear {
                         userDataInteractor.getUserProfile()
+                        checkPromotionPresent()
                     }
             case .pending:
                 SplashView()
@@ -43,6 +45,9 @@ struct RootView: View {
                       confirmAction: { openAppStore() },
                       cancleAction: { exit(0) })
         })
+        .systemOverlay(isPresented: $isPromotionPresented) {
+            PromotionPopupView(isPromotionPopupPresented: $isPromotionPresented)
+        }
         .onReceive(canRequestFirstPushPermissions) { _ in
             requestUserPushPermissions()
         }
@@ -94,6 +99,26 @@ private extension RootView {
     
     func requestUserPushPermissions() {
         userPermissionsInteractor.request(permission: .localNotifications)
+    }
+    
+    // PromotionPopupView 표시여부 체크
+    func checkPromotionPresent() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let todayDate = dateFormatter.string(from: Date())
+        
+        // 오늘 보지 않기 날짜 체크
+        if let dismissedDate = UserDefaults.standard.string(forKey: "dismissedTodayKey"),
+           dismissedDate == todayDate {
+            isPromotionPresented = false
+            return
+        } else {
+            // 프로모션 표시 여부 확인 코드 추가
+            // url 불러오는 과정 추가
+            isPromotionPresented = true
+            
+        }
+        
     }
 }
 
