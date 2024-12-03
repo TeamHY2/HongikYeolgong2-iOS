@@ -92,7 +92,7 @@ struct CaledarView: View {
             Spacer()
         }
         .onAppear {
-            calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)
+            calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)            
             currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
         }
         .onChange(of: AllStudy) { newAllStudy in
@@ -199,7 +199,5 @@ extension CaledarView {
         
         currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
     }
-
 }
-
 
