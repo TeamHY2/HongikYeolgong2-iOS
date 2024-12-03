@@ -80,7 +80,7 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
         return Future<[AllStudyRecord], NetworkError> { promise in
             Task {
                 do {
-                    let response: BaseResponse<[CalendarCountAllResponseDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getAllStudyRecords)
+                    let response: BaseResponse<[CalendarCountAllResponseDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getAllStudyRecords)                    
                     promise(.success(response.data.map { $0.toEntity() }))
                     
                 } catch let error as NetworkError {
