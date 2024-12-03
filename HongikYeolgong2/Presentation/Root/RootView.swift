@@ -103,9 +103,7 @@ private extension RootView {
     
     // PromotionPopupView 표시여부 체크
     func checkPromotionPresent() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let todayDate = dateFormatter.string(from: Date())
+        let todayDate = Date().toDateString()
         
         // 오늘 보지 않기 날짜 체크
         if let dismissedDate = UserDefaults.standard.string(forKey: "dismissedTodayKey"),

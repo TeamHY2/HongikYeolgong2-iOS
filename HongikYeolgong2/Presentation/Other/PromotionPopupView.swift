@@ -105,10 +105,8 @@ extension PromotionPopupView {
     
     /// "오늘 그만 보기" 동작 함수
     private func dismissTodayPopup() {
-        // 날짜 포멧
-        let dataFormat = DateFormatter()
-        dataFormat.dateFormat = "yyyy-MM-dd"
-        let todayDate = dataFormat.string(from: Date())
+        // 금일 날짜 불러오기
+        let todayDate = Date().toDateString()
         
         print("📅제외 날짜 \(todayDate) 세팅 완료")
         UserDefaults.standard.set(todayDate, forKey: "dismissedTodayKey")
