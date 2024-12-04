@@ -104,19 +104,18 @@ private extension RootView {
     // PromotionPopupView 표시여부 체크
     func checkPromotionPresent() {
         let todayDate = Date().toDateString()
-        
         // 오늘 보지 않기 날짜 체크
         if let dismissedDate = UserDefaults.standard.string(forKey: "dismissedTodayKey"),
            dismissedDate == todayDate {
             isPromotionPresented = false
             return
         } else {
-            // 프로모션 표시 여부 확인 코드 추가
-            // url 불러오는 과정 추가
-            isPromotionPresented = true
-            
+            // 프로모션 데이터 로딩 및 표시 여부 확인
+            Task {
+                guard let promotionData = await RemoteConfigManager.shared.getPromotionData() else { return }
+                isPromotionPresented = true
+            }
         }
-        
     }
 }
 
