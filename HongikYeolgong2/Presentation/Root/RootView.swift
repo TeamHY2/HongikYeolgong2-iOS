@@ -16,6 +16,8 @@ struct RootView: View {
     @State private var userSession: AppState.UserSession = .pending
     @State private var showAppUpdateModal = false
     @State private var isPromotionPresented = false
+    @State private var isWebViewPresented = false
+    @State private var promotionData: PromotionData = PromotionData()
     
     var body: some View {
         Group {
@@ -26,7 +28,6 @@ struct RootView: View {
                 MainTabView()
                     .onAppear {
                         userDataInteractor.getUserProfile()
-                        checkPromotionPresent()
                     }
             case .pending:
                 SplashView()
@@ -35,6 +36,9 @@ struct RootView: View {
                         appVersionCheck()
                     }
             }
+        }
+        .fullScreenCover(isPresented: $isWebViewPresented) {
+            WebViewWithNavigation(url: promotionData.detailUrl, title: "프로모션")
         }
         .systemOverlay(isPresented: $showAppUpdateModal, content: {
             ModalView(isPresented: $showAppUpdateModal,
@@ -46,7 +50,14 @@ struct RootView: View {
                       cancleAction: { exit(0) })
         })
         .systemOverlay(isPresented: $isPromotionPresented) {
-            PromotionPopupView(isPromotionPopupPresented: $isPromotionPresented)
+            PromotionPopupView(
+                isPromotionPopupPresented: $isPromotionPresented,
+                promotionData: promotionData,
+                showWebView: {
+                    isPromotionPresented = false
+                    isWebViewPresented = true
+                }
+            )
         }
         .onReceive(canRequestFirstPushPermissions) { _ in
             requestUserPushPermissions()
@@ -84,6 +95,7 @@ private extension RootView {
                 return
             }
             
+            await checkPromotionPresent()
             userDataInteractor.checkAuthentication()
             userPermissionsInteractor.resolveStatus(for: .localNotifications)
         }
@@ -102,18 +114,31 @@ private extension RootView {
     }
     
     // PromotionPopupView 표시여부 체크
-    func checkPromotionPresent() {
-        let todayDate = Date().toDateString()
+    func checkPromotionPresent() async {
+        //let todayDate = Date().toDateString()
+        let todayDate = "2024-12-05"
         // 오늘 보지 않기 날짜 체크
         if let dismissedDate = UserDefaults.standard.string(forKey: "dismissedTodayKey"),
            dismissedDate == todayDate {
             isPromotionPresented = false
             return
-        } else {
-            // 프로모션 데이터 로딩 및 표시 여부 확인
-            Task {
-                guard let promotionData = await RemoteConfigManager.shared.getPromotionData() else { return }
-                isPromotionPresented = true
+        }
+        // 프로모션 데이터 로딩 및 표시 여부 확인
+        guard let data = await RemoteConfigManager.shared.getPromotionData() else { return }
+        // 해당 날짜 여부 확인
+        
+        
+        if let url = URL(string: data.imageUrl) {
+            do {
+                let (imageData, _) = try await URLSession.shared.data(from: url)
+                if let uiImage = UIImage(data: imageData) {
+                    DispatchQueue.main.async {
+                        self.promotionData = PromotionData(promtionData: data, image: uiImage)
+                        self.isPromotionPresented = true
+                    }
+                }
+            } catch {
+                print("Error downloading image: \(error.localizedDescription)")
             }
         }
     }

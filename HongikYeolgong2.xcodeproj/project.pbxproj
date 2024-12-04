@@ -170,6 +170,8 @@
 		98EC95412CE4BAB600278DBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95402CE4BAB600278DBD /* LoadingView.swift */; };
 		98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95422CE4F9C600278DBD /* Publisher.swift */; };
 		98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */; };
+		98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */; };
+		98FB764E2D00A44600BBCB8B /* PromotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764D2D00A44600BBCB8B /* PromotionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -352,6 +354,8 @@
 		98EC95402CE4BAB600278DBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		98EC95422CE4F9C600278DBD /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionResponseDTO.swift; sourceTree = "<group>"; };
+		98FB764D2D00A44600BBCB8B /* PromotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -719,6 +723,7 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				98FB764C2D00A42100BBCB8B /* Promotion */,
 				5E847A752CDBD5490034C2A7 /* Calendar */,
 				98B5F00D2CDB64D4007CF5FA /* Record */,
 				478F84452CD358F50097CAA1 /* Ranking */,
@@ -740,6 +745,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				98FB76492D00A38B00BBCB8B /* Promotion */,
 				476D26082CDDF2B6002FEF5C /* Calendar */,
 				478F84422CD3506D0097CAA1 /* Ranking */,
 				478F843F2CD33F4D0097CAA1 /* Weekly */,
@@ -1054,6 +1060,22 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		98FB76492D00A38B00BBCB8B /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
+		98FB764C2D00A42100BBCB8B /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				98FB764D2D00A44600BBCB8B /* PromotionData.swift */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1290,6 +1312,7 @@
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
 				47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */,
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
+				98FB764E2D00A44600BBCB8B /* PromotionData.swift in Sources */,
 				47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */,
 				478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */,
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
@@ -1356,6 +1379,7 @@
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */,
+				98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */,
 				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,
 				479BF66C2CDD1A8D009D9E44 /* LocalNotification.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
