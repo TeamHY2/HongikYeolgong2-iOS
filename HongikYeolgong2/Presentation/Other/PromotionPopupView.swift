@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AmplitudeSwift
 
 struct PromotionPopupView: View {
     @Binding var isPromotionPopupPresented: Bool
@@ -89,6 +90,7 @@ extension PromotionPopupView {
     /// "자세히 보기" 동작 함수
     private func promotionDetailPresent() {
         // Amplitude 추가
+        Amplitude.instance.track(eventType: "PromotionPopupDetail")
         
         // RootView WepView표시
         showWebView()
@@ -101,6 +103,7 @@ extension PromotionPopupView {
         UserDefaults.standard.set(todayDate, forKey: "dismissedTodayKey")
         
         // Amplitude 추가
+        Amplitude.instance.track(eventType: "PromotionPopupTodayClose")
         
         // view 닫기
         isPromotionPopupPresented = false
@@ -109,6 +112,7 @@ extension PromotionPopupView {
     /// "닫기" 동작 함수
     private func dismissPopup() {
         // Amplitude 추가
+        Amplitude.instance.track(eventType: "PromotionPopupClose")
         
         // view 닫기
         isPromotionPopupPresented = false
