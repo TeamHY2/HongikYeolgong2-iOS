@@ -115,19 +115,33 @@ private extension RootView {
     
     // PromotionPopupView 표시여부 체크
     func checkPromotionPresent() async {
-        //let todayDate = Date().toDateString()
-        let todayDate = "2024-12-05"
+        let todayDate = Date().toDateString()
+        
         // 오늘 보지 않기 날짜 체크
         if let dismissedDate = UserDefaults.standard.string(forKey: "dismissedTodayKey"),
            dismissedDate == todayDate {
             isPromotionPresented = false
             return
         }
-        // 프로모션 데이터 로딩 및 표시 여부 확인
+        // Promotion 데이터 불러오기
         guard let data = await RemoteConfigManager.shared.getPromotionData() else { return }
+        
+        // String -> Date 변환용 데이터 포맷
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // 날짜 형식 변환
+        guard
+            let start = dateFormatter.date(from: data.startDate),
+            let end = dateFormatter.date(from: data.endDate),
+            let today = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
+        else { return }
+        
         // 해당 날짜 여부 확인
+        guard today >= start && today <= end else { return }
         
-        
+        // 이미지 불러오기
         if let url = URL(string: data.imageUrl) {
             do {
                 let (imageData, _) = try await URLSession.shared.data(from: url)
