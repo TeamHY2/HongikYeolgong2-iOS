@@ -10,6 +10,7 @@ import SwiftUI
 protocol WeeklyStudyInteractor {
     func getWeekyStudy(studyRecords: LoadableSubject<[WeeklyStudyRecord]>)
     func getWiseSaying(wiseSaying: LoadableSubject<WiseSaying>)
+    func addStarCount(studyRecords: LoadableSubject<[WeeklyStudyRecord]>)
 }
 
 final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
@@ -17,7 +18,7 @@ final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     
-    init(appState: Store<AppState>, 
+    init(appState: Store<AppState>,
          studySessionRepository: StudySessionRepository) {
         self.appState = appState
         self.studySessionRepository = studySessionRepository
@@ -36,5 +37,21 @@ final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
             .getWiseSaying()
             .sinkToLoadble(wiseSaying)
             .store(in: cancleBag)
+    }
+    
+    func addStarCount(studyRecords: LoadableSubject<[WeeklyStudyRecord]>) {
+        guard var newStudyRecords = studyRecords.wrappedValue.value else {
+            return
+        }
+        let dayOffset = (Date().getDayOffset() + 6) % 7                 
+        newStudyRecords =  newStudyRecords.enumerated().map {
+            if $0.offset == dayOffset {
+                var newElement = $0.element
+                newElement.studyCount += 1
+                return newElement
+            }
+            return $0.element
+        }
+        studyRecords.wrappedValue.setSuccess(value: newStudyRecords)
     }
 }

@@ -24,7 +24,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-    private let addedTime: TimeInterval = .init(hours: 6)
+    private let addedTime: TimeInterval = .init(hours: 4)
     
     private var lastTime: Date?
     private var subscription: AnyCancellable?
