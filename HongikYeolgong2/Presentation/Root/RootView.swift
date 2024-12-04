@@ -48,7 +48,7 @@ struct RootView: View {
             }
         }
         .fullScreenCover(isPresented: $isWebViewPresented) {
-            WebViewWithNavigation(url: promotionData.detailUrl, title: "프로모션")
+            WebViewWithNavigation(url: promotionData.detailUrl, title: "상세보기")
         }
         .systemOverlay(isPresented: $showAppUpdateModal, content: {
             ModalView(isPresented: $showAppUpdateModal,
