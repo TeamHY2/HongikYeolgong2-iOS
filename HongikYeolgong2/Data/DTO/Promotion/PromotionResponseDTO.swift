@@ -5,14 +5,11 @@
 //  Created by 최주원 on 12/4/24.
 //
 
-import SwiftUI
+import Foundation
 
-struct PromotionResponseDTO: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    PromotionResponseDTO()
+struct PromotionResponseDTO: Decodable {
+    let imageUrl: String
+    let detailUrl: String
+    let endDate: String
+    let startDate: String
 }

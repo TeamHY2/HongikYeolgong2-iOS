@@ -6,21 +6,12 @@
 //
 
 import SwiftUI
-import WebKit
 
 struct PromotionPopupView: View {
     @Binding var isPromotionPopupPresented: Bool
-    @State private var isWebViewPresented = false
-    
-    let promotionDetail: String = "https://www.naver.com/"
-    
-    private var promotionImage: Image = Image("onboarding01")
-    
-    init(isPromotionPopupPresented: Binding<Bool>, isWebViewPresented: Bool = false, promotionImage: Image = Image("onboarding01")) {
-        self._isPromotionPopupPresented = isPromotionPopupPresented
-        self.isWebViewPresented = isWebViewPresented
-        self.promotionImage = promotionImage
-    }
+    let promotionData: PromotionData
+    // 자세히 보기 동작 함수
+    let showWebView: () -> Void
     
     var body: some View {
         // 프로모션 팝업
@@ -34,13 +25,15 @@ struct PromotionPopupView: View {
                 
                 VStack(spacing: 0) {
                     // 프로모션 이미지
-                    promotionImage
-                        .resizable()
-                        .scaledToFit()
-                        .background(.gray300)
-                        .onTapGesture {
-                            promotionDetailPresent()
-                        }
+                    if let image = promotionData.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .background(Color.gray.opacity(0.3))
+                            .onTapGesture {
+                                promotionDetailPresent()
+                            }
+                    }
                     // "자세히 보기" 버튼
                     Button(action: {
                         // 상세 페이지 보여주기
@@ -53,7 +46,6 @@ struct PromotionPopupView: View {
                             .foregroundColor(.black)
                     }
                 }
-            
                 .background(.white)
                 .cornerRadius(16)
                 
@@ -89,9 +81,6 @@ struct PromotionPopupView: View {
             .cornerRadius(16)
             .padding(.horizontal, 30.adjustToScreenWidth)
         }
-        .fullScreenCover(isPresented: $isWebViewPresented) {
-            WebViewWithNavigation(url: promotionDetail, title: "프로모션")
-        }
     }
 }
 
@@ -99,16 +88,16 @@ struct PromotionPopupView: View {
 extension PromotionPopupView {
     /// "자세히 보기" 동작 함수
     private func promotionDetailPresent() {
-        // promotionUrl -> 웹뷰 표시
-        isWebViewPresented.toggle()
+        // Amplitude 추가
+        
+        // RootView WepView표시
+        showWebView()
     }
     
     /// "오늘 그만 보기" 동작 함수
     private func dismissTodayPopup() {
         // 금일 날짜 불러오기
         let todayDate = Date().toDateString()
-        
-        print("📅제외 날짜 \(todayDate) 세팅 완료")
         UserDefaults.standard.set(todayDate, forKey: "dismissedTodayKey")
         
         // Amplitude 추가

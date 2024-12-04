@@ -30,7 +30,7 @@ struct RemoteConfigManager {
         }
     }
     
-    func getPromotionData() async -> PromotionData? {
+    func getPromotionData() async -> PromotionResponseDTO? {
         do {
             try await remoteConfig.fetch()
             try await remoteConfig.activate()
@@ -38,7 +38,7 @@ struct RemoteConfigManager {
                 return nil
             }
             let decoder = JSONDecoder()
-            return try decoder.decode(PromotionData.self, from: promotionData)
+            return try decoder.decode(PromotionResponseDTO.self, from: promotionData)
         } catch {
             return nil
         }
@@ -46,9 +46,3 @@ struct RemoteConfigManager {
 }
 
 
-struct PromotionData: Decodable {
-    let imageUrl: String
-    let detailUrl: String
-    let endDate: String
-    let startDate: String
-}
