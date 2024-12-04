@@ -29,6 +29,16 @@ struct RootView: View {
                     .onAppear {
                         userDataInteractor.getUserProfile()
                     }
+                    .systemOverlay(isPresented: $isPromotionPresented) {
+                        PromotionPopupView(
+                            isPromotionPopupPresented: $isPromotionPresented,
+                            promotionData: promotionData,
+                            showWebView: {
+                                isPromotionPresented = false
+                                isWebViewPresented = true
+                            }
+                        )
+                    }
             case .pending:
                 SplashView()
                     .ignoresSafeArea(.all)
@@ -49,16 +59,6 @@ struct RootView: View {
                       confirmAction: { openAppStore() },
                       cancleAction: { exit(0) })
         })
-        .systemOverlay(isPresented: $isPromotionPresented) {
-            PromotionPopupView(
-                isPromotionPopupPresented: $isPromotionPresented,
-                promotionData: promotionData,
-                showWebView: {
-                    isPromotionPresented = false
-                    isWebViewPresented = true
-                }
-            )
-        }
         .onReceive(canRequestFirstPushPermissions) { _ in
             requestUserPushPermissions()
         }
