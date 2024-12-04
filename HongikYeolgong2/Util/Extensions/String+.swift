@@ -20,6 +20,21 @@ extension String {
            return date
        }
     
+    func toDateFromMonthDay() -> Date? {
+        let dateFormatter = DateFormatter()
+        let currentYear = Calendar.current.component(.year, from: Date())
+        
+        dateFormatter.dateFormat = "M/dd"
+        guard let date = dateFormatter.date(from: self) else {
+            return nil
+        }
+        
+        var components = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        components.year = currentYear
+        
+        return Calendar.current.date(from: components)
+    }
+    
     func toDayofDate() -> String {
         guard let date = self.toDate() else {
             return "날짜오류"
@@ -53,3 +68,5 @@ extension String {
         return "\(year)"
     }
 }
+
+

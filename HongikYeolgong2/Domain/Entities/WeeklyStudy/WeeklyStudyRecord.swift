@@ -9,7 +9,7 @@ import Foundation
 
 struct WeeklyStudyRecord {
     let monthOfDay: String    
-    let studyCount: Int
+    var studyCount: Int
     let isUpcomming: Bool
     
     var imageName: String {
