@@ -3,6 +3,7 @@ import Foundation
 
 struct NetworkService: NetworkProtocol {
     let session: URLSessionProtocol
+    let testToken: () -> String?
     
     static let shared: NetworkService = {
         let config = URLSessionConfiguration.default
@@ -10,8 +11,9 @@ struct NetworkService: NetworkProtocol {
         return NetworkService(session: session)
     }()
     
-    init(session: URLSessionProtocol) {
+    init(session: URLSessionProtocol, testToken: @escaping () -> String? = {nil}) {
         self.session = session
+        self.testToken = testToken
     }
     
     func request<T: Decodable>(endpoint: EndpointProtocol) async throws -> T {
@@ -61,7 +63,7 @@ extension NetworkService {
     }
     
     private func configRequest(url: URL, endpoint: EndpointProtocol) -> URLRequest {
-        var request = URLRequest(url)
+        var request = URLRequest(url, testToken: testToken())
         request.httpMethod = endpoint.method.rawValue
         
         if let headers = endpoint.headers {

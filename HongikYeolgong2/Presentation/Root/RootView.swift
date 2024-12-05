@@ -15,6 +15,9 @@ struct RootView: View {
     
     @State private var userSession: AppState.UserSession = .pending
     @State private var showAppUpdateModal = false
+    @State private var isPromotionPresented = false
+    @State private var isWebViewPresented = false
+    @State private var promotionData: PromotionData = PromotionData()
     
     var body: some View {
         Group {
@@ -26,6 +29,16 @@ struct RootView: View {
                     .onAppear {
                         userDataInteractor.getUserProfile()
                     }
+                    .systemOverlay(isPresented: $isPromotionPresented) {
+                        PromotionPopupView(
+                            isPromotionPopupPresented: $isPromotionPresented,
+                            promotionData: promotionData,
+                            showWebView: {
+                                isPromotionPresented = false
+                                isWebViewPresented = true
+                            }
+                        )
+                    }
             case .pending:
                 SplashView()
                     .ignoresSafeArea(.all)
@@ -33,6 +46,9 @@ struct RootView: View {
                         appVersionCheck()
                     }
             }
+        }
+        .fullScreenCover(isPresented: $isWebViewPresented) {
+            WebViewWithNavigation(url: promotionData.detailUrl, title: "상세보기")
         }
         .systemOverlay(isPresented: $showAppUpdateModal, content: {
             ModalView(isPresented: $showAppUpdateModal,
@@ -79,6 +95,7 @@ private extension RootView {
                 return
             }
             
+            await checkPromotionPresent()
             userDataInteractor.checkAuthentication()
             userPermissionsInteractor.resolveStatus(for: .localNotifications)
         }
@@ -94,6 +111,50 @@ private extension RootView {
     
     func requestUserPushPermissions() {
         userPermissionsInteractor.request(permission: .localNotifications)
+    }
+    
+    // PromotionPopupView 표시여부 체크
+    func checkPromotionPresent() async {
+        let todayDate = Date().toDateString()
+        
+        // 오늘 보지 않기 날짜 체크
+        if let dismissedDate = UserDefaults.standard.string(forKey: "dismissedTodayKey"),
+           dismissedDate == todayDate {
+            isPromotionPresented = false
+            return
+        }
+        // Promotion 데이터 불러오기
+        guard let data = await RemoteConfigManager.shared.getPromotionData() else { return }
+        
+        // String -> Date 변환용 데이터 포맷
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        // 날짜 형식 변환
+        guard
+            let start = dateFormatter.date(from: data.startDate),
+            let end = dateFormatter.date(from: data.endDate),
+            let today = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())
+        else { return }
+        
+        // 해당 날짜 여부 확인
+        guard today >= start && today <= end else { return }
+        
+        // 이미지 불러오기
+        if let url = URL(string: data.imageUrl) {
+            do {
+                let (imageData, _) = try await URLSession.shared.data(from: url)
+                if let uiImage = UIImage(data: imageData) {
+                    DispatchQueue.main.async {
+                        self.promotionData = PromotionData(promtionData: data, image: uiImage)
+                        self.isPromotionPresented = true
+                    }
+                }
+            } catch {
+                print("Error downloading image: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
