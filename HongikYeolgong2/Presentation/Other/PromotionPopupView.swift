@@ -35,19 +35,6 @@ struct PromotionPopupView: View {
                                 promotionDetailPresent()
                             }
                     }
-                    // "자세히 보기" 버튼
-                    Button(action: {
-                        // 상세 페이지 보여주기
-                        promotionDetailPresent()
-                    }) {
-                        Text("자세히 보기 >")
-                            .font(.pretendard(size: 16, weight: .semibold))
-                            .foregroundColor(.gray800)
-                            .padding(.vertical, 16)
-                            .frame(maxWidth: .infinity)
-                            .foregroundColor(.black)
-                            .background(.white)
-                    }
                 }
                 .cornerRadius(16)
                 
