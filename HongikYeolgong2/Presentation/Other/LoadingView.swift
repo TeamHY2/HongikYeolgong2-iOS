@@ -11,6 +11,7 @@ struct LoadingView: View {
     @State var currentDegress = 0.0
     @State var currentShape = 0.0
     @State var shapeResuve: Bool = true
+    @State private var isAnimating: Bool = false
     
     let colors = LinearGradient(gradient: Gradient(colors: [.blue100, .blue200, .blue300, .blue400]), startPoint: .topLeading, endPoint: .bottomTrailing)
     
@@ -21,14 +22,17 @@ struct LoadingView: View {
             .frame(width: 40, height: 40)
             .rotationEffect(Angle(degrees: currentDegress))
             .onAppear {
-                Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
-                    withAnimation {
-                        self.currentDegress += shapeResuve ? 2 : 6
-                        self.currentShape = shapeResuve ? currentShape + 0.008 : currentShape - 0.01
-                        if currentShape > 1 {
-                            self.shapeResuve = false
-                        } else if currentShape < 0.01 {
-                            self.shapeResuve = true
+                if !isAnimating { // 애니메이션이 실행 중이 아닐 때만 실행 -> 누적 방지
+                    isAnimating = true
+                    Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+                        withAnimation {
+                            self.currentDegress += shapeResuve ? 2 : 6
+                            self.currentShape = shapeResuve ? currentShape + 0.008 : currentShape - 0.01
+                            if currentShape > 1 {
+                                self.shapeResuve = false
+                            } else if currentShape < 0.01 {
+                                self.shapeResuve = true
+                            }
                         }
                     }
                 }

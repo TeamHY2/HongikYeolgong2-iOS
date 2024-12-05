@@ -29,4 +29,20 @@ class RemoteConfigManager {
             return nil
         }
     }
+    
+    func getPromotionData() async -> PromotionResponseDTO? {
+        do {
+            try await remoteConfig.fetch()
+            try await remoteConfig.activate()
+            guard let promotionData = remoteConfig["promotionPopup"].stringValue.data(using: .utf8) else {
+                return nil
+            }
+            let decoder = JSONDecoder()
+            return try decoder.decode(PromotionResponseDTO.self, from: promotionData)
+        } catch {
+            return nil
+        }
+    }
 }
+
+
