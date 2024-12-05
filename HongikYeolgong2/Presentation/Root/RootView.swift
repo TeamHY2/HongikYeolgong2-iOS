@@ -67,14 +67,14 @@ private extension RootView {
 
 private extension RootView {
     func appVersionCheck() {
-        Task {
+        Task {        
             guard let currentVersionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String,
                   let currentVersion = Int(currentVersionString.split(separator: ".").joined()),
-                  let minimumVersion = await RemoteConfigManager.shared.getMinimumAppVersion() else {
+                  let minimumVersion = await RemoteConfigManager.shared.getMinimumAppVersion() else {                
                 return
             }
             
-            guard currentVersion >= minimumVersion else {       
+            guard currentVersion >= minimumVersion else {
                 showAppUpdateModal.toggle()
                 return
             }
