@@ -9,9 +9,9 @@ import Foundation
 
 // TODO: 추후에 Interceptor를 지원하는 라이브러리 사용의논
 extension URLRequest {
-    init(_ url: URL) {
+    init(_ url: URL, testToken: String? = nil) {
         self.init(url: url)
-        let accessToken = KeyChainManager.readItem(key: .accessToken) ?? ""    
+        let accessToken = testToken ?? KeyChainManager.readItem(key: .accessToken) ?? ""
         print("accessToken: ",accessToken)
         self.addValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
     }

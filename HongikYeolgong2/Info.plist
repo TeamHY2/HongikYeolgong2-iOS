@@ -41,5 +41,7 @@
 		<string>Pretendard-Medium.otf</string>
 		<string>Pretendard-Light.otf</string>
 	</array>
+	<key>TestToken</key>
+	<string>$(TEST_TOKEN)</string>
 </dict>
 </plist>
