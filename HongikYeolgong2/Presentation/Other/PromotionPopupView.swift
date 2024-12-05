@@ -42,12 +42,13 @@ struct PromotionPopupView: View {
                     }) {
                         Text("자세히 보기 >")
                             .font(.pretendard(size: 16, weight: .semibold))
+                            .foregroundColor(.gray800)
                             .padding(.vertical, 16)
                             .frame(maxWidth: .infinity)
                             .foregroundColor(.black)
+                            .background(.white)
                     }
                 }
-                .background(.white)
                 .cornerRadius(16)
                 
                 HStack(spacing: 16) {
