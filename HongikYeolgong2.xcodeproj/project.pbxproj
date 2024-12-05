@@ -104,7 +104,6 @@
 		47A147792CA158E800A91F66 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A147782CA158E800A91F66 /* MainTabView.swift */; };
 		47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477D2CA159E300A91F66 /* SplashView.swift */; };
 		47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */; };
-		47A3DDC62CE3146700FEA779 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */; };
 		47A540732CD0D90F00DC40D0 /* Nickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A540722CD0D90F00DC40D0 /* Nickname.swift */; };
 		47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9DCC22CE0DB97001DE76D /* WebView.swift */; };
 		47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */; };
@@ -157,8 +156,8 @@
 		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
-		5ED93CDB2CE3690D004A7931 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */; };
-		98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */; };
+		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
+		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
 		98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */; };
@@ -171,6 +170,8 @@
 		98EC95412CE4BAB600278DBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95402CE4BAB600278DBD /* LoadingView.swift */; };
 		98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95422CE4F9C600278DBD /* Publisher.swift */; };
 		98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */; };
+		98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */; };
+		98FB764E2D00A44600BBCB8B /* PromotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764D2D00A44600BBCB8B /* PromotionData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -338,6 +339,8 @@
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
 		5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
+		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
+		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
@@ -351,6 +354,8 @@
 		98EC95402CE4BAB600278DBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		98EC95422CE4F9C600278DBD /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionResponseDTO.swift; sourceTree = "<group>"; };
+		98FB764D2D00A44600BBCB8B /* PromotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -627,6 +632,7 @@
 				47A9DCC22CE0DB97001DE76D /* WebView.swift */,
 				98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */,
 				98EC95402CE4BAB600278DBD /* LoadingView.swift */,
+				982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -717,6 +723,7 @@
 		47A147382CA1380900A91F66 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				98FB764C2D00A42100BBCB8B /* Promotion */,
 				5E847A752CDBD5490034C2A7 /* Calendar */,
 				98B5F00D2CDB64D4007CF5FA /* Record */,
 				478F84452CD358F50097CAA1 /* Ranking */,
@@ -738,6 +745,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				98FB76492D00A38B00BBCB8B /* Promotion */,
 				476D26082CDDF2B6002FEF5C /* Calendar */,
 				478F84422CD3506D0097CAA1 /* Ranking */,
 				478F843F2CD33F4D0097CAA1 /* Weekly */,
@@ -911,6 +919,7 @@
 			isa = PBXGroup;
 			children = (
 				47B1D4BC2C9CB1760071B62B /* HongikYeolgong2Tests.swift */,
+				9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */,
 			);
 			path = HongikYeolgong2Tests;
 			sourceTree = "<group>";
@@ -1051,6 +1060,22 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		98FB76492D00A38B00BBCB8B /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
+		98FB764C2D00A42100BBCB8B /* Promotion */ = {
+			isa = PBXGroup;
+			children = (
+				98FB764D2D00A44600BBCB8B /* PromotionData.swift */,
+			);
+			path = Promotion;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1129,7 +1154,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					47B1D4A72C9CB1740071B62B = {
 						CreatedOnToolsVersion = 15.4;
@@ -1178,10 +1203,8 @@
 				479821D42CA24CFF002357EB /* .swiftlint.yml in Resources */,
 				47A147642CA147A600A91F66 /* Pretendard-Bold.otf in Resources */,
 				47A147702CA147A600A91F66 /* SUITE-Medium.otf in Resources */,
-				98B5F00A2CDB362C007CF5FA /* Secrets-dev.xcconfig in Resources */,
 				47A1476A2CA147A600A91F66 /* Pretendard-SemiBold.otf in Resources */,
 				47A147662CA147A600A91F66 /* Pretendard-ExtraLight.otf in Resources */,
-				47A3DDC62CE3146700FEA779 /* Secrets-prod.xcconfig in Resources */,
 				47A147712CA147A600A91F66 /* SUITE-Regular.otf in Resources */,
 				47A147652CA147A600A91F66 /* Pretendard-ExtraBold.otf in Resources */,
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
@@ -1191,7 +1214,6 @@
 				47A1476F2CA147A600A91F66 /* SUITE-Light.otf in Resources */,
 				47A147722CA147A600A91F66 /* SUITE-SemiBold.otf in Resources */,
 				47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */,
-				5ED93CDB2CE3690D004A7931 /* Secrets-prod.xcconfig in Resources */,
 				47A1476E2CA147A600A91F66 /* SUITE-Heavy.otf in Resources */,
 				47A147692CA147A600A91F66 /* Pretendard-Regular.otf in Resources */,
 				47A1476B2CA147A600A91F66 /* Pretendard-Thin.otf in Resources */,
@@ -1290,6 +1312,7 @@
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
 				47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */,
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
+				98FB764E2D00A44600BBCB8B /* PromotionData.swift in Sources */,
 				47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */,
 				478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */,
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
@@ -1303,6 +1326,7 @@
 				5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
+				982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */,
 				98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */,
 				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
@@ -1355,6 +1379,7 @@
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */,
+				98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */,
 				4786A1052CCA3352008635A4 /* StudySessionInteractor.swift in Sources */,
 				479BF66C2CDD1A8D009D9E44 /* LocalNotification.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
@@ -1376,6 +1401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47B1D4BD2C9CB1760071B62B /* HongikYeolgong2Tests.swift in Sources */,
+				9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1622,16 +1648,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = P4D4ZQC4YF;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seokki.HongikYeolgong2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2Test";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1643,16 +1673,20 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = P4D4ZQC4YF;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seokki.HongikYeolgong2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2Test";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1664,14 +1698,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = P4D4ZQC4YF;
+				DEVELOPMENT_TEAM = 4N3558QY8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seokki.HongikYeolgong2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2UITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1683,14 +1718,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
-				DEVELOPMENT_TEAM = P4D4ZQC4YF;
+				DEVELOPMENT_TEAM = 4N3558QY8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Seokki.HongikYeolgong2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2UITest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
