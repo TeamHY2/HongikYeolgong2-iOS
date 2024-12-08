@@ -5,9 +5,10 @@
 //  Created by 권석기 on 10/28/24.
 //
 
+import Combine
 import SwiftUI
 
-protocol WeeklyStudyInteractor {
+protocol WeeklyStudyInteractor {    
     func getWeekyStudy(studyRecords: LoadableSubject<[WeeklyStudyRecord]>)
     func getWiseSaying(wiseSaying: LoadableSubject<WiseSaying>)
     func addStarCount(studyRecords: LoadableSubject<[WeeklyStudyRecord]>)
@@ -52,6 +53,7 @@ final class WeeklyStudyInteractorImpl: WeeklyStudyInteractor {
             }
             return $0.element
         }
+        
         studyRecords.wrappedValue.setSuccess(value: newStudyRecords)
     }
 }

@@ -52,7 +52,7 @@ extension AppState {
         }
         
         var totalTime: TimeInterval {
-            endTime.timeIntervalSince(startTime)
+            endTime.timeIntervalSince(firstStartTime)
         }
     }
 }
