@@ -38,8 +38,10 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     /// 스터디세션을 시작합니다.
     func startStudy() {
         let startTime = appState.value.studySession.startTime
+        let timeDiff = Date().timeIntervalSince(startTime)
+        let timeDiffMinutes = TimeInterval(minutes: Int(timeDiff / 60))
         let endTime = startTime + addedTime
-        let remainingTime = endTime.timeIntervalSince(startTime)
+        let remainingTime = endTime.timeIntervalSince(startTime) - timeDiffMinutes
         
         appState.bulkUpdate { appState in
             appState.studySession.isStudying = true
@@ -164,8 +166,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     func configuredNotificationTrigger(for type: LocalNotification, endTime: TimeInterval) -> UNTimeIntervalNotificationTrigger? {
         let triggerTime = endTime - type.timeOffset
         
-        assert(endTime - triggerTime == type.timeOffset, "잘못된 시간이 등록되었습니다.")
-        assert(triggerTime > 0, "잔여 시간이 부족합니다. (필요: \(Int(type.timeOffset/60))분, 현재: \(Int(endTime/60))분)")
+//        assert(endTime - triggerTime == type.timeOffset, "잘못된 시간이 등록되었습니다.")
+//        assert(triggerTime > 0, "잔여 시간이 부족합니다. (필요: \(Int(type.timeOffset/60))분, 현재: \(Int(endTime/60))분)")
         
         guard triggerTime > 0 else {
             return nil

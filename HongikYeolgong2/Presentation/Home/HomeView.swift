@@ -20,10 +20,11 @@ struct HomeView: View {
     @State private var studySession = AppState.StudySession()
     @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
     @State private var wiseSaying: Loadable<WiseSaying> = .notRequest
-    @State private var shouldShowTimePicker = false
-    @State private var shouldShowAddTimeModal = false
-    @State private var shouldShowEndUseModal = false
-    @State private var shouldShowWebView = false
+    @State private var isShowTimePicker = false
+    @State private var isShowAddTimeModal = false
+    @State private var isShowEndUseModal = false
+    @State private var isShowWebView = false
+    @State private var isViewOnAppeared = false
     
     var body: some View {
         NetworkStateView(
@@ -61,10 +62,10 @@ struct HomeView: View {
             NavigationLink("",
                            destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
                 .edgesIgnoringSafeArea(.bottom),
-                           isActive: $shouldShowWebView)
+                           isActive: $isShowWebView)
             .frame(width: 0, height: 0)
         }
-        .systemOverlay(isPresented: $shouldShowTimePicker) {
+        .systemOverlay(isPresented: $isShowTimePicker) {
             TimePickerView(
                 selectedTime: Binding(
                     get: { appState.value.studySession.startTime },
@@ -73,15 +74,15 @@ struct HomeView: View {
                 onTimeSelected: startStudy
             )
         }
-        .systemOverlay(isPresented: $shouldShowAddTimeModal) {
-            ModalView(isPresented: $shouldShowAddTimeModal,
+        .systemOverlay(isPresented: $isShowAddTimeModal) {
+            ModalView(isPresented: $isShowAddTimeModal,
                       title: "열람실 이용 시간을 연장할까요?",
                       confirmButtonText: "연장하기",
                       cancleButtonText: "아니오",
                       confirmAction: { studySessionInteractor.addTime() })
         }
-        .systemOverlay(isPresented: $shouldShowEndUseModal) {
-            ModalView(isPresented: $shouldShowEndUseModal,
+        .systemOverlay(isPresented: $isShowEndUseModal) {
+            ModalView(isPresented: $isShowEndUseModal,
                       title: "열람실을 다 이용하셨나요?",
                       confirmButtonText: "네",
                       cancleButtonText: "더 이용하기",
@@ -90,8 +91,11 @@ struct HomeView: View {
         .padding(.horizontal, 32.adjustToScreenWidth)
         .modifier(IOSBackground())
         .onAppear {
-            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-            weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+            if !isViewOnAppeared {
+                isViewOnAppeared = true
+                weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+            }
         }
         .onReceive(studySessionUpdated) {
             studySession = $0
@@ -113,19 +117,19 @@ struct HomeView: View {
 // MARK: - Helpers
 extension HomeView {
     func endButtonTapped() {
-        shouldShowEndUseModal.toggle()
+        isShowEndUseModal.toggle()
     }
     
     func startButtonTapped() {
-        shouldShowTimePicker.toggle()
+        isShowTimePicker.toggle()
     }
     
     func seatButtonTapped() {
-        shouldShowWebView.toggle()
+        isShowWebView.toggle()
     }
     
     func addButtonTapped() {
-        shouldShowAddTimeModal.toggle()
+        isShowAddTimeModal.toggle()
         Amplitude.instance.track(eventType: "StudyExtendButton")
     }
     
@@ -175,7 +179,7 @@ extension HomeView {
             .delay(for: 1, scheduler: RunLoop.main)
             .map { _ in }
             .eraseToAnyPublisher()
-    }        
+    }
 }
 
 // MARK: - StudyContentControllerView

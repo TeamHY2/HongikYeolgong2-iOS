@@ -9,7 +9,7 @@ import Foundation
 
 import FirebaseRemoteConfig
 
-struct RemoteConfigManager {
+class RemoteConfigManager {
     static let shared = RemoteConfigManager()
     
     let remoteConfig = RemoteConfig.remoteConfig()
@@ -25,7 +25,7 @@ struct RemoteConfigManager {
             try await remoteConfig.fetch()
             try await remoteConfig.activate()
             return remoteConfig["appVersion"].numberValue.intValue
-        } catch {
+        } catch {        
             return nil
         }
     }
