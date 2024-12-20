@@ -7,11 +7,11 @@
 
 import Foundation
 
-enum Department: String, CaseIterable {    
+enum Department: String, CaseIterable {
     case none = ""
     case constructionUrban = "건설도시공학부"
     case civilEnvironmental = "건설환경공학과"
-    case architecture = "건축학부"
+    //    case architecture = "건축학부"
     case business = "경영학부"
     case economics = "경제학부"
     case performingArts = "공연예술학부"
@@ -25,16 +25,16 @@ enum Department: String, CaseIterable {
     case ceramics = "도예유리과"
     case designManagement = "디자인경영융합학부"
     case designArtManagement = "디자인·예술경영학부"
-    case design = "디자인학부"
+    //    case design = "디자인학부"
     case physicsEdu = "물리교육과"
     case law = "법학부"
     case frenchLit = "불어불문학과"
     case socialEdu = "사회교육과"
-    case industrialDesign = "산업디자인학과"
+    case industrialDesign = "산업디자인전공"
     case industrialData = "산업·데이터공학과"
     case textileFashion = "섬유미술패션디자인과"
     case mathEdu = "수학교육과"
-    case materials = "신소재화공시스템공학부"
+    //    case materials = "신소재화공시스템공학부"
     case englishEdu = "영어교육과"
     case englishLit = "영어영문학과"
     case historyEdu = "역사교육과"
@@ -45,6 +45,12 @@ enum Department: String, CaseIterable {
     case computerScience = "컴퓨터공학과"
     case frenchStudies = "프랑스어문학과"
     case painting = "회화과"
+    case newMaterialsEngineering = "신소재공학전공"
+    case chemicalEngineering = "화학공학전공"
+    case architecture = "건축학전공(5년제)"
+    case interiorArchitecture = "실내건축학전공"
+    case visualDesign = "시각디자인전공"
+    case campusSelfDesigned = "캠퍼스자율전공"
     
     static var allDepartments: [String] {
         Self.allCases.filter { $0 != .none }.map { $0.rawValue }
