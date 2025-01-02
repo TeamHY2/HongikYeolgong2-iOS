@@ -66,6 +66,9 @@
 		47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5EDCE2CCBD10300ACA469 /* BaseButton.swift */; };
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
 		47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */; };
+		47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */; };
+		47F6B7D02D26FAF90096CCA5 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6B7CF2D26FAF90096CCA5 /* HomeFeature.swift */; };
+		47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */; };
 		47F71B512CDC68BC0044DEC5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 47F71B502CDC68BC0044DEC5 /* FirebaseAuth */; };
 		47F71B532CDC68BC0044DEC5 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 47F71B522CDC68BC0044DEC5 /* FirebaseAuthCombine-Community */; };
 		47F71B552CDC68BC0044DEC5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 47F71B542CDC68BC0044DEC5 /* FirebaseCore */; };
@@ -159,6 +162,9 @@
 		47D5EDCE2CCBD10300ACA469 /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		47F635012CC3E98D0034EAA9 /* UserEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEndpoint.swift; sourceTree = "<group>"; };
+		47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		47F6B7CF2D26FAF90096CCA5 /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
+		47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClient.swift; sourceTree = "<group>"; };
 		47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				47F6B7D12D26FAFE0096CCA5 /* Client */,
+				47F6B7CA2D26FABC0096CCA5 /* Presentation */,
 				98EC95382CE4B93C00278DBD /* GoogleService-Info.plist */,
 				470723142CBC222E0046469F /* HongikYeolgong2.entitlements */,
 				4736719C2CB10D7B00527896 /* Info.plist */,
@@ -418,6 +426,39 @@
 				470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		47F6B7CA2D26FABC0096CCA5 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				47F6B7CC2D26FAE20096CCA5 /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		47F6B7CC2D26FAE20096CCA5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */,
+				47F6B7CF2D26FAF90096CCA5 /* HomeFeature.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		47F6B7D12D26FAFE0096CCA5 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				47F6B7D22D26FB050096CCA5 /* Home */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		47F6B7D22D26FB050096CCA5 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -615,6 +656,7 @@
 				476F43582D1850F6003DBFA9 /* SwiftUIView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
+				47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
 				470483A82CDB50FA00C381ED /* TokenEndpoint.swift in Sources */,
@@ -625,8 +667,10 @@
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
 				47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
+				47F6B7D02D26FAF90096CCA5 /* HomeFeature.swift in Sources */,
 				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
+				47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				4780044E2CCAAE3200FFAF00 /* String+.swift in Sources */,
