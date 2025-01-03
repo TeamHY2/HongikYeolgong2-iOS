@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		470723182CBC29510046469F /* AppleLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470723172CBC29510046469F /* AppleLoginManager.swift */; };
 		470C7B3E2CF4569300C46690 /* RemoteConfigManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */; };
 		470C7B402CF456E500C46690 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 470C7B3F2CF456E500C46690 /* FirebaseRemoteConfig */; };
 		471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */; };
@@ -92,7 +91,6 @@
 
 /* Begin PBXFileReference section */
 		470723142CBC222E0046469F /* HongikYeolgong2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2.entitlements; sourceTree = "<group>"; };
-		470723172CBC29510046469F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
 		471940D02CAFE61A00426D30 /* LineHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineHeight.swift; sourceTree = "<group>"; };
@@ -367,7 +365,6 @@
 		47F4F69E2CC8E45A00543D24 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				470723172CBC29510046469F /* AppleLoginManager.swift */,
 				47BE30E22CC813BB0015D973 /* KeyChainManager.swift */,
 				470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */,
 			);
@@ -617,7 +614,6 @@
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
 				47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */,
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
-				470723182CBC29510046469F /* AppleLoginManager.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
