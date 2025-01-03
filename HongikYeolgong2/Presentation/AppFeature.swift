@@ -19,29 +19,37 @@ struct AppFeature {
     @ObservableState
     struct State: Equatable {
         var loginState: LoginState = .splash
-        var tabFeature = MainTabFeature.State()
+        var mainTab = MainTabFeature.State()
+        var login = LoginFeature.State()
     }
     
     enum Action {
-        case login
+        case requestLogin
         case loginCompleted
-        case tabFeature(MainTabFeature.Action)
+        case mainTab(MainTabFeature.Action)
+        case login(LoginFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
-        Scope(state: \.tabFeature, action: \.tabFeature) {
+        Scope(state: \.mainTab, action: \.mainTab) {
             MainTabFeature()
                 ._printChanges()
         }
+        Scope(state: \.login, action: \.login) {
+            LoginFeature()
+        }
         Reduce { state, action in
             switch action {
-            case .login:
+            case .requestLogin:
                 return .run { send in
                     try await Task.sleep(nanoseconds: 2_000_000_000)
                     await send(.loginCompleted)
                 }
-            case .tabFeature(.settingFeature(.logoutButtonTap)):
+            case .mainTab(.setting(.logoutButtonTap)):
                 state.loginState = .onboarding
+                return .none
+            case .login(.loginButtonTap):
+                state.loginState = .home
                 return .none
             case .loginCompleted:
                 state.loginState = .home

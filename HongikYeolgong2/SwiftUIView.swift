@@ -14,13 +14,13 @@ struct SwiftUIView: View {
         WithPerceptionTracking {
             switch store.loginState {
             case .home:
-                MainTabView(store: store.scope(state: \.tabFeature, action: \.tabFeature))
+                MainTabView(store: store.scope(state: \.mainTab, action: \.mainTab))
             case .onboarding:
-                Text("온보딩")
+                LoginView(store: store.scope(state: \.login, action: \.login))
             case .splash:
                 Text("스플래시")
                     .onAppear(perform: {
-                        store.send(.login)
+                        store.send(.requestLogin)
                     })
             }
         }
