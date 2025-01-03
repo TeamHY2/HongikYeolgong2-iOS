@@ -7,13 +7,16 @@
 
 import SwiftUI
 import AmplitudeSwift
+import ComposableArchitecture
 
 @main
 struct HongikYeolgong2App: App {
     
     var body: some Scene {
         WindowGroup {
-            SwiftUIView()
+            SwiftUIView(store: .init(initialState: AppFeature.State(), reducer: {
+                AppFeature()
+            }))
         }
     }
 }
