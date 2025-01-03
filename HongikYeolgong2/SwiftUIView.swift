@@ -6,13 +6,27 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SwiftUIView: View {
+    let store: StoreOf<AppFeature>
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithPerceptionTracking {
+            switch store.loginState {
+            case .home:
+                Text("홈뷰")
+            case .onboarding:
+                Text("온보딩")
+            case .splash:
+                Text("스플래시")
+                    .onAppear(perform: {
+                        store.send(.login)
+                    })
+            }
+        }
     }
 }
 
-#Preview {
-    SwiftUIView()
-}
+//#Preview {
+//    SwiftUIView()
+//}
