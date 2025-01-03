@@ -11,19 +11,9 @@ import AmplitudeSwift
 @main
 struct HongikYeolgong2App: App {
     
-    
     var body: some Scene {
         WindowGroup {
             SwiftUIView()
         }
     }
-}
-
-extension Amplitude {
-//    static var instance = Amplitude(
-//        configuration: Configuration(
-//            apiKey: SecretKeys.ampliKey,
-//            autocapture: [.sessions, .appLifecycles, .screenViews]
-//        )
-//    )
 }
