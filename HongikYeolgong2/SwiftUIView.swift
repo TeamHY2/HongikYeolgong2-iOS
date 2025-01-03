@@ -14,7 +14,9 @@ struct SwiftUIView: View {
         WithPerceptionTracking {
             switch store.loginState {
             case .home:
-                Text("홈뷰")
+                MainTabView(store: .init(initialState: MainTabFeature.State(), reducer: {
+                    MainTabFeature()
+                }))
             case .onboarding:
                 Text("온보딩")
             case .splash:

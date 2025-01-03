@@ -8,18 +8,65 @@
 import Foundation
 import ComposableArchitecture
 
+enum TabBar: CaseIterable {
+    case home
+    case record
+    case ranking
+    case setting
+    
+    var title: String {
+        switch self {
+        case .home:
+            "홈"
+        case .record:
+            "기록"
+        case .ranking:
+            "랭킹"
+        case .setting:
+            "설정"
+        }
+    }
+    var iconName: String {
+         switch self {
+         case .home: "home"
+         case .record: "calendar"
+         case .ranking: "ranking"
+         case .setting: "setting"
+         }
+     }
+     
+     var iconNameSelected: String {
+         switch self {
+         case .home: "homeSelected"
+         case .record: "calendarSelected"
+         case .ranking: "rankingSelected"
+         case .setting: "settingSelected"
+         }
+     }
+}
+
 @Reducer
 struct MainTabFeature {
+    @ObservableState
+    struct State: Equatable {
+        var currentTab: TabBar = .home
+    }
     
-    struct State: Equatable {}
-    
-    enum Action {
-        case homeTab
+    enum Action: BindableAction {
+        case changeTab(TabBar)
+        case binding(BindingAction<State>)
     }
     
     var body: some ReducerOf<Self> {
+        BindingReducer()
         Reduce { state, action in
-            return .none
+            switch action {
+            case let .changeTab(tab):
+                state.currentTab = tab
+                return .none
+            default:
+                return .none
+            }
         }
     }
 }

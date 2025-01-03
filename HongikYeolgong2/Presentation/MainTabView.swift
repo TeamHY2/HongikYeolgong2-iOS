@@ -8,9 +8,57 @@
 import SwiftUI
 import ComposableArchitecture
 struct MainTabView: View {
-    let store: StoreOf<MainTabFeature>
+    @Perception.Bindable var store: StoreOf<MainTabFeature>
     var body: some View {
-        Text("Hello, World!")
+        WithPerceptionTracking {
+            TabView(selection: $store.currentTab) {
+                HomeView()
+                    .tag(TabBar.home)
+                RecordView()
+                    .tag(TabBar.record)
+                RankingView()
+                    .tag(TabBar.ranking)
+                SettingView()
+                    .tag(TabBar.setting)
+            }.overlay(alignment: .bottom) {
+                makeTabView()
+            }
+            .edgesIgnoringSafeArea(.all)
+        }
+    }
+    
+    func makeTabView() -> some View {
+        return VStack {
+            HStack {
+                Spacer()
+                ForEach(TabBar.allCases, id: \.hashValue) { tab in
+                    
+                    VStack {
+                        let tabSelected = tab == store.currentTab
+                        Image(tabSelected ? tab.iconNameSelected : tab.iconName, bundle: nil)
+                            .padding(.top, 12)
+                        
+                        Text("\(tab.title)")
+                            .font(.pretendard(size: 12, weight: .regular))
+                            .frame(height: 18)
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        store.send(.changeTab(tab))
+                    }
+                   
+                    Spacer()
+                }
+                
+            }
+        }
+        .frame(height: 88)
+        .background(Image(.tabview)
+            .resizable()
+            .frame(maxWidth: .infinity))
     }
 }
 
