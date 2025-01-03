@@ -18,7 +18,7 @@ struct MainTabView: View {
                     .tag(TabBar.record)
                 RankingView()
                     .tag(TabBar.ranking)
-                SettingView()
+                SettingView(store: store.scope(state: \.settingFeature, action: \.settingFeature))
                     .tag(TabBar.setting)
             }.overlay(alignment: .bottom) {
                 makeTabView()

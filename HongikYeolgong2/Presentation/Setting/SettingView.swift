@@ -6,13 +6,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct SettingView: View {
+    let store: StoreOf<SettingFeature>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button(action: {store.send(.logoutButtonTap)}) {
+            Text("로그아웃 테스트")
+        }
     }
 }
 
-#Preview {
-    SettingView()
-}
+//#Preview {
+//    SettingView()
+//}

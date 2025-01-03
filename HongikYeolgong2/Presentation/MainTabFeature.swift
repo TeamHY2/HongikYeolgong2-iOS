@@ -50,14 +50,19 @@ struct MainTabFeature {
     @ObservableState
     struct State: Equatable {
         var currentTab: TabBar = .home
+        var settingFeature = SettingFeature.State()
     }
     
     enum Action: BindableAction {
         case changeTab(TabBar)
         case binding(BindingAction<State>)
+        case settingFeature(SettingFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
+        Scope(state: \.settingFeature, action: \.settingFeature) {
+            SettingFeature()
+        }
         BindingReducer()
         Reduce { state, action in
             switch action {
