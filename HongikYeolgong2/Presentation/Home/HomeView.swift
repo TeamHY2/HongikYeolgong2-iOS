@@ -15,8 +15,10 @@ struct HomeView: View {
             WeeklyStudy()
             Spacer()
                 .frame(height: 120)
-//            Quote()
+            Quote()
             StudyPeriod(startTime: .now, endTime: .now)
+            Spacer()
+                .frame(height: 32)
             TimerView()
             Spacer()
             HStack(spacing: 12) {

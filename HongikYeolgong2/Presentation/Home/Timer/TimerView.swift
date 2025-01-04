@@ -14,7 +14,7 @@ struct TimerView: View {
                    .font(.suite(size: 12, weight: .medium), lineHeight: 15)
                    .foregroundStyle(.gray300)
                
-               Text("남은시간")
+               Text("06:00:00")
                    .font(.suite(size: 30, weight: .black), lineHeight: 32)
                    .foregroundColor(.white)
                    .padding(.top, 11)
