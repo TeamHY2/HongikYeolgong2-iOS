@@ -28,6 +28,7 @@
 		474D76522D290DDE00AF8CA2 /* WeeklyStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */; };
 		474D76552D290E6B00AF8CA2 /* WeeklyStudyFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76542D290E6B00AF8CA2 /* WeeklyStudyFeature.swift */; };
 		474D76582D2913C000AF8CA2 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76572D2913C000AF8CA2 /* Quote.swift */; };
+		474D765B2D291B0A00AF8CA2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D765A2D291B0A00AF8CA2 /* TimerView.swift */; };
 		47581ED02CF01EB200A2EA31 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */; };
 		476120AB2D2827CF005EC300 /* SettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476120AA2D2827CF005EC300 /* SettingFeature.swift */; };
 		476120B22D282B17005EC300 /* LoginFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476120B12D282B17005EC300 /* LoginFeature.swift */; };
@@ -124,6 +125,7 @@
 		474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudy.swift; sourceTree = "<group>"; };
 		474D76542D290E6B00AF8CA2 /* WeeklyStudyFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyFeature.swift; sourceTree = "<group>"; };
 		474D76572D2913C000AF8CA2 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		474D765A2D291B0A00AF8CA2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		476120AA2D2827CF005EC300 /* SettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeature.swift; sourceTree = "<group>"; };
 		476120B12D282B17005EC300 /* LoginFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFeature.swift; sourceTree = "<group>"; };
 		476120B32D282B21005EC300 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,14 @@
 				474D76572D2913C000AF8CA2 /* Quote.swift */,
 			);
 			path = Quote;
+			sourceTree = "<group>";
+		};
+		474D76592D291AD100AF8CA2 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				474D765A2D291B0A00AF8CA2 /* TimerView.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		474FF2FB2CE36F4100ABEE63 /* Recovered References */ = {
@@ -464,6 +474,7 @@
 		47F6B7CC2D26FAE20096CCA5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				474D76592D291AD100AF8CA2 /* Timer */,
 				474D76562D2913AB00AF8CA2 /* Quote */,
 				474D76532D290DF000AF8CA2 /* WeeklyStudy */,
 				47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */,
@@ -695,6 +706,7 @@
 				474B29472D27CBAF00DB410D /* RecordView.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
+				474D765B2D291B0A00AF8CA2 /* TimerView.swift in Sources */,
 				47F6B7D02D26FAF90096CCA5 /* HomeFeature.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */,

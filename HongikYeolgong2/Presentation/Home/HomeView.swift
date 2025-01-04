@@ -15,7 +15,8 @@ struct HomeView: View {
             WeeklyStudy()
             Spacer()
                 .frame(height: 120)
-            Quote()
+//            Quote()
+            TimerView()
             Spacer()
             HStack(spacing: 12) {
                 BaseButton(width: 69, backgroundColor: .clear, action: {})
