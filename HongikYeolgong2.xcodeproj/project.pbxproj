@@ -71,6 +71,8 @@
 		47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */; };
 		982308962D27CA1800D8BFB9 /* RecordFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308952D27CA1800D8BFB9 /* RecordFeature.swift */; };
 		982308982D27CA3C00D8BFB9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308972D27CA3C00D8BFB9 /* RecordView.swift */; };
+		98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BB82D29300D006132D1 /* CalendarCell.swift */; };
+		98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BBA2D2930C3006132D1 /* RecordCell.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +154,8 @@
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		982308952D27CA1800D8BFB9 /* RecordFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFeature.swift; sourceTree = "<group>"; };
 		982308972D27CA3C00D8BFB9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		98244BB82D29300D006132D1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		98244BBA2D2930C3006132D1 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,6 +418,8 @@
 			children = (
 				982308952D27CA1800D8BFB9 /* RecordFeature.swift */,
 				982308972D27CA3C00D8BFB9 /* RecordView.swift */,
+				98244BB82D29300D006132D1 /* CalendarCell.swift */,
+				98244BBA2D2930C3006132D1 /* RecordCell.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -611,8 +617,10 @@
 				470C7B3E2CF4569300C46690 /* RemoteConfigManager.swift in Sources */,
 				476F43582D1850F6003DBFA9 /* SwiftUIView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
+				98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */,
+				98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
 				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
