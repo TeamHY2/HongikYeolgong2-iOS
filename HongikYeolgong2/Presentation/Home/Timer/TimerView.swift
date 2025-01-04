@@ -17,7 +17,7 @@ struct TimerView: View {
                Text("남은시간")
                    .font(.suite(size: 30, weight: .black), lineHeight: 32)
                    .foregroundColor(.white)
-                   .padding(.top, 11.adjustToScreenHeight)
+                   .padding(.top, 11)
                
                LinearProgressView(shape: Rectangle(), value: 1)
                    .frame(height: 8)
