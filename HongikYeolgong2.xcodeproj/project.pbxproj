@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -158,6 +158,10 @@
 		98244BBA2D2930C3006132D1 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		98244BBC2D2934D9006132D1 /* Auth */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Auth; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		47B1D4A52C9CB1740071B62B /* Frameworks */ = {
@@ -382,6 +386,7 @@
 		47F6B7CA2D26FABC0096CCA5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				98244BBC2D2934D9006132D1 /* Auth */,
 				982308942D27C97600D8BFB9 /* Record */,
 				47F6B7CC2D26FAE20096CCA5 /* Home */,
 			);
@@ -439,6 +444,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				98244BBC2D2934D9006132D1 /* Auth */,
 			);
 			name = HongikYeolgong2;
 			packageProductDependencies = (
