@@ -17,7 +17,6 @@ struct WeeklyStudy: View {
                 WeeklyStudyCell()
             }
         }
-        .padding(.top, 32)
     }
 }
 
