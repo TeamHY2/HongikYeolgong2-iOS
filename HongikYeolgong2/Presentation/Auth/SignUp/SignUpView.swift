@@ -77,7 +77,9 @@ struct SignUpView: View {
                         .resizable()
                         .frame(height: 50.adjustToScreenHeight)
                 }
-                .padding(.bottom, 12)
+                .disabled(store.isSignUpButtonEnabled)
+                .overlay(store.isSignUpButtonEnabled ? Color.dark.opacity(0.6) : nil)
+                .padding(.bottom, 8)
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .onTapGesture {

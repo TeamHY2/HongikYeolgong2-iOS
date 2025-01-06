@@ -14,7 +14,7 @@ struct DepartmentFeature {
     struct State: Equatable {
         var departments: [Department] = Department.allCases
         var searchDepartment: String = ""
-        var selectedDepartment: Department? = nil
+        var selectedDepartment: Department = .none
     }
     
     enum Action {

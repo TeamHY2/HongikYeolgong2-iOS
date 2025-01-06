@@ -15,6 +15,9 @@ struct SignUpFeature {
     struct State: Equatable {
         var nicknameFeatureState = NicknameFeature.State()
         var departmentFeatureState = DepartmentFeature.State()
+        var isSignUpButtonEnabled: Bool {
+            return nicknameFeatureState.nicknameState != .available || departmentFeatureState.selectedDepartment == .none
+        }
     }
     
     enum Action {

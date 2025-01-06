@@ -27,6 +27,7 @@ struct DepartmentInputView: View {
                 .padding(.trailing, 14)
                 .onTapGesture {
                     searchDepartment = ""
+                    selectedDepartment(.none)
                 }
                 .opacity(!searchDepartment.isEmpty && isFocused ? 1 : 0)
         }
@@ -38,8 +39,9 @@ struct DepartmentInputView: View {
                 .stroke(.gray400)
                 .opacity(isFocused ? 1 : 0)
         )
+        Spacer().frame(height: 8.adjustToScreenHeight)
         
-        if !searchDepartment.isEmpty {
+        if isFocused && !searchDepartment.isEmpty {
             let filteredDepartments = departments.filter { $0.rawValue.contains(searchDepartment) }
             let maxHeight = CGFloat(min(filteredDepartments.count, 3)) * 45
             
@@ -48,6 +50,7 @@ struct DepartmentInputView: View {
                     ForEach(filteredDepartments, id: \.self) { department in
                         Button(action: {
                             selectedDepartment(department)
+                            isFocused.toggle()
                         }) {
                             Text(department.rawValue)
                                 .font(.pretendard(size: 16, weight: .regular))
