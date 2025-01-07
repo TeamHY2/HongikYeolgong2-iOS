@@ -44,7 +44,7 @@ struct OnboardingView: View {
                 }
             }
             Button {
-                print("")
+                store.send(.appleLoginButtonTapped)
             } label: {
                 Image(.snsLogin)
                     .resizable()

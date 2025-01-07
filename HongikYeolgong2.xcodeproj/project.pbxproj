@@ -73,7 +73,9 @@
 		982308982D27CA3C00D8BFB9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308972D27CA3C00D8BFB9 /* RecordView.swift */; };
 		98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BB82D29300D006132D1 /* CalendarCell.swift */; };
 		98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BBA2D2930C3006132D1 /* RecordCell.swift */; };
+		9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842FFE22D2C47F6003D5933 /* AuthClient.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
+		98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +158,9 @@
 		982308972D27CA3C00D8BFB9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		98244BB82D29300D006132D1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		98244BBA2D2930C3006132D1 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		9842FFE22D2C47F6003D5933 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -379,6 +383,7 @@
 			children = (
 				47BE30E22CC813BB0015D973 /* KeyChainManager.swift */,
 				470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */,
+				98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 		47F6B7D12D26FAFE0096CCA5 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				9842FFE12D2C47E5003D5933 /* Auth */,
 				47F6B7D22D26FB050096CCA5 /* Home */,
 			);
 			path = Client;
@@ -427,6 +433,14 @@
 				98244BBA2D2930C3006132D1 /* RecordCell.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		9842FFE12D2C47E5003D5933 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9842FFE22D2C47F6003D5933 /* AuthClient.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -627,6 +641,7 @@
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
 				98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
+				98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */,
 				47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */,
 				98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
@@ -649,6 +664,7 @@
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
+				9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */,
 			);

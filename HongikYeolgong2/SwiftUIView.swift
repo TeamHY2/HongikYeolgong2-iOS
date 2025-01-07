@@ -11,8 +11,8 @@ import ComposableArchitecture
 struct SwiftUIView: View {
     var body: some View {
         //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        SignUpView(store: Store(initialState: SignUpFeature.State()) {
-            SignUpFeature()
+        OnboardingView(store: Store(initialState: OnboardingFeature.State()) {
+            OnboardingFeature()
         })
     }
 }
