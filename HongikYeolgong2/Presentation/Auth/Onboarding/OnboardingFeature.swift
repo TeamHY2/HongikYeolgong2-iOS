@@ -27,7 +27,7 @@ struct OnboardingFeature {
         // 애플 로그인 관련 이벤트
         case appleLoginButtonTapped
         case appleLoginResponse(Result<(identityToken: String, email: String), Error>)
-        case checkUserResponse(Result<(alreadyExist: Bool, accessToken: String), Error>)
+        case checkUserResponse(Result<(Bool), Error>)
         case setNavigation(tag: String?, isActive: Bool)
     }
     // MARK: - Dependency
@@ -58,8 +58,10 @@ struct OnboardingFeature {
                 case let .appleLoginResponse(.success(result)):
                     return .run { [identityToken = result.identityToken, email = result.email] send in
                         do {
-                            // 기존 회원 여부 확인 코드 추가
-                            let userCheckResult = (alreadyExist: true, accessToken: identityToken)
+                            // 키체인 등록
+                            KeyChainManager.addItem(key: .accessToken, value: identityToken)
+                            // 기존 회원 여부 확인
+                            let userCheckResult = try await AuthClient.checkEmailExist(identityToken)
                             await send(.checkUserResponse(.success(userCheckResult)))
                         } catch {
                             await send(.checkUserResponse(.failure(error)))
@@ -75,9 +77,7 @@ struct OnboardingFeature {
                     // 기존 회원 확인
                 case let .checkUserResponse(.success(result)):
                     state.isLoading = false
-                    // 키체인 등록
-                    KeyChainManager.addItem(key: .accessToken, value: result.accessToken)
-                    if result.alreadyExist {
+                    if result {
                         return .send(.setNavigation(tag: "home", isActive: true))
                     } else {
                         return .send(.setNavigation(tag: "signUp", isActive: true))
