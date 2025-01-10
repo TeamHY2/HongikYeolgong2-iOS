@@ -13,7 +13,7 @@ import AuthenticationServices
 struct OnboardingFeature {
     @ObservableState
     // MARK: - State
-    struct State {
+    struct State: Equatable {
         var isLoading: Bool = false
         var tabIndex: Int = 0
         var showHomeView: Bool = false

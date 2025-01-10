@@ -20,14 +20,14 @@ struct AppFeature {
     struct State: Equatable {
         var loginState: LoginState = .splash
         var mainTab = MainTabFeature.State()
-        var login = LoginFeature.State()
+        var login = OnboardingFeature.State()
     }
     
     enum Action {
         case requestLogin
         case loginCompleted
         case mainTab(MainTabFeature.Action)
-        case login(LoginFeature.Action)
+        case login(OnboardingFeature.Action)
     }
     
     var body: some ReducerOf<Self> {
@@ -36,7 +36,7 @@ struct AppFeature {
                 ._printChanges()
         }
         Scope(state: \.login, action: \.login) {
-            LoginFeature()
+            OnboardingFeature()
         }
         Reduce { state, action in
             switch action {
@@ -48,7 +48,7 @@ struct AppFeature {
             case .mainTab(.setting(.logoutButtonTap)):
                 state.loginState = .onboarding
                 return .none
-            case .login(.loginButtonTap):
+            case .login(.appleLoginButtonTapped):
                 state.loginState = .home
                 return .none
             case .loginCompleted:

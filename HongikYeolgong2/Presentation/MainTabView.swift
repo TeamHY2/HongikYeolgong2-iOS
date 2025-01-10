@@ -14,7 +14,7 @@ struct MainTabView: View {
             TabView(selection: $store.currentTab) {
                 HomeView()
                     .tag(TabBar.home)
-                RecordView()
+                RecordView(store: store.scope(state: \.record, action: \.record))
                     .tag(TabBar.record)
                 RankingView()
                     .tag(TabBar.ranking)

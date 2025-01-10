@@ -38,7 +38,7 @@ enum CellStyle: CaseIterable {
     case dayCount03
 }
 
-struct Day: Identifiable {
+struct Day: Equatable, Identifiable {
     var id = UUID().uuidString
     let dayOfNumber: String
     var usageRecord: [AllStudyRecord] = []

@@ -11,7 +11,7 @@ import ComposableArchitecture
 @Reducer
 struct RecordFeature {
     @ObservableState
-    struct State {
+    struct State: Equatable {
         // 캘린더 관련 데이터
         var selectedDate: Date = Date()
         var allStudyRecords: [AllStudyRecord] = []

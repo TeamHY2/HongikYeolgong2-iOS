@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct record {
+struct record: Equatable {
     var title: String
     var hours: Int
     var minutes: Int
