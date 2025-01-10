@@ -25,6 +25,11 @@
 		474B29472D27CBAF00DB410D /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B29462D27CBAF00DB410D /* RecordView.swift */; };
 		474B294A2D27CBD300DB410D /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B29492D27CBD300DB410D /* RankingView.swift */; };
 		474B294D2D27CBE100DB410D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B294C2D27CBE100DB410D /* SettingView.swift */; };
+		474D76522D290DDE00AF8CA2 /* WeeklyStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */; };
+		474D76552D290E6B00AF8CA2 /* WeeklyStudyFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76542D290E6B00AF8CA2 /* WeeklyStudyFeature.swift */; };
+		474D76582D2913C000AF8CA2 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76572D2913C000AF8CA2 /* Quote.swift */; };
+		474D765B2D291B0A00AF8CA2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D765A2D291B0A00AF8CA2 /* TimerView.swift */; };
+		474D765D2D291CC300AF8CA2 /* StudyPeriod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D765C2D291CC300AF8CA2 /* StudyPeriod.swift */; };
 		47581ED02CF01EB200A2EA31 /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */; };
 		476120AB2D2827CF005EC300 /* SettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476120AA2D2827CF005EC300 /* SettingFeature.swift */; };
 		476120B22D282B17005EC300 /* LoginFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476120B12D282B17005EC300 /* LoginFeature.swift */; };
@@ -118,6 +123,11 @@
 		474B29462D27CBAF00DB410D /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		474B29492D27CBD300DB410D /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		474B294C2D27CBE100DB410D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudy.swift; sourceTree = "<group>"; };
+		474D76542D290E6B00AF8CA2 /* WeeklyStudyFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyFeature.swift; sourceTree = "<group>"; };
+		474D76572D2913C000AF8CA2 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
+		474D765A2D291B0A00AF8CA2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		474D765C2D291CC300AF8CA2 /* StudyPeriod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPeriod.swift; sourceTree = "<group>"; };
 		476120AA2D2827CF005EC300 /* SettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeature.swift; sourceTree = "<group>"; };
 		476120B12D282B17005EC300 /* LoginFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFeature.swift; sourceTree = "<group>"; };
 		476120B32D282B21005EC300 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -263,6 +273,32 @@
 				476120AA2D2827CF005EC300 /* SettingFeature.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		474D76532D290DF000AF8CA2 /* WeeklyStudy */ = {
+			isa = PBXGroup;
+			children = (
+				474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */,
+				474D76542D290E6B00AF8CA2 /* WeeklyStudyFeature.swift */,
+			);
+			path = WeeklyStudy;
+			sourceTree = "<group>";
+		};
+		474D76562D2913AB00AF8CA2 /* Quote */ = {
+			isa = PBXGroup;
+			children = (
+				474D76572D2913C000AF8CA2 /* Quote.swift */,
+			);
+			path = Quote;
+			sourceTree = "<group>";
+		};
+		474D76592D291AD100AF8CA2 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				474D765A2D291B0A00AF8CA2 /* TimerView.swift */,
+				474D765C2D291CC300AF8CA2 /* StudyPeriod.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		474FF2FB2CE36F4100ABEE63 /* Recovered References */ = {
@@ -441,6 +477,9 @@
 		47F6B7CC2D26FAE20096CCA5 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				474D76592D291AD100AF8CA2 /* Timer */,
+				474D76562D2913AB00AF8CA2 /* Quote */,
+				474D76532D290DF000AF8CA2 /* WeeklyStudy */,
 				47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */,
 				47F6B7CF2D26FAF90096CCA5 /* HomeFeature.swift */,
 			);
@@ -670,11 +709,13 @@
 				474B29472D27CBAF00DB410D /* RecordView.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
+				474D765B2D291B0A00AF8CA2 /* TimerView.swift in Sources */,
 				47F6B7D02D26FAF90096CCA5 /* HomeFeature.swift in Sources */,
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
+				474D765D2D291CC300AF8CA2 /* StudyPeriod.swift in Sources */,
 				4780044E2CCAAE3200FFAF00 /* String+.swift in Sources */,
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
 				474B294A2D27CBD300DB410D /* RankingView.swift in Sources */,
@@ -682,10 +723,13 @@
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
 				476120AB2D2827CF005EC300 /* SettingFeature.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
+				474D76582D2913C000AF8CA2 /* Quote.swift in Sources */,
+				474D76522D290DDE00AF8CA2 /* WeeklyStudy.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				476120B22D282B17005EC300 /* LoginFeature.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
+				474D76552D290E6B00AF8CA2 /* WeeklyStudyFeature.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

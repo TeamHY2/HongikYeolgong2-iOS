@@ -55,7 +55,7 @@ struct MainTabView: View {
                 
             }
         }
-        .frame(height: 88)
+        .frame(height: SafeAreaHelper.getTabBarHeight())
         .background(Image(.tabview)
             .resizable()
             .frame(maxWidth: .infinity))
