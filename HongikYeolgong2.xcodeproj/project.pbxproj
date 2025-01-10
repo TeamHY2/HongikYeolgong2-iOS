@@ -70,7 +70,7 @@
 		47F71B632CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 47F71B622CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community */; };
 		47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */; };
 		982308962D27CA1800D8BFB9 /* RecordFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308952D27CA1800D8BFB9 /* RecordFeature.swift */; };
-		982308982D27CA3C00D8BFB9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308972D27CA3C00D8BFB9 /* RecordView.swift */; };
+		982308982D27CA3C00D8BFB9 /* RecordView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308972D27CA3C00D8BFB9 /* RecordView2.swift */; };
 		98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BB82D29300D006132D1 /* CalendarCell.swift */; };
 		98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BBA2D2930C3006132D1 /* RecordCell.swift */; };
 		9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842FFE22D2C47F6003D5933 /* AuthClient.swift */; };
@@ -155,7 +155,7 @@
 		47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		982308952D27CA1800D8BFB9 /* RecordFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFeature.swift; sourceTree = "<group>"; };
-		982308972D27CA3C00D8BFB9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		982308972D27CA3C00D8BFB9 /* RecordView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView2.swift; sourceTree = "<group>"; };
 		98244BB82D29300D006132D1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		98244BBA2D2930C3006132D1 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		9842FFE22D2C47F6003D5933 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
@@ -428,7 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				982308952D27CA1800D8BFB9 /* RecordFeature.swift */,
-				982308972D27CA3C00D8BFB9 /* RecordView.swift */,
+				982308972D27CA3C00D8BFB9 /* RecordView2.swift */,
 				98244BB82D29300D006132D1 /* CalendarCell.swift */,
 				98244BBA2D2930C3006132D1 /* RecordCell.swift */,
 			);
@@ -655,7 +655,7 @@
 				47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
-				982308982D27CA3C00D8BFB9 /* RecordView.swift in Sources */,
+				982308982D27CA3C00D8BFB9 /* RecordView2.swift in Sources */,
 				4780044E2CCAAE3200FFAF00 /* String+.swift in Sources */,
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
 				47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */,
