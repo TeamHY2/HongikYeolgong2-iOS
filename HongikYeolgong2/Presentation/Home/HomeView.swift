@@ -9,7 +9,29 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 0) {
+            Spacer()
+                .frame(height: 32)
+            WeeklyStudy()
+            Spacer()
+                .frame(height: 120)
+            Quote()
+            StudyPeriod(startTime: .now, endTime: .now)
+            Spacer()
+                .frame(height: 32)
+            TimerView()
+            Spacer()
+            HStack(spacing: 12) {
+                BaseButton(width: 69, backgroundColor: .clear, action: {})
+                    .modifier(ImageBackground(imageName: .seatButton))
+                
+                BaseButton(backgroundColor: .clear, action: {})
+                    .modifier(ImageBackground(imageName: .startButton))
+            }
+            Spacer().frame(height: 36)
+        }
+        .padding(.horizontal, 32)
+        .modifier(IOSBackground())
     }
 }
 
