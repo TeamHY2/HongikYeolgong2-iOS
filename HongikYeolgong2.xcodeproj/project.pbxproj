@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -89,6 +89,14 @@
 		9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842FFE22D2C47F6003D5933 /* AuthClient.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */; };
+		98E981F32D31538700A78CCB /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981E72D31538700A78CCB /* OnboardingFeature.swift */; };
+		98E981F42D31538700A78CCB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981E82D31538700A78CCB /* OnboardingView.swift */; };
+		98E981F52D31538700A78CCB /* DepartmentFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EA2D31538700A78CCB /* DepartmentFeature.swift */; };
+		98E981F62D31538700A78CCB /* DepartmentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EB2D31538700A78CCB /* DepartmentInputView.swift */; };
+		98E981F72D31538700A78CCB /* NicknameFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981ED2D31538700A78CCB /* NicknameFeature.swift */; };
+		98E981F82D31538700A78CCB /* NicknameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EE2D31538700A78CCB /* NicknameInputView.swift */; };
+		98E981F92D31538700A78CCB /* SignUpFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981F02D31538700A78CCB /* SignUpFeature.swift */; };
+		98E981FA2D31538700A78CCB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981F12D31538700A78CCB /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,11 +195,15 @@
 		9842FFE22D2C47F6003D5933 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManger.swift; sourceTree = "<group>"; };
+		98E981E72D31538700A78CCB /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
+		98E981E82D31538700A78CCB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		98E981EA2D31538700A78CCB /* DepartmentFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentFeature.swift; sourceTree = "<group>"; };
+		98E981EB2D31538700A78CCB /* DepartmentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentInputView.swift; sourceTree = "<group>"; };
+		98E981ED2D31538700A78CCB /* NicknameFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameFeature.swift; sourceTree = "<group>"; };
+		98E981EE2D31538700A78CCB /* NicknameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameInputView.swift; sourceTree = "<group>"; };
+		98E981F02D31538700A78CCB /* SignUpFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFeature.swift; sourceTree = "<group>"; };
+		98E981F12D31538700A78CCB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		98244BBC2D2934D9006132D1 /* Auth */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Auth; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		47B1D4A52C9CB1740071B62B /* Frameworks */ = {
@@ -469,7 +481,7 @@
 		47F6B7CA2D26FABC0096CCA5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				98244BBC2D2934D9006132D1 /* Auth */,
+				98E981FC2D31759600A78CCB /* Auth */,
 				982308942D27C97600D8BFB9 /* Record */,
 				476120AC2D282A9F005EC300 /* Login */,
 				474B294B2D27CBD700DB410D /* Setting */,
@@ -530,6 +542,53 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		98E981FC2D31759600A78CCB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				98E981FE2D31773700A78CCB /* SignUp */,
+				98E981FD2D31771F00A78CCB /* Onboarding */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		98E981FD2D31771F00A78CCB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				98E981E72D31538700A78CCB /* OnboardingFeature.swift */,
+				98E981E82D31538700A78CCB /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		98E981FE2D31773700A78CCB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				98E982002D31775500A78CCB /* NickName */,
+				98E981FF2D31774600A78CCB /* Department */,
+				98E981F02D31538700A78CCB /* SignUpFeature.swift */,
+				98E981F12D31538700A78CCB /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		98E981FF2D31774600A78CCB /* Department */ = {
+			isa = PBXGroup;
+			children = (
+				98E981EA2D31538700A78CCB /* DepartmentFeature.swift */,
+				98E981EB2D31538700A78CCB /* DepartmentInputView.swift */,
+			);
+			path = Department;
+			sourceTree = "<group>";
+		};
+		98E982002D31775500A78CCB /* NickName */ = {
+			isa = PBXGroup;
+			children = (
+				98E981ED2D31538700A78CCB /* NicknameFeature.swift */,
+				98E981EE2D31538700A78CCB /* NicknameInputView.swift */,
+			);
+			path = NickName;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -545,9 +604,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				98244BBC2D2934D9006132D1 /* Auth */,
 			);
 			name = HongikYeolgong2;
 			packageProductDependencies = (
@@ -764,6 +820,14 @@
 				476120B22D282B17005EC300 /* LoginFeature.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
 				9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */,
+				98E981F32D31538700A78CCB /* OnboardingFeature.swift in Sources */,
+				98E981F42D31538700A78CCB /* OnboardingView.swift in Sources */,
+				98E981F52D31538700A78CCB /* DepartmentFeature.swift in Sources */,
+				98E981F62D31538700A78CCB /* DepartmentInputView.swift in Sources */,
+				98E981F72D31538700A78CCB /* NicknameFeature.swift in Sources */,
+				98E981F82D31538700A78CCB /* NicknameInputView.swift in Sources */,
+				98E981F92D31538700A78CCB /* SignUpFeature.swift in Sources */,
+				98E981FA2D31538700A78CCB /* SignUpView.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				474D76552D290E6B00AF8CA2 /* WeeklyStudyFeature.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */,
