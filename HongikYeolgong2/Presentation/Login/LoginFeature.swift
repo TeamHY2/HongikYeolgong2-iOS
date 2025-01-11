@@ -2,7 +2,7 @@
 //  LoginFeature.swift
 //  HongikYeolgong2
 //
-//  Created by 권석기 on 1/3/25.
+//  Created by 최주원 on 1/11/25.
 //
 
 import Foundation
@@ -10,7 +10,9 @@ import ComposableArchitecture
 
 @Reducer
 struct LoginFeature {
-    struct State: Equatable {}
+    struct State: Equatable {
+        
+    }
     
     enum Action {
         case loginButtonTap
