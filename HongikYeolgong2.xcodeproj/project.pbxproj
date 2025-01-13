@@ -89,6 +89,7 @@
 		9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842FFE22D2C47F6003D5933 /* AuthClient.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */; };
+		98CB3FE22D32D47D00B9ABC2 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB3FE12D32D47D00B9ABC2 /* MenuButton.swift */; };
 		98E981F32D31538700A78CCB /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981E72D31538700A78CCB /* OnboardingFeature.swift */; };
 		98E981F42D31538700A78CCB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981E82D31538700A78CCB /* OnboardingView.swift */; };
 		98E981F52D31538700A78CCB /* DepartmentFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EA2D31538700A78CCB /* DepartmentFeature.swift */; };
@@ -195,6 +196,7 @@
 		9842FFE22D2C47F6003D5933 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManger.swift; sourceTree = "<group>"; };
+		98CB3FE12D32D47D00B9ABC2 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		98E981E72D31538700A78CCB /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
 		98E981E82D31538700A78CCB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		98E981EA2D31538700A78CCB /* DepartmentFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentFeature.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				474B294C2D27CBE100DB410D /* SettingView.swift */,
 				476120AA2D2827CF005EC300 /* SettingFeature.swift */,
+				98CB3FE12D32D47D00B9ABC2 /* MenuButton.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				476120B42D282B21005EC300 /* LoginView.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
+				98CB3FE22D32D47D00B9ABC2 /* MenuButton.swift in Sources */,
 				473671A72CB1404E00527896 /* Ratio.swift in Sources */,
 				474B29442D27C0DD00DB410D /* AppFeature.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
