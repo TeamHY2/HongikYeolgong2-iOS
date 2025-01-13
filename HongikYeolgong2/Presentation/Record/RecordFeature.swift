@@ -18,11 +18,11 @@ struct RecordFeature {
         var currentMonth: [Day] = []
         var isLoading: Bool = false
         
-        var records:[record] = [
-            record(title: "연간", hours: 0, minutes: 0),
-            record(title: "이번학기", hours: 0, minutes: 0),
-            record(title: "월간", hours: 0, minutes: 0),
-            record(title: "투데이", hours: 0, minutes: 0)
+        var records:[Record] = [
+            Record(title: "연간", hours: 0, minutes: 0),
+            Record(title: "이번학기", hours: 0, minutes: 0),
+            Record(title: "월간", hours: 0, minutes: 0),
+            Record(title: "투데이", hours: 0, minutes: 0)
         ]
     }
     
@@ -35,31 +35,31 @@ struct RecordFeature {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-                case .onAppear:
-                    state.isLoading = true
-                    return .none
-                case .changeMonth(let moveType):
-                    switch moveType {
-                        case .current:
-                            state.selectedDate = Date()
-                        case .next:
-                            state.selectedDate = Calendar.current.date(byAdding: .month, value: 1, to: state.selectedDate) ?? state.selectedDate
-                        case .prev:
-                            state.selectedDate = Calendar.current.date(byAdding: .month, value: -1, to: state.selectedDate) ?? state.selectedDate
-                    }
-                    state.currentMonth = generateMonth(for: state.selectedDate, records: state.allStudyRecords)
-                    return .none
-                    
-                case .fetchRecords(.success(let records)):
-                    state.isLoading = false
-                    state.allStudyRecords = records
-                    state.currentMonth = generateMonth(for: state.selectedDate, records: records)
-                    return .none
-                    
-                case .fetchRecords(.failure):
-                    state.isLoading = false
-                    // 에러 처리 로직 추가
-                    return .none
+            case .onAppear:
+                state.isLoading = true
+                return .none
+            case .changeMonth(let moveType):
+                switch moveType {
+                case .current:
+                    state.selectedDate = Date()
+                case .next:
+                    state.selectedDate = Calendar.current.date(byAdding: .month, value: 1, to: state.selectedDate) ?? state.selectedDate
+                case .prev:
+                    state.selectedDate = Calendar.current.date(byAdding: .month, value: -1, to: state.selectedDate) ?? state.selectedDate
+                }
+                state.currentMonth = generateMonth(for: state.selectedDate, records: state.allStudyRecords)
+                return .none
+                
+            case .fetchRecords(.success(let records)):
+                state.isLoading = false
+                state.allStudyRecords = records
+                state.currentMonth = generateMonth(for: state.selectedDate, records: records)
+                return .none
+                
+            case .fetchRecords(.failure):
+                state.isLoading = false
+                // 에러 처리 로직 추가
+                return .none
             }
         }
     }
@@ -68,18 +68,18 @@ struct RecordFeature {
         var days: [Day] = []
         var count: Int = 1
         let calendar = Calendar.current
-
+        
         let daysInMonth = calendar.range(of: .day, in: .month, for: date)!.count
         let firstDayOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: date))!
         let startingSpace = calendar.dateComponents([.weekday], from: firstDayOfMonth).weekday! - 1
-
+        
         while count <= 42 {
             if count <= startingSpace || count - startingSpace > daysInMonth {
                 days.append(Day(dayOfNumber: ""))
             } else {
                 let dayOfNumber = count - startingSpace
                 let currentDate = calendar.date(byAdding: .day, value: dayOfNumber - 1, to: firstDayOfMonth)!
-
+                
                 let matchedRecords = records.filter {
                     calendar.isDate($0.date, inSameDayAs: currentDate)
                 }
