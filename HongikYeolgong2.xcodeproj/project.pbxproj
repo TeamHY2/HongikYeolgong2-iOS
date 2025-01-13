@@ -76,6 +76,8 @@
 		47F23A5C2D35415200F424B8 /* APITask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F23A5B2D35415200F424B8 /* APITask.swift */; };
 		47F23A602D35439500F424B8 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F23A5F2D35439500F424B8 /* Data+.swift */; };
 		47F23A622D3544D700F424B8 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F23A612D3544D700F424B8 /* BaseResponse.swift */; };
+		47F23A652D35470500F424B8 /* AuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F23A642D35470500F424B8 /* AuthEndpoint.swift */; };
+		47F23A672D3569C400F424B8 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F23A662D3569C400F424B8 /* Secret.swift */; };
 		47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */; };
 		47F6B7D02D26FAF90096CCA5 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6B7CF2D26FAF90096CCA5 /* HomeFeature.swift */; };
 		47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */; };
@@ -195,6 +197,8 @@
 		47F23A5B2D35415200F424B8 /* APITask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITask.swift; sourceTree = "<group>"; };
 		47F23A5F2D35439500F424B8 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		47F23A612D3544D700F424B8 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		47F23A642D35470500F424B8 /* AuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthEndpoint.swift; sourceTree = "<group>"; };
+		47F23A662D3569C400F424B8 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		47F6B7CD2D26FAF00096CCA5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		47F6B7CF2D26FAF90096CCA5 /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
 		47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClient.swift; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 				4763FFB62CB9133600990336 /* Util */,
 				47BACCF52CA164B200295DAC /* UI */,
 				47A1474F2CA1476D00A91F66 /* Resources */,
+				47F23A662D3569C400F424B8 /* Secret.swift */,
 			);
 			path = HongikYeolgong2;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 		47F23A5D2D35425900F424B8 /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
+				47F23A642D35470500F424B8 /* AuthEndpoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -848,6 +854,7 @@
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */,
 				474B294D2D27CBE100DB410D /* SettingView.swift in Sources */,
+				47F23A652D35470500F424B8 /* AuthEndpoint.swift in Sources */,
 				47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */,
 				98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */,
 				474B29402D27BE4D00DB410D /* MainTabFeature.swift in Sources */,
@@ -899,6 +906,7 @@
 				47F23A5C2D35415200F424B8 /* APITask.swift in Sources */,
 				474D76552D290E6B00AF8CA2 /* WeeklyStudyFeature.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */,
+				47F23A672D3569C400F424B8 /* Secret.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,8 @@ import ComposableArchitecture
 
 @Reducer
 struct SignUpFeature {
+    
+    @Dependency(\.authClient) var authClient
     @ObservableState
     struct State: Equatable {
         var nicknameFeatureState = NicknameFeature.State()
@@ -41,7 +43,11 @@ struct SignUpFeature {
                     
                 case .signUpButtonTap:
                     // 회원가입 로직 처리
-                    return .none
+                return .run { send in
+                    do {
+                        let response = try await authClient.requestSignIn
+                    } catch {}
+                }
             }
         }
     }

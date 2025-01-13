@@ -47,11 +47,13 @@ extension AuthClient: DependencyKey {
             
             do {
                 // 서버 응답 데이터 처리
-                let responseDto = try decoder.decode(BaseResponse<LoginResponseDTO>.self, from: data)
-                print(responseDto)
-                return responseDto.data.alreadyExist
+//                let responseDto = try decoder.decode(BaseResponse<LoginResponseDTO>.self, from: data)
+                let responseDto: BaseResponse<LoginResponseDTO> = try await APIManager.shared.performRequest(endPoint: AuthEndpoint.loginTest)
+                
+                return true
             } catch {
                 // 이후 에러처리 추가
+                print(error.localizedDescription, "실패!")
                 return false
             }
         }

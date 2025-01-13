@@ -40,7 +40,6 @@ final class APIManager {
         }
     }
     
-    
     private func requestData(endPoint: EndPoint) async -> DataResponse<Data, AFError> {
         let response = await makeDataRequest(endPoint: endPoint).serializingData().response
         
@@ -73,7 +72,7 @@ final class APIManager {
                 method: endPoint.method,
                 parameters: parameters,
                 encoder: .json(encoder: encoder),
-                headers: endPoint.headers
+                headers: endPoint.headers                
             )
             
         case let .requestParameters(parameters, encoding):

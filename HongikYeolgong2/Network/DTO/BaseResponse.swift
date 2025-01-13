@@ -11,7 +11,7 @@ struct BaseResponse<T: Decodable>: Decodable {
     let code: Int
     let status: String
     let message: String
-    let data: T
+    let data: T?
     
     enum CodingKeys: CodingKey {
         case code
@@ -25,6 +25,6 @@ struct BaseResponse<T: Decodable>: Decodable {
         self.code = try container.decode(Int.self, forKey: BaseResponse<T>.CodingKeys.code)
         self.status = try container.decode(String.self, forKey: BaseResponse<T>.CodingKeys.status)
         self.message = try container.decode(String.self, forKey: BaseResponse<T>.CodingKeys.message)
-        self.data = try container.decodeIfPresent(T.self, forKey: BaseResponse<T>.CodingKeys.data)!
+        self.data = try container.decodeIfPresent(T.self, forKey: .data)
     }
 }
