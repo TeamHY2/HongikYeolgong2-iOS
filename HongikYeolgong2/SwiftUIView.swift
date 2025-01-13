@@ -16,7 +16,7 @@ struct SwiftUIView: View {
             case .home:
                 MainTabView(store: store.scope(state: \.mainTab, action: \.mainTab))
             case .onboarding:
-                LoginView(store: store.scope(state: \.login, action: \.login))
+                OnboardingView(store: store.scope(state: \.login, action: \.login))
             case .splash:
                 Text("스플래시")
                     .onAppear(perform: {

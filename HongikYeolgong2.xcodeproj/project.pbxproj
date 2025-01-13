@@ -22,7 +22,6 @@
 		474B29402D27BE4D00DB410D /* MainTabFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B293F2D27BE4D00DB410D /* MainTabFeature.swift */; };
 		474B29422D27BFA600DB410D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B29412D27BFA600DB410D /* MainTabView.swift */; };
 		474B29442D27C0DD00DB410D /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B29432D27C0DD00DB410D /* AppFeature.swift */; };
-		474B29472D27CBAF00DB410D /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B29462D27CBAF00DB410D /* RecordView.swift */; };
 		474B294A2D27CBD300DB410D /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B29492D27CBD300DB410D /* RankingView.swift */; };
 		474B294D2D27CBE100DB410D /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B294C2D27CBE100DB410D /* SettingView.swift */; };
 		474D76522D290DDE00AF8CA2 /* WeeklyStudy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */; };
@@ -83,7 +82,21 @@
 		47F71B612CDC813A0044DEC5 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 47F71B602CDC813A0044DEC5 /* FirebaseFunctions */; };
 		47F71B632CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 47F71B622CDC813A0044DEC5 /* FirebaseFunctionsCombine-Community */; };
 		47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */; };
+		982308962D27CA1800D8BFB9 /* RecordFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308952D27CA1800D8BFB9 /* RecordFeature.swift */; };
+		982308982D27CA3C00D8BFB9 /* RecordView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982308972D27CA3C00D8BFB9 /* RecordView2.swift */; };
+		98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BB82D29300D006132D1 /* CalendarCell.swift */; };
+		98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98244BBA2D2930C3006132D1 /* RecordCell.swift */; };
+		9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9842FFE22D2C47F6003D5933 /* AuthClient.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
+		98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */; };
+		98E981F32D31538700A78CCB /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981E72D31538700A78CCB /* OnboardingFeature.swift */; };
+		98E981F42D31538700A78CCB /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981E82D31538700A78CCB /* OnboardingView.swift */; };
+		98E981F52D31538700A78CCB /* DepartmentFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EA2D31538700A78CCB /* DepartmentFeature.swift */; };
+		98E981F62D31538700A78CCB /* DepartmentInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EB2D31538700A78CCB /* DepartmentInputView.swift */; };
+		98E981F72D31538700A78CCB /* NicknameFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981ED2D31538700A78CCB /* NicknameFeature.swift */; };
+		98E981F82D31538700A78CCB /* NicknameInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981EE2D31538700A78CCB /* NicknameInputView.swift */; };
+		98E981F92D31538700A78CCB /* SignUpFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981F02D31538700A78CCB /* SignUpFeature.swift */; };
+		98E981FA2D31538700A78CCB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E981F12D31538700A78CCB /* SignUpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,7 +133,6 @@
 		474B293F2D27BE4D00DB410D /* MainTabFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFeature.swift; sourceTree = "<group>"; };
 		474B29412D27BFA600DB410D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		474B29432D27C0DD00DB410D /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
-		474B29462D27CBAF00DB410D /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		474B29492D27CBD300DB410D /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		474B294C2D27CBE100DB410D /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		474D76512D290DDE00AF8CA2 /* WeeklyStudy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudy.swift; sourceTree = "<group>"; };
@@ -176,7 +188,21 @@
 		47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeClient.swift; sourceTree = "<group>"; };
 		47F79B2F2CCCB7FC00DD0899 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
+		982308952D27CA1800D8BFB9 /* RecordFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordFeature.swift; sourceTree = "<group>"; };
+		982308972D27CA3C00D8BFB9 /* RecordView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView2.swift; sourceTree = "<group>"; };
+		98244BB82D29300D006132D1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		98244BBA2D2930C3006132D1 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		9842FFE22D2C47F6003D5933 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
+		98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManger.swift; sourceTree = "<group>"; };
+		98E981E72D31538700A78CCB /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
+		98E981E82D31538700A78CCB /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		98E981EA2D31538700A78CCB /* DepartmentFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentFeature.swift; sourceTree = "<group>"; };
+		98E981EB2D31538700A78CCB /* DepartmentInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentInputView.swift; sourceTree = "<group>"; };
+		98E981ED2D31538700A78CCB /* NicknameFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameFeature.swift; sourceTree = "<group>"; };
+		98E981EE2D31538700A78CCB /* NicknameInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameInputView.swift; sourceTree = "<group>"; };
+		98E981F02D31538700A78CCB /* SignUpFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFeature.swift; sourceTree = "<group>"; };
+		98E981F12D31538700A78CCB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,14 +274,6 @@
 				473671A62CB1404E00527896 /* Ratio.swift */,
 			);
 			path = Basic;
-			sourceTree = "<group>";
-		};
-		474B29452D27CBA500DB410D /* Record */ = {
-			isa = PBXGroup;
-			children = (
-				474B29462D27CBAF00DB410D /* RecordView.swift */,
-			);
-			path = Record;
 			sourceTree = "<group>";
 		};
 		474B29482D27CBC800DB410D /* Ranking */ = {
@@ -455,6 +473,7 @@
 			children = (
 				47BE30E22CC813BB0015D973 /* KeyChainManager.swift */,
 				470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */,
+				98BB20AC2D2D3DF50049DE0B /* AppleLoginManger.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -462,10 +481,11 @@
 		47F6B7CA2D26FABC0096CCA5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				98E981FC2D31759600A78CCB /* Auth */,
+				982308942D27C97600D8BFB9 /* Record */,
 				476120AC2D282A9F005EC300 /* Login */,
 				474B294B2D27CBD700DB410D /* Setting */,
 				474B29482D27CBC800DB410D /* Ranking */,
-				474B29452D27CBA500DB410D /* Record */,
 				47F6B7CC2D26FAE20096CCA5 /* Home */,
 				474B293F2D27BE4D00DB410D /* MainTabFeature.swift */,
 				474B29412D27BFA600DB410D /* MainTabView.swift */,
@@ -489,6 +509,7 @@
 		47F6B7D12D26FAFE0096CCA5 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				9842FFE12D2C47E5003D5933 /* Auth */,
 				47F6B7D22D26FB050096CCA5 /* Home */,
 			);
 			path = Client;
@@ -500,6 +521,72 @@
 				47F6B7D32D26FB2D0096CCA5 /* HomeClient.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		982308942D27C97600D8BFB9 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				982308952D27CA1800D8BFB9 /* RecordFeature.swift */,
+				982308972D27CA3C00D8BFB9 /* RecordView2.swift */,
+				98244BB82D29300D006132D1 /* CalendarCell.swift */,
+				98244BBA2D2930C3006132D1 /* RecordCell.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		9842FFE12D2C47E5003D5933 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				9842FFE22D2C47F6003D5933 /* AuthClient.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		98E981FC2D31759600A78CCB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				98E981FE2D31773700A78CCB /* SignUp */,
+				98E981FD2D31771F00A78CCB /* Onboarding */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		98E981FD2D31771F00A78CCB /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				98E981E72D31538700A78CCB /* OnboardingFeature.swift */,
+				98E981E82D31538700A78CCB /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		98E981FE2D31773700A78CCB /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				98E982002D31775500A78CCB /* NickName */,
+				98E981FF2D31774600A78CCB /* Department */,
+				98E981F02D31538700A78CCB /* SignUpFeature.swift */,
+				98E981F12D31538700A78CCB /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		98E981FF2D31774600A78CCB /* Department */ = {
+			isa = PBXGroup;
+			children = (
+				98E981EA2D31538700A78CCB /* DepartmentFeature.swift */,
+				98E981EB2D31538700A78CCB /* DepartmentInputView.swift */,
+			);
+			path = Department;
+			sourceTree = "<group>";
+		};
+		98E982002D31775500A78CCB /* NickName */ = {
+			isa = PBXGroup;
+			children = (
+				98E981ED2D31538700A78CCB /* NicknameFeature.swift */,
+				98E981EE2D31538700A78CCB /* NicknameInputView.swift */,
+			);
+			path = NickName;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,9 +782,12 @@
 				470C7B3E2CF4569300C46690 /* RemoteConfigManager.swift in Sources */,
 				476F43582D1850F6003DBFA9 /* SwiftUIView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
+				98244BBB2D2930C3006132D1 /* RecordCell.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
+				98BB20AD2D2D3DF50049DE0B /* AppleLoginManger.swift in Sources */,
 				474B294D2D27CBE100DB410D /* SettingView.swift in Sources */,
 				47F6B7CE2D26FAF00096CCA5 /* HomeView.swift in Sources */,
+				98244BB92D29300D006132D1 /* CalendarCell.swift in Sources */,
 				474B29402D27BE4D00DB410D /* MainTabFeature.swift in Sources */,
 				476120B42D282B21005EC300 /* LoginView.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
@@ -706,7 +796,6 @@
 				474B29442D27C0DD00DB410D /* AppFeature.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
 				474B29422D27BFA600DB410D /* MainTabView.swift in Sources */,
-				474B29472D27CBAF00DB410D /* RecordView.swift in Sources */,
 				471940D32CAFEE5B00426D30 /* Font+Uikit.swift in Sources */,
 				471940D12CAFE61A00426D30 /* LineHeight.swift in Sources */,
 				474D765B2D291B0A00AF8CA2 /* TimerView.swift in Sources */,
@@ -715,12 +804,14 @@
 				47F6B7D42D26FB2D0096CCA5 /* HomeClient.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
+				982308982D27CA3C00D8BFB9 /* RecordView2.swift in Sources */,
 				474D765D2D291CC300AF8CA2 /* StudyPeriod.swift in Sources */,
 				4780044E2CCAAE3200FFAF00 /* String+.swift in Sources */,
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
 				474B294A2D27CBD300DB410D /* RankingView.swift in Sources */,
 				47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */,
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
+				982308962D27CA1800D8BFB9 /* RecordFeature.swift in Sources */,
 				476120AB2D2827CF005EC300 /* SettingFeature.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				474D76582D2913C000AF8CA2 /* Quote.swift in Sources */,
@@ -728,6 +819,15 @@
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				476120B22D282B17005EC300 /* LoginFeature.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
+				9842FFE32D2C47F6003D5933 /* AuthClient.swift in Sources */,
+				98E981F32D31538700A78CCB /* OnboardingFeature.swift in Sources */,
+				98E981F42D31538700A78CCB /* OnboardingView.swift in Sources */,
+				98E981F52D31538700A78CCB /* DepartmentFeature.swift in Sources */,
+				98E981F62D31538700A78CCB /* DepartmentInputView.swift in Sources */,
+				98E981F72D31538700A78CCB /* NicknameFeature.swift in Sources */,
+				98E981F82D31538700A78CCB /* NicknameInputView.swift in Sources */,
+				98E981F92D31538700A78CCB /* SignUpFeature.swift in Sources */,
+				98E981FA2D31538700A78CCB /* SignUpView.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				474D76552D290E6B00AF8CA2 /* WeeklyStudyFeature.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */,
@@ -770,6 +870,7 @@
 /* Begin XCBuildConfiguration section */
 		47B1D4CA2C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A7EE752D277ACE002DC198 /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -833,6 +934,7 @@
 		};
 		47B1D4CB2C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A7EE752D277ACE002DC198 /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -889,6 +991,7 @@
 		};
 		47B1D4CD2C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A7EE752D277ACE002DC198 /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
