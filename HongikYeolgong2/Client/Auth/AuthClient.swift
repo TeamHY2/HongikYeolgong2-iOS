@@ -47,37 +47,17 @@ extension AuthClient: DependencyKey {
             
             do {
                 // 서버 응답 데이터 처리
-                let responseDto = try decoder.decode(BaseResponse<LoginResponseDTO>.self, from: data)
-                print(responseDto)
-                return responseDto.data.alreadyExist
+//                let responseDto = try decoder.decode(BaseResponse<LoginResponseDTO>.self, from: data)
+                let responseDto: BaseResponse<LoginResponseDTO> = try await APIManager.shared.performRequest(endPoint: AuthEndpoint.loginTest)
+                
+                return true
             } catch {
                 // 이후 에러처리 추가
+                print(error.localizedDescription, "실패!")
                 return false
             }
         }
     )
-}
-
-struct BaseResponse<T: Decodable>: Decodable {
-    let code: Int
-    let status: String
-    let message: String
-    let data: T
-    
-    enum CodingKeys: CodingKey {
-        case code
-        case status
-        case message
-        case data
-    }
-    
-    init(from decoder: any Decoder) throws {
-        let container: KeyedDecodingContainer<BaseResponse<T>.CodingKeys> = try decoder.container(keyedBy: BaseResponse<T>.CodingKeys.self)
-        self.code = try container.decode(Int.self, forKey: BaseResponse<T>.CodingKeys.code)
-        self.status = try container.decode(String.self, forKey: BaseResponse<T>.CodingKeys.status)
-        self.message = try container.decode(String.self, forKey: BaseResponse<T>.CodingKeys.message)
-        self.data = try container.decodeIfPresent(T.self, forKey: BaseResponse<T>.CodingKeys.data)!
-    }
 }
 
 extension DependencyValues {

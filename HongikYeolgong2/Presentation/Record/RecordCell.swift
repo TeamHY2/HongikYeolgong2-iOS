@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct record: Equatable {
+struct Record: Equatable {
     var title: String
     var hours: Int
     var minutes: Int
 }
 
 struct RecordCell: View {
-    let record: record
+    let record: Record
     
     var body: some View {
         HStack{
