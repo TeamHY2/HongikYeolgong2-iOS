@@ -24,7 +24,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-    private let addedTime: TimeInterval = .init(hours: 4)
+    private let addedTime: TimeInterval = .init(hours: 6)
     
     private var lastTime: Date?
     private var subscription: AnyCancellable?
@@ -74,7 +74,12 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         cancelAllNotification()
         
         let startTime: Date = appState.value.studySession.startTime
-        let endTime: Date = .now
+        let remainingTime = appState.value.studySession.remainingTime
+        // 최대시간
+        // 최근이용 시작시간 + 6시간
+        let maxEndTime = appState.value.studySession.startTime.addingTimeInterval(.init(hours: 6))
+        // 남은시간이 0인경우 최대시간 적용
+        let endTime: Date = remainingTime <= 0 ? maxEndTime : .now
         
         uploadStudySession(startTime: startTime, endTime: endTime)
     }
