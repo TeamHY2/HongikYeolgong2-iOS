@@ -27,7 +27,7 @@ struct SignUpView: View {
         self.inputNickname = nickname
         self.inputDepartment = department
         self.department = Department(rawValue: department) ?? .none
-        self.nickname = .available
+        self.nickname = .none
         self.isEdit = true
     }
     
@@ -154,6 +154,13 @@ struct SignUpView: View {
         .onChange(of: department) { _ in
             isEditing = true
         }
+        .onChange(of: loadState.value) { value in
+            guard let isSuccess = value else { return }
+            if isSuccess {
+                dismiss.wrappedValue.dismiss()
+            }
+        }
+        
     }
     
     func editButtonTap() {
