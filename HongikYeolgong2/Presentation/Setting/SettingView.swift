@@ -35,20 +35,29 @@ struct SettingView: View {
         NavigationStack(path: $settingPath) {
                 VStack(alignment: .leading, spacing: 0) {
                     Spacer().frame(height: 32.adjustToScreenHeight)
-                    
-                    HStack(spacing: 0) {
-                        ProfileImage()
-                        Spacer().frame(width: 20.adjustToScreenWidth)
-                        HStack(spacing: 0) {
-                            ProfileText(text: userProfile.nickname)
-                            Spacer().frame(width: 8.adjustToScreenWidth)
-                            ProfileText(text: "|", textColor: Color.gray400)
-                            Spacer().frame(width: 8.adjustToScreenWidth)
-                            ProfileText(text: userProfile.department)
-                        }
-                    }
-                    
-                    Spacer().frame(height: 20.adjustToScreenHeight)
+                                     
+                        VStack(alignment: .center, spacing: 0) {
+                            ProfileImage()
+                            Spacer().frame(height: 12.adjustToScreenHeight)
+                            Text("\(userProfile.nickname)")
+                                .font(.pretendard(size: 18, weight: .bold), lineHeight: 22.adjustToScreenHeight)
+                                .foregroundColor(.gray100)
+                            Text("\(userProfile.department)")
+                                .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
+                                .foregroundColor(.gray100)
+                            Spacer().frame(height: 8.adjustToScreenHeight)
+                            Button(action: {}, label: {
+                                Text("프로필 변경")
+                                    .font(.pretendard(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
+                                    .foregroundColor(.gray200)
+                                    .padding(.vertical, 4)
+                                    .padding(.horizontal, 8)
+                            })
+                            .background(.gray800)
+                            .cornerRadius(4)
+                        }.frame(maxWidth: .infinity)
+                                        
+                    Spacer().frame(height: 32.adjustToScreenHeight)
                     MenuItem(title: "공지사항",
                              onTap: navigateToNotice,
                              content: { Image(.arrowRight) })
@@ -191,7 +200,7 @@ struct ProfileImage: View {
     var body: some View {
         Image(.settingIcon)
             .resizable()
-            .frame(width: 55.adjustToScreenWidth, height: 55.adjustToScreenHeight)
+            .frame(width: 60.adjustToScreenWidth, height: 60.adjustToScreenHeight)
     }
 }
 
