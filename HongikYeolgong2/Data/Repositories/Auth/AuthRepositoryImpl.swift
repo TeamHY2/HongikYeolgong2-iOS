@@ -9,6 +9,20 @@ import Foundation
 import Combine
 
 final class AuthRepositoryImpl: AuthRepository {
+    func profileEdit(signUpReqDto: SignUpRequestDTO) -> AnyPublisher<ProfileEditResponseDTO, NetworkError> {
+        return Future<ProfileEditResponseDTO, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<ProfileEditResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.profileEdit(signUpReqDto: signUpReqDto))
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
     
     ///  소셜로그인
     /// - Parameter loginReqDto: 로그인 요청 DTO(이메일, identityToken)

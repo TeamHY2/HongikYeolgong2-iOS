@@ -15,6 +15,7 @@ struct SignUpView: View {
     @State private var inputNickname = ""
     @State private var inputDepartment = ""
     @State private var loadState: Loadable<Bool> = .notRequest
+    @State private var isPresented: Bool = false
     @Environment(\.presentationMode) var dismiss
     
     let isEdit: Bool
@@ -24,6 +25,8 @@ struct SignUpView: View {
     init(nickname: String, department: String) {
         self.inputNickname = nickname
         self.inputDepartment = department
+        self.department = Department(rawValue: department) ?? .none
+        self.nickname = .available
         isEdit = true
     }
     
@@ -90,7 +93,7 @@ struct SignUpView: View {
             
             SubmitButton(
                 isEdit: isEdit,
-                action: { userDataInteractor.signUp(nickname: inputNickname, department: department, loadbleSubject: $loadState) },
+                action: { editButtonTap() },
                 disabled: !(nickname == .available &&
                             (Department.allDepartments.contains(department.rawValue) ||
                              Department.allDepartments.contains(inputDepartment)))
@@ -98,7 +101,6 @@ struct SignUpView: View {
             .padding(.bottom, 20.adjustToScreenHeight)
         }
         .overlay(alignment: .topLeading, content: {
-            
             if isEdit {
                 HStack {
                     Button(action: {
@@ -131,11 +133,30 @@ struct SignUpView: View {
         })
         .toolbar(.hidden, for: .navigationBar)
         .padding(.horizontal, 32.adjustToScreenWidth)
+        .systemOverlay(isPresented: $isPresented) {
+            ModalView(isPresented: $isPresented,
+                      title: "프로필 변경을 진행하실건가요?",
+                      confirmButtonText: "변경하기",
+                      cancleButtonText: "돌아가기",
+                      confirmAction: performUpdate )
+        }
         .onTapGesture {
             UIApplication.shared.hideKeyboard()
         }
         .onChange(of: inputNickname) {
             userDataInteractor.validateUserNickname(inputNickname: $0, nickname: $nickname)
         }
+    }
+    
+    func editButtonTap() {
+        if isEdit {
+            isPresented = true
+        } else {
+            userDataInteractor.signUp(nickname: inputNickname, department: department, loadbleSubject: $loadState)
+        }
+    }
+    
+    func performUpdate() {
+        userDataInteractor.profileEdit(nickname: inputNickname, department: department)
     }
 }

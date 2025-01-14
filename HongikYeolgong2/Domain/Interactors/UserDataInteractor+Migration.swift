@@ -33,8 +33,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
         self.appleLoginService = appleLoginService
         self.socialLoginRepository = socialLoginRepository
     }
-    
-    
+        
     /// 기존 유저를 검색하고 ID를 반환합니다.
     /// - Parameter idToken: identityToken
     /// - Returns: 유저ID
@@ -126,6 +125,18 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     appState[\.userSession] = .authenticated
                     appState[\.routing.onboarding.signUp] = false
                     KeyChainManager.addItem(key: .accessToken, value: signUpResDto.accessToken)
+            }
+            .store(in: cancleBag)
+    }
+    
+    func profileEdit(nickname: String, department: Department) {
+        authRepository
+            .profileEdit(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+               
+            } receiveValue: { _ in
+                
             }
             .store(in: cancleBag)
     }

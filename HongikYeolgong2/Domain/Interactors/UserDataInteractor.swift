@@ -19,10 +19,15 @@ protocol UserDataInteractor: AnyObject {
     func validateUserNickname(inputNickname: String, nickname: Binding<Nickname>)
     func getUserProfile()
     func withdraw(isLoading: LoadableSubject<Bool>)
+    func profileEdit(nickname: String, department: Department)
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
     func validateUserNickname(inputNickname: String, nickname: Binding<Nickname>) {
+        
+    }
+    
+    func profileEdit(nickname: String, department: Department) {
         
     }
     

@@ -15,6 +15,7 @@ enum AuthEndpoint: EndpointProtocol {
     
     /// 회원탈퇴
     case withdraw
+    
 }
 
 extension AuthEndpoint {

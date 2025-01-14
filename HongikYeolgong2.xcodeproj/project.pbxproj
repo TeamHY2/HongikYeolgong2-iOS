@@ -54,6 +54,7 @@
 		4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FFBB2CB9228B00990336 /* AppEnviroment.swift */; };
 		476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */; };
 		4774C7BB2CDF632300CDD479 /* WithdrawResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */; };
+		477BB06A2D3645E4002AE141 /* ProfileEditResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477BB0692D3645E4002AE141 /* ProfileEditResponseDTO.swift */; };
 		4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780043B2CCA8E2900FFAF00 /* WeeklyStudyCell.swift */; };
 		478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478004412CCA924200FFAF00 /* StudySessionMapper.swift */; };
 		4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */; };
@@ -239,6 +240,7 @@
 		4763FFBB2CB9228B00990336 /* AppEnviroment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnviroment.swift; sourceTree = "<group>"; };
 		476D26072CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCountAllResponseDTO.swift; sourceTree = "<group>"; };
 		4774C7BA2CDF632300CDD479 /* WithdrawResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawResponseDTO.swift; sourceTree = "<group>"; };
+		477BB0692D3645E4002AE141 /* ProfileEditResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditResponseDTO.swift; sourceTree = "<group>"; };
 		4780043B2CCA8E2900FFAF00 /* WeeklyStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyCell.swift; sourceTree = "<group>"; };
 		478004412CCA924200FFAF00 /* StudySessionMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionMapper.swift; sourceTree = "<group>"; };
 		4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
@@ -1008,6 +1010,7 @@
 				47C815452CE223DA0017EA24 /* ASTokenResponseDTO.swift */,
 				47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */,
 				47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */,
+				477BB0692D3645E4002AE141 /* ProfileEditResponseDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1317,6 +1320,7 @@
 				478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */,
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
+				477BB06A2D3645E4002AE141 /* ProfileEditResponseDTO.swift in Sources */,
 				47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */,
 				47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
