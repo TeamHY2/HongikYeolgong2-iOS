@@ -16,6 +16,7 @@ struct SignUpView: View {
     @State private var inputDepartment = ""
     @State private var loadState: Loadable<Bool> = .notRequest
     @State private var isPresented: Bool = false
+    @State private var isEditing = false
     @Environment(\.presentationMode) var dismiss
     
     let isEdit: Bool
@@ -27,11 +28,11 @@ struct SignUpView: View {
         self.inputDepartment = department
         self.department = Department(rawValue: department) ?? .none
         self.nickname = .available
-        isEdit = true
+        self.isEdit = true
     }
     
     init() {
-        isEdit = false
+        self.isEdit = false
     }
     
     var body: some View {
@@ -96,7 +97,8 @@ struct SignUpView: View {
                 action: { editButtonTap() },
                 disabled: !(nickname == .available &&
                             (Department.allDepartments.contains(department.rawValue) ||
-                             Department.allDepartments.contains(inputDepartment)))
+                             Department.allDepartments.contains(inputDepartment))) ||
+                            (isEdit && !isEditing)
             )
             .padding(.bottom, 20.adjustToScreenHeight)
         }
@@ -146,6 +148,12 @@ struct SignUpView: View {
         .onChange(of: inputNickname) {
             userDataInteractor.validateUserNickname(inputNickname: $0, nickname: $nickname)
         }
+        .onChange(of: inputNickname) { _ in
+            isEditing = true
+        }
+        .onChange(of: department) { _ in
+            isEditing = true
+        }
     }
     
     func editButtonTap() {
@@ -157,6 +165,6 @@ struct SignUpView: View {
     }
     
     func performUpdate() {
-        userDataInteractor.profileEdit(nickname: inputNickname, department: department)
+        userDataInteractor.profileEdit(nickname: inputNickname, department: department, loadbleSubject: $loadState)
     }
 }

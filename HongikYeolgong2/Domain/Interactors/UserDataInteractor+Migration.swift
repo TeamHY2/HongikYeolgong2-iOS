@@ -129,13 +129,11 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    func profileEdit(nickname: String, department: Department) {
+    func profileEdit(nickname: String, department: Department, loadbleSubject: LoadableSubject<Bool>) {
         authRepository
             .profileEdit(signUpReqDto: .init(nickname: nickname, department: department.rawValue))
             .receive(on: DispatchQueue.main)
-            .sink { completion in
-               
-            } receiveValue: { [weak self]  newUser in
+            .sinkToLoadble(loadbleSubject) { [weak self] newUser in
                 guard let self = self else { return }
                 appState[\.userData.nickname] = newUser.nickname
                 appState[\.userData.department] = newUser.department
