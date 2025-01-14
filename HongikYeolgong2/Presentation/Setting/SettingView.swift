@@ -46,7 +46,9 @@ struct SettingView: View {
                                 .font(.pretendard(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                                 .foregroundColor(.gray100)
                             Spacer().frame(height: 8.adjustToScreenHeight)
-                            Button(action: {}, label: {
+                            Button(action: {
+                                settingPath.append(.profile)
+                            }, label: {
                                 Text("프로필 변경")
                                     .font(.pretendard(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
                                     .foregroundColor(.gray200)
@@ -133,6 +135,8 @@ struct SettingView: View {
                 switch page {
                 case let .webView(title, url):
                     WebViewWithNavigation(url: url, title: title)
+                case .profile:
+                    Text("hihi")
                 default:
                     EmptyView()
                 }
