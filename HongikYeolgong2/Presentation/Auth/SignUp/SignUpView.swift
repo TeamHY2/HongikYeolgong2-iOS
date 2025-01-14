@@ -15,8 +15,21 @@ struct SignUpView: View {
     @State private var inputNickname = ""
     @State private var inputDepartment = ""
     @State private var loadState: Loadable<Bool> = .notRequest
+    @Environment(\.presentationMode) var dismiss
+    
+    let isEdit: Bool
     
     @FocusState private var focused
+    
+    init(nickname: String, department: String) {
+        self.inputNickname = nickname
+        self.inputDepartment = department
+        isEdit = true
+    }
+    
+    init() {
+        isEdit = false
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -76,6 +89,7 @@ struct SignUpView: View {
             Spacer()
             
             SubmitButton(
+                isEdit: isEdit,
                 action: { userDataInteractor.signUp(nickname: inputNickname, department: department, loadbleSubject: $loadState) },
                 disabled: !(nickname == .available &&
                             (Department.allDepartments.contains(department.rawValue) ||
@@ -84,7 +98,36 @@ struct SignUpView: View {
             .padding(.bottom, 20.adjustToScreenHeight)
         }
         .overlay(alignment: .topLeading, content: {
-            FormTitle(title: "회원가입")
+            
+            if isEdit {
+                HStack {
+                    Button(action: {
+                        dismiss.wrappedValue.dismiss()
+                    }, label: {
+                        Image(.icProfileLeft)
+                        Text("프로필 변경")
+                            .font(.suite(size: 18, weight: .bold))
+                            .foregroundStyle(.gray100)
+                    })
+                    Spacer()
+                }
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: 52.adjustToScreenHeight,
+                    alignment: .leading
+                )
+                .background(Color.black)
+            } else {
+                Text("회원가입")
+                    .font(.suite(size: 18, weight: .bold))
+                    .foregroundStyle(.gray100)
+                    .frame(
+                        maxWidth: .infinity,
+                        maxHeight: 52.adjustToScreenHeight,
+                        alignment: .leading
+                    )
+                    .background(Color.black)
+            }
         })
         .toolbar(.hidden, for: .navigationBar)
         .padding(.horizontal, 32.adjustToScreenWidth)
