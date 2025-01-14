@@ -135,8 +135,10 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .receive(on: DispatchQueue.main)
             .sink { completion in
                
-            } receiveValue: { _ in
-                
+            } receiveValue: { [weak self]  newUser in
+                guard let self = self else { return }
+                appState[\.userData.nickname] = newUser.nickname
+                appState[\.userData.department] = newUser.department
             }
             .store(in: cancleBag)
     }
