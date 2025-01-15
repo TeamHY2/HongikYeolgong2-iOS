@@ -17,7 +17,7 @@ struct SubmitButton: View {
             Image(isEdit ? .editButtonEnable : .submitButtonEnable)
                 .resizable()
                 .frame(height: 50.adjustToScreenHeight)
-        }        
+        }
         .disabled(disabled)
         .overlay(disabled ? Color.dark.opacity(0.6) : nil)
     }

@@ -136,7 +136,7 @@ struct SettingView: View {
                 case let .webView(title, url):
                     WebViewWithNavigation(url: url, title: title)
                 case .profile:
-                    SignUpView(nickname: userProfile.nickname, department: userProfile.department)
+                    ProfileEditView(nickname: userProfile.nickname, department: userProfile.department)
                 default:
                     EmptyView()
                 }

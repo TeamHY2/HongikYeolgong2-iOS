@@ -40,7 +40,7 @@ struct OnboardingView: View {
             .navigationDestination(for: Page.self) { page in
                 switch page {
                 case .signUp:
-                    SignUpView()
+                    ProfileEditView()
                 default:
                     EmptyView()
                 }

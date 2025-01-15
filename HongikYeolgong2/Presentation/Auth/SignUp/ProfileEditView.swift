@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SignUpView: View {
+struct ProfileEditView: View {
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     
     @State private var nickname: Nickname = .none
@@ -22,6 +22,18 @@ struct SignUpView: View {
     let isEdit: Bool
     
     @FocusState private var focused
+    
+    private var isDepartmentSelecte: Bool {
+        (Department.allDepartments.contains(department.rawValue) || Department.allDepartments.contains(inputDepartment))
+    }
+    
+    private var isNicknameCheked: Bool {
+        nickname == .available
+    }
+    
+    private var isEditCompleted: Bool {
+        isEdit && isEditing
+    }
     
     init(nickname: String, department: String) {
         self.inputNickname = nickname
@@ -94,11 +106,8 @@ struct SignUpView: View {
             
             SubmitButton(
                 isEdit: isEdit,
-                action: { editButtonTap() },
-                disabled: !(nickname == .available &&
-                            (Department.allDepartments.contains(department.rawValue) ||
-                             Department.allDepartments.contains(inputDepartment))) ||
-                            (isEdit && !isEditing)
+                action: editButtonTap,
+                disabled: !((isNicknameCheked && isDepartmentSelecte) || isEditCompleted)
             )
             .padding(.bottom, 20.adjustToScreenHeight)
         }
@@ -148,10 +157,20 @@ struct SignUpView: View {
         .onChange(of: inputNickname) {
             userDataInteractor.validateUserNickname(inputNickname: $0, nickname: $nickname)
         }
-        .onChange(of: inputNickname) { _ in
+        .onChange(of: nickname) { nickname in
+            if isEdit && nickname == .available {
+                isEditing = true
+            }
+        }
+        .onChange(of: inputDepartment) { department in
+            guard Department.allDepartments.contains(department) else { return }
             isEditing = true
         }
-        .onChange(of: department) { _ in
+        .onChange(of: department) { department in
+            guard department != .none else {
+                isEditing = false
+                return
+            }
             isEditing = true
         }
         .onChange(of: loadState.value) { value in

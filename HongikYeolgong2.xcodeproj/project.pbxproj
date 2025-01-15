@@ -67,7 +67,7 @@
 		4786A1092CCA346F008635A4 /* StudySessionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A1082CCA346F008635A4 /* StudySessionRepository.swift */; };
 		4786A10C2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10B2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift */; };
 		4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */; };
-		478933792CADBDA500E1D89E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* SignUpView.swift */; };
+		478933792CADBDA500E1D89E /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478933782CADBDA500E1D89E /* ProfileEditView.swift */; };
 		4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4789337A2CADC43D00E1D89E /* DropDownPicker.swift */; };
 		478B75442CE65594000190EF /* DuplicateCheckButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B75432CE65594000190EF /* DuplicateCheckButton.swift */; };
 		478B75462CE659C3000190EF /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478B75452CE659C3000190EF /* BaseTextField.swift */; };
@@ -253,7 +253,7 @@
 		4786A1082CCA346F008635A4 /* StudySessionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionRepository.swift; sourceTree = "<group>"; };
 		4786A10B2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudySessionRepositoryImpl.swift; sourceTree = "<group>"; };
 		4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudySessionDTO.swift; sourceTree = "<group>"; };
-		478933782CADBDA500E1D89E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		478933782CADBDA500E1D89E /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		4789337A2CADC43D00E1D89E /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		478B75432CE65594000190EF /* DuplicateCheckButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicateCheckButton.swift; sourceTree = "<group>"; };
 		478B75452CE659C3000190EF /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
@@ -860,7 +860,7 @@
 			isa = PBXGroup;
 			children = (
 				478B75402CE65464000190EF /* Component */,
-				478933782CADBDA500E1D89E /* SignUpView.swift */,
+				478933782CADBDA500E1D89E /* ProfileEditView.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1350,7 +1350,7 @@
 				98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */,
 				98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */,
 				47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */,
-				478933792CADBDA500E1D89E /* SignUpView.swift in Sources */,
+				478933792CADBDA500E1D89E /* ProfileEditView.swift in Sources */,
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* RootView.swift in Sources */,
 				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
