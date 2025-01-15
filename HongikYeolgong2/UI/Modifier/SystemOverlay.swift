@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SystemOverlay<ContentView: View>: ViewModifier {
+    @State var viewAppear = false
     @Binding var isPresented: Bool
     let contentView: () -> ContentView
     func body(content: Content) -> some View {
@@ -16,11 +17,17 @@ struct SystemOverlay<ContentView: View>: ViewModifier {
                 ZStack {
                     Color.black.opacity(0.75).ignoresSafeArea(.all)
                     contentView()
+                        .onAppear {
+                            viewAppear = true
+                        }
                 }
                 .background(ClearBackgroundView())
             }
             .transaction { transaction in
-                transaction.disablesAnimations = true
+                if viewAppear || isPresented {
+                    transaction.disablesAnimations = true
+                    viewAppear = false
+                }
             }
     }
 }

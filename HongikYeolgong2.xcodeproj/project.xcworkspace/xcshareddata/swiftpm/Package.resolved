@@ -16,7 +16,7 @@
       "location" : "https://github.com/amplitude/Amplitude-Swift",
       "state" : {
         "branch" : "main",
-        "revision" : "4097b2a7a0b8fc786c6feddc598f9f379de997af"
+        "revision" : "98a5f020359d6e4c02f774a57d31b2fc7d062f46"
       }
     },
     {
@@ -69,8 +69,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
       "state" : {
-        "revision" : "2e02253fd1ce99145bcbf1bb367ccf61bd0ca46b",
-        "version" : "11.6.0"
+        "revision" : "0d885d28250fb1196b614bc9455079b75c531f72",
+        "version" : "11.7.0"
       }
     },
     {
@@ -78,8 +78,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "4f234bcbdae841d7015258fbbf8e7743a39b8200",
-        "version" : "11.4.0"
+        "revision" : "be0881ff728eca210ccb628092af400c086abda3",
+        "version" : "11.7.0"
       }
     },
     {
@@ -114,8 +114,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "5cfe5f090c982de9c58605d2a82a4fc77b774fbd",
-        "version" : "4.1.0"
+        "revision" : "85b7b231882c3c472b8bda4fb495324d3f19bab6",
+        "version" : "4.2.0"
       }
     },
     {
