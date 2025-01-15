@@ -16,6 +16,28 @@
 		476A69A52D379E6800B9016A /* HongikYeolgong2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69A42D379E6800B9016A /* HongikYeolgong2Tests.swift */; };
 		476A69AF2D379E6800B9016A /* HongikYeolgong2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69AE2D379E6800B9016A /* HongikYeolgong2UITests.swift */; };
 		476A69B12D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69B02D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift */; };
+		98ED6C122D37EAEB00194C5D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C112D37EAEB00194C5D /* Alamofire */; };
+		98ED6C152D37EB4F00194C5D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C142D37EB4F00194C5D /* RxCocoa */; };
+		98ED6C172D37EB4F00194C5D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C162D37EB4F00194C5D /* RxRelay */; };
+		98ED6C192D37EB4F00194C5D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C182D37EB4F00194C5D /* RxSwift */; };
+		98ED6C1F2D37EBCA00194C5D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C1E2D37EBCA00194C5D /* SnapKit */; };
+		98ED6C4A2D3832E200194C5D /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3C2D3832E200194C5D /* Pretendard-ExtraLight.otf */; };
+		98ED6C4B2D3832E200194C5D /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C412D3832E200194C5D /* Pretendard-Thin.otf */; };
+		98ED6C4C2D3832E200194C5D /* SUITE-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C422D3832E200194C5D /* SUITE-Bold.otf */; };
+		98ED6C4D2D3832E200194C5D /* SUITE-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C442D3832E200194C5D /* SUITE-Heavy.otf */; };
+		98ED6C4E2D3832E200194C5D /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3F2D3832E200194C5D /* Pretendard-Regular.otf */; };
+		98ED6C4F2D3832E200194C5D /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C392D3832E200194C5D /* Pretendard-Black.otf */; };
+		98ED6C502D3832E200194C5D /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C402D3832E200194C5D /* Pretendard-SemiBold.otf */; };
+		98ED6C512D3832E200194C5D /* SUITE-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C462D3832E200194C5D /* SUITE-Medium.otf */; };
+		98ED6C522D3832E200194C5D /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3B2D3832E200194C5D /* Pretendard-ExtraBold.otf */; };
+		98ED6C532D3832E200194C5D /* SUITE-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C432D3832E200194C5D /* SUITE-ExtraBold.otf */; };
+		98ED6C542D3832E200194C5D /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3A2D3832E200194C5D /* Pretendard-Bold.otf */; };
+		98ED6C552D3832E200194C5D /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3E2D3832E200194C5D /* Pretendard-Medium.otf */; };
+		98ED6C562D3832E200194C5D /* SUITE-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C452D3832E200194C5D /* SUITE-Light.otf */; };
+		98ED6C572D3832E200194C5D /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C382D3832E200194C5D /* .gitkeep */; };
+		98ED6C582D3832E200194C5D /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3D2D3832E200194C5D /* Pretendard-Light.otf */; };
+		98ED6C592D3832E200194C5D /* SUITE-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C472D3832E200194C5D /* SUITE-Regular.otf */; };
+		98ED6C5A2D3832E200194C5D /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +71,25 @@
 		476A69AA2D379E6800B9016A /* HongikYeolgong2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HongikYeolgong2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		476A69AE2D379E6800B9016A /* HongikYeolgong2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITests.swift; sourceTree = "<group>"; };
 		476A69B02D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		98ED6C2B2D38233F00194C5D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		98ED6C2C2D38233F00194C5D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		98ED6C382D3832E200194C5D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		98ED6C392D3832E200194C5D /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		98ED6C3A2D3832E200194C5D /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		98ED6C3B2D3832E200194C5D /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		98ED6C3C2D3832E200194C5D /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		98ED6C3D2D3832E200194C5D /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		98ED6C3E2D3832E200194C5D /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		98ED6C3F2D3832E200194C5D /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		98ED6C402D3832E200194C5D /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		98ED6C412D3832E200194C5D /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		98ED6C422D3832E200194C5D /* SUITE-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Bold.otf"; sourceTree = "<group>"; };
+		98ED6C432D3832E200194C5D /* SUITE-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-ExtraBold.otf"; sourceTree = "<group>"; };
+		98ED6C442D3832E200194C5D /* SUITE-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Heavy.otf"; sourceTree = "<group>"; };
+		98ED6C452D3832E200194C5D /* SUITE-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Light.otf"; sourceTree = "<group>"; };
+		98ED6C462D3832E200194C5D /* SUITE-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Medium.otf"; sourceTree = "<group>"; };
+		98ED6C472D3832E200194C5D /* SUITE-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Regular.otf"; sourceTree = "<group>"; };
+		98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-SemiBold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +97,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98ED6C172D37EB4F00194C5D /* RxRelay in Frameworks */,
+				98ED6C152D37EB4F00194C5D /* RxCocoa in Frameworks */,
+				98ED6C192D37EB4F00194C5D /* RxSwift in Frameworks */,
+				98ED6C122D37EAEB00194C5D /* Alamofire in Frameworks */,
+				98ED6C1F2D37EBCA00194C5D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,13 +145,12 @@
 		476A698C2D379E6500B9016A /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
-				476A698D2D379E6500B9016A /* AppDelegate.swift */,
-				476A698F2D379E6500B9016A /* SceneDelegate.swift */,
-				476A69912D379E6500B9016A /* ViewController.swift */,
-				476A69932D379E6500B9016A /* Main.storyboard */,
-				476A69962D379E6700B9016A /* Assets.xcassets */,
-				476A69982D379E6700B9016A /* LaunchScreen.storyboard */,
-				476A699B2D379E6700B9016A /* Info.plist */,
+				98ED6C292D381E4E00194C5D /* Application */,
+				98ED6C282D381E2600194C5D /* Utils */,
+				98ED6C222D37FD9A00194C5D /* Presentation */,
+				98ED6C202D37FD8A00194C5D /* Domain */,
+				98ED6C212D37FD9300194C5D /* Data */,
+				98ED6C2A2D38226D00194C5D /* Resources */,
 			);
 			path = HongikYeolgong2;
 			sourceTree = "<group>";
@@ -125,6 +170,216 @@
 				476A69B02D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift */,
 			);
 			path = HongikYeolgong2UITests;
+			sourceTree = "<group>";
+		};
+		98ED6C202D37FD8A00194C5D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				98ED6C352D382F7A00194C5D /* Entities */,
+				98ED6C362D382F8C00194C5D /* UseCases */,
+				98ED6C372D382FA200194C5D /* Interfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		98ED6C212D37FD9300194C5D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				98ED6C2D2D38264A00194C5D /* Repositories */,
+				98ED6C2E2D38265700194C5D /* Network */,
+				98ED6C5D2D3833D300194C5D /* PersistentStorages */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		98ED6C222D37FD9A00194C5D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				98ED6C322D3827C800194C5D /* Scenes */,
+				98ED6C332D38281900194C5D /* Components */,
+				98ED6C2F2D3827A600194C5D /* UIUtils */,
+				98ED6C302D3827B300194C5D /* Extensions */,
+				98ED6C312D3827BE00194C5D /* Protocols */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		98ED6C232D380E1F00194C5D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		98ED6C242D380E2600194C5D /* Record */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		98ED6C252D380E3300194C5D /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		98ED6C262D380E4900194C5D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		98ED6C272D380E6100194C5D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		98ED6C282D381E2600194C5D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		98ED6C292D381E4E00194C5D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				476A698D2D379E6500B9016A /* AppDelegate.swift */,
+				476A698F2D379E6500B9016A /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		98ED6C2A2D38226D00194C5D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				98ED6C492D3832E200194C5D /* Font */,
+				476A69962D379E6700B9016A /* Assets.xcassets */,
+				476A699B2D379E6700B9016A /* Info.plist */,
+				476A69932D379E6500B9016A /* Main.storyboard */,
+				476A69982D379E6700B9016A /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		98ED6C2D2D38264A00194C5D /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		98ED6C2E2D38265700194C5D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		98ED6C2F2D3827A600194C5D /* UIUtils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIUtils;
+			sourceTree = "<group>";
+		};
+		98ED6C302D3827B300194C5D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		98ED6C312D3827BE00194C5D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		98ED6C322D3827C800194C5D /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				98ED6C5E2D38390800194C5D /* Root */,
+				98ED6C272D380E6100194C5D /* Auth */,
+				98ED6C232D380E1F00194C5D /* Home */,
+				98ED6C242D380E2600194C5D /* Record */,
+				98ED6C252D380E3300194C5D /* Ranking */,
+				98ED6C262D380E4900194C5D /* Setting */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		98ED6C332D38281900194C5D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		98ED6C352D382F7A00194C5D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		98ED6C362D382F8C00194C5D /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		98ED6C372D382FA200194C5D /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		98ED6C492D3832E200194C5D /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				98ED6C382D3832E200194C5D /* .gitkeep */,
+				98ED6C392D3832E200194C5D /* Pretendard-Black.otf */,
+				98ED6C3A2D3832E200194C5D /* Pretendard-Bold.otf */,
+				98ED6C3B2D3832E200194C5D /* Pretendard-ExtraBold.otf */,
+				98ED6C3C2D3832E200194C5D /* Pretendard-ExtraLight.otf */,
+				98ED6C3D2D3832E200194C5D /* Pretendard-Light.otf */,
+				98ED6C3E2D3832E200194C5D /* Pretendard-Medium.otf */,
+				98ED6C3F2D3832E200194C5D /* Pretendard-Regular.otf */,
+				98ED6C402D3832E200194C5D /* Pretendard-SemiBold.otf */,
+				98ED6C412D3832E200194C5D /* Pretendard-Thin.otf */,
+				98ED6C422D3832E200194C5D /* SUITE-Bold.otf */,
+				98ED6C432D3832E200194C5D /* SUITE-ExtraBold.otf */,
+				98ED6C442D3832E200194C5D /* SUITE-Heavy.otf */,
+				98ED6C452D3832E200194C5D /* SUITE-Light.otf */,
+				98ED6C462D3832E200194C5D /* SUITE-Medium.otf */,
+				98ED6C472D3832E200194C5D /* SUITE-Regular.otf */,
+				98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		98ED6C5D2D3833D300194C5D /* PersistentStorages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PersistentStorages;
+			sourceTree = "<group>";
+		};
+		98ED6C5E2D38390800194C5D /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				476A69912D379E6500B9016A /* ViewController.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,13 +463,18 @@
 			};
 			buildConfigurationList = 476A69852D379E6500B9016A /* Build configuration list for PBXProject "HongikYeolgong2" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ko,
 			);
 			mainGroup = 476A69812D379E6500B9016A;
+			packageReferences = (
+				98ED6C102D37EAEB00194C5D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				98ED6C132D37EB4F00194C5D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				98ED6C1D2D37EBCA00194C5D /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 476A698B2D379E6500B9016A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +493,23 @@
 			files = (
 				476A69972D379E6700B9016A /* Assets.xcassets in Resources */,
 				476A699A2D379E6700B9016A /* Base in Resources */,
+				98ED6C4A2D3832E200194C5D /* Pretendard-ExtraLight.otf in Resources */,
+				98ED6C4B2D3832E200194C5D /* Pretendard-Thin.otf in Resources */,
+				98ED6C4C2D3832E200194C5D /* SUITE-Bold.otf in Resources */,
+				98ED6C4D2D3832E200194C5D /* SUITE-Heavy.otf in Resources */,
+				98ED6C4E2D3832E200194C5D /* Pretendard-Regular.otf in Resources */,
+				98ED6C4F2D3832E200194C5D /* Pretendard-Black.otf in Resources */,
+				98ED6C502D3832E200194C5D /* Pretendard-SemiBold.otf in Resources */,
+				98ED6C512D3832E200194C5D /* SUITE-Medium.otf in Resources */,
+				98ED6C522D3832E200194C5D /* Pretendard-ExtraBold.otf in Resources */,
+				98ED6C532D3832E200194C5D /* SUITE-ExtraBold.otf in Resources */,
+				98ED6C542D3832E200194C5D /* Pretendard-Bold.otf in Resources */,
+				98ED6C552D3832E200194C5D /* Pretendard-Medium.otf in Resources */,
+				98ED6C562D3832E200194C5D /* SUITE-Light.otf in Resources */,
+				98ED6C572D3832E200194C5D /* .gitkeep in Resources */,
+				98ED6C582D3832E200194C5D /* Pretendard-Light.otf in Resources */,
+				98ED6C592D3832E200194C5D /* SUITE-Regular.otf in Resources */,
+				98ED6C5A2D3832E200194C5D /* SUITE-SemiBold.otf in Resources */,
 				476A69952D379E6500B9016A /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +578,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				476A69942D379E6500B9016A /* Base */,
+				98ED6C2B2D38233F00194C5D /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -309,6 +587,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				476A69992D379E6700B9016A /* Base */,
+				98ED6C2C2D38233F00194C5D /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -321,6 +600,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -384,6 +664,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -445,11 +726,13 @@
 				DEVELOPMENT_TEAM = X58MVPBY9R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +740,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hy2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,11 +760,13 @@
 				DEVELOPMENT_TEAM = X58MVPBY9R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -485,6 +774,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hy2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -607,6 +900,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		98ED6C102D37EAEB00194C5D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+		98ED6C132D37EB4F00194C5D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.0;
+			};
+		};
+		98ED6C1D2D37EBCA00194C5D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		98ED6C112D37EAEB00194C5D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98ED6C102D37EAEB00194C5D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		98ED6C142D37EB4F00194C5D /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98ED6C132D37EB4F00194C5D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		98ED6C162D37EB4F00194C5D /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98ED6C132D37EB4F00194C5D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		98ED6C182D37EB4F00194C5D /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98ED6C132D37EB4F00194C5D /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		98ED6C1E2D37EBCA00194C5D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98ED6C1D2D37EBCA00194C5D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 476A69822D379E6500B9016A /* Project object */;
 }
