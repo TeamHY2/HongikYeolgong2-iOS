@@ -9,27 +9,12 @@
 /* Begin PBXBuildFile section */
 		476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698D2D379E6500B9016A /* AppDelegate.swift */; };
 		476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698F2D379E6500B9016A /* SceneDelegate.swift */; };
-		476A69922D379E6500B9016A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69912D379E6500B9016A /* ViewController.swift */; };
-		476A69952D379E6500B9016A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 476A69942D379E6500B9016A /* Base */; };
+		476A69922D379E6500B9016A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69912D379E6500B9016A /* MainViewController.swift */; };
 		476A69972D379E6700B9016A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476A69962D379E6700B9016A /* Assets.xcassets */; };
 		476A699A2D379E6700B9016A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 476A69992D379E6700B9016A /* Base */; };
 		476A69A52D379E6800B9016A /* HongikYeolgong2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69A42D379E6800B9016A /* HongikYeolgong2Tests.swift */; };
 		476A69AF2D379E6800B9016A /* HongikYeolgong2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69AE2D379E6800B9016A /* HongikYeolgong2UITests.swift */; };
 		476A69B12D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69B02D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift */; };
-		98A876312D38D22F00AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876302D38D22100AA1E6A /* .gitkeep */; };
-		98A876332D38D23100AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876322D38D23100AA1E6A /* .gitkeep */; };
-		98A876352D38D23200AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876342D38D23200AA1E6A /* .gitkeep */; };
-		98A876372D38D23300AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876362D38D23300AA1E6A /* .gitkeep */; };
-		98A876392D38D23400AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876382D38D23400AA1E6A /* .gitkeep */; };
-		98A8763B2D38D23500AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A8763A2D38D23500AA1E6A /* .gitkeep */; };
-		98A8763D2D38D23600AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A8763C2D38D23600AA1E6A /* .gitkeep */; };
-		98A8763F2D38D23900AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A8763E2D38D23900AA1E6A /* .gitkeep */; };
-		98A876412D38D23A00AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876402D38D23A00AA1E6A /* .gitkeep */; };
-		98A876432D38D23B00AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876422D38D23B00AA1E6A /* .gitkeep */; };
-		98A876452D38D23D00AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876442D38D23D00AA1E6A /* .gitkeep */; };
-		98A876472D38D23E00AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876462D38D23E00AA1E6A /* .gitkeep */; };
-		98A876492D38D23F00AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A876482D38D23F00AA1E6A /* .gitkeep */; };
-		98A8764B2D38D24100AA1E6A /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98A8764A2D38D24100AA1E6A /* .gitkeep */; };
 		98A8764E2D38D2A500AA1E6A /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 98A8764D2D38D2A500AA1E6A /* FirebaseRemoteConfig */; };
 		98A876512D38D32B00AA1E6A /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 98A876502D38D32B00AA1E6A /* Then */; };
 		98A876532D38D35800AA1E6A /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 98A876522D38D35800AA1E6A /* RxCocoa */; };
@@ -80,8 +65,7 @@
 		476A698A2D379E6500B9016A /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476A698D2D379E6500B9016A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476A698F2D379E6500B9016A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		476A69912D379E6500B9016A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		476A69942D379E6500B9016A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		476A69912D379E6500B9016A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		476A69962D379E6700B9016A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		476A69992D379E6700B9016A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		476A699B2D379E6700B9016A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,21 +74,6 @@
 		476A69AA2D379E6800B9016A /* HongikYeolgong2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HongikYeolgong2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		476A69AE2D379E6800B9016A /* HongikYeolgong2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITests.swift; sourceTree = "<group>"; };
 		476A69B02D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		98A876302D38D22100AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876322D38D23100AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876342D38D23200AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876362D38D23300AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876382D38D23400AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A8763A2D38D23500AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A8763C2D38D23600AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A8763E2D38D23900AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876402D38D23A00AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876422D38D23B00AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876442D38D23D00AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876462D38D23E00AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A876482D38D23F00AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98A8764A2D38D24100AA1E6A /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
-		98ED6C2B2D38233F00194C5D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		98ED6C2C2D38233F00194C5D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		98ED6C382D3832E200194C5D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		98ED6C392D3832E200194C5D /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
@@ -247,7 +216,6 @@
 		98ED6C232D380E1F00194C5D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				98A876302D38D22100AA1E6A /* .gitkeep */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -255,7 +223,6 @@
 		98ED6C242D380E2600194C5D /* Record */ = {
 			isa = PBXGroup;
 			children = (
-				98A876342D38D23200AA1E6A /* .gitkeep */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -263,7 +230,6 @@
 		98ED6C252D380E3300194C5D /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
-				98A876362D38D23300AA1E6A /* .gitkeep */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -271,7 +237,6 @@
 		98ED6C262D380E4900194C5D /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				98A876382D38D23400AA1E6A /* .gitkeep */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -279,7 +244,6 @@
 		98ED6C272D380E6100194C5D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				98A876322D38D23100AA1E6A /* .gitkeep */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -308,7 +272,6 @@
 				98ED6C492D3832E200194C5D /* Font */,
 				476A69962D379E6700B9016A /* Assets.xcassets */,
 				476A699B2D379E6700B9016A /* Info.plist */,
-				476A69932D379E6500B9016A /* Main.storyboard */,
 				476A69982D379E6700B9016A /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -317,7 +280,6 @@
 		98ED6C2D2D38264A00194C5D /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				98A876442D38D23D00AA1E6A /* .gitkeep */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -325,7 +287,6 @@
 		98ED6C2E2D38265700194C5D /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				98A876462D38D23E00AA1E6A /* .gitkeep */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -333,7 +294,6 @@
 		98ED6C2F2D3827A600194C5D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				98A8763C2D38D23600AA1E6A /* .gitkeep */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -341,7 +301,6 @@
 		98ED6C302D3827B300194C5D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				98A8764A2D38D24100AA1E6A /* .gitkeep */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,7 +308,6 @@
 		98ED6C312D3827BE00194C5D /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				98A876482D38D23F00AA1E6A /* .gitkeep */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -357,7 +315,6 @@
 		98ED6C332D38281900194C5D /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				98A8763A2D38D23500AA1E6A /* .gitkeep */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -365,7 +322,6 @@
 		98ED6C352D382F7A00194C5D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				98A876402D38D23A00AA1E6A /* .gitkeep */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -373,7 +329,6 @@
 		98ED6C362D382F8C00194C5D /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				98A8763E2D38D23900AA1E6A /* .gitkeep */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -381,7 +336,6 @@
 		98ED6C372D382FA200194C5D /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				98A876422D38D23B00AA1E6A /* .gitkeep */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -413,7 +367,7 @@
 		98ED6C5E2D38390800194C5D /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				476A69912D379E6500B9016A /* ViewController.swift */,
+				476A69912D379E6500B9016A /* MainViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -530,40 +484,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98A876412D38D23A00AA1E6A /* .gitkeep in Resources */,
 				476A69972D379E6700B9016A /* Assets.xcassets in Resources */,
 				476A699A2D379E6700B9016A /* Base in Resources */,
-				98A876392D38D23400AA1E6A /* .gitkeep in Resources */,
-				98A8763D2D38D23600AA1E6A /* .gitkeep in Resources */,
 				98ED6C4A2D3832E200194C5D /* Pretendard-ExtraLight.otf in Resources */,
 				98ED6C4B2D3832E200194C5D /* Pretendard-Thin.otf in Resources */,
 				98ED6C4C2D3832E200194C5D /* SUITE-Bold.otf in Resources */,
 				98ED6C4D2D3832E200194C5D /* SUITE-Heavy.otf in Resources */,
-				98A876312D38D22F00AA1E6A /* .gitkeep in Resources */,
 				98ED6C4E2D3832E200194C5D /* Pretendard-Regular.otf in Resources */,
-				98A8764B2D38D24100AA1E6A /* .gitkeep in Resources */,
 				98ED6C4F2D3832E200194C5D /* Pretendard-Black.otf in Resources */,
 				98ED6C502D3832E200194C5D /* Pretendard-SemiBold.otf in Resources */,
 				98ED6C512D3832E200194C5D /* SUITE-Medium.otf in Resources */,
 				98ED6C522D3832E200194C5D /* Pretendard-ExtraBold.otf in Resources */,
 				98ED6C532D3832E200194C5D /* SUITE-ExtraBold.otf in Resources */,
-				98A876332D38D23100AA1E6A /* .gitkeep in Resources */,
 				98ED6C542D3832E200194C5D /* Pretendard-Bold.otf in Resources */,
-				98A876452D38D23D00AA1E6A /* .gitkeep in Resources */,
-				98A876372D38D23300AA1E6A /* .gitkeep in Resources */,
 				98ED6C552D3832E200194C5D /* Pretendard-Medium.otf in Resources */,
 				98ED6C562D3832E200194C5D /* SUITE-Light.otf in Resources */,
-				98A876352D38D23200AA1E6A /* .gitkeep in Resources */,
 				98ED6C572D3832E200194C5D /* .gitkeep in Resources */,
-				98A876492D38D23F00AA1E6A /* .gitkeep in Resources */,
-				98A8763B2D38D23500AA1E6A /* .gitkeep in Resources */,
 				98ED6C582D3832E200194C5D /* Pretendard-Light.otf in Resources */,
 				98ED6C592D3832E200194C5D /* SUITE-Regular.otf in Resources */,
 				98ED6C5A2D3832E200194C5D /* SUITE-SemiBold.otf in Resources */,
-				98A876432D38D23B00AA1E6A /* .gitkeep in Resources */,
-				476A69952D379E6500B9016A /* Base in Resources */,
-				98A8763F2D38D23900AA1E6A /* .gitkeep in Resources */,
-				98A876472D38D23E00AA1E6A /* .gitkeep in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,7 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				476A69922D379E6500B9016A /* ViewController.swift in Sources */,
+				476A69922D379E6500B9016A /* MainViewController.swift in Sources */,
 				476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */,
 				476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */,
 			);
@@ -627,15 +566,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		476A69932D379E6500B9016A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				476A69942D379E6500B9016A /* Base */,
-				98ED6C2B2D38233F00194C5D /* ko */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		476A69982D379E6700B9016A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -778,11 +708,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X58MVPBY9R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
+				INFOPLIST_FILE = HongikYeolgong2/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -812,11 +742,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X58MVPBY9R;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
+				INFOPLIST_FILE = HongikYeolgong2/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
