@@ -13,8 +13,8 @@ struct RankingListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             LazyVStack(spacing: 16) {
-                ForEach(departmentRankings, id: \.self) { rankingInfo in
-                    RankingCell(departmentRankInfo: rankingInfo)
+                ForEach(Array(departmentRankings.enumerated()), id: \.self.offset) { (offset, rankingInfo) in
+                    RankingCell(departmentRankInfo: rankingInfo, offset: offset + 1)
                 }
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
