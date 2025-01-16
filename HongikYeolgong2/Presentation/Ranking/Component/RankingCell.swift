@@ -9,12 +9,17 @@ import SwiftUI
 
 struct RankingCell: View {
     let departmentRankInfo: RankingDepartment
+    let offset: Int
+    
+    var isStudyTimeLessThanZero: Bool {
+        departmentRankInfo.studyDurationOfWeek <= 0
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
                 HStack(spacing: 14.adjustToScreenWidth) {
-                    Text("\(departmentRankInfo.currentRank)")
+                    Text(isStudyTimeLessThanZero ? "-" : "\(departmentRankInfo.currentRank)")
                         .font(.pretendard(size: 16, weight: .regular))
                         .foregroundStyle(setFontColor)
                     
@@ -55,7 +60,7 @@ extension RankingCell {
     }
     
     private var setBackground: some View {
-        switch departmentRankInfo.currentRank {
+        switch offset {
         case 1:
             return Image(.rankingBox1)
                 .resizable()
@@ -76,7 +81,7 @@ extension RankingCell {
     }
     
     private var setFontColor: Color {
-        switch departmentRankInfo.currentRank {
+        switch offset {
         case 1:
                 .gray600
         case 2:
