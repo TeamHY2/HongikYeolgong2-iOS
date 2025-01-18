@@ -80,6 +80,15 @@ class LoginViewController: UIViewController {
         // 로그인 로직 추가
     }
     
+    /// 하단 페이지 컨트롤 스택 이미지 이벤트
+    @objc private func imageTapped(_ sender: UITapGestureRecognizer) {
+        if let index = sender.view?.tag {
+            let offset = CGFloat(index) * scrollView.frame.size.width
+            scrollView.setContentOffset(CGPoint(x: offset, y: 0), animated: true)
+            updatePageImages(for: index)
+        }
+    }
+    
     // MARK: - StackView, scrollView 이미지 추가 메서드
     /// pageControlStackView 이미지 추가
     private func addImageToStackView() {
@@ -90,6 +99,10 @@ class LoginViewController: UIViewController {
                 $0.snp.makeConstraints { make in
                     make.width.height.equalTo(16)
                 }
+                $0.isUserInteractionEnabled = true
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+                $0.addGestureRecognizer(tapGesture)
+                $0.tag = index
             }
             pageControlStackView.addArrangedSubview(imageView)
         }
