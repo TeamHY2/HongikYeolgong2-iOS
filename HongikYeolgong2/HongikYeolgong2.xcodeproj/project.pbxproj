@@ -44,6 +44,7 @@
 		98ED6C582D3832E200194C5D /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3D2D3832E200194C5D /* Pretendard-Light.otf */; };
 		98ED6C592D3832E200194C5D /* SUITE-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C472D3832E200194C5D /* SUITE-Regular.otf */; };
 		98ED6C5A2D3832E200194C5D /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */; };
+		98F4AD0E2D3D5F4400DA82A3 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		98ED6C462D3832E200194C5D /* SUITE-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Medium.otf"; sourceTree = "<group>"; };
 		98ED6C472D3832E200194C5D /* SUITE-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Regular.otf"; sourceTree = "<group>"; };
 		98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-SemiBold.otf"; sourceTree = "<group>"; };
+		98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				98A8767D2D39226B00AA1E6A /* LoginViewController.swift */,
+				98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -533,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F4AD0E2D3D5F4400DA82A3 /* AppleLoginButton.swift in Sources */,
 				476A69922D379E6500B9016A /* MainViewController.swift in Sources */,
 				989945B52D3BC350000A0616 /* UIImage+.swift in Sources */,
 				476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */,

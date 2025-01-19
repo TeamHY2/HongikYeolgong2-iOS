@@ -27,10 +27,9 @@ class LoginViewController: UIViewController {
         $0.axis = .horizontal
         $0.spacing = 6
     }
-    
-    private let loginButton = UIButton().then {
-        $0.setImage(UIImage(named: "snsLogin"), for: .normal)
-        $0.imageView?.contentMode = .scaleAspectFit
+    let loginButton = AppleLoginButton(frame: .zero).then {
+        $0.layer.cornerRadius = 8
+        $0.target(forAction: #selector(loginButtonTapped), withSender: nil)
     }
     
     
