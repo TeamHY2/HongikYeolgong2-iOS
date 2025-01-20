@@ -22,6 +22,7 @@
 		98A876552D38D35800AA1E6A /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 98A876542D38D35800AA1E6A /* RxSwift */; };
 		98A876582D38D5FE00AA1E6A /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 98A876572D38D5FE00AA1E6A /* AmplitudeSwift */; };
 		98A8767E2D39226B00AA1E6A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A8767D2D39226B00AA1E6A /* LoginViewController.swift */; };
+		98C3F7302D3E8B5C00184D24 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C3F72F2D3E8B5C00184D24 /* UIFont+.swift */; };
 		98ED6C122D37EAEB00194C5D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C112D37EAEB00194C5D /* Alamofire */; };
 		98ED6C152D37EB4F00194C5D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C142D37EB4F00194C5D /* RxCocoa */; };
 		98ED6C172D37EB4F00194C5D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 98ED6C162D37EB4F00194C5D /* RxRelay */; };
@@ -40,11 +41,11 @@
 		98ED6C542D3832E200194C5D /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3A2D3832E200194C5D /* Pretendard-Bold.otf */; };
 		98ED6C552D3832E200194C5D /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3E2D3832E200194C5D /* Pretendard-Medium.otf */; };
 		98ED6C562D3832E200194C5D /* SUITE-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C452D3832E200194C5D /* SUITE-Light.otf */; };
-		98ED6C572D3832E200194C5D /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C382D3832E200194C5D /* .gitkeep */; };
 		98ED6C582D3832E200194C5D /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C3D2D3832E200194C5D /* Pretendard-Light.otf */; };
 		98ED6C592D3832E200194C5D /* SUITE-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C472D3832E200194C5D /* SUITE-Regular.otf */; };
 		98ED6C5A2D3832E200194C5D /* SUITE-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */; };
 		98F4AD0E2D3D5F4400DA82A3 /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */; };
+		98F4AD122D3D604C00DA82A3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F4AD112D3D604C00DA82A3 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +80,8 @@
 		476A69B02D379E6800B9016A /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		989945B42D3BC350000A0616 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		98A8767D2D39226B00AA1E6A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		98C3F72F2D3E8B5C00184D24 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		98ED6C2C2D38233F00194C5D /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		98ED6C382D3832E200194C5D /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		98ED6C392D3832E200194C5D /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		98ED6C3A2D3832E200194C5D /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		98ED6C3B2D3832E200194C5D /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
@@ -98,6 +99,7 @@
 		98ED6C472D3832E200194C5D /* SUITE-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-Regular.otf"; sourceTree = "<group>"; };
 		98ED6C482D3832E200194C5D /* SUITE-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUITE-SemiBold.otf"; sourceTree = "<group>"; };
 		98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
+		98F4AD112D3D604C00DA82A3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,8 +252,8 @@
 		98ED6C272D380E6100194C5D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				98A8767D2D39226B00AA1E6A /* LoginViewController.swift */,
-				98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */,
+				98F4AD102D3D602C00DA82A3 /* SignUp */,
+				98F4AD0F2D3D600500DA82A3 /* Login */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				989945B42D3BC350000A0616 /* UIImage+.swift */,
+				98C3F72F2D3E8B5C00184D24 /* UIFont+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,7 +355,6 @@
 		98ED6C492D3832E200194C5D /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				98ED6C382D3832E200194C5D /* .gitkeep */,
 				98ED6C392D3832E200194C5D /* Pretendard-Black.otf */,
 				98ED6C3A2D3832E200194C5D /* Pretendard-Bold.otf */,
 				98ED6C3B2D3832E200194C5D /* Pretendard-ExtraBold.otf */,
@@ -379,6 +381,23 @@
 				476A69912D379E6500B9016A /* MainViewController.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		98F4AD0F2D3D600500DA82A3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				98A8767D2D39226B00AA1E6A /* LoginViewController.swift */,
+				98F4AD0D2D3D5F4400DA82A3 /* AppleLoginButton.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		98F4AD102D3D602C00DA82A3 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				98F4AD112D3D604C00DA82A3 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,7 +527,6 @@
 				98ED6C542D3832E200194C5D /* Pretendard-Bold.otf in Resources */,
 				98ED6C552D3832E200194C5D /* Pretendard-Medium.otf in Resources */,
 				98ED6C562D3832E200194C5D /* SUITE-Light.otf in Resources */,
-				98ED6C572D3832E200194C5D /* .gitkeep in Resources */,
 				98ED6C582D3832E200194C5D /* Pretendard-Light.otf in Resources */,
 				98ED6C592D3832E200194C5D /* SUITE-Regular.otf in Resources */,
 				98ED6C5A2D3832E200194C5D /* SUITE-SemiBold.otf in Resources */,
@@ -536,7 +554,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98C3F7302D3E8B5C00184D24 /* UIFont+.swift in Sources */,
 				98F4AD0E2D3D5F4400DA82A3 /* AppleLoginButton.swift in Sources */,
+				98F4AD122D3D604C00DA82A3 /* SignUpViewController.swift in Sources */,
 				476A69922D379E6500B9016A /* MainViewController.swift in Sources */,
 				989945B52D3BC350000A0616 /* UIImage+.swift in Sources */,
 				476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */,

@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Then
+import SnapKit
 
 class AppleLoginButton: UIButton {
     private let appleImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "applelogo")?.withTintColor(.black, renderingMode: .alwaysOriginal)//.resizeImage(18, 21)
+        $0.image = UIImage(systemName: "applelogo")?.withTintColor(.black, renderingMode: .alwaysOriginal)
         $0.contentMode = .scaleAspectFit
         $0.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
     }
@@ -17,8 +19,7 @@ class AppleLoginButton: UIButton {
     private let title = UILabel().then {
         $0.text = "Apple로 계속하기"
         $0.textColor = .black
-        $0.font = .systemFont(ofSize: 16, weight: .semibold)
-        
+        $0.font = .pretendard(size: 16, weight: .semibold)
     }
     
     override init(frame: CGRect) {
