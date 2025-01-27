@@ -160,10 +160,10 @@
 		476A698C2D379E6500B9016A /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				4778E2732D47712800E064BD /* Domain */,
+				4778E2702D47710000E064BD /* Data */,
 				98ED6C292D381E4E00194C5D /* Application */,
 				98ED6C222D37FD9A00194C5D /* Presentation */,
-				98ED6C202D37FD8A00194C5D /* Domain */,
-				98ED6C212D37FD9300194C5D /* Data */,
 				98ED6C282D381E2600194C5D /* Utils */,
 				98ED6C2A2D38226D00194C5D /* Resources */,
 			);
@@ -187,66 +187,106 @@
 			path = HongikYeolgong2UITests;
 			sourceTree = "<group>";
 		};
-		98ED6C202D37FD8A00194C5D /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				98ED6C352D382F7A00194C5D /* Entities */,
-				98ED6C362D382F8C00194C5D /* UseCases */,
-				98ED6C372D382FA200194C5D /* Interfaces */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
-		98ED6C212D37FD9300194C5D /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				98ED6C2D2D38264A00194C5D /* Repositories */,
-				98ED6C2E2D38265700194C5D /* Network */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
-		98ED6C222D37FD9A00194C5D /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				98ED6C5E2D38390800194C5D /* Root */,
-				98ED6C232D380E1F00194C5D /* Home */,
-				98ED6C272D380E6100194C5D /* Auth */,
-				98ED6C242D380E2600194C5D /* Record */,
-				98ED6C252D380E3300194C5D /* Ranking */,
-				98ED6C262D380E4900194C5D /* Setting */,
-				98ED6C332D38281900194C5D /* Components */,
-				98ED6C2F2D3827A600194C5D /* Utils */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		98ED6C232D380E1F00194C5D /* Home */ = {
+		4778E2692D476D3200E064BD /* Home */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		98ED6C242D380E2600194C5D /* Record */ = {
+		4778E26A2D476D3800E064BD /* Record */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Record;
 			sourceTree = "<group>";
 		};
-		98ED6C252D380E3300194C5D /* Ranking */ = {
+		4778E26B2D476D3E00E064BD /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Ranking;
 			sourceTree = "<group>";
 		};
-		98ED6C262D380E4900194C5D /* Setting */ = {
+		4778E26C2D476D4600E064BD /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		4778E2702D47710000E064BD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4778E2722D47711300E064BD /* Repositories */,
+				4778E2712D47710C00E064BD /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4778E2712D47710C00E064BD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4778E2722D47711300E064BD /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		4778E2732D47712800E064BD /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				4778E2762D47714F00E064BD /* Usecase */,
+				4778E2752D47714600E064BD /* Interfaces */,
+				4778E2742D47713600E064BD /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		4778E2742D47713600E064BD /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		4778E2752D47714600E064BD /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		4778E2762D47714F00E064BD /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		4778E2772D47717400E064BD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		98ED6C222D37FD9A00194C5D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4778E26C2D476D4600E064BD /* Setting */,
+				4778E26B2D476D3E00E064BD /* Ranking */,
+				4778E26A2D476D3800E064BD /* Record */,
+				4778E2692D476D3200E064BD /* Home */,
+				98ED6C5E2D38390800194C5D /* Root */,
+				98ED6C272D380E6100194C5D /* Auth */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		98ED6C272D380E6100194C5D /* Auth */ = {
@@ -261,7 +301,7 @@
 		98ED6C282D381E2600194C5D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				98ED6C312D3827BE00194C5D /* Protocols */,
+				4778E2772D47717400E064BD /* Protocol */,
 				98ED6C302D3827B300194C5D /* Extensions */,
 			);
 			path = Utils;
@@ -287,27 +327,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		98ED6C2D2D38264A00194C5D /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		98ED6C2E2D38265700194C5D /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
-		98ED6C2F2D3827A600194C5D /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		98ED6C302D3827B300194C5D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,41 +334,6 @@
 				98C3F72F2D3E8B5C00184D24 /* UIFont+.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		98ED6C312D3827BE00194C5D /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		98ED6C332D38281900194C5D /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		98ED6C352D382F7A00194C5D /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
-		98ED6C362D382F8C00194C5D /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UseCases;
-			sourceTree = "<group>";
-		};
-		98ED6C372D382FA200194C5D /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		98ED6C492D3832E200194C5D /* Font */ = {
@@ -738,7 +722,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4N3558QY8F;
+				DEVELOPMENT_TEAM = P4D4ZQC4YF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HongikYeolgong2/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
@@ -772,7 +756,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4N3558QY8F;
+				DEVELOPMENT_TEAM = P4D4ZQC4YF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HongikYeolgong2/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
