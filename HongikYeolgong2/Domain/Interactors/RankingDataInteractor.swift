@@ -35,6 +35,7 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
             .getWeekField(date: Date().toDateString())
             .flatMap({ [weak self] in
                 guard let self = self else { return Empty<WeeklyRanking, NetworkError>().eraseToAnyPublisher() }
+                print($0)
                 weekNumber = $0
                 maxWeekNumber = $0
                 minWeekNumber = $0 - ($0 % 100)

@@ -39,77 +39,82 @@ struct HomeView: View {
     }
     
     var content: some View {
-        VStack(spacing: 0) {
-            WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
-            
-            StudyContentControllerView(
-                studySession: $studySession,
-                wiseSaying: wiseSaying.value ?? WiseSaying()
-            )
-            
-            Spacer()
-            
-            ActionButtonControllerView(
-                studySession: $studySession,
-                actions: .init(
-                    endButtonTapped: endButtonTapped,
-                    startButtonTapped: startButtonTapped,
-                    seatButtonTapped: seatButtonTapped,
-                    addButtonTapped: addButtonTapped
+        NavigationStack {
+            VStack(spacing: 0) {
+                WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
+                
+                StudyContentControllerView(
+                    studySession: $studySession,
+                    wiseSaying: wiseSaying.value ?? WiseSaying()
                 )
-            )
-            
-            NavigationLink("",
-                           destination: WebViewWithNavigation(url: SecretKeys.roomStatusUrl, title: "좌석")
-                .edgesIgnoringSafeArea(.bottom),
-                           isActive: $isShowWebView)
-            .frame(width: 0, height: 0)
-        }
-        .systemOverlay(isPresented: $isShowTimePicker) {
-            TimePickerView(
-                selectedTime: Binding(
-                    get: { appState.value.studySession.startTime },
-                    set: { studySessionInteractor.setStartTime($0) }
-                ),
-                onTimeSelected: startStudy
-            )
-        }
-        .systemOverlay(isPresented: $isShowAddTimeModal) {
-            ModalView(isPresented: $isShowAddTimeModal,
-                      title: "열람실 이용 시간을 연장할까요?",
-                      confirmButtonText: "연장하기",
-                      cancleButtonText: "아니오",
-                      confirmAction: { studySessionInteractor.addTime() })
-        }
-        .systemOverlay(isPresented: $isShowEndUseModal) {
-            ModalView(isPresented: $isShowEndUseModal,
-                      title: "열람실을 다 이용하셨나요?",
-                      confirmButtonText: "네",
-                      cancleButtonText: "더 이용하기",
-                      confirmAction: endStudy )
-        }
-        .padding(.horizontal, 32.adjustToScreenWidth)
-        .modifier(IOSBackground())
-        .onAppear {
-            if !isViewOnAppeared {
-                isViewOnAppeared = true
-                weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-                weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+                
+                Spacer()
+                
+                ActionButtonControllerView(
+                    studySession: $studySession,
+                    actions: .init(
+                        endButtonTapped: endButtonTapped,
+                        startButtonTapped: startButtonTapped,
+                        seatButtonTapped: seatButtonTapped,
+                        addButtonTapped: addButtonTapped
+                    )
+                )
             }
-        }
-        .onReceive(studySessionUpdated) {
-            studySession = $0
-        }
-        .onReceive(studySessionEnded) { _ in
-            endStudy()
-        }
-        .onReceive(studySessionUploaded) { _ in
-            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-        }
-        .onReceive(scenePhaseUpdated) {
-            $0 == .active
-            ? studySessionInteractor.resumeStudy()
-            : studySessionInteractor.pauseStudy()
+            .systemOverlay(isPresented: $isShowTimePicker) {
+                TimePickerView(
+                    selectedTime: Binding(
+                        get: { appState.value.studySession.startTime },
+                        set: { studySessionInteractor.setStartTime($0) }
+                    ),
+                    onTimeSelected: startStudy
+                )
+            }
+            .systemOverlay(isPresented: $isShowAddTimeModal) {
+                ModalView(isPresented: $isShowAddTimeModal,
+                          title: "열람실 이용 시간을 연장할까요?",
+                          confirmButtonText: "연장하기",
+                          cancleButtonText: "아니오",
+                          confirmAction: { studySessionInteractor.addTime() })
+            }
+            .systemOverlay(isPresented: $isShowEndUseModal) {
+                ModalView(isPresented: $isShowEndUseModal,
+                          title: "열람실을 다 이용하셨나요?",
+                          confirmButtonText: "네",
+                          cancleButtonText: "더 이용하기",
+                          confirmAction: endStudy )
+            }
+            .padding(.horizontal, 32.adjustToScreenWidth)
+            .modifier(IOSBackground())
+
+            .onAppear {
+                if !isViewOnAppeared {
+                    isViewOnAppeared = true
+                    weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                    weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+                }
+            }
+            .onReceive(studySessionUpdated) {
+                studySession = $0
+            }
+            .onReceive(studySessionEnded) { _ in
+                endStudy()
+            }
+            .onReceive(studySessionUploaded) { _ in
+                weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+            }
+            .onReceive(scenePhaseUpdated) {
+                $0 == .active
+                ? studySessionInteractor.resumeStudy()
+                : studySessionInteractor.pauseStudy()
+            }
+            .navigationDestination(for: Page.self, destination: { page in
+                switch page {
+                case let .webView(title, url):
+                    WebViewWithNavigation(url: url, title: title)
+                default:
+                    EmptyView()
+                }
+            })
         }
     }
 }
