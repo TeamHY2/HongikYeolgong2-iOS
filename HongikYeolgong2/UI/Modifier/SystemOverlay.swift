@@ -8,26 +8,20 @@
 import SwiftUI
 
 struct SystemOverlay<ContentView: View>: ViewModifier {
-    @State var viewAppear = false
     @Binding var isPresented: Bool
     let contentView: () -> ContentView
+    
     func body(content: Content) -> some View {
         content
             .fullScreenCover(isPresented: $isPresented) {
                 ZStack {
                     Color.black.opacity(0.75).ignoresSafeArea(.all)
-                    contentView()
-                        .onAppear {
-                            viewAppear = true
-                        }
+                    contentView()                        
                 }
                 .background(ClearBackgroundView())
             }
             .transaction { transaction in
-                if viewAppear || isPresented {
-                    transaction.disablesAnimations = true
-                    viewAppear = false
-                }
+                transaction.disablesAnimations = isPresented
             }
     }
 }
