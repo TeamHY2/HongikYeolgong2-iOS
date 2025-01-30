@@ -15,8 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        
+        window?.backgroundColor = .dark
         let navigationCon = UINavigationController()
+        navigationCon.navigationBar.isHidden = true
         let appDiContainer = AppDIContainer().makeAppDIContainer()
         let appCoordinator = AppCoordinator(navigationController: navigationCon,
                                             appDiContainer: appDiContainer)

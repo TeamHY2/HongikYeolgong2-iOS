@@ -188,8 +188,6 @@
 		471D0EB22D4B41D400A51AAF /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				471D0EA22D4B35A100A51AAF /* AppCoordinator.swift */,
-				471D0E9C2D4B343000A51AAF /* Coordinator.swift */,
 				476A698D2D379E6500B9016A /* AppDelegate.swift */,
 				476A698F2D379E6500B9016A /* SceneDelegate.swift */,
 			);
@@ -534,6 +532,8 @@
 		98ED6C292D381E4E00194C5D /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				471D0EA22D4B35A100A51AAF /* AppCoordinator.swift */,
+				471D0E9C2D4B343000A51AAF /* Coordinator.swift */,
 				471D0EB22D4B41D400A51AAF /* Core */,
 				479739002D48B33400730D5D /* DIContainer */,
 			);

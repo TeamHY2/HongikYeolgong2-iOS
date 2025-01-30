@@ -19,7 +19,7 @@ final class DIContainer: AppFlowCoordinatorDependencies {
     private let dependencies: Dependencies
     
     init(dependencies: Dependencies) {
-        self.dependencies = dependencies
+        self.dependencies = dependencies        
     }
     
     // MARK: - UseCases

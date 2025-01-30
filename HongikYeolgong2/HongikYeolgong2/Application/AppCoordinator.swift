@@ -10,9 +10,7 @@ final class AppCoordinator: Coordinator {
     
     // MARK: - Properties
     var parentCoordinator: Coordinator?
-    
     var children: [Coordinator] = []
-    
     var navigationController: UINavigationController
     private let appDiContainer: DIContainer
     
@@ -26,7 +24,7 @@ final class AppCoordinator: Coordinator {
     // MARK: - Methods
     
     func start() {
-        goToSplash()
+        goToSplash()        
     }
     
     func goToAuth() {
