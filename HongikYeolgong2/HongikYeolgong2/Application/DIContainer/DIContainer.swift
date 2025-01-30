@@ -48,6 +48,14 @@ final class DIContainer: AppFlowCoordinatorDependencies {
         SplashViewModel(userInfoUseCase: makeUserInfoUseCase())
     }
     
+    func makeRecordViewModel() -> RecordViewModel {
+        RecordViewModel()
+    }
+    
+    func makeRankingViewModel() -> RankingViewModel {
+        RankingViewModel()
+    }
+    
     // MARK: - FlowCoordiantor
     
     func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinator {
@@ -62,8 +70,20 @@ final class DIContainer: AppFlowCoordinatorDependencies {
         HomeCoordinator(navigationController: navigationController, dependencies: self)
     }
     
+    func makeRecordCoordinator(navigationController: UINavigationController) -> RecordCoordinator {
+        RecordCoordinator(navigationController: navigationController, dependencies: self)
+    }
+    
     func makeMainTabCoordinator(navigationController: UINavigationController) -> MainTabCoordinator {
         MainTabCoordinator(navigationController: navigationController, dependencies: self)
+    }
+    
+    func makeRankingCoordinator(navigationController: UINavigationController) -> RankingCoordinator {
+        RankingCoordinator(navigationController: navigationController, dependencies: self)
+    }
+    
+    func makeProfileCoordinator(navigationController: UINavigationController) -> ProfileCoordinator {
+        ProfileCoordinator(navigationController: navigationController, dependencies: self)
     }
     
     // MARK: - ViewControllers

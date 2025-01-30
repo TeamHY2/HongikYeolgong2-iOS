@@ -22,6 +22,15 @@
 		471D0EC22D4B6D2400A51AAF /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EC12D4B6D1D00A51AAF /* SplashViewModel.swift */; };
 		471D0EC42D4B6D6B00A51AAF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EC32D4B6D6800A51AAF /* HomeViewModel.swift */; };
 		471D0EC62D4B71C800A51AAF /* UserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EC52D4B71B800A51AAF /* UserInfoUseCase.swift */; };
+		473A3B512D4BEB87004E885E /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B502D4BEB87004E885E /* RecordViewController.swift */; };
+		473A3B552D4BEB99004E885E /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B542D4BEB96004E885E /* RecordViewModel.swift */; };
+		473A3B572D4BEBA3004E885E /* RecordCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B562D4BEB9E004E885E /* RecordCoordinator.swift */; };
+		473A3B5C2D4BED8B004E885E /* RankingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B5B2D4BED87004E885E /* RankingCoordinator.swift */; };
+		473A3B5E2D4BED95004E885E /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B5D2D4BED92004E885E /* RankingViewModel.swift */; };
+		473A3B602D4BEDA0004E885E /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B5F2D4BEDA0004E885E /* RankingViewController.swift */; };
+		473A3B652D4BEED5004E885E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B642D4BEED5004E885E /* ProfileViewController.swift */; };
+		473A3B672D4BEEDD004E885E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B662D4BEEDA004E885E /* ProfileViewModel.swift */; };
+		473A3B692D4BEEE4004E885E /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B682D4BEEE0004E885E /* ProfileCoordinator.swift */; };
 		476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698D2D379E6500B9016A /* AppDelegate.swift */; };
 		476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698F2D379E6500B9016A /* SceneDelegate.swift */; };
 		476A69972D379E6700B9016A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476A69962D379E6700B9016A /* Assets.xcassets */; };
@@ -96,6 +105,15 @@
 		471D0EC12D4B6D1D00A51AAF /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		471D0EC32D4B6D6800A51AAF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		471D0EC52D4B71B800A51AAF /* UserInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUseCase.swift; sourceTree = "<group>"; };
+		473A3B502D4BEB87004E885E /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		473A3B542D4BEB96004E885E /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		473A3B562D4BEB9E004E885E /* RecordCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCoordinator.swift; sourceTree = "<group>"; };
+		473A3B5B2D4BED87004E885E /* RankingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCoordinator.swift; sourceTree = "<group>"; };
+		473A3B5D2D4BED92004E885E /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
+		473A3B5F2D4BEDA0004E885E /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		473A3B642D4BEED5004E885E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		473A3B662D4BEEDA004E885E /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		473A3B682D4BEEE0004E885E /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		476A698A2D379E6500B9016A /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476A698D2D379E6500B9016A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476A698F2D379E6500B9016A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +262,78 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		473A3B4F2D4BEB69004E885E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B502D4BEB87004E885E /* RecordViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		473A3B522D4BEB8B004E885E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B562D4BEB9E004E885E /* RecordCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		473A3B532D4BEB90004E885E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B542D4BEB96004E885E /* RecordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		473A3B582D4BED76004E885E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B5F2D4BEDA0004E885E /* RankingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		473A3B592D4BED79004E885E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B5D2D4BED92004E885E /* RankingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		473A3B5A2D4BED7E004E885E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B5B2D4BED87004E885E /* RankingCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		473A3B612D4BEEB7004E885E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B642D4BEED5004E885E /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		473A3B622D4BEEBB004E885E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B662D4BEEDA004E885E /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		473A3B632D4BEEBF004E885E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B682D4BEEE0004E885E /* ProfileCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		476A69812D379E6500B9016A = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +397,9 @@
 		4778E26A2D476D3800E064BD /* Record */ = {
 			isa = PBXGroup;
 			children = (
+				473A3B532D4BEB90004E885E /* ViewModel */,
+				473A3B522D4BEB8B004E885E /* Coordinator */,
+				473A3B4F2D4BEB69004E885E /* View */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -314,6 +407,9 @@
 		4778E26B2D476D3E00E064BD /* Ranking */ = {
 			isa = PBXGroup;
 			children = (
+				473A3B5A2D4BED7E004E885E /* Coordinator */,
+				473A3B592D4BED79004E885E /* ViewModel */,
+				473A3B582D4BED76004E885E /* View */,
 			);
 			path = Ranking;
 			sourceTree = "<group>";
@@ -321,6 +417,9 @@
 		4778E26C2D476D4600E064BD /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				473A3B632D4BEEBF004E885E /* Coordinator */,
+				473A3B622D4BEEBB004E885E /* ViewModel */,
+				473A3B612D4BEEB7004E885E /* View */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -666,25 +765,34 @@
 				471D0EA32D4B35A400A51AAF /* AppCoordinator.swift in Sources */,
 				471D0EA72D4B36F800A51AAF /* AuthCoordinator.swift in Sources */,
 				471D0EAD2D4B393500A51AAF /* HomeCoordinator.swift in Sources */,
+				473A3B512D4BEB87004E885E /* RecordViewController.swift in Sources */,
 				471D0EB52D4B441700A51AAF /* SplashCoordinator.swift in Sources */,
 				98C3F7302D3E8B5C00184D24 /* UIFont+.swift in Sources */,
 				471D0EB12D4B413700A51AAF /* DIContainer.swift in Sources */,
 				98F4AD0E2D3D5F4400DA82A3 /* AppleLoginButton.swift in Sources */,
+				473A3B692D4BEEE4004E885E /* ProfileCoordinator.swift in Sources */,
 				471D0E9D2D4B343300A51AAF /* Coordinator.swift in Sources */,
 				471D0EAB2D4B392500A51AAF /* HomeViewController.swift in Sources */,
 				98F4AD122D3D604C00DA82A3 /* SignUpViewController.swift in Sources */,
 				471D0EA12D4B34F500A51AAF /* MainTabCoordinator.swift in Sources */,
+				473A3B672D4BEEDD004E885E /* ProfileViewModel.swift in Sources */,
+				473A3B652D4BEED5004E885E /* ProfileViewController.swift in Sources */,
+				473A3B602D4BEDA0004E885E /* RankingViewController.swift in Sources */,
 				989945B52D3BC350000A0616 /* UIImage+.swift in Sources */,
 				471D0EC22D4B6D2400A51AAF /* SplashViewModel.swift in Sources */,
 				471D0EC62D4B71C800A51AAF /* UserInfoUseCase.swift in Sources */,
 				471D0EB72D4B442300A51AAF /* SplashViewController.swift in Sources */,
 				476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */,
 				98A8767E2D39226B00AA1E6A /* LoginViewController.swift in Sources */,
+				473A3B5C2D4BED8B004E885E /* RankingCoordinator.swift in Sources */,
 				471D0EBF2D4B555700A51AAF /* StudyRoomRepository.swift in Sources */,
 				471D0EC42D4B6D6B00A51AAF /* HomeViewModel.swift in Sources */,
 				471D0EBD2D4B550D00A51AAF /* DefaultSutdyRoomRepository.swift in Sources */,
 				476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */,
+				473A3B5E2D4BED95004E885E /* RankingViewModel.swift in Sources */,
 				479739022D48B36500730D5D /* AppDIContainer.swift in Sources */,
+				473A3B572D4BEBA3004E885E /* RecordCoordinator.swift in Sources */,
+				473A3B552D4BEB99004E885E /* RecordViewModel.swift in Sources */,
 				471D0EBB2D4B54C400A51AAF /* StudyRoomUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
