@@ -9,15 +9,21 @@
 /* Begin PBXBuildFile section */
 		471D0E9D2D4B343300A51AAF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0E9C2D4B343000A51AAF /* Coordinator.swift */; };
 		471D0EA12D4B34F500A51AAF /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EA02D4B34EC00A51AAF /* MainTabCoordinator.swift */; };
-		471D0EA32D4B35A400A51AAF /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EA22D4B35A100A51AAF /* AppFlowCoordinator.swift */; };
+		471D0EA32D4B35A400A51AAF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EA22D4B35A100A51AAF /* AppCoordinator.swift */; };
 		471D0EA72D4B36F800A51AAF /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EA62D4B36F500A51AAF /* AuthCoordinator.swift */; };
 		471D0EAB2D4B392500A51AAF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EAA2D4B392500A51AAF /* HomeViewController.swift */; };
-		471D0EAD2D4B393500A51AAF /* HomeFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EAC2D4B392D00A51AAF /* HomeFlowCoordinator.swift */; };
-		471D0EAF2D4B398900A51AAF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EAE2D4B398500A51AAF /* HomeViewModel.swift */; };
+		471D0EAD2D4B393500A51AAF /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EAC2D4B392D00A51AAF /* HomeCoordinator.swift */; };
 		471D0EB12D4B413700A51AAF /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EB02D4B413100A51AAF /* DIContainer.swift */; };
+		471D0EB52D4B441700A51AAF /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EB42D4B440F00A51AAF /* SplashCoordinator.swift */; };
+		471D0EB72D4B442300A51AAF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EB62D4B442300A51AAF /* SplashViewController.swift */; };
+		471D0EBB2D4B54C400A51AAF /* StudyRoomUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EBA2D4B54BC00A51AAF /* StudyRoomUseCase.swift */; };
+		471D0EBD2D4B550D00A51AAF /* DefaultSutdyRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EBC2D4B550700A51AAF /* DefaultSutdyRoomRepository.swift */; };
+		471D0EBF2D4B555700A51AAF /* StudyRoomRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EBE2D4B555200A51AAF /* StudyRoomRepository.swift */; };
+		471D0EC22D4B6D2400A51AAF /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EC12D4B6D1D00A51AAF /* SplashViewModel.swift */; };
+		471D0EC42D4B6D6B00A51AAF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EC32D4B6D6800A51AAF /* HomeViewModel.swift */; };
+		471D0EC62D4B71C800A51AAF /* UserInfoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471D0EC52D4B71B800A51AAF /* UserInfoUseCase.swift */; };
 		476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698D2D379E6500B9016A /* AppDelegate.swift */; };
 		476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698F2D379E6500B9016A /* SceneDelegate.swift */; };
-		476A69922D379E6500B9016A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69912D379E6500B9016A /* MainViewController.swift */; };
 		476A69972D379E6700B9016A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476A69962D379E6700B9016A /* Assets.xcassets */; };
 		476A699A2D379E6700B9016A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 476A69992D379E6700B9016A /* Base */; };
 		476A69A52D379E6800B9016A /* HongikYeolgong2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A69A42D379E6800B9016A /* HongikYeolgong2Tests.swift */; };
@@ -77,16 +83,22 @@
 /* Begin PBXFileReference section */
 		471D0E9C2D4B343000A51AAF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		471D0EA02D4B34EC00A51AAF /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
-		471D0EA22D4B35A100A51AAF /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		471D0EA22D4B35A100A51AAF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		471D0EA62D4B36F500A51AAF /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		471D0EAA2D4B392500A51AAF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		471D0EAC2D4B392D00A51AAF /* HomeFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowCoordinator.swift; sourceTree = "<group>"; };
-		471D0EAE2D4B398500A51AAF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		471D0EAC2D4B392D00A51AAF /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		471D0EB02D4B413100A51AAF /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		471D0EB42D4B440F00A51AAF /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		471D0EB62D4B442300A51AAF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		471D0EBA2D4B54BC00A51AAF /* StudyRoomUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomUseCase.swift; sourceTree = "<group>"; };
+		471D0EBC2D4B550700A51AAF /* DefaultSutdyRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSutdyRoomRepository.swift; sourceTree = "<group>"; };
+		471D0EBE2D4B555200A51AAF /* StudyRoomRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoomRepository.swift; sourceTree = "<group>"; };
+		471D0EC12D4B6D1D00A51AAF /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		471D0EC32D4B6D6800A51AAF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		471D0EC52D4B71B800A51AAF /* UserInfoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoUseCase.swift; sourceTree = "<group>"; };
 		476A698A2D379E6500B9016A /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476A698D2D379E6500B9016A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476A698F2D379E6500B9016A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		476A69912D379E6500B9016A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		476A69962D379E6700B9016A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		476A69992D379E6700B9016A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		476A699B2D379E6700B9016A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -158,12 +170,78 @@
 		471D0EB22D4B41D400A51AAF /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				471D0EA22D4B35A100A51AAF /* AppFlowCoordinator.swift */,
+				471D0EA22D4B35A100A51AAF /* AppCoordinator.swift */,
 				471D0E9C2D4B343000A51AAF /* Coordinator.swift */,
 				476A698D2D379E6500B9016A /* AppDelegate.swift */,
 				476A698F2D379E6500B9016A /* SceneDelegate.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		471D0EB32D4B440500A51AAF /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				473A3B4E2D4BEA8A004E885E /* View */,
+				473A3B4D2D4BEA80004E885E /* Coordinator */,
+				473A3B4C2D4BEA78004E885E /* ViewModel */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		473A3B482D4BEA25004E885E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EAA2D4B392500A51AAF /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		473A3B492D4BEA2F004E885E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EC32D4B6D6800A51AAF /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		473A3B4A2D4BEA4C004E885E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EAC2D4B392D00A51AAF /* HomeCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		473A3B4B2D4BEA5B004E885E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EA62D4B36F500A51AAF /* AuthCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		473A3B4C2D4BEA78004E885E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EC12D4B6D1D00A51AAF /* SplashViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		473A3B4D2D4BEA80004E885E /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EB42D4B440F00A51AAF /* SplashCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		473A3B4E2D4BEA8A004E885E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				471D0EB62D4B442300A51AAF /* SplashViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		476A69812D379E6500B9016A = {
@@ -219,9 +297,9 @@
 		4778E2692D476D3200E064BD /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				471D0EAE2D4B398500A51AAF /* HomeViewModel.swift */,
-				471D0EAC2D4B392D00A51AAF /* HomeFlowCoordinator.swift */,
-				471D0EAA2D4B392500A51AAF /* HomeViewController.swift */,
+				473A3B4A2D4BEA4C004E885E /* Coordinator */,
+				473A3B492D4BEA2F004E885E /* ViewModel */,
+				473A3B482D4BEA25004E885E /* View */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -266,6 +344,7 @@
 		4778E2722D47711300E064BD /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				471D0EBC2D4B550700A51AAF /* DefaultSutdyRoomRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -290,6 +369,7 @@
 		4778E2752D47714600E064BD /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				471D0EBE2D4B555200A51AAF /* StudyRoomRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -297,6 +377,8 @@
 		4778E2762D47714F00E064BD /* Usecase */ = {
 			isa = PBXGroup;
 			children = (
+				471D0EC52D4B71B800A51AAF /* UserInfoUseCase.swift */,
+				471D0EBA2D4B54BC00A51AAF /* StudyRoomUseCase.swift */,
 			);
 			path = Usecase;
 			sourceTree = "<group>";
@@ -320,11 +402,12 @@
 		98ED6C222D37FD9A00194C5D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				471D0EB32D4B440500A51AAF /* Splash */,
 				4778E26C2D476D4600E064BD /* Profile */,
 				4778E26B2D476D3E00E064BD /* Ranking */,
 				4778E26A2D476D3800E064BD /* Record */,
 				4778E2692D476D3200E064BD /* Home */,
-				98ED6C5E2D38390800194C5D /* Root */,
+				98ED6C5E2D38390800194C5D /* TabBar */,
 				98ED6C272D380E6100194C5D /* Auth */,
 			);
 			path = Presentation;
@@ -333,7 +416,7 @@
 		98ED6C272D380E6100194C5D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				471D0EA62D4B36F500A51AAF /* AuthCoordinator.swift */,
+				473A3B4B2D4BEA5B004E885E /* Coordinator */,
 				98F4AD102D3D602C00DA82A3 /* SignUp */,
 				98F4AD0F2D3D600500DA82A3 /* Login */,
 			);
@@ -401,13 +484,12 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		98ED6C5E2D38390800194C5D /* Root */ = {
+		98ED6C5E2D38390800194C5D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				471D0EA02D4B34EC00A51AAF /* MainTabCoordinator.swift */,
-				476A69912D379E6500B9016A /* MainViewController.swift */,
 			);
-			path = Root;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		98F4AD0F2D3D600500DA82A3 /* Login */ = {
@@ -581,23 +663,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				471D0EA32D4B35A400A51AAF /* AppFlowCoordinator.swift in Sources */,
+				471D0EA32D4B35A400A51AAF /* AppCoordinator.swift in Sources */,
 				471D0EA72D4B36F800A51AAF /* AuthCoordinator.swift in Sources */,
-				471D0EAD2D4B393500A51AAF /* HomeFlowCoordinator.swift in Sources */,
-				471D0EAF2D4B398900A51AAF /* HomeViewModel.swift in Sources */,
+				471D0EAD2D4B393500A51AAF /* HomeCoordinator.swift in Sources */,
+				471D0EB52D4B441700A51AAF /* SplashCoordinator.swift in Sources */,
 				98C3F7302D3E8B5C00184D24 /* UIFont+.swift in Sources */,
 				471D0EB12D4B413700A51AAF /* DIContainer.swift in Sources */,
 				98F4AD0E2D3D5F4400DA82A3 /* AppleLoginButton.swift in Sources */,
 				471D0E9D2D4B343300A51AAF /* Coordinator.swift in Sources */,
 				471D0EAB2D4B392500A51AAF /* HomeViewController.swift in Sources */,
 				98F4AD122D3D604C00DA82A3 /* SignUpViewController.swift in Sources */,
-				476A69922D379E6500B9016A /* MainViewController.swift in Sources */,
 				471D0EA12D4B34F500A51AAF /* MainTabCoordinator.swift in Sources */,
 				989945B52D3BC350000A0616 /* UIImage+.swift in Sources */,
+				471D0EC22D4B6D2400A51AAF /* SplashViewModel.swift in Sources */,
+				471D0EC62D4B71C800A51AAF /* UserInfoUseCase.swift in Sources */,
+				471D0EB72D4B442300A51AAF /* SplashViewController.swift in Sources */,
 				476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */,
 				98A8767E2D39226B00AA1E6A /* LoginViewController.swift in Sources */,
+				471D0EBF2D4B555700A51AAF /* StudyRoomRepository.swift in Sources */,
+				471D0EC42D4B6D6B00A51AAF /* HomeViewModel.swift in Sources */,
+				471D0EBD2D4B550D00A51AAF /* DefaultSutdyRoomRepository.swift in Sources */,
 				476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */,
 				479739022D48B36500730D5D /* AppDIContainer.swift in Sources */,
+				471D0EBB2D4B54C400A51AAF /* StudyRoomUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

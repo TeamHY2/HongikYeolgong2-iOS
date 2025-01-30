@@ -12,17 +12,19 @@ final class AuthCoordinator: Coordinator {
     var children: [Coordinator] = []
     
     var navigationController: UINavigationController
+    let dependencies: AppFlowCoordinatorDependencies
     
     func start() {
         goToLogin()
     }
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependencies: AppFlowCoordinatorDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
-    func goToLogin() {        
-        let loginVC = LoginViewController()
+    func goToLogin() {
+        let loginVC = LoginViewController()        
         navigationController.pushViewController(loginVC, animated: true)
     }
     

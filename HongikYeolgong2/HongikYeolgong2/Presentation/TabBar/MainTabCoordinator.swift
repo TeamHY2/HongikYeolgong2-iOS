@@ -8,25 +8,26 @@
 import UIKit
 
 final class MainTabCoordinator: Coordinator {
-    var parentCoordinator: Coordinator?
-    
+    var parentCoordinator: Coordinator?    
     var children: [Coordinator] = []
-    
     var navigationController: UINavigationController
+    
+    let dependencies: DIContainer
+    
+    init(navigationController: UINavigationController, dependencies: DIContainer) {
+        self.navigationController = navigationController
+        self.dependencies = dependencies
+    }
     
     func start() {
         initializeHomeTabFlow()
-    }
-    
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
     }
     
     func initializeHomeTabFlow() {
         let tabBarVC = UITabBarController()
         
         let homeNavigationController = UINavigationController()
-        let homeCoordinator = HomeFlowCoordinator(navigationController: homeNavigationController)
+        let homeCoordinator = dependencies.makeHomeCoordinator(navigationController: homeNavigationController)
         
         homeCoordinator.parentCoordinator = parentCoordinator
         
