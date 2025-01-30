@@ -19,7 +19,7 @@ final class DIContainer: AppFlowCoordinatorDependencies {
     private let dependencies: Dependencies
     
     init(dependencies: Dependencies) {
-        self.dependencies = dependencies        
+        self.dependencies = dependencies
     }
     
     // MARK: - UseCases
@@ -54,6 +54,14 @@ final class DIContainer: AppFlowCoordinatorDependencies {
     
     func makeRankingViewModel() -> RankingViewModel {
         RankingViewModel()
+    }
+    
+    func makeLoginViewModel() -> LoginViewModel {
+        LoginViewModel()
+    }
+    
+    func makeSignUpViewModel() -> SignUpViewModel {
+        SignUpViewModel()
     }
     
     // MARK: - FlowCoordiantor

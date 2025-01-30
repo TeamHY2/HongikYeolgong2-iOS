@@ -11,6 +11,6 @@ protocol UserInfoUseCase {
 
 final class DefaultUserInfoUseCase: UserInfoUseCase {
     func checkLogin() -> Bool {
-        return true
+        return false
     }
 }

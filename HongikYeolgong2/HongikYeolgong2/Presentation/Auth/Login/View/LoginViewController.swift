@@ -10,6 +10,7 @@ import Then
 import SnapKit
 
 class LoginViewController: UIViewController {
+    let viewModel: LoginViewModel
     // onboarding 이미지
     private let onboardingImages = [
         UIImage.onboarding01,
@@ -27,9 +28,11 @@ class LoginViewController: UIViewController {
         $0.axis = .horizontal
         $0.spacing = 6
     }
+    
     let loginButton = AppleLoginButton(frame: .zero).then {
         $0.layer.cornerRadius = 8
-        $0.target(forAction: #selector(loginButtonTapped), withSender: nil)
+        $0.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+//        $0.target(forAction: #selector(loginButtonTapped), withSender: nil)
     }
     
     
@@ -40,6 +43,16 @@ class LoginViewController: UIViewController {
         setupConstraints()
         addImageToStackView()
         scrollView.delegate = self
+    }
+    
+    
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup UI
@@ -77,6 +90,7 @@ class LoginViewController: UIViewController {
     /// 로그인 버튼 이벤트
     @objc private func loginButtonTapped() {
         // 로그인 로직 추가
+        viewModel.goToSignup()
     }
     
     /// 하단 페이지 컨트롤 스택 이미지 이벤트
