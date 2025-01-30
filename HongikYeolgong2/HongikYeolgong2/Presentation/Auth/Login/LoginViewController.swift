@@ -146,8 +146,8 @@ class LoginViewController: UIViewController {
 // MARK: - UIScrollViewDelegate
 extension LoginViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
-        updatePageImages(for: pageIndex)
+//        let pageIndex = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+        updatePageImages(for: 1)
     }
 }
 
