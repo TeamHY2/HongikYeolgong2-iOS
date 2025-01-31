@@ -32,7 +32,6 @@ class LoginViewController: UIViewController {
     let loginButton = AppleLoginButton(frame: .zero).then {
         $0.layer.cornerRadius = 8
         $0.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-//        $0.target(forAction: #selector(loginButtonTapped), withSender: nil)
     }
     
     

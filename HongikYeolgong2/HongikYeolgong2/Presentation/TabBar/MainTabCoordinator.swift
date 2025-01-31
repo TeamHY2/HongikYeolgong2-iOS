@@ -29,7 +29,7 @@ final class MainTabCoordinator: Coordinator {
         
     // 탭바코디네이터 구성
     func initializeHomeTabFlow() {
-        let tabBarVC = UITabBarController()
+        let tabBarVC = TabBarViewController()
         
         let homeNavigationController = UINavigationController()
         let recordNavigationController = UINavigationController()
@@ -47,12 +47,7 @@ final class MainTabCoordinator: Coordinator {
         rankingCoordinator.parentCoordinator = parentCoordinator
         profileCoordinator.parentCoordinator = parentCoordinator
         
-        homeNavigationController.tabBarItem = UITabBarItem(title: "Home", image: nil, tag: 0)
-        recordNavigationController.tabBarItem = UITabBarItem(title: "Record", image: nil, tag: 1)
-        rankingNavigationController.tabBarItem = UITabBarItem(title: "Ranking", image: nil, tag: 2)
-        profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: nil, tag: 3)
-        
-        tabBarVC.viewControllers = [homeNavigationController, recordNavigationController, rankingNavigationController, profileNavigationController]
+        tabBarVC.setViewControllers([homeNavigationController, recordNavigationController, rankingNavigationController, profileNavigationController])
         navigationController.pushViewController(tabBarVC, animated: true)
         
         parentCoordinator?.children.append(homeCoordinator)

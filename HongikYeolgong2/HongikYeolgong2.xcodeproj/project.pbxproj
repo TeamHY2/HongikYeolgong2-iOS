@@ -33,6 +33,7 @@
 		473A3B692D4BEEE4004E885E /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B682D4BEEE0004E885E /* ProfileCoordinator.swift */; };
 		473A3B6F2D4BF5D9004E885E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B6E2D4BF5D6004E885E /* LoginViewModel.swift */; };
 		473A3B772D4BF986004E885E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473A3B762D4BF97E004E885E /* SignUpViewModel.swift */; };
+		473E77962D4CB1C000D7B24F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473E77952D4CB1C000D7B24F /* TabBarViewController.swift */; };
 		476A698E2D379E6500B9016A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698D2D379E6500B9016A /* AppDelegate.swift */; };
 		476A69902D379E6500B9016A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A698F2D379E6500B9016A /* SceneDelegate.swift */; };
 		476A69972D379E6700B9016A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 476A69962D379E6700B9016A /* Assets.xcassets */; };
@@ -118,6 +119,7 @@
 		473A3B682D4BEEE0004E885E /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		473A3B6E2D4BF5D6004E885E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		473A3B762D4BF97E004E885E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		473E77952D4CB1C000D7B24F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		476A698A2D379E6500B9016A /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		476A698D2D379E6500B9016A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476A698F2D379E6500B9016A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -624,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				471D0EA02D4B34EC00A51AAF /* MainTabCoordinator.swift */,
+				473E77952D4CB1C000D7B24F /* TabBarViewController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				473A3B652D4BEED5004E885E /* ProfileViewController.swift in Sources */,
 				473A3B602D4BEDA0004E885E /* RankingViewController.swift in Sources */,
 				989945B52D3BC350000A0616 /* UIImage+.swift in Sources */,
+				473E77962D4CB1C000D7B24F /* TabBarViewController.swift in Sources */,
 				473A3B772D4BF986004E885E /* SignUpViewModel.swift in Sources */,
 				471D0EC22D4B6D2400A51AAF /* SplashViewModel.swift in Sources */,
 				471D0EC62D4B71C800A51AAF /* UserInfoUseCase.swift in Sources */,

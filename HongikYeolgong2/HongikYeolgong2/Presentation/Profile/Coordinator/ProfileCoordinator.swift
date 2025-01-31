@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileCoordinator: Coordinator {
+final class ProfileCoordinator: Coordinator, ProfileCoordinatorDelegate {
     var parentCoordinator: Coordinator?
     
     var children: [Coordinator] = []
@@ -21,9 +21,15 @@ final class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        let profileVC = ProfileViewController()
+        let viewModel = dependencies.makeProfileViewModel()
+        viewModel.coordinator = self
+        let profileVC = ProfileViewController(viewModel: viewModel)
         navigationController.pushViewController(profileVC, animated: true)
     }
     
-    
+    func goToAuth() {
+        let appCoordinator = parentCoordinator as! AppCoordinator
+        appCoordinator.goToAuth()
+        childDidFinish(self)
+    }
 }

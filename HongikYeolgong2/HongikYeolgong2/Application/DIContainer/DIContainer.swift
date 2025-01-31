@@ -64,6 +64,10 @@ final class DIContainer: AppFlowCoordinatorDependencies {
         SignUpViewModel()
     }
     
+    func makeProfileViewModel() -> ProfileViewModel {
+        ProfileViewModel()
+    }
+    
     // MARK: - FlowCoordiantor
     
     func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinator {
