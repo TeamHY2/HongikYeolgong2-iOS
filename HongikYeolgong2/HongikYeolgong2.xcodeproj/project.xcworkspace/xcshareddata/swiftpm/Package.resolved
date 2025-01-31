@@ -1,5 +1,5 @@
 {
-  "originHash" : "6cd89ac7f48627dc56633999ca58550a99f51e8f3d88b70a363ab095a8fa2cff",
+  "originHash" : "3b9973f8684512a9ec9d33caab4a1bba07452400892c8a40fa0cf5bfc37982a1",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -25,7 +25,7 @@
       "location" : "https://github.com/amplitude/Amplitude-Swift",
       "state" : {
         "branch" : "main",
-        "revision" : "98a5f020359d6e4c02f774a57d31b2fc7d062f46"
+        "revision" : "bcd4a447801bcedad5d60e25c86da6e2edce5562"
       }
     },
     {
