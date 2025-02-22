@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecordView: View {
     @Environment(\.injected.interactors.studyTimeInteractor) var studyTimeInteractor
+    @Environment(\.injected.interactors.calendarDataInteractor) var calendarDataInteractor
     @State private var studyTime: Loadable<StudyTime> = .notRequest
     @State private var allStudy: Loadable<[AllStudyRecord]> = .notRequest
     
@@ -102,6 +103,7 @@ struct RecordView: View {
     // 데이터 불러오기
     func loadData() -> Void {
         studyTimeInteractor.getStudyTime(StudyTime: $studyTime)
+        calendarDataInteractor.getAllStudy(studyRecords: $allStudy)
     }
     
     // 캡처 함수 (공유 이미지 생성)
