@@ -14,18 +14,14 @@ struct StudyTime {
     let monthMinutes: Int
     let dayHours: Int
     let dayMinutes: Int
-    let semesterHours: Int
-    let semesterMinutes: Int
     
-    init(yearHours: Int, yearMinutes: Int, monthHours: Int, monthMinutes: Int, dayHours: Int, dayMinutes: Int, semesterHours: Int, semesterMinutes: Int) {
+    init(yearHours: Int, yearMinutes: Int, monthHours: Int, monthMinutes: Int, dayHours: Int, dayMinutes: Int) {
         self.yearHours = yearHours
         self.yearMinutes = yearMinutes
         self.monthHours = monthHours
         self.monthMinutes = monthMinutes
         self.dayHours = dayHours
         self.dayMinutes = dayMinutes
-        self.semesterHours = semesterHours
-        self.semesterMinutes = semesterMinutes
     }
     
     init() {
@@ -35,7 +31,5 @@ struct StudyTime {
         self.monthMinutes = 0
         self.dayHours = 0
         self.dayMinutes = 0
-        self.semesterHours = 0
-        self.semesterMinutes = 0
     }
 }

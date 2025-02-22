@@ -102,7 +102,7 @@ struct RecordView: View {
     
     // 데이터 불러오기
     func loadData() -> Void {
-        studyTimeInteractor.getStudyTime(StudyTime: $studyTime)
+        studyTimeInteractor.getStudyTime(StudyTime: $studyTime, date: selectedDate)
         calendarDataInteractor.getAllStudy(studyRecords: $allStudy)
     }
     

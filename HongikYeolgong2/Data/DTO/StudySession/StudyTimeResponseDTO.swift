@@ -14,6 +14,4 @@ struct StudyTimeResponseDTO: Decodable {
     let monthMinutes: Int
     let dayHours: Int
     let dayMinutes: Int
-    let semesterHours: Int
-    let semesterMinutes: Int
 }
