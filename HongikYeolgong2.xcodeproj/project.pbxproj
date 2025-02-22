@@ -162,6 +162,7 @@
 		98A1F8112D69D08C009B2DA6 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F80E2D69D08C009B2DA6 /* Secrets-dev.xcconfig */; };
 		98A1F8132D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F8122D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 */; };
 		98A1F8152D69D194009B2DA6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F8142D69D194009B2DA6 /* GoogleService-Info.plist */; };
+		98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8162D69D860009B2DA6 /* SharedView.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
 		98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */; };
@@ -347,6 +348,7 @@
 		98A1F80F2D69D08C009B2DA6 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		98A1F8122D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
 		98A1F8142D69D194009B2DA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		98A1F8162D69D860009B2DA6 /* SharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedView.swift; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeInteractor.swift; sourceTree = "<group>"; };
@@ -702,6 +704,7 @@
 			children = (
 				98F9D8422CDA2DE100DE12BB /* Component */,
 				475B86DE2CA1AF1E000534B2 /* RecordView.swift */,
+				98A1F8162D69D860009B2DA6 /* SharedView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -1287,6 +1290,7 @@
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */,
+				98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */,
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
 				478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,

@@ -20,6 +20,8 @@ struct RecordView: View {
     @State private var selectedDate: Date = Date()
     @State private var shareImage: UIImage?
     
+    @State private var isShareSheetPresented: Bool = false
+    
     var body: some View {
         NetworkStateView(
             loadables: [AnyLoadable($studyTime), AnyLoadable($allStudy)],
@@ -53,6 +55,15 @@ struct RecordView: View {
             .onAppear(perform: loadData)
         }
         .modifier(IOSBackground())
+        .fullScreenCover(isPresented: $isShareSheetPresented) {
+            if let shareImage = shareImage {
+                SharedView(isPresented: $isShareSheetPresented, image: shareImage)
+            }
+        }
+        .transition(.move(edge: .bottom))
+        .onChange(of: selectedDate) { selectedDate in
+            studyTimeInteractor.getStudyTime(StudyTime: $studyTime, date: selectedDate)
+        }
     }
     
     // 기록 관련 컴포넌트
