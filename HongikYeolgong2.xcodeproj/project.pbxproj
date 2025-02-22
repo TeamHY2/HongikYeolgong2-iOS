@@ -163,6 +163,7 @@
 		98A1F8132D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F8122D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 */; };
 		98A1F8152D69D194009B2DA6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F8142D69D194009B2DA6 /* GoogleService-Info.plist */; };
 		98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8162D69D860009B2DA6 /* SharedView.swift */; };
+		98A1F8192D69DA68009B2DA6 /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
 		98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */; };
@@ -349,6 +350,7 @@
 		98A1F8122D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
 		98A1F8142D69D194009B2DA6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		98A1F8162D69D860009B2DA6 /* SharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedView.swift; sourceTree = "<group>"; };
+		98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeInteractor.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */,
 				473E8EB12CCE5267000F102C /* SystemOverlay.swift */,
 				478F84362CD30A8F0097CAA1 /* IOSBackground.swift */,
+				98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
+				98A1F8192D69DA68009B2DA6 /* ToastModifier.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */,
 				98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */,

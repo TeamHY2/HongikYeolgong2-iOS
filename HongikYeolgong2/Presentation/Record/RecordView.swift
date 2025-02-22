@@ -21,6 +21,7 @@ struct RecordView: View {
     @State private var shareImage: UIImage?
     
     @State private var isShareSheetPresented: Bool = false
+    @State private var isToastShow: Bool = false
     
     var body: some View {
         NetworkStateView(
@@ -57,13 +58,21 @@ struct RecordView: View {
         .modifier(IOSBackground())
         .fullScreenCover(isPresented: $isShareSheetPresented) {
             if let shareImage = shareImage {
-                SharedView(isPresented: $isShareSheetPresented, image: shareImage)
+                SharedView(isPresented: $isShareSheetPresented, isToastShow: $isToastShow, image: shareImage)
             }
         }
         .transition(.move(edge: .bottom))
+        .onChange(of: shareImage) { newValue in
+            if newValue != nil {
+                isShareSheetPresented = true
+            }
+        }
         .onChange(of: selectedDate) { selectedDate in
             studyTimeInteractor.getStudyTime(StudyTime: $studyTime, date: selectedDate)
         }
+        .toast(isToastShow: $isToastShow,
+               iconImage: Image(.checkCircle),
+               text: "이미지가 저장되었습니다.")
     }
     
     // 기록 관련 컴포넌트
