@@ -58,7 +58,6 @@ struct CalendarCell: View {
                             .frame(width: 38.adjustToScreenWidth,height: 38.adjustToScreenHeight)
             )
             .opacity(isVisible ? 0 : 1)
-//            .overlay(isVisible || isSelected ? nil : Color.dark.opacity(0.8))
             .animation(.easeOut(duration: 0.12), value: isSelected)
         }
         .disabled(isVisible)
@@ -106,9 +105,9 @@ struct CalendarCell: View {
     private func getForegroundStyle() -> Color {
         switch cellStyle {
             case .dayCount00: return .gray300.opacity(isSelected ? 1 : 0.3)
-            case .dayCount01: return .gray100.opacity(isSelected ? 1 : 0.3)
-            case .dayCount02: return .white.opacity(isSelected ? 1 : 0.3)
-            case .dayCount03: return .gray600.opacity(isSelected ? 1 : 0.3)
+            case .dayCount01: return .gray100.opacity(isSelected ? 1 : 0.2)
+            case .dayCount02: return .white.opacity(isSelected ? 1 : 0.1)
+            case .dayCount03: return .gray600.opacity(isSelected ? 1 : 0.05)
         }
     }
 }
