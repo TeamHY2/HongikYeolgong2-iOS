@@ -36,7 +36,7 @@ struct ToastModifier: ViewModifier {
                     .cornerRadius(8)
                     Spacer()
                 }
-                .transition(.move(edge: .top).combined(with: .opacity))
+                .transition(.opacity)
             }
         }
         .onChange(of: isToastShow) { _ in
