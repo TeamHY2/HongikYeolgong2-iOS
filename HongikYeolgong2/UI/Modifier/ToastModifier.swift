@@ -37,6 +37,7 @@ struct ToastModifier: ViewModifier {
                     Spacer()
                 }
                 .transition(.opacity)
+                .animation(.easeOut, value: isToastShow)
             }
         }
         .onChange(of: isToastShow) { _ in

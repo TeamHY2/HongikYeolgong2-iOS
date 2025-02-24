@@ -11,7 +11,7 @@ import Photos
 struct SharedView: View {
     @Binding var isPresented: Bool
     @Binding var isToastShow: Bool
-    @Environment(\.dismiss) var dismiss
+    @State var isErrorToastShow: Bool = false
     var image: UIImage
     
     var body: some View {
@@ -105,6 +105,7 @@ struct SharedView: View {
                 .scaledToFill()
                 .ignoresSafeArea(.all)
         }
+        .toast(isToastShow: $isErrorToastShow, text: "이미지 저장에 실패했습니다. 다시 시도해주세요.")
     }
     
     /// 이미지 저장
@@ -113,21 +114,34 @@ struct SharedView: View {
         // 접근 권한 상태 확인
         if status == .authorized {
             // 이미지 저장
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            isToastShow.toggle()
-            isPresented.toggle()
+            saveToPhotosAlbum()
         } else if status == .denied || status == .restricted {
             print("사진 접근 권한 없음")
         } else {
-            // 접근 권한 여부
+            // 접근 권한 여부 설정
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized {
-                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-                    isToastShow.toggle()
-                    isPresented.toggle()
-                    print("이미지 저장 완료")
+                    saveToPhotosAlbum()
                 } else {
                     print("사용자가 사진 접근을 거부")
+                }
+            }
+        }
+    }
+    
+    // 이미지 앨범 저장 상태 처리
+    private func saveToPhotosAlbum() {
+        PHPhotoLibrary.shared().performChanges({
+            _ = PHAssetChangeRequest.creationRequestForAsset(from: image)
+        }) { success, error in
+            DispatchQueue.main.async {
+                if success {
+                    // 이미지 저장 완료
+                    isToastShow = true
+                    isPresented.toggle()
+                } else {
+                    // 이미지 저장 실패
+                    isErrorToastShow = true
                 }
             }
         }
