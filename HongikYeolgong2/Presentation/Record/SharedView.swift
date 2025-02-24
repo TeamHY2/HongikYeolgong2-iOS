@@ -11,7 +11,11 @@ import Photos
 struct SharedView: View {
     @Binding var isPresented: Bool
     @Binding var isToastShow: Bool
+    // 이미지 저장 실패 애러 토스트 표시
     @State var isErrorToastShow: Bool = false
+    // 권한 설정 차단 알림
+    @State var isSettingModalPresented: Bool = false
+    
     var image: UIImage
     
     var body: some View {
@@ -21,7 +25,6 @@ struct SharedView: View {
                 // 닫기 버튼
                 Button {
                     isPresented.toggle()
-                    //dismiss()
                 } label: {
                     Image(systemName: "xmark")
                         .resizable()
@@ -106,6 +109,18 @@ struct SharedView: View {
                 .ignoresSafeArea(.all)
         }
         .toast(isToastShow: $isErrorToastShow, text: "이미지 저장에 실패했습니다. 다시 시도해주세요.")
+        .overlay {
+            if isSettingModalPresented {
+                ZStack {
+                    Color.black.opacity(0.75).ignoresSafeArea(.all)
+                ModalView(isPresented: $isSettingModalPresented,
+                          title: "사진 저장을 원하시면\n'설정'을 눌러\n'사진'접근을 허용해주세요.",
+                          confirmButtonText: "설정",
+                          cancleButtonText: "확인",
+                          confirmAction: moveToSetting )
+                }
+            }
+        }
     }
     
     /// 이미지 저장
@@ -116,14 +131,14 @@ struct SharedView: View {
             // 이미지 저장
             saveToPhotosAlbum()
         } else if status == .denied || status == .restricted {
-            print("사진 접근 권한 없음")
+            isSettingModalPresented.toggle()
         } else {
             // 접근 권한 여부 설정
             PHPhotoLibrary.requestAuthorization { newStatus in
                 if newStatus == .authorized {
                     saveToPhotosAlbum()
                 } else {
-                    print("사용자가 사진 접근을 거부")
+                    isSettingModalPresented.toggle()
                 }
             }
         }
@@ -144,6 +159,14 @@ struct SharedView: View {
                     isErrorToastShow = true
                 }
             }
+        }
+    }
+    
+    // 앱 설정 경로 이동
+    func moveToSetting() {
+        guard let settingUrl = URL(string: UIApplication.openSettingsURLString) else { return }
+        if UIApplication.shared.canOpenURL(settingUrl) {
+            UIApplication.shared.open(settingUrl)
         }
     }
     
