@@ -17,7 +17,7 @@ struct RecordView: View {
     @State private var currentDate = Date()
     @State private var currentMonth: [Day] = []
     
-    @State private var selectedDate: Date = Date()
+    @State private var selectedDate: Date?
     @State private var shareImage: UIImage?
     
     @State private var isShareSheetPresented: Bool = false

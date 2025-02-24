@@ -65,4 +65,10 @@ extension Date {
         formatter.dateFormat = "M"
         return formatter.string(from: self)
     }
+    
+    func formattedDay() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d"
+        return formatter.string(from: self)
+    }
 }

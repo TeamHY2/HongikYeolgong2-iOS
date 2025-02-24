@@ -25,8 +25,7 @@ struct CaledarView: View {
     @Binding var currentDate: Date
     @Binding var currentMonth: [Day]
     // 사용자 날짜 선택 파악 용도 -> nil 선택 x
-    @State var selectedDateString: String?
-    @Binding var selectedDate: Date
+    @Binding var selectedDate: Date?
     private let calendar = Calendar.current
     
     private let columns = [GridItem(.flexible(), spacing: 5.adjustToScreenWidth),
@@ -96,7 +95,6 @@ struct CaledarView: View {
             }
         }
         .onAppear {
-            //calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)
             currentMonth = makeMonth(date: currentDate, roomUsageInfo: AllStudy)
         }
         .onChange(of: AllStudy) { newAllStudy in
@@ -200,8 +198,7 @@ extension CaledarView {
         }
         
         currentDate = modifieDate
-        selectedDateString = nil
-        selectedDate = Date()
+        selectedDate = nil
         currentMonth = makeMonth(date: currentDate, roomUsageInfo: AllStudy)
     }
     
@@ -210,14 +207,11 @@ extension CaledarView {
         guard let dayNumber = Int(day.dayOfNumber) else { return }
         var components = calendar.dateComponents([.year, .month], from: currentDate)
         components.day = dayNumber
-        
-        // 이전 클릭한 날짜와 동일한 경우 선택해제(nil)
+                // 이전 클릭한 날짜와 동일한 경우 선택해제(nil)
         if let newDate = calendar.date(from: components) {
             if selectedDate == newDate {
-                selectedDateString = nil
-                selectedDate = Date()
+                selectedDate = nil
             } else {
-                selectedDateString = day.dayOfNumber
                 selectedDate = newDate
             }
         }
@@ -225,7 +219,8 @@ extension CaledarView {
     
     // 선택된 날짜인지 확인
     private func isSelected(day: Day) -> Bool {
-        return selectedDateString != nil ? day.dayOfNumber == selectedDateString : true
+        guard let selectedDate = selectedDate else { return true }
+        return day.dayOfNumber == selectedDate.formattedDay()
     }
     
     // 현재 달과 같은지 확인

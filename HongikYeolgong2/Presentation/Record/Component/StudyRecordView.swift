@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct StudyRecordView: View {
-    @Binding var selectedDate: Date
+    @Binding var selectedDate: Date?
     var studyTime: StudyTime
     
     var body: some View {
         VStack(spacing: 0){
-            Text(selectedDate.formattedFullDate())
+            Text(selectedDate?.formattedFullDate() ?? Date().formattedFullDate())
                 .font(.suite(size: 12, weight: .medium))
                 .foregroundStyle(.gray300)
             
