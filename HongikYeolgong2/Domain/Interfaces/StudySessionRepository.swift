@@ -14,5 +14,5 @@ protocol StudySessionRepository {
     func getWiseSaying() -> AnyPublisher<WiseSaying, NetworkError>
     func getWeeklyRanking(weekNumber: Int) -> AnyPublisher<WeeklyRanking, NetworkError>
     func getAllStudyRecords() -> AnyPublisher<[AllStudyRecord], NetworkError>
-    func getStudyTime() -> AnyPublisher<StudyTime, NetworkError>
+    func getStudyTime(date: Date) -> AnyPublisher<StudyTime, NetworkError>
 }

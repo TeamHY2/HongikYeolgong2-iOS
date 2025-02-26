@@ -47,9 +47,28 @@ extension Date {
         return dateFormatter.string(from: self)
     }
     
-    func getDayOffset() -> Int {     
+    func getDayOffset() -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.weekday], from: self)
         return components.weekday! - 1
+    }
+    
+    func formattedFullDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d, yyyy"
+        formatter.locale = Locale(identifier: "en_US")
+        return formatter.string(from: self)
+    }
+    
+    func formattedMonth() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M"
+        return formatter.string(from: self)
+    }
+    
+    func formattedDay() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d"
+        return formatter.string(from: self)
     }
 }
