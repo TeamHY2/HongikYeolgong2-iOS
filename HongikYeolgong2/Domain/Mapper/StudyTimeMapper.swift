@@ -14,6 +14,8 @@ extension StudyTimeResponseDTO {
               monthHours: monthHours,
               monthMinutes: monthMinutes,
               dayHours: dayHours,
-              dayMinutes: dayMinutes)
+              dayMinutes: dayMinutes,
+              semesterHours: semesterHours,
+              semesterMinutes: semesterMinutes)
     }
 }

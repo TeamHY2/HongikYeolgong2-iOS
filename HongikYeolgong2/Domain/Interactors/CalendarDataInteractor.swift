@@ -2,7 +2,7 @@
 import SwiftUI
 
 protocol CalendarDataInteractor {
-    func getAllStudy(studyRecords: LoadableSubject<[AllStudyRecord]>)
+    func getAllStudy(studyRecords: Binding<[AllStudyRecord]>)
 }
 
 
@@ -16,11 +16,13 @@ final class CalendarDataInteractorImpl: CalendarDataInteractor {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getAllStudy(studyRecords: LoadableSubject<[AllStudyRecord]>) {
+    func getAllStudy(studyRecords: Binding<[AllStudyRecord]>) {
         studySessionRepository
             .getAllStudyRecords()
             .receive(on: DispatchQueue.main)
-            .sinkToLoadble(studyRecords)
+            .sink(receiveCompletion: { _ in }) {
+                studyRecords.wrappedValue = $0
+            }
             .store(in: cancleBag)
     }
 }

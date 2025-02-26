@@ -20,13 +20,12 @@ enum MoveType {
 }
 
 struct CaledarView: View {
-    @State var AllStudy : [AllStudyRecord]
-    // 캘린더 표시용도
-    @Binding var currentDate: Date
-    @Binding var currentMonth: [Day]
-    // 사용자 날짜 선택 파악 용도 -> nil 선택 x
-    @Binding var selectedDate: Date?
+    @Environment(\.injected.interactors.calendarDataInteractor) var calendarDataInteractor
+    @State private var AllStudy = [AllStudyRecord]()
+    @State var seletedDate = Date()
+    @State var currentMonth = [Day]()
     private let calendar = Calendar.current
+    
     
     private let columns = [GridItem(.flexible(), spacing: 5.adjustToScreenWidth),
                            GridItem(.flexible(),spacing: 5.adjustToScreenWidth),
@@ -40,13 +39,13 @@ struct CaledarView: View {
         VStack(spacing: 0) {
             // header
             HStack(spacing: 0) {
-                Text(currentDate.getMonthString())
+                Text(seletedDate.getMonthString())
                     .font(.suite(size: 24, weight: .bold))
                     .foregroundStyle(Color.gray100)
                 
                 Spacer().frame(width: 8.adjustToScreenWidth)
                 
-                Text(currentDate.getYearString())
+                Text(seletedDate.getYearString())
                     .font(.suite(size: 24, weight: .bold))
                     .foregroundStyle(Color.gray100)
                 
@@ -63,9 +62,8 @@ struct CaledarView: View {
                     Button(action: {
                         changeMonth(.next)
                     }) {
-                        Image(isCurrentMonth() ? .isCalendarRightDisabled : .icCalendarRight)
+                        Image(.icCalendarRight)
                     }
-                    .disabled(isCurrentMonth())
                 }
             }
             
@@ -85,20 +83,20 @@ struct CaledarView: View {
             Spacer().frame(height: 8.adjustToScreenHeight)
             
 //             seleteMonth가 변경될때마다 makeMonth의 값을 받아서 currentMonth에 업데이트
-            LazyVGrid(columns: columns, spacing: 7.adjustToScreenHeight) {
-                ForEach(currentMonth, id: \.id) { day in
-                    CalendarCell(dayInfo: day,
-                                 isSelected: isSelected(day: day)) {
-                        selectDate(day: day)
-                    }
+            LazyVGrid(columns: columns, spacing: 5.adjustToScreenHeight) {
+                ForEach(currentMonth, id: \.id) {
+                    CalendarCell(dayInfo: $0)
                 }
             }
+            
+            Spacer()
         }
         .onAppear {
-            currentMonth = makeMonth(date: currentDate, roomUsageInfo: AllStudy)
+            calendarDataInteractor.getAllStudy(studyRecords: $AllStudy)            
+            currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
         }
         .onChange(of: AllStudy) { newAllStudy in
-            currentMonth = makeMonth(date: currentDate, roomUsageInfo: newAllStudy)
+            currentMonth = makeMonth(date: seletedDate, roomUsageInfo: newAllStudy)
         }
     }
 }
@@ -172,60 +170,34 @@ extension CaledarView {
     }
     
     func changeMonth(_ moveType: MoveType) {
-        var modifieDate: Date!
+        var currentDate: Date!
         
         switch moveType {
         case .current:
-            modifieDate = Date()
+            currentDate = Date()
         case .next:
-            modifieDate = plusMonth(date: currentDate)
+            currentDate = plusMonth(date: seletedDate)
         case .prev:
-            modifieDate = minusMonth(date: currentDate)
+            currentDate = minusMonth(date: seletedDate)
         }
         
         // 현재보다 더 미래의 월이 선택된 경우
-        let maximumDateValidate = calendar.compare(modifieDate, to: Date(), toGranularity: .month)
+        let maximumDateValidate = calendar.compare(currentDate, to: Date(), toGranularity: .month)
         
         // 날짜이동 최소값 날짜생성
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM"
         let minimumDate = formatter.date(from: "2021/01")!
-        let mimumDateValidate = calendar.compare(modifieDate, to: minimumDate, toGranularity: .month)
+        let mimumDateValidate = calendar.compare(currentDate, to: minimumDate, toGranularity: .month)
         
         guard maximumDateValidate != .orderedDescending,
               mimumDateValidate != .orderedAscending else {
             return
         }
         
-        currentDate = modifieDate
-        selectedDate = nil
-        currentMonth = makeMonth(date: currentDate, roomUsageInfo: AllStudy)
-    }
-    
-    // 날짜 선택 함수
-    private func selectDate(day: Day) {
-        guard let dayNumber = Int(day.dayOfNumber) else { return }
-        var components = calendar.dateComponents([.year, .month], from: currentDate)
-        components.day = dayNumber
-                // 이전 클릭한 날짜와 동일한 경우 선택해제(nil)
-        if let newDate = calendar.date(from: components) {
-            if selectedDate == newDate {
-                selectedDate = nil
-            } else {
-                selectedDate = newDate
-            }
-        }
-    }
-    
-    // 선택된 날짜인지 확인
-    private func isSelected(day: Day) -> Bool {
-        guard let selectedDate = selectedDate else { return true }
-        return day.dayOfNumber == selectedDate.formattedDay()
-    }
-    
-    // 현재 달과 같은지 확인
-    private func isCurrentMonth() -> Bool {
-        return calendar.compare(currentDate, to: Date(), toGranularity: .month) == .orderedSame
+        seletedDate = currentDate
+        
+        currentMonth = makeMonth(date: seletedDate, roomUsageInfo: AllStudy)
     }
 }
 
