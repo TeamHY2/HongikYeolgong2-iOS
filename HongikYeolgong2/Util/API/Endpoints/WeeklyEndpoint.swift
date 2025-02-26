@@ -19,7 +19,7 @@ enum WeeklyEndpoint: EndpointProtocol {
 
     case getAllStudyRecords
 
-    case getStudyTime(date: Date)
+    case getStudyTime
 
 }
 
@@ -64,9 +64,6 @@ extension WeeklyEndpoint {
             return [URLQueryItem(name: "date", value: date)]
         case let .getWeeklyRanking(yearWeek):
             return [URLQueryItem(name: "yearWeek", value: "\(yearWeek)")]
-            case let .getStudyTime(date):
-                let dateString = date.toDateString()
-                return [URLQueryItem(name: "date", value: "\(dateString)")]
         default:
             return nil
         }
