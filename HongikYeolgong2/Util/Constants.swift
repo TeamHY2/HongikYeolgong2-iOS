@@ -18,7 +18,6 @@ struct SecretKeys {
     static let serviceID = Bundle.main.infoDictionary?["ServiceID"] as? String ?? ""
     static let ampliKey = Bundle.main.infoDictionary?["AmplitudeKey"] as? String ?? ""
     static let appleID = Bundle.main.infoDictionary?["AppleID"] as? String ?? ""
-    static let metaAppID = Bundle.main.infoDictionary?["MetaAppID"] as? String ?? ""
 }
 
 

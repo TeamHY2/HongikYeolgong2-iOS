@@ -133,6 +133,8 @@
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
 		47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */; };
 		47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E250722CCF2BED00267897 /* WiseSaying.swift */; };
+		47F23A6E2D356D6C00F424B8 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 47F23A6D2D356D6C00F424B8 /* AuthKey_843UNB7W58.p8 */; };
+		47F23A702D356E6E00F424B8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 47F23A6F2D356E6E00F424B8 /* GoogleService-Info.plist */; };
 		47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */; };
 		47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */; };
 		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
@@ -297,6 +299,7 @@
 		47A147782CA158E800A91F66 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		47A1477D2CA159E300A91F66 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		47A540722CD0D90F00DC40D0 /* Nickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
 		47A9DCC22CE0DB97001DE76D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -327,6 +330,8 @@
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyInteractor.swift; sourceTree = "<group>"; };
 		47E250722CCF2BED00267897 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
+		47F23A6D2D356D6C00F424B8 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
+		47F23A6F2D356E6E00F424B8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
 		47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
 		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
@@ -449,7 +454,6 @@
 				47D5EDCC2CCBCB6D00ACA469 /* ImageBackground.swift */,
 				473E8EB12CCE5267000F102C /* SystemOverlay.swift */,
 				478F84362CD30A8F0097CAA1 /* IOSBackground.swift */,
-				98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */,
 			);
 			path = Modifier;
 			sourceTree = "<group>";
@@ -707,7 +711,6 @@
 			children = (
 				98F9D8422CDA2DE100DE12BB /* Component */,
 				475B86DE2CA1AF1E000534B2 /* RecordView.swift */,
-				98A1F8162D69D860009B2DA6 /* SharedView.swift */,
 			);
 			path = Record;
 			sourceTree = "<group>";
@@ -901,7 +904,7 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
-				98A1F8142D69D194009B2DA6 /* GoogleService-Info.plist */,
+				47F23A6F2D356E6E00F424B8 /* GoogleService-Info.plist */,
 				470723142CBC222E0046469F /* HongikYeolgong2.entitlements */,
 				4736719C2CB10D7B00527896 /* Info.plist */,
 				4763FFB62CB9133600990336 /* Util */,
@@ -1222,7 +1225,6 @@
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
 				47A1476D2CA147A600A91F66 /* SUITE-ExtraBold.otf in Resources */,
 				47A1476F2CA147A600A91F66 /* SUITE-Light.otf in Resources */,
-				98A1F8132D69D097009B2DA6 /* AuthKey_843UNB7W58.p8 in Resources */,
 				47A147722CA147A600A91F66 /* SUITE-SemiBold.otf in Resources */,
 				47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */,
 				47A1476E2CA147A600A91F66 /* SUITE-Heavy.otf in Resources */,
@@ -1233,6 +1235,8 @@
 				47A147632CA147A600A91F66 /* Pretendard-Black.otf in Resources */,
 				47A147672CA147A600A91F66 /* Pretendard-Light.otf in Resources */,
 				479821D72CA27BE1002357EB /* Launch Screen.storyboard in Resources */,
+				47F23A702D356E6E00F424B8 /* GoogleService-Info.plist in Resources */,
+				47F23A6E2D356D6C00F424B8 /* AuthKey_843UNB7W58.p8 in Resources */,
 				47A1476C2CA147A600A91F66 /* SUITE-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1291,10 +1295,8 @@
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
 				47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */,
 				4789337B2CADC43D00E1D89E /* DropDownPicker.swift in Sources */,
-				98A1F8192D69DA68009B2DA6 /* ToastModifier.swift in Sources */,
 				475B86DD2CA1AEF7000534B2 /* HomeView.swift in Sources */,
 				5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */,
-				98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */,
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
 				478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
@@ -1448,7 +1450,7 @@
 /* Begin XCBuildConfiguration section */
 		47B1D4CA2C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1569,6 +1571,7 @@
 		};
 		47B1D4CD2C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1615,6 +1618,7 @@
 		};
 		47B1D4CE2C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1661,6 +1665,7 @@
 		};
 		47B1D4D02C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1685,6 +1690,7 @@
 		};
 		47B1D4D12C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1709,6 +1715,7 @@
 		};
 		47B1D4D32C9CB1760071B62B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98B5F0092CDB362C007CF5FA /* Secrets-dev.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1728,6 +1735,7 @@
 		};
 		47B1D4D42C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A3DDC52CE3146700FEA779 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
