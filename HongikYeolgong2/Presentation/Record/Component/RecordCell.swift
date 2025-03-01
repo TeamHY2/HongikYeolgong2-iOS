@@ -29,8 +29,12 @@ struct RecordCell: View {
         VStack(alignment: .center ,spacing: 8.adjustToScreenHeight) {
             HStack(spacing: 2.adjustToScreenWidth){
                 Image(getImageForCelltype())
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 16.adjustToScreenWidth,
+                           height: 16.adjustToScreenHeight)
                 Text(getTitleString())
-                    .font(.pretendard(size: 16, weight: .regular))
+                    .font(.suite(size: 12, weight: .medium))
                     .foregroundStyle(.gray200)
             }
             
@@ -55,17 +59,7 @@ struct RecordCell: View {
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)
-                .stroke(
-                    LinearGradient(
-                        colors: [
-                            Color(.sRGB, red: 82/255, green: 82/255, blue: 82/255, opacity: 1),
-                            Color(.sRGB, red: 60/255, green: 60/255, blue: 60/255, opacity: 1),
-                            Color(.sRGB, red: 46/255, green: 46/255, blue: 46/255, opacity: 1)
-                        ],
-                        startPoint: .leading,
-                        endPoint: .trailing
-                    )
-                    , lineWidth: 1)
+                .stroke(.gray800, lineWidth: 1)
         )
     }
     
