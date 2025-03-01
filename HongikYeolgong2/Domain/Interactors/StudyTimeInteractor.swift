@@ -19,10 +19,9 @@ final class StudyTimeInteractorImpl: StudyTimeInteractor {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getStudyTime(StudyTime: LoadableSubject<StudyTime>, date: Date? = Date()) {
-        guard let date = date else { return }
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>, date: Date?) {
         studySessionRepository
-            .getStudyTime(date: date)
+            .getStudyTime(date: date ?? Date())
             .sinkToLoadbleWithoutLoding(StudyTime)
             .store(in: cancelBag)
     }
