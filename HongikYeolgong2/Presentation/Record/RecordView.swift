@@ -116,11 +116,13 @@ struct RecordView: View {
             Spacer().frame(height: 1.adjustToScreenHeight)
             Image(.logo)
                 .resizable()
-                .frame(width: 25, height: 25)
+                .scaledToFit()
+                .frame(width: 22.adjustToScreenWidth,
+                       height: 22.adjustToScreenHeight)
         }
         .padding(.horizontal, 32.adjustToScreenWidth)
         .padding(.top, 32.adjustToScreenHeight)
-        .padding(.bottom, 70.adjustToScreenHeight)
+        .padding(.bottom, 75.adjustToScreenHeight)
         .modifier(IOSBackground())
     }
     
