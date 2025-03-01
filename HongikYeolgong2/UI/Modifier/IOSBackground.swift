@@ -10,11 +10,17 @@ import SwiftUI
 struct IOSBackground: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(Image(.iOSBackground)
-                .resizable()
-                .ignoresSafeArea(.all)
-                .frame(maxWidth: .infinity)
-                .allowsHitTesting(false)
+            .background(
+                ZStack {
+                    Color(red: 12/255, green: 13/255, blue: 17/255)
+                        .ignoresSafeArea()
+
+                    Image(.iOSBackground)
+                        .resizable()
+                        .ignoresSafeArea()
+                        .frame(maxWidth: .infinity)
+                        .allowsHitTesting(false)
+                }
             )
     }
 }
