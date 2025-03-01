@@ -38,13 +38,17 @@ struct RecordView: View {
                         captureAsImage()
                     }
                 } label: {
-                    HStack(spacing: 4){
+                    HStack(spacing: 6.adjustToScreenWidth){
                         Image(.export)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 22.adjustToScreenWidth,
+                                   height: 22.adjustToScreenHeight)
                         Text("기록 공유하기")
-                            .font(.pretendard(size: 16, weight: .bold))
+                            .font(.suite(size: 16, weight: .semibold))
                             .foregroundStyle(.gray100)
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 60)
+                    .frame(maxWidth: .infinity, maxHeight: 52.adjustToScreenHeight)
                     .background(.gray800)
                     .cornerRadius(4)
                 }
@@ -52,7 +56,7 @@ struct RecordView: View {
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .padding(.top, 32.adjustToScreenHeight)
-            .padding(.bottom, 36.adjustToScreenHeight)
+            .padding(.bottom, 28.adjustToScreenHeight)
             .onAppear(perform: loadData)
         }
         .modifier(IOSBackground())
