@@ -93,15 +93,6 @@ struct CalendarCell: View {
         }
     }
     
-    private func getImageForCellStyle() -> ImageResource {
-        switch cellStyle {
-            case .dayCount00: return .dayCount00
-            case .dayCount01: return .dayCount01
-            case .dayCount02: return .dayCount02
-            case .dayCount03: return .dayCount03
-        }
-    }
-    
     private func getForegroundStyle() -> Color {
         switch cellStyle {
             case .dayCount00: return .gray300.opacity(isSelected ? 1 : 0.3)
