@@ -53,9 +53,9 @@ struct SharedView: View {
                         .stroke(
                             LinearGradient(
                                 colors: [
-                                    Color(.sRGB, red: 82/255, green: 82/255, blue: 82/255, opacity: 1),
-                                    Color(.sRGB, red: 60/255, green: 60/255, blue: 60/255, opacity: 1),
-                                    Color(.sRGB, red: 46/255, green: 46/255, blue: 46/255, opacity: 1)
+                                    Color(.sRGB, red: 82/255, green: 82/255, blue: 82/255, opacity: 0.5),
+                                    Color(.sRGB, red: 60/255, green: 60/255, blue: 60/255, opacity: 0.5),
+                                    Color(.sRGB, red: 46/255, green: 46/255, blue: 46/255, opacity: 0.5)
                                 ],
                                 startPoint: .leading,
                                 endPoint: .trailing
