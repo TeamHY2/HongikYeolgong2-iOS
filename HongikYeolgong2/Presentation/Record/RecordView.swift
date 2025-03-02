@@ -113,7 +113,7 @@ struct RecordView: View {
     var snapshotContent: some View {
         VStack(spacing: 0) {
             record
-            Spacer().frame(height: 1.adjustToScreenHeight)
+            Spacer().frame(height: 2.adjustToScreenHeight)
             Image(.logo)
                 .resizable()
                 .scaledToFit()
