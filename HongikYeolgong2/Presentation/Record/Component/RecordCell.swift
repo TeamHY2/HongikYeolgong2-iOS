@@ -46,15 +46,11 @@ struct RecordCell: View {
         .frame(maxWidth: .infinity)
         .frame(height: 76.adjustToScreenHeight)
         .background(
-            
-            LinearGradient(
-                colors: [
-                    Color(.sRGB, red: 18/255, green: 20/255, blue: 24/255, opacity: 1),
-                    Color(.sRGB, red: 20/255, green: 24/255, blue: 33/255, opacity: 1)
-                ],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
+            RadialGradient(colors: [
+                Color(.sRGB, red: 35/255, green: 38/255, blue: 45/255, opacity: 0.2),
+                Color(.sRGB, red: 35/255, green: 38/255, blue: 45/255, opacity: 1)
+            ], center: .center,
+                           startRadius: 80, endRadius: 100)
         )
         .cornerRadius(4)
         .overlay(
