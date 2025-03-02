@@ -76,7 +76,7 @@ struct SharedView: View {
                     HStack(spacing: 4){
                         Image(.downloadSimple)
                         Text("이미지 저장")
-                            .font(.pretendard(size: 16, weight: .semibold))
+                            .font(.suite(size: 16, weight: .semibold))
                             .foregroundStyle(.gray100)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 52.adjustToScreenHeight)
@@ -91,7 +91,7 @@ struct SharedView: View {
                     HStack(spacing: 4){
                         Image(.instagramLogo)
                         Text("인스타 공유")
-                            .font(.pretendard(size: 16, weight: .semibold))
+                            .font(.suite(size: 16, weight: .semibold))
                             .foregroundStyle(.white)
                     }
                     .frame(maxWidth: .infinity, maxHeight: 52.adjustToScreenHeight)
