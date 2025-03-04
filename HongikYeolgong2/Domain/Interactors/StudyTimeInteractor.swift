@@ -8,20 +8,21 @@
 import SwiftUI
 
 protocol StudyTimeInteractor {
-    func getStudyTime(StudyTime: LoadableSubject<StudyTime>)
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>, date: Date?)
 }
 
 final class StudyTimeInteractorImpl: StudyTimeInteractor {
-    private let cancleBag = CancelBag()
+    private let cancelBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     
     init(studySessionRepository: StudySessionRepository) {
         self.studySessionRepository = studySessionRepository
     }
     
-    func getStudyTime(StudyTime: LoadableSubject<StudyTime>) {
+    func getStudyTime(StudyTime: LoadableSubject<StudyTime>, date: Date?) {
         studySessionRepository
-            .getStudyTime()
-            .sinkToLoadable(StudyTime, cancelBag: cancleBag)
+            .getStudyTime(date: date ?? Date())
+            .sinkToLoadbleWithoutLoding(StudyTime)
+            .store(in: cancelBag)
     }
 }

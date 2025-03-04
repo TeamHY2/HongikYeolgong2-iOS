@@ -7,37 +7,74 @@
 
 import SwiftUI
 
+enum RecordCellType{
+    case year
+    case month
+}
+
 struct RecordCell: View {
-    let title: String
+    let celltype: RecordCellType
+    let date: Date
     let hours: Int
     let minutes: Int
     
+    init(celltype: RecordCellType, date: Date?, hours: Int, minutes: Int) {
+        self.celltype = celltype
+        self.date = date ?? Date()
+        self.hours = hours
+        self.minutes = minutes
+    }
+    
     var body: some View {
-        HStack{
-            VStack(alignment: .leading ,spacing: 8.adjustToScreenHeight) {
-                Text(title)
-                    .font(.pretendard(size: 16, weight: .regular))
+        VStack(alignment: .center ,spacing: 8.adjustToScreenHeight) {
+            HStack(spacing: 2.adjustToScreenWidth){
+                Image(getImageForCelltype())
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 16.adjustToScreenWidth,
+                           height: 16.adjustToScreenHeight)
+                Text(getTitleString())
+                    .font(.suite(size: 12, weight: .medium))
                     .foregroundStyle(.gray200)
-                
-                Text("\(hours)H \(minutes)M")
-                    .font(.pretendard(size: 16, weight: .semibold))
-                    .foregroundStyle(.gray100)
-                
             }
-            .padding(.vertical, 18.adjustToScreenHeight)
-            .padding(.leading, 28.adjustToScreenWidth)
-            Spacer()
+            
+            Text("\(hours)H \(minutes)M")
+                .font(.pretendard(size: 16, weight: .bold))
+                .foregroundStyle(.gray100)
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: 88.adjustToScreenHeight)
-        .background(.gray800)
+        .frame(maxWidth: .infinity)
+        .frame(height: 76.adjustToScreenHeight)
+        .background(
+            RadialGradient(colors: [
+                Color(.sRGB, red: 35/255, green: 38/255, blue: 45/255, opacity: 0.2),
+                Color(.sRGB, red: 35/255, green: 38/255, blue: 45/255, opacity: 1)
+            ], center: .center,
+                           startRadius: 80, endRadius: 100)
+        )
         .cornerRadius(4)
         .overlay(
             RoundedRectangle(cornerRadius: 4)
-                .stroke(.gray600, lineWidth: 1)
+                .stroke(.gray800, lineWidth: 1)
         )
+    }
+    
+    private func getImageForCelltype() -> ImageResource {
+        switch celltype {
+            case .year:
+                    .clock
+            case .month:
+                    .calendarDots
+        }
+    }
+    
+    private func getTitleString() -> String {
+        switch celltype {
+            case .year:
+                date.getYearString() + "년"
+            case .month:
+                date.formattedMonth() + "월"
+        }
     }
 }
 
-#Preview {
-    RecordCell(title: "연간", hours: 200, minutes: 4)
-}

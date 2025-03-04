@@ -9,27 +9,6 @@ import Combine
 
 
 extension Publisher {
-    /// Loadable타입 전용 sink
-    /// - 통신 상태에 따라 상태값 관리
-    func sinkToLoadable<T>(
-        _ loadableSubject: LoadableSubject<T>,
-        cancelBag: CancelBag
-    ) {
-        loadableSubject.wrappedValue.setLoading()
-        
-        self.sink { completion in
-            switch completion {
-            case .failure(let error):
-                    loadableSubject.wrappedValue.setError(error: error as! NetworkError)
-            case .finished:
-                break
-            }
-        } receiveValue: { value in
-            loadableSubject.wrappedValue.setSuccess(value: value as! T)
-        }
-        .store(in: cancelBag)
-    }
-    
     /// 전역 데이터 전용 loadble
     /// - loadableSubject: loadable타입 바인딩용
     /// - receiveValueHandler: 통신 성공 시 전역 데이터 관리용 -> 없을 경우 Loadable만 관리 일반용으로 사용
@@ -42,6 +21,31 @@ extension Publisher {
         // 로딩 상태로 전환
         loadableSubject.wrappedValue.setLoading()
         
+        return sink { completion in
+            switch completion {
+            case .failure(let error):
+                    loadableSubject.wrappedValue.setError(error: error as! NetworkError)
+            case .finished:
+                break
+            }
+        } receiveValue: { value in
+            // receiveValueHandler가 있을 경우에는 loadable -> true로 반환
+            if let handler = receiveValueHandler {
+                // 상태 체크 용도, handler 사용할 경우
+                handler(value)
+                loadableSubject.wrappedValue.setSuccess(value: true as! LoadableType)
+            } else {
+                // 데이터 전달 용도, handler 사용 x
+                loadableSubject.wrappedValue.setSuccess(value: value as! LoadableType)
+            }
+        }
+    }
+    
+    /// 로딩 상태 외부 처리 용도
+    func sinkToLoadbleWithoutLoding<LoadableType, HandlerType>(
+        _ loadableSubject: LoadableSubject<LoadableType>,
+        receiveValueHandler: ((HandlerType) -> Void)? = nil
+    ) -> AnyCancellable where Output == HandlerType {
         return sink { completion in
             switch completion {
             case .failure(let error):

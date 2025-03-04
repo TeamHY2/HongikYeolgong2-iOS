@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "day_count00.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "day_count00@2x.png",
+      "filename" : "Clock.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "day_count00@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

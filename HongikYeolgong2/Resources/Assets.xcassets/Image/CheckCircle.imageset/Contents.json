@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "day_count01.png",
+      "filename" : "CheckCircle (1).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "day_count01@2x.png",
+      "filename" : "CheckCircle.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "day_count01@3x.png",
+      "filename" : "CheckCircle 1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
