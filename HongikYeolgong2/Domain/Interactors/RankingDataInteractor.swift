@@ -79,7 +79,7 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
     
     // 연도별 주차 추출 (24년 10주차 -> 202410 형태)
     func getWeekOfYear(date: Date) -> Int {
-        var calendar = Calendar.current
+        var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
         
         let weekOfYear = calendar.component(.weekOfYear, from: date)
@@ -91,7 +91,7 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
     
     // 주차 이동 후 연도별 주차 반환
     func changeWeek(by offset: Int) -> Int {
-        var calendar = Calendar.current
+        var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
         baseDate = calendar.date(byAdding: .weekOfYear, value: offset, to: baseDate) ?? baseDate
         
