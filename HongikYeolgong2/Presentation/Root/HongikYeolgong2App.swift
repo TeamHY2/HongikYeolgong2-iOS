@@ -10,6 +10,7 @@ import AmplitudeSwift
 
 @main
 struct HongikYeolgong2App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let enviroment = AppEnviroment.bootstrap()
     
     var body: some Scene {

@@ -158,6 +158,8 @@
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
 		981D050C2D6F69080058D0C5 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */; };
 		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
+		98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98691FAD2D86C5AD00123861 /* AppDelegate.swift */; };
+		98691FB02D86C62200123861 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 98691FAF2D86C62200123861 /* FirebaseMessaging */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98A1F8102D69D08C009B2DA6 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F80F2D69D08C009B2DA6 /* Secrets-prod.xcconfig */; };
 		98A1F8112D69D08C009B2DA6 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F80E2D69D08C009B2DA6 /* Secrets-dev.xcconfig */; };
@@ -346,6 +348,7 @@
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
+		98691FAD2D86C5AD00123861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98A1F80E2D69D08C009B2DA6 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98A1F80F2D69D08C009B2DA6 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
@@ -373,6 +376,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98691FB02D86C62200123861 /* FirebaseMessaging in Frameworks */,
 				470C7B402CF456E500C46690 /* FirebaseRemoteConfig in Frameworks */,
 				47F71B5F2CDC813A0044DEC5 /* FirebaseDatabase in Frameworks */,
 				47F71B612CDC813A0044DEC5 /* FirebaseFunctions in Frameworks */,
@@ -751,6 +755,7 @@
 			children = (
 				4763FFBB2CB9228B00990336 /* AppEnviroment.swift */,
 				472319EF2CD20057009BA019 /* SystemEventHandler.swift */,
+				98691FAD2D86C5AD00123861 /* AppDelegate.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1119,6 +1124,7 @@
 				47C8154A2CE231810017EA24 /* SwiftJWT */,
 				47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */,
 				470C7B3F2CF456E500C46690 /* FirebaseRemoteConfig */,
+				98691FAF2D86C62200123861 /* FirebaseMessaging */,
 			);
 			productName = HongikYeolgong2;
 			productReference = 47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */;
@@ -1282,6 +1288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */,
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
 				478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */,
@@ -1877,6 +1884,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 47F71B4F2CDC68BC0044DEC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFunctionsCombine-Community";
+		};
+		98691FAF2D86C62200123861 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
