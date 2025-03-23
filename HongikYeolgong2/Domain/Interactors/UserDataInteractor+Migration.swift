@@ -143,6 +143,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     
     /// 로그아웃
     func logout() {
+        clearFCMTokenn()
         appState[\.userSession] = .unauthenticated
         KeyChainManager.deleteItem(key: .accessToken)
     }
@@ -290,7 +291,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             .store(in: cancleBag)
     }
     
-    // FCM Token 업데이트
+    /// FCM Token 업데이트
     func updateFCMToken() {
         // 업데이트 여부 확인
         let userDefaults = UserDefaults.standard
@@ -306,6 +307,21 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 }
                 .store(in: cancleBag)
         }
+    }
+    
+    /// FCM Token 지우기
+    /// 로그아웃 사용
+    private func clearFCMTokenn() {
+        let userDefaults = UserDefaults.standard
+        // 공백으로 업데이트
+        authRepository
+            .updateToken(fcmToken: "clear")
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) { _ in
+                // 업데이트 상태 수정 -> ture : 다음 로그인 시 업데이트 적용 용도
+                userDefaults.setValue(true, forKey: "isFCMTokenUpdated")
+            }
+            .store(in: cancleBag)
     }
 }
 
