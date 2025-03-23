@@ -20,6 +20,7 @@ protocol UserDataInteractor: AnyObject {
     func getUserProfile()
     func withdraw(isLoading: LoadableSubject<Bool>)
     func profileEdit(nickname: String, department: Department, loadbleSubject: LoadableSubject<Bool>)
+    func updateFCMToken()
 }
 
 final class UserDataInteractorImpl: UserDataInteractor {
@@ -151,6 +152,10 @@ final class UserDataInteractorImpl: UserDataInteractor {
     }
     
     func withdraw(isLoading: LoadableSubject<Bool>) {
+        
+    }
+    
+    func updateFCMToken() {
         
     }
 }

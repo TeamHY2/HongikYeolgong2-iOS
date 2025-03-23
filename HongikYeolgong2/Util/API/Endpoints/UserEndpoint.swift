@@ -23,6 +23,9 @@ enum UserEndpoint: EndpointProtocol {
     
     /// 유저 프로필
     case getUserProfile
+    
+    /// FCM토큰 갱신
+    case DeviceToken(fcmToken: String)
 }
 
 extension UserEndpoint {
@@ -31,27 +34,29 @@ extension UserEndpoint {
     }
     var path: String {
         switch self {
-        case .profileEdit:
-            ""
-        case .checkUserNickname:
-            "/duplicate-nickname"
-        case .signUp:
-            "/join"
-        case .getUser:
-            "/me"
-        case .getUserProfile:
-            "/me"
+            case .profileEdit:
+                ""
+            case .checkUserNickname:
+                "/duplicate-nickname"
+            case .signUp:
+                "/join"
+            case .getUser:
+                "/me"
+            case .getUserProfile:
+                "/me"
+            case .DeviceToken:
+                "/device-token"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .profileEdit:
-                .put
-        case  .signUp:
-                .post
-        case .getUser, .checkUserNickname, .getUserProfile:
-                .get
+            case .profileEdit, .DeviceToken:
+                    .put
+            case  .signUp:
+                    .post
+            case .getUser, .checkUserNickname, .getUserProfile:
+                    .get
         }
     }
     
@@ -75,16 +80,18 @@ extension UserEndpoint {
     
     var body: Data? {
         switch self {
-        case let .profileEdit(signUpReqDto):
-            return signUpReqDto.toData()
-        case .checkUserNickname:
-            return nil
-        case let .signUp(signUpReqDto):
-            return signUpReqDto.toData()
-        case .getUser:
-            return nil
-        case .getUserProfile:
-            return nil
+            case let .profileEdit(signUpReqDto):
+                return signUpReqDto.toData()
+            case .checkUserNickname:
+                return nil
+            case let .signUp(signUpReqDto):
+                return signUpReqDto.toData()
+            case .getUser:
+                return nil
+            case .getUserProfile:
+                return nil
+            case .DeviceToken(let fcmToken):
+                return fcmToken.toData()
         }
     }
 }

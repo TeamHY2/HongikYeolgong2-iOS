@@ -289,6 +289,24 @@ final class UserDataMigrationInteractor: UserDataInteractor {
             })
             .store(in: cancleBag)
     }
+    
+    // FCM Token 업데이트
+    func updateFCMToken() {
+        // 업데이트 여부 확인
+        let userDefaults = UserDefaults.standard
+        let isUpdated = userDefaults.bool(forKey: "isFCMTokenUpdated")
+        
+        if isUpdated, let fcmToken = userDefaults.string(forKey: "FCMToken") {
+            authRepository
+                .updateToken(fcmToken: fcmToken)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in }) { _ in
+                    // 업데이트 상태 수정
+                    userDefaults.setValue(false, forKey: "isFCMTokenUpdated")
+                }
+                .store(in: cancleBag)
+        }
+    }
 }
 
 extension UserDataMigrationInteractor {

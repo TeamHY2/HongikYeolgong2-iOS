@@ -61,7 +61,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
     // FCM 토큰 수신
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        // 토큰 관리 로직 추가
-        print("AppDelegate - token: \(String(describing: fcmToken))")
+        updateFCMTokenNeeded(fcmToken: fcmToken)
+    }
+    
+    // FCM 토큰 갱신 여부 판단
+    func updateFCMTokenNeeded(fcmToken: String?) {
+        let userDefaults = UserDefaults.standard
+        let storedToken = userDefaults.string(forKey: "FCMToken")
+        // 기존 등록된 토큰과 다른지 확인
+        if storedToken != fcmToken {
+            userDefaults.setValue(fcmToken, forKey: "FCMToken")
+            // 업데이트 상태 저장
+            userDefaults.setValue(true, forKey: "isFCMTokenUpdated")
+        }
     }
 }
