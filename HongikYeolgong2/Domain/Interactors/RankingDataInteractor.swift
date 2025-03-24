@@ -9,18 +9,16 @@ import SwiftUI
 import Combine
 
 protocol RankingDataInteractor {
-    func getCurrentWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
-    func getNextWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
-    func getPreviosWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>)
+    func getWeeklyRanking()
 }
 
-final class RankingDataInteractorImpl: RankingDataInteractor {
+final class RankingDataInteractorImpl: RankingDataInteractor, ObservableObject {
     let studySessionRepository: StudySessionRepository
     let weeklyRepository: WeeklyRepository
     let cancleBag = CancelBag()
     
-    // 랭킹 기준 날짜
-    var baseDate: Date = Date()
+    @Published var weeklyRanking: WeeklyRanking = WeeklyRanking()
+    @Published var baseDate: Date = Date()
     
     init(studySessionRepository: StudySessionRepository, weeklyRepository: WeeklyRepository) {
         self.studySessionRepository = studySessionRepository
@@ -29,57 +27,22 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
     
     /// 현재 주차의 주간 랭킹을 가져오는 메서드
     /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
-    func getCurrentWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
+    func getWeeklyRanking() {
         let weekNumber = getWeekOfYear(date: baseDate)
         
         studySessionRepository
             .getWeeklyRanking(weekNumber: weekNumber)
             .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: {
-                weeklyRanking.wrappedValue = $0
-            }
-            .store(in: cancleBag)
-    }
-    
-    /// 다음 주차의 주간 랭킹을 가져오는 메서드
-    /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
-    func getNextWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
-        // 기존 날짜 +1주일
-        let weekNumber = changeWeek(by: 1)
-        
-        studySessionRepository
-            .getWeeklyRanking(weekNumber: weekNumber)
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: {
-                weeklyRanking.wrappedValue = $0
-            }
-            .store(in: cancleBag)
-    }
-    
-    /// 이전 주차의 주간 랭킹을 가져오는 메서드
-    /// - Parameter weeklyRanking: 주간 랭킹 데이터 리스트
-    func getPreviosWeeklyRanking(weeklyRanking: Binding<WeeklyRanking>) {
-        // 기존 날짜 -1주일
-        let weekNumber = changeWeek(by: -1)
-        
-        studySessionRepository
-            .getWeeklyRanking(weekNumber: weekNumber)
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: {
-                weeklyRanking.wrappedValue = $0
+            .sink { _ in }
+            receiveValue: {
+                self.weeklyRanking = $0
             }
             .store(in: cancleBag)
     }
     
     // 연도별 주차 추출 (24년 10주차 -> 202410 형태)
     func getWeekOfYear(date: Date) -> Int {
-        var calendar = Calendar.current
+        var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
         
         let weekOfYear = calendar.component(.weekOfYear, from: date)
@@ -89,13 +52,20 @@ final class RankingDataInteractorImpl: RankingDataInteractor {
         return year * 100 + weekOfYear
     }
     
-    // 주차 이동 후 연도별 주차 반환
-    func changeWeek(by offset: Int) -> Int {
-        var calendar = Calendar.current
+    // 주차 이동 후 랭킹 데이터 불러오기
+    func changeWeek(by offset: Int) {
+        var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
         baseDate = calendar.date(byAdding: .weekOfYear, value: offset, to: baseDate) ?? baseDate
         
         print("baseDate: \(baseDate)")
-        return getWeekOfYear(date: baseDate)
+        // 주차 이동 후 데이터 불러오기
+        getWeeklyRanking()
+    }
+    
+    // 미래 주차 필터링
+    func isNextWeekAvailable() -> Bool {
+        let today = Date()
+        return baseDate.formattedFullDate() != today.formattedFullDate()
     }
 }

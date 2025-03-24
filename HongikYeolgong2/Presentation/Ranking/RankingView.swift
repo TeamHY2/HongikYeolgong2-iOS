@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct RankingView: View {
-    @Environment(\.injected.interactors.rankingDataInteractor) var rankingDataInteractor
-    @State private var yearWeek = 0
-    @State private var weeklyRanking: WeeklyRanking = WeeklyRanking()
+    @StateObject private var rankingDataInteractor = RankingDataInteractorImpl(
+            studySessionRepository: StudySessionRepositoryImpl(),
+            weeklyRepository: WeeklyRepositoryImpl()
+        )
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text(weeklyRanking.weekName)
+                Text(rankingDataInteractor.weeklyRanking.weekName)
                     .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundColor(.gray100)
                 
@@ -23,17 +24,18 @@ struct RankingView: View {
                 
                 HStack(spacing: 7.adjustToScreenWidth) {
                     Button(action: {
-                        getPreviosWeeklyRanking()
+                        rankingDataInteractor.changeWeek(by: -1)
                     }, label: {
                         Image(.icCalendarLeft)
                     })
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                     
                     Button(action: {
-                        getNextWeeklyRanking()
+                        rankingDataInteractor.changeWeek(by: 1)
                     }, label: {
-                        Image(.icCalendarRight)
+                        Image(rankingDataInteractor.isNextWeekAvailable() ? .icCalendarRight : .isCalendarRightDisabled)
                     })
+                    .disabled(!rankingDataInteractor.isNextWeekAvailable())
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                 }
             }            
@@ -42,7 +44,7 @@ struct RankingView: View {
                                 bottom: 17.adjustToScreenHeight,
                                 trailing: 32.adjustToScreenWidth))
             
-            RankingListView(departmentRankings: weeklyRanking.departmentRankings)
+            RankingListView(departmentRankings: rankingDataInteractor.weeklyRanking.departmentRankings)
         }
         .onAppear {
             getCurrentWeeklyRanking()
@@ -51,14 +53,6 @@ struct RankingView: View {
     }
     
     func getCurrentWeeklyRanking() {
-        rankingDataInteractor.getCurrentWeeklyRanking(weeklyRanking: $weeklyRanking)
-    }
-    
-    func getNextWeeklyRanking() {
-        rankingDataInteractor.getNextWeeklyRanking(weeklyRanking: $weeklyRanking)
-    }
-    
-    func getPreviosWeeklyRanking() {
-        rankingDataInteractor.getPreviosWeeklyRanking(weeklyRanking: $weeklyRanking)
+        rankingDataInteractor.getWeeklyRanking()
     }
 }
