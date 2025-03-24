@@ -158,6 +158,8 @@
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
 		981D050C2D6F69080058D0C5 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */; };
 		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
+		98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98691FAD2D86C5AD00123861 /* AppDelegate.swift */; };
+		98691FB02D86C62200123861 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 98691FAF2D86C62200123861 /* FirebaseMessaging */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98A1F8102D69D08C009B2DA6 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F80F2D69D08C009B2DA6 /* Secrets-prod.xcconfig */; };
 		98A1F8112D69D08C009B2DA6 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98A1F80E2D69D08C009B2DA6 /* Secrets-dev.xcconfig */; };
@@ -175,6 +177,7 @@
 		98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953E2CE4BA3100278DBD /* Loadable.swift */; };
 		98EC95412CE4BAB600278DBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95402CE4BAB600278DBD /* LoadingView.swift */; };
 		98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95422CE4F9C600278DBD /* Publisher.swift */; };
+		98F63B562D8FFA04009C9017 /* updateTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F63B552D8FFA04009C9017 /* updateTokenResponseDTO.swift */; };
 		98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */; };
 		98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */; };
 		98FB764E2D00A44600BBCB8B /* PromotionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764D2D00A44600BBCB8B /* PromotionData.swift */; };
@@ -346,6 +349,7 @@
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
+		98691FAD2D86C5AD00123861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98A1F80E2D69D08C009B2DA6 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		98A1F80F2D69D08C009B2DA6 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		98EC953E2CE4BA3100278DBD /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		98EC95402CE4BAB600278DBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		98EC95422CE4F9C600278DBD /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		98F63B552D8FFA04009C9017 /* updateTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = updateTokenResponseDTO.swift; sourceTree = "<group>"; };
 		98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionResponseDTO.swift; sourceTree = "<group>"; };
 		98FB764D2D00A44600BBCB8B /* PromotionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionData.swift; sourceTree = "<group>"; };
@@ -373,6 +378,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98691FB02D86C62200123861 /* FirebaseMessaging in Frameworks */,
 				470C7B402CF456E500C46690 /* FirebaseRemoteConfig in Frameworks */,
 				47F71B5F2CDC813A0044DEC5 /* FirebaseDatabase in Frameworks */,
 				47F71B612CDC813A0044DEC5 /* FirebaseFunctions in Frameworks */,
@@ -751,6 +757,7 @@
 			children = (
 				4763FFBB2CB9228B00990336 /* AppEnviroment.swift */,
 				472319EF2CD20057009BA019 /* SystemEventHandler.swift */,
+				98691FAD2D86C5AD00123861 /* AppDelegate.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1022,6 +1029,7 @@
 				47C815472CE227E50017EA24 /* ASTokenRequestDTO.swift */,
 				47C815542CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift */,
 				477BB0692D3645E4002AE141 /* ProfileEditResponseDTO.swift */,
+				98F63B552D8FFA04009C9017 /* updateTokenResponseDTO.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1119,6 +1127,7 @@
 				47C8154A2CE231810017EA24 /* SwiftJWT */,
 				47581ECF2CF01EB200A2EA31 /* AmplitudeSwift */,
 				470C7B3F2CF456E500C46690 /* FirebaseRemoteConfig */,
+				98691FAF2D86C62200123861 /* FirebaseMessaging */,
 			);
 			productName = HongikYeolgong2;
 			productReference = 47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */;
@@ -1282,6 +1291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */,
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,
 				478F843C2CD326DD0097CAA1 /* WeeklyRepositoryImpl.swift in Sources */,
@@ -1290,6 +1300,7 @@
 				47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */,
 				47C815432CE2211D0017EA24 /* SocialLoginRepository.swift in Sources */,
 				470C7B3E2CF4569300C46690 /* RemoteConfigManager.swift in Sources */,
+				98F63B562D8FFA04009C9017 /* updateTokenResponseDTO.swift in Sources */,
 				476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */,
 				478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */,
 				475B86E12CA1AF31000534B2 /* RankingView.swift in Sources */,
@@ -1602,7 +1613,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1649,7 +1660,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1877,6 +1888,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 47F71B4F2CDC68BC0044DEC5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseFunctionsCombine-Community";
+		};
+		98691FAF2D86C62200123861 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

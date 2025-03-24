@@ -28,6 +28,7 @@ struct RootView: View {
                 MainTabView()
                     .onAppear {
                         userDataInteractor.getUserProfile()
+                        userDataInteractor.updateFCMToken()
                     }
                     .systemOverlay(isPresented: $isPromotionPresented) {
                         PromotionPopupView(

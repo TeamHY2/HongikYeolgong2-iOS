@@ -107,6 +107,8 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                     }
                     
                     KeyChainManager.addItem(key: .accessToken, value: loginResDto.accessToken)
+                    // FCM 토큰 업데이트 상태로 변경
+                    UserDefaults.standard.setValue(true, forKey: "isFCMTokenUpdated")
                 }
             )
             .store(in: cancleBag)
@@ -143,6 +145,7 @@ final class UserDataMigrationInteractor: UserDataInteractor {
     
     /// 로그아웃
     func logout() {
+        clearFCMToken()
         appState[\.userSession] = .unauthenticated
         KeyChainManager.deleteItem(key: .accessToken)
     }
@@ -287,6 +290,36 @@ final class UserDataMigrationInteractor: UserDataInteractor {
                 }
                 KeyChainManager.deleteItem(key: .accessToken)
             })
+            .store(in: cancleBag)
+    }
+    
+    /// FCM Token 업데이트
+    func updateFCMToken() {
+        // 업데이트 여부 확인
+        let userDefaults = UserDefaults.standard
+        let isUpdated = userDefaults.bool(forKey: "isFCMTokenUpdated")
+        
+        if isUpdated, let fcmToken = userDefaults.string(forKey: "FCMToken") {
+            authRepository
+                .updateToken(fcmToken: fcmToken)
+                .receive(on: DispatchQueue.main)
+                .sink(receiveCompletion: { _ in }) { _ in
+                    // 업데이트 상태 수정
+                    userDefaults.setValue(false, forKey: "isFCMTokenUpdated")
+                }
+                .store(in: cancleBag)
+        }
+    }
+    
+    /// FCM Token 지우기
+    /// 로그아웃 사용
+    private func clearFCMToken() {
+        let userDefaults = UserDefaults.standard
+        // 공백으로 업데이트
+        authRepository
+            .updateToken(fcmToken: "clear")
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in }) { _ in }
             .store(in: cancleBag)
     }
 }

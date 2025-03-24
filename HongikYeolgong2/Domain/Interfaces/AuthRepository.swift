@@ -16,4 +16,5 @@ protocol AuthRepository {
     func validToken() -> AnyPublisher<TokenValidResponseDTO, NetworkError>
     func getUserProfile() -> AnyPublisher<UserProfile, NetworkError>
     func withdraw() -> AnyPublisher<Void, NetworkError>
+    func updateToken(fcmToken: String) -> AnyPublisher<updateTokenResponseDTO, NetworkError>
 }
