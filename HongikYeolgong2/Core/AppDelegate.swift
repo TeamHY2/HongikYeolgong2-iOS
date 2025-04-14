@@ -49,6 +49,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
         completionHandler([.banner, .sound, .badge])
     }
     
@@ -56,6 +57,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
+        Amplitude.instance.track(eventType: "Push Noti")
         completionHandler()
     }
 }
@@ -71,8 +73,10 @@ extension AppDelegate: MessagingDelegate {
     func updateFCMTokenNeeded(fcmToken: String?) {
         let userDefaults = UserDefaults.standard
         let storedToken = userDefaults.string(forKey: "FCMToken")
+        
         // 기존 등록된 토큰과 다른지 확인
         if storedToken != fcmToken {
+            
             userDefaults.setValue(fcmToken, forKey: "FCMToken")
             // 업데이트 상태 저장
             userDefaults.setValue(true, forKey: "isFCMTokenUpdated")
