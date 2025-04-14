@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseMessaging
-
+import AmplitudeSwift
 
 class AppDelegate: NSObject, UIApplicationDelegate{
     
@@ -16,6 +16,9 @@ class AppDelegate: NSObject, UIApplicationDelegate{
         setupNotification(application: application)
         // 메세지 델리게이트
         Messaging.messaging().delegate = self
+        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+            Amplitude.instance.track(eventType: "Push Noti")
+        }
         return true
     }
     
@@ -56,7 +59,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler()
     }
 }
-
+    
 // MARK: - MessagingDelegate
 extension AppDelegate: MessagingDelegate {
     // FCM 토큰 수신
