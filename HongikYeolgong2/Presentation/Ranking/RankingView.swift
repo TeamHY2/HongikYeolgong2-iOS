@@ -13,6 +13,10 @@ struct RankingView: View {
     @State private var weeklyRanking: WeeklyRanking = WeeklyRanking()
     // 랭킹 기준 날짜
     @State var baseDate: Date = Date()
+    // 년도 주차 변환 수
+    var weekNumber: Int {
+        getWeekOfYear(date: baseDate)
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -38,9 +42,9 @@ struct RankingView: View {
                             getWeeklyRanking()
                         }
                     }, label: {
-                        Image(isNextWeekAvailable() ? .isCalendarRightDisabled : .icCalendarRight)
+                        Image(isNextWeekAvailable() ? .icCalendarRight : .isCalendarRightDisabled)
                     })
-                    .disabled(isNextWeekAvailable())
+                    .disabled(!isNextWeekAvailable())
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                 }
             }            
@@ -58,7 +62,7 @@ struct RankingView: View {
     }
     
     func getWeeklyRanking() {
-        rankingDataInteractor.getWeeklyRanking(weeklyRanking: $weeklyRanking, baseDate: baseDate)
+        rankingDataInteractor.getWeeklyRanking(weeklyRanking: $weeklyRanking, weekNumber: weekNumber)
     }
     
     // 주차 변경
@@ -66,11 +70,22 @@ struct RankingView: View {
         var calendar = Calendar(identifier: .iso8601)
         calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
         self.baseDate = calendar.date(byAdding: .weekOfYear, value: offset, to: baseDate) ?? baseDate
+        completion()
     }
     
     // 미래 주차 필터링
     func isNextWeekAvailable() -> Bool {
-        let today = Date()
-        return baseDate.formattedFullDate() == today.formattedFullDate()
+        let today = getWeekOfYear(date: Date())
+        return weekNumber < today
+    }
+    
+    // 연도별 주차 추출 (24년 10주차 -> 202410 형태)
+    func getWeekOfYear(date: Date) -> Int {
+        var calendar = Calendar(identifier: .iso8601)
+        calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+        
+        let weekOfYear = calendar.component(.weekOfYear, from: date)
+        let year = calendar.component(.yearForWeekOfYear, from: date)
+        return year * 100 + weekOfYear
     }
 }
