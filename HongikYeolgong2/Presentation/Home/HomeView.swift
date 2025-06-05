@@ -25,6 +25,7 @@ struct HomeView: View {
     @State private var isShowEndUseModal = false
     @State private var isShowWebView = false
     @State private var isViewOnAppeared = false
+    @State private var homePath: [Page] = []
     
     var body: some View {
         NetworkStateView(
@@ -39,7 +40,7 @@ struct HomeView: View {
     }
     
     var content: some View {
-        NavigationStack {
+        NavigationStack(path: $homePath) {
             VStack(spacing: 0) {
                 WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
                 
@@ -130,7 +131,8 @@ extension HomeView {
     }
     
     func seatButtonTapped() {
-        isShowWebView.toggle()
+//        isShowWebView.toggle()
+        homePath.append(.webView(title: "좌석", url: SecretKeys.roomStatusUrl))
     }
     
     func addButtonTapped() {
