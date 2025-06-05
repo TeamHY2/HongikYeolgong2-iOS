@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct updateTokenResponseDTO: Decodable {
+struct UpdateTokenResponseDTO: Decodable {
     let id: Int
     let username: String
     let nickname: String

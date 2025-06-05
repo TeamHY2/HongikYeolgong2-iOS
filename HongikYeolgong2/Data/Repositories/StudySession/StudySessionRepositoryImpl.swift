@@ -9,6 +9,19 @@ import Foundation
 import Combine
 
 final class StudySessionRepositoryImpl: StudySessionRepository {
+    func getLibrayHour() -> AnyPublisher<LibraryHour, NetworkError> {
+        return Future<LibraryHour, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<LibraryHour> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getLibraryHour)
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     func getWeeklyStudyRecords() -> AnyPublisher<[WeeklyStudyRecord], NetworkError> {
         return Future<[WeeklyStudyRecord], NetworkError> { promise in
             Task {

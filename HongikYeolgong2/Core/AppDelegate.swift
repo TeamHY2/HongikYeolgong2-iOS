@@ -8,7 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseMessaging
-
+import AmplitudeSwift
 
 class AppDelegate: NSObject, UIApplicationDelegate{
     
@@ -16,6 +16,9 @@ class AppDelegate: NSObject, UIApplicationDelegate{
         setupNotification(application: application)
         // 메세지 델리게이트
         Messaging.messaging().delegate = self
+        if let notification = launchOptions?[.remoteNotification] as? [AnyHashable: Any] {
+            Amplitude.instance.track(eventType: "Push Noti")
+        }
         return true
     }
     
@@ -46,6 +49,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
         completionHandler([.banner, .sound, .badge])
     }
     
@@ -53,10 +57,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 didReceive response: UNNotificationResponse,
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
+        Amplitude.instance.track(eventType: "Push Noti")
         completionHandler()
     }
 }
-
+    
 // MARK: - MessagingDelegate
 extension AppDelegate: MessagingDelegate {
     // FCM 토큰 수신
@@ -68,8 +73,10 @@ extension AppDelegate: MessagingDelegate {
     func updateFCMTokenNeeded(fcmToken: String?) {
         let userDefaults = UserDefaults.standard
         let storedToken = userDefaults.string(forKey: "FCMToken")
+        
         // 기존 등록된 토큰과 다른지 확인
         if storedToken != fcmToken {
+            
             userDefaults.setValue(fcmToken, forKey: "FCMToken")
             // 업데이트 상태 저장
             userDefaults.setValue(true, forKey: "isFCMTokenUpdated")
