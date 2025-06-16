@@ -138,6 +138,8 @@
 		47DF041F2CBE7A29007E58A7 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DF041E2CBE7A29007E58A7 /* Encodable+.swift */; };
 		47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */; };
 		47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E250722CCF2BED00267897 /* WiseSaying.swift */; };
+		47E7DACE2DFFE14E005AC1EB /* FocusModeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E7DACD2DFFE14E005AC1EB /* FocusModeView.swift */; };
+		47E7DAD02DFFEE91005AC1EB /* FocusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E7DACF2DFFEE91005AC1EB /* FocusCell.swift */; };
 		47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */; };
 		47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */; };
 		47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */; };
@@ -337,6 +339,8 @@
 		47DF041E2CBE7A29007E58A7 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		47E250702CCF274400267897 /* WeeklyStudyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyStudyInteractor.swift; sourceTree = "<group>"; };
 		47E250722CCF2BED00267897 /* WiseSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiseSaying.swift; sourceTree = "<group>"; };
+		47E7DACD2DFFE14E005AC1EB /* FocusModeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusModeView.swift; sourceTree = "<group>"; };
+		47E7DACF2DFFEE91005AC1EB /* FocusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCell.swift; sourceTree = "<group>"; };
 		47F4F6962CC88FBB00543D24 /* SignUpRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequestDTO.swift; sourceTree = "<group>"; };
 		47F4F6982CC89A6900543D24 /* SignUpResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponseDTO.swift; sourceTree = "<group>"; };
 		47F634FD2CC3E8A40034EAA9 /* NicknameCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameCheckDTO.swift; sourceTree = "<group>"; };
@@ -705,6 +709,7 @@
 		47A147342CA1370200A91F66 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				47E7DACC2DFFE13E005AC1EB /* FocusMode */,
 				47D5EDC52CCB66BD00ACA469 /* StudyTimer */,
 				4780043A2CCA8E0200FFAF00 /* WeeklyStudy */,
 				4736719D2CB1208D00527896 /* WiseSaying */,
@@ -1007,6 +1012,15 @@
 				470723042CBC180D0046469F /* NetworkError.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		47E7DACC2DFFE13E005AC1EB /* FocusMode */ = {
+			isa = PBXGroup;
+			children = (
+				47E7DACD2DFFE14E005AC1EB /* FocusModeView.swift */,
+				47E7DACF2DFFEE91005AC1EB /* FocusCell.swift */,
+			);
+			path = FocusMode;
 			sourceTree = "<group>";
 		};
 		47F4F69E2CC8E45A00543D24 /* Services */ = {
@@ -1328,6 +1342,7 @@
 				478004502CCABEFF00FFAF00 /* WeeklyStudyRecord.swift in Sources */,
 				98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */,
 				47BACCF72CA164BA00295DAC /* Font+.swift in Sources */,
+				47E7DAD02DFFEE91005AC1EB /* FocusCell.swift in Sources */,
 				98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */,
 				98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
@@ -1357,6 +1372,7 @@
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
 				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
+				47E7DACE2DFFE14E005AC1EB /* FocusModeView.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
@@ -1595,7 +1611,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -1617,7 +1633,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1642,7 +1658,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
@@ -1664,7 +1680,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
