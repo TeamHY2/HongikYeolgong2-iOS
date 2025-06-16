@@ -10,6 +10,10 @@ import SwiftUI
 
 import AmplitudeSwift
 
+class HomeNavigation: ObservableObject {
+    @Published var path: [Page] = []
+}
+
 struct HomeView: View {
     // MARK: - Properties
     @Environment(\.injected.appState) var appState
@@ -25,6 +29,7 @@ struct HomeView: View {
     @State private var isShowEndUseModal = false
     @State private var isShowWebView = false
     @State private var isViewOnAppeared = false
+    @StateObject private var homeNavigation = HomeNavigation()
     
     var body: some View {
         NetworkStateView(
@@ -39,7 +44,7 @@ struct HomeView: View {
     }
     
     var content: some View {
-        NavigationStack {
+        NavigationStack(path: $homeNavigation.path) {
             VStack(spacing: 0) {
                 WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
                 
@@ -130,7 +135,8 @@ extension HomeView {
     }
     
     func seatButtonTapped() {
-        isShowWebView.toggle()
+//        isShowWebView.toggle()
+        homeNavigation.path.append(.webView(title: "좌석", url: SecretKeys.roomStatusUrl))
     }
     
     func addButtonTapped() {
