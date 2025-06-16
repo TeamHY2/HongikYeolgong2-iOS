@@ -167,6 +167,9 @@
 		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
 		98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98691FAD2D86C5AD00123861 /* AppDelegate.swift */; };
 		98691FB02D86C62200123861 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 98691FAF2D86C62200123861 /* FirebaseMessaging */; };
+		98897D0E2E0067CB005B7CA6 /* StudyStartRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */; };
+		98897D102E00687B005B7CA6 /* StudyEndRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */; };
+		98897D122E006891005B7CA6 /* StudyStatusResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98897D112E006891005B7CA6 /* StudyStatusResponseDTO.swift */; };
 		9892B5D92CEF6BDF0017AF03 /* NetworkServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */; };
 		98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8162D69D860009B2DA6 /* SharedView.swift */; };
 		98A1F8192D69DA68009B2DA6 /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */; };
@@ -360,6 +363,9 @@
 		981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
 		98691FAD2D86C5AD00123861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStartRequestDTO.swift; sourceTree = "<group>"; };
+		98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyEndRequestDTO.swift; sourceTree = "<group>"; };
+		98897D112E006891005B7CA6 /* StudyStatusResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusResponseDTO.swift; sourceTree = "<group>"; };
 		9892B5D82CEF6BDF0017AF03 /* NetworkServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTests.swift; sourceTree = "<group>"; };
 		98A1F8162D69D860009B2DA6 /* SharedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedView.swift; sourceTree = "<group>"; };
 		98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
@@ -592,6 +598,9 @@
 				473E8EB92CCEA702000F102C /* StudySessionResponseDTO.swift */,
 				4786A10F2CCA351A008635A4 /* WeeklyStudySessionDTO.swift */,
 				98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */,
+				98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */,
+				98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */,
+				98897D112E006891005B7CA6 /* StudyStatusResponseDTO.swift */,
 			);
 			path = StudySession;
 			sourceTree = "<group>";
@@ -1365,6 +1374,7 @@
 				47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */,
 				478F84412CD33F620097CAA1 /* WeekFieldResponseDTO.swift in Sources */,
 				473E8EBA2CCEA702000F102C /* StudySessionResponseDTO.swift in Sources */,
+				98897D0E2E0067CB005B7CA6 /* StudyStartRequestDTO.swift in Sources */,
 				4752A27D2CB96EB00073B784 /* CancleBag.swift in Sources */,
 				477BB06A2D3645E4002AE141 /* ProfileEditResponseDTO.swift in Sources */,
 				47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */,
@@ -1402,6 +1412,7 @@
 				4763FFB52CB90EBD00990336 /* RootView.swift in Sources */,
 				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
 				478589FE2CE4973B0027ED32 /* MenuItem.swift in Sources */,
+				98897D102E00687B005B7CA6 /* StudyEndRequestDTO.swift in Sources */,
 				47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
@@ -1416,6 +1427,7 @@
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
 				470723182CBC29510046469F /* AppleLoginManager.swift in Sources */,
 				5E847A6E2CDBD4B60034C2A7 /* CalendarView.swift in Sources */,
+				98897D122E006891005B7CA6 /* StudyStatusResponseDTO.swift in Sources */,
 				47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */,
 				4786A10C2CCA34A7008635A4 /* StudySessionRepositoryImpl.swift in Sources */,
 				470723132CBC1BF10046469F /* BaseResponse.swift in Sources */,
