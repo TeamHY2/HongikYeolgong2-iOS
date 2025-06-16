@@ -24,7 +24,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     private let cancleBag = CancelBag()
     private let studySessionRepository: StudySessionRepository
     private let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-    private let addedTime: TimeInterval = .init(hours: 6)
+    private var addedTime: TimeInterval = .init(hours: 6)
     
     private var lastTime: Date?
     private var subscription: AnyCancellable?
@@ -37,21 +37,28 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     /// 스터디세션을 시작합니다.
     func startStudy() {
-        let startTime = appState.value.studySession.startTime
-        let timeDiff = Date().timeIntervalSince(startTime)
-        let timeDiffMinutes = TimeInterval(minutes: Int(timeDiff / 60))
-        let endTime = startTime + addedTime
-        let remainingTime = endTime.timeIntervalSince(startTime) - timeDiffMinutes
-        
-        appState.bulkUpdate { appState in
-            appState.studySession.isStudying = true
-            appState.studySession.endTime = endTime
-            appState.studySession.remainingTime = remainingTime
-        }
-        
-        startTimer()
-        registerNotification(for: .extensionAvailable, endTimeInMinute: remainingTime)
-        registerNotification(for: .urgent, endTimeInMinute: remainingTime)
+        studySessionRepository.getLibrayHour()
+            .sink(receiveCompletion: { _ in
+            }, receiveValue: { [weak self] libraryHour in
+                guard let self = self else { return }
+                addedTime = .init(hours: libraryHour.libraryHours)
+                let startTime = appState.value.studySession.startTime
+                let timeDiff = Date().timeIntervalSince(startTime)
+                let timeDiffMinutes = TimeInterval(minutes: Int(timeDiff / 60))
+                let endTime = startTime + addedTime
+                let remainingTime = endTime.timeIntervalSince(startTime) - timeDiffMinutes
+                
+                appState.bulkUpdate { appState in
+                    appState.studySession.isStudying = true
+                    appState.studySession.endTime = endTime
+                    appState.studySession.remainingTime = remainingTime
+                }
+                
+                startTimer()
+                registerNotification(for: .extensionAvailable, endTimeInMinute: remainingTime)
+                registerNotification(for: .urgent, endTimeInMinute: remainingTime)
+            })
+            .store(in: cancleBag)
     }
     
     /// 타이머를 시작합니다.

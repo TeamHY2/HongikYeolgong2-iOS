@@ -132,11 +132,11 @@ final class AuthRepositoryImpl: AuthRepository {
     }
     
     /// FCM Token 업데이트
-    func updateToken(fcmToken: String) -> AnyPublisher<updateTokenResponseDTO, NetworkError> {
-        return Future<updateTokenResponseDTO, NetworkError> { promise in
+    func updateToken(fcmToken: String) -> AnyPublisher<UpdateTokenResponseDTO, NetworkError> {
+        return Future<UpdateTokenResponseDTO, NetworkError> { promise in
             Task {
                 do {
-                    let response: BaseResponse<updateTokenResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.DeviceToken(fcmToken: fcmToken))
+                    let response: BaseResponse<UpdateTokenResponseDTO> = try await NetworkService.shared.request(endpoint: UserEndpoint.DeviceToken(fcmToken: fcmToken))
                     promise(.success(response.data))
                 } catch let error as NetworkError {
                     promise(.failure(error))

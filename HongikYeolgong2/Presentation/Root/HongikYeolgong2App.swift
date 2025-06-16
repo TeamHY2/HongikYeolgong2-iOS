@@ -17,7 +17,7 @@ struct HongikYeolgong2App: App {
         WindowGroup {
             let container: DIContainer = enviroment.container
             
-            RootView()
+            FocusModeView()
                 .inject(container)
         }
     }

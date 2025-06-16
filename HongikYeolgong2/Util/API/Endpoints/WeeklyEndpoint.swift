@@ -20,7 +20,7 @@ enum WeeklyEndpoint: EndpointProtocol {
     case getAllStudyRecords
 
     case getStudyTime(date: Date)
-
+case getLibraryHour
 }
 
 extension WeeklyEndpoint {
@@ -43,7 +43,8 @@ extension WeeklyEndpoint {
 
         case .getStudyTime:
             "/study/duration"
-
+        case .getLibraryHour:
+            "/library"
         default:
             "/study"
         }
@@ -51,7 +52,7 @@ extension WeeklyEndpoint {
     
     var method: NetworkMethod {
         switch self {
-        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime:
+        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime, .getLibraryHour:
                 .get
         case .uploadStudySession:
                 .post
