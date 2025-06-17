@@ -29,6 +29,7 @@ struct HomeView: View {
     @State private var isShowEndUseModal = false
     @State private var isShowWebView = false
     @State private var isViewOnAppeared = false
+    @State private var isFocusModeView = false
     @StateObject private var homeNavigation = HomeNavigation()
     
     var body: some View {
@@ -50,6 +51,7 @@ struct HomeView: View {
                 
                 StudyContentControllerView(
                     studySession: $studySession,
+                    isFocusModeView: $isFocusModeView,
                     wiseSaying: wiseSaying.value ?? WiseSaying()
                 )
                 
@@ -87,6 +89,9 @@ struct HomeView: View {
                           confirmButtonText: "네",
                           cancleButtonText: "더 이용하기",
                           confirmAction: endStudy )
+            }
+            .fullScreenCover(isPresented: $isFocusModeView) {
+                FocusModeView(isPresented: $isFocusModeView)
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .modifier(IOSBackground())
@@ -147,6 +152,8 @@ extension HomeView {
     func startStudy() {         
         studySessionInteractor.startStudy()
         weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
+        // 포커스모드 화면 띄우기
+        isFocusModeView = true
         Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
@@ -196,6 +203,7 @@ extension HomeView {
 // MARK: - StudyContentControllerView
 struct StudyContentControllerView: View {
     @Binding var studySession: AppState.StudySession
+    @Binding var isFocusModeView: Bool
     let wiseSaying: WiseSaying
     
     var body: some View {
@@ -210,6 +218,13 @@ struct StudyContentControllerView: View {
                         totalTime: studySession.totalTime,
                         remainingTime: studySession.remainingTime,
                         color: studySession.isAddTime ? .yellow100 : .white
+                    )
+                    // 포커스모드 열기 벼튼
+                    BaseButton(
+                        title: "몰입 모드",
+                        backgroundColor: .gray600,
+                        radius: 4,
+                        action: { isFocusModeView = true }
                     )
                 }
                 .padding(.top, 36.adjustToScreenHeight)
