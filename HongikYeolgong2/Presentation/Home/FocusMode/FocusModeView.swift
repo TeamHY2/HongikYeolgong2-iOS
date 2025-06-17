@@ -8,10 +8,27 @@
 import SwiftUI
 
 struct FocusModeView: View {
+    @Binding var isPresented: Bool
+    
     let items = Array(1...69)
     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
     var body: some View {
         VStack(spacing: 0) {
+            HStack {
+                Spacer()
+                // 닫기 버튼
+                Button {
+                    isPresented.toggle()
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 15.adjustToScreenWidth, height: 15.adjustToScreenHeight)
+                        .foregroundStyle(.gray100)
+                }
+                .padding(.vertical, 14.adjustToScreenHeight)
+            }
+            
             VStack(spacing: 0) {
                 StudyPeriodView(startTime: .now, endTime: .now)
                 StudyTimerView(totalTime: .seconds(0), remainingTime: .seconds(0), color: .white)
@@ -32,8 +49,7 @@ struct FocusModeView: View {
                 }
                 .padding(.top, 28)
             }
-            .padding(.horizontal, 32)
-            .padding(.top, 28)
+            .padding(.top, 12)
             VStack(spacing: 4) {
                 Text("전체")                    
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -49,7 +65,6 @@ struct FocusModeView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding(.horizontal, 32)
            
             .padding(.top, 36)
             .padding(.bottom, 20)
@@ -60,12 +75,9 @@ struct FocusModeView: View {
                         FocusCell()
                     }
                 }
-                .padding(.horizontal, 32)
             }
         }
+        .padding(.horizontal, 32)
+        .modifier(IOSBackground())
     }
 }
-
-//#Preview {
-//    FocusModeView()
-//}
