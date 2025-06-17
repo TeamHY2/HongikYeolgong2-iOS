@@ -177,6 +177,8 @@
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
 		98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */; };
 		98B5F0132CDBB905007CF5FA /* StudyTimeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0122CDBB905007CF5FA /* StudyTimeMapper.swift */; };
+		98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */; };
+		98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83892E01627800680FE6 /* StudyStatusMapper.swift */; };
 		98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */; };
 		98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953A2CE4B97000278DBD /* StudyRecordView.swift */; };
 		98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */; };
@@ -373,6 +375,8 @@
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeInteractor.swift; sourceTree = "<group>"; };
 		98B5F0122CDBB905007CF5FA /* StudyTimeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeMapper.swift; sourceTree = "<group>"; };
+		98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusInfo.swift; sourceTree = "<group>"; };
+		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
 		98EC953A2CE4B97000278DBD /* StudyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordView.swift; sourceTree = "<group>"; };
 		98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
@@ -571,6 +575,7 @@
 				98B5F0122CDBB905007CF5FA /* StudyTimeMapper.swift */,
 				478F844A2CD35AF40097CAA1 /* RankingMapper.swift */,
 				5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */,
+				98BF83892E01627800680FE6 /* StudyStatusMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -765,6 +770,7 @@
 				478F84452CD358F50097CAA1 /* Ranking */,
 				478FBCA12CD1397600256012 /* User */,
 				4780043D2CCA8FF800FFAF00 /* WeeklyStudy */,
+				98BF83862E015CF100680FE6 /* FocusMode */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1097,6 +1103,14 @@
 			path = Record;
 			sourceTree = "<group>";
 		};
+		98BF83862E015CF100680FE6 /* FocusMode */ = {
+			isa = PBXGroup;
+			children = (
+				98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */,
+			);
+			path = FocusMode;
+			sourceTree = "<group>";
+		};
 		98F9D8422CDA2DE100DE12BB /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -1406,6 +1420,7 @@
 				4763FFBA2CB913FF00990336 /* UserDataInteractor.swift in Sources */,
 				98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */,
 				98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */,
+				98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */,
 				47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */,
 				478933792CADBDA500E1D89E /* ProfileEditView.swift in Sources */,
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
@@ -1422,6 +1437,7 @@
 				47A1474E2CA144EC00A91F66 /* StudyRoomUsage+Mock.swift in Sources */,
 				4774C7BB2CDF632300CDD479 /* WithdrawResponseDTO.swift in Sources */,
 				47D5EDCD2CCBCB6D00ACA469 /* ImageBackground.swift in Sources */,
+				98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */,
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
 				478B75502CE679A8000190EF /* SubmitButton.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,

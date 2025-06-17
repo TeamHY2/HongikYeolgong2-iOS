@@ -16,6 +16,7 @@ protocol StudySessionInteractor {
     func addTime()
     func uploadStudySession(startTime: Date, endTime: Date)
     func setStartTime(_ startTime: Date)
+    func getStudyStatus(StudyStatusUsageInfos: LoadableSubject<[StudyStatusInfo]>)
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
@@ -189,5 +190,10 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     private func cancelAllNotification() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    }
+    
+    /// FocusMode 사용자 정보 불러오기
+    func getStudyStatus(StudyStatusUsageInfos: LoadableSubject<[StudyStatusInfo]>) {
+        
     }
 }

@@ -20,6 +20,8 @@ enum WeeklyEndpoint: EndpointProtocol {
     case getAllStudyRecords
 
     case getStudyTime(date: Date)
+    case getStudyStatus // FocusMode 데이터 불러오기
+    
 case getLibraryHour
 }
 
@@ -29,33 +31,35 @@ extension WeeklyEndpoint {
     }
     var path: String {
         switch self {
-        case .getWeeklyStudy:
-            "/study/week"
-        case .getWiseSaying:
-            "/wise-saying"
-        case .getWeekField:
-            "/week-field"
-        case .getWeeklyRanking:
-            "/study/ranking"
-
-        case .getAllStudyRecords:
-            "/study/count-all"
-
-        case .getStudyTime:
-            "/study/duration"
-        case .getLibraryHour:
-            "/library"
-        default:
-            "/study"
+            case .getWeeklyStudy:
+                "/study/week"
+            case .getWiseSaying:
+                "/wise-saying"
+            case .getWeekField:
+                "/week-field"
+            case .getWeeklyRanking:
+                "/study/ranking"
+                
+            case .getAllStudyRecords:
+                "/study/count-all"
+                
+            case .getStudyTime:
+                "/study/duration"
+            case .getLibraryHour:
+                "/library"
+            case .getStudyStatus:
+                "/study"
+            default:
+                "/study"
         }
     }
     
     var method: NetworkMethod {
         switch self {
-        case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime, .getLibraryHour:
-                .get
-        case .uploadStudySession:
-                .post
+            case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime, .getLibraryHour, .getStudyStatus:
+                    .get
+            case .uploadStudySession:
+                    .post
         }
     }
     

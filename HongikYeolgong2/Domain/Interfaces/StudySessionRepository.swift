@@ -16,4 +16,5 @@ protocol StudySessionRepository {
     func getAllStudyRecords() -> AnyPublisher<[AllStudyRecord], NetworkError>
     func getStudyTime(date: Date) -> AnyPublisher<StudyTime, NetworkError>
     func getLibrayHour() -> AnyPublisher<LibraryHour, NetworkError>
+    func getStudyStatus() -> AnyPublisher<[StudyStatusInfo], NetworkError>
 }
