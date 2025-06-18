@@ -92,9 +92,14 @@ struct HomeView: View {
                           confirmAction: endStudy )
             }
             .fullScreenCover(isPresented: $isFocusModeView) {
-                FocusModeView(studyStatusInfos: $studyStatusInfos,
-                              isPresented: $isFocusModeView,
-                              retryAction: focusModeRetryAction)
+                FocusModeView(
+                    studySession: $studySession,
+                    studyStatusInfos: $studyStatusInfos,
+                    isPresented: $isFocusModeView,
+                    retryAction: focusModeRetryAction,
+                    addTiem: studySessionInteractor.addTime,
+                    endStudy: endStudy
+                )
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .modifier(IOSBackground())

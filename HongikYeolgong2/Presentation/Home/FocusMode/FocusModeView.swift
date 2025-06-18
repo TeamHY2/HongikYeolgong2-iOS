@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct FocusModeView: View {
+    @Binding var studySession: AppState.StudySession
     @Binding var studyStatusInfos: Loadable<[StudyStatusInfo]>
     @Binding var isPresented: Bool
+    
+    // action
     let retryAction: () -> Void
+    let addTiem: () -> Void
+    let endStudy: () -> Void
+    
+    @State var isShowAddTimeModal: Bool = false
+    @State var isShowEndUseModal: Bool = false
+    
+    // 현재 사용중인 사용자 수
     var countOfActiveStudents: Int {
         if let studyInfos = studyStatusInfos.value {
             return studyInfos.filter { $0.studyStatus }.count
@@ -51,22 +61,36 @@ struct FocusModeView: View {
             }
             
             VStack(spacing: 0) {
-                StudyPeriodView(startTime: .now, endTime: .now)
-                StudyTimerView(totalTime: .seconds(0), remainingTime: .seconds(0), color: .white)
+                StudyPeriodView(
+                    startTime: studySession.firstStartTime,
+                    endTime: studySession.endTime
+                )
+                StudyTimerView(
+                    totalTime: studySession.totalTime,
+                    remainingTime: studySession.remainingTime,
+                    color: studySession.isAddTime ? .yellow100 : .white
+                )
                 
                 HStack(spacing: 12.adjustToScreenWidth) {
-                    BaseButton(
-                        title: "열람실 이용 연장",
-                        backgroundColor: .blue100,
-                        radius: 4,
-                        action: {}
-                    )
                     BaseButton(
                         title: "열람실 이용 종료",
                         backgroundColor: .gray600,
                         radius: 4,
-                        action: {  }
+                        action: {
+                            isShowEndUseModal.toggle()
+                        }
                     )
+                    
+                    if studySession.isAddTime {
+                        BaseButton(
+                            title: "열람실 이용 연장",
+                            backgroundColor: .blue100,
+                            radius: 4,
+                            action: {
+                                isShowAddTimeModal.toggle()
+                            }
+                        )
+                    }
                 }
                 .padding(.top, 28)
             }
@@ -98,6 +122,27 @@ struct FocusModeView: View {
                     }
                 }
             }
+        }
+        .systemOverlay(isPresented: $isShowAddTimeModal) {
+            ModalView(
+                isPresented: $isShowAddTimeModal,
+                title: "열람실 이용 시간을 연장할까요?",
+                confirmButtonText: "연장하기",
+                cancleButtonText: "아니오",
+                confirmAction: {
+                    addTiem() }
+            )
+        }
+        .systemOverlay(isPresented: $isShowEndUseModal) {
+            ModalView(
+                isPresented: $isShowEndUseModal,
+                title: "열람실을 다 이용하셨나요?",
+                confirmButtonText: "네",
+                cancleButtonText: "더 이용하기",
+                confirmAction: {
+                    endStudy()
+                    isPresented.toggle()
+                })
         }
         .padding(.horizontal, 32)
         .modifier(IOSBackground())
