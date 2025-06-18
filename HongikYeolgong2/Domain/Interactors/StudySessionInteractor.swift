@@ -194,6 +194,9 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     /// FocusMode 사용자 정보 불러오기
     func getStudyStatus(StudyStatusUsageInfos: LoadableSubject<[StudyStatusInfo]>) {
-        
+        studySessionRepository
+            .getStudyStatus()
+            .sinkToLoadble(StudyStatusUsageInfos)
+            .store(in: cancleBag)
     }
 }

@@ -24,6 +24,7 @@ struct HomeView: View {
     @State private var studySession = AppState.StudySession()
     @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
     @State private var wiseSaying: Loadable<WiseSaying> = .notRequest
+    @State private var studyStatusInfos: Loadable<[StudyStatusInfo]> = .notRequest
     @State private var isShowTimePicker = false
     @State private var isShowAddTimeModal = false
     @State private var isShowEndUseModal = false
@@ -152,8 +153,8 @@ extension HomeView {
     func startStudy() {         
         studySessionInteractor.startStudy()
         weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
-        // 포커스모드 화면 띄우기
-        isFocusModeView = true
+        // 포커스모드 실행
+        activateFocusMode()
         Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
@@ -165,6 +166,14 @@ extension HomeView {
     func retryAction() {
         weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
         weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+    }
+    
+    // 포커스모드 실행
+    func activateFocusMode() {
+        // 사용중인 사용자 정보 불러오기
+        studySessionInteractor.getStudyStatus(StudyStatusUsageInfos: $studyStatusInfos)
+        // 포커스모드 화면 띄우기
+        isFocusModeView = true
     }
 }
 
