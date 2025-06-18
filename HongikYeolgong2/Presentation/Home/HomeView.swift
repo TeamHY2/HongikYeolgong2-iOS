@@ -92,7 +92,10 @@ struct HomeView: View {
                           confirmAction: endStudy )
             }
             .fullScreenCover(isPresented: $isFocusModeView) {
-                FocusModeView(isPresented: $isFocusModeView)
+                FocusModeView(studyStatusInfos: $studyStatusInfos,
+                              isPresented: $isFocusModeView,
+                              retryAction: focusModeRetryAction
+                )
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .modifier(IOSBackground())
@@ -174,6 +177,10 @@ extension HomeView {
         studySessionInteractor.getStudyStatus(StudyStatusUsageInfos: $studyStatusInfos)
         // 포커스모드 화면 띄우기
         isFocusModeView = true
+    }
+    
+    func focusModeRetryAction() {
+        studySessionInteractor.getStudyStatus(StudyStatusUsageInfos: $studyStatusInfos)
     }
 }
 

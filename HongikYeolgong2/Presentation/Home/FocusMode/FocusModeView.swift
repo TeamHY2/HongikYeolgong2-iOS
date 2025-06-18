@@ -8,11 +8,26 @@
 import SwiftUI
 
 struct FocusModeView: View {
+    @Binding var studyStatusInfos: Loadable<[StudyStatusInfo]>
     @Binding var isPresented: Bool
+    let retryAction: () -> Void
+    
     
     let items = Array(1...69)
     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 4)
+    
     var body: some View {
+        NetworkStateView(
+            loadables: [
+                AnyLoadable($studyStatusInfos)
+            ],
+            retryAction: retryAction
+        ) {
+            content
+        }
+    }
+    
+    var content: some View {
         VStack(spacing: 0) {
             HStack {
                 Spacer()
