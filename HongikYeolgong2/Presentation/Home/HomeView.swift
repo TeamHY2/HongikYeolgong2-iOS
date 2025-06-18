@@ -94,8 +94,7 @@ struct HomeView: View {
             .fullScreenCover(isPresented: $isFocusModeView) {
                 FocusModeView(studyStatusInfos: $studyStatusInfos,
                               isPresented: $isFocusModeView,
-                              retryAction: focusModeRetryAction
-                )
+                              retryAction: focusModeRetryAction)
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .modifier(IOSBackground())

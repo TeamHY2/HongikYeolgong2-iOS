@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StudyStatusInfo {
+struct StudyStatusInfo: Hashable {
     let userId: Int
     let userName: String
     let studyDuration: String

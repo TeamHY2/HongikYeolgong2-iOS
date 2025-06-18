@@ -11,6 +11,12 @@ struct FocusModeView: View {
     @Binding var studyStatusInfos: Loadable<[StudyStatusInfo]>
     @Binding var isPresented: Bool
     let retryAction: () -> Void
+    var countOfActiveStudents: Int {
+        if let studyInfos = studyStatusInfos.value {
+            return studyInfos.filter { $0.studyStatus }.count
+        }
+        return 0
+    }
     
     
     let items = Array(1...69)
@@ -71,7 +77,7 @@ struct FocusModeView: View {
                     .font(.suite(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                     .foregroundStyle(.gray100)
                 HStack {
-                    Text("12명")
+                    Text("\(countOfActiveStudents)명")
                         .font(.suite(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
                         .foregroundStyle(.blue100)
                     Text("공부중")
@@ -85,9 +91,10 @@ struct FocusModeView: View {
             .padding(.bottom, 20)
             ScrollView {
                 LazyVGrid(columns: columns, spacing: 12) {
-                   
-                    ForEach(items, id: \.self) { item in
-                        FocusCell()
+                    if let info = studyStatusInfos.value {
+                        ForEach(info, id: \.self) { studyStatusInfo in
+                            FocusCell(studyStatusInfo: studyStatusInfo)
+                        }
                     }
                 }
             }
