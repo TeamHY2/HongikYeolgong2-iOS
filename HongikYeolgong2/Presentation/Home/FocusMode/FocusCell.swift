@@ -18,10 +18,10 @@ struct FocusCell: View {
             Image(studyStatusInfo.studyStatus ? .lampBlue : .lampGray)
             Text(studyStatusInfo.userName)
                 .font(.suite(size: 14, weight: .medium))
-                .foregroundStyle(.gray300)
+                .foregroundStyle(studyStatusInfo.studyStatus ? .blue50 : .gray300)
             Text(formatTime(duration))
                 .font(.suite(size: 14, weight: .medium))
-                .foregroundStyle(.gray300)
+                .foregroundStyle(studyStatusInfo.studyStatus ? .blue50 : .gray300)
         }
         .onAppear {
             duration = parseTime(from: studyStatusInfo.studyDuration)
