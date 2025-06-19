@@ -53,7 +53,8 @@ struct HomeView: View {
                 StudyContentControllerView(
                     studySession: $studySession,
                     isFocusModeView: $isFocusModeView,
-                    wiseSaying: wiseSaying.value ?? WiseSaying()
+                    wiseSaying: wiseSaying.value ?? WiseSaying(),
+                    activateFocusMode: activateFocusMode
                 )
                 
                 Spacer()
@@ -225,6 +226,7 @@ struct StudyContentControllerView: View {
     @Binding var studySession: AppState.StudySession
     @Binding var isFocusModeView: Bool
     let wiseSaying: WiseSaying
+    let activateFocusMode: () -> Void
     
     var body: some View {
         Group {
@@ -244,7 +246,7 @@ struct StudyContentControllerView: View {
                         title: "몰입 모드",
                         backgroundColor: .gray600,
                         radius: 4,
-                        action: { isFocusModeView = true }
+                        action: { activateFocusMode() }
                     )
                 }
                 .padding(.top, 36.adjustToScreenHeight)
