@@ -90,6 +90,9 @@ struct FocusModeView: View {
                                 isShowAddTimeModal.toggle()
                             }
                         )
+                    } else {
+                        Spacer()
+                            .frame(maxWidth: .infinity)
                     }
                 }
                 .padding(.top, 28)
