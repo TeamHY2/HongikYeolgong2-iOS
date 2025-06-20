@@ -19,6 +19,8 @@ struct FocusCell: View {
             Text(studyStatusInfo.userName)
                 .font(.suite(size: 14, weight: .medium))
                 .foregroundStyle(studyStatusInfo.studyStatus ? .blue50 : .gray300)
+                .lineLimit(1)
+                .truncationMode(.tail)
             Text(formatTime(duration))
                 .font(.suite(size: 14, weight: .medium))
                 .foregroundStyle(studyStatusInfo.studyStatus ? .blue50 : .gray300)

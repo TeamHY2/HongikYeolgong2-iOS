@@ -109,7 +109,6 @@
 		47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */; };
 		47A540732CD0D90F00DC40D0 /* Nickname.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A540722CD0D90F00DC40D0 /* Nickname.swift */; };
 		47A6D2322DF17FF200EFE046 /* AuthKey_843UNB7W58.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 47A6D2312DF17FF200EFE046 /* AuthKey_843UNB7W58.p8 */; };
-		47A6D2342DF1801900EFE046 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 47A6D2332DF1801900EFE046 /* Secrets-dev.xcconfig */; };
 		47A6D2362DF1803200EFE046 /* Secrets-prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */; };
 		47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A9DCC22CE0DB97001DE76D /* WebView.swift */; };
 		47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4AB2C9CB1740071B62B /* HongikYeolgong2App.swift */; };
@@ -163,6 +162,7 @@
 		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
+		98131E0B2E05ADDD0081D56A /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98131E0A2E05ADDD0081D56A /* Secrets-dev.xcconfig */; };
 		981D050C2D6F69080058D0C5 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */; };
 		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
 		98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98691FAD2D86C5AD00123861 /* AppDelegate.swift */; };
@@ -313,7 +313,6 @@
 		47A1477F2CA15A4E00A91F66 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		47A540722CD0D90F00DC40D0 /* Nickname.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nickname.swift; sourceTree = "<group>"; };
 		47A6D2312DF17FF200EFE046 /* AuthKey_843UNB7W58.p8 */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthKey_843UNB7W58.p8; sourceTree = "<group>"; };
-		47A6D2332DF1801900EFE046 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
 		47A9DCC22CE0DB97001DE76D /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		47B1D4A82C9CB1740071B62B /* HongikYeolgong2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HongikYeolgong2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -362,6 +361,7 @@
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
 		5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
+		98131E0A2E05ADDD0081D56A /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
 		98691FAD2D86C5AD00123861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -910,7 +910,7 @@
 			isa = PBXGroup;
 			children = (
 				47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */,
-				47A6D2332DF1801900EFE046 /* Secrets-dev.xcconfig */,
+				98131E0A2E05ADDD0081D56A /* Secrets-dev.xcconfig */,
 				47A6D2312DF17FF200EFE046 /* AuthKey_843UNB7W58.p8 */,
 				479821D32CA24CFF002357EB /* .swiftlint.yml */,
 				47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */,
@@ -1275,8 +1275,8 @@
 				981D050C2D6F69080058D0C5 /* Secrets-dev.xcconfig in Resources */,
 				47B1D4B32C9CB1760071B62B /* Preview Assets.xcassets in Resources */,
 				47A1476D2CA147A600A91F66 /* SUITE-ExtraBold.otf in Resources */,
-				47A6D2342DF1801900EFE046 /* Secrets-dev.xcconfig in Resources */,
 				47A1476F2CA147A600A91F66 /* SUITE-Light.otf in Resources */,
+				98131E0B2E05ADDD0081D56A /* Secrets-dev.xcconfig in Resources */,
 				47A147722CA147A600A91F66 /* SUITE-SemiBold.otf in Resources */,
 				47B1D4B02C9CB1760071B62B /* Assets.xcassets in Resources */,
 				47A1476E2CA147A600A91F66 /* SUITE-Heavy.otf in Resources */,
