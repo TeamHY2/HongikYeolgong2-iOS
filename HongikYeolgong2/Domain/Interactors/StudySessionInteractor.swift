@@ -14,9 +14,11 @@ protocol StudySessionInteractor {
     func pauseStudy()
     func resumeStudy()
     func addTime()
-    func uploadStudySession(startTime: Date, endTime: Date)
+    //func uploadStudySession(startTime: Date, endTime: Date)
     func setStartTime(_ startTime: Date)
     func getStudyStatus(StudyStatusUsageInfos: LoadableSubject<[StudyStatusInfo]>)
+    func postStartStudy(startTime: Date)
+    func postEndStudy(endTime: Date)
 }
 
 final class StudySessionInteractorImpl: StudySessionInteractor {
@@ -29,6 +31,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     private var lastTime: Date?
     private var subscription: AnyCancellable?
+    
+    private var studySessionId: Int?
     
     init(appState: Store<AppState>,
          studySessionRepository: StudySessionRepository) {
@@ -58,6 +62,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
                 startTimer()
                 registerNotification(for: .extensionAvailable, endTimeInMinute: remainingTime)
                 registerNotification(for: .urgent, endTimeInMinute: remainingTime)
+                // 시작시간 등록
+                postStartStudy(startTime: startTime)
             })
             .store(in: cancleBag)
     }
@@ -81,7 +87,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         stopTimer()
         cancelAllNotification()
         
-        let startTime: Date = appState.value.studySession.startTime
+        //let startTime: Date = appState.value.studySession.startTime
         let remainingTime = appState.value.studySession.remainingTime
         // 최대시간
         // 최근이용 시작시간 + 6시간
@@ -89,7 +95,8 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         // 남은시간이 0인경우 최대시간 적용
         let endTime: Date = remainingTime <= 0 ? maxEndTime : .now
         
-        uploadStudySession(startTime: startTime, endTime: endTime)
+        postEndStudy(endTime: endTime)
+        //uploadStudySession(startTime: startTime, endTime: endTime)
     }
     
     /// 스터디 일시중지
@@ -113,16 +120,19 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     
     /// 열람실 이용시간을 연장합니다.
     func addTime() {
-        let startTime: Date = appState.value.studySession.startTime
         let endTime: Date = .now
         
-        uploadStudySession(startTime: startTime, endTime: endTime)
+        postEndStudy(endTime: endTime)
+        postStartStudy(startTime: .now)
+        
+        //uploadStudySession(startTime: startTime, endTime: endTime)
         
         appState.bulkUpdate { appState in
             appState.studySession.startTime = .now
             appState.studySession.endTime += addedTime
             appState.studySession.remainingTime += addedTime
         }
+        
         
         let remainingTime = appState.value.studySession.remainingTime
         
@@ -135,14 +145,14 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
     /// - Parameters:
     ///   - startTime: 시작시간
     ///   - endTime: 종료시간
-    func uploadStudySession(startTime: Date, endTime: Date) {
-        studySessionRepository
-            .uploadStudyRecord(startTime: startTime, endTime: endTime)
-            .sink { _ in
-            } receiveValue: { _ in
-            }
-            .store(in: cancleBag)
-    }
+//    func uploadStudySession(startTime: Date, endTime: Date) {
+//        studySessionRepository
+//            .uploadStudyRecord(startTime: startTime, endTime: endTime)
+//            .sink { _ in
+//            } receiveValue: { _ in
+//            }
+//            .store(in: cancleBag)
+//    }
     
     /// 열람실 이용 시작시간을 설정합니다.
     /// - Parameter startTime: 시작시간
@@ -197,6 +207,30 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         studySessionRepository
             .getStudyStatus()
             .sinkToLoadble(StudyStatusUsageInfos)
+            .store(in: cancleBag)
+    }
+    
+    /// 열람실 이용 시작시간 등록
+    func postStartStudy(startTime: Date) {
+        studySessionRepository
+            .postStartStudy(startTime: startTime)
+            .sink { _ in
+            } receiveValue: { [weak self] studySessionInfo in
+                guard let self = self else { return }
+                studySessionId = studySessionInfo.id
+            }
+            .store(in: cancleBag)
+    }
+    
+    /// 열람실 이용 종료시간 등록
+    func postEndStudy(endTime: Date) {
+        guard let studySessionId = studySessionId else { return }
+        studySessionRepository
+            .postEndStudy(studySessionId: studySessionId, endTime: endTime)
+            .sink { _ in
+            } receiveValue: { [weak self] studySessionInfo in
+                guard let self = self else { return }
+            }
             .store(in: cancleBag)
     }
 }
