@@ -162,6 +162,10 @@
 		5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */; };
 		5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */; };
 		5EAE88722CDF9B4500DCBA31 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */; };
+		980DD5882E06D5F600EC0C80 /* StartStudyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980DD5872E06D5F600EC0C80 /* StartStudyResponseDTO.swift */; };
+		980DD58A2E06D65500EC0C80 /* EndStudyResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980DD5892E06D65500EC0C80 /* EndStudyResponseDTO.swift */; };
+		980DD58C2E06E21300EC0C80 /* StartStudyRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980DD58B2E06E21300EC0C80 /* StartStudyRequestDTO.swift */; };
+		980DD58E2E06E24200EC0C80 /* EndStudyRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980DD58D2E06E24200EC0C80 /* EndStudyRequestDTO.swift */; };
 		98131E0B2E05ADDD0081D56A /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 98131E0A2E05ADDD0081D56A /* Secrets-dev.xcconfig */; };
 		981D050C2D6F69080058D0C5 /* Secrets-dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */; };
 		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
@@ -361,6 +365,10 @@
 		5E847A762CDBD5590034C2A7 /* AllStudyRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllStudyRecord.swift; sourceTree = "<group>"; };
 		5EAE88712CDF9B4500DCBA31 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Secrets-prod.xcconfig"; sourceTree = "<group>"; };
+		980DD5872E06D5F600EC0C80 /* StartStudyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStudyResponseDTO.swift; sourceTree = "<group>"; };
+		980DD5892E06D65500EC0C80 /* EndStudyResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStudyResponseDTO.swift; sourceTree = "<group>"; };
+		980DD58B2E06E21300EC0C80 /* StartStudyRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStudyRequestDTO.swift; sourceTree = "<group>"; };
+		980DD58D2E06E24200EC0C80 /* EndStudyRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStudyRequestDTO.swift; sourceTree = "<group>"; };
 		98131E0A2E05ADDD0081D56A /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
@@ -606,6 +614,10 @@
 				98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */,
 				98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */,
 				98897D112E006891005B7CA6 /* StudyStatusResponseDTO.swift */,
+				980DD58B2E06E21300EC0C80 /* StartStudyRequestDTO.swift */,
+				980DD5872E06D5F600EC0C80 /* StartStudyResponseDTO.swift */,
+				980DD5892E06D65500EC0C80 /* EndStudyResponseDTO.swift */,
+				980DD58D2E06E24200EC0C80 /* EndStudyRequestDTO.swift */,
 			);
 			path = StudySession;
 			sourceTree = "<group>";
@@ -1375,6 +1387,7 @@
 				47C815482CE227E50017EA24 /* ASTokenRequestDTO.swift in Sources */,
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
+				980DD58C2E06E21300EC0C80 /* StartStudyRequestDTO.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
 				4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */,
 				472319F02CD20057009BA019 /* SystemEventHandler.swift in Sources */,
@@ -1401,6 +1414,7 @@
 				5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */,
 				475B86E32CA1AF40000534B2 /* SettingView.swift in Sources */,
 				470723052CBC180D0046469F /* NetworkError.swift in Sources */,
+				980DD58A2E06D65500EC0C80 /* EndStudyResponseDTO.swift in Sources */,
 				982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */,
 				98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */,
 				47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */,
@@ -1426,6 +1440,7 @@
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
 				4763FFB52CB90EBD00990336 /* RootView.swift in Sources */,
 				47E250712CCF274400267897 /* WeeklyStudyInteractor.swift in Sources */,
+				980DD58E2E06E24200EC0C80 /* EndStudyRequestDTO.swift in Sources */,
 				478589FE2CE4973B0027ED32 /* MenuItem.swift in Sources */,
 				98897D102E00687B005B7CA6 /* StudyEndRequestDTO.swift in Sources */,
 				47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */,
@@ -1463,6 +1478,7 @@
 				479BF66C2CDD1A8D009D9E44 /* LocalNotification.swift in Sources */,
 				473E8EB22CCE5267000F102C /* SystemOverlay.swift in Sources */,
 				475B86DF2CA1AF1E000534B2 /* RecordView.swift in Sources */,
+				980DD5882E06D5F600EC0C80 /* StartStudyResponseDTO.swift in Sources */,
 				98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */,
 				47C815552CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
