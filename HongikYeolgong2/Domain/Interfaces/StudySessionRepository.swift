@@ -10,11 +10,13 @@ import Combine
 
 protocol StudySessionRepository {
     func getWeeklyStudyRecords() -> AnyPublisher<[WeeklyStudyRecord], NetworkError>
-    func uploadStudyRecord(startTime: Date, endTime: Date) -> AnyPublisher<StudySessionResponseDTO, NetworkError>
+//    func uploadStudyRecord(startTime: Date, endTime: Date) -> AnyPublisher<StudySessionResponseDTO, NetworkError>
     func getWiseSaying() -> AnyPublisher<WiseSaying, NetworkError>
     func getWeeklyRanking(weekNumber: Int) -> AnyPublisher<WeeklyRanking, NetworkError>
     func getAllStudyRecords() -> AnyPublisher<[AllStudyRecord], NetworkError>
     func getStudyTime(date: Date) -> AnyPublisher<StudyTime, NetworkError>
     func getLibrayHour() -> AnyPublisher<LibraryHour, NetworkError>
     func getStudyStatus() -> AnyPublisher<[StudyStatusInfo], NetworkError>
+    func postStartStudy(startTime: Date) -> AnyPublisher<StartStudyResponseDTO, NetworkError>
+    func postEndStudy(studySessionId: Int, endTime: Date) -> AnyPublisher<EndStudyResponseDTO, NetworkError>
 }
