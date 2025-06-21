@@ -21,8 +21,10 @@ enum WeeklyEndpoint: EndpointProtocol {
 
     case getStudyTime(date: Date)
     case getStudyStatus // FocusMode 데이터 불러오기
+    case getLibraryHour
     
-case getLibraryHour
+    case postStartStudy(StartStudyRequestDTO)
+    case postEndStudy(EndStudyRequestDTO)
 }
 
 extension WeeklyEndpoint {
@@ -49,6 +51,10 @@ extension WeeklyEndpoint {
                 "/library"
             case .getStudyStatus:
                 "/study"
+            case .postStartStudy:
+                "/study/start"
+            case .postEndStudy:
+                "/study/end"
             default:
                 "/study"
         }
@@ -58,22 +64,22 @@ extension WeeklyEndpoint {
         switch self {
             case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime, .getLibraryHour, .getStudyStatus:
                     .get
-            case .uploadStudySession:
+            case .uploadStudySession, .postStartStudy, .postEndStudy:
                     .post
         }
     }
     
     var parameters: [URLQueryItem]? {
         switch self {
-        case let .getWeekField(date):
-            return [URLQueryItem(name: "date", value: date)]
-        case let .getWeeklyRanking(yearWeek):
-            return [URLQueryItem(name: "yearWeek", value: "\(yearWeek)")]
+            case let .getWeekField(date):
+                return [URLQueryItem(name: "date", value: date)]
+            case let .getWeeklyRanking(yearWeek):
+                return [URLQueryItem(name: "yearWeek", value: "\(yearWeek)")]
             case let .getStudyTime(date):
                 let dateString = date.toDateString()
                 return [URLQueryItem(name: "date", value: "\(dateString)")]
-        default:
-            return nil
+            default:
+                return nil
         }
     }
     
@@ -86,10 +92,14 @@ extension WeeklyEndpoint {
     
     var body: Data? {
         switch self {
-        case let .uploadStudySession(studySessionReqDto):
-            return studySessionReqDto.toData()
-        default:
-            return nil
+            case let .uploadStudySession(studySessionReqDto):
+                return studySessionReqDto.toData()
+            case let .postStartStudy(startStudyRequestDTO):
+                return startStudyRequestDTO.toData()
+            case let .postEndStudy(endStudyRequestDTO):
+                return endStudyRequestDTO.toData()
+            default:
+                return nil
         }
     }
 }
