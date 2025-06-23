@@ -91,7 +91,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
         let remainingTime = appState.value.studySession.remainingTime
         // 최대시간
         // 최근이용 시작시간 + 6시간
-        let maxEndTime = appState.value.studySession.startTime.addingTimeInterval(.init(hours: 6))
+        let maxEndTime = appState.value.studySession.startTime.addingTimeInterval(addedTime)
         // 남은시간이 0인경우 최대시간 적용
         let endTime: Date = remainingTime <= 0 ? maxEndTime : .now
         
