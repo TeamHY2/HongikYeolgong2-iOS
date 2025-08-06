@@ -34,7 +34,7 @@ extension WeeklyEndpoint {
     var path: String {
         switch self {
             case .getWeeklyStudy:
-                "/study/week"
+                "/study/record/week"
             case .getWiseSaying:
                 "/wise-saying"
             case .getWeekField:
@@ -43,18 +43,18 @@ extension WeeklyEndpoint {
                 "/study/ranking"
                 
             case .getAllStudyRecords:
-                "/study/count-all"
+                "/study/record/count-all"
                 
             case .getStudyTime:
-                "/study/duration"
+                "/study/record/duration"
             case .getLibraryHour:
                 "/library"
             case .getStudyStatus:
-                "/study"
+                "/study/session"
             case .postStartStudy:
-                "/study/start"
+                "/study/session/start"
             case .postEndStudy:
-                "/study/end"
+                "/study/session/end"
             default:
                 "/study"
         }

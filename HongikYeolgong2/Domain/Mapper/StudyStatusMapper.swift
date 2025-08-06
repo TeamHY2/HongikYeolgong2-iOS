@@ -10,7 +10,7 @@ import Foundation
 extension StudyStatusResponseDTO {
     func toEntity() -> StudyStatusInfo {
         .init(userId: userId,
-              userName: userName,
+              userName: nickname,
               studyDuration: studyDuration,
               studyStatus: studyStatus
         )

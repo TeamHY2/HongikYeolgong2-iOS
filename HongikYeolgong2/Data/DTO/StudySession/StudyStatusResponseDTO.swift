@@ -9,7 +9,7 @@ import Foundation
 
 struct StudyStatusResponseDTO: Codable {
     let userId: Int
-    let userName: String
+    let nickname: String
     let studyDuration: String
     let studyStatus: Bool
 }
