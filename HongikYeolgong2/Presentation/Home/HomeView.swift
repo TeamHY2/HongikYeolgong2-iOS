@@ -231,23 +231,23 @@ struct StudyContentControllerView: View {
     var body: some View {
         Group {
             if studySession.isStudying {
-                VStack(spacing: 32.adjustToScreenHeight) {
+                VStack(spacing: 24.adjustToScreenHeight) {
                     StudyPeriodView(
                         startTime: studySession.firstStartTime,
                         endTime: studySession.endTime
                     )
+                    
+                    Spacer().frame(height: 8.adjustToScreenHeight)
+                    
                     StudyTimerView(
                         totalTime: studySession.totalTime,
                         remainingTime: studySession.remainingTime,
                         color: studySession.isAddTime ? .yellow100 : .white
                     )
                     // 포커스모드 열기 벼튼
-                    BaseButton(
-                        title: "몰입 모드",
-                        backgroundColor: .gray600,
-                        radius: 4,
-                        action: { activateFocusMode() }
-                    )
+                    MenuItem(title: "포커스 모드",
+                             onTap: activateFocusMode,
+                             content: { Image(.arrowRight) })
                 }
                 .padding(.top, 36.adjustToScreenHeight)
             } else {
