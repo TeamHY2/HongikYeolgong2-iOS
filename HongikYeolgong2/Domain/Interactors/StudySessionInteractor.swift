@@ -217,7 +217,7 @@ final class StudySessionInteractorImpl: StudySessionInteractor {
             .sink { _ in
             } receiveValue: { [weak self] studySessionInfo in
                 guard let self = self else { return }
-                studySessionId = studySessionInfo.id
+                studySessionId = studySessionInfo.studySessionId
             }
             .store(in: cancleBag)
     }

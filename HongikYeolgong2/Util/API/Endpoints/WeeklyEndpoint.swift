@@ -64,8 +64,10 @@ extension WeeklyEndpoint {
         switch self {
             case .getWeeklyStudy, .getWiseSaying, .getWeekField, .getWeeklyRanking, .getAllStudyRecords, .getStudyTime, .getLibraryHour, .getStudyStatus:
                     .get
-            case .uploadStudySession, .postStartStudy, .postEndStudy:
+            case .uploadStudySession, .postStartStudy:
                     .post
+            case .postEndStudy:
+                    .patch
         }
     }
     

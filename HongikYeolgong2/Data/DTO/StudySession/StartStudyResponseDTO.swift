@@ -8,7 +8,7 @@
 import Foundation
 
 struct StartStudyResponseDTO: Codable {
-    let id: Int
+    let studySessionId: Int
     let userId: Int
     let startTime: String
 }
