@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct FocusModeView: View {
     @Binding var studySession: AppState.StudySession
@@ -19,6 +20,9 @@ struct FocusModeView: View {
     
     @State var isShowAddTimeModal: Bool = false
     @State var isShowEndUseModal: Bool = false
+    
+    // 30초마다
+    let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
     
     // 현재 사용중인 사용자 수
     var countOfActiveStudents: Int {
@@ -40,6 +44,10 @@ struct FocusModeView: View {
             retryAction: retryAction
         ) {
             content
+        }
+        .onReceive(timer) { _ in
+            print("30초 경과, 데이터를 새로고침합니다.") // 디버깅용 로그
+            retryAction()
         }
     }
     
