@@ -46,7 +46,6 @@ struct FocusModeView: View {
             content
         }
         .onReceive(timer) { _ in
-            print("30초 경과, 데이터를 새로고침합니다.") // 디버깅용 로그
             retryAction()
         }
     }
@@ -54,6 +53,8 @@ struct FocusModeView: View {
     var content: some View {
         VStack(spacing: 0) {
             HStack {
+                Text("포커스모드")
+                    .font(.suite(size: 18, weight: .semibold))
                 Spacer()
                 // 닫기 버튼
                 Button {
