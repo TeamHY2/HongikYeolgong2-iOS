@@ -234,21 +234,24 @@ struct StudyContentControllerView: View {
     var body: some View {
         Group {
             if studySession.isStudying {
-                VStack(spacing: 24.adjustToScreenHeight) {
+                VStack(spacing: 0) {
                     StudyPeriodView(
                         startTime: studySession.firstStartTime,
                         endTime: studySession.endTime
                     )
                     
-                    Spacer().frame(height: 8.adjustToScreenHeight)
+                    Spacer().frame(height: 32.adjustToScreenHeight)
                     
                     StudyTimerView(
                         totalTime: studySession.totalTime,
                         remainingTime: studySession.remainingTime,
                         color: studySession.isAddTime ? .yellow100 : .gray100
                     )
+                    
+                    Spacer().frame(height: 24.adjustToScreenHeight)
+                    
                     // 포커스모드 열기 벼튼
-                    MenuItem(title: "포커스 모드",
+                    MenuItem(title: "포커스모드",
                              onTap: activateFocusMode,
                              content: { Image(.arrowRight) })
                 }

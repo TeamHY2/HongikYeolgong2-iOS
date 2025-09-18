@@ -89,6 +89,7 @@ struct FocusModeView: View {
                     BaseButton(
                         title: "열람실 이용 종료",
                         backgroundColor: .gray600,
+                        foregroundColor: .gray100,
                         radius: 4,
                         action: {
                             isShowEndUseModal.toggle()
