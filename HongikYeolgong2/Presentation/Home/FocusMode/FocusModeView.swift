@@ -75,6 +75,10 @@ struct FocusModeView: View {
                     startTime: studySession.firstStartTime,
                     endTime: studySession.endTime
                 )
+                
+                Spacer()
+                    .frame(height: 32.adjustToScreenHeight)
+                
                 StudyTimerView(
                     totalTime: studySession.totalTime,
                     remainingTime: studySession.remainingTime,
@@ -113,7 +117,7 @@ struct FocusModeView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .font(.suite(size: 16, weight: .regular), lineHeight: 26.adjustToScreenHeight)
                     .foregroundStyle(.gray100)
-                HStack {
+                HStack(spacing: 4) {
                     Text("\(countOfActiveStudents)명")
                         .font(.pretendard(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
                         .foregroundStyle(.blue50)
