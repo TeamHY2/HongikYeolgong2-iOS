@@ -82,7 +82,7 @@ struct FocusModeView: View {
                 StudyTimerView(
                     totalTime: studySession.totalTime,
                     remainingTime: studySession.remainingTime,
-                    color: studySession.isAddTime ? .yellow100 : .white
+                    color: studySession.isAddTime ? .yellow100 : .gray100
                 )
                 
                 HStack(spacing: 12.adjustToScreenWidth) {
