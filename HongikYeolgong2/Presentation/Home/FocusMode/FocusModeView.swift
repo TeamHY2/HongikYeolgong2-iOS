@@ -55,6 +55,7 @@ struct FocusModeView: View {
             HStack {
                 Text("포커스모드")
                     .font(.suite(size: 18, weight: .semibold))
+                    .foregroundStyle(.gray100)
                 Spacer()
                 // 닫기 버튼
                 Button {
@@ -115,7 +116,7 @@ struct FocusModeView: View {
                 HStack {
                     Text("\(countOfActiveStudents)명")
                         .font(.suite(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
-                        .foregroundStyle(.blue100)
+                        .foregroundStyle(.blue50)
                     Text("공부중")
                         .font(.suite(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
                         .foregroundStyle(.gray300)
