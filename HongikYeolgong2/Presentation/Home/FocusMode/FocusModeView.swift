@@ -115,10 +115,10 @@ struct FocusModeView: View {
                     .foregroundStyle(.gray100)
                 HStack {
                     Text("\(countOfActiveStudents)명")
-                        .font(.suite(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
+                        .font(.pretendard(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
                         .foregroundStyle(.blue50)
                     Text("공부중")
-                        .font(.suite(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
+                        .font(.pretendard(size: 14, weight: .regular), lineHeight: 20.adjustToScreenHeight)
                         .foregroundStyle(.gray300)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)

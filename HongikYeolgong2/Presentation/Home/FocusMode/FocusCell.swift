@@ -17,7 +17,7 @@ struct FocusCell: View {
         VStack {
             Image(studyStatusInfo.studyStatus ? .lampBlue : .lampGray)
             Text(studyStatusInfo.userName)
-                .font(.suite(size: 14, weight: .medium))
+                .font(.pretendard(size: 14, weight: .regular))
                 .foregroundStyle(studyStatusInfo.studyStatus ? .blue50 : .gray300)
                 .lineLimit(1)
                 .truncationMode(.tail)
