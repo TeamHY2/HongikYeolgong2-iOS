@@ -16,7 +16,7 @@ struct StudyTimerView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Time Left")
                 .font(.suite(size: 12, weight: .medium), lineHeight: 15.adjustToScreenHeight)
-                .foregroundStyle(.gray100)
+                .foregroundStyle(.gray300)
             
             Text(remainingTime.getFullTime())
                 .font(.suite(size: 30, weight: .black), lineHeight: 32.adjustToScreenHeight)
