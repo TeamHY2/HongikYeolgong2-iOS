@@ -23,6 +23,7 @@ struct FocusModeView: View {
     
     // 30초마다
     let timer = Timer.publish(every: 30, on: .main, in: .common).autoconnect()
+    @Environment(\.scenePhase) private var scenePhase
     
     // 현재 사용중인 사용자 수
     var countOfActiveStudents: Int {
@@ -47,6 +48,13 @@ struct FocusModeView: View {
         }
         .onReceive(timer) { _ in
             retryAction()
+        }
+        .onChange(of: scenePhase) { newPhase in
+            if newPhase == .active {
+                if !studySession.isStudying {
+                    isPresented = false
+                }
+            }
         }
     }
     
