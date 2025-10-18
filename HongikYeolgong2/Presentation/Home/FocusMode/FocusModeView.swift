@@ -56,6 +56,9 @@ struct FocusModeView: View {
                 }
             }
         }
+        .onChange(of: studySession.isStudying) { newValue in
+            isPresented = newValue
+        }
     }
     
     var content: some View {
