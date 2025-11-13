@@ -184,6 +184,8 @@
 		98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */; };
 		98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83892E01627800680FE6 /* StudyStatusMapper.swift */; };
 		98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */; };
+		98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD52EC6217900FD3129 /* FriendsView.swift */; };
+		98D4ACD92EC624BE00FD3129 /* FriendsRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */; };
 		98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953A2CE4B97000278DBD /* StudyRecordView.swift */; };
 		98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */; };
 		98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953E2CE4BA3100278DBD /* Loadable.swift */; };
@@ -386,6 +388,8 @@
 		98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusInfo.swift; sourceTree = "<group>"; };
 		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
+		98D4ACD52EC6217900FD3129 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRankingCell.swift; sourceTree = "<group>"; };
 		98EC953A2CE4B97000278DBD /* StudyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordView.swift; sourceTree = "<group>"; };
 		98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
 		98EC953E2CE4BA3100278DBD /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
@@ -712,6 +716,7 @@
 			children = (
 				479821D52CA27BBC002357EB /* Other */,
 				47A1477A2CA1594D00A91F66 /* Auth */,
+				98D4ACD42EC61E5900FD3129 /* Friends */,
 				47A1474B2CA1449F00A91F66 /* Root */,
 				47A147372CA1379A00A91F66 /* Setting */,
 				47A147362CA1379100A91F66 /* Ranking */,
@@ -1123,6 +1128,23 @@
 			path = FocusMode;
 			sourceTree = "<group>";
 		};
+		98D4ACD42EC61E5900FD3129 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				98D4ACD72EC6249800FD3129 /* Component */,
+				98D4ACD52EC6217900FD3129 /* FriendsView.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		98D4ACD72EC6249800FD3129 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		98F9D8422CDA2DE100DE12BB /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -1246,11 +1268,11 @@
 			};
 			buildConfigurationList = 47B1D4A32C9CB1740071B62B /* Build configuration list for PBXProject "HongikYeolgong2" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ko,
 			);
 			mainGroup = 47B1D49F2C9CB1740071B62B;
 			packageReferences = (
@@ -1380,6 +1402,7 @@
 				47E7DAD02DFFEE91005AC1EB /* FocusCell.swift in Sources */,
 				98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */,
 				98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */,
+				98D4ACD92EC624BE00FD3129 /* FriendsRankingCell.swift in Sources */,
 				4786A1102CCA351A008635A4 /* WeeklyStudySessionDTO.swift in Sources */,
 				5E847A742CDBD52E0034C2A7 /* CalendarDataInteractor.swift in Sources */,
 				47FDF21F2CE712A3005CCB74 /* Form.swift in Sources */,
@@ -1485,6 +1508,7 @@
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
+				98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */,
 				98B5F0132CDBB905007CF5FA /* StudyTimeMapper.swift in Sources */,
 				47D5EDCF2CCBD10300ACA469 /* BaseButton.swift in Sources */,
 				478F844B2CD35AF40097CAA1 /* RankingMapper.swift in Sources */,
@@ -1666,6 +1690,8 @@
 				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1678,7 +1704,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1701,16 +1727,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 4N3558QY8F;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4N3558QY8F;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1723,10 +1753,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HongikYeolgong_Development;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
