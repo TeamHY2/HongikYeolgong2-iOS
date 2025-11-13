@@ -36,18 +36,18 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
         }.eraseToAnyPublisher()
     }
     
-    func uploadStudyRecord(startTime: Date, endTime: Date) -> AnyPublisher<StudySessionResponseDTO, NetworkError> {
-        return Future<StudySessionResponseDTO, NetworkError> { promise in
-            Task {
-                do {
-                    let studySessionReqDto = StudySessionRequestDTO(startTime: startTime.dateToISO8601(), endTime: endTime.dateToISO8601())
-                    let _: BaseResponse<StudySessionResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.uploadStudySession(studySessionReqDto))
-                } catch let error as NetworkError {
-                    throw error
-                }
-            }
-        }.eraseToAnyPublisher()
-    }
+//    func uploadStudyRecord(startTime: Date, endTime: Date) -> AnyPublisher<StudySessionResponseDTO, NetworkError> {
+//        return Future<StudySessionResponseDTO, NetworkError> { promise in
+//            Task {
+//                do {
+//                    let studySessionReqDto = StudySessionRequestDTO(startTime: startTime.dateToISO8601(), endTime: endTime.dateToISO8601())
+//                    let _: BaseResponse<StudySessionResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.uploadStudySession(studySessionReqDto))
+//                } catch let error as NetworkError {
+//                    throw error
+//                }
+//            }
+//        }.eraseToAnyPublisher()
+//    }
     
     func getWiseSaying() -> AnyPublisher<WiseSaying, NetworkError> {
         return Future<WiseSaying, NetworkError> { promise in
@@ -96,6 +96,48 @@ final class StudySessionRepositoryImpl: StudySessionRepository {
                     let response: BaseResponse<[CalendarCountAllResponseDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getAllStudyRecords)
                     promise(.success(response.data.map { $0.toEntity() }))
                     
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func getStudyStatus() -> AnyPublisher<[StudyStatusInfo], NetworkError> {
+        return Future<[StudyStatusInfo], NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<[StudyStatusResponseDTO]> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.getStudyStatus)
+                    promise(.success(response.data.map { $0.toEntity() }))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func postStartStudy(startTime: Date) -> AnyPublisher<StartStudyResponseDTO, NetworkError> {
+        return Future<StartStudyResponseDTO, NetworkError> { promise in
+            Task {
+                do {
+                    let startStudyRequestDTO = StartStudyRequestDTO(startTime: startTime.dateToISO8601())
+                    let response: BaseResponse<StartStudyResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.postStartStudy(startStudyRequestDTO))
+                    promise(.success(response.data))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func postEndStudy(studySessionId: Int, endTime: Date) -> AnyPublisher<EndStudyResponseDTO, NetworkError> {
+        return Future<EndStudyResponseDTO, NetworkError> { promise in
+            Task {
+                do {
+                    let endTimeToString = endTime.dateToISO8601()
+                    let endStudyRequestDTO: EndStudyRequestDTO = .init(studySessionId: String(studySessionId), endTime: endTimeToString)
+                    let response: BaseResponse<EndStudyResponseDTO> = try await NetworkService.shared.request(endpoint: WeeklyEndpoint.postEndStudy(endStudyRequestDTO))
+                    promise(.success(response.data))
                 } catch let error as NetworkError {
                     promise(.failure(error))
                 }

@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct RankingView: View {
-    @StateObject private var rankingDataInteractor = RankingDataInteractorImpl(
-            studySessionRepository: StudySessionRepositoryImpl(),
-            weeklyRepository: WeeklyRepositoryImpl()
-        )
+    @Environment(\.injected.interactors.rankingDataInteractor) var rankingDataInteractor
+    @State private var yearWeek = 0
+    @State private var weeklyRanking: WeeklyRanking = WeeklyRanking()
+    // 랭킹 기준 날짜
+    @State var baseDate: Date = Date()
+    // 년도 주차 변환 수
+    var weekNumber: Int {
+        getWeekOfYear(date: baseDate)
+    }
     
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 0) {
-                Text(rankingDataInteractor.weeklyRanking.weekName)
+                Text(weeklyRanking.weekName)
                     .font(.suite(size: 24, weight: .bold), lineHeight: 30.adjustToScreenHeight)
                     .foregroundColor(.gray100)
                 
@@ -24,18 +29,22 @@ struct RankingView: View {
                 
                 HStack(spacing: 7.adjustToScreenWidth) {
                     Button(action: {
-                        rankingDataInteractor.changeWeek(by: -1)
+                        changeWeek(by: -1) {
+                            getWeeklyRanking()
+                        }
                     }, label: {
                         Image(.icCalendarLeft)
                     })
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                     
                     Button(action: {
-                        rankingDataInteractor.changeWeek(by: 1)
+                        changeWeek(by: 1) {
+                            getWeeklyRanking()
+                        }
                     }, label: {
-                        Image(rankingDataInteractor.isNextWeekAvailable() ? .icCalendarRight : .isCalendarRightDisabled)
+                        Image(isNextWeekAvailable() ? .icCalendarRight : .isCalendarRightDisabled)
                     })
-                    .disabled(!rankingDataInteractor.isNextWeekAvailable())
+                    .disabled(!isNextWeekAvailable())
                     .frame(width: 36.adjustToScreenWidth, height: 36.adjustToScreenHeight)
                 }
             }            
@@ -44,15 +53,39 @@ struct RankingView: View {
                                 bottom: 17.adjustToScreenHeight,
                                 trailing: 32.adjustToScreenWidth))
             
-            RankingListView(departmentRankings: rankingDataInteractor.weeklyRanking.departmentRankings)
+            RankingListView(departmentRankings: weeklyRanking.departmentRankings)
         }
         .onAppear {
-            getCurrentWeeklyRanking()
+            getWeeklyRanking()
         }
         .modifier(IOSBackground())
     }
     
-    func getCurrentWeeklyRanking() {
-        rankingDataInteractor.getWeeklyRanking()
+    func getWeeklyRanking() {
+        rankingDataInteractor.getWeeklyRanking(weeklyRanking: $weeklyRanking, weekNumber: weekNumber)
+    }
+    
+    // 주차 변경
+    func changeWeek(by offset: Int, completion: (() -> Void)) {
+        var calendar = Calendar(identifier: .iso8601)
+        calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+        self.baseDate = calendar.date(byAdding: .weekOfYear, value: offset, to: baseDate) ?? baseDate
+        completion()
+    }
+    
+    // 미래 주차 필터링
+    func isNextWeekAvailable() -> Bool {
+        let today = getWeekOfYear(date: Date())
+        return weekNumber < today
+    }
+    
+    // 연도별 주차 추출 (24년 10주차 -> 202410 형태)
+    func getWeekOfYear(date: Date) -> Int {
+        var calendar = Calendar(identifier: .iso8601)
+        calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+        
+        let weekOfYear = calendar.component(.weekOfYear, from: date)
+        let year = calendar.component(.yearForWeekOfYear, from: date)
+        return year * 100 + weekOfYear
     }
 }

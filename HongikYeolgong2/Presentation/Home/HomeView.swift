@@ -24,11 +24,13 @@ struct HomeView: View {
     @State private var studySession = AppState.StudySession()
     @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
     @State private var wiseSaying: Loadable<WiseSaying> = .notRequest
+    @State private var studyStatusInfos: Loadable<[StudyStatusInfo]> = .notRequest
     @State private var isShowTimePicker = false
     @State private var isShowAddTimeModal = false
     @State private var isShowEndUseModal = false
     @State private var isShowWebView = false
     @State private var isViewOnAppeared = false
+    @State private var isFocusModeView = false
     @StateObject private var homeNavigation = HomeNavigation()
     
     var body: some View {
@@ -50,7 +52,9 @@ struct HomeView: View {
                 
                 StudyContentControllerView(
                     studySession: $studySession,
-                    wiseSaying: wiseSaying.value ?? WiseSaying()
+                    isFocusModeView: $isFocusModeView,
+                    wiseSaying: wiseSaying.value ?? WiseSaying(),
+                    activateFocusMode: activateFocusMode
                 )
                 
                 Spacer()
@@ -87,6 +91,16 @@ struct HomeView: View {
                           confirmButtonText: "네",
                           cancleButtonText: "더 이용하기",
                           confirmAction: endStudy )
+            }
+            .fullScreenCover(isPresented: $isFocusModeView) {
+                FocusModeView(
+                    studySession: $studySession,
+                    studyStatusInfos: $studyStatusInfos,
+                    isPresented: $isFocusModeView,
+                    retryAction: focusModeRetryAction,
+                    addTiem: studySessionInteractor.addTime,
+                    endStudy: endStudy
+                )
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .modifier(IOSBackground())
@@ -147,6 +161,11 @@ extension HomeView {
     func startStudy() {         
         studySessionInteractor.startStudy()
         weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
+        // 포커스모드 실행
+        Task {
+            try await Task.sleep(nanoseconds: 500_000_000)
+            activateFocusMode()
+        }
         Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
@@ -158,6 +177,18 @@ extension HomeView {
     func retryAction() {
         weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
         weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
+    }
+    
+    // 포커스모드 실행
+    func activateFocusMode() {
+        // 사용중인 사용자 정보 불러오기
+        studySessionInteractor.getStudyStatus(StudyStatusUsageInfos: $studyStatusInfos)
+        // 포커스모드 화면 띄우기
+        isFocusModeView = true
+    }
+    
+    func focusModeRetryAction() {
+        studySessionInteractor.getStudyStatus(StudyStatusUsageInfos: $studyStatusInfos)
     }
 }
 
@@ -196,21 +227,33 @@ extension HomeView {
 // MARK: - StudyContentControllerView
 struct StudyContentControllerView: View {
     @Binding var studySession: AppState.StudySession
+    @Binding var isFocusModeView: Bool
     let wiseSaying: WiseSaying
+    let activateFocusMode: () -> Void
     
     var body: some View {
         Group {
             if studySession.isStudying {
-                VStack(spacing: 32.adjustToScreenHeight) {
+                VStack(spacing: 0) {
                     StudyPeriodView(
                         startTime: studySession.firstStartTime,
                         endTime: studySession.endTime
                     )
+                    
+                    Spacer().frame(height: 32.adjustToScreenHeight)
+                    
                     StudyTimerView(
                         totalTime: studySession.totalTime,
                         remainingTime: studySession.remainingTime,
-                        color: studySession.isAddTime ? .yellow100 : .white
+                        color: studySession.isAddTime ? .yellow100 : .gray100
                     )
+                    
+                    Spacer().frame(height: 24.adjustToScreenHeight)
+                    
+                    // 포커스모드 열기 벼튼
+                    MenuItem(title: "포커스모드",
+                             onTap: activateFocusMode,
+                             content: { Image(.arrowRight) })
                 }
                 .padding(.top, 36.adjustToScreenHeight)
             } else {
@@ -248,6 +291,7 @@ struct ActionButtonControllerView: View {
                     BaseButton(
                         title: "열람실 이용 종료",
                         backgroundColor: .gray600,
+                        foregroundColor: .gray100,
                         radius: 4,
                         action: { actions.endButtonTapped() }
                     )
