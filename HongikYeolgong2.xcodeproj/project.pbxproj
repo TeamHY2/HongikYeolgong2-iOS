@@ -227,7 +227,6 @@
 		4707230E2CBC1A9C0046469F /* LoginRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestDTO.swift; sourceTree = "<group>"; };
 		470723102CBC1B0A0046469F /* LoginResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponseDTO.swift; sourceTree = "<group>"; };
 		470723122CBC1BF10046469F /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
-		470723142CBC222E0046469F /* HongikYeolgong2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2.entitlements; sourceTree = "<group>"; };
 		470723172CBC29510046469F /* AppleLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginManager.swift; sourceTree = "<group>"; };
 		470C7B3D2CF4569300C46690 /* RemoteConfigManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigManager.swift; sourceTree = "<group>"; };
 		471940C72CAFCB1B00426D30 /* SizeCheckModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckModifier.swift; sourceTree = "<group>"; };
@@ -374,6 +373,7 @@
 		98131E0A2E05ADDD0081D56A /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		981D050B2D6F69080058D0C5 /* Secrets-dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Secrets-dev.xcconfig"; sourceTree = "<group>"; };
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
+		9843A9BD2EC6504300B495BB /* HongikYeolgong2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2.entitlements; sourceTree = "<group>"; };
 		98691FAD2D86C5AD00123861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStartRequestDTO.swift; sourceTree = "<group>"; };
 		98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyEndRequestDTO.swift; sourceTree = "<group>"; };
@@ -387,6 +387,7 @@
 		98B5F0122CDBB905007CF5FA /* StudyTimeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeMapper.swift; sourceTree = "<group>"; };
 		98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusInfo.swift; sourceTree = "<group>"; };
 		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
+		98C2FF8B2EC636C50009250C /* HongikYeolgong2Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2Release.entitlements; sourceTree = "<group>"; };
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
 		98D4ACD52EC6217900FD3129 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRankingCell.swift; sourceTree = "<group>"; };
@@ -951,8 +952,9 @@
 		47B1D4AA2C9CB1740071B62B /* HongikYeolgong2 */ = {
 			isa = PBXGroup;
 			children = (
+				98C2FF8B2EC636C50009250C /* HongikYeolgong2Release.entitlements */,
+				9843A9BD2EC6504300B495BB /* HongikYeolgong2.entitlements */,
 				479DFC222DACA2310083B918 /* GoogleService-Info.plist */,
-				470723142CBC222E0046469F /* HongikYeolgong2.entitlements */,
 				4736719C2CB10D7B00527896 /* Info.plist */,
 				4763FFB62CB9133600990336 /* Util */,
 				47BACCF52CA164B200295DAC /* UI */,
@@ -1678,57 +1680,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
-				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.3.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2 1731137565";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		47B1D4CE2C9CB1760071B62B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
@@ -1757,7 +1710,55 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = HongikYeolgong_Development;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		47B1D4CE2C9CB1760071B62B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+                CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HongikYeolgong2/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4N3558QY8F;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HongikYeolgong2/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "홍익열공이";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.3.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1774,18 +1775,18 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4N3558QY8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2Test";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1799,18 +1800,18 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = P4D4ZQC4YF;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 4N3558QY8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.teamHY2.HongikYeolgong2Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "match Development com.teamHY2.HongikYeolgong2Test";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
