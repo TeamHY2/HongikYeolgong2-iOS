@@ -60,7 +60,7 @@ struct MainTabView: View {
                     }
                 
                 FriendsView()
-                    .tag(Tab.home)
+                    .tag(Tab.friend)
                     .onAppear {
                         Amplitude.instance.track(eventType: "Friends")
                     }
@@ -101,7 +101,7 @@ struct TabBarView: View {
                 Spacer()
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
-                    VStack(spacing: 5.adjustToScreenHeight) {
+                    VStack(spacing: 4.adjustToScreenHeight) {
                         Image(tab == currentTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
                         
                         Text(tab.title)
