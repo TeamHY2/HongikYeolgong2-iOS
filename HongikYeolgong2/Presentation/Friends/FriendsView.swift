@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum RankingTypeEnum: String, CaseIterable {
+    case month = "월간"
+    case day = "일간"
+}
+
 // 알림창 상태 표시
 enum NotificationStatus {
     case newNotification
@@ -14,12 +19,15 @@ enum NotificationStatus {
 }
 
 struct FriendsView: View {
+    @Namespace private var rankTypeAnimation
+    @State private var rankType: RankingTypeEnum = .month
     var notificationStatus: NotificationStatus = .none
     
     var body: some View {
         VStack(spacing: 0){
             HStack{
-                //
+                // 랭킹 타입
+                rankTypeTap
                 
                 Spacer()
                 
@@ -56,6 +64,36 @@ struct FriendsView: View {
         .modifier(IOSBackground())
     }
     
+    var rankTypeTap: some View {
+        HStack {
+            ForEach(RankingTypeEnum.allCases, id: \.self) { rank in
+                Button {
+                    rankType = rank
+                } label: {
+                    ZStack {
+                        if rank == self.rankType {
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .fill(.blue100)
+                                .frame(width: 49, height: 26)
+                                .matchedGeometryEffect(id: "rankType", in: rankTypeAnimation)
+                        } else {
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .fill(.clear)
+                                .frame(width: 49, height: 26)
+                        }
+                        Text(rank.rawValue)
+                            .font(.pretendard(size: 14, weight: .regular))
+                            .foregroundStyle(rank == self.rankType ? Color.white : Color.gray100)
+                            .frame(width: 49, height: 26)
+                    }
+                }
+            }
+        }
+        .padding(3)
+        .background(.gray800)
+        .cornerRadius(6)
+    }
+    
     /// 알림 벨 표시
     var notificationButton: some View {
         Button {
@@ -70,8 +108,12 @@ struct FriendsView: View {
             }
         }
     }
-    
+}
 
+extension FriendsView {
+//    private func tapAction() -> some View {
+//        
+//    }
 }
 
 #Preview {
