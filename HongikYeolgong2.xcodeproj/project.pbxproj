@@ -186,6 +186,8 @@
 		98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */; };
 		98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD52EC6217900FD3129 /* FriendsView.swift */; };
 		98D4ACD92EC624BE00FD3129 /* FriendsRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */; };
+		98E2B69F2ECB6199004524CD /* SearchFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */; };
+		98E2B6A12ECB642E004524CD /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2B6A02ECB642E004524CD /* FriendRequestCell.swift */; };
 		98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953A2CE4B97000278DBD /* StudyRecordView.swift */; };
 		98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */; };
 		98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953E2CE4BA3100278DBD /* Loadable.swift */; };
@@ -391,6 +393,8 @@
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
 		98D4ACD52EC6217900FD3129 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRankingCell.swift; sourceTree = "<group>"; };
+		98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsView.swift; sourceTree = "<group>"; };
+		98E2B6A02ECB642E004524CD /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		98EC953A2CE4B97000278DBD /* StudyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordView.swift; sourceTree = "<group>"; };
 		98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
 		98EC953E2CE4BA3100278DBD /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
@@ -1135,6 +1139,7 @@
 			children = (
 				98D4ACD72EC6249800FD3129 /* Component */,
 				98D4ACD52EC6217900FD3129 /* FriendsView.swift */,
+				98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -1143,6 +1148,7 @@
 			isa = PBXGroup;
 			children = (
 				98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */,
+				98E2B6A02ECB642E004524CD /* FriendRequestCell.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1431,6 +1437,7 @@
 				477BB06A2D3645E4002AE141 /* ProfileEditResponseDTO.swift in Sources */,
 				47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */,
 				47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */,
+				98E2B6A12ECB642E004524CD /* FriendRequestCell.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
 				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
@@ -1493,6 +1500,7 @@
 				47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
+				98E2B69F2ECB6199004524CD /* SearchFriendsView.swift in Sources */,
 				5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */,
 				478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
@@ -1726,7 +1734,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-                CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HongikYeolgong2/HongikYeolgong2.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
