@@ -27,10 +27,8 @@ struct RootView: View {
                 switch userSession {
                     case .unauthenticated:
                         OnboardingView()
-                            .environmentObject(router)
                     case .authenticated:
                         MainTabView()
-                            .environmentObject(router)
                             .onAppear {
                                 userDataInteractor.getUserProfile()
                                 userDataInteractor.updateFCMToken()
@@ -55,6 +53,7 @@ struct RootView: View {
             }
             .withAppDestinations()
         }
+        .environmentObject(router)
         .fullScreenCover(isPresented: $isWebViewPresented) {
             WebViewWithNavigation(url: promotionData.detailUrl, title: "상세보기")
         }

@@ -19,48 +19,93 @@ enum NotificationStatus {
 }
 
 struct FriendsView: View {
+    @EnvironmentObject var router: AppRouter
     @Namespace private var rankTypeAnimation
     @State private var rankType: RankingTypeEnum = .month
+    // UI 테스트 확인용
+    @State private var friendsTest: Bool = true
     var notificationStatus: NotificationStatus = .none
     
     var body: some View {
-        VStack(spacing: 0){
-            HStack{
-                // 랭킹 타입
-                rankTypeTap
+        ZStack{
+            VStack(spacing: 0){
+                HStack{
+                    // 랭킹 타입
+                    if friendsTest {
+                        rankTypeTap
+                    }
+                    
+                    Spacer()
+                    
+                    // 알림 벨
+                    notificationButton
+                }
+                .padding(.horizontal, 32.adjustToScreenWidth)
+                
+                // 순위 셀 부분
+                if friendsTest {
+                    Spacer().frame(height: 23.adjustToScreenHeight)
+                    ScrollView {
+                        VStack(spacing: 15.adjustToScreenHeight) {
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            FriendsRankingCell()
+                            // 버튼 하단 공백용
+                            Spacer()
+                                .frame(height: 80)
+                        }
+                        .padding(.horizontal, 32.adjustToScreenWidth)
+                    }
+                } else {
+                    Spacer()
+                    VStack(spacing: 30){
+                        Image(.friendsListEmpty)
+                            .padding(.leading, 21)
+                        
+                        Text("친구를 추가해\n공부 현황을 살펴보세요")
+                            .font(.pretendard(size: 18, weight: .semibold), lineHeight: 26)
+                            .foregroundStyle(.gray200)
+                            .multilineTextAlignment(.center)
+                    }
+                }
                 
                 Spacer()
-                
-                // 알림 벨
-                notificationButton
             }
+            .padding(.top, 33.adjustToScreenHeight)
             
-            Spacer().frame(height: 23.adjustToScreenHeight)
+            // 친구 랭킹 리스트 흐림 효과
+            LinearGradient(
+                colors: [Color(red: 12/255, green: 13/255, blue: 17/255, opacity: 0),
+                         Color(red: 12/255, green: 13/255, blue: 17/255, opacity: 1)],
+                startPoint: .center,
+                endPoint: .bottom)
+            .ignoresSafeArea()
+            .allowsHitTesting(false)
             
-            // 순위 셀 부분
-            VStack(spacing: 15.adjustToScreenHeight) {
-                FriendsRankingCell()
-                FriendsRankingCell()
-                FriendsRankingCell()
-                FriendsRankingCell()
+            
+            VStack{
+                Spacer()
+                // 친구추가 버튼
+                BaseButton(
+                    title: "친구 추가하기",
+                    backgroundColor: .gray600,
+                    foregroundColor: .gray100,
+                    radius: 4,
+                    action: { friendAddButtonTapped() }
+                )
+                .padding(.horizontal, 32.adjustToScreenWidth)
+                .padding(.bottom, 36.adjustToScreenHeight)
             }
-            
-            Spacer()
-            
-            // 친구추가 버튼
-            BaseButton(
-                title: "친구 추가하기",
-                backgroundColor: .gray600,
-                foregroundColor: .gray100,
-                radius: 4,
-                action: {
-                    // 친구 추가 View 진입 추가
-                }
-            )
         }
-        .padding(.horizontal, 32.adjustToScreenWidth)
-        .padding(.bottom, 36.adjustToScreenHeight)
-        .padding(.top, 33.adjustToScreenHeight)
         .modifier(IOSBackground())
     }
     
@@ -98,7 +143,7 @@ struct FriendsView: View {
     var notificationButton: some View {
         Button {
             // 알림창 action 추가
-            
+            notificationButtonTapped()
         } label: {
             switch notificationStatus {
                 case .newNotification:
@@ -108,14 +153,22 @@ struct FriendsView: View {
             }
         }
     }
+    
+    /// 친구 추가 View 진입
+    private func addFriendButtonTapped() {
+    }
 }
 
 extension FriendsView {
-//    private func tapAction() -> some View {
-//        
-//    }
+    private func notificationButtonTapped() {
+        router.push(to: .friendNotification)
+    }
+    
+    private func friendAddButtonTapped() {
+        router.push(to: .friendNotification)
+    }
 }
 
 #Preview {
-    FriendsView()
+    FriendsView().environmentObject(AppRouter())
 }

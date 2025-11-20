@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SearchFriendsView: View {
+    @EnvironmentObject var router: AppRouter
     @State var text: String = ""
     
     var body: some View {
@@ -17,7 +18,7 @@ struct SearchFriendsView: View {
                 // 뒤로가기 버튼
                 Button {
                     // 페이지 나가기
-                    
+                    router.pop()
                 } label: {
                     Image(.icProfileLeft)
                 }
@@ -59,8 +60,8 @@ struct SearchFriendsView: View {
                     }
                 }
                 .padding(.top, 22.adjustToScreenHeight)
+                .padding(.horizontal, 32.adjustToScreenWidth)
             }
-            .padding(.horizontal, 32.adjustToScreenWidth)
         }
         //.padding(.top, 32.adjustToScreenHeight)
         .modifier(IOSBackground())
