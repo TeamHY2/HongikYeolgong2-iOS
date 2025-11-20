@@ -118,7 +118,6 @@
 		47B1D4C72C9CB1760071B62B /* HongikYeolgong2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4C62C9CB1760071B62B /* HongikYeolgong2UITests.swift */; };
 		47B1D4C92C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */; };
 		47BACCF72CA164BA00295DAC /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BACCF62CA164BA00295DAC /* Font+.swift */; };
-		47BB5BE32CE52858002BBEE1 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BB5BE22CE52858002BBEE1 /* Page.swift */; };
 		47BE30E32CC813BB0015D973 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E22CC813BB0015D973 /* KeyChainManager.swift */; };
 		47BE30E52CC81A9E0015D973 /* URLRequest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BE30E42CC81A9E0015D973 /* URLRequest+.swift */; };
 		47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */; };
@@ -184,6 +183,7 @@
 		98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */; };
 		98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83892E01627800680FE6 /* StudyStatusMapper.swift */; };
 		98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */; };
+		98D39EA92ECE05CD00960BC7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D39EA82ECE05CD00960BC7 /* AppRouter.swift */; };
 		98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD52EC6217900FD3129 /* FriendsView.swift */; };
 		98D4ACD92EC624BE00FD3129 /* FriendsRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */; };
 		98E2B69F2ECB6199004524CD /* SearchFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */; };
@@ -332,7 +332,6 @@
 		47B1D4C62C9CB1760071B62B /* HongikYeolgong2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITests.swift; sourceTree = "<group>"; };
 		47B1D4C82C9CB1760071B62B /* HongikYeolgong2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HongikYeolgong2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		47BACCF62CA164BA00295DAC /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
-		47BB5BE22CE52858002BBEE1 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		47BE30E22CC813BB0015D973 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		47BE30E42CC81A9E0015D973 /* URLRequest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+.swift"; sourceTree = "<group>"; };
 		47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASAuthEndpoint.swift; sourceTree = "<group>"; };
@@ -391,6 +390,7 @@
 		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
 		98C2FF8B2EC636C50009250C /* HongikYeolgong2Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2Release.entitlements; sourceTree = "<group>"; };
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
+		98D39EA82ECE05CD00960BC7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		98D4ACD52EC6217900FD3129 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRankingCell.swift; sourceTree = "<group>"; };
 		98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsView.swift; sourceTree = "<group>"; };
@@ -738,6 +738,7 @@
 				4763FFAE2CB90AE000990336 /* AppState.swift */,
 				4763FFB02CB90C1500990336 /* DependencyInjector.swift */,
 				4763FFB22CB90E3800990336 /* InteractorsContainer.swift */,
+				98D39EA82ECE05CD00960BC7 /* AppRouter.swift */,
 			);
 			path = Injected;
 			sourceTree = "<group>";
@@ -1105,7 +1106,6 @@
 				4780044B2CCAAD4F00FFAF00 /* WeekDay.swift */,
 				47A540722CD0D90F00DC40D0 /* Nickname.swift */,
 				479BF66B2CDD1A8D009D9E44 /* LocalNotification.swift */,
-				47BB5BE22CE52858002BBEE1 /* Page.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1397,7 +1397,6 @@
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
 				478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
-				47BB5BE32CE52858002BBEE1 /* Page.swift in Sources */,
 				473E8EB62CCE6A02000F102C /* Date+.swift in Sources */,
 				47C815412CE221060017EA24 /* SocialLoginRepositoryImpl.swift in Sources */,
 				479DFC252DACA5DF0083B918 /* LibraryHour.swift in Sources */,
@@ -1441,6 +1440,7 @@
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
 				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
+				98D39EA92ECE05CD00960BC7 /* AppRouter.swift in Sources */,
 				47E7DACE2DFFE14E005AC1EB /* FocusModeView.swift in Sources */,
 				47A1477E2CA159E300A91F66 /* SplashView.swift in Sources */,
 				5E847A702CDBD4F10034C2A7 /* CalendarMapper.swift in Sources */,

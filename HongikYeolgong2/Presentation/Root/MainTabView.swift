@@ -47,48 +47,47 @@ enum Tab: CaseIterable {
 }
 
 struct MainTabView: View {
+    @EnvironmentObject var router: AppRouter
     @State private var currentTab: Tab = .home
     
     var body: some View {
-        NavigationStack {
-            TabView(selection: $currentTab,
-                    content:  {
-                HomeView()
-                    .tag(Tab.home) 
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Home")
-                    }
-                
-                FriendsView()
-                    .tag(Tab.friend)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Friends")
-                    }
-                
-                
-                RecordView()
-                    .tag(Tab.record)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Record")
-                    }
-                
-                RankingView()
-                    .tag(Tab.ranking)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Ranking")
-                    }
-                
-                SettingView()
-                    .tag(Tab.setting)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Setting")
-                    }
-            })
-            .overlay(alignment: .bottom) {
-                TabBarView(currentTab: $currentTab)
-            }
-            .edgesIgnoringSafeArea(.bottom)
+        TabView(selection: $router.currentTab,
+                content:  {
+            HomeView()
+                .tag(Tab.home)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Home")
+                }
+            
+            FriendsView()
+                .tag(Tab.friend)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Friends")
+                }
+            
+            
+            RecordView()
+                .tag(Tab.record)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Record")
+                }
+            
+            RankingView()
+                .tag(Tab.ranking)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Ranking")
+                }
+            
+            SettingView()
+                .tag(Tab.setting)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Setting")
+                }
+        })
+        .overlay(alignment: .bottom) {
+            TabBarView(currentTab: $router.currentTab)
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -130,6 +129,6 @@ struct TabBarView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView().environmentObject(AppRouter())
 }
 

@@ -14,8 +14,9 @@ struct OnboardingView: View {
     @Environment(\.injected.appState) private var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     
+    @EnvironmentObject var router: AppRouter
+    
     // MARK: - States
-    @State private var onboardingPath: [Page] = []
     @State private var routingState: Routing = .init()
     private var routingBinding: Binding<Routing> {
         $routingState.dispatched(to: appState, \.routing.onboarding)
@@ -23,28 +24,18 @@ struct OnboardingView: View {
     
     // MARK: - Body
     var body: some View {
-        NavigationStack(path: $onboardingPath) {
-            VStack {
-                Spacer()
-                
-                OnboardingPageView()
-                                
-                AppleLoginButton(
-                    onRequest: onRequestAppleLogin,
-                    onCompletion: onCompleteAppleLogin
-                )
-            }
-            .onReceive(routingUpdate) {
-                onboardingPath.append(.signUp)
-            }
-            .navigationDestination(for: Page.self) { page in
-                switch page {
-                case .signUp:
-                    ProfileEditView()
-                default:
-                    EmptyView()
-                }
-            }
+        VStack {
+            Spacer()
+            
+            OnboardingPageView()
+            
+            AppleLoginButton(
+                onRequest: onRequestAppleLogin,
+                onCompletion: onCompleteAppleLogin
+            )
+        }
+        .onReceive(routingUpdate) {
+            router.push(to: .signUp)
         }
     }
 }

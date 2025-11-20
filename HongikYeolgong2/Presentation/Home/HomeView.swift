@@ -10,16 +10,14 @@ import SwiftUI
 
 import AmplitudeSwift
 
-class HomeNavigation: ObservableObject {
-    @Published var path: [Page] = []
-}
-
 struct HomeView: View {
     // MARK: - Properties
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userPermissionsInteractor) var permissions
     @Environment(\.injected.interactors.studySessionInteractor) var studySessionInteractor
     @Environment(\.injected.interactors.weeklyStudyInteractor) var weeklyStudyInteractor
+    
+    @EnvironmentObject var router: AppRouter
     
     @State private var studySession = AppState.StudySession()
     @State private var studyRecords: Loadable<[WeeklyStudyRecord]> = .notRequest
@@ -31,7 +29,6 @@ struct HomeView: View {
     @State private var isShowWebView = false
     @State private var isViewOnAppeared = false
     @State private var isFocusModeView = false
-    @StateObject private var homeNavigation = HomeNavigation()
     
     var body: some View {
         NetworkStateView(
@@ -46,94 +43,84 @@ struct HomeView: View {
     }
     
     var content: some View {
-        NavigationStack(path: $homeNavigation.path) {
-            VStack(spacing: 0) {
-                WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
-                
-                StudyContentControllerView(
-                    studySession: $studySession,
-                    isFocusModeView: $isFocusModeView,
-                    wiseSaying: wiseSaying.value ?? WiseSaying(),
-                    activateFocusMode: activateFocusMode
+        VStack(spacing: 0) {
+            WeeklyStudyView(studyRecords: studyRecords.value ?? [WeeklyStudyRecord]())
+            
+            StudyContentControllerView(
+                studySession: $studySession,
+                isFocusModeView: $isFocusModeView,
+                wiseSaying: wiseSaying.value ?? WiseSaying(),
+                activateFocusMode: activateFocusMode
+            )
+            
+            Spacer()
+            
+            ActionButtonControllerView(
+                studySession: $studySession,
+                actions: .init(
+                    endButtonTapped: endButtonTapped,
+                    startButtonTapped: startButtonTapped,
+                    seatButtonTapped: seatButtonTapped,
+                    addButtonTapped: addButtonTapped
                 )
-                
-                Spacer()
-                
-                ActionButtonControllerView(
-                    studySession: $studySession,
-                    actions: .init(
-                        endButtonTapped: endButtonTapped,
-                        startButtonTapped: startButtonTapped,
-                        seatButtonTapped: seatButtonTapped,
-                        addButtonTapped: addButtonTapped
-                    )
-                )
-            }
-            .systemOverlay(isPresented: $isShowTimePicker) {
-                TimePickerView(
-                    selectedTime: Binding(
-                        get: { appState.value.studySession.startTime },
-                        set: { studySessionInteractor.setStartTime($0) }
-                    ),
-                    onTimeSelected: startStudy
-                )
-            }
-            .systemOverlay(isPresented: $isShowAddTimeModal) {
-                ModalView(isPresented: $isShowAddTimeModal,
-                          title: "열람실 이용 시간을 연장할까요?",
-                          confirmButtonText: "연장하기",
-                          cancleButtonText: "아니오",
-                          confirmAction: { studySessionInteractor.addTime() })
-            }
-            .systemOverlay(isPresented: $isShowEndUseModal) {
-                ModalView(isPresented: $isShowEndUseModal,
-                          title: "열람실을 다 이용하셨나요?",
-                          confirmButtonText: "네",
-                          cancleButtonText: "더 이용하기",
-                          confirmAction: endStudy )
-            }
-            .fullScreenCover(isPresented: $isFocusModeView) {
-                FocusModeView(
-                    studySession: $studySession,
-                    studyStatusInfos: $studyStatusInfos,
-                    isPresented: $isFocusModeView,
-                    retryAction: focusModeRetryAction,
-                    addTiem: studySessionInteractor.addTime,
-                    endStudy: endStudy
-                )
-            }
-            .padding(.horizontal, 32.adjustToScreenWidth)
-            .modifier(IOSBackground())
-
-            .onAppear {
-                if !isViewOnAppeared {
-                    isViewOnAppeared = true
-                    weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
-                    weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
-                }
-            }
-            .onReceive(studySessionUpdated) {
-                studySession = $0
-            }
-            .onReceive(studySessionEnded) { _ in
-                endStudy()
-            }
-            .onReceive(studySessionUploaded) { _ in
+            )
+        }
+        .systemOverlay(isPresented: $isShowTimePicker) {
+            TimePickerView(
+                selectedTime: Binding(
+                    get: { appState.value.studySession.startTime },
+                    set: { studySessionInteractor.setStartTime($0) }
+                ),
+                onTimeSelected: startStudy
+            )
+        }
+        .systemOverlay(isPresented: $isShowAddTimeModal) {
+            ModalView(isPresented: $isShowAddTimeModal,
+                      title: "열람실 이용 시간을 연장할까요?",
+                      confirmButtonText: "연장하기",
+                      cancleButtonText: "아니오",
+                      confirmAction: { studySessionInteractor.addTime() })
+        }
+        .systemOverlay(isPresented: $isShowEndUseModal) {
+            ModalView(isPresented: $isShowEndUseModal,
+                      title: "열람실을 다 이용하셨나요?",
+                      confirmButtonText: "네",
+                      cancleButtonText: "더 이용하기",
+                      confirmAction: endStudy )
+        }
+        .fullScreenCover(isPresented: $isFocusModeView) {
+            FocusModeView(
+                studySession: $studySession,
+                studyStatusInfos: $studyStatusInfos,
+                isPresented: $isFocusModeView,
+                retryAction: focusModeRetryAction,
+                addTiem: studySessionInteractor.addTime,
+                endStudy: endStudy
+            )
+        }
+        .padding(.horizontal, 32.adjustToScreenWidth)
+        .modifier(IOSBackground())
+        
+        .onAppear {
+            if !isViewOnAppeared {
+                isViewOnAppeared = true
                 weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+                weeklyStudyInteractor.getWiseSaying(wiseSaying: $wiseSaying)
             }
-            .onReceive(scenePhaseUpdated) {
-                $0 == .active
-                ? studySessionInteractor.resumeStudy()
-                : studySessionInteractor.pauseStudy()
-            }
-            .navigationDestination(for: Page.self, destination: { page in
-                switch page {
-                case let .webView(title, url):
-                    WebViewWithNavigation(url: url, title: title)
-                default:
-                    EmptyView()
-                }
-            })
+        }
+        .onReceive(studySessionUpdated) {
+            studySession = $0
+        }
+        .onReceive(studySessionEnded) { _ in
+            endStudy()
+        }
+        .onReceive(studySessionUploaded) { _ in
+            weeklyStudyInteractor.getWeekyStudy(studyRecords: $studyRecords)
+        }
+        .onReceive(scenePhaseUpdated) {
+            $0 == .active
+            ? studySessionInteractor.resumeStudy()
+            : studySessionInteractor.pauseStudy()
         }
     }
 }
@@ -149,8 +136,7 @@ extension HomeView {
     }
     
     func seatButtonTapped() {
-//        isShowWebView.toggle()
-        homeNavigation.path.append(.webView(title: "좌석", url: SecretKeys.roomStatusUrl))
+        router.push(to: .webView(title: "좌석", url: SecretKeys.roomStatusUrl))
     }
     
     func addButtonTapped() {
