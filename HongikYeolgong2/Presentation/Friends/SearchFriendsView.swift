@@ -63,7 +63,6 @@ struct SearchFriendsView: View {
                 .padding(.horizontal, 32.adjustToScreenWidth)
             }
         }
-        //.padding(.top, 32.adjustToScreenHeight)
         .modifier(IOSBackground())
     }
 }

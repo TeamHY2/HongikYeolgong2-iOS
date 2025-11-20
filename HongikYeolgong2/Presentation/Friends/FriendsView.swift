@@ -165,7 +165,7 @@ extension FriendsView {
     }
     
     private func friendAddButtonTapped() {
-        router.push(to: .friendNotification)
+        router.push(to: .friendSearch)
     }
 }
 

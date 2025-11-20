@@ -64,7 +64,7 @@ extension View {
                         ProfileEditView()
                         
                     case .friendNotification:
-                        SearchFriendsView()
+                        FriendNotificationView()
                     case .friendSearch:
                         SearchFriendsView()
                         
