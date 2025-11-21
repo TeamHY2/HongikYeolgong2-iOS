@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SearchFriendsView: View {
     @EnvironmentObject var router: AppRouter
-    @State var text: String = ""
+    @State var inputNickname: String = ""
+    @State var searchResults: [String] = []
+    
+    private let inputSubject = PassthroughSubject<String, Never>()
     
     var body: some View {
         VStack(spacing: 2.adjustToScreenWidth){
@@ -27,17 +31,20 @@ struct SearchFriendsView: View {
                 HStack {
                     Image(.magnifyingGlass)
                     
-                    TextField(text: $text) {
+                    TextField(text: $inputNickname) {
                         Text("친구를 검색해보세요")
                             .font(.pretendard(size: 16, weight: .regular))
                             .foregroundStyle(.gray300)
                     }
                     .frame(maxWidth: .infinity)
+                    .onChange(of: inputNickname) { newValue in
+                        inputSubject.send(newValue)
+                    }
                     
-                    if !text.isEmpty {
+                    if !inputNickname.isEmpty {
                         Image(.close)
                             .onTapGesture {
-                                text = ""
+                                inputNickname = ""
                             }
                     }
                 }
@@ -64,5 +71,27 @@ struct SearchFriendsView: View {
             }
         }
         .modifier(IOSBackground())
+        .onReceive(
+            inputSubject
+                .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+                .removeDuplicates() // 중복 제거
+                .filter {
+                    // 정규식 검사 및 비어있는 항목 제외
+                    isValidPattern($0) && !$0.isEmpty
+                }
+        ) { inputNickname in
+            requestSearch(inputNickname)
+        }
+    }
+    
+    // 정규식 검사
+    private func isValidPattern(_ input: String) -> Bool {
+        let pattern = "^[가-힣a-zA-Z\\s]*$"
+        return input.range(of: pattern, options: .regularExpression) != nil
+    }
+    
+    // 닉네임 검색 요청
+    private func requestSearch(_ input: String) {
+        print("검색된 닉네임 : \(inputNickname)")
     }
 }
