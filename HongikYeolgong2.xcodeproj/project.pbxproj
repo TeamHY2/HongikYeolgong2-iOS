@@ -178,6 +178,9 @@
 		98A1F8192D69DA68009B2DA6 /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */; };
 		98A4C1892ECF4C43006F5BA8 /* FriendNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C1882ECF4C43006F5BA8 /* FriendNotificationView.swift */; };
 		98A4C18B2ECF4CB7006F5BA8 /* NotificationRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C18A2ECF4CB7006F5BA8 /* NotificationRequestCell.swift */; };
+		98A4C18E2ECF5FF6006F5BA8 /* FriendSearchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C18D2ECF5FF6006F5BA8 /* FriendSearchUser.swift */; };
+		98B1A7482ED1F92D00860B07 /* FriendEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */; };
+		98B1A74B2ED2027400860B07 /* FriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
 		98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */; };
@@ -386,6 +389,9 @@
 		98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		98A4C1882ECF4C43006F5BA8 /* FriendNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNotificationView.swift; sourceTree = "<group>"; };
 		98A4C18A2ECF4CB7006F5BA8 /* NotificationRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRequestCell.swift; sourceTree = "<group>"; };
+		98A4C18D2ECF5FF6006F5BA8 /* FriendSearchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchUser.swift; sourceTree = "<group>"; };
+		98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEndpoint.swift; sourceTree = "<group>"; };
+		98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRespondDTO.swift; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeInteractor.swift; sourceTree = "<group>"; };
@@ -464,6 +470,7 @@
 				4786A1062CCA33DF008635A4 /* WeeklyEndpoint.swift */,
 				470483A72CDB50FA00C381ED /* TokenEndpoint.swift */,
 				47C815372CE21E640017EA24 /* ASAuthEndpoint.swift */,
+				98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -792,6 +799,7 @@
 			children = (
 				479DFC242DACA5D90083B918 /* LibraryHour.swift */,
 				98FB764C2D00A42100BBCB8B /* Promotion */,
+				98A4C18C2ECF5DE1006F5BA8 /* Friend */,
 				5E847A752CDBD5490034C2A7 /* Calendar */,
 				98B5F00D2CDB64D4007CF5FA /* Record */,
 				478F84452CD358F50097CAA1 /* Ranking */,
@@ -815,6 +823,7 @@
 		47A1473A2CA13DD000A91F66 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				98B1A7492ED2023E00860B07 /* Friend */,
 				98FB76492D00A38B00BBCB8B /* Promotion */,
 				476D26082CDDF2B6002FEF5C /* Calendar */,
 				478F84422CD3506D0097CAA1 /* Ranking */,
@@ -1122,6 +1131,22 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		98A4C18C2ECF5DE1006F5BA8 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				98A4C18D2ECF5FF6006F5BA8 /* FriendSearchUser.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		98B1A7492ED2023E00860B07 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */,
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
 		98B5F00D2CDB64D4007CF5FA /* Record */ = {
 			isa = PBXGroup;
 			children = (
@@ -1400,6 +1425,7 @@
 				98A1F8172D69D860009B2DA6 /* SharedView.swift in Sources */,
 				4707230B2CBC19C10046469F /* AuthRepositoryImpl.swift in Sources */,
 				478F843E2CD326E90097CAA1 /* WeeklyRepository.swift in Sources */,
+				98B1A74B2ED2027400860B07 /* FriendRespondDTO.swift in Sources */,
 				4707230F2CBC1A9C0046469F /* LoginRequestDTO.swift in Sources */,
 				478F84442CD350850097CAA1 /* WeeklyRankingResponseDTO.swift in Sources */,
 				473E8EBC2CCEBEF3000F102C /* ModalView.swift in Sources */,
@@ -1425,6 +1451,7 @@
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
 				980DD58C2E06E21300EC0C80 /* StartStudyRequestDTO.swift in Sources */,
+				98A4C18E2ECF5FF6006F5BA8 /* FriendSearchUser.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
 				4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */,
 				472319F02CD20057009BA019 /* SystemEventHandler.swift in Sources */,
@@ -1496,6 +1523,7 @@
 				473E8EB42CCE6827000F102C /* TimeInterval+.swift in Sources */,
 				478B75502CE679A8000190EF /* SubmitButton.swift in Sources */,
 				4763FFB32CB90E3800990336 /* InteractorsContainer.swift in Sources */,
+				98B1A7482ED1F92D00860B07 /* FriendEndpoint.swift in Sources */,
 				470723182CBC29510046469F /* AppleLoginManager.swift in Sources */,
 				5E847A6E2CDBD4B60034C2A7 /* CalendarView.swift in Sources */,
 				98897D122E006891005B7CA6 /* StudyStatusResponseDTO.swift in Sources */,
