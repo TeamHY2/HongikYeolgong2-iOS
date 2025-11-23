@@ -178,7 +178,7 @@
 		98A1F8192D69DA68009B2DA6 /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */; };
 		98A4C1892ECF4C43006F5BA8 /* FriendNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C1882ECF4C43006F5BA8 /* FriendNotificationView.swift */; };
 		98A4C18B2ECF4CB7006F5BA8 /* NotificationRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C18A2ECF4CB7006F5BA8 /* NotificationRequestCell.swift */; };
-		98A4C18E2ECF5FF6006F5BA8 /* FriendSearchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C18D2ECF5FF6006F5BA8 /* FriendSearchUser.swift */; };
+		98A4C18E2ECF5FF6006F5BA8 /* SearchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C18D2ECF5FF6006F5BA8 /* SearchUser.swift */; };
 		98B1A7482ED1F92D00860B07 /* FriendEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */; };
 		98B1A74B2ED2027400860B07 /* FriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
@@ -187,6 +187,11 @@
 		98B5F0132CDBB905007CF5FA /* StudyTimeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0122CDBB905007CF5FA /* StudyTimeMapper.swift */; };
 		98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */; };
 		98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83892E01627800680FE6 /* StudyStatusMapper.swift */; };
+		98D0C4962ED2C95600632732 /* FriendRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4952ED2C95600632732 /* FriendRepositoryImpl.swift */; };
+		98D0C4982ED2C98C00632732 /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4972ED2C98C00632732 /* FriendRepository.swift */; };
+		98D0C49A2ED2E79D00632732 /* SearchFriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */; };
+		98D0C49C2ED3167C00632732 /* SearchUserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C49B2ED3167C00632732 /* SearchUserMapper.swift */; };
+		98D0C49E2ED3188200632732 /* FriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C49D2ED3188200632732 /* FriendInteractor.swift */; };
 		98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */; };
 		98D39EA92ECE05CD00960BC7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D39EA82ECE05CD00960BC7 /* AppRouter.swift */; };
 		98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD52EC6217900FD3129 /* FriendsView.swift */; };
@@ -389,7 +394,7 @@
 		98A1F8182D69DA68009B2DA6 /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		98A4C1882ECF4C43006F5BA8 /* FriendNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendNotificationView.swift; sourceTree = "<group>"; };
 		98A4C18A2ECF4CB7006F5BA8 /* NotificationRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRequestCell.swift; sourceTree = "<group>"; };
-		98A4C18D2ECF5FF6006F5BA8 /* FriendSearchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSearchUser.swift; sourceTree = "<group>"; };
+		98A4C18D2ECF5FF6006F5BA8 /* SearchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUser.swift; sourceTree = "<group>"; };
 		98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEndpoint.swift; sourceTree = "<group>"; };
 		98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRespondDTO.swift; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
@@ -399,6 +404,11 @@
 		98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusInfo.swift; sourceTree = "<group>"; };
 		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
 		98C2FF8B2EC636C50009250C /* HongikYeolgong2Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2Release.entitlements; sourceTree = "<group>"; };
+		98D0C4952ED2C95600632732 /* FriendRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryImpl.swift; sourceTree = "<group>"; };
+		98D0C4972ED2C98C00632732 /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendRepository.swift; path = HongikYeolgong2/Data/Repositories/Friend/FriendRepository.swift; sourceTree = SOURCE_ROOT; };
+		98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendRespondDTO.swift; sourceTree = "<group>"; };
+		98D0C49B2ED3167C00632732 /* SearchUserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserMapper.swift; sourceTree = "<group>"; };
+		98D0C49D2ED3188200632732 /* FriendInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInteractor.swift; sourceTree = "<group>"; };
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
 		98D39EA82ECE05CD00960BC7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		98D4ACD52EC6217900FD3129 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
@@ -478,6 +488,7 @@
 		470723062CBC19770046469F /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				98D0C4942ED2C92800632732 /* Friend */,
 				478F843A2CD326C30097CAA1 /* Weekly */,
 				4786A10A2CCA3496008635A4 /* StudySession */,
 				470723072CBC197F0046469F /* Auth */,
@@ -604,6 +615,7 @@
 				478F844A2CD35AF40097CAA1 /* RankingMapper.swift */,
 				5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */,
 				98BF83892E01627800680FE6 /* StudyStatusMapper.swift */,
+				98D0C49B2ED3167C00632732 /* SearchUserMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -847,6 +859,7 @@
 				478F84382CD3176E0097CAA1 /* RankingDataInteractor.swift */,
 				47F71B5C2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift */,
 				5E847A732CDBD52E0034C2A7 /* CalendarDataInteractor.swift */,
+				98D0C49D2ED3188200632732 /* FriendInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -858,6 +871,7 @@
 				4786A1082CCA346F008635A4 /* StudySessionRepository.swift */,
 				478F843D2CD326E90097CAA1 /* WeeklyRepository.swift */,
 				47C815422CE2211D0017EA24 /* SocialLoginRepository.swift */,
+				98D0C4972ED2C98C00632732 /* FriendRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -1134,7 +1148,7 @@
 		98A4C18C2ECF5DE1006F5BA8 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				98A4C18D2ECF5FF6006F5BA8 /* FriendSearchUser.swift */,
+				98A4C18D2ECF5FF6006F5BA8 /* SearchUser.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1143,6 +1157,7 @@
 			isa = PBXGroup;
 			children = (
 				98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */,
+				98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1161,6 +1176,14 @@
 				98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */,
 			);
 			path = FocusMode;
+			sourceTree = "<group>";
+		};
+		98D0C4942ED2C92800632732 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+				98D0C4952ED2C95600632732 /* FriendRepositoryImpl.swift */,
+			);
+			path = Friend;
 			sourceTree = "<group>";
 		};
 		98D4ACD42EC61E5900FD3129 /* Friends */ = {
@@ -1413,6 +1436,7 @@
 				47F79B2E2CCCB7AA00DD0899 /* TimePickerView.swift in Sources */,
 				47C815432CE2211D0017EA24 /* SocialLoginRepository.swift in Sources */,
 				470C7B3E2CF4569300C46690 /* RemoteConfigManager.swift in Sources */,
+				98D0C49E2ED3188200632732 /* FriendInteractor.swift in Sources */,
 				98F63B562D8FFA04009C9017 /* UpdateTokenResponseDTO.swift in Sources */,
 				476D26092CDDF2B6002FEF5C /* CalendarCountAllResponseDTO.swift in Sources */,
 				478F84392CD3176E0097CAA1 /* RankingDataInteractor.swift in Sources */,
@@ -1451,7 +1475,7 @@
 				470722FA2CBC0A870046469F /* Constants.swift in Sources */,
 				478F84492CD359260097CAA1 /* WeeklyRanking.swift in Sources */,
 				980DD58C2E06E21300EC0C80 /* StartStudyRequestDTO.swift in Sources */,
-				98A4C18E2ECF5FF6006F5BA8 /* FriendSearchUser.swift in Sources */,
+				98A4C18E2ECF5FF6006F5BA8 /* SearchUser.swift in Sources */,
 				4786A0EC2CC9E2BC008635A4 /* UserPermissionsInteractor.swift in Sources */,
 				4780043C2CCA8E2900FFAF00 /* WeeklyStudyCell.swift in Sources */,
 				472319F02CD20057009BA019 /* SystemEventHandler.swift in Sources */,
@@ -1461,6 +1485,7 @@
 				4763FFBC2CB9228B00990336 /* AppEnviroment.swift in Sources */,
 				473671A12CB1234800527896 /* TodayWiseSaying.swift in Sources */,
 				47F4F6992CC89A6900543D24 /* SignUpResponseDTO.swift in Sources */,
+				98D0C4982ED2C98C00632732 /* FriendRepository.swift in Sources */,
 				470722FE2CBC15DA0046469F /* NetworkProtocol.swift in Sources */,
 				98FB764E2D00A44600BBCB8B /* PromotionData.swift in Sources */,
 				47F635052CC3EC1A0034EAA9 /* Department.swift in Sources */,
@@ -1488,11 +1513,13 @@
 				473671A52CB13D8100527896 /* SafeArea.swift in Sources */,
 				471940C82CAFCB1B00426D30 /* SizeCheckModifier.swift in Sources */,
 				473E8EB82CCEA5FB000F102C /* StudySessionRequestDTO.swift in Sources */,
+				98D0C49A2ED2E79D00632732 /* SearchFriendRespondDTO.swift in Sources */,
 				478B75442CE65594000190EF /* DuplicateCheckButton.swift in Sources */,
 				47A540732CD0D90F00DC40D0 /* Nickname.swift in Sources */,
 				5E847A6C2CDBD49A0034C2A7 /* CalendarCell.swift in Sources */,
 				47F634FE2CC3E8A40034EAA9 /* NicknameCheckDTO.swift in Sources */,
 				4763FFAF2CB90AE000990336 /* AppState.swift in Sources */,
+				98D0C49C2ED3167C00632732 /* SearchUserMapper.swift in Sources */,
 				4786A1092CCA346F008635A4 /* StudySessionRepository.swift in Sources */,
 				47B1D4AC2C9CB1740071B62B /* HongikYeolgong2App.swift in Sources */,
 				98EC95412CE4BAB600278DBD /* LoadingView.swift in Sources */,
@@ -1536,6 +1563,7 @@
 				47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
+				98D0C4962ED2C95600632732 /* FriendRepositoryImpl.swift in Sources */,
 				98E2B69F2ECB6199004524CD /* SearchFriendsView.swift in Sources */,
 				5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */,
 				478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */,

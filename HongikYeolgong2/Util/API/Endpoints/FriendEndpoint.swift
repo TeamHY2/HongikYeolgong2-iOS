@@ -14,7 +14,7 @@ enum FriendEndpoint {
 
 extension FriendEndpoint: EndpointProtocol {
     var baseURL: URL? {
-        URL(string: "\(SecretKeys.baseUrl)")
+        URL(string: "\(SecretKeys.baseUrl)v2")
     }
     
     var path: String {

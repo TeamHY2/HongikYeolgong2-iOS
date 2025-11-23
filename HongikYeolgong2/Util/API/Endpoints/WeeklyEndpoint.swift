@@ -29,7 +29,7 @@ enum WeeklyEndpoint: EndpointProtocol {
 
 extension WeeklyEndpoint {
     var baseURL: URL? {
-        URL(string: "\(SecretKeys.baseUrl)")
+        URL(string: "\(SecretKeys.baseUrl)v1")
     }
     var path: String {
         switch self {

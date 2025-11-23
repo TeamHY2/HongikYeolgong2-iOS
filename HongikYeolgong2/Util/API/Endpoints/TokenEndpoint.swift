@@ -13,7 +13,7 @@ enum TokenEndpoint: EndpointProtocol {
     var baseURL: URL? {
         switch self {
         case .validToken:
-            URL(string: "\(SecretKeys.baseUrl)")
+            URL(string: "\(SecretKeys.baseUrl)v1")
         }
     }
     

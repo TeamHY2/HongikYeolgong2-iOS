@@ -9,10 +9,12 @@ import SwiftUI
 import Combine
 
 struct SearchFriendsView: View {
+    @Environment(\.injected.interactors.friendInteractor) var friendInteractor
     @EnvironmentObject var router: AppRouter
     @State var inputNickname: String = ""
-    @State var searchResults: [String] = []
+    @State var searchResults: [SearchUser] = []
     
+    // debounce 이벤트 발행 용도
     private let inputSubject = PassthroughSubject<String, Never>()
     
     var body: some View {
@@ -91,7 +93,11 @@ struct SearchFriendsView: View {
     }
     
     // 닉네임 검색 요청
-    private func requestSearch(_ input: String) {
-        print("검색된 닉네임 : \(inputNickname)")
+    private func requestSearch(_ input: String) {        friendInteractor.getSerchUser(serchUsers: $searchResults, nickname: input)
+    }
+    
+    // 친구 추가 요청
+    private func requestAddFriend(_ userId: String) {
+        
     }
 }

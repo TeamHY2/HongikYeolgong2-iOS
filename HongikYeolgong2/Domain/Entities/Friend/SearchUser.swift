@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct FriendSearchUser {
+struct SearchUser {
     let userId: Int
-    let nickName: String
+    let nickname: String
     let friendStatus: String
 }
