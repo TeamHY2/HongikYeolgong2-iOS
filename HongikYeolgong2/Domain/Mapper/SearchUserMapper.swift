@@ -9,8 +9,10 @@ import Foundation
 
 extension SearchFriendRespondDTO {
     func toEntity() -> SearchUser {
-        SearchUser(userId: userId,
-                         nickname: nickname,
-                         friendStatus: friendStatus)
+        SearchUser(
+            userId: userId,
+            nickname: nickname,
+            friendStatus: FriendStatus(rawValue: friendStatus) ?? .none
+        )
     }
 }

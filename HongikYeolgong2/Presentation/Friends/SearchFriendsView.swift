@@ -64,8 +64,10 @@ struct SearchFriendsView: View {
             // 친구 리스트
             ScrollView {
                 VStack(spacing: 24.adjustToScreenHeight){
-                    ForEach(0..<10){ i in
-                        FriendRequestCell()
+                    ForEach(searchResults, id: \.self){ user in
+                        FriendRequestCell(user: user) {
+                            requestAddFriend(user.userId)
+                        }
                     }
                 }
                 .padding(.top, 22.adjustToScreenHeight)
@@ -97,7 +99,11 @@ struct SearchFriendsView: View {
     }
     
     // 친구 추가 요청
-    private func requestAddFriend(_ userId: String) {
+    private func requestAddFriend(_ userId: Int) {
         
+        // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
+        if let index = searchResults.firstIndex(where: { $0.userId == userId }) {
+            searchResults[index].friendStatus = .pending
+        }
     }
 }

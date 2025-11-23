@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct SearchUser {
+enum FriendStatus: String, Hashable {
+    case pending = "PENDING"
+    case accepted = "ACCEPTED"
+    case rejected = "REJECTED"
+    case none = "NONE"
+}
+
+struct SearchUser: Hashable {
     let userId: Int
     let nickname: String
-    let friendStatus: String
+    var friendStatus: FriendStatus
 }
