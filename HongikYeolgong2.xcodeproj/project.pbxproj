@@ -192,6 +192,8 @@
 		98D0C49A2ED2E79D00632732 /* SearchFriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */; };
 		98D0C49C2ED3167C00632732 /* SearchUserMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C49B2ED3167C00632732 /* SearchUserMapper.swift */; };
 		98D0C49E2ED3188200632732 /* FriendInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C49D2ED3188200632732 /* FriendInteractor.swift */; };
+		98D0C4A02ED369BA00632732 /* AddFriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */; };
+		98D0C4A22ED36B2A00632732 /* AddFriendRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */; };
 		98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */; };
 		98D39EA92ECE05CD00960BC7 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D39EA82ECE05CD00960BC7 /* AppRouter.swift */; };
 		98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD52EC6217900FD3129 /* FriendsView.swift */; };
@@ -409,6 +411,8 @@
 		98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendRespondDTO.swift; sourceTree = "<group>"; };
 		98D0C49B2ED3167C00632732 /* SearchUserMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserMapper.swift; sourceTree = "<group>"; };
 		98D0C49D2ED3188200632732 /* FriendInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendInteractor.swift; sourceTree = "<group>"; };
+		98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendRespondDTO.swift; sourceTree = "<group>"; };
+		98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendRequestDTO.swift; sourceTree = "<group>"; };
 		98D144102CDFAC4D0092708E /* NetworkingErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingErrorView.swift; sourceTree = "<group>"; };
 		98D39EA82ECE05CD00960BC7 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		98D4ACD52EC6217900FD3129 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
@@ -1158,6 +1162,8 @@
 			children = (
 				98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */,
 				98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */,
+				98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */,
+				98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1540,6 +1546,7 @@
 				47C815462CE223DA0017EA24 /* ASTokenResponseDTO.swift in Sources */,
 				470723092CBC198E0046469F /* AuthRepository.swift in Sources */,
 				47F4F6972CC88FBB00543D24 /* SignUpRequestDTO.swift in Sources */,
+				98D0C4A22ED36B2A00632732 /* AddFriendRequestDTO.swift in Sources */,
 				478004422CCA924200FFAF00 /* StudySessionMapper.swift in Sources */,
 				47C815582CE27E140017EA24 /* OnboardingPageView.swift in Sources */,
 				478F84372CD30A8F0097CAA1 /* IOSBackground.swift in Sources */,
@@ -1568,6 +1575,7 @@
 				5E847A772CDBD5590034C2A7 /* AllStudyRecord.swift in Sources */,
 				478F844D2CD3629A0097CAA1 /* RankingListView.swift in Sources */,
 				470723032CBC17E40046469F /* NetworkService.swift in Sources */,
+				98D0C4A02ED369BA00632732 /* AddFriendRespondDTO.swift in Sources */,
 				470723012CBC16680046469F /* AuthEndpoint.swift in Sources */,
 				98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */,
 				98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */,

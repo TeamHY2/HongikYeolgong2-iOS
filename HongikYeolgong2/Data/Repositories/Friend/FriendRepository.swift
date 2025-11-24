@@ -9,4 +9,5 @@ import Combine
 
 protocol FriendRepository {
     func getSerchUser(nickname: String) -> AnyPublisher<[SearchUser], NetworkError>
+    func postAddFriend(userId: Int) -> AnyPublisher<Bool, NetworkError>
 }

@@ -60,6 +60,14 @@ struct FriendRequestCell: View {
                             .background(.blue100)
                             .cornerRadius(4)
                     }
+                case .loading:
+                    Text("요청중...")
+                        .font(.pretendard(size: 14, weight: .regular))
+                        .foregroundStyle(.gray200)
+                        .frame(width: 80, height: 32)
+                        .background(.gray400)
+                        .cornerRadius(4)
+                    
             }
         }
     }

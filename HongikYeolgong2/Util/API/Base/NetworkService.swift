@@ -26,6 +26,12 @@ struct NetworkService: NetworkProtocol {
         if let responseString = String(data: data, encoding: .utf8) {
             print("================================================")
             print("🛠️ request: \(request)")
+            if let bodyData = request.httpBody,
+                   let bodyString = String(data: bodyData, encoding: .utf8) {
+                    print("📤 Request Body: \(bodyString)")
+                } else {
+                    print("📤 Request Body: nil")
+                }
             print("📍 Response body: \(responseString)")
             print("================================================")
         }

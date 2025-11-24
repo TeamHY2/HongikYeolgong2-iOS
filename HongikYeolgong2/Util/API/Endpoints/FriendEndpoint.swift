@@ -60,7 +60,7 @@ extension FriendEndpoint: EndpointProtocol {
             case .searchFriend:
                 return nil
             case let .addFriend(receiverId):
-                return receiverId.toData()
+                return AddFriendRequestDTO(receiverId: receiverId).toData()
             case let .respondFriendRequest(senderId, isAccepted):
                 return FriendRespondDTO(senderId: senderId, isAccepted: isAccepted).toData()
         }

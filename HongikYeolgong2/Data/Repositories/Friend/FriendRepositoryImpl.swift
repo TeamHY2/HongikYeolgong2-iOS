@@ -20,4 +20,19 @@ final class FriendRepositoryImpl: FriendRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func postAddFriend(userId: Int) -> AnyPublisher<Bool, NetworkError> {
+        return Future<Bool, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<AddFriendRespondDTO> = try await NetworkService.shared.request(endpoint: FriendEndpoint.addFriend(receiverId: userId))
+                    let result = response.message == "OK"
+                    
+                    promise(.success(result))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }

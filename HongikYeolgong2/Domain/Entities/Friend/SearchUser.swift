@@ -12,6 +12,7 @@ enum FriendStatus: String, Hashable {
     case accepted = "ACCEPTED"
     case rejected = "REJECTED"
     case none = "NONE"
+    case loading = "LOADING"
 }
 
 struct SearchUser: Hashable {

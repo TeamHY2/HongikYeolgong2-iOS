@@ -10,6 +10,7 @@ import Combine
 
 protocol FriendInteractor {
     func getSerchUser(serchUsers: Binding<[SearchUser]>, nickname: String)
+    func postAddFriend(userId: Int, completion: @escaping (Bool) -> Void)
 }
 
 final class FriendInteractorImpl: FriendInteractor {
@@ -20,15 +21,26 @@ final class FriendInteractorImpl: FriendInteractor {
         self.friendRepository = friendRepository
     }
     
+    // 사용자 검색
     func getSerchUser(serchUsers: Binding<[SearchUser]>, nickname: String) {
         friendRepository
             .getSerchUser(nickname: nickname)
             .receive(on: DispatchQueue.main)
             .sink { _ in }
         receiveValue: {
-            print("========\(nickname) 검색된 유저 리스트========")
-            print($0)
             serchUsers.wrappedValue = $0
+        }
+        .store(in: cancleBag)
+    }
+    
+    // 친구 요청
+    func postAddFriend(userId: Int, completion: @escaping (Bool) -> Void) {
+        friendRepository
+            .postAddFriend(userId: userId)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in }
+        receiveValue: {
+            completion($0)
         }
         .store(in: cancleBag)
     }

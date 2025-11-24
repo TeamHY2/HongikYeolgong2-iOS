@@ -100,10 +100,18 @@ struct SearchFriendsView: View {
     
     // 친구 추가 요청
     private func requestAddFriend(_ userId: Int) {
+        guard let index = searchResults.firstIndex(where: { $0.userId == userId }) else { return }
         
-        // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
-        if let index = searchResults.firstIndex(where: { $0.userId == userId }) {
-            searchResults[index].friendStatus = .pending
+        // 로딩 상태 세팅
+        searchResults[index].friendStatus = .loading
+        
+        friendInteractor.postAddFriend(userId: userId) { success in
+            if success {
+                searchResults[index].friendStatus = .pending
+            } else {
+                // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
+                searchResults[index].friendStatus = .none
+            }
         }
     }
 }
