@@ -41,7 +41,12 @@ final class FriendRepositoryImpl: FriendRepository {
             Task {
                 do {
                     let response: BaseResponse<[FriendsTimeListRespondDTO]> = try await NetworkService.shared.request(endpoint: FriendEndpoint.getFriendsTimeList(dateType: dateType))
-                    promise(.success(response.data.map { $0.toEntity()}))
+                    promise(
+                        .success(
+                            response.data
+                                .map { $0.toEntity()}
+                                .sorted{ $0.totalSeconds > $1.totalSeconds }
+                        ))
                 } catch let error as NetworkError {
                     promise(.failure(error))
                 }

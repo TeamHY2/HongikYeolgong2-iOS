@@ -13,6 +13,11 @@ struct FriendStudyTime: Hashable {
     let friendNickname: String
     let studyTime: Date
     
+    // 총 학습 시간(정렬 용도)
+    var totalSeconds: TimeInterval {
+        return studyTime.timeIntervalSince1970
+    }
+    
     // "hhH mmM" 형태 반환
     var studyTimeString: String {
         let calendar = Calendar.current
