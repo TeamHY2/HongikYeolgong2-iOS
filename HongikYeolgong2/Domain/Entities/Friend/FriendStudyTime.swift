@@ -19,14 +19,13 @@ struct FriendStudyTime: Hashable {
         let hour = calendar.component(.hour, from: studyTime)
         let minute = calendar.component(.minute, from: studyTime)
 
-        return "\(hour)H \(minute)M"
+        return hour > 0 ? "\(hour)H \(minute)M" : "\(minute)M"
     }
     
     init(userId: Int, friendId: Int, friendNickname: String, studyTime: String) {
         // Date형태 변환
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "H:m:s"
         let studyTime = formatter.date(from: studyTime)!
         
         self.userId = userId
