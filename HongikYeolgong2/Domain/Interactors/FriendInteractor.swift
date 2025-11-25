@@ -11,6 +11,7 @@ import Combine
 protocol FriendInteractor {
     func getSerchUser(serchUsers: Binding<[SearchUser]>, nickname: String)
     func postAddFriend(userId: Int, completion: @escaping (Bool) -> Void)
+    func getFriendsTimeList(serchUsers: Binding<[FriendStudyTime]>, dateType: RankingType)
 }
 
 final class FriendInteractorImpl: FriendInteractor {

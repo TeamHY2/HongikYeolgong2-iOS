@@ -7,9 +7,17 @@
 
 import SwiftUI
 
-enum RankingTypeEnum: String, CaseIterable {
+enum RankingType: String, CaseIterable {
     case month = "월간"
     case day = "일간"
+    
+    // api 타입 전송용
+    var typeName: String {
+        switch self {
+            case .day: return "DAILY"
+            case .month: return "MONTHLY"
+        }
+    }
 }
 
 // 알림창 상태 표시
@@ -19,11 +27,14 @@ enum NotificationStatus {
 }
 
 struct FriendsView: View {
+    @Environment(\.injected.interactors.friendInteractor) var friendInteractor
     @EnvironmentObject var router: AppRouter
     @Namespace private var rankTypeAnimation
-    @State private var rankType: RankingTypeEnum = .month
-    // UI 테스트 확인용
-    @State private var friendsTest: Bool = true
+    @State private var rankType: RankingType = .month
+    @State private var friendTimeList: [FriendStudyTime] = []
+    
+    // 친구 비어있음 확인용
+    private var friendListEmpty: Bool { friendTimeList.isEmpty }
     var notificationStatus: NotificationStatus = .none
     
     var body: some View {
@@ -31,7 +42,7 @@ struct FriendsView: View {
             VStack(spacing: 0){
                 HStack{
                     // 랭킹 타입
-                    if friendsTest {
+                    if !friendListEmpty {
                         rankTypeTap
                     }
                     
@@ -43,22 +54,13 @@ struct FriendsView: View {
                 .padding(.horizontal, 32.adjustToScreenWidth)
                 
                 // 순위 셀 부분
-                if friendsTest {
+                if !friendListEmpty {
                     Spacer().frame(height: 23.adjustToScreenHeight)
                     ScrollView {
                         VStack(spacing: 15.adjustToScreenHeight) {
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
-                            FriendsRankingCell()
+                            ForEach(Array(friendTimeList.enumerated()), id: \.offset){ index, info in
+                                FriendsRankingCell(frendInfo: info, offset: index+1)
+                            }
                             // 버튼 하단 공백용
                             Spacer()
                                 .frame(height: 80)
@@ -107,11 +109,15 @@ struct FriendsView: View {
             }
         }
         .modifier(IOSBackground())
+        .onAppear{ getFriendsTimeList() }
+        .onChange(of: rankType) { _ in
+            getFriendsTimeList()
+        }
     }
     
     var rankTypeTap: some View {
         HStack {
-            ForEach(RankingTypeEnum.allCases, id: \.self) { rank in
+            ForEach(RankingType.allCases, id: \.self) { rank in
                 Button {
                     rankType = rank
                 } label: {
@@ -153,12 +159,9 @@ struct FriendsView: View {
             }
         }
     }
-    
-    /// 친구 추가 View 진입
-    private func addFriendButtonTapped() {
-    }
 }
 
+// MARK:- Action
 extension FriendsView {
     private func notificationButtonTapped() {
         router.push(to: .friendNotification)
@@ -166,6 +169,11 @@ extension FriendsView {
     
     private func friendAddButtonTapped() {
         router.push(to: .friendSearch)
+    }
+    
+    // 랭킹 리스트 요청
+    private func getFriendsTimeList() {
+        friendInteractor.getFriendsTimeList(serchUsers: $friendTimeList, dateType: rankType)
     }
 }
 
