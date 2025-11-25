@@ -170,6 +170,7 @@
 		982FB1532CFE30B200A3BB03 /* PromotionPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */; };
 		98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98691FAD2D86C5AD00123861 /* AppDelegate.swift */; };
 		98691FB02D86C62200123861 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 98691FAF2D86C62200123861 /* FirebaseMessaging */; };
+		98738AA62ED5AA0000E0CDBB /* FriendStudyTimeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98738AA52ED5AA0000E0CDBB /* FriendStudyTimeMapper.swift */; };
 		98897D0E2E0067CB005B7CA6 /* StudyStartRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */; };
 		98897D102E00687B005B7CA6 /* StudyEndRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */; };
 		98897D122E006891005B7CA6 /* StudyStatusResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98897D112E006891005B7CA6 /* StudyStatusResponseDTO.swift */; };
@@ -200,11 +201,13 @@
 		98D4ACD92EC624BE00FD3129 /* FriendsRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */; };
 		98E2B69F2ECB6199004524CD /* SearchFriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */; };
 		98E2B6A12ECB642E004524CD /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E2B6A02ECB642E004524CD /* FriendRequestCell.swift */; };
+		98E352BA2ED4C1D200AEFBF8 /* FriendStudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E352B92ED4C1D100AEFBF8 /* FriendStudyTime.swift */; };
 		98EC953B2CE4B97000278DBD /* StudyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953A2CE4B97000278DBD /* StudyRecordView.swift */; };
 		98EC953D2CE4B9CC00278DBD /* NetworkStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */; };
 		98EC953F2CE4BA3100278DBD /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC953E2CE4BA3100278DBD /* Loadable.swift */; };
 		98EC95412CE4BAB600278DBD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95402CE4BAB600278DBD /* LoadingView.swift */; };
 		98EC95432CE4F9C600278DBD /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EC95422CE4F9C600278DBD /* Publisher.swift */; };
+		98F5179B2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F5179A2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift */; };
 		98F63B562D8FFA04009C9017 /* UpdateTokenResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F63B552D8FFA04009C9017 /* UpdateTokenResponseDTO.swift */; };
 		98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */; };
 		98FB764B2D00A3AC00BBCB8B /* PromotionResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */; };
@@ -388,6 +391,7 @@
 		982FB1522CFE30B200A3BB03 /* PromotionPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPopupView.swift; sourceTree = "<group>"; };
 		9843A9BD2EC6504300B495BB /* HongikYeolgong2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2.entitlements; sourceTree = "<group>"; };
 		98691FAD2D86C5AD00123861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		98738AA52ED5AA0000E0CDBB /* FriendStudyTimeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendStudyTimeMapper.swift; sourceTree = "<group>"; };
 		98897D0D2E0067CB005B7CA6 /* StudyStartRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStartRequestDTO.swift; sourceTree = "<group>"; };
 		98897D0F2E00687B005B7CA6 /* StudyEndRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyEndRequestDTO.swift; sourceTree = "<group>"; };
 		98897D112E006891005B7CA6 /* StudyStatusResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusResponseDTO.swift; sourceTree = "<group>"; };
@@ -419,11 +423,13 @@
 		98D4ACD82EC624BE00FD3129 /* FriendsRankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRankingCell.swift; sourceTree = "<group>"; };
 		98E2B69E2ECB6199004524CD /* SearchFriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendsView.swift; sourceTree = "<group>"; };
 		98E2B6A02ECB642E004524CD /* FriendRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
+		98E352B92ED4C1D100AEFBF8 /* FriendStudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendStudyTime.swift; sourceTree = "<group>"; };
 		98EC953A2CE4B97000278DBD /* StudyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRecordView.swift; sourceTree = "<group>"; };
 		98EC953C2CE4B9CC00278DBD /* NetworkStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStateView.swift; sourceTree = "<group>"; };
 		98EC953E2CE4BA3100278DBD /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		98EC95402CE4BAB600278DBD /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		98EC95422CE4F9C600278DBD /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		98F5179A2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTimeListRespondDTO.swift; sourceTree = "<group>"; };
 		98F63B552D8FFA04009C9017 /* UpdateTokenResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTokenResponseDTO.swift; sourceTree = "<group>"; };
 		98F9D8452CDA2E6D00DE12BB /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		98FB764A2D00A3AC00BBCB8B /* PromotionResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionResponseDTO.swift; sourceTree = "<group>"; };
@@ -620,6 +626,7 @@
 				5E847A6F2CDBD4F10034C2A7 /* CalendarMapper.swift */,
 				98BF83892E01627800680FE6 /* StudyStatusMapper.swift */,
 				98D0C49B2ED3167C00632732 /* SearchUserMapper.swift */,
+				98738AA52ED5AA0000E0CDBB /* FriendStudyTimeMapper.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -1153,6 +1160,7 @@
 			isa = PBXGroup;
 			children = (
 				98A4C18D2ECF5FF6006F5BA8 /* SearchUser.swift */,
+				98E352B92ED4C1D100AEFBF8 /* FriendStudyTime.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1164,6 +1172,7 @@
 				98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */,
 				98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */,
 				98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */,
+				98F5179A2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1503,6 +1512,7 @@
 				47C815382CE21E640017EA24 /* ASAuthEndpoint.swift in Sources */,
 				47A9DCC32CE0DB97001DE76D /* WebView.swift in Sources */,
 				98E2B6A12ECB642E004524CD /* FriendRequestCell.swift in Sources */,
+				98F5179B2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift in Sources */,
 				4736719F2CB120A600527896 /* WeeklyStudyView.swift in Sources */,
 				4780044C2CCAAD4F00FFAF00 /* WeekDay.swift in Sources */,
 				47E250732CCF2BED00267897 /* WiseSaying.swift in Sources */,
@@ -1535,6 +1545,7 @@
 				98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */,
 				98D144112CDFAC4D0092708E /* NetworkingErrorView.swift in Sources */,
 				98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */,
+				98738AA62ED5AA0000E0CDBB /* FriendStudyTimeMapper.swift in Sources */,
 				47F635022CC3E98D0034EAA9 /* UserEndpoint.swift in Sources */,
 				478933792CADBDA500E1D89E /* ProfileEditView.swift in Sources */,
 				47F71B5D2CDC77C60044DEC5 /* UserDataInteractor+Migration.swift in Sources */,
@@ -1567,6 +1578,7 @@
 				470483AA2CDB532A00C381ED /* TokenValidResponseDTO.swift in Sources */,
 				98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */,
 				471940CD2CAFDAD700426D30 /* WeeklyRanking+Mock.swift in Sources */,
+				98E352BA2ED4C1D200AEFBF8 /* FriendStudyTime.swift in Sources */,
 				47CA17252CC9336100CBB251 /* StudyPeriodView.swift in Sources */,
 				4763FFB82CB9134D00990336 /* Store.swift in Sources */,
 				47A147802CA15A4E00A91F66 /* OnboardingView.swift in Sources */,
