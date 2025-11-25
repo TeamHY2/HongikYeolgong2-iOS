@@ -35,4 +35,17 @@ final class FriendRepositoryImpl: FriendRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func getFriendsTimeList(dateType: RankingType) -> AnyPublisher<[FriendStudyTime], NetworkError> {
+        return Future<[FriendStudyTime], NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<[FriendsTimeListRespondDTO]> = try await NetworkService.shared.request(endpoint: FriendEndpoint.getFriendsTimeList(dateType: dateType))
+                    promise(.success(response.data.map { $0.toEntity()}))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }

@@ -44,4 +44,16 @@ final class FriendInteractorImpl: FriendInteractor {
         }
         .store(in: cancleBag)
     }
+    
+    // 친구 랭킹 리스트 요청
+    func getFriendsTimeList(serchUsers: Binding<[FriendStudyTime]>, dateType: RankingType) {
+        friendRepository
+            .getFriendsTimeList(dateType: dateType)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in }
+        receiveValue: {
+            serchUsers.wrappedValue = $0
+        }
+        .store(in: cancleBag)
+    }
 }
