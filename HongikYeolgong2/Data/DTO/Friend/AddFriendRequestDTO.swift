@@ -10,8 +10,3 @@ import Foundation
 struct AddFriendRequestDTO: Codable {
     let receiverId: Int
 }
-
-enum FriendRankingType{
-    case monthly
-    case daily
-}

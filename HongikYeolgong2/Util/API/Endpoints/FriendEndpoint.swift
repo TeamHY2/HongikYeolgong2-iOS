@@ -10,6 +10,7 @@ enum FriendEndpoint {
     case searchFriend(nickname: String)
     case addFriend(receiverId: Int)
     case respondFriendRequest(senderId: Int, isAccepted: Bool)
+    case getFriendsTimeList(dateType: RankingType)
 }
 
 extension FriendEndpoint: EndpointProtocol {
@@ -25,12 +26,14 @@ extension FriendEndpoint: EndpointProtocol {
                 "/friends"
             case .respondFriendRequest:
                 "/friends"
+            case .getFriendsTimeList:
+                "/friends/study"
         }
     }
     
     var method: NetworkMethod {
         switch self{
-            case .searchFriend:
+            case .searchFriend, .getFriendsTimeList:
                     .get
             case .addFriend:
                     .post
@@ -43,6 +46,8 @@ extension FriendEndpoint: EndpointProtocol {
         switch self {
             case let .searchFriend(nickname):
                 return [URLQueryItem(name: "nickname", value: nickname)]
+            case let .getFriendsTimeList(type):
+                return [URLQueryItem(name: "dateType", value: type.typeName)]
             case .addFriend, .respondFriendRequest:
                 return nil
         }
@@ -57,7 +62,7 @@ extension FriendEndpoint: EndpointProtocol {
     
     var body: Data? {
         switch self {
-            case .searchFriend:
+            case .searchFriend, .getFriendsTimeList:
                 return nil
             case let .addFriend(receiverId):
                 return AddFriendRequestDTO(receiverId: receiverId).toData()
