@@ -14,6 +14,9 @@ struct SearchFriendsView: View {
     @State var inputNickname: String = ""
     @State var searchResults: [SearchUser] = []
     
+    //
+    @FocusState private var isFocused: Bool
+    
     // debounce 이벤트 발행 용도
     private let inputSubject = PassthroughSubject<String, Never>()
     
@@ -38,6 +41,7 @@ struct SearchFriendsView: View {
                             .font(.pretendard(size: 16, weight: .regular))
                             .foregroundStyle(.gray300)
                     }
+                    .focused($isFocused)
                     .frame(maxWidth: .infinity)
                     .onChange(of: inputNickname) { newValue in
                         inputSubject.send(newValue)
@@ -45,6 +49,7 @@ struct SearchFriendsView: View {
                     
                     if !inputNickname.isEmpty {
                         Image(.close)
+                            .transition(.opacity)
                             .onTapGesture {
                                 inputNickname = ""
                             }
@@ -57,6 +62,7 @@ struct SearchFriendsView: View {
                     .gray800
                 )
                 .cornerRadius(12)
+                .animation(.easeInOut(duration: 0.15), value: inputNickname.isEmpty)
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             
@@ -75,6 +81,10 @@ struct SearchFriendsView: View {
             }
         }
         .modifier(IOSBackground())
+        .onAppear {
+            // 뷰 열리자마자 키보드 띄우기
+            isFocused = true
+        }
         .onReceive(
             inputSubject
                 .debounce(for: .seconds(0.5), scheduler: RunLoop.main)
