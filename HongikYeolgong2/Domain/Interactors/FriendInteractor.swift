@@ -17,6 +17,7 @@ protocol FriendInteractor {
 final class FriendInteractorImpl: FriendInteractor {
     private let friendRepository: FriendRepository
     private let cancleBag = CancelBag()
+    private var firstLoading: Bool = true
     
     init(friendRepository: FriendRepository) {
         self.friendRepository = friendRepository
@@ -48,9 +49,17 @@ final class FriendInteractorImpl: FriendInteractor {
     
     // 친구 랭킹 리스트 요청
     func getFriendsTimeList(serchUsers: LoadableSubject<[FriendStudyTime]>, dateType: RankingType) {
-        friendRepository
-            .getFriendsTimeList(dateType: dateType)
-            .sinkToLoadble(serchUsers)
-            .store(in: cancleBag)
+        if firstLoading{
+            friendRepository
+                .getFriendsTimeList(dateType: dateType)
+                .sinkToLoadble(serchUsers)
+                .store(in: cancleBag)
+            firstLoading.toggle()
+        } else {
+            friendRepository
+                .getFriendsTimeList(dateType: dateType)
+                .sinkToLoadbleWithoutLoding(serchUsers)
+                .store(in: cancleBag)
+        }
     }
 }
