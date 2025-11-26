@@ -31,13 +31,27 @@ struct FriendsView: View {
     @EnvironmentObject var router: AppRouter
     @Namespace private var rankTypeAnimation
     @State private var rankType: RankingType = .month
-    @State private var friendTimeList: [FriendStudyTime] = []
+    @State private var friendTimeList: Loadable<[FriendStudyTime]> = .notRequest
     
     // 친구 비어있음 확인용
-    private var friendListEmpty: Bool { friendTimeList.isEmpty }
+    private var friendListEmpty: Bool {
+        switch friendTimeList {
+            case let .success(value):
+                if value.isEmpty { return true } else { return false }
+            default: return false
+        }}
     var notificationStatus: NotificationStatus = .none
     
     var body: some View {
+        NetworkStateView(
+            loadables: [AnyLoadable($friendTimeList)],
+            retryAction: getFriendsTimeList
+        ) {
+            content
+        }
+    }
+    
+    var content: some View {
         ZStack{
             VStack(spacing: 0){
                 HStack{
@@ -54,11 +68,11 @@ struct FriendsView: View {
                 .padding(.horizontal, 32.adjustToScreenWidth)
                 
                 // 순위 셀 부분
-                if !friendListEmpty {
+                if let value = friendTimeList.value, !friendListEmpty {
                     Spacer().frame(height: 23.adjustToScreenHeight)
                     ScrollView {
                         VStack(spacing: 15.adjustToScreenHeight) {
-                            ForEach(Array(friendTimeList.enumerated()), id: \.offset){ index, info in
+                            ForEach(Array(value.enumerated()), id: \.offset){ index, info in
                                 FriendsRankingCell(frendInfo: info, offset: index+1)
                             }
                             // 버튼 하단 공백용

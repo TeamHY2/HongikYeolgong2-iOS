@@ -11,7 +11,7 @@ import Combine
 protocol FriendInteractor {
     func getSerchUser(serchUsers: Binding<[SearchUser]>, nickname: String)
     func postAddFriend(userId: Int, completion: @escaping (Bool) -> Void)
-    func getFriendsTimeList(serchUsers: Binding<[FriendStudyTime]>, dateType: RankingType)
+    func getFriendsTimeList(serchUsers: LoadableSubject<[FriendStudyTime]>, dateType: RankingType)
 }
 
 final class FriendInteractorImpl: FriendInteractor {
@@ -47,14 +47,10 @@ final class FriendInteractorImpl: FriendInteractor {
     }
     
     // 친구 랭킹 리스트 요청
-    func getFriendsTimeList(serchUsers: Binding<[FriendStudyTime]>, dateType: RankingType) {
+    func getFriendsTimeList(serchUsers: LoadableSubject<[FriendStudyTime]>, dateType: RankingType) {
         friendRepository
             .getFriendsTimeList(dateType: dateType)
-            .receive(on: DispatchQueue.main)
-            .sink { _ in }
-        receiveValue: {
-            serchUsers.wrappedValue = $0
-        }
-        .store(in: cancleBag)
+            .sinkToLoadble(serchUsers)
+            .store(in: cancleBag)
     }
 }
