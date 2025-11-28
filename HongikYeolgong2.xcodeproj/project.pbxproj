@@ -182,6 +182,7 @@
 		98A4C18E2ECF5FF6006F5BA8 /* SearchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A4C18D2ECF5FF6006F5BA8 /* SearchUser.swift */; };
 		98B1A7482ED1F92D00860B07 /* FriendEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */; };
 		98B1A74B2ED2027400860B07 /* FriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */; };
+		98B47D252ED9BD520080ED38 /* patchFriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B47D242ED9BD520080ED38 /* patchFriendRespondDTO.swift */; };
 		98B5F00C2CDB6226007CF5FA /* StudyTimeResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */; };
 		98B5F00F2CDB652A007CF5FA /* StudyTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F00E2CDB652A007CF5FA /* StudyTime.swift */; };
 		98B5F0112CDB9990007CF5FA /* StudyTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */; };
@@ -403,6 +404,7 @@
 		98A4C18D2ECF5FF6006F5BA8 /* SearchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUser.swift; sourceTree = "<group>"; };
 		98B1A7472ED1F92D00860B07 /* FriendEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendEndpoint.swift; sourceTree = "<group>"; };
 		98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRespondDTO.swift; sourceTree = "<group>"; };
+		98B47D242ED9BD520080ED38 /* patchFriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = patchFriendRespondDTO.swift; sourceTree = "<group>"; };
 		98B5F00B2CDB6226007CF5FA /* StudyTimeResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeResponseDTO.swift; sourceTree = "<group>"; };
 		98B5F00E2CDB652A007CF5FA /* StudyTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTime.swift; sourceTree = "<group>"; };
 		98B5F0102CDB9990007CF5FA /* StudyTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTimeInteractor.swift; sourceTree = "<group>"; };
@@ -1173,6 +1175,7 @@
 				98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */,
 				98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */,
 				98F5179A2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift */,
+				98B47D242ED9BD520080ED38 /* patchFriendRespondDTO.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1599,6 +1602,7 @@
 				98F9D8462CDA2E6D00DE12BB /* RecordCell.swift in Sources */,
 				47C815552CE26EE40017EA24 /* ASRevokeTokenRequestDTO.swift in Sources */,
 				47A147792CA158E800A91F66 /* MainTabView.swift in Sources */,
+				98B47D252ED9BD520080ED38 /* patchFriendRespondDTO.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,

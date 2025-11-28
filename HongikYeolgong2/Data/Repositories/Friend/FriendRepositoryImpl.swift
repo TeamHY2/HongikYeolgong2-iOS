@@ -53,4 +53,20 @@ final class FriendRepositoryImpl: FriendRepository {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func respondFriendRequest(senderId: Int, isAccept: Bool) -> AnyPublisher<Bool, NetworkError> {
+            return Future<Bool, NetworkError> { promise in
+                Task {
+                    do {
+                        let response: BaseResponse<patchFriendRespondDTO> = try await NetworkService.shared.request(endpoint: FriendEndpoint.respondFriendRequest(senderId: senderId, isAccepted: isAccept))
+                        // 정상처리 된 경우에만 -> 이후 추가 로직 필요할 경우 수정
+                        let result = response.message == "OK"
+                        
+                        promise(.success(result))
+                    } catch let error as NetworkError {
+                        promise(.failure(error))
+                    }
+                }
+            }.eraseToAnyPublisher()
+    }
 }
