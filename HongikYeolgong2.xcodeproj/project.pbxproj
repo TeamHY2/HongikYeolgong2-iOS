@@ -190,6 +190,7 @@
 		98B8E4DB2EDAE75000FFC9E6 /* NotificationRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B8E4DA2EDAE75000FFC9E6 /* NotificationRespondDTO.swift */; };
 		98B8E4DD2EDAE9E600FFC9E6 /* NotificationMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B8E4DC2EDAE9E600FFC9E6 /* NotificationMapper.swift */; };
 		98B8E4DF2EDAEA0A00FFC9E6 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B8E4DE2EDAEA0A00FFC9E6 /* Notification.swift */; };
+		98B8E4E12EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B8E4E02EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift */; };
 		98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */; };
 		98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83892E01627800680FE6 /* StudyStatusMapper.swift */; };
 		98D0C4962ED2C95600632732 /* FriendRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4952ED2C95600632732 /* FriendRepositoryImpl.swift */; };
@@ -415,6 +416,7 @@
 		98B8E4DA2EDAE75000FFC9E6 /* NotificationRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRespondDTO.swift; sourceTree = "<group>"; };
 		98B8E4DC2EDAE9E600FFC9E6 /* NotificationMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationMapper.swift; sourceTree = "<group>"; };
 		98B8E4DE2EDAEA0A00FFC9E6 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = HongikYeolgong2/Domain/Mapper/Notification.swift; sourceTree = SOURCE_ROOT; };
+		98B8E4E02EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelFriendRequestDTO.swift; sourceTree = "<group>"; };
 		98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusInfo.swift; sourceTree = "<group>"; };
 		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
 		98C2FF8B2EC636C50009250C /* HongikYeolgong2Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2Release.entitlements; sourceTree = "<group>"; };
@@ -1178,13 +1180,8 @@
 		98B1A7492ED2023E00860B07 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
-				98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */,
-				98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */,
-				98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */,
-				98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */,
-				98F5179A2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift */,
-				98B47D242ED9BD520080ED38 /* PatchFriendRespondDTO.swift */,
-				98B8E4DA2EDAE75000FFC9E6 /* NotificationRespondDTO.swift */,
+				98B8E4E52EDAFB4600FFC9E6 /* Request */,
+				98B8E4E42EDAFB3A00FFC9E6 /* Respond */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -1195,6 +1192,28 @@
 				98B5F00E2CDB652A007CF5FA /* StudyTime.swift */,
 			);
 			path = Record;
+			sourceTree = "<group>";
+		};
+		98B8E4E42EDAFB3A00FFC9E6 /* Respond */ = {
+			isa = PBXGroup;
+			children = (
+				98B8E4DA2EDAE75000FFC9E6 /* NotificationRespondDTO.swift */,
+				98B47D242ED9BD520080ED38 /* PatchFriendRespondDTO.swift */,
+				98F5179A2ED4B3A20021F684 /* FriendsTimeListRespondDTO.swift */,
+				98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */,
+				98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */,
+				98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */,
+			);
+			path = Respond;
+			sourceTree = "<group>";
+		};
+		98B8E4E52EDAFB4600FFC9E6 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				98B8E4E02EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift */,
+				98D0C4A12ED36B2A00632732 /* AddFriendRequestDTO.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		98BF83862E015CF100680FE6 /* FocusMode */ = {
@@ -1616,6 +1635,7 @@
 				98B47D252ED9BD520080ED38 /* PatchFriendRespondDTO.swift in Sources */,
 				478B75462CE659C3000190EF /* BaseTextField.swift in Sources */,
 				47F79B302CCCB7FC00DD0899 /* TimePicker.swift in Sources */,
+				98B8E4E12EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift in Sources */,
 				478FBCA32CD13A1E00256012 /* UserInfo.swift in Sources */,
 				98D4ACD62EC6217900FD3129 /* FriendsView.swift in Sources */,
 				98B8E4DF2EDAEA0A00FFC9E6 /* Notification.swift in Sources */,
@@ -1712,7 +1732,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1770,7 +1790,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

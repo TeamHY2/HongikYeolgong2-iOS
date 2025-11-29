@@ -11,6 +11,7 @@ enum FriendEndpoint {
     case addFriend(receiverId: Int)
     case respondFriendRequest(senderId: Int, isAccepted: Bool)
     case getFriendsTimeList(dateType: RankingType)
+    case requestCancelFriend(userId: Int)
     case getNotification
 }
 
@@ -29,6 +30,8 @@ extension FriendEndpoint: EndpointProtocol {
                 "/friends"
             case .getFriendsTimeList:
                 "/friends/study"
+            case .requestCancelFriend:
+                "/friends/cancel"
             case .getNotification:
                 "/notification"
         }
@@ -40,7 +43,7 @@ extension FriendEndpoint: EndpointProtocol {
                     .get
             case .addFriend:
                     .post
-            case .respondFriendRequest:
+            case .respondFriendRequest, .requestCancelFriend:
                     .patch
         }
     }
@@ -51,7 +54,7 @@ extension FriendEndpoint: EndpointProtocol {
                 return [URLQueryItem(name: "nickname", value: nickname)]
             case let .getFriendsTimeList(type):
                 return [URLQueryItem(name: "dateType", value: type.typeName)]
-            case .addFriend, .respondFriendRequest, .getNotification:
+            case .addFriend, .respondFriendRequest, .getNotification, .requestCancelFriend:
                 return nil
         }
     }
@@ -71,6 +74,8 @@ extension FriendEndpoint: EndpointProtocol {
                 return AddFriendRequestDTO(receiverId: receiverId).toData()
             case let .respondFriendRequest(senderId, isAccepted):
                 return FriendRespondDTO(senderId: senderId, isAccepted: isAccepted).toData()
+            case let .requestCancelFriend(senderId):
+                return CancelFriendRequestDTO(cancelUserId: senderId).toData()
         }
     }
     
