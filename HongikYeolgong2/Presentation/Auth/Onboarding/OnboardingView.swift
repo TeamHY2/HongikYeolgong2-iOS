@@ -35,7 +35,10 @@ struct OnboardingView: View {
             )
         }
         .onReceive(routingUpdate) {
-            router.push(to: .signUp)
+            DispatchQueue.main.async {
+                router.push(to: .signUp)
+                appState[\.routing.onboarding.signUp] = false
+            }
         }
     }
 }
