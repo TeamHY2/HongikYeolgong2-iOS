@@ -12,6 +12,8 @@ protocol FriendInteractor {
     func getSerchUser(serchUsers: Binding<[SearchUser]>, nickname: String)
     func postAddFriend(userId: Int, completion: @escaping (Bool) -> Void)
     func getFriendsTimeList(serchUsers: LoadableSubject<[FriendStudyTime]>, dateType: RankingType)
+    func respondFriendRequest(senderId: Int, isAccept: Bool)
+    func getNotificationList(notificationList: LoadableSubject<[Notification]>)
 }
 
 final class FriendInteractorImpl: FriendInteractor {
@@ -61,5 +63,19 @@ final class FriendInteractorImpl: FriendInteractor {
                 .sinkToLoadbleWithoutLoding(serchUsers)
                 .store(in: cancleBag)
         }
+    }
+    
+    // 친구 요청 수락, 거절
+    func respondFriendRequest(senderId: Int, isAccept: Bool) {
+        
+    }
+    
+    // 알림 리스트 요청
+    func getNotificationList(notificationList: LoadableSubject<[Notification]>) {
+        friendRepository
+            .getNotification()
+            .sinkToLoadble(notificationList)
+            .store(in: cancleBag)
+        firstLoading.toggle()
     }
 }
