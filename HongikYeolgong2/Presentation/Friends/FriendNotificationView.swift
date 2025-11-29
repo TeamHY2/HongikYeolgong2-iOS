@@ -9,6 +9,11 @@ import SwiftUI
 
 struct FriendNotificationView: View {
     @EnvironmentObject var router: AppRouter
+    @State private var notificationList: Loadable<[Notification]>
+    
+    init(notificationList: [Notification]) {
+        self.notificationList = .success(notificationList)
+    }
     
     var body: some View {
         VStack {
@@ -31,15 +36,17 @@ struct FriendNotificationView: View {
             
             ScrollView {
                 VStack(spacing: 16.adjustToScreenHeight){
-                    ForEach(0..<10, id: \.self) { _ in
-                        NotificationRequestCell(
-                            name: "테스트",
-                            time: "7시간",
-                            deleteAction: {
-                            },
-                            acceptAction: {
-                            }
-                        )
+                    if let value = notificationList.value {
+                        ForEach(value, id: \.self) { notification in
+                            NotificationRequestCell(
+                                name: notification.senderNickname,
+                                time: notification.receivedAt,
+                                deleteAction: {
+                                },
+                                acceptAction: {
+                                }
+                            )
+                        }
                     }
                 }
                 .padding(.horizontal, 32.adjustToScreenWidth)

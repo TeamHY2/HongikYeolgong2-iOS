@@ -43,7 +43,7 @@ enum Route: Hashable {
     case signUp
     
     // 친구 탭
-    case friendNotification
+    case friendNotification(notificationList: [Notification])
     case friendSearch
     
     // 설정 탭
@@ -63,8 +63,8 @@ extension View {
                     case .signUp:
                         ProfileEditView()
                         
-                    case .friendNotification:
-                        FriendNotificationView()
+                    case let .friendNotification(notificationList):
+                        FriendNotificationView(notificationList: notificationList)
                     case .friendSearch:
                         SearchFriendsView()
                         

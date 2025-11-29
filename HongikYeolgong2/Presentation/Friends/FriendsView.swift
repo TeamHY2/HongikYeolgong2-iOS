@@ -20,18 +20,13 @@ enum RankingType: String, CaseIterable {
     }
 }
 
-// 알림창 상태 표시
-enum NotificationStatus {
-    case newNotification
-    case none
-}
-
 struct FriendsView: View {
     @Environment(\.injected.interactors.friendInteractor) var friendInteractor
     @EnvironmentObject var router: AppRouter
     @Namespace private var rankTypeAnimation
     @State private var rankType: RankingType = .month
     @State private var friendTimeList: Loadable<[FriendStudyTime]> = .notRequest
+    @State private var notificationList: Loadable<[Notification]> = .notRequest
     
     // 친구 비어있음 확인용
     private var friendListEmpty: Bool {
@@ -40,11 +35,10 @@ struct FriendsView: View {
                 if value.isEmpty { return true } else { return false }
             default: return false
         }}
-    var notificationStatus: NotificationStatus = .none
     
     var body: some View {
         NetworkStateView(
-            loadables: [AnyLoadable($friendTimeList)],
+            loadables: [AnyLoadable($friendTimeList), AnyLoadable($notificationList)],
             retryAction: getFriendsTimeList
         ) {
             content
@@ -123,7 +117,10 @@ struct FriendsView: View {
             }
         }
         .modifier(IOSBackground())
-        .onAppear{ getFriendsTimeList() }
+        .onAppear{
+            getFriendsTimeList()
+            getNotificationList()
+        }
         .onChange(of: rankType) { _ in
             getFriendsTimeList()
         }
@@ -165,11 +162,10 @@ struct FriendsView: View {
             // 알림창 action 추가
             notificationButtonTapped()
         } label: {
-            switch notificationStatus {
-                case .newNotification:
-                    Image(.bellOn)
-                case .none:
-                    Image(.bellOff)
+            if let value = notificationList.value, !value.isEmpty {
+                Image(.bellOn)
+            } else {
+                Image(.bellOff)
             }
         }
     }
@@ -178,7 +174,8 @@ struct FriendsView: View {
 // MARK:- Action
 extension FriendsView {
     private func notificationButtonTapped() {
-        router.push(to: .friendNotification)
+        guard let notificationList = notificationList.value else { return }
+        router.push(to: .friendNotification(notificationList: notificationList))
     }
     
     private func friendAddButtonTapped() {
@@ -188,6 +185,10 @@ extension FriendsView {
     // 랭킹 리스트 요청
     private func getFriendsTimeList() {
         friendInteractor.getFriendsTimeList(serchUsers: $friendTimeList, dateType: rankType)
+    }
+    
+    private func getNotificationList() {
+        friendInteractor.getNotificationList(notificationList: $notificationList)
     }
 }
 
