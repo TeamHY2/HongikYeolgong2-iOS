@@ -11,6 +11,6 @@ protocol FriendRepository {
     func getSerchUser(nickname: String) -> AnyPublisher<[SearchUser], NetworkError>
     func postAddFriend(userId: Int) -> AnyPublisher<Bool, NetworkError>
     func getFriendsTimeList(dateType: RankingType) -> AnyPublisher<[FriendStudyTime], NetworkError>
-    func respondFriendRequest(senderId: Int, isAccept: Bool) -> AnyPublisher<Bool, NetworkError>
+    func respondFriendRequest(info: Notification, isAccept: Bool) -> AnyPublisher<Bool, NetworkError>
     func getNotification() -> AnyPublisher<[Notification], NetworkError>
 }
