@@ -12,7 +12,7 @@ protocol FriendInteractor {
     func getSerchUser(serchUsers: Binding<[SearchUser]>, nickname: String)
     func postAddFriend(userId: Int, completion: @escaping (Bool) -> Void)
     func getFriendsTimeList(serchUsers: LoadableSubject<[FriendStudyTime]>, dateType: RankingType)
-    func respondFriendRequest(senderId: Int, isAccept: Bool)
+    func respondFriendRequest(info: Notification, isAccept: Bool, completion: @escaping (Bool) -> Void)
     func getNotificationList(notificationList: LoadableSubject<[Notification]>)
 }
 
@@ -66,8 +66,14 @@ final class FriendInteractorImpl: FriendInteractor {
     }
     
     // 친구 요청 수락, 거절
-    func respondFriendRequest(senderId: Int, isAccept: Bool) {
-        
+    func respondFriendRequest(info: Notification, isAccept: Bool, completion: @escaping (Bool) -> Void) {
+        friendRepository
+            .respondFriendRequest(info: info, isAccept: isAccept)
+            .sink { _ in }
+        receiveValue: {
+            completion($0)
+        }
+        .store(in: cancleBag)
     }
     
     // 알림 리스트 요청
