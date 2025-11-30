@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FriendNotificationView: View {
+    @Environment(\.injected.interactors.friendInteractor) var friendInteractor
     @EnvironmentObject var router: AppRouter
     @State private var notificationList: Loadable<[Notification]>
     
@@ -42,8 +43,10 @@ struct FriendNotificationView: View {
                                 name: notification.senderNickname,
                                 time: notification.receivedAt,
                                 deleteAction: {
+                                    deleteButtonAction(info: notification, isAccept: false)
                                 },
                                 acceptAction: {
+                                    deleteButtonAction(info: notification, isAccept: true)
                                 }
                             )
                         }
@@ -63,13 +66,18 @@ extension FriendNotificationView{
         router.pop()
     }
     
-    // 삭제 버튼 액션
-    private func deleteButtonAction() {
-        
+    // 수락, 삭제 버튼 액션
+    private func deleteButtonAction(info: Notification, isAccept: Bool) {
+        //guard let info = notificationList.value else { return }
+        friendInteractor.respondFriendRequest(info: info, isAccept: isAccept) { result in
+            if result {
+                refreshAction()
+            }
+        }
     }
     
-    // 수락 버튼
-    private func acceptButtonAction() {
-        
+    // 새로고침
+    private func refreshAction() {
+        friendInteractor.getNotificationList(notificationList: $notificationList)
     }
 }
