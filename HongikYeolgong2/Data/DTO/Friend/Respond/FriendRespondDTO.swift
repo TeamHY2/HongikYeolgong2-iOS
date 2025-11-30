@@ -8,11 +8,8 @@
 import Foundation
 
 struct FriendRespondDTO: Encodable {
+    let notificationId: Int
+    let friendId: Int
     let senderId: Int
-    let isAccepted: String
-    
-    init(senderId: Int, isAccepted: Bool) {
-        self.senderId = senderId
-        self.isAccepted = isAccepted ? "ACCEPTED" : "REJECTED"
-    }
+    let friendStatus: String
 }

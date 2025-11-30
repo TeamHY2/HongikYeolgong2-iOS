@@ -9,7 +9,7 @@ import Foundation
 enum FriendEndpoint {
     case searchFriend(nickname: String)
     case addFriend(receiverId: Int)
-    case respondFriendRequest(senderId: Int, isAccepted: Bool)
+    case respondFriendRequest(info: Notification, isAccept: Bool)
     case getFriendsTimeList(dateType: RankingType)
     case requestCancelFriend(userId: Int)
     case getNotification
@@ -72,8 +72,13 @@ extension FriendEndpoint: EndpointProtocol {
                 return nil
             case let .addFriend(receiverId):
                 return AddFriendRequestDTO(receiverId: receiverId).toData()
-            case let .respondFriendRequest(senderId, isAccepted):
-                return FriendRespondDTO(senderId: senderId, isAccepted: isAccepted).toData()
+            case let .respondFriendRequest(info, isAccept):
+                return FriendRespondDTO(
+                    notificationId: info.notificationId,
+                    friendId: info.friendId,
+                    senderId: info.senderId,
+                    friendStatus: isAccept ? "ACCEPTED" : "CANCELED"
+                ).toData()
             case let .requestCancelFriend(senderId):
                 return CancelFriendRequestDTO(cancelUserId: senderId).toData()
         }
