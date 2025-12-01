@@ -70,6 +70,22 @@ final class FriendRepositoryImpl: FriendRepository {
             }.eraseToAnyPublisher()
     }
     
+    func requestCancelFriend(userId: Int) -> AnyPublisher<Bool, NetworkError> {
+        return Future<Bool, NetworkError> { promise in
+            Task {
+                do {
+                    let response: BaseResponse<EmptyDTO> = try await NetworkService.shared.request(endpoint: FriendEndpoint.requestCancelFriend(userId: userId))
+                    // 정상처리 된 경우에만 -> 이후 추가 로직 필요할 경우 수정
+                    let result = response.message == "OK"
+                    
+                    promise(.success(result))
+                } catch let error as NetworkError {
+                    promise(.failure(error))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
     func getNotification() -> AnyPublisher<[Notification], NetworkError> {
         return Future<[Notification], NetworkError> { promise in
             Task {
@@ -84,3 +100,5 @@ final class FriendRepositoryImpl: FriendRepository {
         }.eraseToAnyPublisher()
     }
 }
+
+struct EmptyDTO: Decodable {}
