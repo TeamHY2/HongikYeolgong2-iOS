@@ -33,7 +33,7 @@ extension FriendEndpoint: EndpointProtocol {
             case .requestCancelFriend:
                 "/friends/cancel"
             case .getNotification:
-                "/notification"
+                "/notifications"
         }
     }
     
