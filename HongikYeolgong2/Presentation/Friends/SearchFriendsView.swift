@@ -73,6 +73,8 @@ struct SearchFriendsView: View {
                     ForEach(searchResults, id: \.self){ user in
                         FriendRequestCell(user: user) {
                             requestAddFriend(user.userId)
+                        } calcelAction: {
+                            requestCancelFriend(user.userId)
                         }
                     }
                 }
@@ -121,6 +123,23 @@ struct SearchFriendsView: View {
             } else {
                 // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
                 searchResults[index].friendStatus = .none
+            }
+        }
+    }
+    
+    // 친구 취소 요청
+    private func requestCancelFriend(_ userId: Int) {
+        guard let index = searchResults.firstIndex(where: { $0.userId == userId }) else { return }
+        
+        // 로딩 상태 세팅
+        searchResults[index].friendStatus = .loading
+        
+        friendInteractor.requestCancelFriend(userId: userId) { success in
+            if success {
+                searchResults[index].friendStatus = .none
+            } else {
+                // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
+                searchResults[index].friendStatus = .pending
             }
         }
     }
