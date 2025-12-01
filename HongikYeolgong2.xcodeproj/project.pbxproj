@@ -193,6 +193,7 @@
 		98B8E4E12EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B8E4E02EDAFB2600FFC9E6 /* CancelFriendRequestDTO.swift */; };
 		98BF83882E015D2800680FE6 /* StudyStatusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */; };
 		98BF838A2E01627800680FE6 /* StudyStatusMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BF83892E01627800680FE6 /* StudyStatusMapper.swift */; };
+		98CBE9CD2EDDE5FD002C1B09 /* NullDataRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CBE9CC2EDDE5FD002C1B09 /* NullDataRespondDTO.swift */; };
 		98D0C4962ED2C95600632732 /* FriendRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4952ED2C95600632732 /* FriendRepositoryImpl.swift */; };
 		98D0C4982ED2C98C00632732 /* FriendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4972ED2C98C00632732 /* FriendRepository.swift */; };
 		98D0C49A2ED2E79D00632732 /* SearchFriendRespondDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */; };
@@ -420,6 +421,7 @@
 		98BF83872E015D2800680FE6 /* StudyStatusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusInfo.swift; sourceTree = "<group>"; };
 		98BF83892E01627800680FE6 /* StudyStatusMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyStatusMapper.swift; sourceTree = "<group>"; };
 		98C2FF8B2EC636C50009250C /* HongikYeolgong2Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HongikYeolgong2Release.entitlements; sourceTree = "<group>"; };
+		98CBE9CC2EDDE5FD002C1B09 /* NullDataRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullDataRespondDTO.swift; sourceTree = "<group>"; };
 		98D0C4952ED2C95600632732 /* FriendRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRepositoryImpl.swift; sourceTree = "<group>"; };
 		98D0C4972ED2C98C00632732 /* FriendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendRepository.swift; path = HongikYeolgong2/Data/Repositories/Friend/FriendRepository.swift; sourceTree = SOURCE_ROOT; };
 		98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendRespondDTO.swift; sourceTree = "<group>"; };
@@ -1203,6 +1205,7 @@
 				98D0C4992ED2E79D00632732 /* SearchFriendRespondDTO.swift */,
 				98B1A74A2ED2027400860B07 /* FriendRespondDTO.swift */,
 				98D0C49F2ED369BA00632732 /* AddFriendRespondDTO.swift */,
+				98CBE9CC2EDDE5FD002C1B09 /* NullDataRespondDTO.swift */,
 			);
 			path = Respond;
 			sourceTree = "<group>";
@@ -1473,6 +1476,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98CBE9CD2EDDE5FD002C1B09 /* NullDataRespondDTO.swift in Sources */,
 				98691FAE2D86C5AD00123861 /* AppDelegate.swift in Sources */,
 				47CA17272CC9340800CBB251 /* StudyTimerView.swift in Sources */,
 				470723112CBC1B0A0046469F /* LoginResponseDTO.swift in Sources */,

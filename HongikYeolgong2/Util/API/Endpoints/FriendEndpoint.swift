@@ -77,7 +77,7 @@ extension FriendEndpoint: EndpointProtocol {
                     notificationId: info.notificationId,
                     friendId: info.friendId,
                     senderId: info.senderId,
-                    friendStatus: isAccept ? "ACCEPTED" : "CANCELED"
+                    friendStatus: isAccept ? "ACCEPTED" : "REJECTED"
                 ).toData()
             case let .requestCancelFriend(senderId):
                 return CancelFriendRequestDTO(cancelUserId: senderId).toData()
