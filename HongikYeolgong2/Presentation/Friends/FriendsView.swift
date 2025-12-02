@@ -33,7 +33,7 @@ struct FriendsView: View {
         switch friendTimeList {
             case let .success(value):
                 if value.isEmpty { return true } else { return false }
-            default: return false
+            default: return true
         }}
     
     var body: some View {

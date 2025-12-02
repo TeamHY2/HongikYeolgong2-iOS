@@ -36,12 +36,7 @@ struct FriendRequestCell: View {
                             .cornerRadius(4)
                     }
                 case .accepted:
-                    Text("친구")
-                        .font(.pretendard(size: 14, weight: .regular))
-                        .foregroundStyle(.gray200)
-                        .frame(width: 80, height: 32)
-                        .background(.gray400)
-                        .cornerRadius(4)
+                    EmptyView()
                 case .rejected, .none:
                     Button {
                         // 친구 신청 요청 api ation 추가
@@ -55,7 +50,7 @@ struct FriendRequestCell: View {
                             .cornerRadius(4)
                     }
                 case .loading:
-                    Text("요청중...")
+                    ProgressView()
                         .font(.pretendard(size: 14, weight: .regular))
                         .foregroundStyle(.gray200)
                         .frame(width: 80, height: 32)
@@ -64,5 +59,6 @@ struct FriendRequestCell: View {
                     
             }
         }
+        .frame(height: 32)
     }
 }

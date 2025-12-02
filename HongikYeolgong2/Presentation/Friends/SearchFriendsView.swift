@@ -64,6 +64,7 @@ struct SearchFriendsView: View {
                 .cornerRadius(12)
                 .animation(.easeInOut(duration: 0.15), value: inputNickname.isEmpty)
             }
+            .padding(.top, 33.adjustToScreenHeight)
             .padding(.horizontal, 32.adjustToScreenWidth)
             
             
