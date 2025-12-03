@@ -13,6 +13,8 @@ struct SearchFriendsView: View {
     @EnvironmentObject var router: AppRouter
     @State var inputNickname: String = ""
     @State var searchResults: [SearchUser] = []
+    @State private var isToastShow: Bool = false
+    @State private var toastText: String = ""
     
     //
     @FocusState private var isFocused: Bool
@@ -73,9 +75,9 @@ struct SearchFriendsView: View {
                 VStack(spacing: 24.adjustToScreenHeight){
                     ForEach(searchResults, id: \.self){ user in
                         FriendRequestCell(user: user) {
-                            requestAddFriend(user.userId)
+                            requestAddFriend(user)
                         } calcelAction: {
-                            requestCancelFriend(user.userId)
+                            requestCancelFriend(user)
                         }
                     }
                 }
@@ -99,6 +101,7 @@ struct SearchFriendsView: View {
         ) { inputNickname in
             requestSearch(inputNickname)
         }
+        .toast(isToastShow: $isToastShow, text: toastText)
     }
     
     // 정규식 검사
@@ -112,7 +115,8 @@ struct SearchFriendsView: View {
     }
     
     // 친구 추가 요청
-    private func requestAddFriend(_ userId: Int) {
+    private func requestAddFriend(_ user: SearchUser) {
+        let userId = user.userId
         guard let index = searchResults.firstIndex(where: { $0.userId == userId }) else { return }
         
         // 로딩 상태 세팅
@@ -121,6 +125,7 @@ struct SearchFriendsView: View {
         friendInteractor.postAddFriend(userId: userId) { success in
             if success {
                 searchResults[index].friendStatus = .pending
+                showToast(text: user.nickname + "님에게 친구추가 요청을 보냈어요.")
             } else {
                 // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
                 searchResults[index].friendStatus = .none
@@ -129,7 +134,8 @@ struct SearchFriendsView: View {
     }
     
     // 친구 취소 요청
-    private func requestCancelFriend(_ userId: Int) {
+    private func requestCancelFriend(_ user: SearchUser) {
+        let userId = user.userId
         guard let index = searchResults.firstIndex(where: { $0.userId == userId }) else { return }
         
         // 로딩 상태 세팅
@@ -138,10 +144,18 @@ struct SearchFriendsView: View {
         friendInteractor.requestCancelFriend(userId: userId) { success in
             if success {
                 searchResults[index].friendStatus = .none
+                showToast(text: user.nickname + "님에게 보낸 친구 요청을 취소했어요.")
             } else {
                 // 찬구 신청 상태 변경 (이후 로딩 및 처리 방식 변경)
                 searchResults[index].friendStatus = .pending
             }
+        }
+    }
+    
+    private func showToast(text: String) {
+        withAnimation {
+            toastText = text
+            isToastShow.toggle()
         }
     }
 }
