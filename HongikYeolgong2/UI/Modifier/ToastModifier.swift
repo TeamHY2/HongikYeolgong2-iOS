@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+enum ToastPosition {
+    case top
+    case bottom
+}
+
 struct ToastModifier: ViewModifier {
     @Binding var isToastShow: Bool
     var iconImage: Image?
     var text: String
+    var position: ToastPosition
     
     
     func body(content: Content) -> some View {
@@ -34,8 +40,9 @@ struct ToastModifier: ViewModifier {
                     .padding(.vertical, 4)
                     .background(.gray800)
                     .cornerRadius(8)
-                    Spacer()
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignmentForPosition())
+                .padding(positionPadding())
                 .transition(.opacity)
                 .animation(.easeOut, value: isToastShow)
             }
@@ -47,13 +54,29 @@ struct ToastModifier: ViewModifier {
                 }
             }
         }
-                
+    }
+    
+    private func alignmentForPosition() -> Alignment {
+        switch position {
+        case .top: return .top
+        case .bottom: return .bottom
+        }
+    }
+    
+    
+    private func positionPadding() -> EdgeInsets {
+        switch position {
+        case .top:
+            return EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+        case .bottom:
+            return EdgeInsets(top: 0, leading: 0, bottom: 18, trailing: 0)
+        }
     }
 }
 
 
 extension View {
-    func toast(isToastShow: Binding<Bool>, iconImage: Image? = nil, text: String) -> some View {
-        self.modifier(ToastModifier(isToastShow: isToastShow, iconImage: iconImage, text: text))
+    func toast(isToastShow: Binding<Bool>, iconImage: Image? = nil, text: String, position: ToastPosition = .top) -> some View {
+        self.modifier(ToastModifier(isToastShow: isToastShow, iconImage: iconImage, text: text, position: position))
     }
 }

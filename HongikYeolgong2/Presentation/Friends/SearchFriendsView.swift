@@ -101,7 +101,7 @@ struct SearchFriendsView: View {
         ) { inputNickname in
             requestSearch(inputNickname)
         }
-        .toast(isToastShow: $isToastShow, text: toastText)
+        .toast(isToastShow: $isToastShow, text: toastText, position: .bottom)
     }
     
     // 정규식 검사
