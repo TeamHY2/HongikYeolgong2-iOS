@@ -18,6 +18,8 @@ struct ToastModifier: ViewModifier {
     var text: String
     var position: ToastPosition
     
+    // 애니메이션 처리용
+    @State private var internalVisible = false
     
     func body(content: Content) -> some View {
         ZStack{
@@ -40,19 +42,34 @@ struct ToastModifier: ViewModifier {
                     .padding(.vertical, 4)
                     .background(.gray800)
                     .cornerRadius(8)
+                    .opacity(internalVisible ? 1 : 0)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignmentForPosition())
                 .padding(positionPadding())
                 .transition(.opacity)
-                .animation(.easeOut, value: isToastShow)
+                .animation(.easeOut(duration: 0.15), value: internalVisible)
             }
         }
-        .onChange(of: isToastShow) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                withAnimation {
-                    isToastShow = false
-                }
+        .onChange(of: isToastShow) { newValue in
+            if newValue {
+                showToast()
             }
+        }
+    }
+    
+    private func showToast() {
+        internalVisible = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            withAnimation {
+                hideToast()
+            }
+        }
+    }
+    
+    private func hideToast() {
+        internalVisible = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            isToastShow = false
         }
     }
     
@@ -62,7 +79,6 @@ struct ToastModifier: ViewModifier {
         case .bottom: return .bottom
         }
     }
-    
     
     private func positionPadding() -> EdgeInsets {
         switch position {
