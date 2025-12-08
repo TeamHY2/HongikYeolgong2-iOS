@@ -30,7 +30,7 @@ enum UserEndpoint: EndpointProtocol {
 
 extension UserEndpoint {
     var baseURL: URL? {
-        URL(string: "\(SecretKeys.baseUrl)/user")
+        URL(string: "\(SecretKeys.baseUrl)v1/user")
     }
     var path: String {
         switch self {

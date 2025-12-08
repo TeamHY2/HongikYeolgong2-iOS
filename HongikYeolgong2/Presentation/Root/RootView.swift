@@ -13,6 +13,8 @@ struct RootView: View {
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
     
+    @StateObject private var router = AppRouter()
+    
     @State private var userSession: AppState.UserSession = .pending
     @State private var showAppUpdateModal = false
     @State private var isPromotionPresented = false
@@ -20,34 +22,38 @@ struct RootView: View {
     @State private var promotionData: PromotionData = PromotionData()
     
     var body: some View {
-        Group {
-            switch userSession {
-            case .unauthenticated:
-                OnboardingView()
-            case .authenticated:
-                MainTabView()
-                    .onAppear {
-                        userDataInteractor.getUserProfile()
-                        userDataInteractor.updateFCMToken()
-                    }
-                    .systemOverlay(isPresented: $isPromotionPresented) {
-                        PromotionPopupView(
-                            isPromotionPopupPresented: $isPromotionPresented,
-                            promotionData: promotionData,
-                            showWebView: {
-                                isPromotionPresented = false
-                                isWebViewPresented = true
+        NavigationStack(path: $router.path) {
+            Group {
+                switch userSession {
+                    case .unauthenticated:
+                        OnboardingView()
+                    case .authenticated:
+                        MainTabView()
+                            .onAppear {
+                                userDataInteractor.getUserProfile()
+                                userDataInteractor.updateFCMToken()
                             }
-                        )
-                    }
-            case .pending:
-                SplashView()
-                    .ignoresSafeArea(.all)
-                    .onAppear {
-                        appVersionCheck()
-                    }
+                            .systemOverlay(isPresented: $isPromotionPresented) {
+                                PromotionPopupView(
+                                    isPromotionPopupPresented: $isPromotionPresented,
+                                    promotionData: promotionData,
+                                    showWebView: {
+                                        isPromotionPresented = false
+                                        isWebViewPresented = true
+                                    }
+                                )
+                            }
+                    case .pending:
+                        SplashView()
+                            .ignoresSafeArea(.all)
+                            .onAppear {
+                                appVersionCheck()
+                            }
+                }
             }
+            .withAppDestinations()
         }
+        .environmentObject(router)
         .fullScreenCover(isPresented: $isWebViewPresented) {
             WebViewWithNavigation(url: promotionData.detailUrl, title: "상세보기")
         }

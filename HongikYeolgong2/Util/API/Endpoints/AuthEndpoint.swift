@@ -20,7 +20,7 @@ enum AuthEndpoint: EndpointProtocol {
 
 extension AuthEndpoint {
     var baseURL: URL? {
-        URL(string: "\(SecretKeys.baseUrl)/auth")
+        URL(string: "\(SecretKeys.baseUrl)v1/auth")
     }
     var path: String {
         switch self {

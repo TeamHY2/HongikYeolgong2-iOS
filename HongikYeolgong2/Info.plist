@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>MetaAppID</key>
-	<string>$(META_APP_ID)</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>열공 기록을 저장하기 위해 사진앨범 접근 권한이 필요합니다.</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>instagram-stories</string>
-	</array>
 	<key>AmplitudeKey</key>
 	<string>$(AMPLITUDE_KEY)</string>
 	<key>AppleID</key>
@@ -20,6 +10,12 @@
 	<string>$(APPLEID_API_URL)</string>
 	<key>BaseURL</key>
 	<string>$(BASE_URL)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram-stories</string>
+	</array>
+	<key>MetaAppID</key>
+	<string>$(META_APP_ID)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -35,6 +31,8 @@
 	<string>$(SERVICE_ID)</string>
 	<key>TeamID</key>
 	<string>$(TEAM_ID)</string>
+	<key>TestToken</key>
+	<string>$(TEST_TOKEN)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>SUITE-SemiBold.otf</string>
@@ -51,7 +49,5 @@
 		<string>Pretendard-Medium.otf</string>
 		<string>Pretendard-Light.otf</string>
 	</array>
-	<key>TestToken</key>
-	<string>$(TEST_TOKEN)</string>
 </dict>
 </plist>

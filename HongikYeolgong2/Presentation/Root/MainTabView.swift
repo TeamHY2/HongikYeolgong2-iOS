@@ -10,74 +10,84 @@ import AmplitudeSwift
 
 enum Tab: CaseIterable {
     case home
+    case friend
     case record
     case ranking
     case setting
     
     var title: String {
         switch self {
-        case .home: "홈"
-        case .record: "기록"
-        case .ranking: "랭킹"
-        case .setting: "설정"
+            case .home: "홈"
+            case .friend: "친구"
+            case .record: "기록"
+            case .ranking: "랭킹"
+            case .setting: "설정"
         }
     }
     
     var iconName: String {
         switch self {
-        case .home: "home"
-        case .record: "calendar"
-        case .ranking: "ranking"
-        case .setting: "setting"
+            case .home: "home"
+            case .friend: "friends"
+            case .record: "calendar"
+            case .ranking: "ranking"
+            case .setting: "setting"
         }
     }
     
     var iconNameSelected: String {
         switch self {
-        case .home: "homeSelected"
-        case .record: "calendarSelected"
-        case .ranking: "rankingSelected"
-        case .setting: "settingSelected"
+            case .home: "homeSelected"
+            case .friend: "friendsSelected"
+            case .record: "calendarSelected"
+            case .ranking: "rankingSelected"
+            case .setting: "settingSelected"
         }
     }
 }
 
 struct MainTabView: View {
+    @EnvironmentObject var router: AppRouter
     @State private var currentTab: Tab = .home
     
     var body: some View {
-        NavigationStack {
-            TabView(selection: $currentTab,
-                    content:  {
-                HomeView()
-                    .tag(Tab.home) 
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Home")
-                    }
-                
-                RecordView()
-                    .tag(Tab.record)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Record")
-                    }
-                
-                RankingView()
-                    .tag(Tab.ranking)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Ranking")
-                    }
-                
-                SettingView()
-                    .tag(Tab.setting)
-                    .onAppear {
-                        Amplitude.instance.track(eventType: "Setting")
-                    }
-            })
-            .overlay(alignment: .bottom) {
-                TabBarView(currentTab: $currentTab)
-            }
-            .edgesIgnoringSafeArea(.bottom)
+        TabView(selection: $router.currentTab,
+                content:  {
+            HomeView()
+                .tag(Tab.home)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Home")
+                }
+            
+            FriendsView()
+                .tag(Tab.friend)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Friends")
+                }
+            
+            
+            RecordView()
+                .tag(Tab.record)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Record")
+                }
+            
+            RankingView()
+                .tag(Tab.ranking)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Ranking")
+                }
+            
+            SettingView()
+                .tag(Tab.setting)
+                .onAppear {
+                    Amplitude.instance.track(eventType: "Setting")
+                }
+        })
+        .overlay(alignment: .bottom) {
+            TabBarView(currentTab: $router.currentTab)
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -90,11 +100,11 @@ struct TabBarView: View {
                 Spacer()
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
-                    VStack(spacing: 5.adjustToScreenHeight) {
+                    VStack(spacing: 4.adjustToScreenHeight) {
                         Image(tab == currentTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
                         
                         Text(tab.title)
-                            .font(.pretendard(size: 12, weight: .regular))
+                            .font(.pretendard(size: 10, weight: .medium))
                             .foregroundStyle(tab == currentTab ? .gray100 : .gray300)
                             .frame(height: 18.adjustToScreenHeight)
                     }
@@ -119,6 +129,6 @@ struct TabBarView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView().environmentObject(AppRouter())
 }
 

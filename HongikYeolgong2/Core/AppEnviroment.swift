@@ -45,7 +45,8 @@ extension AppEnviroment {
         .init(
             authRepository: AuthRepositoryImpl(),
             studySessionRepository: StudySessionRepositoryImpl(),
-            weeklyRepository: WeeklyRepositoryImpl()
+            weeklyRepository: WeeklyRepositoryImpl(),
+            friendRepository: FriendRepositoryImpl()
         )
     }
     
@@ -89,7 +90,8 @@ extension AppEnviroment {
                 studySessionRepository: remoteRepository.studySessionRepository
             ),
             rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: remoteRepository.studySessionRepository, weeklyRepository: remoteRepository.weeklyRepository),
-            calendarDataInteractor: CalendarDataInteractorImpl(appstate: appState, studySessionRepository: remoteRepository.studySessionRepository)
+            calendarDataInteractor: CalendarDataInteractorImpl(appstate: appState, studySessionRepository: remoteRepository.studySessionRepository),
+            friendInteractor: FriendInteractorImpl(friendRepository: remoteRepository.friendRepository)
         )
     }
     
@@ -105,6 +107,7 @@ extension DIContainer {
         let authRepository: AuthRepository
         let studySessionRepository: StudySessionRepository
         let weeklyRepository: WeeklyRepository
+        let friendRepository: FriendRepository
     }
     
     struct Services {

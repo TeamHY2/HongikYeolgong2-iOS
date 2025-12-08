@@ -1,0 +1,22 @@
+<svg width="104" height="114" viewBox="0 0 104 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity="0.3">
+<rect width="10" height="10" rx="4" fill="#4F515A"/>
+<rect x="16" width="64" height="10" rx="4" fill="#4F515A"/>
+</g>
+<g opacity="0.6">
+<rect y="18" width="10" height="10" rx="4" fill="#4F515A"/>
+<rect x="16" y="18" width="64" height="10" rx="4" fill="#4F515A"/>
+</g>
+<rect y="36" width="10" height="10" rx="4" fill="#4F515A"/>
+<rect x="16" y="36" width="64" height="10" rx="4" fill="#4F515A"/>
+<g opacity="0.6">
+<rect y="54" width="10" height="10" rx="4" fill="#4F515A"/>
+<rect x="16" y="54" width="64" height="10" rx="4" fill="#4F515A"/>
+</g>
+<g opacity="0.3">
+<rect y="72" width="10" height="10" rx="4" fill="#4F515A"/>
+<rect x="16" y="72" width="64" height="10" rx="4" fill="#4F515A"/>
+</g>
+<path d="M72 102C83.0456 102 91.9999 93.0456 91.9999 82C91.9999 70.9543 83.0456 62 72 62C60.9543 62 52 70.9543 52 82C52 93.0456 60.9543 102 72 102Z" stroke="#4F515A" stroke-width="6.6" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M86.1426 96.1425L100 110" stroke="#4F515A" stroke-width="6.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
