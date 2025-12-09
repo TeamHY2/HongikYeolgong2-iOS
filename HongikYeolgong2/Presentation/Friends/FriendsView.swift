@@ -114,6 +114,24 @@ struct FriendsView: View {
                 )
                 .padding(.horizontal, 32.adjustToScreenWidth)
                 .padding(.bottom, 36.adjustToScreenHeight)
+                
+                Button {
+                    friendAddButtonTapped()
+                } label: {
+                    HStack(spacing: 6.adjustToScreenWidth){
+                        Image(.userPlus)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 22.adjustToScreenWidth,
+                                   height: 22.adjustToScreenHeight)
+                        Text("친구 추가하기")
+                            .font(.suite(size: 16, weight: .semibold))
+                            .foregroundStyle(.gray100)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: 52.adjustToScreenHeight)
+                    .background(.gray800)
+                    .cornerRadius(4)
+                }
             }
         }
         .modifier(IOSBackground())
