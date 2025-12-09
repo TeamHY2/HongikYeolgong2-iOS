@@ -82,10 +82,11 @@ struct FriendsView: View {
                             .padding(.leading, 21)
                         
                         Text("친구를 추가해\n공부 현황을 살펴보세요")
-                            .font(.pretendard(size: 18, weight: .semibold), lineHeight: 26)
+                            .font(.pretendard(size: 16, weight: .semibold), lineHeight: 26)
                             .foregroundStyle(.gray200)
                             .multilineTextAlignment(.center)
                     }
+                    .padding(.bottom, 80.adjustToScreenHeight)
                 }
                 
                 Spacer()
@@ -93,27 +94,19 @@ struct FriendsView: View {
             .padding(.top, 33.adjustToScreenHeight)
             
             // 친구 랭킹 리스트 흐림 효과
-            LinearGradient(
-                colors: [Color(red: 12/255, green: 13/255, blue: 17/255, opacity: 0),
-                         Color(red: 12/255, green: 13/255, blue: 17/255, opacity: 1)],
-                startPoint: .center,
-                endPoint: .bottom)
-            .ignoresSafeArea()
-            .allowsHitTesting(false)
+            if !friendListEmpty {
+                LinearGradient(
+                    colors: [Color(red: 12/255, green: 13/255, blue: 17/255, opacity: 0),
+                             Color(red: 12/255, green: 13/255, blue: 17/255, opacity: 1)],
+                    startPoint: .center,
+                    endPoint: .bottom)
+                .ignoresSafeArea()
+                .allowsHitTesting(false)
+            }
             
             
             VStack{
                 Spacer()
-                // 친구추가 버튼
-                BaseButton(
-                    title: "친구 추가하기",
-                    backgroundColor: .gray600,
-                    foregroundColor: .gray100,
-                    radius: 4,
-                    action: { friendAddButtonTapped() }
-                )
-                .padding(.horizontal, 32.adjustToScreenWidth)
-                .padding(.bottom, 36.adjustToScreenHeight)
                 
                 Button {
                     friendAddButtonTapped()
@@ -132,6 +125,8 @@ struct FriendsView: View {
                     .background(.gray800)
                     .cornerRadius(4)
                 }
+                .padding(.horizontal, 32.adjustToScreenWidth)
+                .padding(.bottom, 36.adjustToScreenHeight)
             }
         }
         .modifier(IOSBackground())
