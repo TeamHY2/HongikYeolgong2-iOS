@@ -56,7 +56,7 @@ struct RecordView: View {
             }
             .padding(.horizontal, 32.adjustToScreenWidth)
             .padding(.top, 32.adjustToScreenHeight)
-            .padding(.bottom, 28.adjustToScreenHeight)
+            .padding(.bottom, 32.adjustToScreenHeight)
             .onAppear(perform: loadData)
         }
         .modifier(IOSBackground())

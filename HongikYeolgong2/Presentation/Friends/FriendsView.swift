@@ -126,7 +126,7 @@ struct FriendsView: View {
                     .cornerRadius(4)
                 }
                 .padding(.horizontal, 32.adjustToScreenWidth)
-                .padding(.bottom, 36.adjustToScreenHeight)
+                .padding(.bottom, 32.adjustToScreenHeight)
             }
         }
         .modifier(IOSBackground())
