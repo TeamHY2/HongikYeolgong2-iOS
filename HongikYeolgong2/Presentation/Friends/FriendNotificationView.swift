@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FriendNotificationView: View {
     @Environment(\.injected.interactors.friendInteractor) var friendInteractor
+    @Environment(\.injected.appState) var appState
     @EnvironmentObject var router: AppRouter
     @State private var notificationList: Loadable<[Notification]>
     
@@ -37,19 +38,17 @@ struct FriendNotificationView: View {
             
             ScrollView {
                 VStack(spacing: 16.adjustToScreenHeight){
-                    if let value = notificationList.value {
-                        ForEach(value, id: \.self) { notification in
-                            NotificationRequestCell(
-                                name: notification.senderNickname,
-                                time: notification.receivedAt,
-                                deleteAction: {
-                                    deleteButtonAction(info: notification, isAccept: false)
-                                },
-                                acceptAction: {
-                                    deleteButtonAction(info: notification, isAccept: true)
-                                }
-                            )
-                        }
+                    ForEach(appState.value.notificationState.notificationList, id: \.self) { notification in
+                        NotificationRequestCell(
+                            name: notification.senderNickname,
+                            time: notification.receivedAt,
+                            deleteAction: {
+                                deleteButtonAction(info: notification, isAccept: false)
+                            },
+                            acceptAction: {
+                                deleteButtonAction(info: notification, isAccept: true)
+                            }
+                        )
                     }
                 }
                 .padding(.horizontal, 32.adjustToScreenWidth)
@@ -78,6 +77,6 @@ extension FriendNotificationView{
     
     // 새로고침
     private func refreshAction() {
-        friendInteractor.getNotificationList(notificationList: $notificationList)
+        friendInteractor.getNotificationList()
     }
 }

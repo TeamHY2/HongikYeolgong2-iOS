@@ -22,6 +22,7 @@ enum RankingType: String, CaseIterable {
 
 struct FriendsView: View {
     @Environment(\.injected.interactors.friendInteractor) var friendInteractor
+    @Environment(\.injected.appState) var appState
     @EnvironmentObject var router: AppRouter
     @Namespace private var rankTypeAnimation
     @State private var rankType: RankingType = .month
@@ -175,7 +176,8 @@ struct FriendsView: View {
             // 알림창 action 추가
             notificationButtonTapped()
         } label: {
-            if let value = notificationList.value, !value.isEmpty {
+            //if let value = notificationList.value, !value.isEmpty {
+            if appState.value.notificationState.newNotification {
                 Image(.bellOn)
             } else {
                 Image(.bellOff)
@@ -187,8 +189,8 @@ struct FriendsView: View {
 // MARK:- Action
 extension FriendsView {
     private func notificationButtonTapped() {
-        guard let notificationList = notificationList.value else { return }
-        router.push(to: .friendNotification(notificationList: notificationList))
+        //guard let notificationList = notificationList.value else { return }
+        router.push(to: .friendNotification(notificationList: appState.value.notificationState.notificationList))
     }
     
     private func friendAddButtonTapped() {
@@ -201,7 +203,7 @@ extension FriendsView {
     }
     
     private func getNotificationList() {
-        friendInteractor.getNotificationList(notificationList: $notificationList)
+        friendInteractor.getNotificationList()
     }
 }
 
