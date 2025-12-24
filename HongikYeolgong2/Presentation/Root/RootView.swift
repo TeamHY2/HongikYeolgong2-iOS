@@ -12,6 +12,7 @@ struct RootView: View {
     @Environment(\.injected.appState) var appState
     @Environment(\.injected.interactors.userDataInteractor) var userDataInteractor
     @Environment(\.injected.interactors.userPermissionsInteractor) var userPermissionsInteractor
+    @Environment(\.injected.interactors.friendInteractor) var friendInteractor
     
     @StateObject private var router = AppRouter()
     
@@ -30,6 +31,7 @@ struct RootView: View {
                     case .authenticated:
                         MainTabView()
                             .onAppear {
+                                friendInteractor.getNotificationList()
                                 userDataInteractor.getUserProfile()
                                 userDataInteractor.updateFCMToken()
                             }

@@ -91,7 +91,10 @@ extension AppEnviroment {
             ),
             rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: remoteRepository.studySessionRepository, weeklyRepository: remoteRepository.weeklyRepository),
             calendarDataInteractor: CalendarDataInteractorImpl(appstate: appState, studySessionRepository: remoteRepository.studySessionRepository),
-            friendInteractor: FriendInteractorImpl(friendRepository: remoteRepository.friendRepository)
+            friendInteractor: FriendInteractorImpl(
+                appState: appState,
+                friendRepository: remoteRepository.friendRepository
+            )
         )
     }
     
