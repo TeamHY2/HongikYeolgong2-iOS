@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AmplitudeSwift
+import Combine
 
 enum Tab: CaseIterable {
     case home
@@ -93,6 +94,14 @@ struct MainTabView: View {
 
 struct TabBarView: View {
     @Binding var currentTab: Tab
+    @Environment(\.injected.appState) var appState
+    
+    @State private var hasNewNotification: Bool = false
+    
+    // 새로운 알림 여부 체크
+    var notificationStateUpdated: AnyPublisher<AppState.NotificationState, Never> {
+        appState.updates(for: \.notificationState)
+    }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -101,7 +110,22 @@ struct TabBarView: View {
                 
                 ForEach(Tab.allCases, id: \.hashValue) { tab in
                     VStack(spacing: 4.adjustToScreenHeight) {
-                        Image(tab == currentTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
+                        switch tab {
+                                
+                            case .friend:
+                                ZStack(alignment: .topTrailing) {
+                                    Image(tab == currentTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
+                                    
+                                    if hasNewNotification {
+                                        Circle()
+                                            .fill(Color.yellow100)
+                                            .frame(width: 6, height: 6)
+                                            .offset(x: 5, y: -3)
+                                    }
+                                }
+                            default:
+                                Image(tab == currentTab ? tab.iconNameSelected : tab.iconName, bundle: nil)
+                        }
                         
                         Text(tab.title)
                             .font(.pretendard(size: 10, weight: .medium))
@@ -125,6 +149,9 @@ struct TabBarView: View {
         .background(Image(.tabview)
             .resizable()
             .frame(maxWidth: .infinity))
+        .onReceive(notificationStateUpdated) {
+            hasNewNotification = $0.newNotification
+        }
     }
 }
 

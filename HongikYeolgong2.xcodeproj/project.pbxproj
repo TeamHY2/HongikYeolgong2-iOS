@@ -1749,7 +1749,7 @@
 		};
 		47B1D4CB2C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */;
+			baseConfigurationReference = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1854,7 +1854,7 @@
 		};
 		47B1D4CE2C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */;
+			baseConfigurationReference = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1973,7 +1973,7 @@
 		};
 		47B1D4D42C9CB1760071B62B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 47A6D2352DF1803200EFE046 /* Secrets-prod.xcconfig */;
+			baseConfigurationReference = 5ED93CDA2CE3690D004A7931 /* Secrets-prod.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;

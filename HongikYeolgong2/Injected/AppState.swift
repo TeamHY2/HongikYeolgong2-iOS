@@ -14,6 +14,7 @@ final class AppState {
     var routing = ViewRouting()
     var system = System()
     var permissions = Permissions()
+    var notificationState = NotificationState()
 }
 
 extension AppState {
@@ -95,6 +96,14 @@ extension AppState: Equatable {
         lhs.permissions == rhs.permissions &&
         lhs.userData == rhs.userData &&
         lhs.userSession == rhs.userSession &&
-        lhs.studySession == rhs.studySession
+        lhs.studySession == rhs.studySession &&
+        lhs.notificationState == rhs.notificationState
+    }
+}
+
+extension AppState {
+    struct NotificationState: Equatable {
+        var newNotification: Bool { return !notificationList.isEmpty }
+        var notificationList: [Notification] = []
     }
 }

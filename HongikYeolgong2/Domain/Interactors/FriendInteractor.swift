@@ -14,15 +14,18 @@ protocol FriendInteractor {
     func getFriendsTimeList(serchUsers: LoadableSubject<[FriendStudyTime]>, dateType: RankingType)
     func respondFriendRequest(info: Notification, isAccept: Bool, completion: @escaping (Bool) -> Void)
     func requestCancelFriend(userId: Int, completion: @escaping (Bool) -> Void)
-    func getNotificationList(notificationList: LoadableSubject<[Notification]>)
+    func getNotificationList()
 }
 
 final class FriendInteractorImpl: FriendInteractor {
     private let friendRepository: FriendRepository
+    private let appState: Store<AppState>
     private let cancleBag = CancelBag()
     private var firstLoading: Bool = true
     
-    init(friendRepository: FriendRepository) {
+    init(appState: Store<AppState>,
+         friendRepository: FriendRepository) {
+        self.appState = appState
         self.friendRepository = friendRepository
     }
     
@@ -89,11 +92,17 @@ final class FriendInteractorImpl: FriendInteractor {
     }
     
     // 알림 리스트 요청
-    func getNotificationList(notificationList: LoadableSubject<[Notification]>) {
+    func getNotificationList() {
         friendRepository
             .getNotification()
-            .sinkToLoadble(notificationList)
-            .store(in: cancleBag)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in }
+        receiveValue: { [weak self] notificationList in
+            guard let self = self else { return }
+            
+            appState[\.notificationState.notificationList] = notificationList
+        }
+        .store(in: cancleBag)
         firstLoading.toggle()
     }
 }

@@ -50,7 +50,7 @@ extension DIContainer {
             weeklyStudyInteractor: WeeklyStudyInteractorImpl(appState: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
             rankingDataInteractor: RankingDataInteractorImpl(studySessionRepository: StudySessionRepositoryImpl(), weeklyRepository: WeeklyRepositoryImpl()),
             calendarDataInteractor: CalendarDataInteractorImpl(appstate: Store<AppState>(AppState()), studySessionRepository: StudySessionRepositoryImpl()),
-            friendInteractor: FriendInteractorImpl(friendRepository: FriendRepositoryImpl())
+            friendInteractor: FriendInteractorImpl(appState: Store<AppState>(AppState()), friendRepository: FriendRepositoryImpl())
         )
     }
 }
