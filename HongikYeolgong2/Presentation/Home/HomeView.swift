@@ -148,10 +148,10 @@ extension HomeView {
         studySessionInteractor.startStudy()
         weeklyStudyInteractor.addStarCount(studyRecords: $studyRecords)
         // 포커스모드 실행
-        Task {
-            try await Task.sleep(nanoseconds: 500_000_000)
-            activateFocusMode()
-        }
+//        Task {
+//            try await Task.sleep(nanoseconds: 500_000_000)
+//            activateFocusMode()
+//        }
         Amplitude.instance.track(eventType: "StudyStartButton")
     }
     
